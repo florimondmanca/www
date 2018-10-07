@@ -1,4 +1,4 @@
-var CACHE_NAME = 'portfolio-cache-v1';
+var CACHE = 'portfolio-cache-v1';
 var urlsToCache = [
   '/',
   '/styles/fonts.css',
@@ -12,25 +12,40 @@ var urlsToCache = [
 ];
 
 self.addEventListener('install', function(event) {
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        return cache.addAll(urlsToCache);
-      })
-  );
+  event.waitUntil(installCache());
 });
 
+
 self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      }
-    )
-  );
+  // Return response right away
+  event.respondWith(fromCache(event.request));
+  // Fetch potential update in the background
+  event.waitUntil(update(request));
 });
+
+
+function installCache() {
+  return caches.open(CACHE).then(function(cache) {
+    return cache.addAll(urlsToCache);
+  });
+}
+
+function fromCache(request) {
+  return caches.open(CACHE).then(function(cache) {
+    return cache.match(request).then(function(response) {
+      if (response) {
+        // Cache hit - return response
+        return response;
+      }
+      return fetch(request);
+    });
+  });
+}
+
+function update(request) {
+  return caches.open(CACHE).then(function(cache) {
+    return fetch(request).then(function(response) {
+      return cache.put(request, response);
+    });
+  });
+}
