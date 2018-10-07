@@ -1,0 +1,23 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Florimond Manca's portfolio website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florimondmanca/portfolio.git"
+  },
+  "author": "Florimond Manca",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/florimondmanca/portfolio/issues"
+  },
+  "homepage": "https://github.com/florimondmanca/portfolio#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
