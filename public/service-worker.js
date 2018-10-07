@@ -20,7 +20,7 @@ self.addEventListener('fetch', function(event) {
   // Return response right away
   event.respondWith(fromCache(event.request));
   // Fetch potential update in the background
-  event.waitUntil(update(request));
+  event.waitUntil(update(event.request));
 });
 
 
