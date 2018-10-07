@@ -1,0 +1,27 @@
+language: node_js
+
+# Disable sudo to enable ssh_known_hosts
+sudo: false
+
+addons:
+  ssh_known_hosts: "captain.florimondmanca.com"
+
+node_js:
+  - "node"
+
+cache:
+  directories:
+    - "$HOME/.npm"
+
+script:
+  - npm test
+
+before_deploy:
+  - source scripts/before_deploy.sh
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: bash scripts/deploy.sh
+  on:
+    branch: master
