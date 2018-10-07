@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Hi! I'm Florimond Manca.</title>
+    <title>Florimond Manca</title>
     <meta name="description" content="I am a Software Developer on a journey, Tech Blogger, Pythonista, Tech Blogger and Master's student.">
 
     <!-- Required meta tags -->
@@ -43,11 +43,15 @@
     <link rel="stylesheet" href="styles/variables.css">
     <link rel="stylesheet" href="styles/fonts.css">
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/solid.css" integrity="sha384-VGP9aw4WtGH/uPAOseYxZ+Vz/vaTb1ehm1bwx92Fm8dTrE+3boLfF1SpAtB1z7HW" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/brands.css" integrity="sha384-rf1bqOAj3+pw6NqYrtaE1/4Se2NBwkIfeYbsFdtiR6TQz0acWiwJbv1IM/Nt/ite" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/fontawesome.css" integrity="sha384-1rquJLNOM3ijoueaaeS5m+McXPJCGdr5HcA03/VHXxcp2kX2sUrQDmFc3jR5i/C7" crossorigin="anonymous">
   </head>
   <body>
     <main>
+      <button id="toggle-theme" title="Toggle theme">
+        <i class="fas fa-fill-drip fa-lg"></i>
+      </button>
       <h1>
         Hi! I'm <strong id="name">Florimond Manca</strong>.&nbsp;👋
       </h1>
@@ -85,6 +89,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9/lib/typed.min.js"></script>
     <script src="scripts/subtitle.js"></script>
+    <script src="scripts/toggle-theme.js"></script>
+
+    <script type="text/javascript">
+      listenToggleTheme('#toggle-theme');
+    </script>
 
     <script type="text/javascript">
       new Subtitle({

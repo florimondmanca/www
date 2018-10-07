@@ -1,8 +1,10 @@
 :root {
-  --color-accent: #ea3b53;
   --color-primary: #59c6b6;
   --color-primary-light: #60dbc8;
-  --color-muted: #8fc1ba;
-  --color-light: #dcf4f1;
-  --color-text: #354249;
+  --color-accent: white;
+  --color-muted: #dcf4f1;
+  --color-text: #8fc1ba;
+  --color-button-text: #354249;
+  --color-bg: #354249;
+  --color-bg-dark: #2c373d;
 }

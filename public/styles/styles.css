@@ -16,12 +16,8 @@ body {
   display: flex;
   min-height: 90vh;
   line-height: 1.4;
-  color: var(--color-muted);
-  background: var(--color-text);
-}
-
-::selection {
-  background: var(--color-muted);
+  color: var(--color-text);
+  background-image: linear-gradient(to bottom right, var(--color-bg), var(--color-bg-dark));
 }
 
 a {
@@ -29,11 +25,11 @@ a {
   color: inherit;
 }
 a:hover {
-  color: var(--color-light);
+  color: var(--color-muted);
 }
 
 .typed-cursor {
-  color: var(--color-muted);
+  color: var(--color-text);
 }
 
 strong {
@@ -95,7 +91,7 @@ main {
 }
 
 #typed-item {
-  color: white;
+  color: var(--color-accent);
 }
 
 /* Remove styles */
@@ -122,7 +118,7 @@ button {
 }
 
 button#read-blog {
-  color: var(--color-text);
+  color: var(--color-button-text);
   background: var(--color-primary);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   transition: background 200ms, box-shadow 200ms;
@@ -143,9 +139,24 @@ button#read-blog:hover {
   padding: 1em;
 }
 #socials a:hover {
-  color: var(--color-light);
+  color: var(--color-muted);
 }
 
 #name {
-  color: white;
+  color: var(--color-accent);
+}
+
+#toggle-theme {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+#toggle-theme:hover {
+  color: var(--color-muted);
+}
+@media (min-width: 600px) {
+  #toggle-theme {
+    top: 2em;
+    right: 2em;
+  }
 }
