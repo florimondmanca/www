@@ -36,7 +36,6 @@ class ThemeToggler {
     localStorage.setItem(THEME_KEY, value);
     const properties = this.getThemeProperties();
     Object.keys(properties).forEach((key) => {
-      console.log(key, properties[key]);
       document.body.style.setProperty(key, properties[key]);
     });
   }
