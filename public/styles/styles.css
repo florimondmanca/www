@@ -11,3 +11,11 @@ body {
   color: var(--color-text);
   font-family: 'Aganè', sans-serif;
 }
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.typed-cursor {
+  color: var(--color-accent);
+}

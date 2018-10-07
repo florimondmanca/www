@@ -10,7 +10,68 @@
     <link rel="stylesheet" href="styles/styles.css">
   </head>
   <body>
-    Hello, world!
+    <main>
+      <h1>
+        Hi! I'm <strong class="text-primary">Florimond</strong>.
+      </h1>
+      <section id="subtitle">
+        <span id="typed-title"></span> <span class="text-primary" id="typed-item"></span>
+      </section>
+    </main>
+
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+    <script src="scripts/subtitle.js"></script>
+    <script type="text/javascript">
+      new Subtitle({
+        titleId: '#typed-title',
+        itemId: '#typed-item',
+        groups: [
+          {
+            title: 'I enjoy',
+            items: [
+              'sharing knowledge',
+              'writing code',
+              'building things',
+              'solving problems',
+              'working with people',
+            ],
+          },
+          {
+            title: 'I write about',
+            items: [
+              'technology',
+              'software engineering',
+              'stream processing',
+              'web development',
+              'programming',
+            ],
+          },
+          {
+            title: 'I am',
+            items: [
+              'curious and passionate',
+              'French and Belgian',
+              'a Master of Engineering student',
+              'a bit of an idealist',
+            ]
+          },
+          {
+            title: 'I build stuff using',
+            items: [
+              'Python',
+              'Django',
+              'JavaScript',
+              'Angular',
+              'Docker',
+              'TravisCI',
+              'AWS',
+              'Apache Kafka',
+              'SQL databases',
+              'brainpower',
+            ]
+          }
+        ],
+      });
+    </script>
   </body>
 </html>
