@@ -1,50 +1,6 @@
-const groups = [
-  {
-    title: 'I enjoy',
-    items: [
-      'sharing knowledge',
-      'writing code',
-      'building things',
-      'solving problems',
-      'working with people',
-    ],
-  },
-  {
-    title: 'I write about',
-    items: [
-      'technology',
-      'software engineering',
-      'stream processing',
-      'web development',
-      'programming',
-    ],
-  },
-  {
-    title: 'I am',
-    items: [
-      'curious and passionate',
-      'French and Belgian',
-      'a Master of Engineering student',
-      'a bit of an idealist',
-    ]
-  },
-  {
-    title: 'I build stuff using',
-    items: [
-      'Python',
-      'Django',
-      'JavaScript',
-      'Angular',
-      'Docker',
-      'TravisCI',
-      'AWS',
-      'Apache Kafka',
-      'SQL databases',
-      'brainpower',
-    ]
-  }
-];
+// Animated subtitle using Typed.js
 
+// Defaults
 const TYPE_SPEED = 40;
 const BACK_SPEED = 20;
 
@@ -103,7 +59,7 @@ class Subtitle {
           self.toggle();
           this.buildItem(this.options.groups[pos], () => self.toggle())
           lastPos++;
-        } else if (lastPos === groups.length) {
+        } else if (lastPos === this.options.groups.length) {
           lastPos = 0;
         }
       },

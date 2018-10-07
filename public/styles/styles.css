@@ -8,6 +8,8 @@ body {
   width: 100%;
   padding: 0;
   margin: 0;
+  font-size: 1.5em;
+  font-weight: normal;
   color: var(--color-text);
   font-family: 'Aganè', sans-serif;
 }
@@ -18,4 +20,13 @@ body {
 
 .typed-cursor {
   color: var(--color-accent);
+}
+
+strong {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: normal;
 }
