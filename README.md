@@ -1,6 +1,6 @@
 # Portfolio
 
-This is my personal portfolio website. For now, it's pretty basic. Soon with lots of useful information and fancy animations.
+This is my personal portfolio website.
 
 ## Install
 
@@ -12,14 +12,15 @@ $ npm install
 
 ## Quickstart
 
-Run the hot-reloaded development server:
-
-```bash
-$ npm run dev
-```
-
-Run the production server:
+Run the server:
 
 ```bash
 $ npm start
 ```
+
+## Deployment
+
+Deployment is configured in `.travis.yml`. After a successful CI build:
+
+- Static files are securely uploaded to my server using `rsync`.
+- A deploy is triggered via [CaptainDuckDuck](https://captainduckduck.com).
