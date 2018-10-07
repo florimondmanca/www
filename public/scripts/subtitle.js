@@ -23,7 +23,6 @@ class ItemTyped {
       strings: this.options.strings,
       typeSpeed: this.options.typeSpeed,
       backSpeed: this.options.backSpeed,
-      groups: [],
       onComplete: (self) => {
         self.destroy();
         this.options.onComplete();
@@ -71,8 +70,7 @@ class Subtitle {
       id: this.options.itemId,
       strings: [
         ...group.items.map(item => item + '.'),
-        // Final backspace
-        '',
+        '',  // Final backspace
       ],
       onComplete: () => onComplete(),
     })

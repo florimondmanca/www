@@ -8,52 +8,84 @@
     <link rel="stylesheet" href="styles/variables.css">
     <link rel="stylesheet" href="styles/fonts.css">
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/brands.css" integrity="sha384-rf1bqOAj3+pw6NqYrtaE1/4Se2NBwkIfeYbsFdtiR6TQz0acWiwJbv1IM/Nt/ite" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/fontawesome.css" integrity="sha384-1rquJLNOM3ijoueaaeS5m+McXPJCGdr5HcA03/VHXxcp2kX2sUrQDmFc3jR5i/C7" crossorigin="anonymous">
   </head>
   <body>
     <main>
       <h1>
-        Hi! I'm <strong class="text-primary">Florimond</strong>.
+        Hi! I'm <strong id="name">Florimond Manca</strong>.&nbsp;👋
       </h1>
+
+      <h2>
+        Software Developer on a journey&nbsp;👨‍💻&nbsp;&middot; Pythonista&nbsp;🐍&nbsp;&middot; Tech&nbsp;Blogger&nbsp;💬&nbsp;&middot; Master's&nbsp;Student&nbsp;at <a href="https://centralesupelec.fr/en/" rel="noreferrer">CentraleSupélec</a>&nbsp;🎓
+      </h2>
+
       <section id="subtitle">
-        <span id="typed-title"></span> <span class="text-primary" id="typed-item"></span>
+        <span class="block-or-inline" id="typed-title"></span>
+        <span class="text-primary" id="typed-item"></span>
       </section>
+
+      <section id="cta">
+        <a href="https://blog.florimondmanca.com" target="_blank" rel="noreferrer">
+          <button id="read-blog">
+            Read my blog
+          </button>
+        </a>
+      </section>
+
+      <section id="socials">
+        <a href="https://twitter.com/FlorimondManca" rel="noreferrer" target="_blank">
+          <i class="fab fa-twitter fa-2x"></i>
+        </a>
+        <a href="https://github.com/florimondmanca" rel="noreferrer" target="_blank">
+          <i class="fab fa-github fa-2x"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/florimondmanca" rel="noreferrer" target="_blank">
+          <i class="fab fa-linkedin fa-2x"></i>
+        </a>
+      </section>
+
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9/lib/typed.min.js"></script>
     <script src="scripts/subtitle.js"></script>
+
     <script type="text/javascript">
       new Subtitle({
         titleId: '#typed-title',
         itemId: '#typed-item',
         groups: [
           {
+            title: 'I am',
+            items: [
+              'a software engineering student',
+              'French',
+              'also Belgian',
+              'curious and passionate',
+              'a bit of an idealist',
+              'open to offers',
+            ]
+          },
+          {
             title: 'I enjoy',
             items: [
-              'sharing knowledge',
               'writing code',
               'building things',
               'solving problems',
-              'working with people',
+              'working with others',
+              'sharing knowledge',
+              'challenging environments',
             ],
           },
           {
             title: 'I write about',
             items: [
-              'technology',
               'software engineering',
-              'stream processing',
               'web development',
               'programming',
+              'stream processing',
             ],
-          },
-          {
-            title: 'I am',
-            items: [
-              'curious and passionate',
-              'French and Belgian',
-              'a Master of Engineering student',
-              'a bit of an idealist',
-            ]
           },
           {
             title: 'I build stuff using',
@@ -68,8 +100,8 @@
               'Apache Kafka',
               'SQL databases',
               'brainpower',
-            ]
-          }
+            ],
+          },
         ],
       });
     </script>
