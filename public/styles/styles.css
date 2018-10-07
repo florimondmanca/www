@@ -31,9 +31,6 @@ a {
 a:hover {
   color: var(--color-light);
 }
-a:visited {
-  color: inherit;
-}
 
 .typed-cursor {
   color: var(--color-muted);
