@@ -131,6 +131,7 @@ button#read-blog:hover {
 #socials {
   margin-top: 2em;
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
 }
 
