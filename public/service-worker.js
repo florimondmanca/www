@@ -1,4 +1,5 @@
-var CACHE = 'portfolio-cache-v1';
+var CACHE = 'portfolio-cache-v2';
+
 var urlsToCache = [
   '/',
   '/styles/fonts.css',
@@ -9,14 +10,15 @@ var urlsToCache = [
   '/styles/fonts/agane-regular.ttf',
   '/scripts/subtitle.js',
   '/scripts/register-service-worker.js',
+  '/scripts/toggle-theme.js',
 ];
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', function (event) {
   event.waitUntil(installCache());
 });
 
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', function (event) {
   // Return response right away
   event.respondWith(fromCache(event.request));
   // Fetch potential update in the background
@@ -25,14 +27,14 @@ self.addEventListener('fetch', function(event) {
 
 
 function installCache() {
-  return caches.open(CACHE).then(function(cache) {
+  return caches.open(CACHE).then(function (cache) {
     return cache.addAll(urlsToCache);
   });
 }
 
 function fromCache(request) {
-  return caches.open(CACHE).then(function(cache) {
-    return cache.match(request).then(function(response) {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.match(request).then(function (response) {
       if (response) {
         // Cache hit - return response
         return response;
@@ -43,8 +45,8 @@ function fromCache(request) {
 }
 
 function update(request) {
-  return caches.open(CACHE).then(function(cache) {
-    return fetch(request).then(function(response) {
+  return caches.open(CACHE).then(function (cache) {
+    return fetch(request).then(function (response) {
       return cache.put(request, response);
     });
   });
