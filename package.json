@@ -1,11 +1,10 @@
 {
   "name": "www",
   "version": "1.0.0",
-  "description": "Florimond Manca's portfolio website",
   "author": "Florimond Manca",
-  "main": "server.js",
   "scripts": {
-    "test": "echo 'All is fine.'"
+    "serve": "uvicorn app:app",
+    "serve:debug": "DEBUG=1 uvicorn app:app"
   },
   "repository": {
     "type": "git",
