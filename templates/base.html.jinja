@@ -117,7 +117,7 @@
     <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function() {
-        navigator.serviceWorker.register("{{ relative_url_for('static', path='/js/service-worker.js') }}")
+        navigator.serviceWorker.register("/service-worker.js");
       });
     }
     </script>

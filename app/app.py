@@ -8,7 +8,13 @@ from starlette.templating import Jinja2Templates
 from . import settings
 
 app = Starlette(debug=settings.DEBUG)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+
+static_files = StaticFiles(directory="static")
+app.mount("/static", static_files, name="static")
+
+# Service worker script must be served from root path
+# so that all cached assets are in its "scope".
+app.add_route("/service-worker.js", static_files)
 
 templates = Jinja2Templates(directory="templates")
 
