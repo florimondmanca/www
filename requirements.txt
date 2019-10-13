@@ -1,11 +1,6 @@
-# App dependencies
 aiofiles==0.4.*
+gunicorn==19.*
 jinja2==2.*
 starlette==0.12.*
 uvicorn==0.9.*
-
-# Tooling dependencies
-black
-flake8
-mypy
-pytest==5.*
+uvloop==0.12.*
