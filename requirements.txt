@@ -1,2 +1,7 @@
+black
+flake8
+jinja2==2.*
+mypy
+pytest==5.*
 starlette==0.12.*
 uvicorn==0.9.*
