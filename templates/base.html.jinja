@@ -81,16 +81,19 @@
     </nav>
     {% block content %}{% endblock %}
 
-    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Scripts placed at the end of the document so the pages load faster -->
+
     <!-- Bootstrap core JavaScript -->
     <script src="{{ url_for('static', path='/js/jquery-3.4.1.slim.min.js') }}"></script>
     <script src="{{ url_for('static', path='/js/popper.min.js') }}"></script>
     <script src="{{ url_for('static', path='/js/bootstrap.min.js') }}"></script>
+
     <!-- FontAwesome icons -->
     <script
       src="https://kit.fontawesome.com/d38a96501e.js"
       crossorigin="anonymous"
     ></script>
+
     <!-- Dark mode widget -->
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.0/lib/darkmode-js.min.js"></script>
     <script>
@@ -109,6 +112,16 @@
       });
       darkmode.showWidget();
     </script>
+
+    <!-- Service worker registration -->
+    <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function() {
+        navigator.serviceWorker.register("{{ relative_url_for('static', path='/js/service-worker.js') }}")
+      });
+    }
+    </script>
+
     {% block tail %}{% endblock %}
   </body>
 </html>

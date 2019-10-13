@@ -1,3 +1,6 @@
+import typing
+
+import jinja2
 from starlette.applications import Starlette
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
@@ -8,6 +11,17 @@ app = Starlette(debug=settings.DEBUG)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
+
+
+@jinja2.contextfunction
+def relative_url_for(context: dict, name: str, **path_params: typing.Any) -> str:
+    request = context["request"]
+    router = request.scope["router"]
+    url_path = router.url_path_for(name, **path_params)
+    return str(url_path)
+
+
+templates.env.globals["relative_url_for"] = relative_url_for
 
 
 @app.route("/", name="home")
