@@ -14,27 +14,21 @@
 
     <title>Florimond Manca</title>
 
+    <!-- Custom CSS -->
+    <link
+      href="{{ url_for('static', path='/css/custom.css') }}"
+      rel="stylesheet"
+    />
+
     <!-- Bootstrap core CSS -->
     <link
       href="{{ url_for('static', path='/css/bootstrap.min.css') }}"
       rel="stylesheet"
     />
-
-    <!-- Iconic icons CSS -->
-    <link
-      href="{{ url_for('static', path='/css/open-iconic-bootstrap.min.css') }}"
-      rel="stylesheet"
-    />
-
-    <!-- Custom styles for this template -->
-    <link
-      href="{{ url_for('static', path='/css/jumbotron.css') }}"
-      rel="stylesheet"
-    />
   </head>
 
   <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-light fixed-top bg-light">
       <div class="container">
         <a class="navbar-brand" href="{{ url_for('home') }}">
           Florimond Manca
@@ -44,12 +38,13 @@
     </nav>
     {% block content %}{% endblock %}
 
-    <!-- Bootstrap core JavaScript -->
-    <!-- ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Bootstrap core JavaScript -->
     <script src="{{ url_for('static', path='/js/jquery-3.3.1.slim.min.js') }}"></script>
     <script src="{{ url_for('static', path='/js/popper.min.js') }}"></script>
     <script src="{{ url_for('static', path='/js/bootstrap.min.js') }}"></script>
+    <!-- FontAwesome icons -->
+    <script src="https://kit.fontawesome.com/d38a96501e.js" crossorigin="anonymous"></script>
     {% block tail %}{% endblock %}
   </body>
 </html>

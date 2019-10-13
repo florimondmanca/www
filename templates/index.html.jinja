@@ -2,17 +2,35 @@
 
 {% block content %}
 <main role="main">
-  <div class="container text-center">
-    <div class="jumbotron bg-white">
+  <div class="container">
+    <div class="jumbotron bg-white d-flex flex-column align-items-center">
+      <div class="t-picture mb-3">
+        <img class="w-100 h-100 rounded-circle" src="{{ url_for('static', path='img/me.jpg') }}" alt="Picture of me">
+      </div>
       <h1 class="display-5">
         Florimond Manca
       </h1>
       <p class="lead">
         Open Source Developer, Idealist On A Journey
       </p>
-      <p>
-        I maintain and contribute to libraries, packages, and tools. Mostly in Python.
+      <p class="text-muted">
+        I maintain and contribute to libraries, packages, and tools. Mostly Python.
       </p>
+
+      <div class="w-50 d-flex justify-content-around">
+        <a class="btn btn-link btn-lg" href="https://blog.florimond.dev" target="_blank">
+          <i class="fas fa-pencil-alt mr-2"></i>
+          Writings
+        </a>
+        <a class="btn btn-link btn-lg" href="https://github.com/florimondmanca" target="_blank">
+          <i class="fab fa-github mr-2"></i>
+          Code
+        </a>
+        <a class="btn btn-link btn-lg" href="https://twitter.com/florimondmanca" target="_blank">
+          <i class="fab fa-twitter mr-2"></i>
+          Tweets
+        </a>
+      </div>
     </div>
   </div>
 </main>
