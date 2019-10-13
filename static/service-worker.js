@@ -4,6 +4,8 @@ var CACHE_NAME = `www-cache-v${VERSION}`;
 
 var urlsToCache = [
   "/",
+  "/static/service-worker.js",
+  "/static/img/me.jpg",
   "/static/css/bootstrap.min.css",
   "/static/css/bootstrap.min.css.map",
   "/static/css/custom.css",
