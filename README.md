@@ -46,10 +46,8 @@ scripts/build
 heroku local
 ```
 
-## Deployment
+- Deploy:
 
 ```bash
-git push dokku master
-# Or:
-git push dokku $BRANCH:master
+scripts/deploy
 ```
