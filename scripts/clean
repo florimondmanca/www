@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh -e -x
 
 if [ -d 'apps/blog/site/.vuepress/dist' ] ; then
     rm -r apps/blog/site/.vuepress/dist
