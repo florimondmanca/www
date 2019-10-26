@@ -32,6 +32,10 @@ scripts/build
 heroku local
 ```
 
+## Configuration
+
+- `BLOG_ENABLED`: enable the blog application, served at `/blog/`.
+
 ## Deployment
 
 ```bash

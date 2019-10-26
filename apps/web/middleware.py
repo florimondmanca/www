@@ -1,7 +1,7 @@
 import typing
 
 import tldextract
-from starlette.datastructures import Headers, URL
+from starlette.datastructures import URL, Headers
 from starlette.responses import RedirectResponse
 from starlette.types import ASGIApp, Receive, Scope, Send
 

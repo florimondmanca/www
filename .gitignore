@@ -7,8 +7,9 @@ __pycache__/
 .mypy_cache
 .pytest_cache
 
-# Misc
-.DS_Store
-
 # Build
 dist/
+
+# Misc
+.DS_Store
+.env
