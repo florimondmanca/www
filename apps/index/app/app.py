@@ -1,3 +1,4 @@
+import pathlib
 import typing
 
 import jinja2
@@ -9,14 +10,14 @@ from . import settings
 
 app = Starlette(debug=settings.DEBUG)
 
-static_files = StaticFiles(directory="static")
+static_files = StaticFiles(directory=str(settings.DIR / "static"))
 app.mount("/static", static_files, name="static")
 
 # Service worker script must be served from root path
 # so that all cached assets are in its "scope".
 app.add_route("/service-worker.js", static_files)
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory=str(settings.DIR / "templates"))
 
 
 @jinja2.contextfunction
