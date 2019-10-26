@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="theme-container">
     <NavBar />
     <div class="t-content">
       <main class="u-mt-6">

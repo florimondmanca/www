@@ -28,7 +28,7 @@
 
 .t-nav {
   background-color: $colorBackgroundCard;
-  z-index: 1; // Float on top of page content.
+  z-index: 100; // Float on top of page content.
 
   ul {
     display: grid;
