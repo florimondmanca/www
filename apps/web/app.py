@@ -1,4 +1,5 @@
 from starlette.types import ASGIApp
+
 from apps import feature_flags, index
 
 from .middleware import SubdomainRedirectMiddleware
