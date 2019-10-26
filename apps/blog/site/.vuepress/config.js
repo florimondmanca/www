@@ -1,4 +1,5 @@
 module.exports = {
+  base: "/blog/",
   plugins: [require("./plugin-blog")],
   head: [
     // Icons.

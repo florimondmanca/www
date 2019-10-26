@@ -1,6 +1,12 @@
 -r requirements.txt
 
+autoflake
 black
 flake8
+flake8-bugbear
+flake8-comprehensions
+flake8-pie
+isort
 mypy
 pytest==5.*
+seed-isort-config

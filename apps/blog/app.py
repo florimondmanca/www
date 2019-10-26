@@ -14,5 +14,5 @@ static = StaticFiles(directory=str(BUILD_DIR))
 
 async def app(scope: Scope, receive: Receive, send: Send) -> None:
     if scope["path"] == "/":
-        scope["path"] = "index.html"
+        scope["path"] = "/index.html"
     await static(scope, receive, send)

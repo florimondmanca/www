@@ -38,7 +38,7 @@
       <template v-if="$frontmatter.image">
         <div class="p-image">
           <img
-            :src="$frontmatter.image.path"
+            :src="$withBase($frontmatter.image.path)"
             :alt="$frontmatter.image.caption"
           />
           <figcaption v-if="$frontmatter.image.caption">
