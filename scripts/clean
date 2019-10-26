@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+if [ -d 'apps/blog/site/.vuepress/dist' ] ; then
+    rm -r apps/blog/site/.vuepress/dist
+fi

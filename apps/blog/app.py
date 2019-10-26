@@ -7,7 +7,7 @@ HERE = pathlib.Path(__file__).parent
 BUILD_DIR = HERE / "site" / ".vuepress" / "dist"
 assert (
     BUILD_DIR.exists()
-), "VuePress site was not built. See package.json for the build script."
+), "Blog site hasn't been built yet. HINT: run `$ scripts/build`."
 
 static = StaticFiles(directory=str(BUILD_DIR))
 
