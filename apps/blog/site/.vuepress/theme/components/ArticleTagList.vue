@@ -1,7 +1,7 @@
 <template>
   <ul class="u-list-reset" :class="{ inline: inline }">
     <li v-for="tag in tags" class="u-mh-1">
-      <router-link :to="`/t/${tag}`">#{{ tag }}</router-link>
+      <router-link :to="`/tag/${tag}`">#{{ tag }}</router-link>
     </li>
   </ul>
 </template>

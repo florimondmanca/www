@@ -10,7 +10,7 @@ module.exports = (options, ctx) => {
       });
 
       const additionalPages = Array.from(tags).map(tag => ({
-        permalink: `/t/${tag}`,
+        permalink: `/tag/${tag}`,
         frontmatter: {
           layout: "Layout",
           title: `${capitalize(tag)} - Florimond Manca`,
