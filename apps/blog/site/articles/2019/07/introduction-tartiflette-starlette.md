@@ -9,7 +9,7 @@ published: true
 tags:
   - python
   - webdev
-  - graphql
+  - announcements
   - asgi
 ---
 
