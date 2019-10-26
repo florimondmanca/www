@@ -10,6 +10,7 @@ app.mount("/static", resources.static_files, name="static")
 # Service worker script must be served from root path
 # so that all cached assets are in its "scope".
 app.add_route("/service-worker.js", resources.static_files)
+app.add_route("/robots.txt", resources.static_files)
 
 
 @app.route("/", name="home")
