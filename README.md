@@ -2,6 +2,13 @@
 
 Code for the apps deployed at https://florimond.dev.
 
+## Prerequisites
+
+- Python 3.7+
+- Node.js
+- Yarn
+- Heroku CLI
+
 ## Install
 
 - Install Python and Node dependencies:
@@ -29,14 +36,13 @@ PORT=8000
 - Serve the blog only:
 
 ```bash
-cd apps/blog
 npm start
 ```
 
 - Build assets:
 
 ```bash
-scripts/build
+npm run build
 ```
 
 - Run the website locally:

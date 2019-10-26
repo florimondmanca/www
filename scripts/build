@@ -1,4 +1,0 @@
-#! /bin/sh -x
-
-cd apps/blog
-npm run build
