@@ -13,11 +13,15 @@ static = StaticFiles(directory=str(BUILD_DIR))
 
 
 def normalize_path(path: str) -> str:
+    if path != "/" and not path.startswith("/articles"):
+        return path
+
     # VuePress outputs each page into a folder containing a single "index.html" file.
     if path.endswith("/"):
         return f"{path}index.html"
     elif not path.endswith("/index.html"):
         return f"{path}/index.html"
+
     return path
 
 
