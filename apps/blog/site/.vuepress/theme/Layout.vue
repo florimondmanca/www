@@ -4,7 +4,7 @@
     <div class="t-content">
       <main class="u-mt-6">
         <Home v-if="$page.frontmatter.home" />
-        <TagList v-else-if="$page.frontmatter.tag" />
+        <Tag v-else-if="$page.frontmatter.tag" />
         <ArticleDetail v-else-if="isArticle" />
         <Page v-else />
       </main>
@@ -17,13 +17,13 @@
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./layouts/Home";
-import TagList from "./layouts/TagList";
+import Tag from "./layouts/Tag";
 import ArticleDetail from "./layouts/ArticleDetail";
 import Page from "./layouts/Page";
 
 export default {
   isRoot: true,
-  components: { NavBar, Footer, Home, TagList, ArticleDetail, Page },
+  components: { NavBar, Footer, Home, Tag, ArticleDetail, Page },
   computed: {
     isArticle() {
       return this.$page.path.indexOf("/articles/") >= 0;
