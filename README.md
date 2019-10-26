@@ -28,7 +28,7 @@ pip install requirements-dev.txt
 - Run the website locally:
 
 ```bash
-heroku local dev
+scripts/serve
 ```
 
 - Build assets:
