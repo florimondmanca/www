@@ -2,9 +2,9 @@
   "name": "blog",
   "version": "1.0.0",
   "scripts": {
-    "start": "npm run docs:dev",
-    "docs:dev": "vuepress dev site",
-    "docs:build": "vuepress build site"
+    "start": "npm run dev",
+    "dev": "vuepress dev site",
+    "build": "vuepress build site"
   },
   "author": "",
   "license": "MIT",

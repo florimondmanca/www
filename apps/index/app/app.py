@@ -1,4 +1,3 @@
-import pathlib
 import typing
 
 import jinja2

@@ -4,3 +4,4 @@ jinja2==2.*
 starlette==0.12.*
 uvicorn==0.9.*
 uvloop==0.12.*
+tldextract==2.2.*
