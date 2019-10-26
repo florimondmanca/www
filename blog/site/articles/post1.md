@@ -81,7 +81,7 @@ mult(3, 4)
 
 We get the following output:
 
-```console
+```
 Called without parameters, func=<function add at 0x10d8d8b70>.
 Called with decimals=2
 Called without parameters, func=<function mult at 0x10db18a60>.
