@@ -4,12 +4,10 @@ Code for the apps deployed at https://florimond.dev.
 
 ## Install
 
-- Install Python dependencies:
+- Install Python and Node dependencies:
 
 ```bash
-python -m venv venv
-. venv/bin/activate
-pip install requirements-dev.txt
+scripts/install
 ```
 
 - You may want to add a `.env` file:
@@ -28,16 +26,23 @@ PORT=8000
 
 ## Usage
 
-- Run the website locally:
+- Serve the blog only:
 
 ```bash
-scripts/serve
+cd apps/blog
+npm start
 ```
 
 - Build assets:
 
 ```bash
 scripts/build
+```
+
+- Run the website locally:
+
+```bash
+scripts/serve
 ```
 
 - Run the website as it would in production:

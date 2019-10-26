@@ -6,10 +6,13 @@
     "dev": "vuepress dev site",
     "build": "vuepress build site"
   },
-  "author": "",
-  "license": "MIT",
+  "author": "Florimond Manca",
+  "license": "GPL-3.0",
   "dependencies": {
     "darkmode-js": "^1.5.1",
     "dayjs": "^1.8.16"
+  },
+  "devDependencies": {
+    "vuepress": "^1.2.0"
   }
 }
