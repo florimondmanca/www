@@ -10,10 +10,7 @@
 </template>
 
 <script>
-import SocialLinks from "./SocialLinks";
-
 export default {
-  components: { SocialLinks },
   computed: {
     year() {
       return new Date().getFullYear();

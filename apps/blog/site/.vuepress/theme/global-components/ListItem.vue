@@ -25,10 +25,7 @@
 </template>
 
 <script>
-import ArticleTagList from "./ArticleTagList";
-
 export default {
-  components: { ArticleTagList },
   props: {
     page: {
       type: Object

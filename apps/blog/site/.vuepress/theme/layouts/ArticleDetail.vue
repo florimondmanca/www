@@ -78,14 +78,6 @@
   </ContentWrapper>
 </template>
 
-<script>
-import ArticleTagList from "@theme/components/ArticleTagList";
-
-export default {
-  components: { ArticleTagList }
-};
-</script>
-
 <style lang="stylus" scoped>
 @require '../styles/variables';
 @require '../styles/mixins';

@@ -8,10 +8,7 @@
 </template>
 
 <script>
-import ListItem from "./ListItem";
-
 export default {
-  components: { ListItem },
   props: ["pages"]
 };
 </script>

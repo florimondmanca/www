@@ -4,17 +4,16 @@
   "author": "Florimond Manca",
   "license": "GPL-3.0",
   "scripts": {
+    "vuepress": "vuepress",
     "start": "vuepress dev apps/blog/site",
     "build": "vuepress build apps/blog/site"
   },
-  "dependencies": {
-    "darkmode-js": "^1.5.1",
-    "dayjs": "^1.8.16"
-  },
   "devDependencies": {
-    "vuepress": "^1.2.0"
+    "darkmode-js": "^1.5.1",
+    "dayjs": "^1.8.16",
+    "vuepress": "1.0.4"
   },
   "engines": {
-    "node": "12.x"
+    "node": "10.17"
   }
 }

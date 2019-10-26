@@ -14,16 +14,14 @@
 </template>
 
 <script>
-import NavBar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Home from "./layouts/Home";
-import Tag from "./layouts/Tag";
-import ArticleDetail from "./layouts/ArticleDetail";
-import Page from "./layouts/Page";
+import Home from "./Home";
+import Tag from "./Tag";
+import ArticleDetail from "./ArticleDetail";
+import Page from "./Page";
 
 export default {
   isRoot: true,
-  components: { NavBar, Footer, Home, Tag, ArticleDetail, Page },
+  components: { Home, Tag, ArticleDetail, Page },
   computed: {
     isArticle() {
       return this.$page.path.indexOf("/articles/") >= 0;
@@ -33,8 +31,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@require './styles/variables';
-@require './styles/mixins';
+@require '../styles/variables';
+@require '../styles/mixins';
 
 .t-content {
   padding: 0 4 * $space-unit;

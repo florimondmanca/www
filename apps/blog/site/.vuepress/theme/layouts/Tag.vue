@@ -6,11 +6,9 @@
 </template>
 
 <script>
-import List from "../components/List.vue";
-import { getArticlePages } from "../util";
+import { getArticlePages } from "@theme/util";
 
 export default {
-  components: { List },
   computed: {
     tag() {
       return this.$frontmatter.tag;
