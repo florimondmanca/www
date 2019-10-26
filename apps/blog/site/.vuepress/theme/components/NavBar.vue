@@ -14,9 +14,10 @@
             </router-link>
           </h1>
         </li>
-        <li class="u-w-full">
+        <!-- TODO Implement search -->
+        <!-- <li class="u-w-full">
           <input class="u-w-full" type="search" placeholder="Search" />
-        </li>
+        </li> -->
       </ul>
     </ContentWrapper>
   </nav>
