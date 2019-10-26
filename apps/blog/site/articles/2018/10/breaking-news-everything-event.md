@@ -45,7 +45,7 @@ Even when we use the latest and shiniest architecture design principles (hint: m
 
 Database queries, API HTTP requests, cache lookups — as far as this article is concerned, all of these are **requests** that aim at retrieving state. But what do you think the following are?
 
-```txt
+```
 User created
 Tag followed
 Post published
