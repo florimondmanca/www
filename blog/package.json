@@ -1,0 +1,15 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm run docs:dev",
+    "docs:dev": "vuepress dev site",
+    "docs:build": "vuepress build site"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "darkmode-js": "^1.5.1",
+    "dayjs": "^1.8.16"
+  }
+}

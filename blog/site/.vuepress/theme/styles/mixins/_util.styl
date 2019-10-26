@@ -1,0 +1,84 @@
+@require '../variables';
+
+normalize(val) {
+  $unchanged = auto 100%;
+
+  if (val in $unchanged) {
+    return val;
+  } else {
+    return val * $space-unit;
+  }
+}
+
+// Margins
+u-ml(val) {
+  margin-left: normalize(val);
+}
+
+u-mr(val) {
+  margin-right: normalize(val);
+}
+
+u-mb(val) {
+  margin-bottom: normalize(val);
+}
+
+u-mt(val) {
+  margin-top: normalize(val);
+}
+
+u-mh(val) {
+  u-ml(val);
+  u-mr(val);
+}
+
+u-mv(val) {
+  u-mb(val);
+  u-mt(val);
+}
+
+u-m(val) {
+  u-mh(val);
+  u-mv(val);
+}
+
+// Padding
+u-pl(val) {
+  padding-left: normalize(val);
+}
+
+u-pr(val) {
+  padding-right: normalize(val);
+}
+
+u-pb(val) {
+  padding-bottom: normalize(val);
+}
+
+u-pt(val) {
+  padding-top: normalize(val);
+}
+
+u-ph(val) {
+  u-pl(val);
+  u-pr(val);
+}
+
+u-pv(val) {
+  u-pb(val);
+  u-pt(val);
+}
+
+u-p(val) {
+  u-ph(val);
+  u-pv(val);
+}
+
+// Dimensions
+u-max-w(val) {
+  max-width: normalize(val);
+}
+
+u-w(val) {
+  width: normalize(val);
+}

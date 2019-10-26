@@ -1,0 +1,21 @@
+@require '../variables';
+
+forSize(breakName = 'phone', breakValue = 0, mobileFirst = true) {
+  if (breakName != 'phone') {
+    breakValue = $breakpoints[breakName];
+  }
+
+  if (mobileFirst) {
+    $minWidth = breakValue px;
+
+    @media screen and (min-width: $minWidth) {
+      {block};
+    }
+  } else {
+    $maxWidth = (breakValue - 1) px;
+
+    @media screen and (max-width: $maxWidth) {
+      {block};
+    }
+  }
+}
