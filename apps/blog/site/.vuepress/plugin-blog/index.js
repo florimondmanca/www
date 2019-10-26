@@ -3,6 +3,13 @@ const { capitalize } = require("./util");
 module.exports = (options, ctx) => {
   return {
     name: "blog",
+
+    extendPageData(pageCtx) {
+      if (pageCtx.regularPath && pageCtx.regularPath.startsWith("/articles/")) {
+        pageCtx.frontmatter.permalink = "/articles/:slug";
+      }
+    },
+
     async ready() {
       const tags = new Set();
       ctx.pages.forEach(page => {
