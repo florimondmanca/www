@@ -37,10 +37,13 @@ export default {
 @require './styles/mixins';
 
 .t-content {
-  padding: 0 2 * $space-unit;
+  padding: 0 4 * $space-unit;
 
   +forSize('tablet') {
     padding: 0 8 * $space-unit;
   }
 }
 </style>
+
+<!-- Required for syntax highlighting to work. -->
+<style src="prismjs/themes/prism-tomorrow.css"></style>
