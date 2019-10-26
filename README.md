@@ -12,6 +12,20 @@ python -m venv venv
 pip install requirements-dev.txt
 ```
 
+- You may want to add a `.env` file:
+
+```bash
+# Feature flags.
+BLOG_ENABLED=true
+
+# Starlette debug mode.
+DEBUG=true
+
+# Heroku configuration.
+PYTHONUNBUFFERED=True
+PORT=8000
+```
+
 ## Usage
 
 - Run the website locally:
@@ -31,10 +45,6 @@ scripts/build
 ```bash
 heroku local
 ```
-
-## Configuration
-
-- `BLOG_ENABLED`: enable the blog application, served at `/blog/`.
 
 ## Deployment
 
