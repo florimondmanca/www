@@ -1,6 +1,11 @@
 # www
 
-Code for https://florimond.dev.
+Code for the apps deployed at https://florimond.dev.
+
+## Apps
+
+- [Root](./root) (domain: florimond.dev)
+- [Blog](./blog) (domain: blog.florimond.dev)
 
 ## Install
 

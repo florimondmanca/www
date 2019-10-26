@@ -1,4 +1,4 @@
-# Node dependencies
+# Node
 node_modules/
 
 # Python
@@ -6,3 +6,6 @@ venv/
 __pycache__/
 .mypy_cache
 .pytest_cache
+
+# Misc
+.DS_Store
