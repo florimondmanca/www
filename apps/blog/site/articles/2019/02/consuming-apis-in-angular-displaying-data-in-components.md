@@ -26,7 +26,7 @@ Given the `GET /courses` API endpoint, we built a `Course` model, a `CourseAdapt
 
 Here's what the project structure looks like for now:
 
-```text
+```
 src/app
 ├── app.component.css
 ├── app.component.html
