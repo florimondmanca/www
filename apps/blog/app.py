@@ -12,7 +12,15 @@ assert (
 static = StaticFiles(directory=str(BUILD_DIR))
 
 
+def normalize_path(path: str) -> str:
+    # VuePress outputs each page into a folder containing a single "index.html" file.
+    if path.endswith("/"):
+        return f"{path}index.html"
+    elif not path.endswith("/index.html"):
+        return f"{path}/index.html"
+    return path
+
+
 async def app(scope: Scope, receive: Receive, send: Send) -> None:
-    if scope["path"] == "/":
-        scope["path"] = "/index.html"
+    scope["path"] = normalize_path(scope["path"])
     await static(scope, receive, send)

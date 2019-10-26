@@ -9,4 +9,5 @@ flake8-pie
 isort
 mypy
 pytest==5.*
+pytest-cov
 seed-isort-config

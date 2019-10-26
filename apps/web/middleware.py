@@ -1,30 +1,40 @@
-import typing
-
 import tldextract
 from starlette.datastructures import URL, Headers
 from starlette.responses import RedirectResponse
 from starlette.types import ASGIApp, Receive, Scope, Send
+from starlette import status
 
 
-class SubdomainRedirectMiddleware:
-    def __init__(self, app: ASGIApp, mapping: typing.Dict[str, str]) -> None:
+class LegacyBlogRedirectMiddleware:
+    """
+    Redirect requests made to "blog.florimond.dev/..."
+    to "florimond.dev/blog/articles/...".
+
+    This ensures that robots (e.g. search engines) progressively update their
+    indexes from old URLs to the new ones.
+    """
+
+    def __init__(self, app: ASGIApp) -> None:
         self.app = app
-        self.mapping = mapping
 
     def get_app(self, scope: Scope) -> ASGIApp:
         headers = Headers(scope=scope)
         url = URL(scope=scope)
         host = headers["host"]
         extract = tldextract.extract(host)
-        domain = extract.domain
+        domain = extract.registered_domain
         subdomain = extract.subdomain
 
-        if subdomain not in self.mapping:
+        if subdomain != "blog":
             return self.app
 
-        path = self.mapping[subdomain]
-        redirect_url = url.replace(path=f"{path}{url.path}", hostname=domain)
-        return RedirectResponse(url=str(redirect_url))
+        redirect_url = url.replace(
+            hostname=domain,
+            path="/blog/" if url.path == "/" else f"/blog/articles{url.path}",
+        )
+        return RedirectResponse(
+            url=str(redirect_url), status_code=status.HTTP_301_MOVED_PERMANENTLY
+        )
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
         app = self.get_app(scope=scope)

@@ -1,17 +1,10 @@
-from starlette.types import ASGIApp
-
 from apps import feature_flags, index
 
-from .middleware import SubdomainRedirectMiddleware
+from .middleware import LegacyBlogRedirectMiddleware
 
+if feature_flags.BLOG_ENABLED:
+    from apps import blog
 
-def get_app() -> ASGIApp:
-    if feature_flags.BLOG_ENABLED:
-        from apps import blog
+    index.app.mount("/blog", app=blog.app)
 
-        index.app.mount("/blog", app=blog.app)
-        return SubdomainRedirectMiddleware(index.app, mapping={"blog": "/blog/"})
-    return index.app
-
-
-app = get_app()
+app = LegacyBlogRedirectMiddleware(index.app)
