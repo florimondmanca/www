@@ -5,12 +5,7 @@
         <li>
           <h1 class="t-title u-mh-auto u-mb-0">
             <router-link to="/">
-              <span class="t-brand-long">
-                Florimond Manca
-              </span>
-              <span class="t-brand-short">
-                FM
-              </span>
+              Florimond Manca
             </router-link>
           </h1>
         </li>
@@ -25,7 +20,6 @@
 
 <style lang="stylus" scoped>
 @require '../styles/variables';
-@require '../styles/mixins';
 
 .t-nav {
   background-color: $colorBackgroundCard;
@@ -47,19 +41,5 @@
 .t-title {
   font-size: $font-size-title;
   width: fit-content;
-}
-
-.t-brand-long {
-  display: none;
-
-  +forSize(tablet) {
-    display: inline-block;
-  }
-}
-
-.t-brand-short {
-  +forSize(tablet) {
-    display: none;
-  }
 }
 </style>
