@@ -2,18 +2,7 @@
 
 Code for the apps deployed at https://florimond.dev.
 
-## Apps
-
-- [Root](./root) (domain: florimond.dev)
-- [Blog](./blog) (domain: blog.florimond.dev)
-
 ## Install
-
-- Add these lines to your `/etc/hosts` file:
-
-```
-127.0.0.1 blog.localhost
-```
 
 - Install Python dependencies:
 
