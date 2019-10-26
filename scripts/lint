@@ -1,0 +1,13 @@
+#! /bin/sh -e
+
+export PREFIX=""
+if [ -d 'venv' ] ; then
+    export PREFIX="venv/bin/"
+fi
+
+set -x
+
+${PREFIX}autoflake --in-place --recursive apps
+${PREFIX}seed-isort-config --application-directories=apps
+${PREFIX}isort --project=apps --recursive apps
+${PREIFX}black --target-version=py37 apps

@@ -1,0 +1,13 @@
+#! /bin/sh -e
+
+export PREFIX=""
+if [ -d 'venv' ] ; then
+    export PREFIX="venv/bin/"
+fi
+
+set -x
+
+${PREIFX}black --check --diff --target-version=py37 apps
+${PREFIX}flake8 apps
+${PREFIX}mypy apps
+${PREFIX}isort --check --diff --project=apps --recursive apps
