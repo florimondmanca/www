@@ -1,14 +1,15 @@
 ---
+published: true
 title: "Streaming Applications with Apache Kafka: The Opening"
 description: "I'm starting a series on building streaming apps with Apache Kafka — here's why!"
-image:
-  path: "https://images.unsplash.com/photo-1533557603879-ebdd7a92e4e8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d08c991169da5df017efdbedb195909&auto=format&fit=crop&w=1050&q=80"
-  caption: "Man on mountain edge. @redhatfactory, unsplash.com"
 date: "2018-10-01"
-published: true
+legacy_url: "/streaming-applications-with-apache-kafka-the-opening"
 tags:
   - kafka
   - announcements
+image:
+  path: "https://images.unsplash.com/photo-1533557603879-ebdd7a92e4e8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d08c991169da5df017efdbedb195909&auto=format&fit=crop&w=1050&q=80"
+  caption: "Man on mountain edge. @redhatfactory, unsplash.com"
 ---
 
 _**Update on 15 December, 2018**: This series ended up consisting in only two (but thorough) articles. Although I promised a lot in this opening post, I didn't have the time to dive much further. I still think the contents of this series will help you navigate the wonders of Kafka, so I hope you'll enjoy your read!_

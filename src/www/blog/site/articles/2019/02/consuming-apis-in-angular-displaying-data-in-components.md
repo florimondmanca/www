@@ -1,15 +1,16 @@
 ---
+published: true
 title: "Consuming APIs in Angular: Displaying Data In Components"
 description: "Learn how to fetch a list of items from a REST API and display it in an Angular component."
-image:
-  path: "https://images.unsplash.com/photo-1544916205-866047f3ae8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-  caption: "Blue and white plastic toy. @sheldonnunes, unsplash.com"
 date: "2019-02-23"
-published: true
+legacy_url: "/consuming-apis-in-angular-displaying-data-in-components"
 tags:
   - angular
   - webdev
   - tutorial
+image:
+  path: "https://images.unsplash.com/photo-1544916205-866047f3ae8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
+  caption: "Blue and white plastic toy. @sheldonnunes, unsplash.com"
 ---
 
 Welcome back! This article is a follow up to a previous article, [Consuming APIs in Angular: The Model-Adapter Pattern](https://blog.florimondmanca.com/consuming-apis-in-angular-the-model-adapter-pattern). If you haven't read it yet — go check it out! This post will be referencing it quite often.

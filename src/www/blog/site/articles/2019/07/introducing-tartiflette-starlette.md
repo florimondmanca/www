@@ -1,16 +1,17 @@
 ---
+published: true
 title: "Introducing tartiflette-starlette"
 description: "A new library for building GraphQL APIs and serving them over HTTP via ASGI, powered by the Tartiflette Python asynchronous GraphQL engine."
-image:
-  path: https://user-images.githubusercontent.com/158689/58954519-b05ad680-8799-11e9-9134-90622e7731f3.png
-  caption: "Logo of tartiflette-starlette."
 date: "2019-07-13"
-published: true
+legacy_url: "/introducing-tartiflette-starlette"
 tags:
   - python
   - webdev
   - announcements
   - asgi
+image:
+  path: https://user-images.githubusercontent.com/158689/58954519-b05ad680-8799-11e9-9134-90622e7731f3.png
+  caption: "Logo of tartiflette-starlette."
 ---
 
 For some reason, my recent open source work has been focusing on the Python asynchronous GraphQL ecosystem. A few months ago, I stumbled upon [Tartiflette], a Python 3.6+ async GraphQL engine built on top of `libgraphqlparser`. I got hooked up, and decided to contribute. Mix this with my previous experience with ASGI [gained from building Bocadillo](/how-i-built-a-web-framework-and-became-an-open-source-maintainer), and the result is **[tartiflette-starlette]**.

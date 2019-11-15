@@ -1,14 +1,15 @@
 ---
+published: true
 title: "Attending Tech Conferences: A Beginner's Guide"
 description: "Tips for attending tech conferences based on my experience at PyConWeb 2019."
-image:
-  path: /img/articles/attending-tech-conferences-beginner-guide.jpeg
-  caption: "PyConWeb 2019 at Microsoft HQ, Munich, Germany."
 date: "2019-05-27"
-published: true
+legacy_url: "/attending-tech-conferences-beginner-guide"
 tags:
   - tutorial
   - conferences
+image:
+  path: /img/articles/attending-tech-conferences-beginner-guide.jpeg
+  caption: "PyConWeb 2019 at Microsoft HQ, Munich, Germany."
 ---
 
 [PyConWeb](https://pyconweb.com) is a conference focusing on Python, web development, and related technologies. The 2019 edition took place on the 25th and 26th of May in Munich — and I was there! 🙌

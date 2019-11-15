@@ -1,15 +1,16 @@
 ---
+published: true
 title: "Introduction to ASGI: Emergence of an Async Python Web Ecosystem"
 description: "If you were thinking Python had been getting locked into data science, think again! Python web development is back with an async spin, and it's exciting."
-image:
-  path: https://images.unsplash.com/photo-1482642302383-7ba0f8012849?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80
-  caption: '"Turtles on body of water", Ricard Baraham via unsplash.com'
 date: "2019-08-11"
-published: true
+legacy_url: "/introduction-to-asgi-async-python-web"
 tags:
   - python
   - webdev
   - asgi
+image:
+  path: "https://images.unsplash.com/photo-1482642302383-7ba0f8012849?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+  caption: '"Turtles on body of water", Ricard Baraham via unsplash.com'
 ---
 
 There's a lot of exciting stuff happening in the Python web development ecosystem right now — one of the main drivers of this endeavour is [ASGI], the Asynchronous Standard Gateway Interface.
