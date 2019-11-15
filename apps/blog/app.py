@@ -1,15 +1,9 @@
-import pathlib
-
 from starlette.staticfiles import StaticFiles
 from starlette.types import Receive, Scope, Send
 
-HERE = pathlib.Path(__file__).parent
-BUILD_DIR = HERE / "site" / ".vuepress" / "dist"
-assert (
-    BUILD_DIR.exists()
-), "Blog site hasn't been built yet. HINT: run `$ scripts/build`."
+from . import settings
 
-static = StaticFiles(directory=str(BUILD_DIR))
+static = StaticFiles(directory=str(settings.BUILD_DIR))
 
 
 def normalize_path(path: str) -> str:
@@ -26,5 +20,20 @@ def normalize_path(path: str) -> str:
 
 
 async def app(scope: Scope, receive: Receive, send: Send) -> None:
-    scope["path"] = normalize_path(scope["path"])
+    if is_page(scope["path"]):
+        # Be sure to append 'index.html' as VuePress outputs pages
+        # into folders containing a single 'index.html' file.
+        scope["path"] = ensure_ends_with_index_html(scope["path"])
+
     await static(scope, receive, send)
+
+
+def is_page(path: str) -> bool:
+    return not path.startswith(("/assets", "/fonts", "/img"))
+
+
+def ensure_ends_with_index_html(path: str) -> str:
+    path = path.rstrip("/")
+    if not path.endswith("/index.html"):
+        return f"{path}/index.html"
+    return path
