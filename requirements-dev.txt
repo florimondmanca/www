@@ -8,4 +8,5 @@ isort
 mypy
 pytest==5.*
 pytest-cov
+requests==2.*
 seed-isort-config
