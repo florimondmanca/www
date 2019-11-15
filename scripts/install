@@ -9,7 +9,7 @@ if [ -d 'venv' ] ; then
     export PREFIX="venv/bin/"
 fi
 
-${PREFIX}pip install -r requirements-dev.txt
+${PREFIX}pip install -r requirements.txt
 
 if [[ "$@" = *"--no-node"* ]]; then
   echo "--no-node: Skipping yarn install"
