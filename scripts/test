@@ -11,4 +11,4 @@ if [ -z $CI ]; then
     scripts/check
 fi
 
-BLOG_ENABLED=1 ${PREFIX}pytest $@
+${PREFIX}pytest $@
