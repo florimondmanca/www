@@ -1,7 +1,13 @@
-aiofiles==0.4.*
-gunicorn==19.*
-jinja2==2.*
-starlette==0.12.*
-tldextract==2.2.*
-uvicorn==0.9.*
-uvloop==0.12.*
+-e .
+
+autoflake
+black
+flake8
+flake8-bugbear
+flake8-comprehensions
+flake8-pie
+isort
+mypy
+pytest==5.*
+pytest-cov
+seed-isort-config
