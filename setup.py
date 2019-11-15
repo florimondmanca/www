@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name="www",
@@ -11,5 +11,7 @@ setup(
         "uvicorn==0.10.*",
         "tldextract==2.2.*",
     ],
+    packages=find_packages("src"),
+    package_dir={"": "src"},
     classifiers=["Private :: Do Not Upload"],
 )

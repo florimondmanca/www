@@ -1,8 +1,9 @@
 import pytest
 from starlette.testclient import TestClient
-from apps.web import app
+
+import www
 
 
 @pytest.fixture
 def client() -> TestClient:
-    return TestClient(app, base_url="")
+    return TestClient(www.app, base_url="")
