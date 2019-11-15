@@ -1,7 +1,7 @@
 # www
 
 [![Build Status](https://travis-ci.org/florimondmanca/www.svg?branch=master)](https://travis-ci.org/florimondmanca/www)
-[![Coverage](https://codecov.io/gh/florimondmanca/www/branch/master/graph/badge.svg)](https://codecov.io/gh/florimondmanca/www)
+[![Coverage](https://codecov.io/gh/florimondmanca/www/branch/master/graph/badge.svg?token=IT5DBiSTHK)](https://codecov.io/gh/florimondmanca/www)
 
 Code for https://florimond.dev.
 
