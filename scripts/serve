@@ -1,2 +1,8 @@
 #! /bin/sh -e -x
-uvicorn apps.web:app $@
+
+export PREFIX=""
+if [ -d 'venv' ] ; then
+    export PREFIX="venv/bin/"
+fi
+
+${PREFIX}uvicorn apps.web:app $@

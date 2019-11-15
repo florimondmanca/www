@@ -5,9 +5,10 @@ if [ -d 'venv' ] ; then
     export PREFIX="venv/bin/"
 fi
 
+export SOURCE_FILES="apps"
 set -x
 
-${PREFIX}autoflake --in-place --recursive apps
+${PREFIX}autoflake --in-place --recursive $SOURCE_FILES
 ${PREFIX}seed-isort-config --application-directories=apps
-${PREFIX}isort --project=apps --recursive apps
-${PREIFX}black --target-version=py37 apps
+${PREFIX}isort --project=apps --recursive $SOURCE_FILES
+${PREIFX}black --target-version=py37 $SOURCE_FILES
