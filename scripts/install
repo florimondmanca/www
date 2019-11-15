@@ -1,7 +1,18 @@
-#!/bin/sh -e -x
+#!/bin/bash
 
-python -m venv venv
-. venv/bin/activate
-pip install -r requirements-dev.txt
+if [ -z $CI ]; then
+  python -m venv venv
+fi
 
-yarn install
+export PREFIX=""
+if [ -d 'venv' ] ; then
+    export PREFIX="venv/bin/"
+fi
+
+${PREFIX}pip install -r requirements-dev.txt
+
+if [[ "$@" = *"--no-node"* ]]; then
+  echo "--no-node: Skipping yarn install"
+else
+  yarn install
+fi
