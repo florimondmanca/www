@@ -1,3 +1,6 @@
+from starlette import status
+from starlette.datastructures import URL
+from starlette.responses import RedirectResponse
 from starlette.staticfiles import StaticFiles
 from starlette.types import Receive, Scope, Send
 
@@ -8,6 +11,16 @@ static = Raise404Middleware(StaticFiles(directory=str(settings.BUILD_DIR)))
 
 
 async def app(scope: Scope, receive: Receive, send: Send) -> None:
+    if scope["path"] in settings.BLOG_LEGACY_URL_MAPPING:
+        redirect_path = settings.BLOG_LEGACY_URL_MAPPING[scope["path"]]
+        url = URL(scope=scope)
+        response = RedirectResponse(
+            url=url.replace(path=scope.get("root_path", "") + redirect_path),
+            status_code=status.HTTP_301_MOVED_PERMANENTLY,
+        )
+        await response(scope, receive, send)
+        return
+
     if is_page(scope["path"]):
         # Be sure to append 'index.html' as VuePress outputs pages
         # into folders containing a single 'index.html' file.
