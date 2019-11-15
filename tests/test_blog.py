@@ -8,19 +8,25 @@ def test_root(client: TestClient) -> None:
 
 
 def test_article_index(client: TestClient) -> None:
-    url = "http://florimond.dev/blog/articles/let-the-journey-begin/index.html"
+    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/index.html"
     resp = client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
 
 
 def test_article(client: TestClient) -> None:
-    url = "http://florimond.dev/blog/articles/let-the-journey-begin/"
+    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/"
     resp = client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
 
 
 def test_article_no_slash(client: TestClient) -> None:
-    url = "http://florimond.dev/blog/articles/let-the-journey-begin"
+    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin"
+    resp = client.get(url, allow_redirects=False)
+    assert resp.status_code == 200, resp.url
+
+
+def test_tag(client: TestClient) -> None:
+    url = "http://florimond.dev/blog/tag/python"
     resp = client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
 
