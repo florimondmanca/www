@@ -6,19 +6,6 @@ from . import settings
 static = StaticFiles(directory=str(settings.BUILD_DIR))
 
 
-def normalize_path(path: str) -> str:
-    if path != "/" and not path.startswith("/articles"):
-        return path
-
-    # VuePress outputs each page into a folder containing a single "index.html" file.
-    if path.endswith("/"):
-        return f"{path}index.html"
-    elif not path.endswith("/index.html"):
-        return f"{path}/index.html"
-
-    return path
-
-
 async def app(scope: Scope, receive: Receive, send: Send) -> None:
     if is_page(scope["path"]):
         # Be sure to append 'index.html' as VuePress outputs pages
