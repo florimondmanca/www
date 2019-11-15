@@ -8,25 +8,18 @@ def test_root(client: TestClient) -> None:
     assert "text/html" in resp.headers["content-type"]
 
 
-def test_article_index(client: TestClient) -> None:
-    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/index.html"
-    resp = client.get(url, allow_redirects=False)
-    assert resp.status_code == 200, resp.url
-    assert "text/html" in resp.headers["content-type"]
-
-
 def test_article(client: TestClient) -> None:
-    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/"
-    resp = client.get(url, allow_redirects=False)
-    assert resp.status_code == 200, resp.url
-    assert "text/html" in resp.headers["content-type"]
-
-
-def test_article_no_slash(client: TestClient) -> None:
-    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin"
-    resp = client.get(url, allow_redirects=False)
-    assert resp.status_code == 200, resp.url
-    assert "text/html" in resp.headers["content-type"]
+    urls = [
+        "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin",
+        "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/",
+        "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/index.html",
+    ]
+    responses = [client.get(url, allow_redirects=False) for url in urls]
+    for resp in responses:
+        assert resp.status_code == 200
+        assert "text/html" in resp.headers["content-type"]
+    unique_contents = {resp.text for resp in responses}
+    assert len(unique_contents) == 1
 
 
 def test_tag(client: TestClient) -> None:
