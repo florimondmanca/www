@@ -15,17 +15,17 @@
     <title>Florimond Manca</title>
 
       <!-- PWA Manifest -->
-    <link rel="manifest" href="{{ relative_url_for('static', path='/manifest.json') }}" />
+    <link rel="manifest" href="{{ url_for('static', path='/manifest.json') }}" />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="{{ relative_url_for('static', path='/favicon.ico') }}" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{ relative_url_for('static', path='/favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', path='/favicon.ico') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', path='/favicon.ico') }}" />
 
     <!-- Android colors -->
     <meta name="theme-color" content="#59c6b6" />
 
     <!-- Apple web app config -->
-    <link rel="apple-touch-icon" href="{{ relative_url_for('static', path='/apple-touch-icon.png') }}" />
+    <link rel="apple-touch-icon" href="{{ url_for('static', path='/apple-touch-icon.png') }}" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
@@ -41,7 +41,7 @@
     <meta name="twitter:url" content="https://florimond.dev" />
     <meta
       name="twitter:image"
-      content="{{ relative_url_for('static', path='/social.png') }}"
+      content="{{ url_for('static', path='/social.png') }}"
     />
 
     <!-- OpenGraph card -->
@@ -54,18 +54,18 @@
     <meta property="og:url" content="https://florimond.dev" />
     <meta
       property="og:image"
-      content="{{ relative_url_for('static', path='/social.png') }}"
+      content="{{ url_for('static', path='/social.png') }}"
     />
 
     <!-- Custom CSS -->
     <link
-      href="{{ relative_url_for('static', path='/css/custom.css') }}"
+      href="{{ url_for('static', path='/css/custom.css') }}"
       rel="stylesheet"
     />
 
     <!-- Bootstrap core CSS -->
     <link
-      href="{{ relative_url_for('static', path='/css/bootstrap.min.css') }}"
+      href="{{ url_for('static', path='/css/bootstrap.min.css') }}"
       rel="stylesheet"
     />
   </head>
@@ -73,7 +73,7 @@
   <body>
     <nav class="navbar navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="{{ relative_url_for('home') }}">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
           Florimond Manca
         </a>
         <ul class="navbar-nav mr-auto"></ul>
@@ -84,9 +84,9 @@
     <!-- Scripts placed at the end of the document so the pages load faster -->
 
     <!-- Bootstrap core JavaScript -->
-    <script src="{{ relative_url_for('static', path='/js/jquery-3.4.1.slim.min.js') }}"></script>
-    <script src="{{ relative_url_for('static', path='/js/popper.min.js') }}"></script>
-    <script src="{{ relative_url_for('static', path='/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/jquery-3.4.1.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/bootstrap.min.js') }}"></script>
 
     <!-- FontAwesome icons -->
     <script
