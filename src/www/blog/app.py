@@ -2,8 +2,9 @@ from starlette.staticfiles import StaticFiles
 from starlette.types import Receive, Scope, Send
 
 from . import settings
+from .middleware import Raise404Middleware
 
-static = StaticFiles(directory=str(settings.BUILD_DIR))
+static = Raise404Middleware(StaticFiles(directory=str(settings.BUILD_DIR)))
 
 
 async def app(scope: Scope, receive: Receive, send: Send) -> None:
