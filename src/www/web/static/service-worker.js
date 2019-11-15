@@ -1,5 +1,5 @@
 // Increase version to force-refresh assets.
-var VERSION = 1;
+var VERSION = 2;
 var CACHE_NAME = `www-cache-v${VERSION}`;
 
 var urlsToCache = [
