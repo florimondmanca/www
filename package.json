@@ -15,6 +15,6 @@
     "vuepress-frontmatter-lint": "^2.1.2"
   },
   "engines": {
-    "node": "10.17"
+    "node": "10"
   }
 }
