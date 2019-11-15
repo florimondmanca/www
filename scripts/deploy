@@ -1,2 +1,17 @@
-#!/bin/sh -e -x
+#!/bin/bash
+
+echo "---> Setup git remote"
+
+git remote get-url dokku &> /dev/null
+
+if [ $? -eq 0 ]; then
+  echo "------> Reset dokku remote"
+  git remote rm dokku
+fi
+
+echo "------> Add dokku remote"
+git remote add dokku dokku@florimond.dev:florimond.dev
+
+echo "---> Deploy to dokku"
+set -ex
 git push dokku master
