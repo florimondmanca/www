@@ -18,6 +18,9 @@ class LegacyBlogRedirectMiddleware:
         self.app = app
 
     def get_app(self, scope: Scope) -> ASGIApp:
+        if scope["type"] != "http":
+            return self.app
+
         headers = Headers(scope=scope)
         url = URL(scope=scope)
         host = headers["host"]
