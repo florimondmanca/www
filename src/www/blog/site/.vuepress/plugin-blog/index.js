@@ -1,5 +1,7 @@
 const Path = require("path");
 const fs = require("fs").promises;
+const chalk = require("chalk");
+const logger = require("@vuepress/shared-utils").logger;
 const { capitalize } = require("./util");
 
 const rstrip = (str, chars) =>
@@ -23,7 +25,7 @@ async function generateLegacyPagesUrlMapping(ctx) {
   );
   const data = JSON.stringify(urlMapping, null, 2);
 
-  console.info("Writing legacy blog URL mapping to:", path);
+  logger.info(`Write legacy blog URL mapping ${chalk.magenta(path)}`);
   await fs.writeFile(path, data);
 }
 
@@ -42,16 +44,21 @@ async function addTagPages(ctx) {
     }
   }));
 
-  await Promise.all(additionalPages.map(page => ctx.addPage(page)));
+  await Promise.all(
+    additionalPages.map(page => {
+      logger.info(`Add tag page ${chalk.magenta(page.path)}`);
+      return ctx.addPage(page);
+    })
+  );
 }
 
 module.exports = (options, ctx) => {
   return {
     name: "blog",
 
-    extendPageData(pageCtx) {
-      if (pageCtx.regularPath && pageCtx.regularPath.startsWith("/articles/")) {
-        pageCtx.frontmatter.permalink = "/articles/:year/:month/:slug";
+    extendPageData(page) {
+      if (page.regularPath && page.regularPath.startsWith("/articles/")) {
+        page.frontmatter.permalink = "/articles/:year/:month/:slug";
       }
     },
 
