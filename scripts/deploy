@@ -1,17 +1,18 @@
 #!/bin/bash
 
-echo "---> Setup git remote"
+echo "-----> Setting up git remote..."
 
 git remote get-url dokku &> /dev/null
 
 if [ $? -eq 0 ]; then
-  echo "------> Reset dokku remote"
+  echo "Reset dokku remote"
   git remote rm dokku
 fi
 
-echo "------> Add dokku remote"
-git remote add dokku dokku@florimond.dev:florimond.dev
+echo "Add dokku remote"
+git remote add dokku dokku@florimond.dev:www
 
-echo "---> Deploy to dokku"
+echo "-----> Deploying to dokku..."
 set -ex
 git push dokku master
+echo "Deployment succeeded."
