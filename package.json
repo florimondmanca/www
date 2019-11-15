@@ -11,7 +11,8 @@
   "devDependencies": {
     "darkmode-js": "^1.5.1",
     "dayjs": "^1.8.16",
-    "vuepress": "1.0.4"
+    "vuepress": "1.0.4",
+    "vuepress-frontmatter-lint": "^2.1.2"
   },
   "engines": {
     "node": "10.17"
