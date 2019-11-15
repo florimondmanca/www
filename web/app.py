@@ -6,7 +6,8 @@ from starlette.responses import Response
 from starlette.routing import BaseRoute, Host, Mount, Route
 from starlette.staticfiles import StaticFiles
 
-from .. import blog
+import blog
+
 from . import settings
 from .endpoints import DomainRedirect
 from .resources import templates

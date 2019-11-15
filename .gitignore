@@ -11,8 +11,8 @@ __pycache__/
 
 # Build
 dist/
-apps/blog/site/generated/*
-!apps/blog/site/generated/.gitkeep
+blog/site/generated/*
+!blog/site/generated/.gitkeep
 
 # Misc
 .DS_Store
