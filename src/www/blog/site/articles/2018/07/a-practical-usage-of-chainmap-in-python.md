@@ -1,8 +1,9 @@
 ---
+published: true
 title: "A practical usage of ChainMap in Python"
 description: "ChainMap in a nutshell: treat multiple dictionaries as one, unlock Python superpowers."
 date: "2018-07-25"
-published: true
+legacy_url: "/a-practical-usage-of-chainmap-in-python"
 tags:
   - python
   - devtips

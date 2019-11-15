@@ -1,15 +1,16 @@
 ---
+published: true
 title: "From Angular To Vue: Feeling Like A Beginner Again"
 description: "I became too safe in the world of Angular, so I started learning Vue.js. Do I feel like a noob? Yes. Is it worth it? Totally."
-image:
-  path: "/img/articles/angular-vue-beginner-again.png"
-  caption: "Angular, an arrow, and Vue.js."
 date: "2018-10-24"
-published: true
+legacy_url: "/from-angular-to-vue-feeling-like-a-beginner-again"
 tags:
   - webdev
   - angular
   - vue
+image:
+  path: "/img/articles/angular-vue-beginner-again.png"
+  caption: "Angular, an arrow, and Vue.js."
 ---
 
 I've worked on a couple of web projects in the past year or so. I now feel at ease and productive with a few select technologies. In the realm of frontend development, that means [Angular](https://angular.io). And to be honest, it feels _great_.

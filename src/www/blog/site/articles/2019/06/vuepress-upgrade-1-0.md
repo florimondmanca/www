@@ -1,15 +1,16 @@
 ---
+published: true
 title: "How To Upgrade Your VuePress Site To v1.0"
 description: "VuePress v1.0 is out of beta! Upgrade your documentation site by following this 10-step tutorial."
-image:
-  path: "https://res.cloudinary.com/practicaldev/image/fetch/s--CXdEHReB--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/fnfsz1vxuoq71cmpi1sq.png"
-  caption: "Logo of tartiflette-starlette."
 date: "2019-07-13"
-published: true
+legacy_url: "/vuepress-upgrade-1-0"
 tags:
   - webdev
   - tutorial
   - vue
+image:
+  path: "https://res.cloudinary.com/practicaldev/image/fetch/s--CXdEHReB--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/fnfsz1vxuoq71cmpi1sq.png"
+  caption: "Logo of tartiflette-starlette."
 ---
 
 [VuePress] is a Vue-powered static site generator. It's great for writing technical documentation, and I've been using it in production for the [Bocadillo docs site](https://bocadilloproject.github.io) since December 2018.

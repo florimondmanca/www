@@ -1,16 +1,17 @@
 ---
+published: true
 title: "How I Built A Python Web Framework And Became An Open Source Maintainer"
 description: "Inspirational thoughts and tips on starting and managing an open source project, based on my experience building Bocadillo, an asynchronous Python web framework."
-image:
-  path: "https://images.unsplash.com/photo-1476786516785-c3ff2dac9bbf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-  caption: "Mountain, building, rock formation and abbey. Monestir de Montserrat, Spain. @pichier_sebastian, unsplash.com"
 date: "2018-12-22"
-published: true
+legacy_url: "/how-i-built-a-web-framework-and-became-an-open-source-maintainer"
 tags:
   - python
   - opensource
   - webdev
   - bocadillo
+image:
+  path: "https://images.unsplash.com/photo-1476786516785-c3ff2dac9bbf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+  caption: "Mountain, building, rock formation and abbey. Monestir de Montserrat, Spain. @pichier_sebastian, unsplash.com"
 ---
 
 It's been a while since I've written a blog post. Nearly two months, actually. So, where have I been?

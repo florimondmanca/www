@@ -1,16 +1,16 @@
 ---
-title: How to write optionally callable parametrized decorators in Python
-description: A memo on implementing parametrized decorators whose default behavior doesn't require empty parentheses.
-slug: python-optionally-parametrized-decorators
-image:
-  path: /img/articles/optionally-parametrized-decorators.png
-  caption: "A code snippet of what we're aiming to achieve."
-date: "2019-09-28"
 published: true
+title: "How to write optionally callable parametrized decorators in Python"
+description: "A memo on implementing parametrized decorators whose default behavior doesn't require empty parentheses."
+date: "2019-09-28"
+legacy_url: "/python-optionally-parametrized-decorators"
 tags:
   - python
   - tutorial
   - devtips
+image:
+  path: "/img/articles/optionally-parametrized-decorators.png"
+  caption: "A code snippet of what we're aiming to achieve."
 ---
 
 This blog post is a memo to myself, and to anyone who wants to know (or keeps forgetting like I do 😬) how to implement Python parametrized decorators without needing to call them in the no-arguments use case.
