@@ -1,6 +1,8 @@
 import typing
 
+from ddtrace_asgi.middleware import TraceMiddleware
 from starlette.applications import Starlette
+from starlette.middleware import Middleware
 from starlette.requests import Request
 from starlette.responses import Response
 from starlette.routing import BaseRoute, Host, Mount, Route
@@ -39,6 +41,14 @@ routes: typing.List[BaseRoute] = [
     Route("/robots.txt", static_files, name="robots"),
 ]
 
+middleware: typing.List[typing.Optional[Middleware]] = [
+    Middleware(
+        TraceMiddleware, service=settings.DD_TRACE_SERVICE, tags=settings.DD_TRACE_TAGS
+    )
+    if settings.DD_TRACE_SERVICE
+    else None,
+]
+
 
 async def not_found(request: Request, exc: Exception) -> Response:
     return templates.TemplateResponse(
@@ -54,6 +64,7 @@ async def internal_server_error(request: Request, exc: Exception) -> Response:
 
 app = Starlette(
     debug=settings.DEBUG,
+    middleware=middleware,
     routes=routes,
     exception_handlers={404: not_found, 500: internal_server_error},
 )
