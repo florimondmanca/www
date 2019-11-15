@@ -9,7 +9,6 @@ setup(
         "jinja2==2.*",
         "starlette==0.13.*",
         "uvicorn==0.10.*",
-        "tldextract==2.2.*",
     ],
     packages=find_packages("src"),
     package_dir={"": "src"},
