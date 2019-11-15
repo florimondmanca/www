@@ -1,15 +1,14 @@
 import typing
 
 from starlette.applications import Starlette
-from starlette.middleware import Middleware
 from starlette.requests import Request
 from starlette.responses import Response
-from starlette.routing import BaseRoute, Mount, Route
+from starlette.routing import BaseRoute, Host, Mount, Route
 from starlette.staticfiles import StaticFiles
 
 from .. import blog, feature_flags
 from . import settings
-from .middleware import LegacyBlogRedirectMiddleware
+from .endpoints import DomainRedirect
 from .resources import templates
 
 
@@ -21,6 +20,17 @@ static_files = StaticFiles(directory=str(settings.DIR / "static"))
 
 
 routes: typing.List[BaseRoute] = [
+    Host("florimondmanca.com", app=DomainRedirect("florimond.dev")),
+    Host(
+        "blog.florimondmanca.com",
+        app=DomainRedirect("blog.florimond.dev"),
+        name="legacy__blog_dot_com",
+    ),
+    Host(
+        "blog.florimond.dev",
+        app=DomainRedirect("florimond.dev", root_path="/blog"),
+        name="legacy__blog_dot_dev",
+    ),
     Route("/", home),
     *(
         [Mount("/blog", app=blog.app, name="blog")]
@@ -32,8 +42,6 @@ routes: typing.List[BaseRoute] = [
     Route("/service-worker.js", static_files, name="service-worker"),
     Route("/robots.txt", static_files, name="robots"),
 ]
-
-middleware: typing.List[Middleware] = [Middleware(LegacyBlogRedirectMiddleware)]
 
 
 async def not_found(request: Request, exc: Exception) -> Response:
@@ -55,7 +63,6 @@ async def show_feature_flags() -> None:
 app = Starlette(
     debug=settings.DEBUG,
     routes=routes,
-    middleware=middleware,  # type: ignore
     exception_handlers={404: not_found, 500: internal_server_error},
     on_startup=[show_feature_flags],
 )
