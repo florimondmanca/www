@@ -20,9 +20,6 @@ scripts/install
 - You may want to add a `.env` file:
 
 ```bash
-# Feature flags.
-BLOG_ENABLED=true
-
 # Starlette debug mode.
 DEBUG=true
 

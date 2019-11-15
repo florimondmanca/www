@@ -5,18 +5,18 @@ from starlette.requests import Request
 from starlette.responses import Response
 from starlette.routing import BaseRoute, Host, Mount, Route
 from starlette.staticfiles import StaticFiles
+from starlette.templating import Jinja2Templates
 
-from .. import blog, feature_flags
+from .. import blog
 from . import settings
 from .endpoints import DomainRedirect
-from .resources import templates
+
+templates = Jinja2Templates(directory=str(settings.DIR / "templates"))
+static_files = StaticFiles(directory=str(settings.DIR / "static"))
 
 
 async def home(request: Request) -> Response:
     return templates.TemplateResponse("index.html.jinja", context={"request": request})
-
-
-static_files = StaticFiles(directory=str(settings.DIR / "static"))
 
 
 routes: typing.List[BaseRoute] = [
@@ -32,11 +32,7 @@ routes: typing.List[BaseRoute] = [
         name="legacy__blog_dot_dev",
     ),
     Route("/", home),
-    *(
-        [Mount("/blog", app=blog.app, name="blog")]
-        if feature_flags.BLOG_ENABLED
-        else []
-    ),
+    Mount("/blog", app=blog.app, name="blog"),
     Mount("/static", static_files, name="static"),
     # These files need to be exposed at the root, not '/static/'.
     Route("/service-worker.js", static_files, name="service-worker"),
@@ -56,13 +52,8 @@ async def internal_server_error(request: Request, exc: Exception) -> Response:
     )
 
 
-async def show_feature_flags() -> None:
-    print(f"BLOG_ENABLED = {feature_flags.BLOG_ENABLED}")
-
-
 app = Starlette(
     debug=settings.DEBUG,
     routes=routes,
     exception_handlers={404: not_found, 500: internal_server_error},
-    on_startup=[show_feature_flags],
 )
