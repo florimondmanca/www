@@ -49,9 +49,14 @@ async def internal_server_error(request: Request, exc: Exception) -> Response:
     )
 
 
+async def show_feature_flags() -> None:
+    print(f"BLOG_ENABLED = {feature_flags.BLOG_ENABLED}")
+
+
 app = Starlette(
     debug=settings.DEBUG,
     routes=routes,
     middleware=middleware,  # type: ignore
     exception_handlers={404: not_found, 500: internal_server_error},
+    on_startup=[show_feature_flags],
 )
