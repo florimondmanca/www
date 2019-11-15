@@ -1,11 +1,12 @@
 ---
 title: "Streaming Applications with Apache Kafka: The Opening"
 description: "I'm starting a series on building streaming apps with Apache Kafka — here's why!"
+date: "2018-10-01"
+legacy_url: "/streaming-applications-with-apache-kafka-the-opening"
+published: true
 image:
   path: "https://images.unsplash.com/photo-1533557603879-ebdd7a92e4e8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d08c991169da5df017efdbedb195909&auto=format&fit=crop&w=1050&q=80"
   caption: "Man on mountain edge. @redhatfactory, unsplash.com"
-date: "2018-10-01"
-published: true
 tags:
   - kafka
   - announcements

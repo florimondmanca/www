@@ -1,11 +1,12 @@
 ---
 title: "Why I Don't Write On Medium"
 description: "Medium doesn't get you views or reputation — quality content does, regardless of the platform. So you'd better use your own!"
+date: "2019-05-27"
+legacy_url: "/why-i-dont-write-on-medium"
+published: true
 image:
   path: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
   caption: "Business newspaper pages. @freegraphictoday, unsplash.com"
-date: "2019-05-27"
-published: true
 tags:
   - meta
 ---

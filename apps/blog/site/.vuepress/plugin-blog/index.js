@@ -6,7 +6,7 @@ module.exports = (options, ctx) => {
 
     extendPageData(pageCtx) {
       if (pageCtx.regularPath && pageCtx.regularPath.startsWith("/articles/")) {
-        pageCtx.frontmatter.permalink = "/articles/:slug";
+        pageCtx.frontmatter.permalink = "/articles/:year/:month/:slug";
       }
     },
 
@@ -17,7 +17,7 @@ module.exports = (options, ctx) => {
       });
 
       const additionalPages = Array.from(tags).map(tag => ({
-        permalink: `/tag/${tag}`,
+        path: `/tag/${tag}/`,
         frontmatter: {
           layout: "Layout",
           title: `${capitalize(tag)} - Florimond Manca`,

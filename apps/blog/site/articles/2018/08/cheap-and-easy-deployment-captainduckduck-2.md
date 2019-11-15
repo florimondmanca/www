@@ -1,11 +1,12 @@
 ---
 title: "Cheap and easy deployment: CaptainDuckDuck (Part 2)"
 description: "Welcome back! Let's deploy your own personal PaaS step by step with CaptainDuckDuck."
+date: "2018-08-02"
+legacy_url: "/cheap-and-easy-deployment-captainduckduck-2"
+published: true
 image:
   path: "https://images.unsplash.com/photo-1484600899469-230e8d1d59c0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=28b1f7e78e4743998d23cb889dcb39a9&auto=format&fit=crop&w=1050&q=80"
   caption: "@timmossholder, unsplash.com"
-date: "2018-08-02"
-published: true
 tags:
   - webdev
   - tutorial

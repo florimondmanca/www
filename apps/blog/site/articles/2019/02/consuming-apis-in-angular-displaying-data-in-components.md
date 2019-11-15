@@ -1,11 +1,12 @@
 ---
 title: "Consuming APIs in Angular: Displaying Data In Components"
 description: "Learn how to fetch a list of items from a REST API and display it in an Angular component."
+date: "2019-02-23"
+legacy_url: "/consuming-apis-in-angular-displaying-data-in-components"
+published: true
 image:
   path: "https://images.unsplash.com/photo-1544916205-866047f3ae8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
   caption: "Blue and white plastic toy. @sheldonnunes, unsplash.com"
-date: "2019-02-23"
-published: true
 tags:
   - angular
   - webdev

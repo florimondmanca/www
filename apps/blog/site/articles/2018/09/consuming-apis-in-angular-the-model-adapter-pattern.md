@@ -1,11 +1,12 @@
 ---
 title: "Consuming APIs in Angular: The Model-Adapter Pattern"
 description: "A TypeScript-friendly pattern to improve how you integrate Angular apps and REST APIs."
+date: "2018-09-04"
+legacy_url: "/consuming-apis-in-angular-the-model-adapter-pattern"
+published: true
 image:
   path: "https://images.unsplash.com/photo-1501580121338-18e859f87400?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=979de881b3346f9ab13eacfd08535cfa&auto=format&fit=crop&w=1350&q=80"
   caption: "An angular shot of smooth white balconies on a building in Almería, Spain. Dmitri Popov, unsplash.com"
-date: "2018-09-04"
-published: true
 tags:
   - webdev
   - angular

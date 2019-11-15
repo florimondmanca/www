@@ -1,6 +1,9 @@
 module.exports = {
   base: "/blog/",
-  plugins: [require("./plugin-blog")],
+  plugins: [
+    require("./plugin-blog"),
+    require("./plugin-legacy-blog-url-mapping")
+  ],
   head: [
     // Icons.
     [

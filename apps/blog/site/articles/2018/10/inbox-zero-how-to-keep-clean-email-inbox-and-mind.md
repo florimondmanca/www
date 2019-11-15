@@ -1,11 +1,12 @@
 ---
 title: "Inbox Zero: How To Keep A Clean Email Inbox (And Mind)"
 description: 'Wondering how best to manage email? Get to love the "Archive" button.'
+date: "2018-10-06"
+legacy_url : "/inbox-zero-how-to-keep-clean-email-inbox-and-mind"
+published: true
 image:
   path: "https://images.unsplash.com/photo-1534567406103-997f6c5e7f93?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=407cc3835489452296d9fc72189f928f&auto=format&fit=crop&w=1050&q=80"
   caption: "Four assorted-color mailboxes on black surface. @nxn, unsplash.com"
-date: "2018-10-06"
-published: true
 tags:
   - productivity
 ---

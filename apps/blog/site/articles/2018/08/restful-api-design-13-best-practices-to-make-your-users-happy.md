@@ -1,11 +1,12 @@
 ---
 title: "RESTful API Design: 13 Best Practices to Make Your Users Happy"
 description: "First step to the RESTful way: make sure errors don't come back as 200 OK."
+date: "2018-08-26"
+legacy_url: "/restful-api-design-13-best-practices-to-make-your-users-happy"
+published: true
 image:
   path: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=be5b6f36d8e6333027d74db000db5cc9&auto=format&fit=crop&w=1489&q=80"
   caption: "Architect at work. Daniel McCullough, unsplash.com"
-date: "2018-08-26"
-published: true
 tags:
   - webdev
   - devtips

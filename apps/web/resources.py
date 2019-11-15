@@ -1,7 +1,6 @@
 import typing
 
 import jinja2
-from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 from . import settings
@@ -18,6 +17,3 @@ def relative_url_for(context: dict, name: str, **path_params: typing.Any) -> str
 
 
 templates.env.globals["relative_url_for"] = relative_url_for
-templates.env.globals["blog_url"] = settings.BLOG_URL
-
-static_files = StaticFiles(directory=str(settings.DIR / "static"))

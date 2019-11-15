@@ -1,11 +1,12 @@
 ---
 title: "Cheap and easy deployment: CaptainDuckDuck (Part 1)"
 description: "Deploying web apps can be a pain. I chose CaptainDuckDuck to build my personal, Heroku-style PaaS, hassle-free."
+date: "2018-07-31"
+legacy_url: "/cheap-and-easy-deployment-captainduckduck-1"
+published: true
 image:
   path: "https://images.unsplash.com/photo-1517976384346-3136801d605d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6e6ee2cf355b57ff64f8183a16bdd6b7&auto=format&fit=crop&w=1000&q=80"
   caption: "@spacex, unsplash.com."
-date: "2018-07-31"
-published: true
 tags:
   - webdev
   - discussion

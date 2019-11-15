@@ -1,11 +1,12 @@
 ---
 title: "Attending Tech Conferences: A Beginner's Guide"
 description: "Tips for attending tech conferences based on my experience at PyConWeb 2019."
-image:
-  path: /img/articles/attending-tech-conferences-beginner-guide.jpeg
-  caption: "PyConWeb 2019 at Microsoft HQ, Munich, Germany."
 date: "2019-05-27"
+legacy_url: "/attending-tech-conferences-beginner-guide"
 published: true
+image:
+  path: "/public/img/articles/attending-tech-conferences-beginner-guide.jpeg"
+  caption: "PyConWeb 2019 at Microsoft HQ, Munich, Germany."
 tags:
   - tutorial
   - conferences
