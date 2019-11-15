@@ -1,13 +1,13 @@
 # www
 
-Code for the apps deployed at https://florimond.dev.
+Code for https://florimond.dev.
 
 ## Prerequisites
 
 - Python 3.7+
-- Node.js
+- Node.js v10
 - Yarn
-- Heroku CLI
+- Heroku CLI - *(optional)*
 
 ## Install
 
@@ -33,7 +33,7 @@ PORT=8000
 
 ## Usage
 
-- Serve the blog only:
+- Serve the blog only (for development, w/ hot reload):
 
 ```bash
 npm start
@@ -42,7 +42,7 @@ npm start
 - Build assets:
 
 ```bash
-npm run build
+scripts/build
 ```
 
 - Run the website locally:
@@ -51,7 +51,7 @@ npm run build
 scripts/serve
 ```
 
-- Run the website as it would in production:
+- Run the website as it would run in production:
 
 ```bash
 heroku local
