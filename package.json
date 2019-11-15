@@ -9,6 +9,7 @@
     "build": "vuepress build src/www/blog/site"
   },
   "devDependencies": {
+    "@vuepress/plugin-google-analytics": "^1.2.0",
     "darkmode-js": "^1.5.1",
     "dayjs": "^1.8.16",
     "vuepress": "1.0.4",
