@@ -1,8 +1,8 @@
 import tldextract
+from starlette import status
 from starlette.datastructures import URL, Headers
 from starlette.responses import RedirectResponse
 from starlette.types import ASGIApp, Receive, Scope, Send
-from starlette import status
 
 
 class LegacyBlogRedirectMiddleware:
