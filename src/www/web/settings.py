@@ -2,7 +2,7 @@ import pathlib
 
 from starlette.config import Config
 
-from apps import feature_flags
+from .. import feature_flags
 
 config = Config()
 

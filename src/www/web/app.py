@@ -7,8 +7,7 @@ from starlette.responses import Response
 from starlette.routing import BaseRoute, Mount, Route
 from starlette.staticfiles import StaticFiles
 
-from apps import blog, feature_flags
-
+from .. import blog, feature_flags
 from . import settings
 from .middleware import LegacyBlogRedirectMiddleware
 from .resources import templates
