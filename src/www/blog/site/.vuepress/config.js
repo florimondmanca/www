@@ -1,6 +1,7 @@
 module.exports = {
   base: "/blog/",
   plugins: [
+    ["@vuepress/google-analytics", { ga: "UA-122676386-2" }],
     require("./plugin-blog"),
     [
       require("vuepress-frontmatter-lint"),
