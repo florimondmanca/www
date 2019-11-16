@@ -1,10 +1,24 @@
 const markdown = require("./markdown");
 
 module.exports = {
+  title: "Florimond Manca",
+  description: "A blog about my ongoing journey through software engineering.",
   base: "/blog/",
   markdown,
   plugins: [
     ["@vuepress/google-analytics", { ga: "UA-122676386-2" }],
+    [
+      "vuepress-plugin-autometa",
+      {
+        site: {
+          name: "Florimond Manca",
+          twitter: "florimondmanca"
+        },
+        // NOTE: this is broken for now, see:
+        // https://github.com/webmasterish/vuepress-plugin-autometa/pull/6
+        canonical_base: "https://florimond.dev/blog"
+      }
+    ],
     require("./plugin-blog"),
     [
       require("vuepress-frontmatter-lint"),
@@ -51,6 +65,11 @@ module.exports = {
           image_caption: {
             type: String,
             required: false
+          },
+          // Added by the autometa plugin.
+          meta: {
+            type: Object,
+            required: true
           }
         }
       }

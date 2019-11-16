@@ -13,7 +13,8 @@
     "darkmode-js": "^1.5.1",
     "dayjs": "^1.8.16",
     "vuepress": "1.0.4",
-    "vuepress-frontmatter-lint": "^2.1.2"
+    "vuepress-frontmatter-lint": "^2.1.2",
+    "vuepress-plugin-autometa": "^0.1.12"
   },
   "engines": {
     "node": "10"
