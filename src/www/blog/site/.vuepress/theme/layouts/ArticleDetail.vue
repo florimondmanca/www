@@ -48,7 +48,7 @@
       </template>
     </header>
 
-    <Content />
+    <Content class="t-article-markdown-content" />
 
     <footer class="p-card">
       <h3>Stay in touch!</h3>
@@ -90,6 +90,17 @@
 .t-tags {
   &::before {
     content: '\2219';
+  }
+}
+</style>
+
+<style lang="stylus">
+@require '../styles/variables';
+
+.t-article-markdown-content {
+  & h2, h3, h4, h5, h6 {
+    margin-top: 8 * $space-unit;
+    margin-bottom: 5 * $space-unit;
   }
 }
 </style>
