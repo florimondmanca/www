@@ -12,10 +12,10 @@ static = Raise404Middleware(StaticFiles(directory=str(settings.BUILD_DIR)))
 
 async def app(scope: Scope, receive: Receive, send: Send) -> None:
     if scope["path"] in settings.BLOG_LEGACY_URL_MAPPING:
-        redirect_path = settings.BLOG_LEGACY_URL_MAPPING[scope["path"]]
-        url = URL(scope=scope)
+        mapped_path = settings.BLOG_LEGACY_URL_MAPPING[scope["path"]]
+        redirect_path = scope.get("root_path", "") + mapped_path
         response = RedirectResponse(
-            url=url.replace(path=scope.get("root_path", "") + redirect_path),
+            URL(scope=scope).replace(path=redirect_path),
             status_code=status.HTTP_301_MOVED_PERMANENTLY,
         )
         await response(scope, receive, send)
