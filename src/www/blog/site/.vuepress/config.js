@@ -1,6 +1,8 @@
 const markdown = require("./markdown");
 
 module.exports = {
+  title: "Florimond Manca",
+  description: "A blog about my ongoing journey through software engineering.",
   base: "/blog/",
   markdown,
   plugins: [
