@@ -7,9 +7,8 @@ legacy_url: "/breaking-news-everything-is-an-event"
 tags:
   - kafka
   - discussion
-image:
-  path: "https://images.unsplash.com/photo-1533228876829-65c94e7b5025?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7a60de51ee9dd6af78f5b796b4586326&auto=format&fit=crop&w=1050&q=80"
-  caption: "Man standing on sand while spreading arms beside calm body of water. @kalvisuals, unsplash.com"
+image: "https://images.unsplash.com/photo-1533228876829-65c94e7b5025?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7a60de51ee9dd6af78f5b796b4586326&auto=format&fit=crop&w=1050&q=80"
+image_caption: "Man standing on sand while spreading arms beside calm body of water. @kalvisuals, unsplash.com"
 ---
 
 Welcome back! Here's the third article in my series on building streaming apps with **Apache Kafka**.

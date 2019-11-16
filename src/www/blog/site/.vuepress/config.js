@@ -45,7 +45,11 @@ module.exports = {
             required: false
           },
           image: {
-            type: Object,
+            type: String,
+            required: false
+          },
+          image_caption: {
+            type: String,
             required: false
           }
         }

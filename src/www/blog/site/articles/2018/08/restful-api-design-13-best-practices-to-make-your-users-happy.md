@@ -7,9 +7,8 @@ legacy_url: "/restful-api-design-13-best-practices-to-make-your-users-happy"
 tags:
   - webdev
   - devtips
-image:
-  path: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=be5b6f36d8e6333027d74db000db5cc9&auto=format&fit=crop&w=1489&q=80"
-  caption: "Architect at work. Daniel McCullough, unsplash.com"
+image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=be5b6f36d8e6333027d74db000db5cc9&auto=format&fit=crop&w=1489&q=80"
+image_caption: "Architect at work. Daniel McCullough, unsplash.com"
 ---
 
 Web services have been around for as long as the HTTP protocol has existed. But especially since the advent of cloud computing, they have become a very common way of letting clients interact with our data.

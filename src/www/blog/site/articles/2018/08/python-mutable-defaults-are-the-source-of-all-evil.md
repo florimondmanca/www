@@ -7,9 +7,8 @@ legacy_url: "/python-mutable-defaults-are-the-source-of-all-evil"
 tags:
   - python
   - devtips
-image:
-  path: "https://images.unsplash.com/photo-1525682691400-309fa6755eb5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1da7cfdc7f8d55868e8278fcaaf2b1bb&auto=format&fit=crop&w=967&q=80"
-  caption: "Green python on brown tree. @tirzavandijk, unsplash.com"
+image: "https://images.unsplash.com/photo-1525682691400-309fa6755eb5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1da7cfdc7f8d55868e8278fcaaf2b1bb&auto=format&fit=crop&w=967&q=80"
+image_caption: "Green python on brown tree. @tirzavandijk, unsplash.com"
 ---
 
 Today, I wanted to share a quick **life-saving advice** about a common mistake Python developers still tend to make.

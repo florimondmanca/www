@@ -8,9 +8,8 @@ tags:
   - python
   - tutorial
   - devtips
-image:
-  path: "/img/articles/optionally-parametrized-decorators.png"
-  caption: "A code snippet of what we're aiming to achieve."
+image: "/img/articles/optionally-parametrized-decorators.png"
+image_caption: "A code snippet of what we're aiming to achieve."
 ---
 
 This blog post is a memo to myself, and to anyone who wants to know (or keeps forgetting like I do 😬) how to implement Python parametrized decorators without needing to call them in the no-arguments use case.

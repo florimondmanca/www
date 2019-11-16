@@ -8,9 +8,8 @@ tags:
   - webdev
   - angular
   - devtips
-image:
-  path: "https://images.unsplash.com/photo-1501580121338-18e859f87400?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=979de881b3346f9ab13eacfd08535cfa&auto=format&fit=crop&w=1350&q=80"
-  caption: "An angular shot of smooth white balconies on a building in Almería, Spain. Dmitri Popov, unsplash.com"
+image: "https://images.unsplash.com/photo-1501580121338-18e859f87400?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=979de881b3346f9ab13eacfd08535cfa&auto=format&fit=crop&w=1350&q=80"
+image_caption: "An angular shot of smooth white balconies on a building in Almería, Spain. Dmitri Popov, unsplash.com"
 ---
 
 _Update (Feb. 2019): if you're interested in how to use what is built here in components, I wrote a follow-up article: [Displaying Data In Components](/consuming-apis-in-angular-displaying-data-in-components)._

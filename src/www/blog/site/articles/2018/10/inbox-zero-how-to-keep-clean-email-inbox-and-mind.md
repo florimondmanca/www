@@ -6,9 +6,8 @@ date: "2018-10-06"
 legacy_url : "/inbox-zero-how-to-keep-clean-email-inbox-and-mind"
 tags:
   - productivity
-image:
-  path: "https://images.unsplash.com/photo-1534567406103-997f6c5e7f93?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=407cc3835489452296d9fc72189f928f&auto=format&fit=crop&w=1050&q=80"
-  caption: "Four assorted-color mailboxes on black surface. @nxn, unsplash.com"
+image: "https://images.unsplash.com/photo-1534567406103-997f6c5e7f93?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=407cc3835489452296d9fc72189f928f&auto=format&fit=crop&w=1050&q=80"
+image_caption: "Four assorted-color mailboxes on black surface. @nxn, unsplash.com"
 ---
 
 I am a final year student in systems and software engineering at [CentraleSupélec](http://www.centralesupelec.fr/en). My school has an extremely active campus life. The main channel for communication here is **email**. Like, _mass email_. I mean, _30 emails per day, every day_. I'm not even joking. So when I arrived in first year back in 2015, I quickly had to learn **how to manage my inbox efficiently**.
