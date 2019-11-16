@@ -1,5 +1,8 @@
+const markdown = require("./markdown");
+
 module.exports = {
   base: "/blog/",
+  markdown,
   plugins: [
     ["@vuepress/google-analytics", { ga: "UA-122676386-2" }],
     require("./plugin-blog"),
