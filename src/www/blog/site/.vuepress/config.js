@@ -51,6 +51,11 @@ module.exports = {
           image_caption: {
             type: String,
             required: false
+          },
+          // Added by the autometa plugin.
+          meta: {
+            type: Object,
+            required: true
           }
         }
       }
