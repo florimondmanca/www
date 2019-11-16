@@ -4,9 +4,10 @@ flake8
 flake8-bugbear
 flake8-comprehensions
 flake8-pie
+httpx==0.7.*
 isort
 mypy
 pytest==5.*
+pytest-asyncio
 pytest-cov
-requests==2.*
 seed-isort-config

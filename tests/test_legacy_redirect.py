@@ -1,7 +1,9 @@
 import typing
 
+import httpx
 import pytest
-from starlette.testclient import TestClient
+
+pytestmark = pytest.mark.asyncio
 
 
 @pytest.mark.parametrize(
@@ -26,10 +28,10 @@ from starlette.testclient import TestClient
         ),
     ],
 )
-def test_legacy_redirect_chains(
-    client: TestClient, start_url: str, urls: typing.List[str]
+async def test_legacy_redirect_chains(
+    client: httpx.AsyncClient, start_url: str, urls: typing.List[str]
 ) -> None:
-    resp = client.get(start_url, allow_redirects=True)
+    resp = await client.get(start_url, allow_redirects=True)
     assert resp.status_code == 200
     assert [r.headers["Location"] for r in resp.history] == urls
 
@@ -134,11 +136,11 @@ def test_legacy_redirect_chains(
         ),
     ],
 )
-def test_legacy_redirect_articles(
-    client: TestClient, blog_dot_dev_path: str, dot_dev_path: str,
+async def test_legacy_redirect_articles(
+    client: httpx.AsyncClient, blog_dot_dev_path: str, dot_dev_path: str,
 ) -> None:
-    resp = client.get(
+    resp = await client.get(
         f"https://blog.florimond.dev{blog_dot_dev_path}", allow_redirects=True
     )
     assert resp.status_code == 200
-    assert resp.request.url == f"https://florimond.dev/blog{dot_dev_path}"
+    assert resp.url == f"https://florimond.dev/blog{dot_dev_path}"
