@@ -1,9 +1,12 @@
+import typing
+
+import httpx
 import pytest
-from starlette.testclient import TestClient
 
 import www
 
 
 @pytest.fixture
-def client() -> TestClient:
-    return TestClient(www.app, base_url="")
+async def client() -> typing.AsyncIterator[httpx.AsyncClient]:
+    async with httpx.AsyncClient(app=www.app) as client:
+        yield client

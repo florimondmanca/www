@@ -1,20 +1,23 @@
-from starlette.testclient import TestClient
+import httpx
+import pytest
+
+pytestmark = pytest.mark.asyncio
 
 
-def test_root(client: TestClient) -> None:
+async def test_root(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/blog/"
-    resp = client.get(url, allow_redirects=False)
+    resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
 
 
-def test_article(client: TestClient) -> None:
+async def test_article(client: httpx.AsyncClient) -> None:
     urls = [
         "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin",
         "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/",
         "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/index.html",
     ]
-    responses = [client.get(url, allow_redirects=False) for url in urls]
+    responses = [await client.get(url, allow_redirects=False) for url in urls]
     for resp in responses:
         assert resp.status_code == 200
         assert "text/html" in resp.headers["content-type"]
@@ -22,15 +25,15 @@ def test_article(client: TestClient) -> None:
     assert len(unique_contents) == 1
 
 
-def test_tag(client: TestClient) -> None:
+async def test_tag(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/blog/tag/python"
-    resp = client.get(url, allow_redirects=False)
+    resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
 
 
-def test_not_found(client: TestClient) -> None:
+async def test_not_found(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/blog/foo"
-    resp = client.get(url)
+    resp = await client.get(url)
     assert resp.status_code == 404
     assert "text/html" in resp.headers["content-type"]
