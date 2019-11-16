@@ -5,6 +5,18 @@ module.exports = {
   markdown,
   plugins: [
     ["@vuepress/google-analytics", { ga: "UA-122676386-2" }],
+    [
+      "vuepress-plugin-autometa",
+      {
+        site: {
+          name: "Florimond Manca",
+          twitter: "florimondmanca"
+        },
+        // NOTE: this is broken for now, see:
+        // https://github.com/webmasterish/vuepress-plugin-autometa/pull/6
+        canonical_base: "https://florimond.dev/blog"
+      }
+    ],
     require("./plugin-blog"),
     [
       require("vuepress-frontmatter-lint"),
