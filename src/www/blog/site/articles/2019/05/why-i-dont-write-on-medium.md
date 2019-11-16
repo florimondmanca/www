@@ -6,9 +6,8 @@ date: "2019-05-27"
 legacy_url: "/why-i-dont-write-on-medium"
 tags:
   - meta
-image:
-  path: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-  caption: "Business newspaper pages. @freegraphictoday, unsplash.com"
+image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+image_caption: "Business newspaper pages. @freegraphictoday, unsplash.com"
 ---
 
 I get asked from time to time, either by friends, colleagues or readers, why I don't publish any of my articles to Medium.

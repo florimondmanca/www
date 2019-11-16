@@ -8,9 +8,8 @@ tags:
   - python
   - webdev
   - asgi
-image:
-  path: "https://images.unsplash.com/photo-1482642302383-7ba0f8012849?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-  caption: '"Turtles on body of water", Ricard Baraham via unsplash.com'
+image: "https://images.unsplash.com/photo-1482642302383-7ba0f8012849?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+image_caption: '"Turtles on body of water", Ricard Baraham via unsplash.com'
 ---
 
 There's a lot of exciting stuff happening in the Python web development ecosystem right now — one of the main drivers of this endeavour is [ASGI], the Asynchronous Standard Gateway Interface.

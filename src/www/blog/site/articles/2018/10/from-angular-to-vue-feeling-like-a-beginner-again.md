@@ -8,9 +8,8 @@ tags:
   - webdev
   - angular
   - vue
-image:
-  path: "/img/articles/angular-vue-beginner-again.png"
-  caption: "Angular, an arrow, and Vue.js."
+image: "/img/articles/angular-vue-beginner-again.png"
+image_caption: "Angular, an arrow, and Vue.js."
 ---
 
 I've worked on a couple of web projects in the past year or so. I now feel at ease and productive with a few select technologies. In the realm of frontend development, that means [Angular](https://angular.io). And to be honest, it feels _great_.

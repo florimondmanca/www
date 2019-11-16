@@ -7,9 +7,8 @@ legacy_url: "/cheap-and-easy-deployment-captainduckduck-2"
 tags:
   - webdev
   - tutorial
-image:
-  path: "https://images.unsplash.com/photo-1484600899469-230e8d1d59c0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=28b1f7e78e4743998d23cb889dcb39a9&auto=format&fit=crop&w=1050&q=80"
-  caption: "@timmossholder, unsplash.com"
+image: "https://images.unsplash.com/photo-1484600899469-230e8d1d59c0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=28b1f7e78e4743998d23cb889dcb39a9&auto=format&fit=crop&w=1050&q=80"
+image_caption: "@timmossholder, unsplash.com"
 ---
 
 Welcome back to this two-part article about **CaptainDuckDuck**! In this second and last part, I will take you through the process of **how I deployed my own PaaS using CaptainDuckDuck** to host this personal website and blog. Sounds hard? Actually, not so much!

@@ -8,9 +8,8 @@ tags:
   - python
   - webdev
   - tutorial
-image:
-  path: "https://thepracticaldev.s3.amazonaws.com/i/orkle4edhwzsh8dms76x.png"
-  caption: "Bocadillo + ChatterBot = Awesome tutorial material."
+image: "https://thepracticaldev.s3.amazonaws.com/i/orkle4edhwzsh8dms76x.png"
+image_caption: "Bocadillo + ChatterBot = Awesome tutorial material."
 ---
 
 _This post is an adaptation of the [official Bocadillo tutorial](https://bocadilloproject.github.io/getting-started/tutorial.html)._

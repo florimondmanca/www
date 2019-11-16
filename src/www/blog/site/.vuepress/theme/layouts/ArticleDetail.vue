@@ -38,11 +38,11 @@
       <template v-if="$frontmatter.image">
         <div class="p-image">
           <img
-            :src="$withBase($frontmatter.image.path)"
-            :alt="$frontmatter.image.caption"
+            :src="$withBase($frontmatter.image)"
+            :alt="$frontmatter.image_caption || ''"
           />
-          <figcaption v-if="$frontmatter.image.caption">
-            {{ $frontmatter.image.caption }}
+          <figcaption v-if="$frontmatter.image_caption">
+            {{ $frontmatter.image_caption }}
           </figcaption>
         </div>
       </template>

@@ -7,9 +7,8 @@ legacy_url: "/reconciling-dataclasses-and-properties-in-python"
 tags:
   - python
   - devtips
-image:
-  path: "https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=35fcaa720c67b01ff5b75ae94fd2965d&auto=format&fit=crop&w=1050&q=80"
-  caption: "Two black-and-white birds. @wwwynand, unsplash.com"
+image: "https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=35fcaa720c67b01ff5b75ae94fd2965d&auto=format&fit=crop&w=1050&q=80"
+image_caption: "Two black-and-white birds. @wwwynand, unsplash.com"
 ---
 
 _If you can't wait for the TL;DR, jump to "Lessons Learned" at the end of this article._
