@@ -1,3 +1,5 @@
+import os
+
 from starlette import status
 from starlette.datastructures import URL
 from starlette.responses import RedirectResponse
@@ -5,7 +7,7 @@ from starlette.staticfiles import StaticFiles
 from starlette.types import ASGIApp, Receive, Scope, Send
 
 from . import settings
-from .middleware import Raise404Middleware
+from .middleware import PatchHeaders, Raise404Middleware
 
 static = Raise404Middleware(StaticFiles(directory=str(settings.BUILD_DIR)))
 
@@ -25,6 +27,12 @@ def get_responder(scope: Scope) -> ASGIApp:
         )
         return response
 
+    if scope["path"] == settings.RSS_FEED_PATH:
+        # By default Starlette makes a guess on the content type, and the result of
+        # this guess depends on the actual feed file name (e.g. rss.xml, feed.rss, etc).
+        # Here, we make ensure that clients always receive the correct MIME type.
+        return PatchHeaders(static, headers={"content-type": "application/rss+xml"})
+
     if is_page(scope["path"]):
         # Be sure to append 'index.html' as VuePress outputs pages
         # into folders containing a single 'index.html' file.
@@ -34,7 +42,14 @@ def get_responder(scope: Scope) -> ASGIApp:
 
 
 def is_page(path: str) -> bool:
-    return not path.startswith(("/assets", "/fonts", "/img"))
+    if path.startswith(("/assets", "/fonts", "/img")):
+        return False
+
+    _, extension = os.path.splitext(path)
+    if extension and extension != "html":
+        return False
+
+    return True
 
 
 def ensure_ends_with_index_html(path: str) -> str:

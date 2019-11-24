@@ -1,4 +1,5 @@
 const markdown = require("./markdown");
+const sharedConfig = require("./config.shared.json");
 
 module.exports = {
   title: "Florimond Manca",
@@ -6,8 +7,28 @@ module.exports = {
   base: "/blog/",
   markdown,
   plugins: [
+    require("./plugin-blog"),
     ["@vuepress/google-analytics", { ga: "UA-122676386-2" }],
     ["vuepress-plugin-sitemap", { hostname: "https://florimond.dev" }],
+    [
+      "vuepress-plugin-feed",
+      {
+        canonical_base: "https://florimond.dev/blog",
+        posts_directories: ["articles"],
+        feeds: {
+          // Only expose RSS.
+          json1: { enable: false },
+          atom1: { enable: false },
+          rss2: {
+            enable: true,
+            file_name: sharedConfig.rss_feed_file_name,
+            // Disable automatic RSS head <link> generation
+            // as it is added by us.
+            head_link: { enable: false }
+          }
+        }
+      }
+    ],
     [
       "vuepress-plugin-autometa",
       {
@@ -20,7 +41,6 @@ module.exports = {
         canonical_base: "https://florimond.dev/blog"
       }
     ],
-    require("./plugin-blog"),
     [
       require("vuepress-frontmatter-lint"),
       {
@@ -71,6 +91,11 @@ module.exports = {
           meta: {
             type: Object,
             required: true
+          },
+          // Used by `vuepress-plugin-feed`.
+          feed: {
+            type: Object,
+            required: false
           }
         }
       }
@@ -83,6 +108,15 @@ module.exports = {
       {
         src: "https://kit.fontawesome.com/d38a96501e.js",
         crossorigin: "anonymous"
+      }
+    ],
+    [
+      "link",
+      {
+        rel: "alternate",
+        type: "application/rss+xml",
+        href: `https://florimond.dev/blog/${sharedConfig.rss_feed_file_name}`,
+        title: "Florimond Manca RSS Feed"
       }
     ]
   ]
