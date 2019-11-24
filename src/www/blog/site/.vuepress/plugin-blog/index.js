@@ -60,6 +60,13 @@ module.exports = (options, ctx) => {
       if (page.regularPath && page.regularPath.startsWith("/articles/")) {
         page.frontmatter.permalink = "/articles/:year/:month/:slug";
       }
+      if (page.frontmatter.published) {
+        // Automatically tell `vuepress-plugin-feed` that the page should be
+        // included in the RSS feed if the article is published.
+        page.frontmatter.feed = Object.assign(page.frontmatter.feed || {}, {
+          enable: true
+        });
+      }
     },
 
     async ready() {
