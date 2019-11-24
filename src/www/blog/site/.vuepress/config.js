@@ -7,6 +7,7 @@ module.exports = {
   markdown,
   plugins: [
     ["@vuepress/google-analytics", { ga: "UA-122676386-2" }],
+    ["vuepress-plugin-sitemap", { hostname: "https://florimond.dev" }],
     [
       "vuepress-plugin-autometa",
       {

@@ -39,6 +39,7 @@ routes: typing.List[BaseRoute] = [
     # These files need to be exposed at the root, not '/static/'.
     Route("/service-worker.js", static_files, name="service-worker"),
     Route("/robots.txt", static_files, name="robots"),
+    Route("/sitemap.xml", blog.static, name="sitemap"),
 ]
 
 middleware: typing.List[typing.Optional[Middleware]] = [
