@@ -37,3 +37,12 @@ async def test_not_found(client: httpx.AsyncClient) -> None:
     resp = await client.get(url)
     assert resp.status_code == 404
     assert "text/html" in resp.headers["content-type"]
+
+
+@pytest.mark.parametrize(
+    "resource", ("/sitemap.xml", "/robots.txt", "/service-worker.js")
+)
+async def test_seo_resources(client: httpx.AsyncClient, resource: str) -> None:
+    url = f"http://florimond.dev{resource}"
+    resp = await client.get(url)
+    assert resp.status_code == 200
