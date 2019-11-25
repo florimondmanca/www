@@ -62,3 +62,8 @@ heroku local
 ```bash
 scripts/deploy
 ```
+
+## License
+
+- Code is licensed under GPL-3.
+- Writings are my own.
