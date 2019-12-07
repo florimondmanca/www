@@ -36,7 +36,7 @@ Contrary to JavaScript or Go, Python is not a language that had asynchronous exe
 
 But this all changed in Python 3.4+. Python 3.4 [added `asyncio` to the standard library](https://www.python.org/dev/peps/pep-3156), adding support for cooperative multitasking on top of generators and the `yield from` syntax.
 
-Later, the `async`/`await` syntax was [added in Python 3.5](https://www.python.org/dev/peps/pep-0492/). Thanks to this, we now had **native coroutines** independant of the underlying implementation, which opened the gold rush towards Python concurrency.
+Later, the `async`/`await` syntax was [added in Python 3.5](https://www.python.org/dev/peps/pep-0492/). Thanks to this, we now had **native coroutines** independent of the underlying implementation, which opened the gold rush towards Python concurrency.
 
 And what a rush it was, indeed! Since 3.5 was released, the community has been literally **async-ifying all the things**. If you're curious, a lot of the resulting projects are now listed in [aio-libs](https://github.com/aio-libs) and [awesome-asyncio](https://github.com/timofurrer/awesome-asyncio).
 
@@ -61,7 +61,7 @@ To find out how ASGI really works, let's take a look at the [ASGI specification]
 > ASGI consists of two different components:
 >
 > - A _protocol server_, which terminates sockets and translates them into connections and per-connection event messages.
-> - An _application_, which lives inside a _protocol server_, is instantiated once per connection, and handles event messages as they happen.
+> - An _application_, which lives inside a _protocol server_, is instanciated once per connection, and handles event messages as they happen.
 
 So according to the spec, what ASGI really specifies is a [message format](https://asgi.readthedocs.io/en/latest/specs/www.html) and how those messages should be exchanged between the application and the protocol server that runs it.
 
