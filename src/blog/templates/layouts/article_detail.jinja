@@ -4,5 +4,5 @@
 
 <p>{{ page.frontmatter.description }}</p>
 
-{{ page.content }}
+{{ page.html | safe }}
 {% endmacro %}

@@ -4,6 +4,7 @@ import typing
 
 import aiofiles
 import frontmatter as fm
+import markdown
 
 from .models import Frontmatter, Index, Page
 
@@ -26,9 +27,9 @@ async def _load_pages(index: Index) -> None:
     for path in _discover_page_paths(index.root):
         async with aiofiles.open(path) as f:
             page_content = await f.read()
-        content, frontmatter = _parse_page(page_content)
+        html, frontmatter = _compile_page(page_content)
         permalink = _permalink_from_path(path.relative_to(index.root))
-        page = Page(content=content, permalink=permalink, frontmatter=frontmatter)
+        page = Page(html=html, permalink=permalink, frontmatter=frontmatter)
         index.insert(page)
 
 
@@ -44,8 +45,10 @@ def _generate_tag_pages(index: Index) -> None:
         index.insert(page)
 
 
-def _parse_page(content: str) -> typing.Tuple[str, Frontmatter]:
+def _compile_page(content: str) -> typing.Tuple[str, Frontmatter]:
     post = fm.loads(content)
+
+    html = _compile_markdown(post.content)
 
     frontmatter = Frontmatter(
         home=post.get("home", False),
@@ -55,7 +58,11 @@ def _parse_page(content: str) -> typing.Tuple[str, Frontmatter]:
         tags=post.get("tags", []),
     )
 
-    return post.content, frontmatter
+    return html, frontmatter
+
+
+def _compile_markdown(content: str) -> str:
+    return markdown.markdown(content)
 
 
 def _discover_page_paths(root: pathlib.Path) -> typing.Iterator[pathlib.Path]:

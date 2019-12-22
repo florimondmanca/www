@@ -10,6 +10,7 @@ setup(
         "ddtrace-asgi==0.3.*",
         "gunicorn==19.*",
         "jinja2==2.*",
+        "markdown==3.1.*",
         "python-frontmatter==0.5.*",
         "starlette==0.13.*",
         "uvicorn==0.10.*",

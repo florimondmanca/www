@@ -16,7 +16,7 @@ class Frontmatter(typing.NamedTuple):
 class Page(typing.NamedTuple):
     permalink: str
     frontmatter: Frontmatter
-    content: str = ""
+    html: str = ""
 
 
 class Index:
