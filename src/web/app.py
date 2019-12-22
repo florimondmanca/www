@@ -9,7 +9,8 @@ from starlette.routing import BaseRoute, Host, Mount, Route
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
-from .. import blog
+import blog
+
 from . import settings
 from .endpoints import DomainRedirect
 
@@ -68,4 +69,6 @@ app = Starlette(
     middleware=middleware,
     routes=routes,
     exception_handlers={404: not_found, 500: internal_server_error},
+    on_startup=[blog.on_startup],
+    on_shutdown=[blog.on_shutdown],
 )

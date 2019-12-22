@@ -1,0 +1,10 @@
+{% extends "base.jinja" %}
+
+{% block main %}
+<h1>{{ article.frontmatter.title }}</h1>
+<p>Published {{ article.frontmatter.date }}</p>
+
+<p>{{ article.frontmatter.description }}</p>
+
+{{ article.content }}
+{% endblock main %}

@@ -5,10 +5,13 @@ setup(
     python_requires=">=3.7",
     install_requires=[
         "aiofiles==0.4.*",
+        "asgi-lifespan==0.4.*",
         "ddtrace==0.30.*",
         "ddtrace-asgi==0.3.*",
         "gunicorn==19.*",
         "jinja2==2.*",
+        "python-frontmatter==0.5.*",
+        "sortedcontainers==2.1.*",
         "starlette==0.13.*",
         "uvicorn==0.10.*",
     ],

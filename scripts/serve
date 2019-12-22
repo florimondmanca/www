@@ -5,4 +5,4 @@ if [ -d 'venv' ] ; then
     export PREFIX="venv/bin/"
 fi
 
-${PREFIX}ddtrace-run uvicorn www:app $@
+${PREFIX}uvicorn web:app $@

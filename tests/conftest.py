@@ -2,11 +2,13 @@ import typing
 
 import httpx
 import pytest
+from asgi_lifespan.manager import LifespanManager
 
-import www
+import web
 
 
 @pytest.fixture
 async def client() -> typing.AsyncIterator[httpx.AsyncClient]:
-    async with httpx.AsyncClient(app=www.app) as client:
-        yield client
+    async with LifespanManager(web.app):
+        async with httpx.AsyncClient(app=web.app) as client:
+            yield client

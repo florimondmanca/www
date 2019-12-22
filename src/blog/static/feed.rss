@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Florimond Manca</title>
+        <link>https://florimond.dev/blog</link>
+        <description>A blog about my ongoing journey through software engineering.</description>
+        <lastBuildDate>Sun, 24 Nov 2019 13:51:44 GMT</lastBuildDate>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
+        <item>
+            <title><![CDATA[A practical usage of ChainMap in Python]]></title>
+            <link>https://florimond.dev/blog/articles/2018/07/a-practical-usage-of-chainmap-in-python/</link>
+            <guid>https://florimond.dev/blog/articles/2018/07/a-practical-usage-of-chainmap-in-python/</guid>
+            <pubDate>Wed, 25 Jul 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[ChainMap in a nutshell: treat multiple dictionaries as one, unlock Python superpowers.]]></description>
+            <enclosure url="https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/d6d63ed6-2ee4-432a-81fa-586937e6ee04.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Let the Journey begin]]></title>
+            <link>https://florimond.dev/blog/articles/2018/07/let-the-journey-begin/</link>
+            <guid>https://florimond.dev/blog/articles/2018/07/let-the-journey-begin/</guid>
+            <pubDate>Wed, 25 Jul 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[Hi! My name is Florimond. I will be your captain for the length of this journey. 👨‍✈️]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1518415917-ae14f59265b3?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=910601442394dd27fc1eeb5bbcf087e6&amp;auto=format&amp;fit=crop&amp;w=968&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Cheap and easy deployment: CaptainDuckDuck (Part 1)]]></title>
+            <link>https://florimond.dev/blog/articles/2018/07/cheap-and-easy-deployment-captainduckduck-1/</link>
+            <guid>https://florimond.dev/blog/articles/2018/07/cheap-and-easy-deployment-captainduckduck-1/</guid>
+            <pubDate>Tue, 31 Jul 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[Deploying web apps can be a pain. I chose CaptainDuckDuck to build my personal, Heroku-style PaaS, hassle-free.]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1517976384346-3136801d605d?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=6e6ee2cf355b57ff64f8183a16bdd6b7&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Python Mutable Defaults Are The Source of All Evil]]></title>
+            <link>https://florimond.dev/blog/articles/2018/08/python-mutable-defaults-are-the-source-of-all-evil/</link>
+            <guid>https://florimond.dev/blog/articles/2018/08/python-mutable-defaults-are-the-source-of-all-evil/</guid>
+            <pubDate>Tue, 14 Aug 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[How to prevent a common Python mistake that can lead to horrible bugs and waste everyone's time.]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1525682691400-309fa6755eb5?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=1da7cfdc7f8d55868e8278fcaaf2b1bb&amp;auto=format&amp;fit=crop&amp;w=967&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Introducing tartiflette-starlette]]></title>
+            <link>https://florimond.dev/blog/articles/2019/07/introducing-tartiflette-starlette/</link>
+            <guid>https://florimond.dev/blog/articles/2019/07/introducing-tartiflette-starlette/</guid>
+            <pubDate>Sat, 13 Jul 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[A new library for building GraphQL APIs and serving them over HTTP via ASGI, powered by the Tartiflette Python asynchronous GraphQL engine.]]></description>
+            <enclosure url="https://user-images.githubusercontent.com/158689/58954519-b05ad680-8799-11e9-9134-90622e7731f3.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[How to write optionally callable parametrized decorators in Python]]></title>
+            <link>https://florimond.dev/blog/articles/2019/09/python-optionally-parametrized-decorators/</link>
+            <guid>https://florimond.dev/blog/articles/2019/09/python-optionally-parametrized-decorators/</guid>
+            <pubDate>Sat, 28 Sep 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[A memo on implementing parametrized decorators whose default behavior doesn't require empty parentheses.]]></description>
+            <enclosure url="https://florimond.dev/blog/img/articles/optionally-parametrized-decorators.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Cheap and easy deployment: CaptainDuckDuck (Part 2)]]></title>
+            <link>https://florimond.dev/blog/articles/2018/08/cheap-and-easy-deployment-captainduckduck-2/</link>
+            <guid>https://florimond.dev/blog/articles/2018/08/cheap-and-easy-deployment-captainduckduck-2/</guid>
+            <pubDate>Thu, 02 Aug 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[Welcome back! Let's deploy your own personal PaaS step by step with CaptainDuckDuck.]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1484600899469-230e8d1d59c0?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=28b1f7e78e4743998d23cb889dcb39a9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Why I started using Python type annotations – and why you should too]]></title>
+            <link>https://florimond.dev/blog/articles/2018/07/why-i-started-using-python-type-annotations-and-why-you-should-too/</link>
+            <guid>https://florimond.dev/blog/articles/2018/07/why-i-started-using-python-type-annotations-and-why-you-should-too/</guid>
+            <pubDate>Fri, 27 Jul 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[Type hints add optional static typing to Python 3.5+, and I love them. I now use annotated variables throughout my projects.]]></description>
+            <enclosure url="https://florimond.dev/blog/img/articles/python-type-annotations.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Consuming APIs in Angular: The Model-Adapter Pattern]]></title>
+            <link>https://florimond.dev/blog/articles/2018/09/consuming-apis-in-angular-the-model-adapter-pattern/</link>
+            <guid>https://florimond.dev/blog/articles/2018/09/consuming-apis-in-angular-the-model-adapter-pattern/</guid>
+            <pubDate>Tue, 04 Sep 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[A TypeScript-friendly pattern to improve how you integrate Angular apps and REST APIs.]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1501580121338-18e859f87400?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=979de881b3346f9ab13eacfd08535cfa&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[RESTful API Design: 13 Best Practices to Make Your Users Happy]]></title>
+            <link>https://florimond.dev/blog/articles/2018/08/restful-api-design-13-best-practices-to-make-your-users-happy/</link>
+            <guid>https://florimond.dev/blog/articles/2018/08/restful-api-design-13-best-practices-to-make-your-users-happy/</guid>
+            <pubDate>Sun, 26 Aug 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[First step to the RESTful way: make sure errors don't come back as 200 OK.]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=be5b6f36d8e6333027d74db000db5cc9&amp;auto=format&amp;fit=crop&amp;w=1489&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Streaming Applications with Apache Kafka: The Opening]]></title>
+            <link>https://florimond.dev/blog/articles/2018/10/streaming-applications-with-apache-kafka-the-opening/</link>
+            <guid>https://florimond.dev/blog/articles/2018/10/streaming-applications-with-apache-kafka-the-opening/</guid>
+            <pubDate>Mon, 01 Oct 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[I'm starting a series on building streaming apps with Apache Kafka — here's why!]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1533557603879-ebdd7a92e4e8?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=6d08c991169da5df017efdbedb195909&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Inbox Zero: How To Keep A Clean Email Inbox (And Mind)]]></title>
+            <link>https://florimond.dev/blog/articles/2018/10/inbox-zero-how-to-keep-clean-email-inbox-and-mind/</link>
+            <guid>https://florimond.dev/blog/articles/2018/10/inbox-zero-how-to-keep-clean-email-inbox-and-mind/</guid>
+            <pubDate>Sat, 06 Oct 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[Wondering how best to manage email? Get to love the "Archive" button.]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1534567406103-997f6c5e7f93?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=407cc3835489452296d9fc72189f928f&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[From Angular To Vue: Feeling Like A Beginner Again]]></title>
+            <link>https://florimond.dev/blog/articles/2018/10/from-angular-to-vue-feeling-like-a-beginner-again/</link>
+            <guid>https://florimond.dev/blog/articles/2018/10/from-angular-to-vue-feeling-like-a-beginner-again/</guid>
+            <pubDate>Wed, 24 Oct 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[I became too safe in the world of Angular, so I started learning Vue.js. Do I feel like a noob? Yes. Is it worth it? Totally.]]></description>
+            <enclosure url="https://florimond.dev/blog/img/articles/angular-vue-beginner-again.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Consuming APIs in Angular: Displaying Data In Components]]></title>
+            <link>https://florimond.dev/blog/articles/2019/02/consuming-apis-in-angular-displaying-data-in-components/</link>
+            <guid>https://florimond.dev/blog/articles/2019/02/consuming-apis-in-angular-displaying-data-in-components/</guid>
+            <pubDate>Sat, 23 Feb 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Learn how to fetch a list of items from a REST API and display it in an Angular component.]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1544916205-866047f3ae8c?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1189&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Why I Don't Write On Medium]]></title>
+            <link>https://florimond.dev/blog/articles/2019/05/why-i-dont-write-on-medium/</link>
+            <guid>https://florimond.dev/blog/articles/2019/05/why-i-dont-write-on-medium/</guid>
+            <pubDate>Mon, 27 May 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Medium doesn't get you views or reputation — quality content does, regardless of the platform. So you'd better use your own!]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=750&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[How To Upgrade Your VuePress Site To v1.0]]></title>
+            <link>https://florimond.dev/blog/articles/2019/07/vuepress-upgrade-1-0/</link>
+            <guid>https://florimond.dev/blog/articles/2019/07/vuepress-upgrade-1-0/</guid>
+            <pubDate>Sat, 13 Jul 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[VuePress v1.0 is out of beta! Upgrade your documentation site by following this 10-step tutorial.]]></description>
+            <enclosure url="https://res.cloudinary.com/practicaldev/image/fetch/s--CXdEHReB--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/fnfsz1vxuoq71cmpi1sq.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Introduction to ASGI: Emergence of an Async Python Web Ecosystem]]></title>
+            <link>https://florimond.dev/blog/articles/2019/08/introduction-to-asgi-async-python-web/</link>
+            <guid>https://florimond.dev/blog/articles/2019/08/introduction-to-asgi-async-python-web/</guid>
+            <pubDate>Sun, 11 Aug 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[If you were thinking Python had been getting locked into data science, think again! Python web development is back with an async spin, and it's exciting.]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1482642302383-7ba0f8012849?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1051&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Breaking News: Everything Is An Event! (Streams, Kafka And You)]]></title>
+            <link>https://florimond.dev/blog/articles/2018/09/breaking-news-everything-is-an-event/</link>
+            <guid>https://florimond.dev/blog/articles/2018/09/breaking-news-everything-is-an-event/</guid>
+            <pubDate>Fri, 14 Sep 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[It's about time you met streaming data! I'm sure you two and Apache Kafka will do great things together.]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1533228876829-65c94e7b5025?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=7a60de51ee9dd6af78f5b796b4586326&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Reconciling Dataclasses And Properties In Python]]></title>
+            <link>https://florimond.dev/blog/articles/2018/10/reconciling-dataclasses-and-properties-in-python/</link>
+            <guid>https://florimond.dev/blog/articles/2018/10/reconciling-dataclasses-and-properties-in-python/</guid>
+            <pubDate>Wed, 10 Oct 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[I love Python dataclasses, but combining them with properties is not obvious. This is a problem solving report — and a practical introduction to dataclasses!]]></description>
+            <enclosure url="https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=35fcaa720c67b01ff5b75ae94fd2965d&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Building A Real-time Chatbot Server In Python With WebSocket, ChatterBot And Bocadillo]]></title>
+            <link>https://florimond.dev/blog/articles/2019/03/real-time-chatbot-server-python-bocadillo/</link>
+            <guid>https://florimond.dev/blog/articles/2019/03/real-time-chatbot-server-python-bocadillo/</guid>
+            <pubDate>Sun, 17 Mar 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[From setup to testing, walk through the steps of building a real-time chatbot with Bocadillo and ChatterBot!]]></description>
+            <enclosure url="https://thepracticaldev.s3.amazonaws.com/i/orkle4edhwzsh8dms76x.png">
+            </enclosure>
+        </item>
+    </channel>
+</rss>
