@@ -11,7 +11,6 @@ setup(
         "gunicorn==19.*",
         "jinja2==2.*",
         "python-frontmatter==0.5.*",
-        "sortedcontainers==2.1.*",
         "starlette==0.13.*",
         "uvicorn==0.10.*",
     ],

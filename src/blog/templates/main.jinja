@@ -1,3 +1,5 @@
+{% from 'layouts/layout.jinja' import Layout with context %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +10,6 @@
   <link rel="alternate" type="application/rss+xml" href="https://florimond.dev/blog/feed.rss" title="Florimond Manca RSS Feed">
 </head>
 <body>
-  {% block main %}{% endblock main %}
+  {{ Layout() }}
 </body>
 </html>

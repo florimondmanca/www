@@ -70,5 +70,4 @@ app = Starlette(
     routes=routes,
     exception_handlers={404: not_found, 500: internal_server_error},
     on_startup=[blog.on_startup],
-    on_shutdown=[blog.on_shutdown],
 )

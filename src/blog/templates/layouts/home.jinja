@@ -1,0 +1,13 @@
+{% macro Home(articles) %}
+<h1>Latest posts</h1>
+
+<ul>
+  {% for page in articles %}
+  <li>
+    <a href="{{ with_base(page.permalink, request=request) }}">
+      {{ page.frontmatter.title }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}

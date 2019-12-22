@@ -1,0 +1,8 @@
+{% macro ArticleDetail(page) %}
+<h1>{{ page.frontmatter.title }}</h1>
+<p>Published {{ page.frontmatter.date }}</p>
+
+<p>{{ page.frontmatter.description }}</p>
+
+{{ page.content }}
+{% endmacro %}

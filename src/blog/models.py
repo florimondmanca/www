@@ -1,76 +1,55 @@
 import pathlib
 import typing
 
-import sortedcontainers
-
 from .exceptions import DoesNotExist
 
 
 class Frontmatter(typing.NamedTuple):
     title: str
-    description: str
-    date: str
-    tags: typing.List[str]
+    description: typing.Optional[str] = None
+    home: bool = False
+    date: typing.Optional[str] = None
+    tags: typing.List[str] = []
+    tag: typing.Optional[str] = None
 
 
-class Article(typing.NamedTuple):
-    content: str
+class Page(typing.NamedTuple):
     permalink: str
-    slug: str
     frontmatter: Frontmatter
-
-    def __repr__(self) -> str:
-        items = (("title", self.frontmatter.title), ("date", self.frontmatter.date))
-        descr = ", ".join(f"{key}={value!r}" for key, value in items)
-        return f"<Article {descr}>"
-
-
-Order = typing.Literal["asc", "desc"]
+    content: str = ""
 
 
 class Index:
     """
-    An in-memory, date-ordered index of articles.
+    An in-memory container of pages.
     """
 
     def __init__(self, root: pathlib.Path) -> None:
         self.root = root
-        self._data = sortedcontainers.SortedDict()
+        self._pages: typing.List[Page] = []
 
-    def _all(self, order: Order = "asc") -> typing.Iterator[Article]:
-        source = self._data.values()
+    def insert(self, page: Page) -> None:
+        for other in self._pages:
+            if other.permalink == page.permalink:
+                raise RuntimeError(f"Permalink {page.permalink!r} is not unique")
+        self._pages.append(page)
 
-        if order == "desc":
-            source = reversed(source)
-
-        for articles in source:
-            for article in articles:
-                yield article
-
-    def insert(self, article: Article) -> None:
-        for other in self._all():
-            if other.slug == article.slug:
-                raise RuntimeError(f"Slug {article.slug!r} is not unique")
-
-        key = article.frontmatter.date
-        self._data.setdefault(key, [])
-        self._data[key].append(article)
-
-    def find_one_or_error(self, key: typing.Callable[[Article], bool]) -> Article:
-        for article in self._all():
-            if key(article):
-                return article
+    def find_one_or_error(self, *, permalink: str) -> Page:
+        for page in self._pages:
+            if page.permalink.rstrip("/") == permalink.rstrip("/"):
+                return page
         else:
             raise DoesNotExist
 
     def find_all(
-        self,
-        key: typing.Callable[[Article], bool] = lambda article: True,
-        order: Order = "asc",
-    ) -> typing.Iterator[Article]:
-        for article in self._all(order=order):
-            if key(article):
-                yield article
+        self, condition: typing.Callable[[Page], bool] = lambda page: True,
+    ) -> typing.Iterator[Page]:
+        for page in self._pages:
+            if condition(page):
+                yield page
 
     def clear(self) -> None:
-        self._data.clear()
+        self._pages.clear()
+
+    def __repr__(self) -> str:
+        return f"<Index ({len(self._pages)} pages)>"
