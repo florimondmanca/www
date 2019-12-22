@@ -32,7 +32,7 @@ Alright, let's dive in!
 
 ## It all started with async/await
 
-Contrary to JavaScript or Go, Python is not a language that had asynchronous execution baked in from the start. For a long time, executing things concurrently in Python could only be achieved using multithreading or multiprocessing, or resorting to specialized networking libraries such as eventlet, gevent, or Twisted. (Back in 2008, Twisted already had APIs for asynchronous coroutines, e.g. in the form of [`inlineCallback` and `deferredGenerator`](http://blog.mekk.waw.pl/archives/14-Twisted-inlineCallbacks-and-deferredGenerator.html).)
+Contrary to JavaScript or Go, Python is not a language that had asynchronous execution baked in from the start. For a long time, executing things concurrently in Python could only be achieved using multithreading or multiprocessing, or resorting to specialized networking libraries such as eventlet, gevent, or Twisted. (Back in 2008, Twisted already had APIs for asynchronous coroutines, e.g. in the form of [`inlineCallbacks` and `deferredGenerator`](http://blog.mekk.waw.pl/archives/14-Twisted-inlineCallbacks-and-deferredGenerator.html).)
 
 But this all changed in Python 3.4+. Python 3.4 [added `asyncio` to the standard library](https://www.python.org/dev/peps/pep-3156), adding support for cooperative multitasking on top of generators and the `yield from` syntax.
 
