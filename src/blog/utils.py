@@ -19,8 +19,15 @@ def is_article(page: Page) -> bool:
     return page.permalink.startswith("/articles")
 
 
-def get_articles(index: Index) -> typing.Iterator[Page]:
-    return index.find_all(is_article)
+def get_articles(index: Index, *, tag: str = None) -> typing.Iterator[Page]:
+    def condition(page: Page) -> bool:
+        if not is_article(page):
+            return False
+        if tag is not None and tag not in page.frontmatter.tags:
+            return False
+        return True
+
+    return index.find_all(condition)
 
 
 async def _load_pages(index: Index) -> None:

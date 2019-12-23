@@ -14,7 +14,7 @@
     {%- if page.frontmatter.home -%}
       {{ Home(get_articles()) }}
     {%- elif page.frontmatter.tag -%}
-      {{ Tag(page.frontmatter.tag) }}
+      {{ Tag(page.frontmatter.tag, get_articles(tag=page.frontmatter.tag)) }}
     {%- elif is_article(page) -%}
       {{ ArticleDetail(page) }}
     {%- else -%}

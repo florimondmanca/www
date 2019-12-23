@@ -1,3 +1,10 @@
-{% macro Tag(tag) %}
-<h1>Tag: #{{ tag }}</h1>
+{% from "components/content_wrapper.jinja" import ContentWrapper %}
+{% from "components/list.jinja" import List %}
+
+{% macro Tag(tag, pages) %}
+{% call ContentWrapper() %}
+  <h1>Tag: #{{ tag }}</h1>
+
+  {{ List(pages) }}
+{% endcall %}
 {% endmacro %}
