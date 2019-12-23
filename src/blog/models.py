@@ -1,8 +1,6 @@
 import pathlib
 import typing
 
-from .exceptions import DoesNotExist
-
 
 class Frontmatter(typing.NamedTuple):
     title: str
@@ -34,12 +32,11 @@ class Index:
                 raise RuntimeError(f"Permalink {page.permalink!r} is not unique")
         self._pages.append(page)
 
-    def find_one_or_error(self, *, permalink: str) -> Page:
+    def find_one(self, *, permalink: str) -> typing.Optional[Page]:
         for page in self._pages:
             if page.permalink.rstrip("/") == permalink.rstrip("/"):
                 return page
-        else:
-            raise DoesNotExist
+        return None
 
     def find_all(
         self, condition: typing.Callable[[Page], bool] = lambda page: True,

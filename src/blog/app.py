@@ -9,7 +9,6 @@ from starlette.routing import Mount, Route, Router
 from starlette.types import ASGIApp
 
 from . import utils
-from .exceptions import DoesNotExist
 from .middleware import LegacyBlogRedirectMiddleware, TemplatesEnvironmentMiddleware
 from .models import Page
 from .resources import index, sass, static, templates
@@ -23,9 +22,8 @@ class RenderPage(HTTPEndpoint):
     async def get(self, request: Request) -> Response:
         permalink = request["path"]
 
-        try:
-            page = index.find_one_or_error(permalink=permalink)
-        except DoesNotExist:
+        page = index.find_one(permalink=permalink)
+        if page is None:
             raise HTTPException(404)
 
         context = {
