@@ -1,0 +1,11 @@
+{% macro ArticleTagList(tags, class="", inline=true) %}
+<ul class="u-list-reset {{ class }} {{ 'c_article_tag_list-list-inline' if inline else '' }}">
+  {% for tag in tags %}
+  <li class="u-mh-1">
+    <a href="{{ with_base('/tag/' + tag) }}">
+      #{{ tag }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}

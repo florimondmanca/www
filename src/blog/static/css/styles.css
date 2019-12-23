@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: Agane;
   font-style: normal;
@@ -85,7 +86,7 @@ hr {
   padding: 0;
   border: 0;
   height: 1px;
-  background-color: #f7f9f9;
+  background-color: #bccecc;
 }
 
 h1[id],
@@ -10237,6 +10238,32 @@ tr:nth-child(2n) {
 th, td {
   border: 1px solid #dfe2e5;
   padding: 0.6em 1em;
+}
+
+.c_article_tag_list-list-inline {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.c_list_item-item {
+  padding-bottom: 1em;
+}
+.c_list_item-item + .c_list_item-item {
+  padding-top: 1em;
+  border-top: 1px solid #bccecc;
+}
+
+.c_list_item-post-header {
+  font-size: smaller;
+}
+@media screen and (min-width: 768px) {
+  .c_list_item-post-header {
+    font-size: inherit;
+  }
+}
+
+.c_list_item-tag-list.separated::before {
+  content: "∙";
 }
 
 .c_navbar-nav {

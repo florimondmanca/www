@@ -1,13 +1,10 @@
-{% macro Home(articles) %}
-<h1>Latest posts</h1>
+{% from 'components/content_wrapper.jinja' import ContentWrapper %}
+{% from 'components/list.jinja' import List %}
 
-<ul>
-  {% for page in articles %}
-  <li>
-    <a href="{{ with_base(page.permalink, request=request) }}">
-      {{ page.frontmatter.title }}
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+{% macro Home(pages) %}
+{% call ContentWrapper() %}
+  <h1>Latest posts</h1>
+
+  {{ List(pages) }}
+{% endcall %}
 {% endmacro %}
