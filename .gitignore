@@ -9,6 +9,10 @@ __pycache__/
 .pytest_cache
 *.egg-info
 
+# Sass
+.sass-cache
+*.css.map
+
 # Build
 dist/
 **/generated/*

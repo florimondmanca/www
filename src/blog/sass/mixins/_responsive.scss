@@ -1,0 +1,21 @@
+@import "../variables";
+
+@mixin forSize($breakName: "phone", $breakValue: 0, $mobileFirst: true) {
+  @if $breakName != "phone" {
+    $breakValue: $breakpoints[breakName];
+  }
+
+  @if ($mobileFirst) {
+    $minWidth: $breakValue * 1px;
+
+    @media screen and (min-width: $minWidth) {
+      @content;
+    }
+  } @else {
+    $maxWidth: (breakValue - 1) * 1px;
+
+    @media screen and (max-width: $maxWidth) {
+      @content;
+    }
+  }
+}

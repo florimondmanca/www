@@ -40,7 +40,7 @@ class RenderPage(HTTPEndpoint):
 
 routes = [
     Route("/feed.rss", static, name="feed-rss"),
-    Mount("/static", static, name="static"),
+    Mount("/static", static),
     Mount("/", app=RenderPage),
 ]
 

@@ -1,0 +1,10 @@
+// Core.
+$colorText: #424242;
+$colorPrimary: #59c6b6;
+$colorWarn: #f1714f;
+$colorAccent: #ea3b53;
+$colorMuted: #506e6a;
+$colorCodeBackground: #282c35;
+// Derived.
+$colorDivider: lighten($colorMuted, 60%);
+$colorBackgroundCard: #f2f4f5;
