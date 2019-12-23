@@ -10239,6 +10239,26 @@ th, td {
   padding: 0.6em 1em;
 }
 
+.c_navbar-nav {
+  background-color: #f2f4f5;
+  z-index: 100;
+}
+.c_navbar-nav ul {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 36px;
+  align-items: center;
+}
+.c_navbar-nav ul li {
+  display: flex;
+  align-items: center;
+}
+
+.c_navbar-title {
+  font-size: 1.2em;
+  width: fit-content;
+}
+
 .c_layout-content {
   padding: 0 24px;
 }

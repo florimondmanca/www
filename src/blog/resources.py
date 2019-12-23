@@ -10,7 +10,10 @@ templates = Jinja2Templates(directory=str(settings.ROOT / "templates"))
 static = StaticFiles(directory=str(settings.ROOT / "static"))
 
 
-def with_base(*paths: str, request: Request) -> str:
+def with_base(*paths: str, request: Request = None) -> str:
+    if request is None:
+        request = templates.env.globals.get("request")
+    assert request is not None
     root_path = request.get("root_path", "")
     return f"{root_path}{''.join(paths)}"
 
