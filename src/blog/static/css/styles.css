@@ -78,7 +78,7 @@ a {
   color: inherit;
 }
 a:hover {
-  background-color: rgba(89, 198, 182, 0.8);
+  background-color: rgba(89, 198, 182, 0.2);
 }
 
 hr {

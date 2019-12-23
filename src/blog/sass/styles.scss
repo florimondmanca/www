@@ -82,7 +82,7 @@ a {
   color: inherit;
 
   &:hover {
-    background-color: transparentize($colorPrimary, 0.2);
+    background-color: transparentize($colorPrimary, 0.8);
   }
 }
 
