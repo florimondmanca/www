@@ -6,10 +6,10 @@
 {% from 'layouts/page.jinja' import Page %}
 
 {% macro Layout() %}
-<div class="p-theme-container">
+<div class="theme-container">
   {{ NavBar() }}
 
-  <div class="t-content">
+  <div class="c_layout-content">
     <main class="u-mt-6">
     {%- if page.frontmatter.home -%}
       {{ Home(get_articles()) }}

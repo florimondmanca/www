@@ -2,7 +2,7 @@
 
 @mixin forSize($breakName: "phone", $breakValue: 0, $mobileFirst: true) {
   @if $breakName != "phone" {
-    $breakValue: $breakpoints[breakName];
+    $breakValue: map-get($breakpoints, $breakName);
   }
 
   @if ($mobileFirst) {
