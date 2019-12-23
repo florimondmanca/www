@@ -68,7 +68,7 @@ def _compile_page(content: str) -> typing.Tuple[str, Frontmatter]:
 
 
 def _compile_markdown(content: str) -> str:
-    return markdown.markdown(content)
+    return markdown.markdown(content, extensions=["codehilite", "fenced_code"])
 
 
 def _discover_page_paths(root: pathlib.Path) -> typing.Iterator[pathlib.Path]:

@@ -11,6 +11,7 @@ setup(
         "gunicorn==19.*",
         "jinja2==2.*",
         "markdown==3.1.*",
+        "pygments==2.5.*",
         "python-frontmatter==0.5.*",
         "starlette==0.13.*",
         "uvicorn==0.10.*",
