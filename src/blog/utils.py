@@ -6,6 +6,7 @@ import aiofiles
 import frontmatter as fm
 import markdown
 
+from . import settings
 from .models import Frontmatter, Index, Page
 
 
@@ -75,7 +76,7 @@ def _compile_page(content: str) -> typing.Tuple[str, Frontmatter]:
 
 
 def _compile_markdown(content: str) -> str:
-    return markdown.markdown(content, extensions=["codehilite", "fenced_code"])
+    return markdown.markdown(content, extensions=settings.MARKDOWN_EXTENSIONS)
 
 
 def _discover_page_paths(root: pathlib.Path) -> typing.Iterator[pathlib.Path]:
