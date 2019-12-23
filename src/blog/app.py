@@ -34,9 +34,11 @@ class RenderPage(HTTPEndpoint):
 
         return templates.TemplateResponse("main.jinja", context=context)
 
-    def get_articles(self) -> typing.Iterator[Page]:
-        return reversed(
-            sorted(utils.get_articles(index), key=lambda page: page.frontmatter.date)
+    def get_articles(self) -> typing.List[Page]:
+        return sorted(
+            utils.get_articles(index),
+            key=lambda page: page.frontmatter.date,
+            reverse=True,
         )
 
 
