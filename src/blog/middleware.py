@@ -1,27 +1,9 @@
-import typing
-
 from starlette import status
 from starlette.datastructures import URL
-from starlette.middleware.base import BaseHTTPMiddleware
-from starlette.requests import Request
-from starlette.responses import RedirectResponse, Response
+from starlette.responses import RedirectResponse
 from starlette.types import ASGIApp, Receive, Scope, Send
 
 from . import settings
-from .resources import templates
-
-
-class TemplatesEnvironmentMiddleware(BaseHTTPMiddleware):
-    async def dispatch(self, request: Request, call_next: typing.Callable) -> Response:
-        if request["path"].startswith("/static/"):
-            return await call_next(request)
-
-        # FIXME: this is prone to concurrent writes - need to use contextvars instead.
-        templates.env.globals["request"] = request
-        try:
-            return await call_next(request)
-        finally:
-            templates.env.globals.pop("request", None)
 
 
 class LegacyBlogRedirectMiddleware:

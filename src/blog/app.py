@@ -9,17 +9,15 @@ from starlette.routing import Mount, Route, Router
 from starlette.types import ASGIApp
 
 from . import utils
-from .middleware import LegacyBlogRedirectMiddleware, TemplatesEnvironmentMiddleware
+from .middleware import LegacyBlogRedirectMiddleware
 from .models import Page
-from .resources import index, sass, static, templates
-
-
-def get_default_context() -> dict:
-    return {"now": dt.datetime.utcnow()}
+from .resources import CTX_VAR_REQUEST, index, sass, static, templates
 
 
 class RenderPage(HTTPEndpoint):
     async def get(self, request: Request) -> Response:
+        CTX_VAR_REQUEST.set(request)
+
         permalink = request["path"]
 
         page = index.find_one(permalink=permalink)
@@ -27,8 +25,8 @@ class RenderPage(HTTPEndpoint):
             raise HTTPException(404)
 
         context = {
-            **get_default_context(),
             "request": request,
+            "now": dt.datetime.utcnow(),
             "page": page,
             "get_articles": self.get_articles,
             "is_article": utils.is_article,
@@ -50,5 +48,4 @@ routes = [
 ]
 
 app: ASGIApp = Router(routes=routes)
-app = TemplatesEnvironmentMiddleware(app)
 app = LegacyBlogRedirectMiddleware(app)
