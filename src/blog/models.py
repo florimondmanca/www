@@ -7,6 +7,8 @@ class Frontmatter(typing.NamedTuple):
     description: typing.Optional[str] = None
     home: bool = False
     date: typing.Optional[str] = None
+    image: typing.Optional[str] = None
+    image_caption: typing.Optional[str] = None
     tags: typing.List[str] = []
     tag: typing.Optional[str] = None
 

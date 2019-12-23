@@ -10286,6 +10286,24 @@ th, td {
   width: fit-content;
 }
 
+.c_article_detail-header {
+  margin-bottom: 36px;
+  border-bottom: 1px solid #bccecc;
+}
+
+.c_article_detail-tag-list::before {
+  content: "∙";
+}
+
+.c_article_detail-article-markdown-content h2, .c_article_detail-article-markdown-content h3, .c_article_detail-article-markdown-content h4, .c_article_detail-article-markdown-content h5, .c_article_detail-article-markdown-content h6 {
+  margin-top: 48px;
+  margin-bottom: 30px;
+}
+.c_article_detail-article-markdown-content img {
+  max-width: 100%;
+  height: auto;
+}
+
 .c_layout-content {
   padding: 0 24px;
 }

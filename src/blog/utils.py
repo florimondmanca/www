@@ -55,6 +55,8 @@ def _compile_page(content: str) -> typing.Tuple[str, Frontmatter]:
         title=post["title"],
         description=post["description"],
         date=post.get("date", ""),
+        image=post.get("image"),
+        image_caption=post.get("image_caption"),
         tags=post.get("tags", []),
     )
 
