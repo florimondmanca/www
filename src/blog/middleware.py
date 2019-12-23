@@ -13,11 +13,15 @@ from .resources import templates
 
 class TemplatesEnvironmentMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next: typing.Callable) -> Response:
+        if request["path"].startswith("/static/"):
+            return await call_next(request)
+
+        # FIXME: this is prone to concurrent writes - need to use contextvars instead.
         templates.env.globals["request"] = request
         try:
             return await call_next(request)
         finally:
-            del templates.env.globals["request"]
+            templates.env.globals.pop("request", None)
 
 
 class LegacyBlogRedirectMiddleware:
