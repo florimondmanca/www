@@ -56,7 +56,7 @@ Here's the **user story** for the feature we're trying to build:
 
 To allow this, we have been provided with the following API endpoint:
 
-```
+```console
 GET: /courses/
 ```
 

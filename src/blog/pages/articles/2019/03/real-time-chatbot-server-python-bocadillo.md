@@ -159,7 +159,7 @@ with suppress(KeyboardInterrupt):
 
 Run the server-side application with `python app.py` and, in a separate terminal, start the `client.py` script. You should be greeted with a `>` prompt. If so, start chatting!
 
-```
+```console
 $ python client.py
 > Hi!
 Hi!
@@ -224,7 +224,7 @@ async def converse(ws):
 
 If you run the [server/client setup](#trying-out-the-websocket-endpoint) from earlier, you can now see that Diego converses with us over the WebSocket!
 
-```
+```console
 $ python client.py
 > Hi there!
 I am a chat bot. I am the original chat bot. Did you know that I am incapable of error?
@@ -323,7 +323,7 @@ INFO: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 2. Run the `client.py` script, and start chatting! You shouldn't see any difference from before. In particular, Diego responds just as fast.
 
-```
+```console
 $ python client.py
 > Hello!
 Hi

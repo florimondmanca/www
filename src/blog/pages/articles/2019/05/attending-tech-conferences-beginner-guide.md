@@ -7,7 +7,7 @@ legacy_url: "/attending-tech-conferences-beginner-guide"
 tags:
   - tutorial
   - conferences
-image: "/img/articles/attending-tech-conferences-beginner-guide.jpeg"
+image: "/static/img/articles/attending-tech-conferences-beginner-guide.jpeg"
 image_caption: "PyConWeb 2019 at Microsoft HQ, Munich, Germany."
 ---
 

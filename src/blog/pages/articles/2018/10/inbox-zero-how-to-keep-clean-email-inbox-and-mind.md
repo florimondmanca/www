@@ -122,7 +122,7 @@ Yet, if you notice these "todo" emails pile up in your inbox, it might be worth 
 
 As an example, here is an email I would certainly take action upon right away:
 
-```
+```console
 From: elsa@company.biz
 To: florimond@company.biz
 Subject: Spare paper
@@ -140,7 +140,7 @@ That definitely won't need more than 2 minutes. I can just check whether I have 
 
 Here's another example:
 
-```
+```console
 From: marketing@company.biz
 To: everyone-including-me@company.biz
 Subject: Rebranding Survey

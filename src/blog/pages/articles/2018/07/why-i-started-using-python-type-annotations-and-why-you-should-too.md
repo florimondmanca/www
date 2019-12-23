@@ -7,7 +7,7 @@ legacy_url: "/why-i-started-using-python-type-annotations-and-why-you-should-too
 tags:
   - python
   - discussion
-image: "/img/articles/python-type-annotations.png"
+image: "/static/img/articles/python-type-annotations.png"
 image_caption: "Code snippet, carbon.now.sh"
 ---
 

@@ -8,7 +8,7 @@ tags:
   - python
   - tutorial
   - devtips
-image: "/img/articles/optionally-parametrized-decorators.png"
+image: "/static/img/articles/optionally-parametrized-decorators.png"
 image_caption: "A code snippet of what we're aiming to achieve."
 ---
 
@@ -81,7 +81,7 @@ mult(3, 4)
 
 We get the following output:
 
-```
+```console
 Called without parameters, func=<function add at 0x10d8d8b70>.
 Called with decimals=2
 Called without parameters, func=<function mult at 0x10db18a60>.

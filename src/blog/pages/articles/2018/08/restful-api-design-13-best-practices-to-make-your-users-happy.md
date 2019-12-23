@@ -72,19 +72,19 @@ This is because **HTTP verbs should be sufficient to describe the action being p
 
 Let's say you want to provide an endpoint to generate and retrieve a banner image for an article. I will note `:param` a placeholder for an URI parameter (like an ID or a slug). You might be tempted to create this endpoint:
 
-```
+```console
 GET: /articles/:slug/generateBanner/
 ```
 
 But the `GET` method is semantically sufficient here to say that we're retrieving ("GETting") a banner. So, let's just use:
 
-```
+```console
 GET: /articles/:slug/banner/
 ```
 
 Similarly, for an endpoint that creates a new article:
 
-```
+```console
 # Don't
 POST: /articles/createNewArticle/
 # Do
@@ -107,7 +107,7 @@ I'd agree that `GET /article/2/` is fine, but what about `GET /article/`? Are we
 
 To prevent this kind of ambiguity, **let's be consistent** (life advice!) and use plural everywhere:
 
-```
+```console
 GET: /articles/2/
 POST: /articles/
 ...
@@ -195,7 +195,7 @@ So be **consistent**, and if you stray away from conventions, **document it** so
 
 Generally, I stick to the following:
 
-```
+```console
 GET: 200 OK
 POST: 201 Created
 PUT: 200 OK
@@ -211,7 +211,7 @@ Let's say we want to retrieve the list of articles for a particular author — t
 
 The first option would be to **nest** the `articles` resource under the `authors` resource, e.g.:
 
-```
+```console
 GET: /authors/12/articles/
 ```
 
@@ -223,7 +223,7 @@ Also [flat is better than nested](https://www.python.org/dev/peps/pep-0020/#id3)
 
 My recommendation is to **use the querystring** to filter the `articles` resource directly:
 
-```
+```console
 GET: /articles/?author_id=12
 ```
 
@@ -237,7 +237,7 @@ Whether or not URIs should have a trailing `/` is not really a debate. Simply ch
 
 Story time! One day, as I was integrating a REST API into a project, I kept receiving `500 Internal Error` on every single call. The endpoint I was using looked something like this:
 
-```
+```console
 POST: /entities
 ```
 
@@ -245,7 +245,7 @@ I was mad and couldn't figure out what I was doing wrong.
 
 In the end, it turned out **the server was failing because I was missing a trailing slash!** So I started using
 
-```
+```console
 POST: /entities/
 ```
 
@@ -273,13 +273,13 @@ My answer is: **use the querystring**.
 
 I'd say it's pretty obvious why you should use the querystring for pagination. It would look like this:
 
-```
+```console
 GET: /articles/?page=1&page_size=10
 ```
 
 But it may be less obvious for filtering. At first, you might think of doing something like this to retrieve a list of published articles only:
 
-```
+```console
 GET: /articles/published/
 ```
 
@@ -287,7 +287,7 @@ Design issue: **`published` is not a resource!** Instead, it is a trait of the d
 
 So in the end, a user could retrieve "the second page of published articles containing 20 items" like so:
 
-```
+```console
 GET: /articles/?published=true&page=2&page_size=20
 ```
 

@@ -169,7 +169,7 @@ Now, you might be wondering what the `blog` module imported at the top of the sc
 
 Here's the file structure of the main directory of code:
 
-```
+```console
 src/www
 ├── __init__.py
 ├── blog

@@ -60,7 +60,7 @@ Google Analytics could previously be configured via a `ga` option in the configu
 
 - Install the plugin:
 
-```
+```console
 npm install @vuepress/plugin-google-analytics
 ```
 

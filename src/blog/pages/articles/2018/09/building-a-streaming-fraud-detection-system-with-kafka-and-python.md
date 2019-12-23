@@ -141,14 +141,14 @@ We'll create two folders containing this `Dockerfile`: one for the transaction g
 
 We're also going to have one Python dependency — [Kafka Python](https://github.com/dpkp/kafka-python), a Python client for Kafka (among others). We'll use it to build applications that interact with the Kafka cluster.
 
-```
+```ini
 # requirements.txt
 kafka-python
 ```
 
 The actual Python code will live in the `app.py` file in each app. So in the end, this is folder structure we end up with:
 
-```
+```console
 .
 ├── docker-compose.yml
 ├── detector
@@ -443,7 +443,7 @@ The `--from-beginning` flag means the command will read the whole topic, instead
 
 You can let it run for a while, then press `Ctrl+C` to stop the `kafka-console-consumer` and see the total number of read messages:
 
-```
+```json
 ...
 {"source": "Jpe2zq1QDYTn", "target": "lLbLnl0FSr7T", "amount": 254.83, "currency": "EUR"}
 {"source": "mfGWAdLKW8jh", "target": "ede8FQpjBeej", "amount": 785.22, "currency": "EUR"}
@@ -638,7 +638,7 @@ Let's inspect the contents of these topics!
 
 - The `streaming.transactions.legit` contains the legit transactions (amount below 900€), as expected:
 
-```
+```json
 ...
 {"source": "v16xO8Oj7s4u", "target": "QgvC9nMnBQMO", "amount": 231.67, "currency": "EUR"}
 {"source": "wqduJdB5focL", "target": "sxKNYdlSQqQl", "amount": 229.57, "currency": "EUR"}
@@ -654,7 +654,7 @@ Processed a total of 13593 messages
 
 - The `streaming.transactions.fraud` only contains suspicious transactions (amount above 900€), as expected too!
 
-```
+```json
 ...
 {"source": "jwRMZyzGAsmG", "target": "i33smnlpnYtd", "amount": 980.05, "currency": "EUR"}
 {"source": "WcmydQNdDxya", "target": "ykFPmUSysJuJ", "amount": 914.81, "currency": "EUR"}
