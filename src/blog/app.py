@@ -9,7 +9,7 @@ from starlette.routing import Mount, Route, Router
 from starlette.types import ASGIApp
 
 from . import utils
-from .middleware import LegacyBlogRedirectMiddleware
+from .middleware import LegacyBlogRedirectMiddleware, PatchHeadersMiddleware
 from .models import Page
 from .resources import CTX_VAR_REQUEST, index, sass, static, templates
 
@@ -51,3 +51,10 @@ routes = [
 
 app: ASGIApp = Router(routes=routes)
 app = LegacyBlogRedirectMiddleware(app)
+app = PatchHeadersMiddleware(
+    # Make sure clients always receive the correct MIME type for the RSS feed,
+    # as the content type Starlette guesses may vary across operating systems.
+    app,
+    path="/feed.rss",
+    headers={"content-type": "application/rss+xml"},
+)
