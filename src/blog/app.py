@@ -1,3 +1,4 @@
+import datetime as dt
 import typing
 
 from starlette.endpoints import HTTPEndpoint
@@ -11,7 +12,11 @@ from . import utils
 from .exceptions import DoesNotExist
 from .middleware import LegacyBlogRedirectMiddleware, TemplatesEnvironmentMiddleware
 from .models import Page
-from .resources import index, static, templates
+from .resources import index, sass, static, templates
+
+
+def get_default_context() -> dict:
+    return {"now": dt.datetime.utcnow()}
 
 
 class RenderPage(HTTPEndpoint):
@@ -24,6 +29,7 @@ class RenderPage(HTTPEndpoint):
             raise HTTPException(404)
 
         context = {
+            **get_default_context(),
             "request": request,
             "page": page,
             "get_articles": self.get_articles,
@@ -41,6 +47,7 @@ class RenderPage(HTTPEndpoint):
 routes = [
     Route("/feed.rss", static, name="feed-rss"),
     Mount("/static", static),
+    Mount("/sass", sass),
     Mount("/", app=RenderPage),
 ]
 

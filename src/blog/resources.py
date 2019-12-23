@@ -8,6 +8,7 @@ from .models import Index
 index = Index(root=settings.CONTENT_ROOT)
 templates = Jinja2Templates(directory=str(settings.ROOT / "templates"))
 static = StaticFiles(directory=str(settings.ROOT / "static"))
+sass = StaticFiles(directory=str(settings.ROOT / "sass"))
 
 
 def with_base(*paths: str, request: Request = None) -> str:

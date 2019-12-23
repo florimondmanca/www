@@ -122,7 +122,7 @@ div[class*="language-"] {
     }
 
     pre {
-      padding-left: ($lineNumbersWrapperWidth + 1) rem;
+      padding-left: $lineNumbersWrapperWidth + 1em;
       vertical-align: middle;
     }
 

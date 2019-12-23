@@ -10074,7 +10074,7 @@ div[class*=language-].line-numbers-mode .highlight-lines .highlighted:before {
   background-color: rgba(0, 0, 0, 0.66);
 }
 div[class*=language-].line-numbers-mode pre {
-  padding-left: 81em rem;
+  padding-left: 81em;
   vertical-align: middle;
 }
 div[class*=language-].line-numbers-mode .line-numbers-wrapper {
