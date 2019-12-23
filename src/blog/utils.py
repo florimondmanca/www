@@ -40,7 +40,11 @@ def _get_unique_tags(index: Index) -> typing.Set[str]:
 def _generate_tag_pages(index: Index) -> None:
     for tag in _get_unique_tags(index):
         permalink = f"/tag/{tag}"
-        frontmatter = Frontmatter(title=f"{tag.capitalize()} - Florimond Manca")
+        frontmatter = Frontmatter(
+            title=f"{tag.capitalize()} - Florimond Manca",
+            description=f"Articles about #{tag}",
+            tag=tag,
+        )
         page = Page(permalink=permalink, frontmatter=frontmatter)
         index.insert(page)
 
