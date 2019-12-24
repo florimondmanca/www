@@ -6,9 +6,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Florimond Manca</title>
+
   <link rel="alternate" type="application/rss+xml" href="https://florimond.dev/blog/feed.rss" title="Florimond Manca RSS Feed">
   <link rel="stylesheet" href="/blog/static/css/styles.css">
+
+  <title>{{ page.frontmatter.title or "Florimond Manca" }}</title>
+  {% for item in page.meta -%}
+    {{ item | safe }}
+  {%- endfor %}
 </head>
 <body>
   {{ Layout() }}

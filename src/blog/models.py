@@ -18,6 +18,7 @@ class Frontmatter:
 class Page:
     permalink: str
     frontmatter: Frontmatter
+    meta: typing.List["MetaTag"]
     html: str = ""
 
     @property
@@ -46,3 +47,14 @@ class Index:
         return sorted(
             articles, key=lambda page: page.frontmatter.date or "", reverse=True
         )
+
+
+class MetaTag:
+    def __init__(self, **attributes: typing.Optional[str]) -> None:
+        self.attributes = attributes
+
+    def __str__(self) -> str:
+        attrs = " ".join(
+            f'{key}="{value}"' for key, value in self.attributes.items() if value
+        )
+        return f"<meta {attrs}>"

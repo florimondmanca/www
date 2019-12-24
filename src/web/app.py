@@ -46,6 +46,7 @@ routes: typing.List[BaseRoute] = [
     Mount("/blog", routes=blog.routes, name="blog"),
     Mount("/static", static_files, name="static"),
     # These files need to be exposed at the root, not '/static/'.
+    Route("/favicon.ico", static_files, name="favicon"),
     Route("/service-worker.js", static_files, name="service-worker"),
     Route("/robots.txt", static_files, name="robots"),
     Route("/sitemap.xml", blog.static, name="sitemap"),

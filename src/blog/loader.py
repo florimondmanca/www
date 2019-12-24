@@ -5,7 +5,7 @@ import typing
 import aiofiles
 import frontmatter as fm
 
-from .models import Frontmatter, Page
+from .models import Frontmatter, MetaTag, Page
 from .resources import markdown
 
 
@@ -30,6 +30,7 @@ async def _find_filesystem_pages(root: pathlib.Path) -> typing.AsyncIterator[Pag
 
         post = fm.loads(content)
         html = markdown.reset().convert(post.content)
+        permalink = _permalink_from_path(path.relative_to(root))
         frontmatter = Frontmatter(
             home=post.get("home", False),
             title=post["title"],
@@ -39,10 +40,9 @@ async def _find_filesystem_pages(root: pathlib.Path) -> typing.AsyncIterator[Pag
             image_caption=post.get("image_caption"),
             tags=post.get("tags", []),
         )
+        meta = _build_meta(permalink, frontmatter)
 
-        permalink = _permalink_from_path(path.relative_to(root))
-
-        yield Page(html=html, permalink=permalink, frontmatter=frontmatter)
+        yield Page(html=html, permalink=permalink, frontmatter=frontmatter, meta=meta)
 
 
 def _find_markdown_files(root: pathlib.Path) -> typing.Iterator[pathlib.Path]:
@@ -58,10 +58,10 @@ def _generate_tag_pages(tags: typing.Iterable[str]) -> typing.Iterator[Page]:
             description=f"Articles about #{tag}",
             tag=tag,
         )
-
         permalink = f"/tag/{tag}"
+        meta = _build_meta(permalink, frontmatter)
 
-        yield Page(permalink=permalink, frontmatter=frontmatter)
+        yield Page(permalink=permalink, frontmatter=frontmatter, meta=meta)
 
 
 def _permalink_from_path(path: pathlib.Path) -> str:
@@ -75,3 +75,36 @@ def _permalink_from_path(path: pathlib.Path) -> str:
         segments[-1] = ""
 
     return "/" + "/".join(segments)
+
+
+def _build_meta(permalink: str, frontmatter: Frontmatter) -> typing.List["MetaTag"]:
+    url = f"https://florimond.dev/blog{permalink}"
+
+    meta = [
+        # General
+        MetaTag(name="description", content=frontmatter.description),
+        MetaTag(name="image", content=frontmatter.image),
+        MetaTag(itemprop="name", content=frontmatter.title),
+        MetaTag(itemprop="description", content=frontmatter.description),
+        MetaTag(itemprop="image", content=frontmatter.image),
+        # Twitter
+        MetaTag(name="twitter:url", content=url),
+        MetaTag(name="twitter:title", content=frontmatter.title),
+        MetaTag(name="twitter:description", content=frontmatter.description),
+        MetaTag(name="twitter:image", content=frontmatter.image),
+        MetaTag(name="twitter:card", content="summary_large_image"),
+        MetaTag(name="twitter:site", content="@florimondmanca"),
+        # OpenGraph
+        MetaTag(name="og:url", content=url),
+        MetaTag(property="og:type", content="article"),
+        MetaTag(property="og:title", content=frontmatter.title),
+        MetaTag(property="og:description", content=frontmatter.description),
+        MetaTag(property="og:image", content=frontmatter.image),
+        MetaTag(property="og:site_name", content="Florimond Manca"),
+        MetaTag(property="article:published_time", content=frontmatter.date),
+    ]
+
+    for tag in frontmatter.tags:
+        meta.append(MetaTag(property="article:tag", content=tag))
+
+    return meta
