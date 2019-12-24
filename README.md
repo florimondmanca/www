@@ -33,18 +33,6 @@ PORT=8000
 
 ## Usage
 
-- Serve the blog only (for development, w/ hot reload):
-
-```bash
-npm start
-```
-
-- Build assets:
-
-```bash
-scripts/build
-```
-
 - Run the website locally:
 
 ```bash
@@ -55,6 +43,12 @@ scripts/serve
 
 ```bash
 heroku local
+```
+
+- Build assets:
+
+```bash
+scripts/build
 ```
 
 - Deploy:
