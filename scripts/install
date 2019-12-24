@@ -9,6 +9,7 @@ if [ -d 'venv' ] ; then
     export PREFIX="venv/bin/"
 fi
 
+${PREFIX}pip install -U pip
 ${PREFIX}pip install -r requirements.txt
 ${PREFIX}pip install -r requirements-dev.txt
 

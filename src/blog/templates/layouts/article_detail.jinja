@@ -1,0 +1,75 @@
+{% from "components/content_wrapper.jinja" import ContentWrapper %}
+{% from "components/article_tag_list.jinja" import ArticleTagList %}
+
+{% macro ArticleDetail(page) %}
+
+{% call ContentWrapper() %}
+  <header class="c_article_detail-header">
+    <div class="u-flex-spaceBetween u-flex-centerVertical">
+      <div>
+        {% if page.frontmatter.date -%}
+        <label class="u-color-muted">
+          {{ "Drafted" if page.frontmatter.published else "" }}
+          {# TODO: date filter #}
+          {{ page.frontmatter.date }}
+        </label>
+        {%- endif %}
+
+        {% if page.frontmatter.tags -%}
+          {{ ArticleTagList(page.frontmatter.tags, class="c_article_detail-tag-list") }}
+        {%- endif %}
+      </div>
+
+      <a
+        href="https://github.com/florimondmanca/www/blob/master/src/blog/pages{{ page.permalink }}.md"
+        rel="no-referrer"
+        target="_blank"
+      >
+        📝&nbsp;Edit on GitHub
+      </a>
+    </div>
+
+    <h1>
+      {{ page.frontmatter.title }}
+    </h1>
+
+    {% if page.frontmatter.description -%}
+      <p class="u-color-muted">
+        {{ page.frontmatter.description }}
+      </p>
+    {%- endif %}
+
+    {% if page.frontmatter.image -%}
+      <div class="p-image">
+        <img
+          src="{{ with_base(page.frontmatter.image) }}"
+          alt="{{ page.frontmatter.image_caption or '' }}"
+        />
+        {% if page.frontmatter.image_caption -%}
+          <figcaption>
+            {{ page.frontmatter.image_caption }}
+          </figcaption>
+        {%- endif %}
+      </div>
+    {%- endif %}
+  </header>
+
+  <div class="c_article_detail-article-markdown-content">
+    {{ page.html | safe }}
+  </div>
+
+  <footer class="p-card">
+    <h3>Stay in touch!</h3>
+    <p>
+      If you enjoyed this post, you can
+      <a href="https://twitter.com/florimondmanca" target="_blank" rel="noreferrer">
+        find me on Twitter
+      </a>
+      for updates, announcements and news. 🐤
+    </p>
+  </footer>
+
+  {# TODO: previous/next navigation #}
+
+{% endcall %}
+{% endmacro %}

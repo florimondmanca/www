@@ -4,19 +4,11 @@
   "author": "Florimond Manca",
   "license": "GPL-3.0",
   "scripts": {
-    "vuepress": "vuepress",
-    "start": "vuepress dev src/www/blog/site",
-    "build": "vuepress build src/www/blog/site"
+    "build": "sass src/blog/sass:src/blog/static/css",
+    "watch": "sass --watch src/blog/sass:src/blog/static/css"
   },
   "devDependencies": {
-    "@vuepress/plugin-google-analytics": "^1.2.0",
-    "darkmode-js": "^1.5.1",
-    "dayjs": "^1.8.16",
-    "vuepress": "1.0.4",
-    "vuepress-frontmatter-lint": "^2.1.2",
-    "vuepress-plugin-autometa": "^0.1.12",
-    "vuepress-plugin-feed": "florimondmanca/vuepress-plugin-feed#893e9f57dc4a7d242faaaa0bef91cf11a127624b",
-    "vuepress-plugin-sitemap": "^2.3.1"
+    "sass": "^1.24.0"
   },
   "engines": {
     "node": "10"

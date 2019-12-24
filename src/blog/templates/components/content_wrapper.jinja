@@ -1,0 +1,5 @@
+{% macro ContentWrapper(class="") -%}
+  <div class="u-mh-auto u-max-w-128 u-overflow-x-hidden {{ class }}">
+    {{ caller() }}
+  </div>
+{%- endmacro %}

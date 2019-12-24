@@ -125,7 +125,12 @@ async def test_legacy_redirect_chains(
             "/introducing-tartiflette-starlette",
             "/articles/2019/07/introducing-tartiflette-starlette",
         ),
-        ("/vuepress-upgrade-1-0", "/articles/2019/07/vuepress-upgrade-1-0"),
+        (
+            # Article was actually published in June.
+            "/articles/2019/07/vuepress-upgrade-1-0",
+            "/articles/2019/06/vuepress-upgrade-1-0",
+        ),
+        ("/vuepress-upgrade-1-0", "/articles/2019/06/vuepress-upgrade-1-0"),
         (
             "/introduction-to-asgi-async-python-web",
             "/articles/2019/08/introduction-to-asgi-async-python-web",

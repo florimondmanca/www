@@ -1,0 +1,28 @@
+{% from 'components/navbar.jinja' import NavBar %}
+{% from 'components/footer.jinja' import Footer with context %}
+{% from 'layouts/home.jinja' import Home %}
+{% from 'layouts/tag.jinja' import Tag %}
+{% from 'layouts/article_detail.jinja' import ArticleDetail %}
+{% from 'layouts/page.jinja' import Page %}
+
+{% macro Layout() %}
+<div class="theme-container">
+  {{ NavBar() }}
+
+  <div class="c_layout-content">
+    <main class="u-mt-6">
+    {%- if page.frontmatter.home -%}
+      {{ Home(get_articles()) }}
+    {%- elif page.frontmatter.tag -%}
+      {{ Tag(page.frontmatter.tag, get_articles(tag=page.frontmatter.tag)) }}
+    {%- elif page.is_article -%}
+      {{ ArticleDetail(page) }}
+    {%- else -%}
+      {{ Page(page) }}
+    {%- endif -%}
+    </main>
+
+    {{ Footer() }}
+  </div>
+</div>
+{% endmacro %}

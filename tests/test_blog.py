@@ -1,3 +1,5 @@
+import typing
+
 import httpx
 import pytest
 
@@ -14,17 +16,10 @@ async def test_root(client: httpx.AsyncClient) -> None:
 
 
 async def test_article(client: httpx.AsyncClient) -> None:
-    urls = [
-        "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin",
-        "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/",
-        "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/index.html",
-    ]
-    responses = [await client.get(url, allow_redirects=False) for url in urls]
-    for resp in responses:
-        assert resp.status_code == 200
-        assert "text/html" in resp.headers["content-type"]
-    unique_contents = {resp.text for resp in responses}
-    assert len(unique_contents) == 1
+    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin"
+    resp = await client.get(url, allow_redirects=False)
+    assert resp.status_code == 200
+    assert "text/html" in resp.headers["content-type"]
 
 
 async def test_tag(client: httpx.AsyncClient) -> None:
@@ -38,6 +33,13 @@ async def test_not_found(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/blog/foo"
     resp = await client.get(url)
     assert resp.status_code == 404
+    assert "text/html" in resp.headers["content-type"]
+
+
+async def test_internal_server_error(silent_client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/error"
+    resp = await silent_client.get(url)
+    assert resp.status_code == 500
     assert "text/html" in resp.headers["content-type"]
 
 
@@ -70,3 +72,27 @@ async def test_rss_link(client: httpx.AsyncClient) -> None:
     )
     assert line is not None
     assert 'href="https://florimond.dev/blog/feed.rss"' in line
+
+
+async def test_meta(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin"
+    resp = await client.get(url, allow_redirects=False)
+    assert resp.status_code == 200
+    assert "text/html" in resp.headers["content-type"]
+
+    meta = utils.find_meta_tags(resp.text)
+
+    def find_meta(typ: str, value: str) -> typing.Optional[dict]:
+        for item in meta:
+            if item.get(typ) == value:
+                return item
+        return None
+
+    assert find_meta("name", "description") is not None
+    assert find_meta("name", "image") is not None
+    assert find_meta("name", "twitter:title") is not None
+    assert find_meta("name", "twitter:description") is not None
+    assert find_meta("name", "twitter:image") is not None
+    assert find_meta("property", "og:title") is not None
+    assert find_meta("property", "og:description") is not None
+    assert find_meta("property", "og:image") is not None

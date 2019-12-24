@@ -1,0 +1,18 @@
+{% from "components/content_wrapper.jinja" import ContentWrapper %}
+
+{% macro NavBar() %}
+<nav class="c_navbar-nav u-sticky-top u-pb-1 u-pt-2 u-ph-4">
+  {% call ContentWrapper() %}
+    <ul class="u-list-reset">
+      <li>
+        <h1 class="c_navbar-title u-mh-auto u-mb-0">
+          <a href="{{ with_base('/') }}">
+            Florimond Manca
+          </a>
+        </h1>
+      </li>
+      <!-- TODO Implement search -->
+    </ul>
+  {% endcall %}
+</nav>
+{% endmacro %}

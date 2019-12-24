@@ -1,0 +1,23 @@
+@import "../../variables";
+
+.c_navbar-nav {
+  background-color: $colorBackgroundCard;
+  z-index: 100; // Float on top of page content.
+
+  ul {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 6 * $space-unit;
+    align-items: center;
+
+    li {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.c_navbar-title {
+  font-size: $font-size-title;
+  width: fit-content;
+}

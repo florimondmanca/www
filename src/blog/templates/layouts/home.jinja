@@ -1,0 +1,10 @@
+{% from 'components/content_wrapper.jinja' import ContentWrapper %}
+{% from 'components/list.jinja' import List %}
+
+{% macro Home(pages) %}
+{% call ContentWrapper() %}
+  <h1>Latest posts</h1>
+
+  {{ List(pages) }}
+{% endcall %}
+{% endmacro %}

@@ -1,0 +1,131 @@
+@import "./mixins";
+
+@mixin spacing-utils($n) {
+  .u-m-#{$n} {
+    @include u-m($n);
+  }
+
+  // Uncomment if used.
+  // .u-p-#{$n} {
+  //   @include u-p($n);
+  // }
+
+  .u-ph-#{$n} {
+    @include u-ph($n);
+  }
+
+  .u-mh-#{$n} {
+    @include u-mh($n);
+  }
+
+  // Uncomment if used.
+  // .u-pv-#{$n} {
+  //   @include u-pv($n);
+  // }
+
+  // Uncomment if used.
+  // .u-mv-#{$n} {
+  //   @include u-mv($n);
+  // }
+
+  // Uncomment if used.
+  // .u-pl-#{$n} {
+  //   @include u-pl($n);
+  // }
+
+  // Uncomment if used.
+  // .u-ml-#{$n} {
+  //   @include u-ml($n);
+  // }
+
+  // Uncomment if used.
+  // .u-pr-#{$n} {
+  //   @include u-pr($n);
+  // }
+
+  // Uncomment if used.
+  // .u-mr-#{$n} {
+  //   @include u-mr($n);
+  // }
+
+  .u-pt-#{$n} {
+    @include u-pt($n);
+  }
+
+  .u-mt-#{$n} {
+    @include u-mt($n);
+  }
+
+  .u-pb-#{$n} {
+    @include u-pb($n);
+  }
+
+  .u-mb-#{$n} {
+    @include u-mb($n);
+  }
+
+  // Uncomment if used.
+  // .u-w-#{$n} {
+  //   @include u-w($n);
+  // }
+}
+
+@for $n from 0 through 10 {
+  @include spacing-utils($n);
+}
+
+.u-max-w-128 {
+  @include u-max-w(128);
+}
+
+@include spacing-utils(auto);
+
+.u-w-full {
+  @include u-w(100%);
+}
+
+.u-color-primary {
+  color: $colorPrimary;
+}
+
+.u-color-muted {
+  color: $colorMuted;
+}
+
+.u-flex-centerHorizontal {
+  display: flex;
+  justify-content: center;
+}
+
+.u-flex-centerVertical {
+  display: flex;
+  align-items: center;
+}
+
+.u-flex-spaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.u-flex-row {
+  flex-flow: row wrap;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-sticky-top {
+  position: sticky;
+  top: 0;
+}
+
+.u-list-reset {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.u-overflow-x-hidden {
+  overflow-x: hidden;
+}
