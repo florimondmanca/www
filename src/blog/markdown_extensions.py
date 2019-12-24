@@ -23,7 +23,7 @@ class ImageFigcaptions(Extension):
 
     def extendMarkdown(self, md: Markdown) -> None:
         md.treeprocessors.register(
-            ImageFigCaptionTreeprocessor(md), "img_figcaption", 30
+            ImageFigCaptionTreeprocessor(md), "img_figcaption", 5
         )
 
 
