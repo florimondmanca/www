@@ -4,10 +4,9 @@ import typing
 
 import aiofiles
 import frontmatter as fm
-import markdown
 
-from . import settings
 from .models import Frontmatter, Index, Page
+from .resources import markdown
 
 
 async def load_index(index: Index) -> None:
@@ -60,7 +59,7 @@ def _generate_tag_pages(index: Index) -> None:
 def _compile_page(content: str) -> typing.Tuple[str, Frontmatter]:
     post = fm.loads(content)
 
-    html = _compile_markdown(post.content)
+    html = markdown.reset().convert(post.content)
 
     frontmatter = Frontmatter(
         home=post.get("home", False),
@@ -73,10 +72,6 @@ def _compile_page(content: str) -> typing.Tuple[str, Frontmatter]:
     )
 
     return html, frontmatter
-
-
-def _compile_markdown(content: str) -> str:
-    return markdown.markdown(content, extensions=settings.MARKDOWN_EXTENSIONS)
 
 
 def _discover_page_paths(root: pathlib.Path) -> typing.Iterator[pathlib.Path]:

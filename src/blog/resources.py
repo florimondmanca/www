@@ -1,5 +1,6 @@
 import contextvars
 
+import markdown as md
 from starlette.requests import Request
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
@@ -11,6 +12,7 @@ index = Index(root=settings.CONTENT_ROOT)
 templates = Jinja2Templates(directory=str(settings.ROOT / "templates"))
 static = StaticFiles(directory=str(settings.ROOT / "static"))
 sass = StaticFiles(directory=str(settings.ROOT / "sass"))
+markdown = md.Markdown(extensions=settings.MARKDOWN_EXTENSIONS)
 
 CTX_VAR_REQUEST: contextvars.ContextVar[Request] = contextvars.ContextVar("request")
 
