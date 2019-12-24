@@ -5,9 +5,10 @@
     @include u-m($n);
   }
 
-  .u-p-#{$n} {
-    @include u-p($n);
-  }
+  // Uncomment if used.
+  // .u-p-#{$n} {
+  //   @include u-p($n);
+  // }
 
   .u-ph-#{$n} {
     @include u-ph($n);
@@ -17,29 +18,35 @@
     @include u-mh($n);
   }
 
-  .u-pv-#{$n} {
-    @include u-pv($n);
-  }
+  // Uncomment if used.
+  // .u-pv-#{$n} {
+  //   @include u-pv($n);
+  // }
 
-  .u-mv-#{$n} {
-    @include u-mv($n);
-  }
+  // Uncomment if used.
+  // .u-mv-#{$n} {
+  //   @include u-mv($n);
+  // }
 
-  .u-pl-#{$n} {
-    @include u-pl($n);
-  }
+  // Uncomment if used.
+  // .u-pl-#{$n} {
+  //   @include u-pl($n);
+  // }
 
-  .u-ml-#{$n} {
-    @include u-ml($n);
-  }
+  // Uncomment if used.
+  // .u-ml-#{$n} {
+  //   @include u-ml($n);
+  // }
 
-  .u-pr-#{$n} {
-    @include u-pr($n);
-  }
+  // Uncomment if used.
+  // .u-pr-#{$n} {
+  //   @include u-pr($n);
+  // }
 
-  .u-mr-#{$n} {
-    @include u-mr($n);
-  }
+  // Uncomment if used.
+  // .u-mr-#{$n} {
+  //   @include u-mr($n);
+  // }
 
   .u-pt-#{$n} {
     @include u-pt($n);
@@ -57,17 +64,18 @@
     @include u-mb($n);
   }
 
-  .u-max-w-#{$n} {
-    @include u-max-w($n);
-  }
-
-  .u-w-#{$n} {
-    @include u-w($n);
-  }
+  // Uncomment if used.
+  // .u-w-#{$n} {
+  //   @include u-w($n);
+  // }
 }
 
-@for $n from 0 through 130 {
+@for $n from 0 through 10 {
   @include spacing-utils($n);
+}
+
+.u-max-w-128 {
+  @include u-max-w(128);
 }
 
 @include spacing-utils(auto);
