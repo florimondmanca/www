@@ -34,6 +34,13 @@ async def test_not_found(client: httpx.AsyncClient) -> None:
     assert "text/html" in resp.headers["content-type"]
 
 
+async def test_internal_server_error(silent_client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/error"
+    resp = await silent_client.get(url)
+    assert resp.status_code == 500
+    assert "text/html" in resp.headers["content-type"]
+
+
 @pytest.mark.parametrize(
     "resource", ("/sitemap.xml", "/robots.txt", "/service-worker.js")
 )

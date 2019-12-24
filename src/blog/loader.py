@@ -33,8 +33,8 @@ async def _find_filesystem_pages(root: pathlib.Path) -> typing.AsyncIterator[Pag
         frontmatter = Frontmatter(
             home=post.get("home", False),
             title=post["title"],
-            description=post["description"],
-            date=post.get("date", ""),
+            description=post.get("description"),
+            date=post.get("date"),
             image=post.get("image"),
             image_caption=post.get("image_caption"),
             tags=post.get("tags", []),

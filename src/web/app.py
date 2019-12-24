@@ -4,7 +4,7 @@ from ddtrace_asgi.middleware import TraceMiddleware
 from starlette.applications import Starlette
 from starlette.middleware import Middleware
 from starlette.requests import Request
-from starlette.responses import Response
+from starlette.responses import RedirectResponse, Response
 from starlette.routing import BaseRoute, Host, Mount, Route
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
@@ -23,6 +23,12 @@ async def home(request: Request) -> Response:
     return templates.TemplateResponse("index.html.jinja", context={"request": request})
 
 
+async def error(request: Request) -> Response:
+    if settings.TESTING:
+        raise RuntimeError("Example server error")
+    return RedirectResponse("/")  # pragma: no cover
+
+
 routes: typing.List[BaseRoute] = [
     Host("florimondmanca.com", app=DomainRedirect("florimond.dev")),
     Host(
@@ -36,6 +42,7 @@ routes: typing.List[BaseRoute] = [
         name="legacy__blog_dot_dev",
     ),
     Route("/", home),
+    Route("/error", error),
     Mount("/blog", routes=blog.routes, name="blog"),
     Mount("/static", static_files, name="static"),
     # These files need to be exposed at the root, not '/static/'.

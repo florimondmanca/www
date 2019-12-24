@@ -21,9 +21,9 @@ class ImageFigcaptions(Extension):
         </div>
     """
 
-    def extendMarkdown(self, md: Markdown, md_globals: dict) -> None:
-        md.treeprocessors.add(
-            "img_figcaption", ImageFigCaptionTreeprocessor(md), ">prettify"
+    def extendMarkdown(self, md: Markdown) -> None:
+        md.treeprocessors.register(
+            ImageFigCaptionTreeprocessor(md), "img_figcaption", 30
         )
 
 

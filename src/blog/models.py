@@ -1,18 +1,21 @@
+import dataclasses
 import typing
 
 
-class Frontmatter(typing.NamedTuple):
+@dataclasses.dataclass(frozen=True)
+class Frontmatter:
     title: str
     description: typing.Optional[str] = None
-    home: bool = False
     date: typing.Optional[str] = None
     image: typing.Optional[str] = None
     image_caption: typing.Optional[str] = None
-    tags: typing.List[str] = []
+    tags: typing.List[str] = dataclasses.field(default_factory=list)
+    home: bool = False
     tag: typing.Optional[str] = None
 
 
-class Page(typing.NamedTuple):
+@dataclasses.dataclass(frozen=True)
+class Page:
     permalink: str
     frontmatter: Frontmatter
     html: str = ""
@@ -40,4 +43,6 @@ class Index:
                 continue
             articles.append(page)
 
-        return sorted(articles, key=lambda page: page.frontmatter.date, reverse=True)
+        return sorted(
+            articles, key=lambda page: page.frontmatter.date or "", reverse=True
+        )
