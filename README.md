@@ -7,7 +7,12 @@ Code for https://florimond.dev.
 
 ## Prerequisites
 
+Runtime:
+
 - Python 3.7+
+
+Development only:
+
 - Node.js v10
 - Yarn
 - Heroku CLI - *(optional)*
