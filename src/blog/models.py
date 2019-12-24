@@ -1,4 +1,3 @@
-import pathlib
 import typing
 
 
@@ -18,37 +17,27 @@ class Page(typing.NamedTuple):
     frontmatter: Frontmatter
     html: str = ""
 
+    @property
+    def is_article(self) -> bool:
+        return self.permalink.startswith("/articles/")
+
 
 class Index:
     """
     An in-memory container of pages.
     """
 
-    def __init__(self, root: pathlib.Path) -> None:
-        self.root = root
-        self._pages: typing.List[Page] = []
+    def __init__(self) -> None:
+        self.pages: typing.List[Page] = []
 
-    def insert(self, page: Page) -> None:
-        for other in self._pages:
-            if other.permalink == page.permalink:
-                raise RuntimeError(f"Permalink {page.permalink!r} is not unique")
-        self._pages.append(page)
+    def articles_by_date(self, *, tag: str = None) -> typing.List[Page]:
+        articles = []
 
-    def find_one(self, *, permalink: str) -> typing.Optional[Page]:
-        for page in self._pages:
-            if page.permalink.rstrip("/") == permalink.rstrip("/"):
-                return page
-        return None
+        for page in self.pages:
+            if not page.is_article:
+                continue
+            if tag is not None and tag not in page.frontmatter.tags:
+                continue
+            articles.append(page)
 
-    def find_all(
-        self, condition: typing.Callable[[Page], bool] = lambda page: True,
-    ) -> typing.Iterator[Page]:
-        for page in self._pages:
-            if condition(page):
-                yield page
-
-    def clear(self) -> None:
-        self._pages.clear()
-
-    def __repr__(self) -> str:
-        return f"<Index ({len(self._pages)} pages)>"
+        return sorted(articles, key=lambda page: page.frontmatter.date, reverse=True)

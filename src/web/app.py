@@ -10,12 +10,13 @@ from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 import blog
+from blog.middleware import LegacyRedirectMiddleware
 
 from . import settings
 from .endpoints import DomainRedirect
 
-templates = Jinja2Templates(directory=str(settings.DIR / "templates"))
-static_files = StaticFiles(directory=str(settings.DIR / "static"))
+templates = Jinja2Templates(directory=str(settings.WEB_ROOT / "templates"))
+static_files = StaticFiles(directory=str(settings.WEB_ROOT / "static"))
 
 
 async def home(request: Request) -> Response:
@@ -35,7 +36,7 @@ routes: typing.List[BaseRoute] = [
         name="legacy__blog_dot_dev",
     ),
     Route("/", home),
-    Mount("/blog", app=blog.app, name="blog"),
+    Mount("/blog", routes=blog.routes, name="blog"),
     Mount("/static", static_files, name="static"),
     # These files need to be exposed at the root, not '/static/'.
     Route("/service-worker.js", static_files, name="service-worker"),
@@ -45,10 +46,17 @@ routes: typing.List[BaseRoute] = [
 
 middleware: typing.List[typing.Optional[Middleware]] = [
     Middleware(
-        TraceMiddleware, service=settings.DD_TRACE_SERVICE, tags=settings.DD_TRACE_TAGS
+        TraceMiddleware,
+        service=settings.WEB_DD_TRACE_SERVICE,
+        tags=settings.WEB_DD_TRACE_TAGS,
     )
-    if settings.DD_TRACE_SERVICE
+    if settings.WEB_DD_TRACE_SERVICE
     else None,
+    Middleware(
+        LegacyRedirectMiddleware,
+        url_mapping=blog.settings.BLOG_LEGACY_URL_MAPPING,
+        root_path="/blog",
+    ),
 ]
 
 

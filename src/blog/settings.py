@@ -3,11 +3,11 @@ import pathlib
 
 from .markdown_extensions import ImageFigcaptions
 
-ROOT = pathlib.Path(__file__).parent
-CONTENT_ROOT = ROOT / "pages"
-ASSETS_ROOT = ROOT / "assets"
+BLOG_ROOT = pathlib.Path(__file__).parent
+BLOG_CONTENT_ROOT = BLOG_ROOT / "content"
+BLOG_ASSETS_ROOT = BLOG_ROOT / "assets"
 
-with open(ASSETS_ROOT / "legacy-blog-url-mapping.json") as f:
+with open(BLOG_ASSETS_ROOT / "legacy-blog-url-mapping.json") as f:
     BLOG_LEGACY_URL_MAPPING = json.loads(f.read())
 
-MARKDOWN_EXTENSIONS = ["codehilite", "fenced_code", "tables", ImageFigcaptions()]
+BLOG_MARKDOWN_EXTENSIONS = ["codehilite", "fenced_code", "tables", ImageFigcaptions()]

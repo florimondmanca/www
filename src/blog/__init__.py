@@ -1,5 +1,5 @@
-from .app import app
 from .events import on_startup
 from .resources import static
+from .routes import routes
 
-__all__ = ["app", "static", "on_startup"]
+__all__ = ["routes", "static", "on_startup"]

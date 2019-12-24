@@ -8,11 +8,11 @@ from starlette.templating import Jinja2Templates
 from . import settings
 from .models import Index
 
-index = Index(root=settings.CONTENT_ROOT)
-templates = Jinja2Templates(directory=str(settings.ROOT / "templates"))
-static = StaticFiles(directory=str(settings.ROOT / "static"))
-sass = StaticFiles(directory=str(settings.ROOT / "sass"))
-markdown = md.Markdown(extensions=settings.MARKDOWN_EXTENSIONS)
+index = Index()
+templates = Jinja2Templates(directory=str(settings.BLOG_ROOT / "templates"))
+static = StaticFiles(directory=str(settings.BLOG_ROOT / "static"))
+sass = StaticFiles(directory=str(settings.BLOG_ROOT / "sass"))
+markdown = md.Markdown(extensions=settings.BLOG_MARKDOWN_EXTENSIONS)
 
 CTX_VAR_REQUEST: contextvars.ContextVar[Request] = contextvars.ContextVar("request")
 

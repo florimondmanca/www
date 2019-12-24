@@ -1,6 +1,7 @@
+from . import settings
+from .loader import load_pages
 from .resources import index
-from .utils import load_index
 
 
 async def on_startup() -> None:
-    await load_index(index)
+    index.pages = await load_pages(root=settings.BLOG_CONTENT_ROOT)
