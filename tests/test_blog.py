@@ -1,3 +1,5 @@
+import typing
+
 import httpx
 import pytest
 
@@ -70,3 +72,27 @@ async def test_rss_link(client: httpx.AsyncClient) -> None:
     )
     assert line is not None
     assert 'href="https://florimond.dev/blog/feed.rss"' in line
+
+
+async def test_meta(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin"
+    resp = await client.get(url, allow_redirects=False)
+    assert resp.status_code == 200
+    assert "text/html" in resp.headers["content-type"]
+
+    meta = utils.find_meta_tags(resp.text)
+
+    def find_meta(typ: str, value: str) -> typing.Optional[dict]:
+        for item in meta:
+            if item.get(typ) == value:
+                return item
+        return None
+
+    assert find_meta("name", "description") is not None
+    assert find_meta("name", "image") is not None
+    assert find_meta("name", "twitter:title") is not None
+    assert find_meta("name", "twitter:description") is not None
+    assert find_meta("name", "twitter:image") is not None
+    assert find_meta("property", "og:title") is not None
+    assert find_meta("property", "og:description") is not None
+    assert find_meta("property", "og:image") is not None
