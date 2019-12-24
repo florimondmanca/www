@@ -11,3 +11,4 @@ with open(BLOG_ASSETS_ROOT / "legacy-blog-url-mapping.json") as f:
     BLOG_LEGACY_URL_MAPPING = json.loads(f.read())
 
 BLOG_MARKDOWN_EXTENSIONS = ["codehilite", "fenced_code", "tables", ImageFigcaptions()]
+BLOG_GA_ID = "UA-122676386-2"

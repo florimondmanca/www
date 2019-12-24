@@ -17,5 +17,11 @@
 </head>
 <body>
   {{ Layout() }}
+
+  <script src="{{ with_base('/static/js/ga.js') }}"></script>
+  <script>
+    ga("create", "{{ GA_ID }}", "auto");
+    ga("set", "anonymizeIp", true);
+  </script>
 </body>
 </html>
