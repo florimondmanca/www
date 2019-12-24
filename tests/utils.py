@@ -1,6 +1,6 @@
 import typing
-from xml.dom import minidom
 from html.parser import HTMLParser
+from xml.dom import minidom
 
 
 def load_xml_from_string(content: str) -> minidom.Document:
