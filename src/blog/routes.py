@@ -15,6 +15,8 @@ class RenderPage(HTTPEndpoint):
         CTX_VAR_REQUEST.set(request)
 
         permalink = request["path"]
+        if permalink != "/":
+            permalink = permalink.rstrip("/")
 
         for page in index.pages:
             if page.permalink == permalink:

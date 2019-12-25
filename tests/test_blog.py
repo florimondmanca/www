@@ -15,8 +15,14 @@ async def test_root(client: httpx.AsyncClient) -> None:
     assert "text/html" in resp.headers["content-type"]
 
 
-async def test_article(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin"
+@pytest.mark.parametrize(
+    "url",
+    [
+        "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin",
+        "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/",
+    ],
+)
+async def test_article(client: httpx.AsyncClient, url: str) -> None:
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
