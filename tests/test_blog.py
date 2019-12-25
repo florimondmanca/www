@@ -15,21 +15,24 @@ async def test_root(client: httpx.AsyncClient) -> None:
     assert "text/html" in resp.headers["content-type"]
 
 
-@pytest.mark.parametrize(
-    "url",
-    [
-        "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin",
-        "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/",
-    ],
-)
-async def test_article(client: httpx.AsyncClient, url: str) -> None:
+async def test_article(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/"
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
 
 
+async def test_article_no_trailing_slash(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin"
+    resp = await client.get(url, allow_redirects=False)
+    assert resp.status_code == 307
+    assert resp.headers["Location"] == (
+        "https://florimond.dev/blog/articles/2018/07/let-the-journey-begin/"
+    )
+
+
 async def test_tag(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/blog/tag/python"
+    url = "http://florimond.dev/blog/tag/python/"
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
@@ -81,7 +84,7 @@ async def test_rss_link(client: httpx.AsyncClient) -> None:
 
 
 async def test_meta(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin"
+    url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/"
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
