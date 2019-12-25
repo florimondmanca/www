@@ -5,7 +5,7 @@ flake8
 flake8-bugbear
 flake8-comprehensions
 flake8-pie
-httpx==0.7.*
+httpx==0.9.*
 isort
 mypy
 pytest==5.*
