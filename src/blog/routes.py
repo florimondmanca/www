@@ -14,9 +14,7 @@ class RenderPage(HTTPEndpoint):
     async def get(self, request: Request) -> Response:
         CTX_VAR_REQUEST.set(request)
 
-        permalink = request["path"]
-        if permalink != "/":
-            permalink = permalink.rstrip("/")
+        permalink = "/" + request.path_params.get("permalink", "")
 
         for page in index.pages:
             if page.permalink == permalink:
@@ -44,5 +42,6 @@ routes = [
     ),
     Mount("/static", static),
     Mount("/sass", sass),
-    Mount("/", app=RenderPage),
+    Route("/", endpoint=RenderPage),
+    Route("/{permalink:path}/", endpoint=RenderPage),
 ]
