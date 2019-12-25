@@ -2,6 +2,11 @@ import typing
 from html.parser import HTMLParser
 from xml.dom import minidom
 
+import httpx
+
+# Alias to facilitate renaming as HTTPX progresses.
+TestClient = httpx.Client
+
 
 def load_xml_from_string(content: str) -> minidom.Document:
     return minidom.parseString(content)
