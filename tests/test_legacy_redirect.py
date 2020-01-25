@@ -2,7 +2,7 @@ import typing
 
 import pytest
 
-from .utils import TestClient
+from .utils import HTTPClient
 
 pytestmark = pytest.mark.asyncio
 
@@ -37,7 +37,7 @@ pytestmark = pytest.mark.asyncio
     ],
 )
 async def test_legacy_redirect_chains(
-    client: TestClient, start_url: str, urls: typing.List[str]
+    client: HTTPClient, start_url: str, urls: typing.List[str]
 ) -> None:
     resp = await client.get(start_url, allow_redirects=True)
     assert resp.status_code == 200
@@ -156,7 +156,7 @@ async def test_legacy_redirect_chains(
     ],
 )
 async def test_legacy_redirect_articles(
-    client: TestClient, blog_dot_dev_path: str, dot_dev_path: str,
+    client: HTTPClient, blog_dot_dev_path: str, dot_dev_path: str,
 ) -> None:
     resp = await client.get(
         f"https://blog.florimond.dev{blog_dot_dev_path}", allow_redirects=True
