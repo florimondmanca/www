@@ -1,27 +1,28 @@
 import typing
 
+import httpx
 import pytest
 
-from .utils import HTTPClient, find_meta_tags, load_xml_from_string
+from .utils import find_meta_tags, load_xml_from_string
 
 pytestmark = pytest.mark.asyncio
 
 
-async def test_root(client: HTTPClient) -> None:
+async def test_root(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/blog/"
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
 
 
-async def test_article(client: HTTPClient) -> None:
+async def test_article(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/"
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
 
 
-async def test_article_no_trailing_slash(client: HTTPClient) -> None:
+async def test_article_no_trailing_slash(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin"
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 307
@@ -30,21 +31,21 @@ async def test_article_no_trailing_slash(client: HTTPClient) -> None:
     )
 
 
-async def test_tag(client: HTTPClient) -> None:
+async def test_tag(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/blog/tag/python/"
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
 
 
-async def test_not_found(client: HTTPClient) -> None:
+async def test_not_found(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/blog/foo"
     resp = await client.get(url)
     assert resp.status_code == 404
     assert "text/html" in resp.headers["content-type"]
 
 
-async def test_internal_server_error(silent_client: HTTPClient) -> None:
+async def test_internal_server_error(silent_client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/error"
     resp = await silent_client.get(url)
     assert resp.status_code == 500
@@ -54,13 +55,13 @@ async def test_internal_server_error(silent_client: HTTPClient) -> None:
 @pytest.mark.parametrize(
     "resource", ("/sitemap.xml", "/robots.txt", "/service-worker.js")
 )
-async def test_seo_resources(client: HTTPClient, resource: str) -> None:
+async def test_seo_resources(client: httpx.AsyncClient, resource: str) -> None:
     url = f"http://florimond.dev{resource}"
     resp = await client.get(url)
     assert resp.status_code == 200
 
 
-async def test_rss_feed(client: HTTPClient) -> None:
+async def test_rss_feed(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/feed.rss"
     resp = await client.get(url)
     assert resp.status_code == 200
@@ -68,7 +69,7 @@ async def test_rss_feed(client: HTTPClient) -> None:
     load_xml_from_string(resp.text)
 
 
-async def test_rss_link(client: HTTPClient) -> None:
+async def test_rss_link(client: httpx.AsyncClient) -> None:
     resp = await client.get("http://florimond.dev/blog/")
     line = next(
         (
@@ -82,7 +83,7 @@ async def test_rss_link(client: HTTPClient) -> None:
     assert 'href="https://florimond.dev/feed.rss"' in line
 
 
-async def test_meta(client: HTTPClient) -> None:
+async def test_meta(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/"
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200
