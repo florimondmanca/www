@@ -1,7 +1,6 @@
 import markdown as md
 
-from web import settings
-
+from .. import settings
 from .models import Index
 
 index = Index()

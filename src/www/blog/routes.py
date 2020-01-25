@@ -7,8 +7,7 @@ from starlette.requests import Request
 from starlette.responses import Response
 from starlette.routing import BaseRoute, Route
 
-from web.resources import CTX_VAR_REQUEST, templates
-
+from ..resources import CTX_VAR_REQUEST, templates
 from .resources import index
 
 
