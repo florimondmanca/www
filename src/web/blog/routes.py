@@ -1,13 +1,15 @@
 import datetime as dt
+import typing
 
 from starlette.endpoints import HTTPEndpoint
 from starlette.exceptions import HTTPException
 from starlette.requests import Request
 from starlette.responses import Response
-from starlette.routing import Mount, Route
+from starlette.routing import BaseRoute, Route
 
-from .middleware import PatchHeadersMiddleware
-from .resources import CTX_VAR_REQUEST, index, sass, static, templates
+from web.resources import CTX_VAR_REQUEST, templates
+
+from .resources import index
 
 
 class RenderPage(HTTPEndpoint):
@@ -29,19 +31,10 @@ class RenderPage(HTTPEndpoint):
             "get_articles": index.articles_by_date,
         }
 
-        return templates.TemplateResponse("main.jinja", context=context)
+        return templates.TemplateResponse("blog/main.jinja", context=context)
 
 
-routes = [
-    Route(
-        "/feed.rss",
-        # Make sure clients always receive the correct MIME type for the RSS feed,
-        # as the content type Starlette guesses may vary across operating systems.
-        PatchHeadersMiddleware(static, headers={"content-type": "application/rss+xml"}),
-        name="feed-rss",
-    ),
-    Mount("/static", static),
-    Mount("/sass", sass),
+routes: typing.List[BaseRoute] = [
     Route("/", endpoint=RenderPage),
     Route("/{permalink:path}/", endpoint=RenderPage),
 ]

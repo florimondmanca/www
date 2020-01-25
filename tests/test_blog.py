@@ -61,7 +61,7 @@ async def test_seo_resources(client: HTTPClient, resource: str) -> None:
 
 
 async def test_rss_feed(client: HTTPClient) -> None:
-    url = "http://florimond.dev/blog/feed.rss"
+    url = "http://florimond.dev/feed.rss"
     resp = await client.get(url)
     assert resp.status_code == 200
     assert resp.headers["content-type"] == "application/rss+xml"
@@ -79,7 +79,7 @@ async def test_rss_link(client: HTTPClient) -> None:
         None,
     )
     assert line is not None
-    assert 'href="https://florimond.dev/blog/feed.rss"' in line
+    assert 'href="https://florimond.dev/feed.rss"' in line
 
 
 async def test_meta(client: HTTPClient) -> None:
