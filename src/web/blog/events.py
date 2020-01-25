@@ -1,4 +1,5 @@
-from . import settings
+from web import settings
+
 from .loader import load_pages
 from .resources import index
 

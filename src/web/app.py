@@ -6,17 +6,11 @@ from starlette.middleware import Middleware
 from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 from starlette.routing import BaseRoute, Host, Mount, Route
-from starlette.staticfiles import StaticFiles
-from starlette.templating import Jinja2Templates
 
-import blog
-from blog.middleware import LegacyRedirectMiddleware
-
-from . import settings
+from . import blog, settings
 from .endpoints import DomainRedirect
-
-templates = Jinja2Templates(directory=str(settings.WEB_ROOT / "templates"))
-static_files = StaticFiles(directory=str(settings.WEB_ROOT / "static"))
+from .middleware import LegacyRedirectMiddleware, PatchHeadersMiddleware
+from .resources import sass, static, templates
 
 
 async def home(request: Request) -> Response:
@@ -44,12 +38,21 @@ routes: typing.List[BaseRoute] = [
     Route("/", home),
     Route("/error", error),
     Mount("/blog", routes=blog.routes, name="blog"),
-    Mount("/static", static_files, name="static"),
+    Mount("/static", static, name="static"),
+    # Make the SCSS source available to browsers for inspection.
+    Mount("/sass", sass),
     # These files need to be exposed at the root, not '/static/'.
-    Route("/favicon.ico", static_files, name="favicon"),
-    Route("/service-worker.js", static_files, name="service-worker"),
-    Route("/robots.txt", static_files, name="robots"),
-    Route("/sitemap.xml", blog.static, name="sitemap"),
+    Route("/favicon.ico", static, name="favicon"),
+    Route("/service-worker.js", static, name="service-worker"),
+    Route("/robots.txt", static, name="robots"),
+    Route("/sitemap.xml", static, name="sitemap"),
+    Route(
+        "/feed.rss",
+        # Make sure clients always receive the correct MIME type for the RSS feed,
+        # as the content type Starlette guesses may vary across operating systems.
+        PatchHeadersMiddleware(static, headers={"content-type": "application/rss+xml"}),
+        name="feed-rss",
+    ),
 ]
 
 middleware: typing.List[typing.Optional[Middleware]] = [
@@ -62,7 +65,7 @@ middleware: typing.List[typing.Optional[Middleware]] = [
     else None,
     Middleware(
         LegacyRedirectMiddleware,
-        url_mapping=blog.settings.BLOG_LEGACY_URL_MAPPING,
+        url_mapping=settings.BLOG_LEGACY_URL_MAPPING,
         root_path="/blog",
     ),
 ]
