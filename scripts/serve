@@ -5,4 +5,4 @@ if [ -d 'venv' ] ; then
     export PREFIX="venv/bin/"
 fi
 
-yarn watch & ${PREFIX}uvicorn web:app $@
+yarn watch & ${PREFIX}uvicorn www:app $@
