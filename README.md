@@ -47,6 +47,7 @@ scripts/serve
 - Run the website as it would run in production:
 
 ```bash
+. venv/bin/activate
 heroku local
 ```
 

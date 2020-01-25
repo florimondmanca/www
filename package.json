@@ -4,8 +4,8 @@
   "author": "Florimond Manca",
   "license": "GPL-3.0",
   "scripts": {
-    "build": "sass src/web/sass:src/web/static/css",
-    "watch": "sass --watch src/web/sass:src/web/static/css"
+    "build": "sass src/www/sass:src/www/static/css",
+    "watch": "sass --watch src/www/sass:src/www/static/css"
   },
   "devDependencies": {
     "sass": "^1.24.0"
