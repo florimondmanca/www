@@ -5,7 +5,7 @@ from xml.dom import minidom
 import httpx
 
 # Alias to facilitate renaming as HTTPX progresses.
-HTTPClient = httpx.Client
+HTTPClient = httpx.AsyncClient
 
 
 def load_xml_from_string(content: str) -> minidom.Document:
