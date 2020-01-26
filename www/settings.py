@@ -17,7 +17,7 @@ WEB_DD_TRACE_SERVICE = config("DD_TRACE_SERVICE", cast=str, default="")
 WEB_DD_TRACE_TAGS = config("DD_TRACE_TAGS", cast=str, default="")
 
 BLOG_ROOT = WEB_ROOT / "blog"
-BLOG_CONTENT_ROOT = WEB_ROOT.parent.parent / "content"
+BLOG_CONTENT_ROOT = WEB_ROOT.parent / "content"
 
 with open(WEB_ASSETS_ROOT / "legacy-blog-url-mapping.json") as f:
     BLOG_LEGACY_URL_MAPPING = json.loads(f.read())
