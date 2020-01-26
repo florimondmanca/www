@@ -42,7 +42,7 @@
     {% if page.frontmatter.image -%}
       <div class="p-image">
         <img
-          src="{{ with_base(page.frontmatter.image) }}"
+          src="{{ page.frontmatter.image }}"
           alt="{{ page.frontmatter.image_caption or '' }}"
         />
         {% if page.frontmatter.image_caption -%}
