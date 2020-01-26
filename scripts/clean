@@ -1,9 +1,5 @@
 #!/bin/sh -e -x
 
-if [ -d 'src/www/blog/site/.vuepress/dist' ] ; then
-    rm -r src/www/blog/site/.vuepress/dist
-fi
-
 if [ -d 'dist' ] ; then
     rm -r dist
 fi
