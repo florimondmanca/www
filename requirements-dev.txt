@@ -1,5 +1,5 @@
 autoflake
-asgi-lifespan==0.4.*
+asgi-lifespan==1.0.*
 black
 flake8
 flake8-bugbear

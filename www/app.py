@@ -55,20 +55,24 @@ routes: typing.List[BaseRoute] = [
     ),
 ]
 
-middleware: typing.List[typing.Optional[Middleware]] = [
-    Middleware(
-        TraceMiddleware,
-        service=settings.WEB_DD_TRACE_SERVICE,
-        tags=settings.WEB_DD_TRACE_TAGS,
+middleware = []
+
+if settings.WEB_DD_TRACE_SERVICE:
+    middleware.append(
+        Middleware(
+            TraceMiddleware,
+            service=settings.WEB_DD_TRACE_SERVICE,
+            tags=settings.WEB_DD_TRACE_TAGS,
+        )
     )
-    if settings.WEB_DD_TRACE_SERVICE
-    else None,
+
+middleware.append(
     Middleware(
         LegacyRedirectMiddleware,
         url_mapping=settings.BLOG_LEGACY_URL_MAPPING,
         root_path="/blog",
-    ),
-]
+    )
+)
 
 
 async def not_found(request: Request, exc: Exception) -> Response:
