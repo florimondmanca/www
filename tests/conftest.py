@@ -4,7 +4,7 @@ import typing
 
 import httpx
 import pytest
-from asgi_lifespan.manager import LifespanManager
+from asgi_lifespan import LifespanManager
 from starlette.types import ASGIApp
 
 os.environ["TESTING"] = "True"
