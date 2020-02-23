@@ -1,178 +1,4 @@
 @charset "UTF-8";
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  color: #424242;
-  font-family: "EB Garamond", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  font-size: 1.2em;
-  line-height: 1.5;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 500;
-  margin-top: 6px;
-  margin-bottom: 18px;
-}
-
-h1 {
-  font-size: 2.2em;
-}
-
-h2 {
-  font-size: 1.6em;
-}
-
-h3 {
-  font-size: 1.5em;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 12px;
-}
-
-a {
-  text-decoration: none;
-  border-bottom: 1px solid #59c6b6;
-  transition: background 80ms;
-  cursor: pointer;
-  color: inherit;
-}
-a:hover {
-  background-color: rgba(89, 198, 182, 0.2);
-}
-
-hr {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  height: 1px;
-  background-color: #bccecc;
-}
-
-h1[id],
-h2[id],
-h3[id] {
-  position: relative;
-}
-h1[id] .header-anchor,
-h2[id] .header-anchor,
-h3[id] .header-anchor {
-  float: left;
-  font-weight: normal;
-  font-size: 0.85em;
-  margin-left: -0.87em;
-  padding-right: 0.23em;
-  padding-left: 0.23em;
-  margin-top: 0.125em;
-}
-
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
 .p-btn {
   background: none;
   border: 0;
@@ -244,54 +70,6 @@ h3[id] .header-anchor {
   max-height: 20em;
 }
 
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
 .u-m-0 {
   margin-left: 0px;
   margin-right: 0px;
@@ -742,30 +520,6 @@ h3[id] .header-anchor {
   overflow-x: hidden;
 }
 
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
 .theme-container code {
   color: #757575;
   padding: 0.25rem 0.5rem;
@@ -1378,78 +1132,6 @@ th, td {
   flex-wrap: wrap;
 }
 
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
 .c_list_item-item {
   padding-bottom: 1em;
 }
@@ -1471,30 +1153,6 @@ th, td {
   content: "∙";
 }
 
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
 .c_navbar-nav {
   background-color: #f2f4f5;
   z-index: 100;
@@ -1515,78 +1173,6 @@ th, td {
   width: fit-content;
 }
 
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
 .c_article_detail-header {
   margin-bottom: 36px;
   border-bottom: 1px solid #bccecc;
@@ -1605,78 +1191,6 @@ th, td {
   height: auto;
 }
 
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/regular.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/static/fonts/eb-garamond/italic.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/static/fonts/eb-garamond/medium.ttf");
-}
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/static/fonts/eb-garamond/bold.ttf");
-}
 .c_layout-content {
   padding: 0 24px;
 }
@@ -1684,6 +1198,108 @@ th, td {
   .c_layout-content {
     padding: 0 48px;
   }
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/static/fonts/eb-garamond/regular.ttf");
+}
+@font-face {
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: normal;
+  src: url("/static/fonts/eb-garamond/italic.ttf");
+}
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/static/fonts/eb-garamond/medium.ttf");
+}
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/static/fonts/eb-garamond/bold.ttf");
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: #424242;
+  font-family: "EB Garamond", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: 2.2em;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+a {
+  text-decoration: none;
+  border-bottom: 1px solid #59c6b6;
+  transition: background 80ms;
+  cursor: pointer;
+  color: inherit;
+}
+a:hover {
+  background-color: rgba(89, 198, 182, 0.2);
+}
+
+hr {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 1px;
+  background-color: #bccecc;
+}
+
+h1[id],
+h2[id],
+h3[id] {
+  position: relative;
+}
+h1[id] .header-anchor,
+h2[id] .header-anchor,
+h3[id] .header-anchor {
+  float: left;
+  font-weight: normal;
+  font-size: 0.85em;
+  margin-left: -0.87em;
+  padding-right: 0.23em;
+  padding-left: 0.23em;
+  margin-top: 0.125em;
 }
 
 /*# sourceMappingURL=styles.css.map */

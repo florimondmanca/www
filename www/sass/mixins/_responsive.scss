@@ -1,8 +1,8 @@
-@import "../variables";
+@use "../variables" as v;
 
 @mixin forSize($breakName: "phone", $breakValue: 0, $mobileFirst: true) {
   @if $breakName != "phone" {
-    $breakValue: map-get($breakpoints, $breakName);
+    $breakValue: map-get(v.$breakpoints, $breakName);
   }
 
   @if ($mobileFirst) {
