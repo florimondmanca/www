@@ -1,24 +1,31 @@
 @import "./variables";
 
 @font-face {
-  font-family: Agane;
+  font-family: "EB Garamond";
   font-style: normal;
   font-weight: normal;
-  src: url("/static/fonts/agane/regular.ttf");
+  src: url("/static/fonts/eb-garamond/regular.ttf");
 }
 
 @font-face {
-  font-family: Agane;
-  font-style: normal;
-  font-weight: 700;
-  src: url("/static/fonts/agane/bold.ttf");
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: normal;
+  src: url("/static/fonts/eb-garamond/italic.ttf");
 }
 
 @font-face {
-  font-family: Agane;
+  font-family: "EB Garamond";
   font-style: normal;
-  font-weight: 900;
-  src: url("/static/fonts/agane/heavy.ttf");
+  font-weight: 500;
+  src: url("/static/fonts/eb-garamond/medium.ttf");
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/static/fonts/eb-garamond/bold.ttf");
 }
 
 html,
@@ -29,7 +36,7 @@ body {
 
 body {
   color: $colorText;
-  font-family: "Agane", Arial, sans-serif;
+  font-family: "EB Garamond", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-size: $font-size;
   line-height: $font-line-height;
@@ -41,20 +48,9 @@ h3,
 h4,
 h5,
 h6 {
+  font-weight: 500;
   margin-top: 1 * $space-unit;
   margin-bottom: 3 * $space-unit;
-}
-
-h1,
-h2 {
-  font-weight: 900;
-}
-
-h3,
-h4,
-h5,
-h6 {
-  font-weight: normal;
 }
 
 h1 {
