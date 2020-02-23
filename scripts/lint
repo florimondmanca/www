@@ -12,4 +12,4 @@ set -x
 ${PREFIX}autoflake --in-place --recursive $SOURCE_FILES
 ${PREFIX}seed-isort-config --application-directories=www
 ${PREFIX}isort --project=www --recursive $SOURCE_FILES
-${PREIFX}black --target-version=py37 $SOURCE_FILES
+${PREFIX}black --target-version=py37 $SOURCE_FILES

@@ -9,7 +9,7 @@ export SOURCE_FILES="www tests"
 
 set -x
 
-${PREIFX}black --check --diff --target-version=py37 $SOURCE_FILES
+${PREFIX}black --check --diff --target-version=py37 $SOURCE_FILES
 ${PREFIX}flake8 $SOURCE_FILES
 ${PREFIX}mypy $SOURCE_FILES
 ${PREFIX}isort --check --diff --project=www --recursive $SOURCE_FILES
