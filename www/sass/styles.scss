@@ -1,4 +1,10 @@
-@import "./variables";
+@use "./variables" as v;
+@use "./components";
+@use "./util";
+@use "./code";
+@use "./tables";
+@use "./pygments_theme";
+@use "./app";
 
 @font-face {
   font-family: "EB Garamond";
@@ -35,11 +41,11 @@ body {
 }
 
 body {
-  color: $colorText;
+  color: v.$colorText;
   font-family: "EB Garamond", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: $font-size;
-  line-height: $font-line-height;
+  font-size: v.$font-size;
+  line-height: v.$font-line-height;
 }
 
 h1,
@@ -49,36 +55,36 @@ h4,
 h5,
 h6 {
   font-weight: 500;
-  margin-top: 1 * $space-unit;
-  margin-bottom: 3 * $space-unit;
+  margin-top: 1 * v.$space-unit;
+  margin-bottom: 3 * v.$space-unit;
 }
 
 h1 {
-  font-size: $font-size-h1;
+  font-size: v.$font-size-h1;
 }
 
 h2 {
-  font-size: $font-size-h2;
+  font-size: v.$font-size-h2;
 }
 
 h3 {
-  font-size: $font-size-h3;
+  font-size: v.$font-size-h3;
 }
 
 p {
   margin-top: 0;
-  margin-bottom: 2 * $space-unit;
+  margin-bottom: 2 * v.$space-unit;
 }
 
 a {
   text-decoration: none;
-  border-bottom: 1px solid $colorPrimary;
+  border-bottom: 1px solid v.$colorPrimary;
   transition: background 80ms;
   cursor: pointer;
   color: inherit;
 
   &:hover {
-    background-color: transparentize($colorPrimary, 0.8);
+    background-color: transparentize(v.$colorPrimary, 0.8);
   }
 }
 
@@ -87,7 +93,7 @@ hr {
   padding: 0;
   border: 0;
   height: 1px;
-  background-color: $colorDivider;
+  background-color: v.$colorDivider;
 }
 
 // Icons in front of subheaders.
@@ -106,10 +112,3 @@ h3[id] {
     margin-top: 0.125em;
   }
 }
-
-@import "./components";
-@import "./util";
-@import "./code";
-@import "./tables";
-@import "./pygments_theme";
-@import "./app";

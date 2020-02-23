@@ -1,10 +1,10 @@
-@import "../../variables";
-@import "../../mixins";
+@use "../../variables" as v;
+@use "../../mixins";
 
 .c_layout-content {
-  padding: 0 4 * $space-unit;
+  padding: 0 4 * v.$space-unit;
 
-  @include forSize("tablet") {
-    padding: 0 8 * $space-unit;
+  @include mixins.forSize("tablet") {
+    padding: 0 8 * v.$space-unit;
   }
 }

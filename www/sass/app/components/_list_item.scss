@@ -1,19 +1,19 @@
-@import "../../variables";
-@import "../../mixins";
+@use "../../variables" as v;
+@use "../../mixins";
 
 .c_list_item-item {
   padding-bottom: 1em;
 
   & + .c_list_item-item {
     padding-top: 1em;
-    border-top: 1px solid $colorDivider;
+    border-top: 1px solid v.$colorDivider;
   }
 }
 
 .c_list_item-post-header {
   font-size: smaller;
 
-  @include forSize(tablet) {
+  @include mixins.forSize(tablet) {
     font-size: inherit;
   }
 }

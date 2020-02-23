@@ -1,4 +1,4 @@
-@import "./variables";
+@use "./variables" as v;
 
 $contentClass: ".theme-container";
 
@@ -26,7 +26,7 @@ $codeLang: (
 
 #{$contentClass} {
   code {
-    color: lighten($colorText, 20%);
+    color: lighten(v.$colorText, 20%);
     padding: 0.25rem 0.5rem;
     margin: 0;
     background-color: rgba(27, 31, 35, 0.05);
@@ -38,7 +38,7 @@ $codeLang: (
       }
 
       &.inserted {
-        color: $colorAccent;
+        color: v.$colorAccent;
       }
     }
   }
@@ -49,8 +49,8 @@ $codeLang: (
   pre[class*="language-"] {
     line-height: 1.4;
     padding: 1.25rem 1.5rem;
-    margin: 4 * $space-unit 0 !important;
-    background-color: $colorCodeBackground;
+    margin: 4 * v.$space-unit 0 !important;
+    background-color: v.$colorCodeBackground;
     border-radius: 6px;
     overflow: auto;
 
@@ -65,7 +65,7 @@ $codeLang: (
 
 div[class*="language-"] {
   position: relative;
-  background-color: $colorCodeBackground;
+  background-color: v.$colorCodeBackground;
   border-radius: 6px;
 
   .highlight-lines {
@@ -115,21 +115,21 @@ div[class*="language-"] {
         left: 0;
         top: 0;
         display: block;
-        width: $lineNumbersWrapperWidth;
+        width: v.$lineNumbersWrapperWidth;
         height: 100%;
         background-color: rgba(0, 0, 0, 66%);
       }
     }
 
     pre {
-      padding-left: $lineNumbersWrapperWidth + 1em;
+      padding-left: v.$lineNumbersWrapperWidth + 1em;
       vertical-align: middle;
     }
 
     .line-numbers-wrapper {
       position: absolute;
       top: 0;
-      width: $lineNumbersWrapperWidth;
+      width: v.$lineNumbersWrapperWidth;
       text-align: center;
       color: rgba(255, 255, 255, 0.3);
       padding: 1.25rem 0;
@@ -153,11 +153,11 @@ div[class*="language-"] {
       z-index: 2;
       top: 0;
       left: 0;
-      width: $lineNumbersWrapperWidth;
+      width: v.$lineNumbersWrapperWidth;
       height: 100%;
       border-radius: 6px 0 0 6px;
       border-right: 1px solid rgba(0, 0, 0, 66%);
-      background-color: $colorCodeBackground;
+      background-color: v.$colorCodeBackground;
     }
   }
 }

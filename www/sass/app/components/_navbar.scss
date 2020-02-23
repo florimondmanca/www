@@ -1,13 +1,13 @@
-@import "../../variables";
+@use "../../variables" as v;
 
 .c_navbar-nav {
-  background-color: $colorBackgroundCard;
+  background-color: v.$colorBackgroundCard;
   z-index: 100; // Float on top of page content.
 
   ul {
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-gap: 6 * $space-unit;
+    grid-gap: 6 * v.$space-unit;
     align-items: center;
 
     li {
@@ -18,6 +18,6 @@
 }
 
 .c_navbar-title {
-  font-size: $font-size-title;
+  font-size: v.$font-size-title;
   width: fit-content;
 }

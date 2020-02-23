@@ -1,9 +1,9 @@
-@import "../../variables";
-@import "../../mixins";
+@use "../../variables" as v;
+@use "../../mixins";
 
 .c_article_detail-header {
-  margin-bottom: 6 * $space-unit;
-  border-bottom: 1px solid $colorDivider;
+  margin-bottom: 6 * v.$space-unit;
+  border-bottom: 1px solid v.$colorDivider;
 }
 
 .c_article_detail-tag-list {
@@ -18,8 +18,8 @@
   & h4,
   & h5,
   & h6 {
-    margin-top: 8 * $space-unit;
-    margin-bottom: 5 * $space-unit;
+    margin-top: 8 * v.$space-unit;
+    margin-bottom: 5 * v.$space-unit;
   }
 
   img {
