@@ -407,7 +407,7 @@ And the dataclass version, using a diff syntax to highlight the differences:
   class Vehicle:
 
 +     wheels: int
-+     _wheels: field(init=False, repr=False)
++     _wheels: int = field(init=False, repr=False)
 
 -     def __init__(self, wheels: int):
 -         self._wheels = wheels
