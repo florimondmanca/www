@@ -52,9 +52,7 @@ async def test_internal_server_error(silent_client: httpx.AsyncClient) -> None:
     assert "text/html" in resp.headers["content-type"]
 
 
-@pytest.mark.parametrize(
-    "resource", ("/sitemap.xml", "/robots.txt", "/service-worker.js")
-)
+@pytest.mark.parametrize("resource", ("/sitemap.xml", "/robots.txt"))
 async def test_seo_resources(client: httpx.AsyncClient, resource: str) -> None:
     url = f"http://florimond.dev{resource}"
     resp = await client.get(url)
