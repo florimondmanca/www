@@ -88,25 +88,6 @@
     <script src="{{ url_for('static', path='/js/popper.min.js') }}"></script>
     <script src="{{ url_for('static', path='/js/bootstrap.min.js') }}"></script>
 
-    <!-- Dark mode widget -->
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.0/lib/darkmode-js.min.js"></script>
-    <script>
-      var darkmode = new Darkmode({
-        bottom: "32px",
-        right: "32px",
-        left: "unset",
-        time: "0.4s",
-        mixColor: "#fff",
-        backgroundColor: "#fff",
-        buttonColorDark: "#100f2c",
-        buttonColorLight: "#fff",
-        saveInCookies: true, // Misnomer: whether persisting theme in localStorage is enabled.
-        label: "🌗",
-        autoMatchOsTheme: true
-      });
-      darkmode.showWidget();
-    </script>
-
     <script>
     // NOTE: Service worker was removed and unregistration code was added on 2020-04-03.
     // TODO: remove unregistration code after on 2020-20-03.
