@@ -7,14 +7,19 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 from starlette.routing import BaseRoute, Host, Mount, Route
 
-from . import blog, settings
+from . import blog, resources, settings
 from .endpoints import DomainRedirect
-from .middleware import LegacyRedirectMiddleware, PatchHeadersMiddleware
-from .resources import sass, static, templates
+from .middleware import (
+    LegacyRedirectMiddleware,
+    PatchHeadersMiddleware,
+    RequestedHostSpanTagMiddleware,
+)
 
 
 async def home(request: Request) -> Response:
-    return templates.TemplateResponse("index.html.jinja", context={"request": request})
+    return resources.templates.TemplateResponse(
+        "index.html.jinja", context={"request": request}
+    )
 
 
 async def error(request: Request) -> Response:
@@ -38,50 +43,49 @@ routes: typing.List[BaseRoute] = [
     Route("/", home),
     Route("/error", error),
     Mount("/blog", routes=blog.routes, name="blog"),
-    Mount("/static", static, name="static"),
+    Mount("/static", resources.static, name="static"),
     # Make the SCSS source available to browsers for inspection.
-    Mount("/sass", sass),
+    Mount("/sass", resources.sass),
     # These files need to be exposed at the root, not '/static/'.
-    Route("/favicon.ico", static, name="favicon"),
-    Route("/robots.txt", static, name="robots"),
-    Route("/sitemap.xml", static, name="sitemap"),
+    Route("/favicon.ico", resources.static, name="favicon"),
+    Route("/robots.txt", resources.static, name="robots"),
+    Route("/sitemap.xml", resources.static, name="sitemap"),
     Route(
         "/feed.rss",
         # Make sure clients always receive the correct MIME type for the RSS feed,
         # as the content type Starlette guesses may vary across operating systems.
-        PatchHeadersMiddleware(static, headers={"content-type": "application/rss+xml"}),
+        PatchHeadersMiddleware(
+            resources.static, headers={"content-type": "application/rss+xml"}
+        ),
         name="feed-rss",
     ),
 ]
 
-middleware = []
 
-if settings.WEB_DD_TRACE_SERVICE:
-    middleware.append(
-        Middleware(
-            TraceMiddleware,
-            service=settings.WEB_DD_TRACE_SERVICE,
-            tags=settings.WEB_DD_TRACE_TAGS,
-        )
-    )
-
-middleware.append(
+middleware = [
+    Middleware(
+        TraceMiddleware,
+        tracer=resources.tracer,
+        service="www",
+        tags=settings.WEB_DD_TRACE_TAGS,
+    ),
+    Middleware(RequestedHostSpanTagMiddleware),
     Middleware(
         LegacyRedirectMiddleware,
         url_mapping=settings.BLOG_LEGACY_URL_MAPPING,
         root_path="/blog",
-    )
-)
+    ),
+]
 
 
 async def not_found(request: Request, exc: Exception) -> Response:
-    return templates.TemplateResponse(
+    return resources.templates.TemplateResponse(
         "404.html.jinja", context={"request": request}, status_code=404
     )
 
 
 async def internal_server_error(request: Request, exc: Exception) -> Response:
-    return templates.TemplateResponse(
+    return resources.templates.TemplateResponse(
         "500.html.jinja", context={"request": request}, status_code=500
     )
 

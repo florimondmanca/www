@@ -1,5 +1,6 @@
 import contextvars
 
+import ddtrace
 from starlette.requests import Request
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
@@ -28,3 +29,5 @@ def with_base(path: str) -> str:
 
 
 templates.env.globals["with_base"] = with_base
+
+tracer = ddtrace.Tracer()

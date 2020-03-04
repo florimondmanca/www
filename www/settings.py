@@ -13,7 +13,6 @@ TESTING = config("TESTING", cast=bool, default=False)
 WEB_ROOT = pathlib.Path(__file__).parent
 WEB_ASSETS_ROOT = WEB_ROOT / "assets"
 
-WEB_DD_TRACE_SERVICE = config("DD_TRACE_SERVICE", cast=str, default="")
 WEB_DD_TRACE_TAGS = config("DD_TRACE_TAGS", cast=str, default="")
 
 BLOG_ROOT = WEB_ROOT / "blog"
