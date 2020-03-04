@@ -43,7 +43,6 @@ routes: typing.List[BaseRoute] = [
     Mount("/sass", sass),
     # These files need to be exposed at the root, not '/static/'.
     Route("/favicon.ico", static, name="favicon"),
-    Route("/service-worker.js", static, name="service-worker"),
     Route("/robots.txt", static, name="robots"),
     Route("/sitemap.xml", static, name="sitemap"),
     Route(

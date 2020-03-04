@@ -107,11 +107,12 @@
       darkmode.showWidget();
     </script>
 
-    <!-- Service worker registration -->
     <script>
+    // NOTE: Service worker was removed and unregistration code was added on 2020-04-03.
+    // TODO: remove unregistration code after on 2020-20-03.
     if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function() {
-        navigator.serviceWorker.register("/service-worker.js");
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        Promise.all(registrations.map(registration => registration.unregister()));
       });
     }
     </script>
