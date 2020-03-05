@@ -72,16 +72,16 @@ middleware = [
         enabled=not settings.TESTING,
     ),
     Middleware(
+        LegacyRedirectMiddleware,
+        url_mapping=settings.BLOG_LEGACY_URL_MAPPING,
+        root_path="/blog",
+    ),
+    Middleware(
         TracingMiddleware,
         service="www",
         tracer=resources.tracer,
         tags=settings.WEB_DD_TRACE_TAGS,
         enabled=not settings.TESTING,
-    ),
-    Middleware(
-        LegacyRedirectMiddleware,
-        url_mapping=settings.BLOG_LEGACY_URL_MAPPING,
-        root_path="/blog",
     ),
 ]
 

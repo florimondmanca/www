@@ -132,7 +132,7 @@ class TracingMiddleware:
                 span.set_tag("http.status_code", str(status_code))
 
                 if 300 <= status_code < 400:
-                    # Don't send traces for redirect responses.
+                    # Ignore traces for redirect responses.
                     span.set_tag(MANUAL_DROP_KEY)
 
             if "headers" in message:
