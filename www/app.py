@@ -1,7 +1,8 @@
 import typing
 
-from ddtrace_asgi.middleware import TraceMiddleware
+import datadog
 from starlette.applications import Starlette
+from starlette.datastructures import CommaSeparatedStrings
 from starlette.middleware import Middleware
 from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
@@ -11,8 +12,9 @@ from . import blog, resources, settings
 from .endpoints import DomainRedirect
 from .middleware import (
     LegacyRedirectMiddleware,
+    MetricsMiddleware,
     PatchHeadersMiddleware,
-    RequestedHostSpanTagMiddleware,
+    TracingMiddleware,
 )
 
 
@@ -62,14 +64,20 @@ routes: typing.List[BaseRoute] = [
 ]
 
 
+# NOTE: order matters (middleware executes from top to bottom).
 middleware = [
     Middleware(
-        TraceMiddleware,
-        tracer=resources.tracer,
-        service="www",
-        tags=settings.WEB_DD_TRACE_TAGS,
+        MetricsMiddleware,
+        known_domains=settings.WEB_KNOWN_DOMAINS,
+        enabled=not settings.TESTING,
     ),
-    Middleware(RequestedHostSpanTagMiddleware),
+    Middleware(
+        TracingMiddleware,
+        service="www",
+        tracer=resources.tracer,
+        tags=settings.WEB_DD_TRACE_TAGS,
+        enabled=not settings.TESTING,
+    ),
     Middleware(
         LegacyRedirectMiddleware,
         url_mapping=settings.BLOG_LEGACY_URL_MAPPING,
@@ -90,10 +98,19 @@ async def internal_server_error(request: Request, exc: Exception) -> Response:
     )
 
 
+async def on_startup() -> None:
+    if settings.TESTING:
+        return
+
+    datadog.initialize(
+        statsd_constant_tags=CommaSeparatedStrings(settings.WEB_DD_TRACE_TAGS)
+    )
+
+
 app = Starlette(
     debug=settings.DEBUG,
     middleware=middleware,
     routes=routes,
     exception_handlers={404: not_found, 500: internal_server_error},
-    on_startup=[blog.on_startup],
+    on_startup=[on_startup, blog.on_startup],
 )
