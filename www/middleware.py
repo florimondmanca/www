@@ -1,7 +1,8 @@
 import typing
 
+import ddtrace
 from starlette import status
-from starlette.datastructures import URL, MutableHeaders
+from starlette.datastructures import URL, Headers, MutableHeaders
 from starlette.responses import RedirectResponse
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
@@ -52,3 +53,27 @@ class PatchHeadersMiddleware:
             await send(message)
 
         await self.app(scope, receive, _send)
+
+
+class RequestedHostSpanTagMiddleware:
+    """
+    Add the 'Host' header as a 'request_host' tag to any current trace span.
+    """
+
+    def __init__(self, app: ASGIApp) -> None:
+        self.app = app
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+        if scope["type"] != "http":
+            await self.app(scope, receive, send)
+            return
+
+        tracer: ddtrace.Tracer = scope["ddtrace_asgi.tracer"]
+        span = tracer.current_span()
+        assert span is not None
+
+        headers = Headers(scope=scope)
+        host: str = headers.get("host", "")
+        span.set_tag("requested_host", host)
+
+        await self.app(scope, receive, send)
