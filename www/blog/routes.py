@@ -1,14 +1,13 @@
 import datetime as dt
 import typing
 
-import ddtrace
 from starlette.endpoints import HTTPEndpoint
 from starlette.exceptions import HTTPException
 from starlette.requests import Request
 from starlette.responses import Response
 from starlette.routing import BaseRoute, Route
 
-from ..resources import CTX_VAR_REQUEST, templates, tracer
+from ..resources import CTX_VAR_REQUEST, templates
 from .resources import index
 
 
@@ -23,10 +22,6 @@ class RenderPage(HTTPEndpoint):
                 break
         else:
             raise HTTPException(404)
-
-        if page.is_article:
-            span: ddtrace.Span = tracer.current_root_span()
-            span.set_tag("article.permalink", page.permalink)
 
         context = {
             "request": request,

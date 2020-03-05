@@ -10,10 +10,18 @@ config = Config(".env")
 DEBUG = config("DEBUG", cast=bool, default=False)
 TESTING = config("TESTING", cast=bool, default=False)
 
+WEB_KNOWN_DOMAINS = [
+    "localhost",
+    "florimondmanca.com",
+    "blog.florimondmanca.com",
+    "florimond.dev",
+    "blog.florimond.dev",
+]
+
 WEB_ROOT = pathlib.Path(__file__).parent
 WEB_ASSETS_ROOT = WEB_ROOT / "assets"
 
-WEB_DD_TRACE_TAGS = config("DD_TRACE_TAGS", cast=str, default="")
+WEB_DD_TRACE_TAGS = config("DD_TRACE_TAGS", cast=str, default="env:unknown")
 
 BLOG_ROOT = WEB_ROOT / "blog"
 BLOG_CONTENT_ROOT = WEB_ROOT.parent / "content"
