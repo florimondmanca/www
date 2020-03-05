@@ -6,6 +6,8 @@ from starlette.datastructures import URL, Headers, MutableHeaders
 from starlette.responses import RedirectResponse
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
+from .resources import tracer
+
 
 class LegacyRedirectMiddleware:
     def __init__(
@@ -68,8 +70,7 @@ class RequestedHostSpanTagMiddleware:
             await self.app(scope, receive, send)
             return
 
-        tracer: ddtrace.Tracer = scope["ddtrace_asgi.tracer"]
-        span = tracer.current_span()
+        span: ddtrace.Span = tracer.current_root_span()
         assert span is not None
 
         headers = Headers(scope=scope)

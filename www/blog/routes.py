@@ -25,7 +25,7 @@ class RenderPage(HTTPEndpoint):
             raise HTTPException(404)
 
         if page.is_article:
-            span: ddtrace.Span = tracer.current_span()
+            span: ddtrace.Span = tracer.current_root_span()
             span.set_tag("article.permalink", page.permalink)
 
         context = {
