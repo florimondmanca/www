@@ -10,6 +10,8 @@ config = Config(".env")
 DEBUG = config("DEBUG", cast=bool, default=False)
 TESTING = config("TESTING", cast=bool, default=False)
 
+DD_AGENT_HOST = config("DD_AGENT_HOST", cast=str, default="localhost")
+
 WEB_KNOWN_DOMAINS = [
     "localhost",
     "florimondmanca.com",

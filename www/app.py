@@ -103,7 +103,9 @@ async def on_startup() -> None:
         return
 
     datadog.initialize(
-        statsd_constant_tags=CommaSeparatedStrings(settings.WEB_DD_TRACE_TAGS)
+        statsd_host=settings.DD_AGENT_HOST,
+        statsd_port=8125,
+        statsd_constant_tags=CommaSeparatedStrings(settings.WEB_DD_TRACE_TAGS),
     )
 
 
