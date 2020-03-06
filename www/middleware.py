@@ -88,7 +88,7 @@ class MetricsMiddleware:
                 status_code: int = message["status"]
                 tags.append(f"status_code:{status_code}")
 
-            datadog.statsd.increment("http.requests", 1, tags=tags)
+            datadog.statsd.increment("www.hits", 1, tags=tags)
 
         await send(message)
 
