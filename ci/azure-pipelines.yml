@@ -1,0 +1,20 @@
+trigger:
+  - master
+
+variables:
+  CI: true
+
+jobs:
+  - job: Check
+    steps:
+      - template: templates/install.yml
+      - script: scripts/check
+        displayName: "Run checks"
+
+  - job: Test
+    steps:
+      - template: templates/install.yml
+      - script: scripts/test
+        displayName: "Run tests"
+      - script: bash <(curl -s https://codecov.io/bash)
+        displayName: "Upload coverage"
