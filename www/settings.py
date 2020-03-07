@@ -1,18 +1,20 @@
 import json
 import pathlib
+from typing import List
 
 from starlette.config import Config
+from starlette.datastructures import CommaSeparatedStrings
 
 from .markdown_extensions import ImageFigcaptions
 
 config = Config(".env")
 
-DEBUG = config("DEBUG", cast=bool, default=False)
-TESTING = config("TESTING", cast=bool, default=False)
+HERE = pathlib.Path(__file__).parent
 
-DD_AGENT_HOST = config("DD_AGENT_HOST", cast=str, default="localhost")
+DEBUG: bool = config("DEBUG", cast=bool, default=False)
+TESTING: bool = config("TESTING", cast=bool, default=False)
 
-WEB_KNOWN_DOMAINS = [
+KNOWN_DOMAINS = [
     "localhost",
     "florimondmanca.com",
     "blog.florimondmanca.com",
@@ -20,15 +22,19 @@ WEB_KNOWN_DOMAINS = [
     "blog.florimond.dev",
 ]
 
-WEB_ROOT = pathlib.Path(__file__).parent
-WEB_ASSETS_ROOT = WEB_ROOT / "assets"
+DD_AGENT_HOST: str = config("DD_AGENT_HOST", cast=str, default="localhost")
+DD_TRACE_TAGS: List[str] = config(
+    "DD_TRACE_TAGS",
+    cast=lambda value: list(CommaSeparatedStrings(value)),
+    default="env:unknown",
+)
 
-WEB_DD_TRACE_TAGS = config("DD_TRACE_TAGS", cast=str, default="env:unknown")
+STATIC_ROOT = "/static"
+STATIC_DIR = HERE / "static"
+SASS_DIR = HERE / "sass"
+TEMPLATES_DIR = HERE / "templates"
 
-BLOG_ROOT = WEB_ROOT / "blog"
-BLOG_CONTENT_ROOT = WEB_ROOT.parent / "content"
-
-with open(WEB_ASSETS_ROOT / "legacy-blog-url-mapping.json") as f:
+BLOG_CONTENT_DIR = HERE.parent / "content"
+with open(HERE / "assets" / "legacy-blog-url-mapping.json") as f:
     BLOG_LEGACY_URL_MAPPING = json.loads(f.read())
-
 BLOG_MARKDOWN_EXTENSIONS = ["codehilite", "fenced_code", "tables", ImageFigcaptions()]
