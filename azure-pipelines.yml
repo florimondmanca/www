@@ -1,0 +1,25 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.8'
+
+- script: scripts/install --no-node
+  displayName: 'Dependencies'
+
+- script: scripts/check
+  displayName: 'Checks'
+
+- script: scripts/test
+  displayName: 'Test'
+
+- script: |
+    if [ -f .coverage ]; then
+      python -m pip install codecov
+      codecov --required
+    fi
