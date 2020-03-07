@@ -1,21 +1,23 @@
 trigger:
-- master
+  - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.8'
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: "3.8"
+    displayName: "Use Python"
 
-- script: scripts/install --no-node
-  displayName: 'Dependencies'
+  - script: scripts/install --no-node
+    displayName: "Install dependencies"
 
-- script: scripts/check
-  displayName: 'Checks'
+  - script: scripts/check
+    displayName: "Run checks"
 
-- script: scripts/test
-  displayName: 'Test'
+  - script: scripts/test
+    displayName: "Run test"
 
-- script: bash <(curl -s https://codecov.io/bash)
+  - script: bash <(curl -s https://codecov.io/bash)
+    displayName: "Upload coverage"
