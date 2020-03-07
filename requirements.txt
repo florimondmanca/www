@@ -1,7 +1,7 @@
 aiofiles==0.4.*
 datadog==0.34.*
 ddtrace==0.31.*
-git+https://github.com/florimondmanca/ddtrace-asgi.git@backends
+ddtrace-asgi==0.3.*
 gunicorn==19.*
 jinja2==2.10.*
 markdown==3.1.*

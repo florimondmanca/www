@@ -73,7 +73,7 @@ middleware = [
         TraceMiddleware,
         service="www",
         tracer=resources.tracer,
-        tags=settings.DD_TRACE_TAGS,
+        tags=", ".join(settings.DD_TRACE_TAGS),
     ),
 ]
 
