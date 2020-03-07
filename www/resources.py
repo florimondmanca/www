@@ -1,11 +1,14 @@
 import contextvars
 
+import datadog
 import ddtrace
+from ddtrace.filters import FilterRequestsOnUrl
 from starlette.requests import Request
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 from . import settings
+from .monitoring import FilterDropIf, FilterRedirectResponses
 
 templates = Jinja2Templates(directory=str(settings.TEMPLATES_DIR))
 static = StaticFiles(directory=str(settings.STATIC_DIR))
@@ -31,3 +34,9 @@ def with_base(path: str) -> str:
 templates.env.globals["with_base"] = with_base
 
 tracer = ddtrace.Tracer()
+trace_filters = [
+    FilterRedirectResponses(),
+    FilterRequestsOnUrl(settings.DD_TRACE_FILTER_URLS),
+    FilterDropIf(lambda: settings.TESTING),
+]
+statsd = datadog.DogStatsd()
