@@ -2,7 +2,6 @@ import typing
 
 import datadog
 from starlette.applications import Starlette
-from starlette.datastructures import CommaSeparatedStrings
 from starlette.middleware import Middleware
 from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
@@ -68,7 +67,7 @@ routes: typing.List[BaseRoute] = [
 middleware = [
     Middleware(
         MetricsMiddleware,
-        known_domains=settings.WEB_KNOWN_DOMAINS,
+        known_domains=settings.KNOWN_DOMAINS,
         enabled=not settings.TESTING,
     ),
     Middleware(
@@ -80,7 +79,7 @@ middleware = [
         TracingMiddleware,
         service="www",
         tracer=resources.tracer,
-        tags=settings.WEB_DD_TRACE_TAGS,
+        tags=settings.DD_TRACE_TAGS,
         enabled=not settings.TESTING,
     ),
 ]
@@ -105,7 +104,7 @@ async def on_startup() -> None:
     datadog.initialize(
         statsd_host=settings.DD_AGENT_HOST,
         statsd_port=8125,
-        statsd_constant_tags=CommaSeparatedStrings(settings.WEB_DD_TRACE_TAGS),
+        statsd_constant_tags=settings.DD_TRACE_TAGS,
     )
 
 

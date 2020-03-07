@@ -7,9 +7,9 @@ from starlette.templating import Jinja2Templates
 
 from . import settings
 
-templates = Jinja2Templates(directory=str(settings.WEB_ROOT / "templates"))
-static = StaticFiles(directory=str(settings.WEB_ROOT / "static"))
-sass = StaticFiles(directory=str(settings.WEB_ROOT / "sass"))
+templates = Jinja2Templates(directory=str(settings.TEMPLATES_DIR))
+static = StaticFiles(directory=str(settings.STATIC_DIR))
+sass = StaticFiles(directory=str(settings.SASS_DIR))
 
 CTX_VAR_REQUEST: contextvars.ContextVar[Request] = contextvars.ContextVar("request")
 
