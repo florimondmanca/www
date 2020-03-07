@@ -1,6 +1,8 @@
 import typing
 
 import datadog
+from ddtrace.filters import FilterRequestsOnUrl
+from ddtrace_asgi.middleware import TraceMiddleware
 from starlette.applications import Starlette
 from starlette.middleware import Middleware
 from starlette.requests import Request
@@ -9,12 +11,8 @@ from starlette.routing import BaseRoute, Host, Mount, Route
 
 from . import blog, resources, settings
 from .endpoints import DomainRedirect
-from .middleware import (
-    LegacyRedirectMiddleware,
-    MetricsMiddleware,
-    PatchHeadersMiddleware,
-    TracingMiddleware,
-)
+from .middleware import LegacyRedirectMiddleware, PatchHeadersMiddleware
+from .monitoring import FilterDropIf, FilterRedirectResponses, MetricsMiddleware
 
 
 async def home(request: Request) -> Response:
@@ -44,7 +42,7 @@ routes: typing.List[BaseRoute] = [
     Route("/", home),
     Route("/error", error),
     Mount("/blog", routes=blog.routes, name="blog"),
-    Mount("/static", resources.static, name="static"),
+    Mount(settings.STATIC_ROOT, resources.static, name="static"),
     # Make the SCSS source available to browsers for inspection.
     Mount("/sass", resources.sass),
     # These files need to be exposed at the root, not '/static/'.
@@ -65,22 +63,17 @@ routes: typing.List[BaseRoute] = [
 
 # NOTE: order matters (middleware executes from top to bottom).
 middleware = [
-    Middleware(
-        MetricsMiddleware,
-        known_domains=settings.KNOWN_DOMAINS,
-        enabled=not settings.TESTING,
-    ),
+    Middleware(MetricsMiddleware, known_domains=settings.KNOWN_DOMAINS),
     Middleware(
         LegacyRedirectMiddleware,
         url_mapping=settings.BLOG_LEGACY_URL_MAPPING,
         root_path="/blog",
     ),
     Middleware(
-        TracingMiddleware,
+        TraceMiddleware,
         service="www",
         tracer=resources.tracer,
-        tags=settings.DD_TRACE_TAGS,
-        enabled=not settings.TESTING,
+        tags=", ".join(settings.DD_TRACE_TAGS),
     ),
 ]
 
@@ -98,13 +91,20 @@ async def internal_server_error(request: Request, exc: Exception) -> Response:
 
 
 async def on_startup() -> None:
-    if settings.TESTING:
-        return
-
     datadog.initialize(
-        statsd_host=settings.DD_AGENT_HOST,
+        statsd_host="dummy" if settings.TESTING else settings.DD_AGENT_HOST,
         statsd_port=8125,
         statsd_constant_tags=settings.DD_TRACE_TAGS,
+    )
+
+    resources.tracer.configure(
+        settings={
+            "FILTERS": [
+                FilterRedirectResponses(),
+                FilterRequestsOnUrl(r"^http://[^/]+/{settings.STATIC_ROOT}/"),
+                FilterDropIf(lambda: settings.TESTING),
+            ]
+        }
     )
 
 
