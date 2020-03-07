@@ -1,23 +1,32 @@
 trigger:
   - master
 
-pool:
-  vmImage: "ubuntu-latest"
+jobs:
+  - job: Check
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: "3.8"
+        displayName: "Use Python"
 
-steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: "3.8"
-    displayName: "Use Python"
+      - script: scripts/install --no-node
+        displayName: "Install dependencies"
 
-  - script: scripts/install --no-node
-    displayName: "Install dependencies"
+      - script: scripts/check
+        displayName: "Run checks"
 
-  - script: scripts/check
-    displayName: "Run checks"
+  - job: Test
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: "3.8"
+        displayName: "Use Python"
 
-  - script: scripts/test
-    displayName: "Run test"
+      - script: scripts/install --no-node
+        displayName: "Install dependencies"
 
-  - script: bash <(curl -s https://codecov.io/bash)
-    displayName: "Upload coverage"
+      - script: scripts/test
+        displayName: "Run tests"
+
+      - script: bash <(curl -s https://codecov.io/bash)
+        displayName: "Upload coverage"
