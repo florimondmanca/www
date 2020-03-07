@@ -11,9 +11,15 @@ from .utils import is_static_asset
 
 
 class MetricsMiddleware:
-    def __init__(self, app: ASGIApp, known_domains: typing.Sequence[str]) -> None:
+    def __init__(
+        self,
+        app: ASGIApp,
+        known_domains: typing.Sequence[str],
+        statsd: datadog.DogStatsd,
+    ) -> None:
         self.app = app
         self.known_domains = known_domains
+        self.statsd = statsd
 
     def _get_domain(self, scope: Scope) -> str:
         headers = Headers(scope=scope)
@@ -35,7 +41,7 @@ class MetricsMiddleware:
                 status_code: int = message["status"]
                 tags.append(f"status_code:{status_code}")
 
-            datadog.statsd.increment("www.hits", 1, tags=tags)
+            self.statsd.increment("www.hits", 1, tags=tags)
 
         await send(message)
 
@@ -57,14 +63,9 @@ class FilterRedirectResponses:
         for span in trace:
             if span.parent_id is not None or span.get_tag(http.STATUS_CODE) is None:
                 continue
-
-            try:
-                status_code = int(span.get_tag(http.STATUS_CODE))
-            except ValueError:
-                continue
-            else:
-                if 300 <= status_code < 400:
-                    return None
+            status_code = int(span.get_tag(http.STATUS_CODE))
+            if 300 <= status_code < 400:
+                return None
 
         return trace
 

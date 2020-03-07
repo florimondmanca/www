@@ -2,10 +2,13 @@ from . import settings
 
 
 def is_static_asset(path: str) -> bool:
-    if path.startswith(settings.STATIC_ROOT):
+    if not path.endswith("/"):
+        path = f"{path}/"
+
+    if path.startswith(f"{settings.STATIC_ROOT}/"):
         return True
 
-    _, _, suffix = path.rpartition("/")
+    _, _, suffix = path.rstrip("/").rpartition("/")
     _, has_extension, _ = suffix.partition(".")
     if has_extension:
         return True
