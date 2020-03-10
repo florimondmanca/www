@@ -94,11 +94,7 @@ async def internal_server_error(request: Request, exc: Exception) -> Response:
 
 
 async def on_startup() -> None:
-    datadog.initialize(
-        statsd_host="dummy" if settings.TESTING else settings.DD_AGENT_HOST,
-        statsd_port=8125,
-        statsd_constant_tags=settings.DD_TRACE_TAGS,
-    )
+    datadog.initialize()
     resources.tracer.configure(settings={"FILTERS": resources.trace_filters})
 
 

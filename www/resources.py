@@ -39,4 +39,9 @@ trace_filters = [
     FilterRequestsOnUrl(settings.DD_TRACE_FILTER_URLS),
     FilterDropIf(lambda: settings.TESTING),
 ]
-statsd = datadog.DogStatsd()
+
+statsd = datadog.DogStatsd(
+    host="dummy" if settings.TESTING else settings.DD_AGENT_HOST,
+    port=8125,
+    constant_tags=settings.DD_TRACE_TAGS,
+)
