@@ -7,7 +7,13 @@ from ddtrace.ext import http
 from starlette.datastructures import Headers
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
+from . import resources
 from .utils import is_static_asset
+
+
+def init() -> None:
+    datadog.initialize()
+    resources.tracer.configure(settings={"FILTERS": resources.trace_filters})
 
 
 class MetricsMiddleware:

@@ -19,10 +19,6 @@ def is_static_asset(path: str) -> bool:
     return False
 
 
-def is_localhost(hostname: str) -> bool:
-    return hostname in ("localhost", "127.0.0.1")
-
-
 def get_display_path(filename: str) -> str:
     path = os.path.normpath(filename)
     if Path.cwd() in Path(filename).parents:

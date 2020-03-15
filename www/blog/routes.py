@@ -3,19 +3,19 @@ import typing
 
 from starlette.endpoints import HTTPEndpoint
 from starlette.exceptions import HTTPException
+from starlette.concurrency import run_until_first_complete
 from starlette.requests import Request
 from starlette.responses import Response
 from starlette.routing import BaseRoute, Route, WebSocketRoute
+from starlette.websockets import WebSocket
 
-from .. import settings
-from ..resources import CTX_VAR_REQUEST, templates
-from .endpoints import HotReload
+from .. import resources, settings
 from .resources import index
 
 
 class RenderPage(HTTPEndpoint):
     async def get(self, request: Request) -> Response:
-        CTX_VAR_REQUEST.set(request)
+        resources.CTX_VAR_REQUEST.set(request)
 
         permalink = "/" + request.path_params.get("permalink", "")
 
@@ -32,7 +32,25 @@ class RenderPage(HTTPEndpoint):
             "get_articles": index.articles_by_date,
         }
 
-        return templates.TemplateResponse("blog/main.jinja", context=context)
+        return resources.templates.TemplateResponse("blog/main.jinja", context=context)
+
+
+async def hot_reload(ws: WebSocket) -> None:
+    await ws.accept()
+
+    async def watch_client_disconnects() -> None:
+        async for _ in ws.iter_text():
+            pass
+
+    async def watch_reloads() -> None:
+        channel = settings.BLOG_RELOAD_CHANNEL
+        async with resources.broadcast.subscribe(channel=channel) as subscription:
+            async for _ in subscription:
+                await ws.send_text("reload")
+
+    await run_until_first_complete(
+        (watch_client_disconnects, {}), (watch_reloads, {}),
+    )
 
 
 routes: typing.List[BaseRoute] = [
@@ -41,4 +59,4 @@ routes: typing.List[BaseRoute] = [
 ]
 
 if settings.DEBUG:
-    routes += [WebSocketRoute("/hot-reload", HotReload, name="hot-reload")]
+    routes += [WebSocketRoute("/hot-reload", hot_reload, name="hot-reload")]

@@ -1,6 +1,5 @@
 import typing
 
-import datadog
 from ddtrace_asgi.middleware import TraceMiddleware
 from starlette.applications import Starlette
 from starlette.middleware import Middleware
@@ -8,10 +7,9 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 from starlette.routing import BaseRoute, Host, Mount, Route
 
-from . import blog, resources, settings
+from . import blog, monitoring, resources, settings
 from .endpoints import DomainRedirect
 from .middleware import LegacyRedirectMiddleware, PatchHeadersMiddleware
-from .monitoring import MetricsMiddleware
 
 
 async def home(request: Request) -> Response:
@@ -63,7 +61,7 @@ routes: typing.List[BaseRoute] = [
 # NOTE: order matters (middleware executes from top to bottom).
 middleware = [
     Middleware(
-        MetricsMiddleware,
+        monitoring.MetricsMiddleware,
         known_domains=settings.KNOWN_DOMAINS,
         statsd=resources.statsd,
     ),
@@ -93,17 +91,11 @@ async def internal_server_error(request: Request, exc: Exception) -> Response:
     )
 
 
-async def on_startup() -> None:
-    await blog.load_content()
-
-    datadog.initialize()
-    resources.tracer.configure(settings={"FILTERS": resources.trace_filters})
-
-
 app = Starlette(
     debug=settings.DEBUG,
     middleware=middleware,
     routes=routes,
     exception_handlers={404: not_found, 500: internal_server_error},
-    on_startup=[on_startup],
+    on_startup=[monitoring.init, resources.broadcast.connect, *blog.on_startup],
+    on_shutdown=[resources.broadcast.disconnect, *blog.on_shutdown],
 )
