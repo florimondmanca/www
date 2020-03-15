@@ -15,25 +15,12 @@ Development only:
 
 - Node.js v10
 - Yarn
-- Heroku CLI - *(optional)*
+- Heroku CLI - _(optional)_
 
 ## Install
 
-- Install Python and Node dependencies:
-
 ```bash
-scripts/install
-```
-
-- You may want to add a `.env` file:
-
-```bash
-# Starlette debug mode.
-DEBUG=true
-
-# Heroku configuration.
-PYTHONUNBUFFERED=True
-PORT=8000
+scripts/install [--update] [--no-node]
 ```
 
 ## Usage
@@ -41,7 +28,7 @@ PORT=8000
 - Run the website locally:
 
 ```bash
-scripts/serve
+scripts/serve [UVICORN_OPTIONS]
 ```
 
 - Run the website as it would run in production:
@@ -51,17 +38,37 @@ scripts/serve
 heroku local
 ```
 
+- Run the test suite:
+
+```bash
+scripts/test [PYTEST_OPTIONS]
+```
+
 - Build assets:
 
 ```bash
 scripts/build
 ```
 
-- Deploy:
+## Deployment
+
+This website is deployed via [Dokku](http://dokku.viewdocs.io/dokku/).
+
+1. _(First time only)_ Setup SSH keys on the remote host. See [Setup SSH key](http://dokku.viewdocs.io/dokku/getting-started/installation/#2-setup-ssh-key-and-virtualhost-settings) and [User Management](http://dokku.viewdocs.io/dokku/deployment/user-management/#adding-ssh-keys).
+2. Run the deploy script:
 
 ```bash
 scripts/deploy
 ```
+
+## Settings
+
+| Environment variable | Description                                                              | Default       |
+| -------------------- | ------------------------------------------------------------------------ | ------------- |
+| `DEBUG`              | Run in debug mode. Enables in-browser tracebacks and content hot reload. | `False`       |
+| `DD_AGENT_HOST`      | Hostname where Datadog Agent is accessible.                              | `localhost`   |
+| `DD_TRACE_TAGS`      | Constant tags submitted with metrics and traces.                         | `env:unknown` |
+| `TESTING`            | Run against mocked resources.                                            | `False`       |
 
 ## License
 
