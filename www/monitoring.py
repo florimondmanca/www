@@ -11,7 +11,7 @@ from . import resources
 from .utils import is_static_asset
 
 
-def init() -> None:
+async def on_startup() -> None:
     datadog.initialize()
     resources.tracer.configure(settings={"FILTERS": resources.trace_filters})
 

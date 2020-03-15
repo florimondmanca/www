@@ -1,9 +1,9 @@
 import datetime as dt
 import typing
 
+from starlette.concurrency import run_until_first_complete
 from starlette.endpoints import HTTPEndpoint
 from starlette.exceptions import HTTPException
-from starlette.concurrency import run_until_first_complete
 from starlette.requests import Request
 from starlette.responses import Response
 from starlette.routing import BaseRoute, Route, WebSocketRoute
