@@ -1,20 +1,41 @@
 #!/bin/bash
 
+note() { echo "-----> $1"; }
+
 if [ -z $CI ]; then
+  note "Create virtual environment"
   python -m venv venv
-fi
 
-export PREFIX=""
-if [ -d 'venv' ] ; then
-    export PREFIX="venv/bin/"
-fi
+  export PREFIX="venv/bin/"
 
-${PREFIX}pip install -U pip
-${PREFIX}pip install -r requirements.txt
-${PREFIX}pip install -r requirements-dev.txt
+  note "Upgrade pip"
+  ${PREFIX}pip install -U pip
 
-if [[ "$@" = *"--no-node"* ]]; then
-  echo "--no-node: Skipping yarn install"
+  if ! [ -f .env ]; then
+    note "Add .env"
+    echo "# App configuration." >> .env
+    echo "DEBUG=true" >> .env
+    echo 'DD_TRACE_TAGS="env:local"' >> .env
+    echo "# Heroku CLI configuration." >> .env
+    echo "PYTHONUNBUFFERED=true" >> .env
+    echo "PORT=8000" >> .env
+  fi
 else
+  note "CI pipeline detected: will use system executables"
+  export PREFIX=""
+fi
+
+if [[ "$@" = *"--update"* ]]; then
+  note "Update pip dependencies"
+  rm -f requirements.txt
+  ${PREFIX}pip install -U -r requirements.in
+  ${PREFIX}pip freeze > requirements.txt
+else
+  note "Install pip dependencies"
+  ${PREFIX}pip install -U -r requirements.txt
+fi
+
+if ! [[ "$@" = *"--no-node"* ]]; then
+  note "Install yarn dependencies"
   yarn install
 fi
