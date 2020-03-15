@@ -34,8 +34,8 @@ BLOG_MARKDOWN_EXTENSIONS = ["codehilite", "fenced_code", "tables", ImageFigcapti
 BLOG_RELOAD_CHANNEL = "content-reload"
 
 DD_AGENT_HOST: str = config("DD_AGENT_HOST", cast=str, default="localhost")
-DD_TRACE_TAGS: List[str] = config(
-    "DD_TRACE_TAGS",
+DD_TAGS: List[str] = config(
+    "DD_TAGS",
     cast=lambda value: list(CommaSeparatedStrings(value)),
     default="env:unknown",
 )
