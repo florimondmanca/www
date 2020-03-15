@@ -35,6 +35,6 @@ class HotReload(WebSocketEndpoint):
         message = "Detected file change in '%s'. Reloading..."
         logger.warning(message, get_display_path(path))
 
-        await content.reload()
+        await content.load()
         await ws.send_text("reload")
         resources.file_change_detector.reset()

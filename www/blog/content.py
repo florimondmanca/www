@@ -1,10 +1,7 @@
-from . import resources
+from .. import settings
 from .loader import load_pages
+from .resources import index
 
 
-async def init() -> None:
-    resources.index.pages = await load_pages()
-
-
-async def reload() -> None:
-    await init()
+async def load() -> None:
+    index.pages = await load_pages(root=settings.BLOG_CONTENT_DIR)
