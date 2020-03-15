@@ -43,5 +43,5 @@ trace_filters = [
 statsd = datadog.DogStatsd(
     host="dummy" if settings.TESTING else settings.DD_AGENT_HOST,
     port=8125,
-    constant_tags=settings.DD_TRACE_TAGS,
+    constant_tags=settings.DD_TAGS,
 )

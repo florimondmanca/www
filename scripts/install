@@ -15,7 +15,7 @@ if [ -z $CI ]; then
     note "Add .env"
     echo "# App configuration." >> .env
     echo "DEBUG=true" >> .env
-    echo 'DD_TRACE_TAGS="env:local"' >> .env
+    echo 'DD_TAGS="env:local"' >> .env
     echo "# Heroku CLI configuration." >> .env
     echo "PYTHONUNBUFFERED=true" >> .env
     echo "PORT=8000" >> .env
