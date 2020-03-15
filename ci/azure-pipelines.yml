@@ -6,6 +6,7 @@ pr:
 
 variables:
   CI: true
+  PIP_CACHE_DIR: $(Pipeline.Workspace)/.cache/pip
 
 jobs:
   - job: Check
