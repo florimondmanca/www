@@ -19,5 +19,12 @@
   {{ Layout() }}
 
   <script src="/static/js/ga.js"></script>
+
+  {% if settings.DEBUG %}
+    <script>
+      const ws = new WebSocket("{{ url_for('blog:hot-reload') }}");
+      ws.onmessage = event => document.location.reload(true);
+    </script>
+  {% endif %}
 </body>
 </html>

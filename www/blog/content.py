@@ -11,15 +11,22 @@ from .utils import find_markdown_files
 
 
 async def load_content() -> None:
-    items = [item async for item in load_content_items(settings.BLOG_CONTENT_DIR)]
+    items = [item async for item in load_content_items()]
     resources.index.pages = build_pages(items)
 
 
-async def load_content_items(root: Path) -> AsyncIterator[ContentItem]:
-    for path in find_markdown_files(root):
+def iter_content_paths() -> Iterator[Path]:
+    yield from find_markdown_files(settings.BLOG_CONTENT_DIR)
+
+
+async def load_content_items() -> AsyncIterator[ContentItem]:
+    for path in iter_content_paths():
         async with aiofiles.open(path) as f:
             content = await f.read()
-            yield ContentItem(content=content, location=str(path.relative_to(root)))
+            yield ContentItem(
+                content=content,
+                location=str(path.relative_to(settings.BLOG_CONTENT_DIR)),
+            )
 
 
 def build_pages(items: List[ContentItem]) -> List[Page]:

@@ -31,6 +31,7 @@ BLOG_CONTENT_DIR = HERE.parent / "content"
 with open(HERE / "assets" / "legacy-blog-url-mapping.json") as f:
     BLOG_LEGACY_URL_MAPPING = json.loads(f.read())
 BLOG_MARKDOWN_EXTENSIONS = ["codehilite", "fenced_code", "tables", ImageFigcaptions()]
+BLOG_RELOAD_CHANNEL = "content-reload"
 
 DD_AGENT_HOST: str = config("DD_AGENT_HOST", cast=str, default="localhost")
 DD_TRACE_TAGS: List[str] = config(
