@@ -1,8 +1,9 @@
-#! /bin/sh -e -x
+#!/bin/sh -x
 
 export PREFIX=""
 if [ -d 'venv' ] ; then
     export PREFIX="venv/bin/"
 fi
 
-yarn watch & ${PREFIX}uvicorn www:app $@
+yarn watch &
+${PREFIX}uvicorn www:app $@ || kill %1
