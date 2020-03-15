@@ -32,6 +32,7 @@ def with_base(path: str) -> str:
 
 
 templates.env.globals["with_base"] = with_base
+templates.env.globals["settings"] = settings
 
 tracer = ddtrace.Tracer()
 trace_filters = [

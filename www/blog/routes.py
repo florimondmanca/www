@@ -5,9 +5,11 @@ from starlette.endpoints import HTTPEndpoint
 from starlette.exceptions import HTTPException
 from starlette.requests import Request
 from starlette.responses import Response
-from starlette.routing import BaseRoute, Route
+from starlette.routing import BaseRoute, Route, WebSocketRoute
 
+from .. import settings
 from ..resources import CTX_VAR_REQUEST, templates
+from .endpoints import HotReload
 from .resources import index
 
 
@@ -37,3 +39,6 @@ routes: typing.List[BaseRoute] = [
     Route("/", endpoint=RenderPage),
     Route("/{permalink:path}/", endpoint=RenderPage),
 ]
+
+if settings.DEBUG:
+    routes += [WebSocketRoute("/hot-reload", HotReload, name="hot-reload")]

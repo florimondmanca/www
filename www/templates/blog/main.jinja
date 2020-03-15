@@ -19,5 +19,13 @@
   {{ Layout() }}
 
   <script src="/static/js/ga.js"></script>
+
+  {% if settings.DEBUG %}
+    <script src="{{ url_for('static', path='/js/blog/hot-reload.js') }}"></script>
+    <script>
+      const ws = new WebSocket("{{ url_for('blog:hot-reload') }}");
+      setupHotReload(ws);
+    </script>
+  {% endif %}
 </body>
 </html>
