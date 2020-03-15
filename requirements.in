@@ -1,0 +1,28 @@
+# Application dependencies.
+aiofiles==0.4.*
+datadog==0.34.*
+ddtrace==0.31.*
+ddtrace-asgi==0.3.*
+gunicorn==19.*
+jinja2==2.10.*
+markdown==3.1.*
+pygments==2.5.*
+python-frontmatter==0.5.*
+starlette==0.13.*
+uvicorn==0.11.*
+
+# Development dependencies -- install in production too for consistency.
+autoflake
+asgi-lifespan==1.0.*
+black
+flake8
+flake8-bugbear
+flake8-comprehensions
+flake8-pie
+httpx==0.11.*
+isort
+mypy
+pytest==5.*
+pytest-asyncio
+pytest-cov
+seed-isort-config
