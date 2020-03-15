@@ -94,7 +94,7 @@ async def internal_server_error(request: Request, exc: Exception) -> Response:
 
 
 async def on_startup() -> None:
-    await blog.content.load()
+    await blog.load_content()
 
     datadog.initialize()
     resources.tracer.configure(settings={"FILTERS": resources.trace_filters})

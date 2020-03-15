@@ -3,6 +3,12 @@ import typing
 
 
 @dataclasses.dataclass(frozen=True)
+class ContentItem:
+    content: str
+    location: str
+
+
+@dataclasses.dataclass(frozen=True)
 class Frontmatter:
     title: str
     description: typing.Optional[str] = None
