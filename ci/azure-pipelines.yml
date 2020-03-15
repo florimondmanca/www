@@ -1,6 +1,9 @@
 trigger:
   - master
 
+pr:
+  - master
+
 variables:
   CI: true
 
