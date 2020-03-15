@@ -94,6 +94,8 @@ async def internal_server_error(request: Request, exc: Exception) -> Response:
 
 
 async def on_startup() -> None:
+    await blog.content.init()
+
     datadog.initialize()
     resources.tracer.configure(settings={"FILTERS": resources.trace_filters})
 
@@ -103,5 +105,5 @@ app = Starlette(
     middleware=middleware,
     routes=routes,
     exception_handlers={404: not_found, 500: internal_server_error},
-    on_startup=[on_startup, blog.on_startup],
+    on_startup=[on_startup],
 )

@@ -1,18 +1,17 @@
-import glob
 import pathlib
 import typing
 
 import aiofiles
 import frontmatter as fm
 
+from . import resources
 from .models import Frontmatter, MetaTag, Page
-from .resources import markdown
 
 
-async def load_pages(root: pathlib.Path) -> typing.List[Page]:
+async def load_pages() -> typing.List[Page]:
     pages = []
 
-    async for page in _find_filesystem_pages(root):
+    async for page in _find_content_pages():
         pages.append(page)
 
     unique_tags = {tag for page in pages for tag in page.frontmatter.tags}
@@ -23,14 +22,14 @@ async def load_pages(root: pathlib.Path) -> typing.List[Page]:
     return pages
 
 
-async def _find_filesystem_pages(root: pathlib.Path) -> typing.AsyncIterator[Page]:
-    for path in _find_markdown_files(root):
+async def _find_content_pages() -> typing.AsyncIterator[Page]:
+    for path in resources.content_files:
         async with aiofiles.open(path) as f:
             content = await f.read()
 
         post = fm.loads(content)
-        html = markdown.reset().convert(post.content)
-        permalink = _permalink_from_path(path.relative_to(root))
+        html = resources.markdown.reset().convert(post.content)
+        permalink = _permalink_from_path(resources.content_files.relative(path))
         frontmatter = Frontmatter(
             home=post.get("home", False),
             title=post["title"],
@@ -43,12 +42,6 @@ async def _find_filesystem_pages(root: pathlib.Path) -> typing.AsyncIterator[Pag
         meta = _build_meta(permalink, frontmatter)
 
         yield Page(html=html, permalink=permalink, frontmatter=frontmatter, meta=meta)
-
-
-def _find_markdown_files(root: pathlib.Path) -> typing.Iterator[pathlib.Path]:
-    pattern = str(root / "**" / "*.md")
-    for path in glob.glob(pattern, recursive=True):
-        yield pathlib.Path(path)
 
 
 def _generate_tag_pages(tags: typing.Iterable[str]) -> typing.Iterator[Page]:
