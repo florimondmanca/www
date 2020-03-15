@@ -3,8 +3,6 @@ import logging
 import os
 from typing import Callable, Dict, Iterator, Optional, Sequence
 
-from ..utils import get_display_path
-
 logger = logging.getLogger(__name__)
 
 
@@ -43,8 +41,7 @@ class PathReload:
         if path is None:
             return
 
-        message = "Detected file change in %r. Reloading..."
-        logger.warning(message, get_display_path(path))
+        logger.warning("Detected file change in %r. Reloading...", path)
 
         for callback in self.on_reload:
             await callback()

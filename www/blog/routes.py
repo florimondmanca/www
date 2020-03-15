@@ -44,9 +44,9 @@ async def hot_reload(ws: WebSocket) -> None:
 
     async def watch_reloads() -> None:
         channel = settings.BLOG_RELOAD_CHANNEL
-        async with resources.broadcast.subscribe(channel=channel) as subscription:
-            async for _ in subscription:
-                await ws.send_text("reload")
+        async with resources.broadcast.subscribe(channel=channel) as subscriber:
+            async for event in subscriber:
+                await ws.send_text(event.message)
 
     await run_until_first_complete(
         (watch_client_disconnects, {}), (watch_reloads, {}),
