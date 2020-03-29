@@ -1,5 +1,35 @@
 {% extends "base.html.jinja" %}
 
+{% block head %}
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Florimond Manca" />
+  <meta
+    name="twitter:description"
+    content="Open Source Developer & Idealist On A Journey"
+  />
+  <meta name="twitter:site" content="@florimondmanca" />
+  <meta name="twitter:creator" content="@florimondmanca" />
+  <meta name="twitter:url" content="{{ request.url }}" />
+  <meta
+    name="twitter:image"
+    content="{{ url_for('static', path='/social.png') }}"
+  />
+
+  <!-- OpenGraph card -->
+  <meta property="og:title" content="Florimond Manca" />
+  <meta
+    property="og:description"
+    content="Open Source Developer & Idealist On A Journey"
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ request.url }}" />
+  <meta
+    property="og:image"
+    content="{{ url_for('static', path='/social.png') }}"
+  />
+{% endblock head %}
+
 {% block content %}
 <main role="main">
   <div class="container">

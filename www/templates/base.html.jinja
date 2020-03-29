@@ -8,15 +8,11 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta
-      name="description"
-      content="Open Source Developer & Idealist On A Journey"
-    />
     <meta name="author" content="Florimond Manca" />
 
     <title>{% block title %}Florimond Manca{% endblock title %}</title>
 
-      <!-- PWA Manifest -->
+    <!-- PWA Manifest -->
     <link rel="manifest" href="{{ url_for('static', path='/manifest.json') }}" />
 
     <!-- Favicons -->
@@ -30,34 +26,6 @@
     <link rel="apple-touch-icon" href="{{ url_for('static', path='/apple-touch-icon.png') }}" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-
-    <!-- Twitter card -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Florimond Manca" />
-    <meta
-      name="twitter:description"
-      content="Open Source Developer & Idealist On A Journey"
-    />
-    <meta name="twitter:site" content="@florimondmanca" />
-    <meta name="twitter:creator" content="@florimondmanca" />
-    <meta name="twitter:url" content="{{ request.url }}" />
-    <meta
-      name="twitter:image"
-      content="{{ url_for('static', path='/social.png') }}"
-    />
-
-    <!-- OpenGraph card -->
-    <meta property="og:title" content="Florimond Manca" />
-    <meta
-      property="og:description"
-      content="Open Source Developer & Idealist On A Journey"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ request.url }}" />
-    <meta
-      property="og:image"
-      content="{{ url_for('static', path='/social.png') }}"
-    />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
