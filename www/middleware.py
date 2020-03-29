@@ -1,10 +1,11 @@
-from contextvars import ContextVar
 import typing
+from contextvars import ContextVar
+
 from starlette import status
 from starlette.datastructures import URL, MutableHeaders
+from starlette.requests import Request
 from starlette.responses import RedirectResponse
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
-from starlette.requests import Request
 
 
 class ContextMiddleware:

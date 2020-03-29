@@ -5,7 +5,7 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 from starlette.routing import Host, Mount, Route
 
-from . import blog, monitoring, resources, settings, middleware
+from . import blog, middleware, monitoring, resources, settings
 from .endpoints import DomainRedirect
 
 
