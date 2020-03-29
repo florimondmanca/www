@@ -1,3 +1,5 @@
+{% from 'blog/components/navbar.jinja' import NavBar with context %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +14,7 @@
     />
     <meta name="author" content="Florimond Manca" />
 
-    <title>Florimond Manca</title>
+    <title>{% block title %}Florimond Manca{% endblock title %}</title>
 
       <!-- PWA Manifest -->
     <link rel="manifest" href="{{ url_for('static', path='/manifest.json') }}" />
@@ -38,7 +40,7 @@
     />
     <meta name="twitter:site" content="@florimondmanca" />
     <meta name="twitter:creator" content="@florimondmanca" />
-    <meta name="twitter:url" content="https://florimond.dev" />
+    <meta name="twitter:url" content="{{ request.url }}" />
     <meta
       name="twitter:image"
       content="{{ url_for('static', path='/social.png') }}"
@@ -51,42 +53,24 @@
       content="Open Source Developer & Idealist On A Journey"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://florimond.dev" />
+    <meta property="og:url" content="{{ request.url }}" />
     <meta
       property="og:image"
       content="{{ url_for('static', path='/social.png') }}"
     />
 
     <!-- Custom CSS -->
-    <link
-      href="{{ url_for('static', path='/css/custom.css') }}"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
 
-    <!-- Bootstrap core CSS -->
-    <link
-      href="{{ url_for('static', path='/css/bootstrap.min.css') }}"
-      rel="stylesheet"
-    />
+    {% block head %}{% endblock head %}
   </head>
 
   <body>
-    <nav class="navbar navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="{{ url_for('home') }}">
-          Florimond Manca
-        </a>
-        <ul class="navbar-nav mr-auto"></ul>
-      </div>
-    </nav>
+    {{ NavBar() }}
+
     {% block content %}{% endblock %}
 
     <!-- Scripts placed at the end of the document so the pages load faster -->
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{ url_for('static', path='/js/jquery-3.4.1.slim.min.js') }}"></script>
-    <script src="{{ url_for('static', path='/js/popper.min.js') }}"></script>
-    <script src="{{ url_for('static', path='/js/bootstrap.min.js') }}"></script>
 
     <script>
     // NOTE: Service worker was removed and unregistration code was added on 2020-04-03.
@@ -97,6 +81,15 @@
       });
     }
     </script>
+
+    <script src="{{ url_for('static', path='/js/ga.js') }}"></script>
+
+    {% if settings.DEBUG %}
+      <script>
+        const ws = new WebSocket("{{ url_for('blog:hot-reload') }}");
+        ws.onmessage = event => document.location.reload(true);
+      </script>
+    {% endif %}
 
     {% block tail %}{% endblock %}
   </body>

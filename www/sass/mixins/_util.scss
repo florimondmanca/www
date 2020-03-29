@@ -79,3 +79,8 @@
 @mixin u-w($val) {
   width: normalize($val);
 }
+
+// Misc
+@mixin u-rounded() {
+  border-radius: 50%;
+}

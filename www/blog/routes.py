@@ -15,8 +15,6 @@ from .resources import index
 
 class RenderPage(HTTPEndpoint):
     async def get(self, request: Request) -> Response:
-        resources.CTX_VAR_REQUEST.set(request)
-
         permalink = "/" + request.path_params.get("permalink", "")
 
         for page in index.pages:
@@ -54,8 +52,8 @@ async def hot_reload(ws: WebSocket) -> None:
 
 
 routes: typing.List[BaseRoute] = [
-    Route("/", endpoint=RenderPage),
-    Route("/{permalink:path}/", endpoint=RenderPage),
+    Route("/", endpoint=RenderPage, name="home"),
+    Route("/{permalink:path}/", endpoint=RenderPage, name="page"),
 ]
 
 if settings.DEBUG:

@@ -1,30 +1,18 @@
+{% extends "base.html.jinja" %}
 {% from 'blog/layouts/layout.jinja' import Layout with context %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+{% block head %}
+  {{ super() }}
   <link rel="alternate" type="application/rss+xml" href="https://florimond.dev/feed.rss" title="Florimond Manca RSS Feed">
-  <link rel="stylesheet" href="/static/css/styles.css">
-
-  <title>{{ page.frontmatter.title or "Florimond Manca" }}</title>
   {% for item in page.meta -%}
     {{ item | safe }}
   {%- endfor %}
-</head>
-<body>
+{% endblock head %}
+
+{% block title %}
+  {{ page.frontmatter.title or "Florimond Manca" }}
+{% endblock title %}
+
+{% block content %}
   {{ Layout() }}
-
-  <script src="/static/js/ga.js"></script>
-
-  {% if settings.DEBUG %}
-    <script>
-      const ws = new WebSocket("{{ url_for('blog:hot-reload') }}");
-      ws.onmessage = event => document.location.reload(true);
-    </script>
-  {% endif %}
-</body>
-</html>
+{% endblock content %}
