@@ -1,4 +1,3 @@
-{% from 'blog/components/navbar.jinja' import NavBar %}
 {% from 'blog/components/footer.jinja' import Footer with context %}
 {% from 'blog/layouts/home.jinja' import Home %}
 {% from 'blog/layouts/tag.jinja' import Tag %}
@@ -7,8 +6,6 @@
 
 {% macro Layout() %}
 <div class="theme-container">
-  {{ NavBar() }}
-
   <div class="c_layout-content">
     <main class="u-mt-6">
     {%- if page.frontmatter.home -%}

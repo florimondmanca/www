@@ -54,7 +54,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 500;
+  font-weight: v.$font-weight-headers;
   margin-top: 1 * v.$space-unit;
   margin-bottom: 3 * v.$space-unit;
 }

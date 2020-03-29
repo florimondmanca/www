@@ -130,3 +130,7 @@
 .u-overflow-x-hidden {
   overflow-x: hidden;
 }
+
+.u-rounded {
+  @include mixins.u-rounded();
+}

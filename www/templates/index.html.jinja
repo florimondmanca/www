@@ -1,32 +1,68 @@
 {% extends "base.html.jinja" %}
 
+{% block head %}
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Florimond Manca" />
+  <meta
+    name="twitter:description"
+    content="Open Source Developer & Idealist On A Journey"
+  />
+  <meta name="twitter:site" content="@florimondmanca" />
+  <meta name="twitter:creator" content="@florimondmanca" />
+  <meta name="twitter:url" content="{{ request.url }}" />
+  <meta
+    name="twitter:image"
+    content="{{ url_for('static', path='/social.png') }}"
+  />
+
+  <!-- OpenGraph card -->
+  <meta property="og:title" content="Florimond Manca" />
+  <meta
+    property="og:description"
+    content="Open Source Developer & Idealist On A Journey"
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ request.url }}" />
+  <meta
+    property="og:image"
+    content="{{ url_for('static', path='/social.png') }}"
+  />
+{% endblock head %}
+
 {% block content %}
 <main role="main">
   <div class="container">
-    <div class="jumbotron bg-white d-flex flex-column align-items-center">
-      <div class="t-picture mb-3">
-        <img class="w-100 h-100 rounded-circle" src="{{ url_for('static', path='img/me.jpg') }}" alt="Picture of me">
+    <div class="c-jumbotron">
+      <div class="c-picture u-mb-3">
+        <img class="u-w-full u-h-full u-rounded" src="{{ url_for('static', path='img/me.jpg') }}" alt="Picture of me">
       </div>
-      <h1 class="display-5">
+      <h1>
         Florimond Manca
       </h1>
-      <p class="lead">
+      <p class="c-lead">
         Open Source Developer, Idealist On A Journey
       </p>
-      <p class="text-muted">
+      <p class="u-color-muted">
         I maintain and contribute to libraries, packages, and tools. Mostly Python.
       </p>
 
-      <div class="w-50 d-flex justify-content-around">
-        <a class="btn btn-link btn-lg" href="{{ url_for('blog', path='/') }}">
-          ✍️&nbsp;&nbsp;Writings
-        </a>
-        <a class="btn btn-link btn-lg" href="https://github.com/florimondmanca" target="_blank" rel="noopener">
-          💻&nbsp;&nbsp;Code
-        </a>
-        <a class="btn btn-link btn-lg" href="https://twitter.com/florimondmanca" target="_blank" rel="noopener">
-          🐤&nbsp;&nbsp;Tweets
-        </a>
+      <ul class="c-links u-list-reset">
+        <li>
+          <a class="p-btn p-btn--link" href="{{ url_for('blog', path='/') }}">
+            ✍️&nbsp;&nbsp;Writings
+          </a>
+        </li>
+        <li>
+          <a class="p-btn p-btn--link" href="https://github.com/florimondmanca" target="_blank" rel="noopener">
+            💻&nbsp;&nbsp;Code
+          </a>
+        </li>
+        <li>
+          <a class="p-btn p-btn--link" href="https://twitter.com/florimondmanca" target="_blank" rel="noopener">
+            🐤&nbsp;&nbsp;Tweets
+          </a>
+        </li>
       </div>
     </div>
   </div>

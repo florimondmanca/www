@@ -3,8 +3,6 @@
 
 .p-btn {
   background: none;
-  border: 0;
-  box-shadow: 0px 1px 3px 0px transparentize(black, 0.3);
   color: inherit;
   display: inline-flex;
   align-items: center;
@@ -12,7 +10,6 @@
   font-family: inherit;
   padding-left: 3 * v.$space-unit;
   padding-right: 3 * v.$space-unit;
-  border-radius: 3px;
   height: 7 * v.$space-unit;
   line-height: 3.5 * v.$space-unit;
 
@@ -21,9 +18,14 @@
   }
 }
 
+.p-btn:not(.p-btn--link) {
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0px 1px 3px 0px transparentize(black, 0.3);
+}
+
 .p-btn--primary {
   background: v.$colorPrimary;
-  box-shadow: 0px 1px 3px 0px transparentize(black, 0.3);
 
   &:hover {
     background: darken(v.$colorPrimary, 10%);

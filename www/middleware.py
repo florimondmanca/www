@@ -1,9 +1,23 @@
 import typing
+from contextvars import ContextVar
 
 from starlette import status
 from starlette.datastructures import URL, MutableHeaders
+from starlette.requests import Request
 from starlette.responses import RedirectResponse
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
+
+
+class ContextMiddleware:
+    def __init__(self, app: ASGIApp, request_contextvar: ContextVar) -> None:
+        self.app = app
+        self.request_contextvar = request_contextvar
+
+    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+        if scope["type"] == "http":
+            request = Request(scope)
+            self.request_contextvar.set(request)
+        await self.app(scope, receive, send)
 
 
 class LegacyRedirectMiddleware:

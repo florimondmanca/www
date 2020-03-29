@@ -1,23 +1,29 @@
 @use "../../variables" as v;
+@use "../../mixins";
 
-.c_navbar-nav {
+.c_navbar {
   background-color: v.$colorBackgroundCard;
-  z-index: 100; // Float on top of page content.
 
   ul {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-gap: 6 * v.$space-unit;
+    display: flex;
     align-items: center;
 
     li {
-      display: flex;
-      align-items: center;
+      $pad: 3;
+
+      &.c_navbar-item {
+        a {
+          @include mixins.u-pv($pad / 2);
+          @include mixins.u-ph($pad);
+        }
+      }
+
+      &.c_navbar-brand {
+        font-size: v.$font-size-brand;
+        font-weight: v.$font-weight-headers;
+        @include mixins.u-pv($pad / 2);
+        @include mixins.u-pr($pad);
+      }
     }
   }
-}
-
-.c_navbar-title {
-  font-size: v.$font-size-title;
-  width: fit-content;
 }
