@@ -3,13 +3,15 @@
 note() { echo "-----> $1"; }
 
 if [ -z $CI ]; then
-  note "Create virtual environment"
-  python -m venv venv
-
   export PREFIX="venv/bin/"
 
-  note "Upgrade pip"
-  ${PREFIX}pip install -U pip
+  if [ ! -d venv ]; then
+    note "Create virtual environment"
+    python -m venv venv
+
+    note "Upgrade pip"
+    ${PREFIX}pip install -U pip
+  fi
 
   if ! [ -f .env ]; then
     note "Add .env"

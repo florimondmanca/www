@@ -11,6 +11,7 @@ pygments==2.5.*
 python-frontmatter==0.5.*
 starlette==0.13.*
 uvicorn==0.11.*
+-e git+https://github.com/florimondmanca/arel.git@implementation#egg=arel
 
 # Development dependencies -- install in production too for consistency.
 autoflake

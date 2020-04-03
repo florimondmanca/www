@@ -1,5 +1,6 @@
 aiofiles==0.4.0
 appdirs==1.4.3
+git+https://github.com/florimondmanca/arel.git
 asgi-lifespan==1.0.0
 aspy.refactor-imports==2.0.0
 attrs==19.3.0

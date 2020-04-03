@@ -9,6 +9,7 @@ from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 from . import settings
+from .blog.reload import hotreload
 from .monitoring import FilterDropIf, FilterRedirectResponses
 
 templates = Jinja2Templates(directory=str(settings.TEMPLATES_DIR))
@@ -34,6 +35,7 @@ def with_base(path: str) -> str:
 
 templates.env.globals["with_base"] = with_base
 templates.env.globals["settings"] = settings
+templates.env.globals["hotreload"] = hotreload
 
 broadcast = broadcaster.Broadcast("memory://")
 
