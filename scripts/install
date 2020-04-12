@@ -1,6 +1,7 @@
 #!/bin/bash
 
-note() { echo "-----> $1"; }
+note() { echo "-----> $@"; }
+ci_detected() { note "CI pipeline detected: $@"; }
 
 if [ -z $CI ]; then
   export PREFIX="venv/bin/"
@@ -23,7 +24,7 @@ if [ -z $CI ]; then
     echo "PORT=8000" >> .env
   fi
 else
-  note "CI pipeline detected: will use system executables"
+  ci_detected "Using system Python executables"
   export PREFIX=""
 fi
 
@@ -37,7 +38,9 @@ else
   ${PREFIX}pip install -U -r requirements.txt
 fi
 
-if ! [[ "$@" = *"--no-node"* ]]; then
+if [ -z $CI ]; then
   note "Install yarn dependencies"
   yarn install
+else
+  ci_detected "Skipping yarn dependencies"
 fi
