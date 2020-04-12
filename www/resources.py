@@ -1,6 +1,5 @@
 import contextvars
 
-import broadcaster
 import datadog
 import ddtrace
 from ddtrace.filters import FilterRequestsOnUrl
@@ -9,6 +8,7 @@ from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 from . import settings
+from .blog.reload import hotreload
 from .monitoring import FilterDropIf, FilterRedirectResponses
 
 templates = Jinja2Templates(directory=str(settings.TEMPLATES_DIR))
@@ -34,8 +34,7 @@ def with_base(path: str) -> str:
 
 templates.env.globals["with_base"] = with_base
 templates.env.globals["settings"] = settings
-
-broadcast = broadcaster.Broadcast("memory://")
+templates.env.globals["hotreload"] = hotreload
 
 tracer = ddtrace.Tracer()
 trace_filters = [

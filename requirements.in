@@ -1,6 +1,6 @@
 # Application dependencies.
 aiofiles==0.4.*
-broadcaster==0.2.*
+arel==0.1.*
 datadog==0.34.*
 ddtrace==0.31.*
 ddtrace-asgi==0.3.*
