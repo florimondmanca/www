@@ -1,6 +1,5 @@
 import contextvars
 
-import broadcaster
 import datadog
 import ddtrace
 from ddtrace.filters import FilterRequestsOnUrl
@@ -36,8 +35,6 @@ def with_base(path: str) -> str:
 templates.env.globals["with_base"] = with_base
 templates.env.globals["settings"] = settings
 templates.env.globals["hotreload"] = hotreload
-
-broadcast = broadcaster.Broadcast("memory://")
 
 tracer = ddtrace.Tracer()
 trace_filters = [

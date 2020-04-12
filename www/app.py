@@ -90,6 +90,6 @@ app = Starlette(
         ),
     ],
     exception_handlers={404: not_found, 500: internal_server_error},
-    on_startup=[monitoring.on_startup, resources.broadcast.connect, *blog.on_startup],
-    on_shutdown=[resources.broadcast.disconnect, *blog.on_shutdown],
+    on_startup=[monitoring.on_startup, *blog.on_startup],
+    on_shutdown=[*blog.on_shutdown],
 )
