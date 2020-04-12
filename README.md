@@ -20,7 +20,7 @@ Development only:
 ## Install
 
 ```bash
-scripts/install [--update] [--no-node]
+scripts/install [--update]
 ```
 
 ## Usage
