@@ -1,0 +1,28 @@
+@use "../../variables" as v;
+@use "../../mixins";
+
+.c-article-meta {
+  width: 100%;
+  display: grid;
+  grid-column-gap: 3 * v.$space-unit;
+  grid-template-areas:
+    "date . edit"
+    "tags tags tags";
+  grid-template-columns: auto 1fr auto;
+
+  @include mixins.forSize("tablet") {
+    grid-template-areas: "date tags edit";
+  }
+
+  .c-article-meta-data {
+    grid-area: date;
+  }
+
+  .c-article-meta-tags {
+    grid-area: tags;
+  }
+
+  .c-article-meta-edit {
+    grid-area: edit;
+  }
+}

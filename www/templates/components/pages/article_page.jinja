@@ -1,31 +1,11 @@
 {% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
-{% from "components/pages/tag_list.jinja" import TagList with context %}
+{% from "components/pages/article_meta.jinja" import ArticleMeta with context %}
 
 {% macro ArticlePage(page) %}
 {% call ContentWrapper(class="c-article-page") %}
   <header>
-    <div class="u-flex-spaceBetween u-flex-centerVertical">
-      <div>
-        {% if page.frontmatter.date -%}
-        <label class="u-color-muted">
-          {{ "Drafted" if page.frontmatter.published else "" }}
-          {# TODO: date filter #}
-          {{ page.frontmatter.date }}
-        </label>
-        {%- endif %}
-
-        {% if page.frontmatter.tags -%}
-          {{ TagList(page.frontmatter.tags, class="c-article-page-tags") }}
-        {%- endif %}
-      </div>
-
-      <a
-        href="https://github.com/florimondmanca/www/blob/master/content{{ page.permalink }}.md"
-        rel="no-referrer"
-        target="_blank"
-      >
-        📝&nbsp;Edit on GitHub
-      </a>
+    <div class="u-flex-spaceBetween">
+      {{ ArticleMeta(page, editable=true) }}
     </div>
 
     <h1>

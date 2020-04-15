@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .c-jumbotron {
   padding-left: 36px;
   padding-right: 36px;
@@ -7,10 +6,16 @@
   background-color: #edeff0;
 }
 .c-jumbotron .c-jumbotron-card {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 18px;
-  align-items: center;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .c-jumbotron .c-jumbotron-card {
+    text-align: initial;
+    display: grid;
+    grid-gap: 18px;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
 }
 .c-jumbotron h1 {
   margin-bottom: 0;
@@ -22,8 +27,11 @@
 }
 .c-jumbotron .c-jumbotron-picture {
   display: block;
+  border-radius: 50%;
   width: 132px;
-  height: 132px;
+  width: 132px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .c-jumbotron .c-jumbotron-lead {
   font-size: 1.5em;
@@ -37,12 +45,31 @@
   padding: 6px 18px;
 }
 
+.c-article-meta {
+  width: 100%;
+  display: grid;
+  grid-column-gap: 18px;
+  grid-template-areas: "date . edit" "tags tags tags";
+  grid-template-columns: auto 1fr auto;
+}
+@media screen and (min-width: 768px) {
+  .c-article-meta {
+    grid-template-areas: "date tags edit";
+  }
+}
+.c-article-meta .c-article-meta-data {
+  grid-area: date;
+}
+.c-article-meta .c-article-meta-tags {
+  grid-area: tags;
+}
+.c-article-meta .c-article-meta-edit {
+  grid-area: edit;
+}
+
 .c-article-page header {
   margin-bottom: 36px;
   border-bottom: 1px solid #d1d1d1;
-}
-.c-article-page .c-article-page-tags::before {
-  content: "∙";
 }
 .c-article-page .c-article-page-markdown h2, .c-article-page .c-article-page-markdown h3, .c-article-page .c-article-page-markdown h4, .c-article-page .c-article-page-markdown h5, .c-article-page .c-article-page-markdown h6 {
   margin-top: 48px;
@@ -62,16 +89,16 @@
 .c-page-list-item + .c-page-list-item {
   border-top: 1px solid #d1d1d1;
 }
-.c-page-list-item .c-page-list-item-header {
-  font-size: smaller;
+
+.c-tag-list-item:first-child {
+  margin-right: 6px;
 }
-@media screen and (min-width: 768px) {
-  .c-page-list-item .c-page-list-item-header {
-    font-size: inherit;
-  }
+.c-tag-list-item:last-child {
+  margin-left: 6px;
 }
-.c-page-list-item .c-page-list-item-tags.separated::before {
-  content: "∙";
+.c-tag-list-item:not(:first-child):not(:last-child) {
+  margin-left: 6px;
+  margin-right: 6px;
 }
 
 .c-navbar-brand {
@@ -527,7 +554,7 @@
 
 .u-flex-inline {
   display: inline-flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
 }
 
 .u-text-center {
