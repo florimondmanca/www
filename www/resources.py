@@ -3,6 +3,7 @@ import datetime as dt
 import datadog
 import ddtrace
 from ddtrace.filters import FilterRequestsOnUrl
+from starlette.exceptions import HTTPException
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
@@ -14,7 +15,13 @@ templates = Jinja2Templates(directory=str(settings.TEMPLATES_DIR))
 static = StaticFiles(directory=str(settings.STATIC_DIR))
 sass = StaticFiles(directory=str(settings.SASS_DIR))
 
+
+def raise_server_error(message: str) -> None:
+    raise HTTPException(500, detail=message)
+
+
 templates.env.globals["now"] = dt.datetime.now
+templates.env.globals["raise"] = raise_server_error
 templates.env.globals["settings"] = settings
 templates.env.globals["hotreload"] = hotreload
 

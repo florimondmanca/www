@@ -1,17 +1,16 @@
 {% from 'blog/layouts/tag.jinja' import Tag with context %}
 {% from 'blog/layouts/article_detail.jinja' import ArticleDetail with context %}
-{% from 'blog/layouts/page.jinja' import Page with context %}
 
 {% macro Layout() %}
 <div class="theme-container">
-  <div class="c_layout-content">
+  <div class="c-layout-content">
     <main class="u-mt-6">
       {%- if page.frontmatter.tag -%}
         {{ Tag(page.frontmatter.tag, get_articles(tag=page.frontmatter.tag)) }}
       {%- elif page.is_article -%}
         {{ ArticleDetail(page) }}
       {%- else -%}
-        {{ Page(page) }}
+        {{ raise("Unknown page type") }}
       {%- endif -%}
     </main>
   </div>

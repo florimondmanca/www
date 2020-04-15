@@ -37,5 +37,10 @@
   .c-jumbotron-links {
     display: flex;
     justify-content: center;
+
+    a {
+      display: inline-flex;
+      padding: 1 * v.$space-unit 3 * v.$space-unit;
+    }
   }
 }

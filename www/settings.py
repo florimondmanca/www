@@ -33,6 +33,29 @@ with open(HERE / "assets" / "legacy-blog-url-mapping.json") as f:
 BLOG_MARKDOWN_EXTENSIONS = ["codehilite", "fenced_code", "tables", ImageFigcaptions()]
 BLOG_RELOAD_CHANNEL = "content-reload"
 
+SOCIAL_LINKS = [
+    {
+        "href": "https://github.com/florimondmanca",
+        "name": "GitHub",
+        "title": "GitHub (@florimondmanca)",
+    },
+    {
+        "href": "https://twitter.com/florimondmanca",
+        "name": "Twitter",
+        "title": "Twitter (@florimondmanca)",
+    },
+    {
+        "href": "https://www.linkedin.com/in/florimondmanca",
+        "name": "LinkedIn",
+        "title": "LinkedIn (florimondmanca)",
+    },
+    {
+        "href": "https://dev.to/florimondmanca",
+        "name": "DEV",
+        "title": "DEV (@florimondmanca)",
+    },
+]
+
 DD_AGENT_HOST: str = config("DD_AGENT_HOST", cast=str, default="localhost")
 DD_TAGS: List[str] = config(
     "DD_TAGS",

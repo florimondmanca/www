@@ -1,8 +1,8 @@
-{% from "blog/components/article_tag_list.jinja" import ArticleTagList with context %}
+{% from "blog/components/tag_list.jinja" import TagList with context %}
 
 {% macro ListItem(page) %}
-<article class="c_list_item-item">
-  <div class="c_list_item-post-header">
+<article class="c-list-item">
+  <div class="c-list-item-header">
     {% if page.frontmatter.date -%}
       <label class="u-color-muted">
         {# TODO: date filter #}
@@ -11,9 +11,9 @@
     {%- endif %}
 
     {% if page.frontmatter.tags -%}
-      {{ ArticleTagList(
+      {{ TagList(
         page.frontmatter.tags,
-        class="c_list_item-tag-list" + (" separated" if page.frontmatter.date else "")
+        class="c-list-item-tags" + (" separated" if page.frontmatter.date else "")
       ) }}
     {%- endif %}
   </div>

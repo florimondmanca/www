@@ -1,10 +1,10 @@
 {% from "blog/components/content_wrapper.jinja" import ContentWrapper with context %}
-{% from "blog/components/article_tag_list.jinja" import ArticleTagList with context %}
+{% from "blog/components/tag_list.jinja" import TagList with context %}
 
 {% macro ArticleDetail(page) %}
 
-{% call ContentWrapper() %}
-  <header class="c_article_detail-header">
+{% call ContentWrapper(class="c-article-detail") %}
+  <header>
     <div class="u-flex-spaceBetween u-flex-centerVertical">
       <div>
         {% if page.frontmatter.date -%}
@@ -16,7 +16,7 @@
         {%- endif %}
 
         {% if page.frontmatter.tags -%}
-          {{ ArticleTagList(page.frontmatter.tags, class="c_article_detail-tag-list") }}
+          {{ TagList(page.frontmatter.tags, class="c-article-detail-tags") }}
         {%- endif %}
       </div>
 
@@ -54,8 +54,8 @@
     {%- endif %}
   </header>
 
-  <main class="c-article">
-    <div class="c_article_detail-article-markdown-content">
+  <article>
+    <div class="c-article-detail-markdown">
       {{ page.html | safe }}
     </div>
 
@@ -69,7 +69,7 @@
         for updates, announcements and news. 🐤
       </p>
     </footer>
-  </main>
+  </article>
 
   {# TODO: previous/next navigation #}
 

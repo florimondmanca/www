@@ -1,8 +1,8 @@
 {% from "blog/components/content_wrapper.jinja" import ContentWrapper with context %}
 {% from "blog/components/social_links.jinja" import SocialLinks with context %}
 
-{% macro Footer() %}
-<footer>
+{% macro Footer(class="") %}
+<footer class="{{ class }}">
   {% call ContentWrapper(class="u-text-center") %}
     {{ SocialLinks() }}
     <p class="u-mt-2">
