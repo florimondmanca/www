@@ -7,10 +7,15 @@
   background-color: v.$colorBackgroundCard;
 
   .c-jumbotron-card {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-gap: 3 * v.$space-unit;
-    align-items: center;
+    text-align: center;
+
+    @include mixins.forSize("tablet") {
+      text-align: initial;
+      display: grid;
+      grid-gap: 3 * v.$space-unit;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+    }
   }
 
   h1 {
@@ -24,10 +29,12 @@
   }
 
   .c-jumbotron-picture {
-    $size: 22;
     display: block;
-    width: $size * v.$space-unit;
-    height: $size * v.$space-unit;
+    $size: 22;
+    @include mixins.u-rounded();
+    @include mixins.u-w($size);
+    @include mixins.u-h($size);
+    @include mixins.u-mh(auto);
   }
 
   .c-jumbotron-lead {

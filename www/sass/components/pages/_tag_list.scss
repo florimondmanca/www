@@ -1,0 +1,14 @@
+@use "../../variables" as v;
+@use "../../mixins";
+
+.c-tag-list-item {
+  &:first-child {
+    @include mixins.u-mr(1);
+  }
+  &:last-child {
+    @include mixins.u-ml(1);
+  }
+  &:not(:first-child):not(:last-child) {
+    @include mixins.u-mh(1);
+  }
+}
