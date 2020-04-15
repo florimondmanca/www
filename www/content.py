@@ -82,9 +82,6 @@ def _build_permalink(location: str) -> str:
     segments = url.split("/")
     assert segments
 
-    if segments[-1] == "README":
-        segments[-1] = ""
-
     return "/" + "/".join(segments)
 
 
