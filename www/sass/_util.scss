@@ -112,6 +112,11 @@
   flex-flow: row wrap;
 }
 
+.u-flex-inline {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
 .u-text-center {
   text-align: center;
 }

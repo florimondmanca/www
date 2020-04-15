@@ -1,0 +1,11 @@
+{% macro TagList(tags, class="", inline=true) %}
+<ul class="u-list-reset {{ class }} {{ 'u-flex-inline' if inline else '' }}">
+  {% for tag in tags %}
+  <li class="u-mh-1">
+    <a href="{{ url_for('page', permalink='tag/' + tag) }}">
+      #{{ tag }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}

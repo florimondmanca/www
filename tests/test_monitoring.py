@@ -76,9 +76,7 @@ async def test_metrics(
     packets: List[str] = []
     monkeypatch.setattr(resources.statsd, "_send", packets.append)
 
-    r = await client.get(
-        "https://testserver/blog/", allow_redirects=False, headers=headers
-    )
+    r = await client.get("https://testserver/", allow_redirects=False, headers=headers)
     assert r.status_code in (200, 301)
 
     assert len(packets) == 1

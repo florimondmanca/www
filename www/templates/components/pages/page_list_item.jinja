@@ -1,0 +1,31 @@
+{% from "components/pages/tag_list.jinja" import TagList with context %}
+
+{% macro PageListItem(page) %}
+<li class="c-page-list-item">
+  <div class="c-page-list-item-header">
+    {% if page.frontmatter.date -%}
+      <label class="u-color-muted">
+        {# TODO: date filter #}
+        {{ page.frontmatter.date }}
+      </label>
+    {%- endif %}
+
+    {% if page.frontmatter.tags -%}
+      {{ TagList(
+        page.frontmatter.tags,
+        class="c-page-list-item-tags" + (" separated" if page.frontmatter.date else "")
+      ) }}
+    {%- endif %}
+  </div>
+
+  <h3>
+    <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
+      {{ page.frontmatter.title }}
+    </a>
+  </h3>
+
+  <p>
+    {{ page.frontmatter.description }}
+  </p>
+</li>
+{% endmacro %}

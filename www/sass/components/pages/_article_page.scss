@@ -1,0 +1,35 @@
+@use "../../variables" as v;
+@use "../../mixins";
+
+.c-article-page {
+  header {
+    margin-bottom: 6 * v.$space-unit;
+    border-bottom: 1px solid v.$colorDivider;
+  }
+
+  .c-article-page-tags {
+    &::before {
+      content: "\2219";
+    }
+  }
+
+  .c-article-page-markdown {
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      margin-top: 8 * v.$space-unit;
+      margin-bottom: 5 * v.$space-unit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  article a {
+    border-bottom: 1px solid v.$colorPrimary;
+  }
+}

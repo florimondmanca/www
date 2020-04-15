@@ -1,0 +1,76 @@
+{% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
+{% from "components/pages/tag_list.jinja" import TagList with context %}
+
+{% macro ArticlePage(page) %}
+{% call ContentWrapper(class="c-article-page") %}
+  <header>
+    <div class="u-flex-spaceBetween u-flex-centerVertical">
+      <div>
+        {% if page.frontmatter.date -%}
+        <label class="u-color-muted">
+          {{ "Drafted" if page.frontmatter.published else "" }}
+          {# TODO: date filter #}
+          {{ page.frontmatter.date }}
+        </label>
+        {%- endif %}
+
+        {% if page.frontmatter.tags -%}
+          {{ TagList(page.frontmatter.tags, class="c-article-page-tags") }}
+        {%- endif %}
+      </div>
+
+      <a
+        href="https://github.com/florimondmanca/www/blob/master/content{{ page.permalink }}.md"
+        rel="no-referrer"
+        target="_blank"
+      >
+        📝&nbsp;Edit on GitHub
+      </a>
+    </div>
+
+    <h1>
+      {{ page.frontmatter.title }}
+    </h1>
+
+    {% if page.frontmatter.description -%}
+      <p class="u-color-muted">
+        {{ page.frontmatter.description }}
+      </p>
+    {%- endif %}
+
+    {% if page.frontmatter.image -%}
+      <div class="p-image">
+        <img
+          src="{{ page.frontmatter.image }}"
+          alt="{{ page.frontmatter.image_caption or '' }}"
+        />
+        {% if page.frontmatter.image_caption -%}
+          <figcaption>
+            {{ page.frontmatter.image_caption }}
+          </figcaption>
+        {%- endif %}
+      </div>
+    {%- endif %}
+  </header>
+
+  <article>
+    <div class="c-article-page-markdown">
+      {{ page.html | safe }}
+    </div>
+
+    <footer class="p-card">
+      <h3>Stay in touch!</h3>
+      <p>
+        If you enjoyed this post, you can
+        <a href="https://twitter.com/florimondmanca" target="_blank" rel="noreferrer">
+          find me on Twitter
+        </a>
+        for updates, announcements and news. 🐤
+      </p>
+    </footer>
+  </article>
+
+  {# TODO: previous/next navigation #}
+
+{% endcall %}
+{% endmacro %}

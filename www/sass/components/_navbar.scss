@@ -1,0 +1,13 @@
+@use "../variables" as v;
+@use "../mixins";
+
+.c-navbar-brand {
+  font-size: v.$font-size-brand;
+  font-weight: v.$font-weight-headers;
+
+  a {
+    display: block;
+    @include mixins.u-pv(1.5);
+    @include mixins.u-pr(3);
+  }
+}

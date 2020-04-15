@@ -1,0 +1,17 @@
+{% macro SocialLinks() %}
+<p class="u-mb-0">
+  <strong>
+    Links
+  </strong>
+</p>
+
+<ul class="u-list-reset u-flex-centerHorizontal u-flex-row">
+  {% for link in settings.SOCIAL_LINKS %}
+  <li class="u-m-2">
+    <a href="{{ link['href'] }}" title="{{ link['title'] }}" target="_blank" rel="noreferrer">
+      {{ link['name'] }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}

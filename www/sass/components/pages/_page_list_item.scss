@@ -1,0 +1,24 @@
+@use "../../variables" as v;
+@use "../../mixins";
+
+.c-page-list-item {
+  padding: 1em 0;
+
+  & + .c-page-list-item {
+    border-top: 1px solid v.$colorDivider;
+  }
+
+  .c-page-list-item-header {
+    font-size: smaller;
+
+    @include mixins.forSize(tablet) {
+      font-size: inherit;
+    }
+  }
+
+  .c-page-list-item-tags {
+    &.separated::before {
+      content: "\2219";
+    }
+  }
+}

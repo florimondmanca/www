@@ -1,0 +1,10 @@
+@use "../variables" as v;
+@use "../mixins";
+
+.c-page-content {
+  padding: 0 4 * v.$space-unit;
+
+  @include mixins.forSize("tablet") {
+    padding: 0 8 * v.$space-unit;
+  }
+}

@@ -5,7 +5,7 @@ from typing import List
 from starlette.config import Config
 from starlette.datastructures import CommaSeparatedStrings
 
-from .markdown_extensions import ImageFigcaptions
+from .markdown import ImageFigcaptions
 
 config = Config(".env")
 
@@ -27,11 +27,33 @@ STATIC_DIR = HERE / "static"
 SASS_DIR = HERE / "sass"
 TEMPLATES_DIR = HERE / "templates"
 
-BLOG_CONTENT_DIR = HERE.parent / "content"
+CONTENT_DIR = HERE.parent / "content"
 with open(HERE / "assets" / "legacy-blog-url-mapping.json") as f:
-    BLOG_LEGACY_URL_MAPPING = json.loads(f.read())
-BLOG_MARKDOWN_EXTENSIONS = ["codehilite", "fenced_code", "tables", ImageFigcaptions()]
-BLOG_RELOAD_CHANNEL = "content-reload"
+    LEGACY_URL_MAPPING = json.loads(f.read())
+MARKDOWN_EXTENSIONS = ["codehilite", "fenced_code", "tables", ImageFigcaptions()]
+
+SOCIAL_LINKS = [
+    {
+        "href": "https://github.com/florimondmanca",
+        "name": "GitHub",
+        "title": "GitHub (@florimondmanca)",
+    },
+    {
+        "href": "https://twitter.com/florimondmanca",
+        "name": "Twitter",
+        "title": "Twitter (@florimondmanca)",
+    },
+    {
+        "href": "https://www.linkedin.com/in/florimondmanca",
+        "name": "LinkedIn",
+        "title": "LinkedIn (florimondmanca)",
+    },
+    {
+        "href": "https://dev.to/florimondmanca",
+        "name": "DEV",
+        "title": "DEV (@florimondmanca)",
+    },
+]
 
 DD_AGENT_HOST: str = config("DD_AGENT_HOST", cast=str, default="localhost")
 DD_TAGS: List[str] = config(

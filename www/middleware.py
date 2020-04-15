@@ -1,68 +1,42 @@
 import typing
-from contextvars import ContextVar
 
-from starlette import status
-from starlette.datastructures import URL, MutableHeaders
+from ddtrace_asgi.middleware import TraceMiddleware
+from starlette.middleware import Middleware
+from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
-from starlette.responses import RedirectResponse
-from starlette.types import ASGIApp, Message, Receive, Scope, Send
+from starlette.responses import Response
+from starlette.types import ASGIApp
+
+from . import caching, legacy, monitoring, resources, settings
+
+middleware = [
+    # NOTE: Middleware executes from top to bottom.
+    Middleware(
+        monitoring.MetricsMiddleware,
+        known_domains=settings.KNOWN_DOMAINS,
+        statsd=resources.statsd,
+    ),
+    Middleware(
+        legacy.LegacyRedirectMiddleware,
+        url_mapping=settings.LEGACY_URL_MAPPING,
+        root_path="/blog",
+    ),
+    Middleware(
+        TraceMiddleware,
+        service="www",
+        tracer=resources.tracer,
+        tags=", ".join(settings.DD_TAGS),
+    ),
+    Middleware(caching.CacheMiddleware, patterns=["/static/fonts/*"], ttl=3600),
+]
 
 
-class ContextMiddleware:
-    def __init__(self, app: ASGIApp, request_contextvar: ContextVar) -> None:
-        self.app = app
-        self.request_contextvar = request_contextvar
-
-    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
-        if scope["type"] == "http":
-            request = Request(scope)
-            self.request_contextvar.set(request)
-        await self.app(scope, receive, send)
-
-
-class LegacyRedirectMiddleware:
-    def __init__(
-        self, app: ASGIApp, *, url_mapping: typing.Dict[str, str], root_path: str,
-    ) -> None:
-        self.app = app
-        self.root_path = root_path
-        self.url_mapping = url_mapping
-
-    def get_responder(self, scope: Scope) -> ASGIApp:
-        if scope["type"] != "http":
-            return self.app
-
-        if not scope["path"].startswith(self.root_path):
-            return self.app
-
-        path = scope["path"][len(self.root_path) :]
-
-        if path not in self.url_mapping:
-            return self.app
-
-        mapped_path = self.url_mapping[path]
-        redirect_path = self.root_path + mapped_path
-
-        return RedirectResponse(
-            URL(scope=scope).replace(path=redirect_path),
-            status_code=status.HTTP_301_MOVED_PERMANENTLY,
-        )
-
-    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
-        responder = self.get_responder(scope)
-        await responder(scope, receive, send)
-
-
-class PatchHeadersMiddleware:
+class PatchHeadersMiddleware(BaseHTTPMiddleware):
     def __init__(self, app: ASGIApp, headers: dict) -> None:
-        self.app = app
+        super().__init__(app)
         self.headers = headers
 
-    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
-        async def _send(message: Message) -> None:
-            if message["type"] == "http.response.start":
-                headers = MutableHeaders(raw=message["headers"])
-                headers.update(self.headers)
-            await send(message)
-
-        await self.app(scope, receive, _send)
+    async def dispatch(self, request: Request, call_next: typing.Callable) -> Response:
+        response = await call_next(request)
+        response.headers.update(self.headers)
+        return response

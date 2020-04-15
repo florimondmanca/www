@@ -1,0 +1,35 @@
+{% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
+
+{% macro Jumbotron() %}
+<div class="c-jumbotron">
+  {% call ContentWrapper() %}
+  <div class="c-jumbotron-card">
+    <img class="c-jumbotron-picture u-rounded" src="{{ url_for('static', path='img/me.jpg') }}" alt="Picture of me" />
+    <div class="c-jumbotron-body">
+      <h1>
+        Florimond Manca
+      </h1>
+      <h2>
+        Open Source Developer, Idealist On A Journey
+      </h2>
+      <p class="u-color-muted">
+        I maintain and contribute to libraries, packages, and tools. Mostly Python.
+      </p>
+    </div>
+  </div>
+
+  <ul class="c-jumbotron-links u-list-reset">
+    <li>
+      <a href="https://github.com/florimondmanca" target="_blank" rel="noopener">
+        💻&nbsp;&nbsp;Code
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/florimondmanca" target="_blank" rel="noopener">
+        🐤&nbsp;&nbsp;Tweets
+      </a>
+    </li>
+  </ul>
+  {% endcall %}
+</div>
+{% endmacro %}
