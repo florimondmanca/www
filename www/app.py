@@ -5,7 +5,7 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 from starlette.routing import Host, Mount, Route
 
-from . import blog, middleware, monitoring, resources, settings
+from . import blog, caching, middleware, monitoring, resources, settings
 from .endpoints import DomainRedirect
 
 
@@ -88,6 +88,7 @@ app = Starlette(
             tracer=resources.tracer,
             tags=", ".join(settings.DD_TAGS),
         ),
+        Middleware(caching.CacheMiddleware, patterns=["/static/fonts/*"], ttl=3600),
     ],
     exception_handlers={404: not_found, 500: internal_server_error},
     on_startup=[monitoring.on_startup, *blog.on_startup],

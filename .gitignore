@@ -21,3 +21,4 @@ dist/
 # Misc
 .DS_Store
 .env
+*.backup.*

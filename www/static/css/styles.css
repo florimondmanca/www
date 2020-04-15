@@ -1235,24 +1235,28 @@ ul.c-links {
   font-style: normal;
   font-weight: normal;
   src: url("/static/fonts/eb-garamond/regular.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: "EB Garamond";
   font-style: italic;
   font-weight: normal;
   src: url("/static/fonts/eb-garamond/italic.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: "EB Garamond";
   font-style: normal;
   font-weight: 500;
   src: url("/static/fonts/eb-garamond/medium.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: "EB Garamond";
   font-style: normal;
   font-weight: bold;
   src: url("/static/fonts/eb-garamond/bold.ttf");
+  font-display: swap;
 }
 html,
 body {
