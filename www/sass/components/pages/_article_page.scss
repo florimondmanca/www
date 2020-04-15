@@ -1,19 +1,19 @@
 @use "../../variables" as v;
 @use "../../mixins";
 
-.c-article-detail {
+.c-article-page {
   header {
     margin-bottom: 6 * v.$space-unit;
     border-bottom: 1px solid v.$colorDivider;
   }
 
-  .c-article-detail-tags {
+  .c-article-page-tags {
     &::before {
       content: "\2219";
     }
   }
 
-  .c-article-detail-markdown {
+  .c-article-page-markdown {
     & h2,
     & h3,
     & h4,

@@ -1,8 +1,8 @@
 {% from "components/pages/tag_list.jinja" import TagList with context %}
 
 {% macro PageListItem(page) %}
-<article class="c-list-item">
-  <div class="c-list-item-header">
+<li class="c-page-list-item">
+  <div class="c-page-list-item-header">
     {% if page.frontmatter.date -%}
       <label class="u-color-muted">
         {# TODO: date filter #}
@@ -13,13 +13,13 @@
     {% if page.frontmatter.tags -%}
       {{ TagList(
         page.frontmatter.tags,
-        class="c-list-item-tags" + (" separated" if page.frontmatter.date else "")
+        class="c-page-list-item-tags" + (" separated" if page.frontmatter.date else "")
       ) }}
     {%- endif %}
   </div>
 
   <h3>
-    <a href="{{ url_for('blog', path=page.permalink) }}">
+    <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
       {{ page.frontmatter.title }}
     </a>
   </h3>
@@ -27,5 +27,5 @@
   <p>
     {{ page.frontmatter.description }}
   </p>
-</article>
+</li>
 {% endmacro %}

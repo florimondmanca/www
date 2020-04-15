@@ -1,9 +1,11 @@
 {% from "components/pages/page_list_item.jinja" import PageListItem with context %}
 
 {% macro PageList(pages) %}
-{% for page in pages -%}
-  {{ PageListItem(page) }}
-{%- else -%}
+<ul class="u-list-reset">
+  {% for page in pages -%}
+    {{ PageListItem(page) }}
+  {%- else -%}
+</ul>
   <p>
     No articles yet.
   </p>

@@ -2,7 +2,7 @@
 {% from "components/pages/tag_list.jinja" import TagList with context %}
 
 {% macro ArticlePage(page) %}
-{% call ContentWrapper(class="c-article-detail") %}
+{% call ContentWrapper(class="c-article-page") %}
   <header>
     <div class="u-flex-spaceBetween u-flex-centerVertical">
       <div>
@@ -15,7 +15,7 @@
         {%- endif %}
 
         {% if page.frontmatter.tags -%}
-          {{ TagList(page.frontmatter.tags, class="c-article-detail-tags") }}
+          {{ TagList(page.frontmatter.tags, class="c-article-page-tags") }}
         {%- endif %}
       </div>
 
@@ -54,7 +54,7 @@
   </header>
 
   <article>
-    <div class="c-article-detail-markdown">
+    <div class="c-article-page-markdown">
       {{ page.html | safe }}
     </div>
 

@@ -1,8 +1,7 @@
-from .. import settings
-from . import content
+from . import content, monitoring, settings
 from .reload import hotreload
 
-on_startup = [content.load_content]
+on_startup = [content.load_content, monitoring.on_startup]
 on_shutdown = []
 
 if settings.DEBUG:

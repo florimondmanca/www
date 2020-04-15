@@ -1,14 +1,14 @@
 @use "../../variables" as v;
 @use "../../mixins";
 
-.c-list-item {
+.c-page-list-item {
   padding: 1em 0;
 
-  & + .c-list-item {
+  & + .c-page-list-item {
     border-top: 1px solid v.$colorDivider;
   }
 
-  .list-item-header {
+  .c-page-list-item-header {
     font-size: smaller;
 
     @include mixins.forSize(tablet) {
@@ -16,7 +16,7 @@
     }
   }
 
-  .c-list-item-tags {
+  .c-page-list-item-tags {
     &.separated::before {
       content: "\2219";
     }

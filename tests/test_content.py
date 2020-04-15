@@ -1,7 +1,7 @@
 from textwrap import dedent
 
-from www.blog.content import build_pages
-from www.blog.models import ContentItem
+from www.content import build_pages
+from www.models import ContentItem
 
 
 def test_build_pages_empty() -> None:

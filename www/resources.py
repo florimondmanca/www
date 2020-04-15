@@ -2,14 +2,16 @@ import datetime as dt
 
 import datadog
 import ddtrace
+import markdown as md
 from ddtrace.filters import FilterRequestsOnUrl
 from starlette.exceptions import HTTPException
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 from . import settings
-from .blog.reload import hotreload
+from .models import Index
 from .monitoring import FilterDropIf, FilterRedirectResponses
+from .reload import hotreload
 
 templates = Jinja2Templates(directory=str(settings.TEMPLATES_DIR))
 static = StaticFiles(directory=str(settings.STATIC_DIR))
@@ -24,6 +26,9 @@ templates.env.globals["now"] = dt.datetime.now
 templates.env.globals["raise"] = raise_server_error
 templates.env.globals["settings"] = settings
 templates.env.globals["hotreload"] = hotreload
+
+index = Index()
+markdown = md.Markdown(extensions=settings.MARKDOWN_EXTENSIONS)
 
 tracer = ddtrace.Tracer()
 trace_filters = [

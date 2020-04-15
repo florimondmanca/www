@@ -1,13 +1,12 @@
+import glob
 from pathlib import Path
 from typing import AsyncIterator, Iterable, Iterator, List
 
 import aiofiles
 import frontmatter as fm
 
-from .. import settings
-from . import resources
+from . import resources, settings
 from .models import ContentItem, Frontmatter, MetaTag, Page
-from .utils import find_markdown_files
 
 
 async def load_content() -> None:
@@ -16,7 +15,9 @@ async def load_content() -> None:
 
 
 def iter_content_paths() -> Iterator[Path]:
-    yield from find_markdown_files(settings.BLOG_CONTENT_DIR)
+    pattern = str(settings.CONTENT_DIR / "**" / "*.md")
+    for path in glob.glob(pattern, recursive=True):
+        yield Path(path)
 
 
 async def load_content_items() -> AsyncIterator[ContentItem]:
@@ -24,8 +25,7 @@ async def load_content_items() -> AsyncIterator[ContentItem]:
         async with aiofiles.open(path) as f:
             content = await f.read()
             yield ContentItem(
-                content=content,
-                location=str(path.relative_to(settings.BLOG_CONTENT_DIR)),
+                content=content, location=str(path.relative_to(settings.CONTENT_DIR)),
             )
 
 
