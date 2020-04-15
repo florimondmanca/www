@@ -2,7 +2,7 @@
 <ul class="u-list-reset {{ class }} {{ 'c_article_tag_list-list-inline' if inline else '' }}">
   {% for tag in tags %}
   <li class="u-mh-1">
-    <a href="{{ with_base('/tag/' + tag) }}">
+    <a href="{{ url_for('blog', path='/tag/' + tag) }}">
       #{{ tag }}
     </a>
   </li>

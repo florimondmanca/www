@@ -1,0 +1,41 @@
+@use "../../variables" as v;
+@use "../../mixins";
+
+.c-jumbotron {
+  @include mixins.u-ph(6);
+  @include mixins.u-pv(6);
+  background-color: v.$colorBackgroundCard;
+
+  .c-jumbotron-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 3 * v.$space-unit;
+    align-items: center;
+  }
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-weight: normal;
+    font-size: v.$font-size-h3;
+    margin-bottom: 0;
+  }
+
+  .c-jumbotron-picture {
+    $size: 22;
+    display: block;
+    width: $size * v.$space-unit;
+    height: $size * v.$space-unit;
+  }
+
+  .c-jumbotron-lead {
+    font-size: v.$font-size-h3;
+  }
+
+  .c-jumbotron-links {
+    display: flex;
+    justify-content: center;
+  }
+}

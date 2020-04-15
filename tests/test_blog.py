@@ -9,9 +9,9 @@ pytestmark = pytest.mark.asyncio
 
 
 async def test_root(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/blog/"
+    url = "http://florimond.dev/"
     resp = await client.get(url, allow_redirects=False)
-    assert resp.status_code == 200, resp.url
+    assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
 
 
@@ -68,7 +68,7 @@ async def test_rss_feed(client: httpx.AsyncClient) -> None:
 
 
 async def test_rss_link(client: httpx.AsyncClient) -> None:
-    resp = await client.get("http://florimond.dev/blog/")
+    resp = await client.get("http://florimond.dev/")
     line = next(
         (
             l

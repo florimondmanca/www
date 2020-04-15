@@ -1,10 +1,9 @@
-import datetime as dt
 import typing
 
 from starlette.endpoints import HTTPEndpoint
 from starlette.exceptions import HTTPException
 from starlette.requests import Request
-from starlette.responses import Response
+from starlette.responses import RedirectResponse, Response
 from starlette.routing import BaseRoute, Route, WebSocketRoute
 
 from .. import resources, settings
@@ -12,9 +11,13 @@ from .reload import hotreload
 from .resources import index
 
 
+async def home(request: Request) -> Response:
+    return RedirectResponse(request.url_for("home"))
+
+
 class RenderPage(HTTPEndpoint):
     async def get(self, request: Request) -> Response:
-        permalink = "/" + request.path_params.get("permalink", "")
+        permalink = "/" + request.path_params["permalink"]
 
         for page in index.pages:
             if page.permalink == permalink:
@@ -24,7 +27,6 @@ class RenderPage(HTTPEndpoint):
 
         context = {
             "request": request,
-            "now": dt.datetime.utcnow(),
             "page": page,
             "get_articles": index.articles_by_date,
         }
@@ -33,7 +35,7 @@ class RenderPage(HTTPEndpoint):
 
 
 routes: typing.List[BaseRoute] = [
-    Route("/", endpoint=RenderPage, name="home"),
+    Route("/", endpoint=home, name="home"),
     Route("/{permalink:path}/", endpoint=RenderPage, name="page"),
 ]
 

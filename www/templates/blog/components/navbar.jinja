@@ -1,16 +1,13 @@
-{% from "blog/components/content_wrapper.jinja" import ContentWrapper %}
+{% from "blog/components/content_wrapper.jinja" import ContentWrapper with context %}
 
 {% macro NavBar() %}
-<nav class="c_navbar u-ph-4">
+<nav class="u-ph-4">
   {% call ContentWrapper() %}
-    <ul class="u-list-reset">
-      <li class="c_navbar-brand">
-        <a href="{{ with_base('/') }}">
-          Florimond Manca
-        </a>
-      </li>
-      <!-- TODO Implement search -->
-    </ul>
+    <span class="c-navbar-brand">
+      <a href="{{ url_for('home') }}">
+        Florimond Manca
+      </a>
+    </span>
   {% endcall %}
 </nav>
 {% endmacro %}

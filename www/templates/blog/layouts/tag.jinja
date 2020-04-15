@@ -1,5 +1,5 @@
-{% from "blog/components/content_wrapper.jinja" import ContentWrapper %}
-{% from "blog/components/list.jinja" import List %}
+{% from "blog/components/content_wrapper.jinja" import ContentWrapper with context %}
+{% from "blog/components/list.jinja" import List with context %}
 
 {% macro Tag(tag, pages) %}
 {% call ContentWrapper() %}

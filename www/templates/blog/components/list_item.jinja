@@ -1,4 +1,4 @@
-{% from "blog/components/article_tag_list.jinja" import ArticleTagList %}
+{% from "blog/components/article_tag_list.jinja" import ArticleTagList with context %}
 
 {% macro ListItem(page) %}
 <article class="c_list_item-item">
@@ -19,7 +19,7 @@
   </div>
 
   <h3>
-    <a href="{{ with_base(page.permalink) }}">
+    <a href="{{ url_for('blog', path=page.permalink) }}">
       {{ page.frontmatter.title }}
     </a>
   </h3>

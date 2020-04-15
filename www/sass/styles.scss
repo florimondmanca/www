@@ -82,14 +82,18 @@ p {
 
 a {
   text-decoration: none;
-  border-bottom: 1px solid v.$colorPrimary;
-  transition: background 80ms;
+  border: none;
   cursor: pointer;
   color: inherit;
 
   &:hover {
-    background-color: transparentize(v.$colorPrimary, 0.8);
+    color: v.$colorPrimary;
+    border-color: v.$colorPrimary;
   }
+}
+
+main.c-article a {
+  border-bottom: 1px solid v.$colorPrimary;
 }
 
 hr {

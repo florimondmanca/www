@@ -1,5 +1,5 @@
-{% from "blog/components/content_wrapper.jinja" import ContentWrapper %}
-{% from "blog/components/article_tag_list.jinja" import ArticleTagList %}
+{% from "blog/components/content_wrapper.jinja" import ContentWrapper with context %}
+{% from "blog/components/article_tag_list.jinja" import ArticleTagList with context %}
 
 {% macro ArticleDetail(page) %}
 
@@ -54,20 +54,22 @@
     {%- endif %}
   </header>
 
-  <div class="c_article_detail-article-markdown-content">
-    {{ page.html | safe }}
-  </div>
+  <main class="c-article">
+    <div class="c_article_detail-article-markdown-content">
+      {{ page.html | safe }}
+    </div>
 
-  <footer class="p-card">
-    <h3>Stay in touch!</h3>
-    <p>
-      If you enjoyed this post, you can
-      <a href="https://twitter.com/florimondmanca" target="_blank" rel="noreferrer">
-        find me on Twitter
-      </a>
-      for updates, announcements and news. 🐤
-    </p>
-  </footer>
+    <footer class="p-card">
+      <h3>Stay in touch!</h3>
+      <p>
+        If you enjoyed this post, you can
+        <a href="https://twitter.com/florimondmanca" target="_blank" rel="noreferrer">
+          find me on Twitter
+        </a>
+        for updates, announcements and news. 🐤
+      </p>
+    </footer>
+  </main>
 
   {# TODO: previous/next navigation #}
 

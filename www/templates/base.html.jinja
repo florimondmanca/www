@@ -1,4 +1,5 @@
 {% from 'blog/components/navbar.jinja' import NavBar with context %}
+{% from 'blog/components/footer.jinja' import Footer with context %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +28,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" href="https://florimond.dev/feed.rss" title="Florimond Manca RSS Feed">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
 
@@ -37,6 +41,8 @@
     {{ NavBar() }}
 
     {% block content %}{% endblock %}
+
+    {{ Footer() }}
 
     <!-- Scripts placed at the end of the document so the pages load faster -->
 

@@ -14,7 +14,11 @@ pytestmark = pytest.mark.asyncio
         ),
         pytest.param(
             "http://blog.florimondmanca.com",
-            [("http://blog.florimond.dev/", 301), ("http://florimond.dev/blog/", 301)],
+            [
+                ("http://blog.florimond.dev/", 301),
+                ("http://florimond.dev/blog/", 301),
+                ("http://florimond.dev/", 307),
+            ],
             id="blog:home",
         ),
         pytest.param(

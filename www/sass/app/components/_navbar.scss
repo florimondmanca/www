@@ -1,29 +1,13 @@
 @use "../../variables" as v;
 @use "../../mixins";
 
-.c_navbar {
-  background-color: v.$colorBackgroundCard;
+.c-navbar-brand {
+  font-size: v.$font-size-brand;
+  font-weight: v.$font-weight-headers;
 
-  ul {
-    display: flex;
-    align-items: center;
-
-    li {
-      $pad: 3;
-
-      &.c_navbar-item {
-        a {
-          @include mixins.u-pv($pad / 2);
-          @include mixins.u-ph($pad);
-        }
-      }
-
-      &.c_navbar-brand {
-        font-size: v.$font-size-brand;
-        font-weight: v.$font-weight-headers;
-        @include mixins.u-pv($pad / 2);
-        @include mixins.u-pr($pad);
-      }
-    }
+  a {
+    display: block;
+    @include mixins.u-pv(1.5);
+    @include mixins.u-pr(3);
   }
 }

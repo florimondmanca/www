@@ -1,5 +1,9 @@
 {% extends "base.html.jinja" %}
 
+{% from 'blog/components/content_wrapper.jinja' import ContentWrapper with context %}
+{% from 'blog/components/list.jinja' import List with context %}
+{% from 'blog/components/jumbotron.jinja' import Jumbotron with context %}
+
 {% block head %}
   <!-- Twitter card -->
   <meta name="twitter:card" content="summary" />
@@ -31,38 +35,8 @@
 {% endblock head %}
 
 {% block content %}
-<main role="main">
-  <div class="c-jumbotron">
-    <div class="c-picture u-mb-3">
-      <img class="u-w-full u-h-full u-rounded" src="{{ url_for('static', path='img/me.jpg') }}" alt="Picture of me">
-    </div>
-    <h1>
-      Florimond Manca
-    </h1>
-    <p class="c-lead">
-      Open Source Developer, Idealist On A Journey
-    </p>
-    <p class="u-color-muted">
-      I maintain and contribute to libraries, packages, and tools. Mostly Python.
-    </p>
-
-    <ul class="c-links u-list-reset">
-      <li>
-        <a class="p-btn p-btn--link" href="{{ url_for('blog', path='/') }}">
-          ✍️&nbsp;&nbsp;Writings
-        </a>
-      </li>
-      <li>
-        <a class="p-btn p-btn--link" href="https://github.com/florimondmanca" target="_blank" rel="noopener">
-          💻&nbsp;&nbsp;Code
-        </a>
-      </li>
-      <li>
-        <a class="p-btn p-btn--link" href="https://twitter.com/florimondmanca" target="_blank" rel="noopener">
-          🐤&nbsp;&nbsp;Tweets
-        </a>
-      </li>
-    </div>
-  </div>
-</main>
-{% endblock content %}
+{{ Jumbotron() }}
+{% call ContentWrapper() %}
+  {{ List(get_articles()) }}
+{% endcall %}
+{% endblock %}

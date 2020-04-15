@@ -10,9 +10,11 @@ from .endpoints import DomainRedirect
 
 
 async def home(request: Request) -> Response:
-    return resources.templates.TemplateResponse(
-        "index.html.jinja", context={"request": request}
-    )
+    context = {
+        "request": request,
+        "get_articles": blog.resources.index.articles_by_date,
+    }
+    return resources.templates.TemplateResponse("index.html.jinja", context=context)
 
 
 async def error(request: Request) -> Response:
@@ -69,9 +71,6 @@ app = Starlette(
     ],
     middleware=[
         # NOTE: order matters (middleware executes from top to bottom).
-        Middleware(
-            middleware.ContextMiddleware, request_contextvar=resources.CTX_VAR_REQUEST
-        ),
         Middleware(
             monitoring.MetricsMiddleware,
             known_domains=settings.KNOWN_DOMAINS,
