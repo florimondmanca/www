@@ -1,8 +1,7 @@
-{% from "blog/components/content_wrapper.jinja" import ContentWrapper with context %}
-{% from "blog/components/tag_list.jinja" import TagList with context %}
+{% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
+{% from "components/pages/tag_list.jinja" import TagList with context %}
 
-{% macro ArticleDetail(page) %}
-
+{% macro ArticlePage(page) %}
 {% call ContentWrapper(class="c-article-detail") %}
   <header>
     <div class="u-flex-spaceBetween u-flex-centerVertical">

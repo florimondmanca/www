@@ -1,0 +1,10 @@
+{% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
+{% from "components/pages/page_list.jinja" import PageList with context %}
+
+{% macro TagPage(tag, pages) %}
+{% call ContentWrapper() %}
+  <h1>Tag: #{{ tag }}</h1>
+
+  {{ PageList(pages) }}
+{% endcall %}
+{% endmacro %}

@@ -1,10 +1,9 @@
 @use "./variables" as v;
+@use "./mixins";
 @use "./components";
+@use "./views";
 @use "./util";
-@use "./code";
-@use "./tables";
 @use "./pygments_theme";
-@use "./app";
 
 @font-face {
   font-family: "EB Garamond";
@@ -98,4 +97,80 @@ hr {
   border: 0;
   height: 1px;
   background-color: v.$colorDivider;
+}
+
+// Code blocks.
+
+code {
+  color: v.$colorCode;
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+  background-color: v.$colorCodeInlineBackground;
+  border-radius: 3px;
+}
+
+.codehilite {
+  > pre {
+    background: v.$colorCodeBackground;
+    padding: 1.25rem 1.5rem;
+    overflow: auto;
+  }
+}
+
+// Tables.
+// Inspired by: https://github.com/vuejs/vuepress/blob/1a930dc22e4298b648dad37fa07e2442cdcb3c10/packages/%40vuepress/theme-default/styles/index.styl#L163-L177
+
+table {
+  border-collapse: collapse;
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+tr {
+  border-top: 1px solid #dfe2e5;
+
+  &:nth-child(2n) {
+    background-color: #f6f8fa;
+  }
+}
+
+th,
+td {
+  border: 1px solid #dfe2e5;
+  padding: 0.6em 1em;
+}
+
+// Elements.
+
+.p-card {
+  background-color: v.$colorBackgroundCard;
+  padding: 1em 2em;
+  border-radius: 3px;
+}
+
+.p-image {
+  @include mixins.u-mv(4);
+
+  img {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  figcaption {
+    @include mixins.u-pt(2);
+    text-align: center;
+    color: v.$colorMuted;
+    font-style: italic;
+    font-size: v.$font-size-caption;
+  }
+}
+
+.p-markdown-image {
+  @extend .p-image;
+
+  img {
+    max-height: 20em;
+  }
 }

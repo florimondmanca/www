@@ -1,5 +1,5 @@
-@use "../../variables" as v;
-@use "../../mixins";
+@use "../variables" as v;
+@use "../mixins";
 
 .c-jumbotron {
   @include mixins.u-ph(6);

@@ -1,7 +1,7 @@
-@use "../../variables" as v;
-@use "../../mixins";
+@use "../variables" as v;
+@use "../mixins";
 
-.c-layout-content {
+.c-page-content {
   padding: 0 4 * v.$space-unit;
 
   @include mixins.forSize("tablet") {

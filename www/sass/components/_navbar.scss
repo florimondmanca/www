@@ -1,5 +1,5 @@
-@use "../../variables" as v;
-@use "../../mixins";
+@use "../variables" as v;
+@use "../mixins";
 
 .c-navbar-brand {
   font-size: v.$font-size-brand;

@@ -31,7 +31,7 @@ class RenderPage(HTTPEndpoint):
             "get_articles": index.articles_by_date,
         }
 
-        return resources.templates.TemplateResponse("blog/main.jinja", context=context)
+        return resources.templates.TemplateResponse("views/page.jinja", context=context)
 
 
 routes: typing.List[BaseRoute] = [

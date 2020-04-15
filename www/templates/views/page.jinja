@@ -1,0 +1,29 @@
+{% extends "base.jinja" %}
+
+{% from "components/pages/tag_page.jinja" import TagPage with context %}
+{% from "components/pages/article_page.jinja" import ArticlePage with context %}
+
+{% block head %}
+  {{ super() }}
+  {% for item in page.meta -%}
+    {{ item | safe }}
+  {%- endfor %}
+{% endblock head %}
+
+{% block title %}
+  {{ page.frontmatter.title or "Florimond Manca" }}
+{% endblock title %}
+
+{% block content %}
+<div class="c-page-content code-container">
+  <main class="u-mt-6">
+    {%- if page.frontmatter.tag -%}
+      {{ TagPage(page.frontmatter.tag, get_articles(tag=page.frontmatter.tag)) }}
+    {%- elif page.is_article -%}
+      {{ ArticlePage(page) }}
+    {%- else -%}
+      {{ raise("Unknown page type") }}
+    {%- endif -%}
+  </main>
+</div>
+{% endblock content %}

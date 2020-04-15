@@ -16,7 +16,7 @@ static = StaticFiles(directory=str(settings.STATIC_DIR))
 sass = StaticFiles(directory=str(settings.SASS_DIR))
 
 
-def raise_server_error(message: str) -> None:
+def raise_server_error(message: str) -> None:  # pragma: no cover
     raise HTTPException(500, detail=message)
 
 

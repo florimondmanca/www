@@ -1,6 +1,6 @@
-{% from "blog/components/tag_list.jinja" import TagList with context %}
+{% from "components/pages/tag_list.jinja" import TagList with context %}
 
-{% macro ListItem(page) %}
+{% macro PageListItem(page) %}
 <article class="c-list-item">
   <div class="c-list-item-header">
     {% if page.frontmatter.date -%}

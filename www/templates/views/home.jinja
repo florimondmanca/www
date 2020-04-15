@@ -1,8 +1,8 @@
-{% extends "base.html.jinja" %}
+{% extends "base.jinja" %}
 
-{% from 'blog/components/content_wrapper.jinja' import ContentWrapper with context %}
-{% from 'blog/components/list.jinja' import List with context %}
-{% from 'blog/components/jumbotron.jinja' import Jumbotron with context %}
+{% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
+{% from "components/pages/page_list.jinja" import PageList with context %}
+{% from "components/jumbotron.jinja" import Jumbotron with context %}
 
 {% block head %}
   <!-- Twitter card -->
@@ -37,6 +37,6 @@
 {% block content %}
 {{ Jumbotron() }}
 {% call ContentWrapper() %}
-  {{ List(get_articles()) }}
+  {{ PageList(get_articles()) }}
 {% endcall %}
 {% endblock %}

@@ -14,7 +14,7 @@ async def home(request: Request) -> Response:
         "request": request,
         "get_articles": blog.resources.index.articles_by_date,
     }
-    return resources.templates.TemplateResponse("index.html.jinja", context=context)
+    return resources.templates.TemplateResponse("views/home.jinja", context=context)
 
 
 async def error(request: Request) -> Response:
@@ -25,13 +25,13 @@ async def error(request: Request) -> Response:
 
 async def not_found(request: Request, exc: Exception) -> Response:
     return resources.templates.TemplateResponse(
-        "404.html.jinja", context={"request": request}, status_code=404
+        "views/404.jinja", context={"request": request}, status_code=404
     )
 
 
 async def internal_server_error(request: Request, exc: Exception) -> Response:
     return resources.templates.TemplateResponse(
-        "500.html.jinja", context={"request": request}, status_code=500
+        "views/500.jinja", context={"request": request}, status_code=500
     )
 
 
