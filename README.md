@@ -13,7 +13,7 @@ Runtime:
 
 Development only:
 
-- Node.js v10
+- Node.js v12
 - Yarn
 - Heroku CLI - _(optional)_
 
