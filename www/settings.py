@@ -1,9 +1,7 @@
 import json
 import pathlib
-from typing import List
 
 from starlette.config import Config
-from starlette.datastructures import CommaSeparatedStrings
 
 from .markdown import ImageFigcaptions
 
@@ -52,17 +50,4 @@ SOCIAL_LINKS = [
         "name": "DEV",
         "title": "DEV (@florimondmanca)",
     },
-]
-
-DD_AGENT_HOST: str = config("DD_AGENT_HOST", cast=str, default="localhost")
-DD_TAGS: List[str] = config(
-    "DD_TAGS",
-    cast=lambda value: list(CommaSeparatedStrings(value)),
-    default="env:unknown",
-)
-DD_TRACE_FILTER_URLS: List[str] = [
-    # Example: https://florimond.dev/static/picture.png
-    rf"^https?://[^/]+{STATIC_ROOT}",
-    # Example: https://florimond.dev/feed.rss
-    r"^https?://(?P<domain>[^/]+)/(?P<file>[^/]+\.\w+)",
 ]

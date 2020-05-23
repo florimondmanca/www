@@ -1,31 +1,19 @@
 import typing
 
-from ddtrace_asgi.middleware import TraceMiddleware
 from starlette.middleware import Middleware
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
 from starlette.types import ASGIApp
 
-from . import caching, legacy, monitoring, resources, settings
+from . import caching, legacy, settings
 
 middleware = [
     # NOTE: Middleware executes from top to bottom.
     Middleware(
-        monitoring.MetricsMiddleware,
-        known_domains=settings.KNOWN_DOMAINS,
-        statsd=resources.statsd,
-    ),
-    Middleware(
         legacy.LegacyRedirectMiddleware,
         url_mapping=settings.LEGACY_URL_MAPPING,
         root_path="/blog",
-    ),
-    Middleware(
-        TraceMiddleware,
-        service="www",
-        tracer=resources.tracer,
-        tags=", ".join(settings.DD_TAGS),
     ),
     Middleware(caching.CacheMiddleware, patterns=["/static/fonts/*"], ttl=3600),
 ]

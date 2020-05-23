@@ -39,5 +39,5 @@ routes = [
     ),
 ]
 
-if settings.DEBUG:
+if settings.DEBUG:  # pragma: no cover
     routes += [WebSocketRoute("/hot-reload", hotreload, name="hot-reload")]

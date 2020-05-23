@@ -63,12 +63,10 @@ scripts/deploy
 
 ## Settings
 
-| Environment variable | Description                                                              | Default       |
-| -------------------- | ------------------------------------------------------------------------ | ------------- |
-| `DEBUG`              | Run in debug mode. Enables in-browser tracebacks and content hot reload. | `False`       |
-| `DD_AGENT_HOST`      | Hostname where Datadog Agent is accessible.                              | `localhost`   |
-| `DD_TAGS`            | Constant tags submitted with metrics and traces.                         | `env:unknown` |
-| `TESTING`            | Run against mocked resources.                                            | `False`       |
+| Environment variable | Description                                                              | Default |
+| -------------------- | ------------------------------------------------------------------------ | ------- |
+| `DEBUG`              | Run in debug mode. Enables in-browser tracebacks and content hot reload. | `False` |
+| `TESTING`            | Run against mocked resources.                                            | `False` |
 
 ## License
 
