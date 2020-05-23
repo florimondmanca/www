@@ -24,8 +24,6 @@ routes = [
     Route("/blog/", endpoints.legacy_blog_home, name="legacy:blog_home"),
     Route("/blog/{permalink:path}/", endpoints.RenderPage, name="page"),
     Mount(settings.STATIC_ROOT, resources.static, name="static"),
-    # Make the SCSS source available to browsers for inspection.
-    Mount("/sass", resources.sass),
     # These files need to be exposed at the root, not '/static/'.
     Route("/favicon.ico", resources.static, name="favicon"),
     Route("/robots.txt", resources.static, name="robots"),

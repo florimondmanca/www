@@ -3,7 +3,7 @@
 
 {% macro TagPage(tag, pages) %}
 {% call ContentWrapper() %}
-  <h1>Tag: #{{ tag }}</h1>
+  <h1 class="font-bold mb-4">Tag: #{{ tag }}</h1>
 
   {{ PageList(pages) }}
 {% endcall %}

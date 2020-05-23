@@ -24,7 +24,6 @@ KNOWN_DOMAINS = [
 
 STATIC_ROOT = "/static"
 STATIC_DIR = HERE / "static"
-SASS_DIR = HERE / "sass"
 TEMPLATES_DIR = HERE / "templates"
 
 CONTENT_DIR = HERE.parent / "content"

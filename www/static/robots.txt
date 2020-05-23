@@ -1,2 +1,2 @@
 User-agent: *
-Disallow: /blog/tag/ /blog/sass/
+Disallow: /blog/tag/

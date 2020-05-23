@@ -51,7 +51,7 @@ class ImageFigcaptions(Extension):
             # original image.
 
             div = etree.Element("div")
-            div.set("class", "p-markdown-image")
+            div.set("class", "p-image")
             div.append(image)
             caption = etree.SubElement(div, "figcaption")
             caption.text = alt

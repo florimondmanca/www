@@ -3,9 +3,9 @@
 
 {% macro Footer(class="") %}
 <footer class="{{ class }}">
-  {% call ContentWrapper(class="u-text-center") %}
+  {% call ContentWrapper(class="text-center") %}
     {{ SocialLinks() }}
-    <p class="u-mt-2">
+    <p class="my-2">
       © {{ now().year }} &middot; Made with ❤️ by Florimond Manca
     </p>
   {% endcall %}
