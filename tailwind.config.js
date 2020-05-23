@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ["./www/templates/**/*.jinja"],
+  purge: ["./server/templates/**/*.jinja"],
   theme: {
     colors: {
       background: "#FFFFFF",
