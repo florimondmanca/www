@@ -71,9 +71,11 @@ async def test_rss_link(client: httpx.AsyncClient) -> None:
     resp = await client.get("http://florimond.dev/")
     line = next(
         (
-            l
-            for l in resp.text.split("\n")
-            if l.strip().startswith('<link rel="alternate" type="application/rss+xml"')
+            line
+            for line in resp.text.split("\n")
+            if line.strip().startswith(
+                '<link rel="alternate" type="application/rss+xml"'
+            )
         ),
         None,
     )
