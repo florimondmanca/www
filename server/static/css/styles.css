@@ -1198,6 +1198,11 @@ td {
   color: rgba(107, 107, 107, var(--text-opacity));
 }
 
+.p-page-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .p-link {
   border-bottom-width: 1px;
   --border-opacity: 1;

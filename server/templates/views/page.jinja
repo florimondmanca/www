@@ -15,7 +15,7 @@
 {% endblock title %}
 
 {% block content %}
-<div class="c-page-content code-container">
+<div class="p-page-content">
   <main class="mt-6">
     {%- if page.frontmatter.tag -%}
       {{ TagPage(page.frontmatter.tag, get_articles(tag=page.frontmatter.tag)) }}
