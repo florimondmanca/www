@@ -1,4 +1,4 @@
-from www.resources import markdown
+from server.resources import markdown
 
 
 def test_image_figcaption() -> None:

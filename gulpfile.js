@@ -4,7 +4,7 @@ const rename = require("gulp-rename");
 
 exports.build = function build() {
   return gulp
-    .src("www/styles/styles.pcss")
+    .src("server/styles/styles.pcss")
     .pipe(
       postcss([
         require("postcss-import"),
@@ -13,7 +13,7 @@ exports.build = function build() {
       ])
     )
     .pipe(rename({ extname: ".css" }))
-    .pipe(gulp.dest("www/static/css"));
+    .pipe(gulp.dest("server/static/css"));
 };
 
 exports.watch = function watch() {

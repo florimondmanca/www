@@ -1,6 +1,6 @@
 import pytest
 
-from www.utils import is_static_asset
+from server.utils import is_static_asset
 
 
 @pytest.mark.parametrize(

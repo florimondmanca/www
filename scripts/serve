@@ -6,4 +6,4 @@ if [ -d 'venv' ] ; then
 fi
 
 yarn watch &
-${PREFIX}uvicorn www:app $@ || kill %1
+${PREFIX}uvicorn server:app $@ || kill %1
