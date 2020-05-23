@@ -3,17 +3,17 @@
 
 {% macro ArticlePage(page) %}
 {% call ContentWrapper(class="c-article-page") %}
-  <header>
-    <div class="u-flex-spaceBetween">
+  <header class="mb-6 border-b border-muted-700">
+    <div class="flex justify-between">
       {{ ArticleMeta(page, editable=true) }}
     </div>
 
-    <h1>
+    <h1 class="text-3xl font-bold mt-2 mb-4 leading-sm">
       {{ page.frontmatter.title }}
     </h1>
 
     {% if page.frontmatter.description -%}
-      <p class="u-color-muted">
+      <p class="text-muted mb-6">
         {{ page.frontmatter.description }}
       </p>
     {%- endif %}
@@ -34,15 +34,17 @@
   </header>
 
   <article>
-    <div class="c-article-page-markdown">
+    <div class="markdown">
       {{ page.html | safe }}
     </div>
 
     <footer class="p-card">
-      <h3>Stay in touch!</h3>
+      <h3 class="mb-3">
+        Stay in touch!
+      </h3>
       <p>
         If you enjoyed this post, you can
-        <a href="https://twitter.com/florimondmanca" target="_blank" rel="noreferrer">
+        <a class="p-link" href="https://twitter.com/florimondmanca" target="_blank" rel="noreferrer">
           find me on Twitter
         </a>
         for updates, announcements and news. 🐤

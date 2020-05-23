@@ -4,13 +4,13 @@
 <li class="c-page-list-item">
   {{ ArticleMeta(page) }}
 
-  <h3>
+  <h3 class="font-bold mt-1 mb-3">
     <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
       {{ page.frontmatter.title }}
     </a>
   </h3>
 
-  <p>
+  <p class="mb-2">
     {{ page.frontmatter.description }}
   </p>
 </li>

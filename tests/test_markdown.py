@@ -7,7 +7,7 @@ def test_image_figcaption() -> None:
     )
 
     assert content == (
-        '<p><div class="p-markdown-image">'
+        '<p><div class="p-image">'
         '<img alt="A beautiful mind" src="https://example.com/a-beautiful-mind" />'
         "<figcaption>A beautiful mind</figcaption>"
         "</div></p>"

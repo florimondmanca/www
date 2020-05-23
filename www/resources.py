@@ -15,7 +15,6 @@ from .reload import hotreload
 
 templates = Jinja2Templates(directory=str(settings.TEMPLATES_DIR))
 static = StaticFiles(directory=str(settings.STATIC_DIR))
-sass = StaticFiles(directory=str(settings.SASS_DIR))
 
 
 def raise_server_error(message: str) -> None:  # pragma: no cover

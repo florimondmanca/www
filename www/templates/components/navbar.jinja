@@ -1,13 +1,11 @@
 {% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
 
 {% macro NavBar() %}
-<nav class="u-ph-4">
+<nav class="px-4">
   {% call ContentWrapper() %}
-    <span class="c-navbar-brand">
-      <a href="{{ url_for('home') }}">
-        Florimond Manca
-      </a>
-    </span>
+    <a class="inline-block text-lg font-bold py-2 pr-3" href="{{ url_for('home') }}">
+      Florimond Manca
+    </a>
   {% endcall %}
 </nav>
 {% endmacro %}

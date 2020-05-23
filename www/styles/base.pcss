@@ -1,0 +1,73 @@
+@import "./fonts.pcss";
+@import "./pygments.css";
+
+html,
+body {
+  font-size: 19px;
+}
+
+body {
+  @apply font-body;
+  /* @apply text-base; */
+  @apply bg-background;
+  @apply text-on-background;
+}
+
+h1 {
+  @apply text-2xl;
+}
+
+h2 {
+  @apply text-xl;
+}
+
+h3 {
+  @apply text-lg;
+}
+
+a:hover {
+  @apply text-primary;
+}
+
+hr {
+  height: 1px;
+  @apply bg-muted-700;
+}
+
+/* Code */
+
+code {
+  font-size: 0.7rem;
+  @apply bg-surface;
+  @apply px-1;
+  @apply rounded;
+}
+
+.codehilite > pre {
+  background-color: #282c35;
+  @apply text-sm;
+  @apply px-5;
+  @apply py-6;
+  @apply overflow-auto;
+}
+
+/* Tables */
+/* Inspired by: https://github.com/vuejs/vuepress/blob/1a930dc22e4298b648dad37fa07e2442cdcb3c10/packages/%40vuepress/theme-default/styles/index.styl#L163-L177 */
+
+table {
+  border-collapse: collapse;
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+tr {
+  border-top: 1px solid #dfe2e5;
+}
+tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+th,
+td {
+  border: 1px solid #dfe2e5;
+  padding: 0.6em 1em;
+}

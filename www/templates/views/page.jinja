@@ -16,7 +16,7 @@
 
 {% block content %}
 <div class="c-page-content code-container">
-  <main class="u-mt-6">
+  <main class="mt-6">
     {%- if page.frontmatter.tag -%}
       {{ TagPage(page.frontmatter.tag, get_articles(tag=page.frontmatter.tag)) }}
     {%- elif page.is_article -%}
