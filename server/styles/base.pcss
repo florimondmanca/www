@@ -50,7 +50,12 @@ code {
   @apply overflow-auto;
 }
 .codehilite code {
+  @apply px-0;
   background-color: transparent;
+}
+
+.codehilite + .codehilite {
+  @apply mt-4;
 }
 
 /* Tables */

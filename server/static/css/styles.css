@@ -1138,7 +1138,13 @@ code {
 }
 
 .codehilite code {
+  padding-left: 0;
+  padding-right: 0;
   background-color: transparent;
+}
+
+.codehilite + .codehilite {
+  margin-top: 1rem;
 }
 
 /* Tables */
