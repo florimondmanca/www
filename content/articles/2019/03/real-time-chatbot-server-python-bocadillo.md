@@ -14,7 +14,7 @@ image_caption: "Bocadillo + ChatterBot = Awesome tutorial material."
 
 _This post is an adaptation of the [official Bocadillo tutorial](https://bocadilloproject.github.io/getting-started/tutorial.html)._
 
-Hi everyone! Today's post is going to be a little special. Some of you may remember this post I wrote some months back: [How I Built A Python Web Framework And Became An Open Source Maintainer](/how-i-built-a-web-framework-and-became-an-open-source-maintainer).
+Hi everyone! Today's post is going to be a little special. Some of you may remember this post I wrote some months back: [How I Built A Python Web Framework And Became An Open Source Maintainer](/blog/articles/2018/12/how-i-built-a-web-framework-and-became-an-open-source-maintainer).
 
 Since then, I kept working on [Bocadillo](https://github.com/bocadilloproject/bocadillo), and it's been a great time! In fact, I learnt just last week that **I will be flying to Munich at the end of May to give a talk at [PyConWeb 2019](https://pyconweb.com)!** This will be my first conference and talk ever, so needless to say that I'm SUPER EXCITED! 🙌🤩
 

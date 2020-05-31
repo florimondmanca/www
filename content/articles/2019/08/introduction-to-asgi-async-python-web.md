@@ -16,7 +16,7 @@ There's a lot of exciting stuff happening in the Python web development ecosyste
 
 [asgi]: https://asgi.readthedocs.io/en/latest/
 
-I already mentioned ASGI several times here, in particular when [announcing Bocadillo](/how-i-built-a-web-framework-and-became-an-open-source-maintainer) and [tartiflette-starlette](/introducing-tartiflette-starlette), but I never really took the time to write a thorough introduction about it. Well, here we are!
+I already mentioned ASGI several times here, in particular when [announcing Bocadillo](/blog/articles/2018/12/how-i-built-a-web-framework-and-became-an-open-source-maintainer) and [tartiflette-starlette](/blog/articles/2019/07/introducing-tartiflette-starlette/), but I never really took the time to write a thorough introduction about it. Well, here we are!
 
 This post is targeted at people interested in recent trends of Python web development. I want to take you on a guided tour about **what ASGI is** and **what it means for modern Python web development**.
 

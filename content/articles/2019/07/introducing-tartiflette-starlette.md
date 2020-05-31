@@ -13,7 +13,7 @@ image: "https://user-images.githubusercontent.com/158689/58954519-b05ad680-8799-
 image_caption: "Logo of tartiflette-starlette."
 ---
 
-For some reason, my recent open source work has been focusing on the Python asynchronous GraphQL ecosystem. A few months ago, I stumbled upon [Tartiflette], a Python 3.6+ async GraphQL engine built on top of `libgraphqlparser`. I got hooked up, and decided to contribute. Mix this with my previous experience with ASGI [gained from building Bocadillo](/how-i-built-a-web-framework-and-became-an-open-source-maintainer), and the result is **[tartiflette-starlette]**.
+For some reason, my recent open source work has been focusing on the Python asynchronous GraphQL ecosystem. A few months ago, I stumbled upon [Tartiflette], a Python 3.6+ async GraphQL engine built on top of `libgraphqlparser`. I got hooked up, and decided to contribute. Mix this with my previous experience with ASGI [gained from building Bocadillo](/blog/articles/2018/12/how-i-built-a-web-framework-and-became-an-open-source-maintainer), and the result is **[tartiflette-starlette]**.
 
 [tartiflette]: https://tartiflette.io
 [tartiflette-starlette]: https://github.com/tartiflette/tartiflette-starlette
