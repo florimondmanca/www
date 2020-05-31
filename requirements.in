@@ -10,6 +10,7 @@ starlette==0.13.*
 uvicorn==0.11.*
 
 # Development dependencies -- install in production too for consistency.
+./packages/sitemaps
 autoflake
 asgi-lifespan==1.*
 black
