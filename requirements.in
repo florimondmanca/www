@@ -6,11 +6,11 @@ jinja2==2.*
 markdown==3.*
 pygments==2.*
 python-frontmatter==0.5.*
+sitemaps==0.1.*
 starlette==0.13.*
 uvicorn==0.11.*
 
 # Development dependencies -- install in production too for consistency.
-./packages/sitemaps
 autoflake
 asgi-lifespan==1.*
 black
