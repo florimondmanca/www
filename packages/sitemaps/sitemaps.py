@@ -1,15 +1,13 @@
 import asyncio
 import importlib
-from contextlib import AsyncExitStack
 import re
 import sys
 import traceback
+from contextlib import AsyncExitStack
 from typing import Any, NamedTuple, Sequence, Set
 from urllib.parse import urldefrag, urljoin, urlsplit
 
 import httpx
-
-# import trio
 
 
 class Config(NamedTuple):
@@ -54,7 +52,6 @@ async def crawl(
         fut = asyncio.ensure_future(add_url(root_url, "", config, state))
         state.tasks.add(fut)
 
-        # HACK
         await asyncio.sleep(0.1)
         while state.busy:
             await asyncio.sleep(0.5)
