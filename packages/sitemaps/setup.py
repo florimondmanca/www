@@ -7,7 +7,7 @@ setup(
     author="Florimond Manca",
     author_email="florimond.manca@gmail.com",
     py_modules=["sitemaps"],
-    install_requires=["httpx"],
+    install_requires=["httpx>=0.12,<1.0", "anyio==1.*"],
     python_requires=">=3.7",
     license="MIT",
 )
