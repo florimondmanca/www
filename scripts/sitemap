@@ -7,4 +7,4 @@ fi
 
 set -x
 
-${PREFIX}python -m sitemaps server:app --asgi -H 'https://florimond.dev' -I 'static/' -O 'server/static/sitemap.xml' "$@"
+${PREFIX}python -m sitemaps --asgi server:app -I 'static/' -I 'feed.rss' -o 'server/static/sitemap.xml' https://florimond.dev

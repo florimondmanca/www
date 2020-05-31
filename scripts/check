@@ -5,7 +5,7 @@ if [ -d 'venv' ] ; then
     export PREFIX="venv/bin/"
 fi
 
-export SOURCE_FILES="server packages tests"
+export SOURCE_FILES="server tests"
 
 set -x
 

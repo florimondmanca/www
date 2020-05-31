@@ -152,7 +152,7 @@ This module provides ways to annotate all kinds of types (like lists, dictionnar
 
 I won't dive into the details of the `typing` module, but I just wanted to share something I discovered not so long ago: type annotations can be used to generate code.
 
-I'll take the example of `namedtuple`. This is a data structure from the `collections` module — just like ChainMap which we already covered in [A practical usage of ChainMap in Python](a-practical-usage-of-chainmap-in-python).
+I'll take the example of `namedtuple`. This is a data structure from the `collections` module — just like ChainMap which we already covered in [A practical usage of ChainMap in Python](/blog/articles/2018/07/a-practical-usage-of-chainmap-in-python).
 
 What `namedtuple` does is generate a class whose instances behave like tuples (they are immutable) but allow attribute access via dot notation.
 
