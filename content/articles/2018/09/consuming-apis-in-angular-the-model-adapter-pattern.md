@@ -12,7 +12,7 @@ image: "https://images.unsplash.com/photo-1501580121338-18e859f87400?ixlib=rb-0.
 image_caption: "An angular shot of smooth white balconies on a building in Almería, Spain. Dmitri Popov, unsplash.com"
 ---
 
-_Update (Feb. 2019): if you're interested in how to use what is built here in components, I wrote a follow-up article: [Displaying Data In Components](/consuming-apis-in-angular-displaying-data-in-components)._
+_Update (Feb. 2019): if you're interested in how to use what is built here in components, I wrote a follow-up article: [Displaying Data In Components](/blog/articles/2019/02/consuming-apis-in-angular-displaying-data-in-components)._
 
 <br>
 <hr>
@@ -91,7 +91,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class CourseService {
   constructor(private http: HttpClient) {}
@@ -188,7 +188,7 @@ import { Course } from "./course.model";
 import { Observable, of } from "rxjs";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class CourseService {
   list(): Observable<Course[]> {
@@ -208,7 +208,7 @@ import { Course } from "./course.model";
 import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class CourseService {
   private baseUrl = "http://api.myapp.com/courses";
@@ -237,7 +237,7 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class CourseService {
   private baseUrl = "http://api.myapp.com/courses";
@@ -303,7 +303,7 @@ export class Course {
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class CourseAdapter implements Adapter<Course> {
   adapt(item: any): Course {
@@ -326,7 +326,7 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class CourseService {
   private baseUrl = "http://api.myapp.com/courses";
@@ -337,7 +337,7 @@ export class CourseService {
     const url = `${this.baseUrl}/`;
     return this.http.get(url).pipe(
       // Adapt each item in the raw data array
-      map((data: any[]) => data.map(item => this.adapter.adapt(item)))
+      map((data: any[]) => data.map((item) => this.adapter.adapt(item)))
     );
   }
 }

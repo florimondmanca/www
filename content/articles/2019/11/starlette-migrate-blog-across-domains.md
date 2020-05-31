@@ -20,7 +20,7 @@ _**Note**: all the code in this article was extracted from the code for this ver
 
 ## Bits of history
 
-Last year in July, [I built my personal blog](https://florimond.dev/blog/articles/2018/07/let-the-journey-begin/) using Angular and Django. The architecture was a SaaS-like frontend/backend duo, a REST API pushing data to a client-side app built with a JS framework.
+Last year in July, [I built my personal blog](/blog/articles/2018/07/let-the-journey-begin/) using Angular and Django. The architecture was a SaaS-like frontend/backend duo, a REST API pushing data to a client-side app built with a JS framework.
 
 At the time I already knew it was a ridiculous and over-engineered choice for a blog. But well, you know, I'm a geek, and I wanted to learn about building and deploying websites, so there I was.
 
@@ -48,7 +48,7 @@ I was nearing the end of this work, when I suddenly realized something.
 
 ## Retaining website traffic
 
-You see, even though it's no HN, my blog has _some_ traffic. I take some pride in knowing that it draws ~50 unique visitors per day. Some of it comes from organic search, but a lot of it comes from backlinks to some of my most popular articles (e.g. [The Model-Adapter Pattern](https://florimond.dev/blog/articles/2018/09/consuming-apis-in-angular-the-model-adapter-pattern/)). So, if I just went ahead and replaced the old site with a new one, I might risk losing — dare I write the holy accronym? — SEO.
+You see, even though it's no HN, my blog has _some_ traffic. I take some pride in knowing that it draws ~50 unique visitors per day. Some of it comes from organic search, but a lot of it comes from backlinks to some of my most popular articles (e.g. [The Model-Adapter Pattern](/blog/articles/2018/09/consuming-apis-in-angular-the-model-adapter-pattern/)). So, if I just went ahead and replaced the old site with a new one, I might risk losing — dare I write the holy accronym? — SEO.
 
 The risk was even more real, because I wanted to migrate all of my personal websites to be under a unique domain, `florimond.dev`. At the time, I had a landing page at `florimond.dev/`, and my blog was served at `blog.florimond.dev/`.
 
@@ -72,7 +72,7 @@ So this was probably a backend's responsability.
 
 Django, which I had been using until then, could have handled these complex redirection cases. But I didn't need most of its features anymore. For example, I didn't need a database anymore since all articles were now plain Markdown files in a Git repo. So I wanted to try something more lightweight.
 
-If you follow my open source activity, you know I've been deep into the Python async web ecosystem recently, in particular ASGI. (I wrote about it in my [Introduction to ASGI](https://florimond.dev/blog/articles/2019/08/introduction-to-asgi-async-python-web/).)
+If you follow my open source activity, you know I've been deep into the Python async web ecosystem recently, in particular ASGI. (I wrote about it in my [Introduction to ASGI](/blog/articles/2019/08/introduction-to-asgi-async-python-web/).)
 
 So it shouldn't come as a surprise that I went for [Starlette](https://www.starlette.io).
 
@@ -446,7 +446,7 @@ Overall, I'm super happy with how the migration went.
 
 I'll admit that VuePress is not the simplest technology to go to for building static sites. But:
 
-- I worked with it in the past, and I really enjoy the recent additions to VuePress 1.x. (I wrote about migrating to VuePress 1.x [here](https://florimond.dev/blog/articles/2019/07/vuepress-upgrade-1-0/).) Plugins makes extending the behavior of a VuePress site delightful, in particular thanks to page introspection.
+- I worked with it in the past, and I really enjoy the recent additions to VuePress 1.x. (I wrote about migrating to VuePress 1.x [here](/blog/articles/2019/07/vuepress-upgrade-1-0/).) Plugins makes extending the behavior of a VuePress site delightful, in particular thanks to page introspection.
 - Most frontend technologies are quite complex anyway, and I haven't found a static site generator that's less complex than VuePress.
 
 On the backend side, this is the first Starlette-based service I've actually put in production. I think the declarative style introduced in Starlette v0.13 is wonderful, and fits the general modularity-oriented ASGI mindset very well. The `Host` component is definitely one I'll keep an eye on, even though it's not documented yet.
