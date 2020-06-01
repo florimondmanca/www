@@ -7,4 +7,11 @@ fi
 
 set -x
 
-${PREFIX}python -m sitemaps --asgi server:app -I 'static/' -I 'feed.rss' -o 'server/static/sitemap.xml' https://florimond.dev
+export SITEMAP="server/static/sitemap.xml"
+export OPTIONS="server:app --base-url https://florimond.dev -I static/ -I feed.rss"
+
+if [ "$1" == "--check" ]; then
+    cat $SITEMAP | ${PREFIX}python -m asgi_sitemaps $OPTIONS --check
+else
+    ${PREFIX}python -m asgi_sitemaps $OPTIONS > $SITEMAP
+fi
