@@ -1,12 +1,12 @@
 # Application dependencies.
 aiofiles==0.4.*
 arel==0.1.*
+asgi-sitemaps==0.2.*
 gunicorn==20.*
 jinja2==2.*
 markdown==3.*
 pygments==2.*
 python-frontmatter==0.5.*
-sitemaps==0.1.*
 starlette==0.13.*
 uvicorn==0.11.*
 
