@@ -14,5 +14,5 @@ git remote add dokku dokku@florimond.dev:www
 
 echo "-----> Deploying to dokku..."
 set -ex
-git push dokku master
+git push dokku master "$@"
 echo "Deployment succeeded."
