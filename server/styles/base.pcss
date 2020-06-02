@@ -1,5 +1,5 @@
 @import "./fonts.pcss";
-@import "./pygments.css";
+@import "./dracula.css";
 
 html,
 body {
@@ -37,20 +37,20 @@ hr {
 
 code {
   font-size: 0.7rem;
-  @apply bg-surface;
+  background-color: #f8f8f8;
   @apply px-1;
   @apply rounded;
 }
 
 .codehilite > pre {
-  background-color: #282c35;
   @apply text-sm;
-  @apply px-5;
-  @apply py-6;
+  @apply px-6;
+  @apply py-4;
   @apply overflow-auto;
 }
 .codehilite code {
   @apply px-0;
+  color: #f8f8f2 !important;
   background-color: transparent;
 }
 

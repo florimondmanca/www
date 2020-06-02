@@ -18,7 +18,7 @@ exports.build = function build() {
 
 exports.watch = function watch() {
   return gulp.watch(
-    ["tailwind.config.js", "server/**/*.pcss"],
+    ["tailwind.config.js", "server/styles/*"],
     { ignoreInitial: false },
     exports.build
   );
