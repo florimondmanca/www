@@ -15,6 +15,7 @@ pr:
 variables:
   CI: true
   PIP_CACHE_DIR: $(Pipeline.Workspace)/.cache/pip
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
 
 jobs:
   - template: job--python-check.yml@templates
