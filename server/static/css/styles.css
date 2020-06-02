@@ -1173,7 +1173,8 @@ hr {
 
 code {
   font-size: 0.7rem;
-  background-color: #f8f8f8;
+  color: #282a36;
+  background-color: #f8f8f2;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
   border-radius: 0.25rem;
@@ -1191,7 +1192,7 @@ code {
 .codehilite code {
   padding-left: 0;
   padding-right: 0;
-  color: #f8f8f2 !important;
+  color: #f8f8f2;
   background-color: transparent;
 }
 
