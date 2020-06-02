@@ -4,7 +4,7 @@ resources:
       type: github
       endpoint: github
       name: florimondmanca/azure-pipelines-templates
-      ref: refs/tags/3.0
+      ref: refs/tags/3.1
 
 trigger:
   - master
@@ -15,11 +15,20 @@ pr:
 variables:
   CI: true
   PIP_CACHE_DIR: $(Pipeline.Workspace)/.cache/pip
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
 
 jobs:
   - template: job--python-check.yml@templates
     parameters:
       pythonVersion: "3.8"
+
+  - job: Build
+    steps:
+      - template: step--yarn-provision.yml@templates
+        parameters:
+          nodeVersion: "12"
+      - script: yarn install
+      - bash: scripts/build
 
   - template: job--python-test.yml@templates
     parameters:

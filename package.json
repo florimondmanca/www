@@ -16,6 +16,7 @@
     "tailwindcss": "^1.4.6"
   },
   "engines": {
-    "node": "12"
+    "node": "12.x",
+    "yarn": "1.x"
   }
 }
