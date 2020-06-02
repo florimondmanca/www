@@ -21,6 +21,13 @@ jobs:
     parameters:
       pythonVersion: "3.8"
 
+  - job: Build
+    steps:
+      - template: step--yarn-provision.yml@templates
+        parameters:
+          nodeVersion: "12"
+      - bash: scripts/build
+
   - template: job--python-test.yml@templates
     parameters:
       jobs:

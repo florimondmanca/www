@@ -17,6 +17,7 @@ __pycache__/
 dist/
 **/generated/*
 !.gitkeep
+server/static/css/styles.css
 
 # Misc
 .DS_Store
