@@ -19,7 +19,7 @@ flake8-bugbear
 flake8-comprehensions
 flake8-pie
 httpx==0.13.*
-isort
+isort==5.*
 mypy
 pytest==5.*
 pytest-asyncio
