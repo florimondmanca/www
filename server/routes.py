@@ -2,6 +2,7 @@ from starlette.routing import Host, Mount, Route, WebSocketRoute
 
 from . import endpoints, legacy, middleware, resources, settings
 from .reload import hotreload
+from .sitemap import sitemap
 
 routes = [
     Host(
@@ -27,7 +28,7 @@ routes = [
     # These files need to be exposed at the root, not '/static/'.
     Route("/favicon.ico", resources.static, name="favicon"),
     Route("/robots.txt", resources.static, name="robots"),
-    Route("/sitemap.xml", resources.static, name="sitemap"),
+    Route("/sitemap.xml", sitemap, name="sitemap"),
     Route(
         "/feed.rss",
         # Make sure clients always receive the correct MIME type for the RSS feed,
