@@ -26,7 +26,7 @@ httptools==0.1.1
 httpx==0.13.1
 hyperframe==5.2.0
 idna==2.9
-isort==4.3.21
+isort==5.0.3
 Jinja2==2.11.2
 Markdown==3.2.2
 MarkupSafe==1.1.1

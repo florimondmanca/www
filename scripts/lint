@@ -11,7 +11,7 @@ set -x
 
 ${PREFIX}autoflake --in-place --recursive $SOURCE_FILES
 ${PREFIX}seed-isort-config --application-directories=server
-${PREFIX}isort --project=server --recursive $SOURCE_FILES
+${PREFIX}isort $SOURCE_FILES
 ${PREFIX}black --target-version=py37 $SOURCE_FILES
 
 scripts/sitemap
