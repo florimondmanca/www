@@ -1,6 +1,6 @@
 # Application dependencies.
 aiofiles==0.4.*
-arel==0.1.*
+arel==0.2.*
 asgi-sitemaps==0.3.*
 gunicorn==20.*
 jinja2==2.*
