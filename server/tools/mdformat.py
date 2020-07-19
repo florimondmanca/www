@@ -62,6 +62,10 @@ def _format_path(path: Path, *, check: bool) -> Tuple[str, bool, list]:
     if check and changed:
         errors.append(_warn(f"Needs formatting: {path}"))
 
+    if lines[-1] != "":
+        lines.append("")
+        changed = True
+
     output = "\n".join(lines)
 
     return output, changed, errors
