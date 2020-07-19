@@ -6,7 +6,7 @@ Format ```python``` code blocks in Markdown source files:
 import argparse
 import sys
 from pathlib import Path
-from typing import Tuple
+from typing import Iterable, Tuple
 
 import black
 import exdown
@@ -27,7 +27,7 @@ def _format_path(path: Path, *, check: bool) -> Tuple[str, bool, list]:
     if not codeblocks:
         return "", False, []
 
-    lines = path.read_text().splitlines()
+    lines = path.read_text("utf-8").splitlines()
     errors = []
     offset = 0
     changed = False
@@ -83,19 +83,19 @@ def _format_file(path: Path, *, check: bool) -> int:
 
     if changed:
         print(f"Reformatting: {path}")
-        path.write_text(output)
+        path.write_text(output, "utf-8")
 
     return 0
 
 
-def main(check: bool) -> int:
+def main(paths: Iterable[Path], check: bool) -> int:
     rv = 0
-    for path in iter_content_paths():
+    for path in paths:
         rv |= _format_file(path, check=check)
     return rv
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--check",
@@ -104,4 +104,4 @@ if __name__ == "__main__":
         help="Fail if files would be reformatted.",
     )
     args = parser.parse_args()
-    sys.exit(main(check=args.check))
+    sys.exit(main(iter_content_paths(), check=args.check))
