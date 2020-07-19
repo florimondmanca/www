@@ -50,6 +50,7 @@ type Timer {
 }
 """
 
+
 @Resolver("Query.hello")
 async def hello(parent, args, context, info):
     name = args["name"]

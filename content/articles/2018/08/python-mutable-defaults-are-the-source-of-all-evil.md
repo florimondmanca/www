@@ -40,8 +40,8 @@ It turns out that in both cases, **an empty list was used as a default argument 
 
 ```python
 def compute_patterns(inputs=[]):
-    inputs.append('some stuff')
-    patterns = ['a list based on'] + inputs
+    inputs.append("some stuff")
+    patterns = ["a list based on"] + inputs
     return patterns
 ```
 
@@ -92,7 +92,7 @@ Long story short, the solution is simple.
 So instead, do this:
 
 ```python
-                      # 👇
+# 👇
 def append(element, seq=None):
     if seq is None:  # 👍
         seq = []
@@ -111,6 +111,7 @@ This is actually a very common pattern in Python; I find myself writing `if some
 
 It's so common that there is a Python Enhancement Proposal (PEP) currently in the works ([PEP 505 - None-aware operators](https://www.python.org/dev/peps/pep-0505/#syntax-and-semantics)) that would, among other things, allow to simplify the above code and simply write:
 
+<!--exdown-skip-->
 ```python
 def append(element, seq=None):
     seq ??= []  # ✨

@@ -268,8 +268,9 @@ We then grab the URL of our broker (from an environment variable — best practi
 
 ```python
 import os
+
 # ...
-KAFKA_BROKER_URL = os.environ.get('KAFKA_BROKER_URL')
+KAFKA_BROKER_URL = os.environ.get("KAFKA_BROKER_URL")
 ```
 
 Then, we can instanciate the actual producer. It exposes a simple API (detailed in the [docs](https://kafka-python.readthedocs.io/en/latest/apidoc/KafkaProducer.html)) to send messages to a Kafka topic.
@@ -288,11 +289,12 @@ Here's how we can implement such a loop:
 
 ```python
 from time import sleep
+
 # ...
 while True:
-    message = ''  # TODO
+    message = ""  # TODO
     # Kafka messages are plain bytes => need to `.encode()` the string message
-    producer.send('queueing.transactions', value=message.encode())
+    producer.send("queueing.transactions", value=message.encode())
     sleep(1)  # Sleep for one second before producing the next transaction
 ```
 
@@ -304,13 +306,13 @@ import os
 from time import sleep
 from kafka import KafkaProducer
 
-KAFKA_BROKER_URL = os.environ.get('KAFKA_BROKER_URL')
+KAFKA_BROKER_URL = os.environ.get("KAFKA_BROKER_URL")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     producer = KafkaProducer(bootstrap_servers=KAFKA_BROKER_URL)
     while True:
-        message = ''  # TODO
-        producer.send('queueing.transactions', value=message.encode())
+        message = ""  # TODO
+        producer.send("queueing.transactions", value=message.encode())
         sleep(1)
 ```
 
@@ -339,22 +341,25 @@ from string import ascii_letters, digits
 
 account_chars: str = digits + ascii_letters
 
+
 def _random_account_id() -> str:
     """Return a random account number made of 12 characters."""
-    return ''.join(choices(account_chars, k=12))
+    return "".join(choices(account_chars, k=12))
+
 
 def _random_amount() -> float:
     """Return a random amount between 1.00 and 1000.00."""
     return randint(100, 1000000) / 100
 
+
 def create_random_transaction() -> dict:
     """Create a fake, randomised transaction."""
     return {
-        'source': _random_account_id(),
-        'target': _random_account_id(),
-        'amount': _random_amount(),
+        "source": _random_account_id(),
+        "target": _random_account_id(),
+        "amount": _random_amount(),
         # Keep it simple: it's all euros
-        'currency': 'EUR',
+        "currency": "EUR",
     }
 ```
 
@@ -366,7 +371,7 @@ from transactions import create_random_transaction
 # ...
 transaction: dict = create_random_transaction()
 message: str = json.dumps(transaction)
-producer.send('queueing.transactions', value=message.encode())
+producer.send("queueing.transactions", value=message.encode())
 # ...
 ```
 
@@ -386,12 +391,12 @@ from time import sleep
 from kafka import KafkaProducer
 from transactions import create_random_transaction
 
-KAFKA_BROKER_URL = os.environ.get('KAFKA_BROKER_URL')
-TRANSACTIONS_TOPIC = os.environ.get('TRANSACTIONS_TOPIC')
-TRANSACTIONS_PER_SECOND = float(os.environ.get('TRANSACTIONS_PER_SECOND'))
+KAFKA_BROKER_URL = os.environ.get("KAFKA_BROKER_URL")
+TRANSACTIONS_TOPIC = os.environ.get("TRANSACTIONS_TOPIC")
+TRANSACTIONS_PER_SECOND = float(os.environ.get("TRANSACTIONS_PER_SECOND"))
 SLEEP_TIME = 1 / TRANSACTIONS_PER_SECOND
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     producer = KafkaProducer(
         bootstrap_servers=KAFKA_BROKER_URL,
         # Encode all values as JSON
@@ -496,15 +501,17 @@ Let's grab the broker URL and the transaction topic from environment variables:
 
 ```python
 import os
+
 # ...
-KAFKA_BROKER_URL = os.environ.get('KAFKA_BROKER_URL')
-TRANSACTIONS_TOPIC = os.environ.get('TRANSACTIONS_TOPIC')
+KAFKA_BROKER_URL = os.environ.get("KAFKA_BROKER_URL")
+TRANSACTIONS_TOPIC = os.environ.get("TRANSACTIONS_TOPIC")
 ```
 
 We can now instanciate the consumer. We know the transactions topic contains JSON-encoded values (as produced by the transactions generator), so we can use `KafkaConsumer`'s `value_deserializer` to automatically load the raw bytes into a Python dictionnary. This is similar to `KafkaProducer`'s `value_serializer` we have used previously.
 
 ```python
 import json
+
 # ...
 consumer = KafkaConsumer(
     TRANSACTIONS_TOPIC,
@@ -536,7 +543,7 @@ Here is the corresponding function that will determine whether a transaction is 
 
 ```python
 def is_suspicious(transaction: dict) -> bool:
-    return transaction['amount'] >= 900
+    return transaction["amount"] >= 900
 ```
 
 Guess what — we now have a way to decide which topic to redirect the transaction to!
@@ -545,6 +552,7 @@ We're now ready to implement the meat of the detector. To produce the messages i
 
 ```python
 from kafka import KafkaProducer
+
 # ...
 producer = KafkaProducer(
     bootstrap_servers=KAFKA_BROKER_URL,
@@ -556,9 +564,10 @@ We can now make use of `is_suspicious()` and the producer to determine which top
 
 ```python
 import os
+
 # ...
-LEGIT_TOPIC = os.environ.get('LEGIT_TOPIC')
-FRAUD_TOPIC = os.environ.get('FRAUD_TOPIC')
+LEGIT_TOPIC = os.environ.get("LEGIT_TOPIC")
+FRAUD_TOPIC = os.environ.get("FRAUD_TOPIC")
 # ...
 for message in consumer:
     transaction: dict = message.value
@@ -576,16 +585,18 @@ import os
 import json
 from kafka import KafkaConsumer, KafkaProducer
 
-KAFKA_BROKER_URL = os.environ.get('KAFKA_BROKER_URL')
-TRANSACTIONS_TOPIC = os.environ.get('TRANSACTIONS_TOPIC')
-LEGIT_TOPIC = os.environ.get('LEGIT_TOPIC')
-FRAUD_TOPIC = os.environ.get('FRAUD_TOPIC')
+KAFKA_BROKER_URL = os.environ.get("KAFKA_BROKER_URL")
+TRANSACTIONS_TOPIC = os.environ.get("TRANSACTIONS_TOPIC")
+LEGIT_TOPIC = os.environ.get("LEGIT_TOPIC")
+FRAUD_TOPIC = os.environ.get("FRAUD_TOPIC")
+
 
 def is_suspicious(transaction: dict) -> bool:
     """Determine whether a transaction is suspicious."""
-    return transaction['amount'] >= 900
+    return transaction["amount"] >= 900
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     consumer = KafkaConsumer(
         TRANSACTIONS_TOPIC,
         bootstrap_servers=KAFKA_BROKER_URL,

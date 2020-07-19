@@ -2,6 +2,7 @@
 aiofiles==0.4.*
 arel==0.2.*
 asgi-sitemaps==0.3.*
+exdown==0.7.*
 gunicorn==20.*
 jinja2==2.*
 markdown==3.*

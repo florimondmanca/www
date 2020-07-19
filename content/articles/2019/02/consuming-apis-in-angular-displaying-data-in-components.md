@@ -136,8 +136,7 @@ You don't need to know about Python nor understand the code below, but I'm displ
 from bocadillo import App
 
 app = App(
-    enable_cors=True,
-    cors_config={"allow_origins": ["*"], "allow_methods": ["*"]},
+    enable_cors=True, cors_config={"allow_origins": ["*"], "allow_methods": ["*"]},
 )
 
 COURSES = [
@@ -155,9 +154,11 @@ COURSES = [
     },
 ]
 
+
 @app.route("/courses")
 async def courses_list(req, res):
     res.media = COURSES
+
 
 if __name__ == "__main__":
     app.run()

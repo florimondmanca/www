@@ -113,9 +113,11 @@ from bocadillo import API
 
 api = API()
 
+
 @api.route("/")
 async def hello(req, res):
     res.text = "Hello, World!"
+
 
 if __name__ == "__main__":
     api.run()
