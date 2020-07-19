@@ -12,6 +12,8 @@ HERE = pathlib.Path(__file__).parent
 DEBUG: bool = config("DEBUG", cast=bool, default=False)
 TESTING: bool = config("TESTING", cast=bool, default=False)
 
+SITE_TITLE = "Florimond Manca"
+
 KNOWN_DOMAINS = [
     "localhost",
     "florimondmanca.com",
