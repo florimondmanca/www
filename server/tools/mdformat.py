@@ -23,16 +23,13 @@ def _danger(text: str) -> str:
 
 
 def _format_path(path: Path, *, check: bool) -> Tuple[str, bool, list]:
-    codeblocks = exdown.extract(path, syntax_filter="python")
-    if not codeblocks:
-        return "", False, []
-
-    lines = path.read_text("utf-8").splitlines()
+    content = path.read_text("utf-8")
+    lines = content.splitlines()
     errors = []
     offset = 0
     changed = False
 
-    for source, lineno in codeblocks:
+    for source, lineno in exdown.extract(path, syntax_filter="python"):
         sourcelines = source.splitlines()
         try:
             outputlines = black.format_str(
@@ -62,8 +59,8 @@ def _format_path(path: Path, *, check: bool) -> Tuple[str, bool, list]:
     if check and changed:
         errors.append(_warn(f"Needs formatting: {path}"))
 
-    if lines[-1] != "":
-        lines.append("")
+    lines.append("")  # Final newline.
+    if not content.endswith("\n"):
         changed = True
 
     output = "\n".join(lines)
@@ -88,7 +85,7 @@ def _format_file(path: Path, *, check: bool) -> int:
     return 0
 
 
-def main(paths: Iterable[Path], check: bool) -> int:
+def main(paths: Iterable[Path], check: bool = False) -> int:
     rv = 0
     for path in paths:
         rv |= _format_file(path, check=check)

@@ -25,7 +25,7 @@ def test_mdformat(tmpdir: Path) -> None:
     assert rv == 1
     assert testfile.read_text("utf-8") == content_initial
 
-    rv = main([testfile], check=False)
+    rv = main([testfile])
     assert rv == 0
     assert testfile.read_text("utf-8") == dedent(
         """
@@ -46,26 +46,16 @@ def test_mdformat(tmpdir: Path) -> None:
     assert rv == 0
 
 
-def test_mdformat_empty(tmpdir: Path) -> None:
-    no_python = dedent(
-        """
-        No Python code blocks here.
-
-        ```javascript
-        console.log('hello, world!!');
-        ```
-    """
-    )
+def test_mdformat_newlines(tmpdir: Path) -> None:
+    content = "Final newline will be added."
+    assert not content.endswith("\n")
 
     testfile = tmpdir / "test.md"
-    testfile.write_text(no_python, "utf-8")
+    testfile.write_text(content, "utf-8")
 
-    rv = main([testfile], check=False)
+    rv = main([testfile])
     assert rv == 0
-    assert testfile.read_text("utf-8") == no_python
-
-    rv = main([testfile], check=True)
-    assert rv == 0
+    assert testfile.read_text("utf-8").endswith("\n")
 
 
 def test_mdformat_errors(tmpdir: Path) -> None:
@@ -84,7 +74,7 @@ def test_mdformat_errors(tmpdir: Path) -> None:
     testfile = tmpdir / "test.md"
     testfile.write_text(invalid_python, "utf-8")
 
-    rv = main([testfile], check=False)
+    rv = main([testfile])
     assert rv == 1
     assert testfile.read_text("utf-8") == invalid_python
 
