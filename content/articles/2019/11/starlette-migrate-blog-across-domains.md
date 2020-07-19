@@ -106,6 +106,7 @@ from starlette.applications import Starlette
 
 app = Starlette()
 
+
 @app.route("/")
 async def home(request):
     ...
@@ -117,8 +118,10 @@ You can (should?) now write:
 from starlette.applications import Starlette
 from starlette.routing import Route
 
+
 async def home(request):
     ...
+
 
 routes = [
     Route("/", home),
@@ -149,8 +152,10 @@ from .. import blog
 
 static_files = StaticFiles("static")
 
+
 async def home(request):
     ...
+
 
 routes = [
     Route("/", home),
@@ -282,6 +287,7 @@ from starlette.staticfiles import StaticFiles
 
 static = StaticFiles(...)
 
+
 async def app(scope, receive, send):
     await static(scope, receive, send)
 ```
@@ -292,10 +298,12 @@ Good, now onto adding path`checking and redirection:
 from starlette.datastructures import URL
 from starlette.responses import RedirectResponse
 from starlette.staticfiles import StaticFiles
+
 # 👇 JSON file loaded into a dict
 from .settings import BLOG_LEGACY_URL_MAPPING
 
 static = StaticFiles(...)
+
 
 async def app(scope, receive, send):
     if scope["path"] in BLOG_LEGACY_URL_MAPPING:
@@ -342,12 +350,10 @@ Since I _also_ wanted to perform domain redirection from my older `*.florimondma
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
 
+
 class DomainRedirect:
     def __init__(
-        self,
-        domain: str,
-        status_code: int = 301,
-        root_path: str = None,
+        self, domain: str, status_code: int = 301, root_path: str = None,
     ):
         self.domain = domain
         self.status_code = status_code
@@ -363,7 +369,6 @@ class DomainRedirect:
 
         response = RedirectResponse(url, status_code=self.status_code)
         await response(scope, receive, send)
-
 ```
 
 That's a fair bunch of code, but bear with me.
@@ -384,10 +389,7 @@ from .endpoints import DomainRedirect
 
 routes = [
     # ...
-    Host(
-        "blog.florimond.dev",
-        DomainRedirect("florimond.dev", root_path="/blog"),
-    ),
+    Host("blog.florimond.dev", DomainRedirect("florimond.dev", root_path="/blog"),),
     # ...
 ]
 ```
@@ -421,8 +423,10 @@ from .endpoints import DomainRedirect
 templates = Jinja2Templates(directory="templates")
 static_files = StaticFiles(directory="static")
 
+
 async def home(request):
     return templates.TemplateResponse("index.html.jinja", context={"request": request})
+
 
 routes = [
     Host("florimondmanca.com", DomainRedirect("florimond.dev")),

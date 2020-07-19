@@ -35,8 +35,10 @@ from starlette.applications import Starlette
 from starlette.responses import PlainTextResponse
 from starlette.routing import Route
 
+
 async def home():
     return PlainTextResponse("Hello, world!")
+
 
 routes = [
     Route("/", home, name="home"),
@@ -65,6 +67,7 @@ from starlette.routing import Route
 async def home():
     return PlainTextResponse("Hello, world!")
 
+
 # 2. Put it in a routing table.
 routes = [
     Route("/", home, name="home"),
@@ -83,6 +86,7 @@ Enters `views.py`:
 ```python
 # views.py
 from starlette.responses import PlainTextResponse
+
 
 async def home(request):
     return PlainTextResponse("Hello, world!")
@@ -126,6 +130,7 @@ from starlette.responses import PlainTextResponse
 from starlette.templating import JinjaTemplates
 
 templates = JinjaTemplates(directory=str(Path(__file__).parent / "templates"))
+
 
 async def home(request):
     template = "index.html"
@@ -262,12 +267,14 @@ import httpx
 from starlette.responses import HTMLResponse, JSONResponse
 from . import settings
 
+
 async def example_dot_com(request):
     async with httpx.AsyncClient() as client:
         url = "https://example.org"
         response = await client.get(url)
 
     return HTMLResponse(response.text)
+
 
 async def search_movies(request):
     q = request.path_params["q"]
@@ -290,9 +297,11 @@ import httpx
 
 client = httpx.AsyncClient()
 
+
 async def example_dot_com(request):
     response = await client.get(...)
     # ...
+
 
 async def search_movies(request):
     response = await client.get(...)
@@ -313,6 +322,7 @@ We'd probably define it in nicely separated out module. The HTTP `client` is def
 # example_api.py
 from .views import client
 
+
 class ExampleAPI:
     def __init__(self, client):
         self.client = client
@@ -321,6 +331,7 @@ class ExampleAPI:
         params = {"q": query}
         response = await self.client.get("https://api.example.io/movies", params=params)
         # ...
+
 
 example_api = ExampleAPI(client)
 ```
@@ -334,6 +345,7 @@ from starlette.responses import JSONResponse
 from .example_api import example_api
 
 client = httpx.AsyncClient()
+
 
 async def search_movies(request):
     q = request.path_params["q"]
@@ -402,9 +414,11 @@ from starlette.responses import HTMLResponse, JSONResponse
 from .example_api import example_api
 from .resources import client
 
+
 async def example_dot_com(request):
     response = await client.get(...)
     # ...
+
 
 async def search_movies(request):
     q = request.path_params["q"]
@@ -437,6 +451,7 @@ And now `views.py` and `routes.py` would look like this:
 ```python
 # views.py
 from .resources import templates
+
 
 async def home(request):
     # ...
@@ -563,7 +578,9 @@ config = Config(".env")
 
 # ...
 
-DATABASE_URL = config("DATABASE_URL", cast=DatabaseURL, default="postgresql://localhost/db")
+DATABASE_URL = config(
+    "DATABASE_URL", cast=DatabaseURL, default="postgresql://localhost/db"
+)
 ```
 
 Cool stuff. We can now go ahead and define the database client instance.
@@ -583,6 +600,7 @@ Nice! We can now go ahead and use the database client, e.g. maybe update the `ho
 
 ```python
 from .resources import database, templates
+
 
 async def home(request):
     query = "SELECT * FROM articles"

@@ -31,8 +31,8 @@ At the time, I was perfectly fine with writing code like:
 
 ```python
 def set_pos(self, pos):
-	self.x = pos[0]
-	self.y = pos[1]
+    self.x = pos[0]
+    self.y = pos[1]
 ```
 
 What should `pos` contain? Well, that's obvious — just look at the code and you can immediately tell it should be a tuple containing two numbers (_what kind of number? Integers? Floats?_).
@@ -73,7 +73,7 @@ I have written below a function whose body has been hidden. **Can you tell me wh
 
 ```python
 def concat(a, b):
-	# ...
+    ...
 ```
 
 Here's my take — from the function name, I would say that `concat()` takes two lists (_or tuples?_) and concatenates them to return a single list containing the elements of `a` and `b`.
@@ -88,7 +88,7 @@ Now, let's add **type annotations** to `concat()`:
 
 ```python
 def concat(a: int, b: int) -> str:
-	# ...
+    ...
 ```
 
 Ah-ha! We were actually wrong in both our guesses. It seems `concat()` takes two integers and outputs a string.
@@ -99,7 +99,7 @@ And that's exactly what it does:
 
 ```python
 def concat(a: int, b: int) -> str:
-	return str(a) + str(b)
+    return str(a) + str(b)
 ```
 
 This example shows you that **knowing the inputs and outputs is crucial to understanding a piece of code**. And type annotations help you let your readers know almost instantly.
@@ -161,7 +161,7 @@ A typical usage of `namedtuple` is the following:
 ```python
 from collections import namedtuple
 
-Point = namedtuple('Point', 'x y')
+Point = namedtuple("Point", "x y")
 point = Point(x=1, y=5)
 print(point.x)  # 1
 ```
@@ -175,9 +175,11 @@ Let's redefine the `Point` class with `NamedTuple`:
 ```python
 from typing import NamedTuple
 
+
 class Point(NamedTuple):
-	x: int
-	y: int
+    x: int
+    y: int
+
 
 point = Point(x=4, y=0)
 print(point.x)  # 4
@@ -213,13 +215,14 @@ This is basically the reason why type annotations were invented in the first pla
 
 ```python
 def process(data):
-   do_stuff(data)
+    do_stuff(data)
 ```
 
 and:
 
 ```python
 from typing import List, Tuple
+
 
 def process(data: List[Tuple[int, str]]):
     do_stuff(data)

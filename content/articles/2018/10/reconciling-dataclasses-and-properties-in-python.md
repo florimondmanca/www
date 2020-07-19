@@ -49,6 +49,7 @@ Nothing fancy, really. Now, the `@dataclass` version:
 # 0_initial.py
 from dataclasses import dataclass
 
+
 @dataclass
 class Vehicle:
     wheels: int
@@ -74,19 +75,18 @@ Building upon the previous `Vehicle` class, I would make the `wheels` attribute 
 
 ```python
 class Vehicle:
-
     def __init__(self, wheels: int):
         self._wheels = wheels
         # note the underscore — it's now private! 👻
 
     @property
     def wheels(self) -> int:
-        print('getting wheels')
+        print("getting wheels")
         return self._wheels
 
     @wheels.setter
     def wheels(self, wheels: int):
-        print('setting wheels to', wheels)
+        print("setting wheels to", wheels)
         self._wheels = wheels
 ```
 
@@ -124,6 +124,7 @@ First, let's keep things simple. We want to store `wheels` in a private field an
 # 1_private_field.py
 from dataclasses import dataclass
 
+
 @dataclass
 class Vehicle:
     _wheels: int
@@ -154,6 +155,7 @@ Why not use this to create an init-only `wheels` variable and store that in a `_
 ```python
 # 2_initvar.py
 from dataclasses import dataclass, InitVar
+
 
 @dataclass
 class Vehicle:
@@ -186,6 +188,7 @@ Digging deeper into the docs, I found that one could fine-tune the field generat
 # 3_field.py
 from dataclasses import dataclass, field
 
+
 @dataclass
 class Vehicle:
 
@@ -217,6 +220,7 @@ That might start to be a bit complicated, so let me show you some code. I'll rep
 # 4_wheels_field.py
 from dataclasses import dataclass, field
 
+
 @dataclass
 class Vehicle:
 
@@ -234,12 +238,12 @@ class Vehicle:
 
     @property
     def wheels(self) -> int:
-        print('getting wheels')
+        print("getting wheels")
         return self._wheels
 
     @wheels.setter
     def wheels(self, wheels: int):
-        print('setting wheels to', wheels)
+        print("setting wheels to", wheels)
         self._wheels = wheels
 ```
 
@@ -297,6 +301,7 @@ Sounds trivial, right? Well, let's try using it on `_wheels` (I removed the `__p
 # 5_init_false.py
 from dataclasses import dataclass, field
 
+
 @dataclass
 class Vehicle:
 
@@ -305,12 +310,12 @@ class Vehicle:
 
     @property
     def wheels(self) -> int:
-        print('getting wheels')
+        print("getting wheels")
         return self._wheels
 
     @wheels.setter
     def wheels(self, wheels: int):
-        print('setting wheels to', wheels)
+        print("setting wheels to", wheels)
         self._wheels = wheels
 ```
 
@@ -340,7 +345,7 @@ Let me remind you of the code for that setter:
 ```python
 @wheels.setter
 def wheels(self, wheels: int):
-    print('setting wheels to', wheels)
+    print("setting wheels to", wheels)
     self._wheels = wheels
 ```
 
@@ -352,7 +357,6 @@ If you think about it, this is exactly what we were doing when implementing the 
 
 ```python
 class Vehicle:
-
     def __init__(self, wheels: int):
         self._wheels = wheels
         # This is equivalent to calling:
@@ -385,7 +389,6 @@ Look, here's the regular class version:
 
 ```python
 class Vehicle:
-
     def __init__(self, wheels: int):
         self._wheels = wheels
 

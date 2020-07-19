@@ -126,10 +126,11 @@ In a nutshell, it provides a toolbox of higher-level components such as requests
 # app.py
 from starlette.responses import PlainTextResponse
 
+
 async def app(scope, receive, send):
-  assert scope["type"] == "http"
-  response = PlainTextResponse("Hello, world!")
-  await response(scope, receive, send)
+    assert scope["type"] == "http"
+    response = PlainTextResponse("Hello, world!")
+    await response(scope, receive, send)
 ```
 
 Starlette does have everything you'd expect from an actual web framework — routing, middleware, etc. But I decided to show this stripped-down version to hint you at the real power of ASGI, which is…
@@ -163,6 +164,7 @@ For example, we can build a ASGI middleware (i.e. an app that wraps another app)
 # app.py
 import time
 
+
 class TimingMiddleware:
     def __init__(self, app):
         self.app = app
@@ -181,10 +183,12 @@ To use it, we simply wrap it around an app…
 import asyncio
 from starlette.responses import PlainTextResponse
 
+
 async def app(scope, receive, send):
     await asyncio.sleep(1)
     response = PlainTextResponse("Hello, world!")
     await response(scope, receive, send)
+
 
 app = TimingMiddleware(app)
 ```

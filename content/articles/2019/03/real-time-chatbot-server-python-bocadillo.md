@@ -144,6 +144,7 @@ import asyncio
 from contextlib import suppress
 import websockets
 
+
 async def client(url: str):
     async with websockets.connect(url) as websocket:
         while True:
@@ -151,6 +152,7 @@ async def client(url: str):
             await websocket.send(message)
             response = await websocket.recv()
             print(response)
+
 
 with suppress(KeyboardInterrupt):
     # See asyncio docs for the Python 3.6 equivalent to .run().
@@ -189,8 +191,7 @@ diego = ChatBot("Diego")
 
 trainer = ChatterBotCorpusTrainer(diego)
 trainer.train(
-    "chatterbot.corpus.english.greetings",
-    "chatterbot.corpus.english.conversations"
+    "chatterbot.corpus.english.greetings", "chatterbot.corpus.english.conversations"
 )
 ```
 
@@ -199,7 +200,6 @@ trainer.train(
 At this point, you can try out the chatbot in a Python interpreter:
 
 ```python
-$ python
 >>> from chatbot import diego  # Be patient — this may take a few seconds to load!
 >>> diego.get_response("Hi, there!")
 <Statement text:There should be one-- and preferably only one --obvious way to do it.>
@@ -214,6 +214,7 @@ Let's now plug Diego into the WebSocket endpoint: each time we receive a new `me
 from chatbot import diego
 
 ...
+
 
 @app.websocket_route("/conversation")
 async def converse(ws):
@@ -265,6 +266,7 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 from bocadillo import provider
 
+
 @provider(scope="app")
 def diego():
     diego = ChatBot("Diego")
@@ -287,11 +289,13 @@ from bocadillo import App
 
 app = App()
 
+
 @app.websocket_route("/conversation")
 async def converse(ws, diego):  # <-- 👋, Diego!
     async for message in ws:
         response = diego.get_response(message)
         await ws.send(str(response))
+
 
 if __name__ == "__main__":
     app.run()
@@ -348,6 +352,7 @@ from bocadillo import provider
 
 ...
 
+
 @provider(scope="app")
 def clients():
     return set()
@@ -361,7 +366,9 @@ def clients():
 # providerconf.py
 from contextlib import contextmanager
 from bocadillo import provider
+
 ...
+
 
 @provider
 def save_client(clients):
@@ -382,6 +389,7 @@ def save_client(clients):
 # app.py
 
 ...
+
 
 @app.websocket_route("/conversation")
 async def converse(ws, diego, save_client):
@@ -405,6 +413,7 @@ Go back to `app.py` and add the following code:
 # app.py
 
 ...
+
 
 @app.route("/client-count")
 async def client_count(req, res, clients):
@@ -441,6 +450,7 @@ from bocadillo.testing import create_client
 
 from app import app
 
+
 @provider
 def diego():
     class EchoDiego:
@@ -448,6 +458,7 @@ def diego():
             return query
 
     return EchoDiego()
+
 
 @pytest.fixture
 def client():
@@ -465,6 +476,7 @@ First, let's test that we can connect to the WebSocket endpoint, and that we get
 ```python
 # test_app.py
 
+
 def test_connect_and_converse(client):
     with client.websocket_connect("/conversation") as ws:
         ws.send_text("Hello!")
@@ -476,6 +488,7 @@ Now, let's test the incrementation of the client counter when clients connect to
 ```python
 # test_app.py
 ...
+
 
 def test_client_count(client):
     assert client.get("/client-count").json() == {"count": 0}

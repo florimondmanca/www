@@ -19,9 +19,11 @@ Not sure what I'm talking about? An example of this very handy pattern can be fo
 ```python
 import pytest
 
+
 @pytest.fixture  # No need to write '@pytest.fixture()'
 def app():
     ...
+
 
 @pytest.fixture(scope="session")
 def server():
@@ -45,6 +47,7 @@ Cutting to the chase, here's the annotated solution:
 ```python
 import functools
 import typing
+
 
 def logged(func: typing.Callable = None, decimals: int = None) -> typing.Callable:
     if func is None:
@@ -71,9 +74,11 @@ If we run the following script:
 def add(x: float, y: float) -> float:
     return x + y
 
+
 @logged(decimals=2)
 def mult(x: float, y: float) -> float:
     return x * y
+
 
 add(2, 2)
 mult(3, 4)
@@ -100,6 +105,7 @@ This 100% generic implementation is stripped of any comments and debug outputs. 
 ```python
 import functools
 import typing
+
 
 def decorate(func: typing.Callable = None, **options: typing.Any) -> typing.Callable:
     if func is None:
