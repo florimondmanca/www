@@ -65,7 +65,7 @@ def _build_content_pages(items: List[ContentItem]) -> Iterator[Page]:
 def _generate_tag_pages(tags: Iterable[str]) -> Iterator[Page]:
     for tag in tags:
         frontmatter = Frontmatter(
-            title=f"{tag.capitalize()} - Florimond Manca",
+            title=f"{tag.capitalize()} - {settings.SITE_TITLE}",
             description=f"Articles about #{tag}",
             tag=tag,
         )
@@ -108,7 +108,7 @@ def _build_meta(permalink: str, frontmatter: Frontmatter) -> List["MetaTag"]:
         MetaTag(property="og:title", content=frontmatter.title),
         MetaTag(property="og:description", content=frontmatter.description),
         MetaTag(property="og:image", content=frontmatter.image),
-        MetaTag(property="og:site_name", content="Florimond Manca"),
+        MetaTag(property="og:site_name", content=settings.SITE_TITLE),
         MetaTag(property="article:published_time", content=frontmatter.date),
     ]
 

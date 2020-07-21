@@ -11,7 +11,7 @@
 {% endblock head %}
 
 {% block title %}
-  {{ page.frontmatter.title or "Florimond Manca" }}
+  {{ page.frontmatter.title or settings.SITE_TITLE }}
 {% endblock title %}
 
 {% block content %}
