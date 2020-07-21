@@ -70,5 +70,5 @@ scripts/deploy
 
 ## License
 
-- Code is licensed under GPL-3.
+- Code is licensed under MIT.
 - Writings are my own.
