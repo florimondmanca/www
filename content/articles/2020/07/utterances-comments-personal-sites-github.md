@@ -31,10 +31,10 @@ I had come across Utterances before but for some reason I had not realized how b
 
 ## What is Utterances?
 
-Utterances provides a web widget (an `<iframe>`) to add a comment section to a website. Comments are stored in issues of a GitHub repo of your choosing. In other words, each page gets its own issue with a comment feed, and so you benefit from the entire featureset of issues _for free_. For example...
+Utterances is an open source app built and maintained by [Jeremy Danyow](https://github.com/jdanyow) which he [announced](https://danyow.net/using-github-issues-for-blog-comments/) in 2018. It provides a lightweight web widget (an `<iframe>`) to add a comment section to a website. Comments are stored in issues of a GitHub repo of your choosing. In other words, each page gets its own issue with a comment feed, and so you benefit from the entire featureset of issues out-of-the-box. For example...
 
 - You can edit, report and delete comments — great for moderation.
-- When someone posts a comment, the Utterances bot posts onto the issue. So if you're watching the repo you'll get email notifications when comments are posted onto your site.
+- When someone posts a comment, the Utterances bot litterally leaves a corresponding comment on the issue. So if you're watching the repo, you'll get email notifications when comments are posted to your site.
 
 The other wonderful aspect about Utterances is how simple the entire setup really is...
 
