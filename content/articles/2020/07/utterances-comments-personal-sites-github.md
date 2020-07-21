@@ -7,6 +7,8 @@ tags:
   - meta
   - devtips
   - tutorial
+image: "https://images.unsplash.com/photo-1526324553550-133d260e7d60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+image_caption: "Golden Gate City Night lights crystal prism ball. @sanfrancisco, unsplash.com."
 ---
 
 There are times in software when you're facing a problem, you find an off-the-shelf solution, and 20 lines of code later it _just works_.
