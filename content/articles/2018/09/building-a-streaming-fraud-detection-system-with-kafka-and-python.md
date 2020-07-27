@@ -641,8 +641,8 @@ As we did when trying out the generator, we can verify that the detector correct
 Here are the commands to do so:
 
 ```bash
-docker-compose -f docker-compose.kafka.yml exec detector kafka-console-consumer --bootstrap-server localhost:9092 --topic streaming.transactions.legit
-docker-compose -f docker-compose.kafka.yml exec detector kafka-console-consumer --bootstrap-server localhost:9092 --topic streaming.transactions.fraud
+docker-compose -f docker-compose.kafka.yml exec broker kafka-console-consumer --bootstrap-server localhost:9092 --topic streaming.transactions.legit
+docker-compose -f docker-compose.kafka.yml exec broker kafka-console-consumer --bootstrap-server localhost:9092 --topic streaming.transactions.fraud
 ```
 
 Let's inspect the contents of these topics!
