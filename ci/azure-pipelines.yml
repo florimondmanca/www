@@ -38,6 +38,10 @@ jobs:
           coverage: true
 
   - job: Deploy
+    dependsOn:
+      - Check
+      - Build
+      - py38
     condition: and(succeeded(), eq(variables.IS_MASTER_BRANCH, true))
     steps:
       - task: InstallSSHKey@0
