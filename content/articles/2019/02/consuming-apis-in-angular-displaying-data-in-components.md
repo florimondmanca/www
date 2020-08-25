@@ -164,7 +164,12 @@ routes = [
 ]
 
 middleware = [
-    Middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET"]),
+    Middleware(
+      CORSMiddleware,
+      allow_origins=["*"],
+      allow_headers=["*"],
+      allow_methods=["*"],
+    ),
 ]
 
 app = Starlette(routes=routes, middleware=middleware)
