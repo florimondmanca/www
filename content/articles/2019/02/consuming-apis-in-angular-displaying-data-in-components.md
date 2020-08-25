@@ -126,18 +126,16 @@ Before we go and plug the `CourseService` in, remember that for now it refers to
 
 That said, it would be nice to test the `CourseService` against a live server, wouldn't it?
 
-So, let's build a quick backend API for this exact purpose. I'll be using Python and [Bocadillo](https://github.com/bocadilloproject/bocadillo) (shameless plug here: I am the maintainer of Bocadillo!) to provide the `GET /courses` endpoint we need to have access to from the browser.
+So, let's build a quick backend API for this exact purpose. I'll be using Python and [Starlette] to provide the `GET /courses` endpoint we need to have access to from the browser.
 
 You don't need to know about Python nor understand the code below, but I'm displaying it here for those interested:
 
 ```python
-# app.py
-# Install: `pip install bocadillo`
-from bocadillo import App
-
-app = App(
-    enable_cors=True, cors_config={"allow_origins": ["*"], "allow_methods": ["*"]},
-)
+# Install: `pip install starlette uvicorn`
+import uvicorn
+from starlette.applications import Starlette
+from starlette.middleware.cors import CORSMiddleware
+from starlette.responses import JSONResponse
 
 COURSES = [
     {
@@ -155,13 +153,23 @@ COURSES = [
 ]
 
 
-@app.route("/courses")
-async def courses_list(req, res):
-    res.media = COURSES
+async def courses_list(request):
+    return JSONResponse(COURSES)
+
+
+routes = [
+    Route("/courses", courses_list),
+]
+
+middleware = [
+    CORSMiddleware(allow_origins=["*"], allow_methods=["GET"]),
+]
+
+app = Starlette(routes=routes, middleware=middleware,)
 
 
 if __name__ == "__main__":
-    app.run()
+    uvicorn.run(app)
 ```
 
 As you can see, the `GET /courses` endpoint will just return a hardcoded list of courses.
@@ -240,13 +248,13 @@ Alright, let's see what we've achieved here:
 
 1. We generated the `CourseListComponent` using [Angular CLI].
 2. We set up the component's `courses` attribute and its [template].
-3. We used Python and [Bocadillo] to build the API endpoint to test our component against.
+3. We used Python and [Starlette] to build the API endpoint to test our component against.
 4. We used the `CourseService` and [RxJS] to fetch the list of course.
 
 In fact, this is quite a typical workflow for me when I build web apps using Angular — I start by stubbing out the components, then implement the backend endpoints I need, and integrate them with the services to finally display the data.
 
 If you're interested in the code, I uploaded it to a GitHub repo: [ng-courses](https://github.com/florimondmanca/ng-courses).
 
-[bocadillo]: https://bocadilloproject.github.io
+[starlette]: https://www.starlette.io
 [angular cli]: https://cli.angular.io
 [rxjs]: https://angular.io/guide/rx-library
