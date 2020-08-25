@@ -152,8 +152,10 @@ COURSES = [
     },
 ]
 
+
 async def courses_list(request):
     return JSONResponse(COURSES)
+
 
 routes = [
     Route("/courses", courses_list),
@@ -163,10 +165,7 @@ middleware = [
     CORSMiddleware(allow_origins=["*"], allow_methods=["GET"]),
 ]
 
-app = Starlette(
-  routes=routes,
-  middleware=middleware,
-)
+app = Starlette(routes=routes, middleware=middleware,)
 
 
 if __name__ == "__main__":
