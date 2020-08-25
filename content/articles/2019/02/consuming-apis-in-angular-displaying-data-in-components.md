@@ -134,8 +134,10 @@ You don't need to know about Python nor understand the code below, but I'm displ
 # Install: `pip install starlette uvicorn`
 import uvicorn
 from starlette.applications import Starlette
+from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
+from starlette.routing import Route
 
 COURSES = [
     {
@@ -162,10 +164,10 @@ routes = [
 ]
 
 middleware = [
-    CORSMiddleware(allow_origins=["*"], allow_methods=["GET"]),
+    Middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET"]),
 ]
 
-app = Starlette(routes=routes, middleware=middleware,)
+app = Starlette(routes=routes, middleware=middleware)
 
 
 if __name__ == "__main__":
