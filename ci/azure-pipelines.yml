@@ -16,6 +16,7 @@ variables:
   CI: true
   PIP_CACHE_DIR: $(Pipeline.Workspace)/.cache/pip
   YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+  IS_MASTER_BRANCH: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
 
 jobs:
   - template: job--python-check.yml@templates
@@ -35,3 +36,12 @@ jobs:
       jobs:
         py38:
           coverage: true
+
+  - job: Deploy
+    condition: and(succeeded(), eq(variables.IS_MASTER_BRANCH, true))
+    steps:
+      - task: InstallSSHKey@0
+        inputs:
+          knownHostsEntry: florimond.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD7z+We1qSM6E/IJS1qEUT9liHdQdNL96pAqUSTElAjk+NZsMXViY/ThWG4HkuOQeTsIhlzXvg75xJ8JTWbgWVI=
+          sshKeySecureFile: florimond-dev-deploy-id_rsa
+      - bash: scripts/deploy
