@@ -15,11 +15,11 @@ from ..content import iter_content_paths
 
 
 def _warn(text: str) -> str:
-    return f"\033[93m{text}\033[0m'"
+    return f"\033[93m{text}\033[0m"
 
 
 def _danger(text: str) -> str:
-    return f"\033[91m{text}\033[0m'"
+    return f"\033[91m{text}\033[0m"
 
 
 def _format_path(path: Path, *, check: bool) -> Tuple[str, bool, list]:
