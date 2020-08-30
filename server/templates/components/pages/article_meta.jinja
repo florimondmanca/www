@@ -3,7 +3,7 @@
 {% macro ArticleMeta(page, editable=false) %}
 <div class="c-article-meta">
   <div class="text-muted pr-3">
-    {{ page.frontmatter.date }}
+    {{ page.frontmatter.date | dateformat }}
   </div>
 
   {{ TagList(page.frontmatter.tags) }}
