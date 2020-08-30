@@ -36,38 +36,54 @@
   }
 }
 
-.c-page-list-item {
-  @apply py-4;
+.c-page-list-container {
+  @apply .p-page-content;
+  @apply mx-auto;
+  @apply mt-8;
 }
-.c-page-list-item + .c-page-list-item {
-  @apply border-t;
-  @apply border-muted-700;
+
+@media (max-width: theme("screens.tablet")) {
+  .c-page-list {
+    @apply max-w-md;
+    @apply mx-auto;
+  }
+}
+
+@media (min-width: theme("screens.tablet")) {
+  .c-page-list-container {
+    @apply max-w-2xl;
+  }
+  .c-page-list {
+    @apply grid;
+    @apply grid-cols-2;
+    @apply gap-6;
+  }
+}
+
+@media (min-width: 1024px) {
+  .c-page-list-container {
+    @apply max-w-4xl;
+  }
+  .c-page-list {
+    @apply grid-cols-3;
+  }
+}
+
+.c-page-list-item {
+  @apply mb-12;
 }
 
 .c-article-meta {
-  @apply w-full;
-  @apply grid;
-  @apply col-gap-3;
-  grid-template-areas:
-    "date . edit"
-    "tags tags tags";
-  grid-template-columns: auto 1fr auto;
-}
-@media (min-width: theme("screens.tablet")) {
-  .c-article-meta {
-    grid-template-areas: "date tags edit";
-  }
-}
-.c-article-meta-data {
-  grid-area: date;
-}
-.c-article-meta-tags {
-  grid-area: tags;
-}
-.c-article-meta-edit {
-  grid-area: edit;
+  @apply flex;
+  @apply flex-wrap;
 }
 
+.c-tag-list-item {
+  display: inline-block;
+  @apply bg-surface;
+  @apply rounded;
+  @apply px-1;
+}
 .c-tag-list-item:first-child {
   @apply mr-1;
 }

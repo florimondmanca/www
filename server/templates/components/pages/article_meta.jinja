@@ -2,22 +2,21 @@
 
 {% macro ArticleMeta(page, editable=false) %}
 <div class="c-article-meta">
-  <label class="c-article-meta-date text-muted">
+  <div class="text-muted pr-3">
     {{ page.frontmatter.date }}
-  </label>
-
-  {{ TagList(page.frontmatter.tags, class="c-article-meta-tags") }}
-
-  {% if editable %}
-  <div class="c-article-meta-edit">
-    <a
-      href="https://github.com/florimondmanca/www/blob/master/content{{ page.permalink }}.md"
-      rel="no-referrer"
-      target="_blank"
-    >
-      📝&nbsp;Edit
-    </a>
   </div>
-  {% endif %}
+
+  {{ TagList(page.frontmatter.tags) }}
 </div>
+
+{% if editable %}
+<a
+  class="block"
+  href="https://github.com/florimondmanca/www/blob/master/content{{ page.permalink }}.md"
+  rel="no-referrer"
+  target="_blank"
+>
+  📝&nbsp;Edit
+</a>
+{% endif %}
 {% endmacro %}

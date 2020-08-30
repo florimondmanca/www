@@ -1,7 +1,7 @@
 {% from "components/pages/page_list_item.jinja" import PageListItem with context %}
 
 {% macro PageList(pages) %}
-<ul>
+<ul class="c-page-list">
   {% for page in pages -%}
     {{ PageListItem(page) }}
   {%- else -%}
