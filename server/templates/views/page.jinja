@@ -15,15 +15,15 @@
 {% endblock title %}
 
 {% block content %}
-<div class="p-page-content code-container">
-  <main class="mt-6">
-    {%- if page.frontmatter.tag -%}
-      {{ TagPage(page.frontmatter.tag, get_articles(tag=page.frontmatter.tag)) }}
-    {%- elif page.is_article -%}
+<main class="mt-6">
+  {%- if page.frontmatter.tag -%}
+    {{ TagPage(page.frontmatter.tag, get_articles(tag=page.frontmatter.tag)) }}
+  {%- elif page.is_article -%}
+    <div class="p-page-content code-container">
       {{ ArticlePage(page) }}
-    {%- else -%}
-      {{ raise("Unknown page type") }}
-    {%- endif -%}
-  </main>
-</div>
+    </div>
+  {%- else -%}
+    {{ raise("Unknown page type") }}
+  {%- endif -%}
+</main>
 {% endblock content %}
