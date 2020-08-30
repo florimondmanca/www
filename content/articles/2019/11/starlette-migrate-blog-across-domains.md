@@ -311,7 +311,8 @@ async def app(scope, receive, send):
         redirect_path = scope.get("root_path", "") + mapped_path
 
         response = RedirectResponse(
-            URL(scope=scope).replace(path=redirect_path), status_code=301,
+            URL(scope=scope).replace(path=redirect_path),
+            status_code=301,
         )
         await response(scope, receive, send)
         return
@@ -353,7 +354,10 @@ from starlette.responses import RedirectResponse
 
 class DomainRedirect:
     def __init__(
-        self, domain: str, status_code: int = 301, root_path: str = None,
+        self,
+        domain: str,
+        status_code: int = 301,
+        root_path: str = None,
     ):
         self.domain = domain
         self.status_code = status_code
@@ -389,7 +393,10 @@ from .endpoints import DomainRedirect
 
 routes = [
     # ...
-    Host("blog.florimond.dev", DomainRedirect("florimond.dev", root_path="/blog"),),
+    Host(
+        "blog.florimond.dev",
+        DomainRedirect("florimond.dev", root_path="/blog"),
+    ),
     # ...
 ]
 ```

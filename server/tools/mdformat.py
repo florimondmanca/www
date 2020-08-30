@@ -33,7 +33,8 @@ def _format_path(path: Path, *, check: bool) -> Tuple[str, bool, list]:
         sourcelines = source.splitlines()
         try:
             outputlines = black.format_str(
-                source, mode=black.FileMode(target_versions={black.TargetVersion.PY37}),
+                source,
+                mode=black.FileMode(target_versions={black.TargetVersion.PY37}),
             ).splitlines()
         except black.InvalidInput as exc:
             if source.startswith(">>> "):

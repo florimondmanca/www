@@ -25,7 +25,8 @@ async def load_content_items() -> AsyncIterator[ContentItem]:
         async with aiofiles.open(path) as f:
             content = await f.read()
             yield ContentItem(
-                content=content, location=str(path.relative_to(settings.CONTENT_DIR)),
+                content=content,
+                location=str(path.relative_to(settings.CONTENT_DIR)),
             )
 
 

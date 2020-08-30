@@ -9,7 +9,11 @@ from starlette.types import ASGIApp, Receive, Scope, Send
 
 class LegacyRedirectMiddleware:
     def __init__(
-        self, app: ASGIApp, *, url_mapping: typing.Dict[str, str], root_path: str,
+        self,
+        app: ASGIApp,
+        *,
+        url_mapping: typing.Dict[str, str],
+        root_path: str,
     ) -> None:
         self.app = app
         self.root_path = root_path
