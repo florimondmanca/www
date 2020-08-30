@@ -2,7 +2,11 @@
 
 {% macro PageListItem(page) %}
 <li class="c-page-list-item">
-  {{ ArticleMeta(page) }}
+  {% if page.frontmatter.image %}
+    <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
+      <img src="{{ page.frontmatter.image }}" class="mb-3" />
+    </a>
+  {% endif %}
 
   <h3 class="font-bold mt-1 mb-3">
     <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
@@ -13,5 +17,9 @@
   <p class="mb-2">
     {{ page.frontmatter.description }}
   </p>
+
+  <small>
+    {{ ArticleMeta(page) }}
+  </small>
 </li>
 {% endmacro %}

@@ -36,7 +36,7 @@ module.exports = {
       normal: "1.5",
     },
     screens: {
-      tablet: "640px",
+      tablet: "720px",
     },
   },
 };
