@@ -10,7 +10,9 @@ pytestmark = pytest.mark.asyncio
     "start_url, urls",
     [
         pytest.param(
-            "http://florimondmanca.com", [("http://florimond.dev/", 301)], id="home",
+            "http://florimondmanca.com",
+            [("http://florimond.dev/", 301)],
+            id="home",
         ),
         pytest.param(
             "http://blog.florimondmanca.com",
@@ -159,7 +161,9 @@ async def test_legacy_redirect_chains(
     ],
 )
 async def test_legacy_redirect_articles(
-    client: httpx.AsyncClient, blog_dot_dev_path: str, dot_dev_path: str,
+    client: httpx.AsyncClient,
+    blog_dot_dev_path: str,
+    dot_dev_path: str,
 ) -> None:
     resp = await client.get(
         f"https://blog.florimond.dev{blog_dot_dev_path}", allow_redirects=True

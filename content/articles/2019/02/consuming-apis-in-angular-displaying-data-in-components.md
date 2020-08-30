@@ -165,10 +165,10 @@ routes = [
 
 middleware = [
     Middleware(
-      CORSMiddleware,
-      allow_origins=["*"],
-      allow_headers=["*"],
-      allow_methods=["*"],
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_headers=["*"],
+        allow_methods=["*"],
     ),
 ]
 
