@@ -27,6 +27,7 @@ httptools==0.1.1
 httpx==0.13.1
 hyperframe==5.2.0
 idna==2.9
+iniconfig==1.0.1
 isort==5.0.3
 jinja2==2.11.2
 markdown==3.2.2
@@ -38,14 +39,14 @@ mypy==0.770
 packaging==20.4
 pathspec==0.8.0
 pluggy==0.13.1
-py==1.8.1
+py==1.9.0
 pycodestyle==2.6.0
 pyflakes==2.2.0
 pygments==2.6.1
 pyparsing==2.4.7
 pytest-asyncio==0.12.0
 pytest-cov==2.9.0
-pytest==5.4.2
+pytest==6.0.2
 python-frontmatter==0.5.0
 pyyaml==5.3.1
 regex==2020.5.14
@@ -60,5 +61,4 @@ typing-extensions==3.7.4.2
 uvicorn==0.11.7
 uvloop==0.14.0
 watchgod==0.6
-wcwidth==0.1.9
 websockets==8.1
