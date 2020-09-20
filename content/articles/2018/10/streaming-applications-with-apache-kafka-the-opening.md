@@ -7,7 +7,8 @@ legacy_url: "/streaming-applications-with-apache-kafka-the-opening"
 tags:
   - kafka
   - announcements
-image: "https://images.unsplash.com/photo-1533557603879-ebdd7a92e4e8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d08c991169da5df017efdbedb195909&auto=format&fit=crop&w=1050&q=80"
+image:
+  unsplash: "photo-1533557603879-ebdd7a92e4e8"
 image_caption: "Man on mountain edge. @redhatfactory, unsplash.com"
 ---
 

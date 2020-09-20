@@ -2,11 +2,19 @@
 
 {% macro PageListItem(page) %}
 <li class="c-page-list-item">
-  {% if page.frontmatter.image %}
-    <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
-      <img src="{{ page.frontmatter.image }}" class="mb-3" />
-    </a>
-  {% endif %}
+  {% with image_src = page.frontmatter.image_thumbnail or page.frontmatter.image %}
+    {% if image_src %}
+    <div class="text-center">
+      <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}" class="inline-block mb-3">
+        <!--
+        HACK: default to regular image URL if thumbnail was not found.
+        For example, a local image may not have a '_thumbnail' equivalent yet.
+        -->
+        <img src="{{ image_src }}" onerror="this.onerror = null; this.src = '{{ page.frontmatter.image}}'" />
+      </a>
+    </div>
+    {% endif %}
+  {% endwith %}
 
   <h3 class="font-bold mt-1 mb-3">
     <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">

@@ -8,7 +8,8 @@ tags:
   - kafka
   - python
   - tutorial
-image: "https://images.unsplash.com/photo-1529978755210-7f13333beb13?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1f355c2331d76cf2dcaf034e9bb68a87&auto=format&fit=crop&w=1050&q=80"
+image:
+  unsplash: "photo-1529978755210-7f13333beb13"
 image_caption: "Orange and multicolored LEGO toy set. @lh1me via unsplash.com"
 ---
 

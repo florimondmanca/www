@@ -9,7 +9,7 @@ tags:
   - webdev
   - announcements
   - asgi
-image: "https://user-images.githubusercontent.com/158689/58954519-b05ad680-8799-11e9-9134-90622e7731f3.png"
+image: "/static/img/articles/tartiflette-starlette.jpg"
 image_caption: "Logo of tartiflette-starlette."
 ---
 

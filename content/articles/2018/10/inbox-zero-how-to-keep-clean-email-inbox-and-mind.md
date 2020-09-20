@@ -6,7 +6,8 @@ date: "2018-10-06"
 legacy_url : "/inbox-zero-how-to-keep-clean-email-inbox-and-mind"
 tags:
   - productivity
-image: "https://images.unsplash.com/photo-1534567406103-997f6c5e7f93?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=407cc3835489452296d9fc72189f928f&auto=format&fit=crop&w=1050&q=80"
+image:
+  unsplash: "photo-1534567406103-997f6c5e7f93"
 image_caption: "Four assorted-color mailboxes on black surface. @nxn, unsplash.com"
 ---
 

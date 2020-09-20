@@ -7,7 +7,8 @@ legacy_url: "/cheap-and-easy-deployment-captainduckduck-2"
 tags:
   - webdev
   - tutorial
-image: "https://images.unsplash.com/photo-1484600899469-230e8d1d59c0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=28b1f7e78e4743998d23cb889dcb39a9&auto=format&fit=crop&w=1050&q=80"
+image:
+  unsplash: "photo-1484600899469-230e8d1d59c0"
 image_caption: "@timmossholder, unsplash.com"
 ---
 

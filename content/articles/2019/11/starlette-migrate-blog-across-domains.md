@@ -8,7 +8,8 @@ tags:
   - asgi
   - vuepress
   - meta
-image: "https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+image:
+    unsplash: "photo-1468276311594-df7cb65d8df6"
 image_caption: "Milky way above body of water. @krisroller, unsplash.com"
 ---
 

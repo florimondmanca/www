@@ -8,7 +8,8 @@ tags:
   - python
   - webdev
   - asgi
-image: "https://images.unsplash.com/photo-1482642302383-7ba0f8012849?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+image:
+    unsplash: "photo-1482642302383-7ba0f8012849"
 image_caption: '"Turtles on body of water", Ricard Baraham via unsplash.com'
 ---
 

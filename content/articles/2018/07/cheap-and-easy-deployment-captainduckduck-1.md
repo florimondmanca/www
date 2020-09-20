@@ -7,7 +7,8 @@ legacy_url: "/cheap-and-easy-deployment-captainduckduck-1"
 tags:
   - webdev
   - discussion
-image: "https://images.unsplash.com/photo-1517976384346-3136801d605d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6e6ee2cf355b57ff64f8183a16bdd6b7&auto=format&fit=crop&w=1000&q=80"
+image:
+  unsplash: "photo-1517976384346-3136801d605d"
 image_caption: "@spacex, unsplash.com."
 ---
 
