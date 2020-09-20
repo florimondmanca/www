@@ -53,7 +53,7 @@ rfc3986==1.4.0
 seed-isort-config==2.1.1
 six==1.15.0
 sniffio==1.1.0
-starlette==0.13.4
+starlette==0.13.8
 toml==0.10.1
 typed-ast==1.4.1
 typing-extensions==3.7.4.2
