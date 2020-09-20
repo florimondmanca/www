@@ -8,8 +8,7 @@ tags:
   - webdev
   - tutorial
   - vue
-image: "https://res.cloudinary.com/practicaldev/image/fetch/s--CXdEHReB--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/fnfsz1vxuoq71cmpi1sq.png"
-image_caption: "Logo of tartiflette-starlette."
+image: "/static/img/articles/vuepress-upgrade-1-0.jpg"
 ---
 
 [VuePress] is a Vue-powered static site generator. It's great for writing technical documentation, and I've been using it in production for the [Bocadillo docs site](https://bocadilloproject.github.io) since December 2018.

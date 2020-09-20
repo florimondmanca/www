@@ -8,7 +8,7 @@ tags:
   - python
   - tutorial
   - devtips
-image: "/static/img/articles/optionally-parametrized-decorators.png"
+image: "/static/img/articles/optionally-parametrized-decorators.jpg"
 image_caption: "A code snippet of what we're aiming to achieve."
 ---
 

@@ -7,7 +7,8 @@ tags:
   - meta
   - devtips
   - tutorial
-image: "https://images.unsplash.com/photo-1526324553550-133d260e7d60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+image:
+  unsplash: "photo-1526324553550-133d260e7d60"
 image_caption: "Golden Gate City Night lights crystal prism ball. @sanfrancisco, unsplash.com."
 ---
 
@@ -25,7 +26,7 @@ There I found a lovely little comment section at the bottom of the page. The sty
 
 And so I learned that the comment section was powered by [Utterances](https://utteranc.es/).
 
-![Preview of the comments section on `rednafi.github.io`.](/static/img/articles/utterances-rednafi.png)
+![Preview of the comments section on `rednafi.github.io`.](/static/img/articles/utterances-rednafi.jpg)
 
 I had come across Utterances before but for some reason I had not realized how beautiful and elegant this piece of software is. So here I am, dedicating an entire blog entry to what I'd consider as a prime example of brilliant open source software.
 

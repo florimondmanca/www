@@ -9,7 +9,8 @@ tags:
   - opensource
   - webdev
   - bocadillo
-image: "https://images.unsplash.com/photo-1476786516785-c3ff2dac9bbf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+image:
+  unsplash: "photo-1476786516785-c3ff2dac9bbf"
 image_caption: "Mountain, building, rock formation and abbey. Monestir de Montserrat, Spain. @pichier_sebastian, unsplash.com"
 ---
 

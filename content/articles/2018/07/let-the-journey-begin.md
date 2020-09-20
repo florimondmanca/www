@@ -6,7 +6,8 @@ date: "2018-07-25"
 legacy_url: "/let-the-journey-begin"
 tags:
   - meta
-image: "https://images.unsplash.com/photo-1518415917-ae14f59265b3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=910601442394dd27fc1eeb5bbcf087e6&auto=format&fit=crop&w=968&q=80"
+image:
+  unsplash: "photo-1518415917-ae14f59265b3"
 image_caption: "Josh Withers, unsplash.com"
 ---
 

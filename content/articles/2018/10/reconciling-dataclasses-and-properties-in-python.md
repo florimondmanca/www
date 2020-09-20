@@ -7,7 +7,8 @@ legacy_url: "/reconciling-dataclasses-and-properties-in-python"
 tags:
   - python
   - devtips
-image: "https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=35fcaa720c67b01ff5b75ae94fd2965d&auto=format&fit=crop&w=1050&q=80"
+image:
+    unsplash: "photo-1504618223053-559bdef9dd5a"
 image_caption: "Two black-and-white birds. @wwwynand, unsplash.com"
 ---
 

@@ -6,7 +6,8 @@ date: "2019-05-27"
 legacy_url: "/why-i-dont-write-on-medium"
 tags:
   - meta
-image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+image:
+  unsplash: "photo-1504711434969-e33886168f5c"
 image_caption: "Business newspaper pages. @freegraphictoday, unsplash.com"
 ---
 

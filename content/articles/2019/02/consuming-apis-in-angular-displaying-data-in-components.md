@@ -8,7 +8,8 @@ tags:
   - angular
   - webdev
   - tutorial
-image: "https://images.unsplash.com/photo-1544916205-866047f3ae8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
+image:
+  unsplash: "photo-1544916205-866047f3ae8c"
 image_caption: "Blue and white plastic toy. @sheldonnunes, unsplash.com"
 ---
 

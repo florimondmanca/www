@@ -1,11 +1,11 @@
 import glob
 from pathlib import Path
-from typing import AsyncIterator, Iterable, Iterator, List
+from typing import Any, AsyncIterator, Dict, Iterable, Iterator, List, Optional, Tuple
 
 import aiofiles
 import frontmatter as fm
 
-from . import resources, settings
+from . import resources, settings, unsplash
 from .models import ContentItem, Frontmatter, MetaTag, Page
 
 
@@ -49,18 +49,51 @@ def _build_content_pages(items: List[ContentItem]) -> Iterator[Page]:
         post = fm.loads(item.content)
         html = resources.markdown.reset().convert(post.content)
         permalink = _build_permalink(item.location)
+        image, image_thumbnail = _process_image(post)
         frontmatter = Frontmatter(
             home=post.get("home", False),
             title=post["title"],
             description=post.get("description"),
             date=post.get("date"),
-            image=post.get("image"),
+            image=image,
+            image_thumbnail=image_thumbnail,
             image_caption=post.get("image_caption"),
             tags=post.get("tags", []),
         )
         meta = _build_meta(permalink, frontmatter)
 
         yield Page(html=html, permalink=permalink, frontmatter=frontmatter, meta=meta)
+
+
+def _process_image(post: Dict[str, Any]) -> Tuple[Optional[str], Optional[str]]:
+    image = post.get("image")
+    image_thumbnail = post.get("image_thumbnail")
+
+    if isinstance(image, dict):
+        assert "unsplash" in image
+        photo_id = image["unsplash"]
+        image = unsplash.make_image(photo_id)
+        image_thumbnail = unsplash.make_image_thumbnail(photo_id)
+
+    if (
+        isinstance(image, str)
+        and image.startswith(settings.STATIC_ROOT)
+        and image_thumbnail is None
+    ):
+        # Convention: '/static/example.jpg' -> '/static/example_thumbnail.jpg'
+        # May not exist, but we'll handle this error case in HTML.
+        image_thumbnail = _append_filename(image, "_thumbnail")
+
+    assert image is None or isinstance(image, str)
+    assert image_thumbnail is None or isinstance(image_thumbnail, str)
+
+    return image, image_thumbnail
+
+
+def _append_filename(filename: str, suffix: str) -> str:
+    path = Path(filename)
+    name = f"{path.stem}{suffix}{path.suffix}"
+    return str(path.with_name(name))
 
 
 def _generate_tag_pages(tags: Iterable[str]) -> Iterator[Page]:

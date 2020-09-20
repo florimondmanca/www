@@ -14,6 +14,7 @@ class Frontmatter:
     description: typing.Optional[str] = None
     date: typing.Optional[str] = None
     image: typing.Optional[str] = None
+    image_thumbnail: typing.Optional[str] = None
     image_caption: typing.Optional[str] = None
     tags: typing.List[str] = dataclasses.field(default_factory=list)
     home: bool = False
