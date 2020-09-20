@@ -37,6 +37,6 @@ async def client(app: ASGIApp) -> typing.AsyncIterator[httpx.AsyncClient]:
 
 @pytest.fixture(scope="session")
 async def silent_client(app: ASGIApp) -> typing.AsyncIterator[httpx.AsyncClient]:
-    dispatch = httpx.ASGIDispatch(app, raise_app_exceptions=False)
-    async with httpx.AsyncClient(dispatch=dispatch) as client:
+    transport = httpx.ASGITransport(app, raise_app_exceptions=False)
+    async with httpx.AsyncClient(transport=transport) as client:
         yield client
