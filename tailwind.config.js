@@ -5,7 +5,6 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   purge: {
-    layers: ["utilities"],
     content: ["./server/templates/**/*.jinja"],
   },
   theme: {
