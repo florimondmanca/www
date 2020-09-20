@@ -27,7 +27,7 @@ async def test_article_no_trailing_slash(client: httpx.AsyncClient) -> None:
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 307
     assert resp.headers["Location"] == (
-        "https://florimond.dev/blog/articles/2018/07/let-the-journey-begin/"
+        "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/"
     )
 
 
