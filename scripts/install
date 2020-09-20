@@ -28,15 +28,8 @@ else
   export PREFIX=""
 fi
 
-if [[ "$@" = *"--update"* ]]; then
-  note "Update pip dependencies"
-  rm -f requirements.txt
-  ${PREFIX}pip install -U -r requirements.in
-  ${PREFIX}pip freeze > requirements.txt
-else
-  note "Install pip dependencies"
-  ${PREFIX}pip install -U -r requirements.txt
-fi
+note "Install pip dependencies"
+${PREFIX}pip install -r requirements.txt
 
 if [ -z $CI ]; then
   note "Install yarn dependencies"
