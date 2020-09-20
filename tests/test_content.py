@@ -1,4 +1,7 @@
 from textwrap import dedent
+from typing import Optional
+
+import pytest
 
 from server.content import build_pages
 from server.models import ContentItem
@@ -73,3 +76,55 @@ def test_build_pages() -> None:
         f'<meta name="twitter:description" content="{python.frontmatter.description}">'
     ) in meta
     assert f'<meta name="twitter:url" content="{url}">' in meta
+
+
+@pytest.mark.parametrize(
+    "image, image_thumbnail",
+    [
+        pytest.param("/static/img.jpg", "/static/img_thumbnail.jpg", id="static-file"),
+        pytest.param("/elsewhere/img.jpg", None, id="non-static-file"),
+        pytest.param("https://example.org/img.jpg", None, id="remote-url"),
+    ],
+)
+def test_image_auto_thumbnail(image: str, image_thumbnail: Optional[str]) -> None:
+    item = ContentItem(
+        content=dedent(
+            f"""
+            ---
+            title: "Test"
+            description: "Test"
+            date: "2020-01-01"
+            image: "{image}"
+            ---
+            """
+        ),
+        location="posts/test.md",
+    )
+
+    (page,) = build_pages([item])
+    assert page.frontmatter.image_thumbnail == image_thumbnail
+
+
+def test_image_unsplash() -> None:
+    item = ContentItem(
+        content=dedent(
+            """
+            ---
+            title: "Test"
+            description: "Test"
+            date: "2020-01-01"
+            image:
+                unsplash: "photo-1234"
+            ---
+            """
+        ),
+        location="posts/test.md",
+    )
+
+    (page,) = build_pages([item])
+    assert page.frontmatter.image == (
+        "https://images.unsplash.com/photo-1234?auto=format&fit=crop&w=550&q=50"
+    )
+    assert page.frontmatter.image_thumbnail == (
+        "https://images.unsplash.com/photo-1234?auto=format&fit=crop&w=320&q=30"
+    )

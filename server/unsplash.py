@@ -1,5 +1,8 @@
 from urllib.parse import urlencode
+
 from . import settings
+
+# See: https://unsplash.com/documentation#dynamically-resizable-images
 
 
 def make_image(photo_id: str) -> str:

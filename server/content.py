@@ -1,6 +1,6 @@
 import glob
 from pathlib import Path
-from typing import Any, AsyncIterator, Iterable, Iterator, List, Optional, Dict, Tuple
+from typing import Any, AsyncIterator, Dict, Iterable, Iterator, List, Optional, Tuple
 
 import aiofiles
 import frontmatter as fm
