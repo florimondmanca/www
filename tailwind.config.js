@@ -1,5 +1,12 @@
 module.exports = {
-  purge: ["./server/templates/**/*.jinja"],
+  future: {
+    // See: https://tailwindcss.com/docs/upcoming-changes
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
+  purge: {
+    content: ["./server/templates/**/*.jinja"],
+  },
   theme: {
     colors: {
       background: "#FFFFFF",
