@@ -73,7 +73,7 @@ Quite naturally, **I am looking for what is familiar**. I have already noticed t
 
 At least, this is not a cold start. There are indeed a lot of aspects I can relate to and compare. Phew!
 
-![Me generating a project using Vue CLI: "TypeScript! There you are!"](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/7af66c43-a947-4a81-aad8-5d5b6bb55cbc.png)
+![Me generating a project using Vue CLI: "TypeScript! There you are!"](/static/img/angular-vue-quickstart.png)
 
 ## Identify the differences
 

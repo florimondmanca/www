@@ -248,7 +248,7 @@ export class CourseListComponent implements OnInit {
 
 There you go! If we open the browser at `http://localhost:8000`, we see the list of courses displayed in sexy Times New Roman.
 
-![Styling is, indeed, out of the scope of this blog post.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/1e5a9e87-ce68-4825-b972-790fa84d55f5.png)
+![Styling is, indeed, out of the scope of this blog post.](/static/img/angular-apis-courses.png)
 
 ## Wrapping up
 

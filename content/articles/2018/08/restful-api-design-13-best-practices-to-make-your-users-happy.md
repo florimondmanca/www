@@ -61,9 +61,9 @@ This is especially important for **programmatic clients** (for example, someone 
 
 **Pro tip**: you can verify a reponse's `Content-Type` very easily with Firefox. It has built-in pretty-display for responses with `Content-Type: application/json`. 🔥
 
-![In Firefox, "Content-Type: text/plain" looks… plain.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/0c738101-95ff-444d-b894-a866d3d9f63b.png)
+![In Firefox, "Content-Type: text/plain" looks… plain.](/static/img/restapi-plain.png)
 
-!["Content-Type: application/json" detected! Look how pretty and functional this is. 🕺](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/bf8c0ed7-d1f5-42dc-ba77-e4b260ef536a.png)
+!["Content-Type: application/json" detected! Look how pretty and functional this is. 🕺](/static/img/restapi-json.png)
 
 ## 3. Avoid using verbs in URIs
 

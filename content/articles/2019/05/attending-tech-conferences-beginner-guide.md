@@ -13,17 +13,13 @@ image_caption: "PyConWeb 2019 at Microsoft HQ, Munich, Germany."
 
 [PyConWeb](https://pyconweb.com) is a conference focusing on Python, web development, and related technologies. The 2019 edition took place on the 25th and 26th of May in Munich — and I was there! 🙌
 
-<!--
-![#PySelfie after the talk!](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/33cf196a-0f9b-4ef1-a01e-e7b003af081d.jpeg)
--->
-
 Going to this conference was very special for me. It was the first time I had **attended a tech conference**, but also **given a tech talk**!
 
 The talk I gave was about [Bocadillo](https://bocadilloproject.github.io), async Python for web development, and open source, and lasted 30 minutes. It was a great opportunity to explain the concepts behind ASGI, highlight some key Bocadillo features, and share what I'v learnt about maintaining open source projects. All in a 10-question long _"Q&A with myself"_ format. If you're interested, the slides are available [on GitHub][slides]. ✨
 
 [slides]: https://github.com/florimondmanca/talks/blob/master/2019_05_25-bocadillo_pyconweb2019.pdf
 
-![Title slide.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/b0eb426c-9a44-4381-8370-afbf4bd24964.png)
+![Title slide.](/static/img/techconf-slide.png)
 
 In this post, I want to share with you **what I've learnt about attending tech conferences**, and give away **actionable tips** if you plan to attend yourself!
 
@@ -127,7 +123,7 @@ Now that you've arrived at the conference, what should you do? Let's take a clos
 
 **Talks** are without a doubt the highlight of any conference. Speakers come from all around the world to talk about their experience, share ideas, and make sure the audience enjoys their time. Talks are selected by conference organisers to be as **diverse and interesting** as possible.
 
-![Printed schedule for the morning of May 25th at PyConWeb 2019.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/9ca7c663-1d90-4377-a043-7ec8cbb22f80.JPG)
+![Printed schedule for the morning of May 25th at PyConWeb 2019.](/static/img/techconf-schedule.jpg)
 
 All that said, **attending all the talks is generally impossible**.
 

@@ -23,7 +23,7 @@ This post is targeted at people interested in recent trends of Python web develo
 
 Before we begin, I'd like to announce that I recently created [awesome-asgi], an _awesome list_ to help folks keep track of the ever-expanding ASGI ecosystem. 🙌
 
-[![Click to see the repo on GitHub.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/14da23c7-58aa-4008-9da0-9b2b879d0900.png)][awesome-asgi]
+[![Click to see the repo on GitHub.](/static/img/awesome-asgi-preview.png)][awesome-asgi]
 
 You can watch releases to be notified of new entries to the list. 👀
 
@@ -53,7 +53,7 @@ From a 1000-foot perspective, ASGI can be thought of as the glue that allows Pyt
 
 Here's what this mental model looks like in a diagram:
 
-![At a very high-level, ASGI is a communication interface between apps and servers.](https://thepracticaldev.s3.amazonaws.com/i/c45c65uug0ezbqyf5rvl.png)
+![At a very high-level, ASGI is a communication interface between apps and servers.](/static/img/asgi-intro-highlevel.png)
 
 But in reality, it's a bit more complex than that.
 
@@ -68,7 +68,7 @@ So according to the spec, what ASGI really specifies is a [message format](https
 
 We can now revise our diagram into a more detailed version:
 
-![How ASGI *really* works.](https://thepracticaldev.s3.amazonaws.com/i/2mw06bobv5sjjc0r1omb.png)
+![How ASGI *really* works.](/static/img/asgi-intro-full.png)
 
 There are many more interesting details to look at, obviously. For example, you can take a look at the [HTTP and WebSocket specification](https://asgi.readthedocs.io/en/latest/specs/www.html).
 
@@ -109,7 +109,7 @@ To get a more practical feel of what ASGI looks like, I created a minimal projec
 
 [uvicorn]: https://www.uvicorn.org/
 
-[![Click to see and edit the code on Glitch.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/439bffd8-a90b-4b22-ae6c-826baf74aa1a.png)](https://glitch.com/edit/#!/asgi-hello-world)
+[![Click to see and edit the code on Glitch.](/static/img/asgi-intro-glitch.png)](https://glitch.com/edit/#!/asgi-hello-world)
 
 Here, we use `send()` to send an HTTP response to the client: we send headers first, and then the response body.
 

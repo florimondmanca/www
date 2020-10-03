@@ -117,7 +117,7 @@ The system we'll build is a simple **fraud detection mechanism** — the same ki
 
 We'll produce fake transactions on one end, and filter and log those that look suspicious on the other end. This will involve a **transaction generator** (simply because we need material to process) and a **fraud detector**. Both applications will run in Docker containers and interact with our Kafka cluster.
 
-![Block diagram of the fraud detection system.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/d37ac6ca-64e7-4f26-9f51-baccd9022544.png)
+![Block diagram of the fraud detection system.](/static/img/fraud-diagram.png)
 
 Now that we've seen the basic idea behind this system, let's start writing some code, shall we?
 
@@ -251,7 +251,7 @@ In Kafka, there are a few different types of applications you can build. One cat
 
 Producers do just what we need — they **publish messages** to the Kafka cluster. These messages will be stored on our broker in what we call a **topic** — a named on-disk store of messages.
 
-![How a Kafka producer works. Simple, right?](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/b51601f8-0fd0-4acc-bc94-14ec01e507fe.png)
+![How a Kafka producer works. Simple, right?](/static/img/fraud-producer.png)
 
 Now, I have some good news. The Python client we use (Kafka Python) allows us to build producers. 🎉
 
@@ -469,7 +469,7 @@ So, what have we got so far?
 
 Here's the architecture diagram again:
 
-![Transaction generator: check!](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/8237aeaa-30d4-4ad8-8f23-6fa637af8ed9.png)
+![Transaction generator: check!](/static/img/fraud-generator-done.png)
 
 We're just missing one thing — the actual **fraud detector** to process the stream of transactions and detect those that are suspicious!
 
@@ -479,7 +479,7 @@ The fraud detector is a typical example of a **stream processing application**.
 
 It takes a stream of transactions as an input, performs some kind of filtering, then outputs the result into two separate streams — those that are legitimate, and those that are suspicious, an operation also known as **branching**.
 
-![The detector branches out the transaction stream in two separate streams. ✂️](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/288f76de-ccdb-4be3-83d8-672e0f9dd326.png)
+![The detector branches out the transaction stream in two separate streams. ✂️](/static/img/fraud-branches.png)
 
 Beyond producers that publish messages into a topic, there exists another type of Kafka applications to read messages from a topic. They are called **consumers**. Actually, we've already used one via the `kafka-console-consumer` script above!
 

@@ -128,7 +128,7 @@ This is it: we have just conceptualized the **Model-Adapter pattern**. It compri
 
 I find diagrams always help to grasp concepts, so here's one for you:
 
-![The Model-Adapter pattern, visualised.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/ac486986-40d0-4dab-9dee-a9b3f569e6a1.png)
+![The Model-Adapter pattern, visualised.](/static/img/model-adapter-diagram.png)
 
 ## Model-Adapter by example
 
@@ -225,7 +225,7 @@ export class CourseService {
 
 At this point, TypeScript's compiler will unfortunately rant out (which is a good point!):
 
-![TypeScript is not happy… Why?](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/436c8b5c-edd5-41c6-b346-77c713f9942e.png)
+![TypeScript is not happy… Why?](/static/img/model-adapter-ts.png)
 
 Of course! We haven't built `Course` instances from the raw data we retrieved. Instead, we're still returning an `Observable<Object>`. We can fix this using [RxJS](https://angular.io/guide/rx-library)'s `map` operator. We'll map the data array to an array of `Course` objects:
 

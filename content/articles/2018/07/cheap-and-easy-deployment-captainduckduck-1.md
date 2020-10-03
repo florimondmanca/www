@@ -50,7 +50,7 @@ Oh, boy.
 
 To make things even more interesting, I did not have one but **two distincts apps to deploy**, because I chose to use a decoupled backend/frontend stack: a frontend app built with [Angular](https://angular.io) and a REST API backend built with Python and the [Django REST Framework](https://www.django-rest-framework.org), as depicted below.
 
-![Simplified architecture of florimondmanca.com. What hides in the cloud?](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/eb1b052f-c5ae-4dfc-8a36-f06b263138fb.png)
+![Simplified architecture of florimondmanca.com. What hides in the cloud?](/static/img/captainduckduck-architecture.png)
 
 I didn't want to configure all of that. So I headed right away to the one solution that I knew could make it easier: Heroku.
 
@@ -60,7 +60,7 @@ I didn't want to configure all of that. So I headed right away to the one soluti
 
 Oh and they even give you SSL by default, provide your apps with a unique domain name, have a [neat CLI](https://devcenter.heroku.com/articles/heroku-cli) and great integrations with the most common CI/CD tools (I personnally use and love [Travis CI](https://travis-ci.org)).
 
-![Heroku's logotype.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/cb930fec-6afd-4176-bbd3-0a826a61e707.png)
+![Heroku's logotype.](/static/img/captainduckduck-heroku-logo.png)
 
 I had used Heroku in other projects and I like it a lot for **prototyping**. It's great for quickly deploying apps without spending a cent.
 
@@ -88,7 +88,7 @@ A few days later, while browsing through blog posts on my morning bus ride, I st
 
 The article was from Kasra Bigdeli. There, he explained how he found deployment to be a pain too, because there was so much he had to do, and so much of it seemed crazily repetitive. "After all, my HTTPS is no different than other hundreds of thousands of HTTPS websites on the internet." (_Yep, I 100% agree with that._) That's how Bigdeli ended up writing and open-sourcing [CaptainDuckDuck](https://captainduckduck.com).
 
-![CaptainDuckDuck: "Build your own PaaS in a few minutes!"](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/3608d27d-7620-414a-840d-516bea33cf3a.png)
+![CaptainDuckDuck: "Build your own PaaS in a few minutes!"](/static/img/captainduckduck-logo.png)
 
 Put simply, **CaptainDuckDuck is an open source tool for building your own Heroku-like PaaS**. Its key highlights are, for me:
 
@@ -105,7 +105,7 @@ Under the hood, CaptainDuckDuck uses standard tools you'd have had to install yo
 - **Nginx** to serve static content and manage routing
 - **Docker** to run your apps (and CaptainDuckDuck's) in their own containers
 
-!["CaptainDuckDuck architecture at a glance." — captainduckduck.com.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/fad5889a-19c6-4c08-914b-b3b1d81cd3ea.png)
+!["CaptainDuckDuck architecture at a glance." — captainduckduck.com.](/static/img/captainduckduck-glance.png)
 
 CaptainDuckDuck provides some pre-defined templates for Docker that can detect, install and run your apps. Think of them as Heroku's build packs.
 

@@ -20,7 +20,7 @@ Since then, I kept working on [Bocadillo](https://github.com/bocadilloproject/bo
 
 Another great news is that **Bocadillo v0.13 has just been released**:
 
-[![](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/520bb3cd-c6d1-455a-a7ff-33d9d96fb1fa.png)](https://twitter.com/bocadillopy/status/1107029038923743232)
+[![](/static/img/chatbot-bocadillo.png)](https://twitter.com/bocadillopy/status/1107029038923743232)
 
 With all these good vibes in the air, I finally decided to go ahead and publish a thorough tutorial.
 
