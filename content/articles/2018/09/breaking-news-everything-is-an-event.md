@@ -38,7 +38,7 @@ We build complex systems made of many different components and try to wire them 
 
 Even when we use the latest and shiniest architecture design principles (hint: microservices), we run the risk of ending up with a **tightly coupled architecture** because components need to know about each other's API in great detail, or need to keep polling one another to detect **changes**.
 
-![Your typical microservices web application. See that soup of requests? Can we do better?](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/microservice-blog.png)
+![Your typical microservices web application. See that soup of requests? Can we do better?](/static/img/everything-event-microservice.png)
 
 ## Introducing events
 
@@ -163,7 +163,7 @@ However, I find this definition to be too general. In the context of **event str
 
 Graphical representations always help, don't they? Here's how you can represent a stream of events as a set of points arranged in a timeline:
 
-![Simple representation of a stream.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/stream.png)
+![Simple representation of a stream.](/static/img/everything-event-stream.png)
 
 To give you an even better intuition of what streams are and what you can do with them, I'd like to take you through an analogy.
 
@@ -263,7 +263,7 @@ Have you noticed how producers do not have to know anything about who the downst
 
 This means that you can have **loosely coupled teams** working on separate parts of an application. Their interface is exactly defined by the contents of messages — **the data is the contract**.
 
-![Scaling systems and teams with Kafka Octopus! (I've been waiting for this moment for too long.)](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/kafka-octopus.png)
+![Scaling systems and teams with Kafka Octopus! (I've been waiting for this moment for too long.)](/static/img/everything-event-kafka.png)
 
 Even better — a new application (say, developed by the BI team) can come and tap into an existing topic **without disrupting the flow of other stream processors**. Beyond encouraging loose coupling, this property means that **streaming applications allow better scaling of teams**.
 

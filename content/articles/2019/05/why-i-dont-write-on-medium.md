@@ -67,7 +67,7 @@ Premium (or paid) content refers to articles decorated with a tiny black star th
 
 Medium makes it so annoying to be a free user, because this increases the chances you'll go premium. It's a very common technique — Spotify works like that too. But it's been particularly exhausting to me ([and others](https://medium.com/swlh/i-redacted-the-medium-stories-i-cant-afford-609fa5368076)) lately.
 
-![Actual footage of my Medium feed this morning. All premium content.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/61f804ef-3e89-4e04-b196-17abac7e061c.jpeg)
+![Actual footage of my Medium feed this morning. All premium content.](/static/img/medium-feed.jpeg)
 
 To be clear, I don't have anything against Medium wanting to make money out of their platform. Again, that's why they exist as a company.
 

@@ -92,7 +92,7 @@ This first example was about using ChainMap to search through multiple dictionna
 
 In fact, when building a ChainMap, what we do is effectively building a _chain of dictionnaries_. When looking up an item in the inventory, toys are looked up first, then computers and finally clothing.
 
-![A ChainMap is really just… a chain of mappings!](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/d6d63ed6-2ee4-432a-81fa-586937e6ee04.png)
+![A ChainMap is really just… a chain of mappings!](/static/img/chainmap.png)
 
 Actually, another task where ChainMap shines is at **maintaining a chain of defaults**.
 

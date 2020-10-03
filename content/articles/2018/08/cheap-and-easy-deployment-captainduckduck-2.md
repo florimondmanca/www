@@ -22,7 +22,7 @@ _**Disclaimer**: I have no personal interest whatsoever in the brands and busine
 
 As a quick reminder, **CaptainDuckDuck is an open source system that allows you to run your own Heroku-like PaaS**. It takes advantage of standard tools such as Let's Encrypt, Nginx and Docker to **relieve the pains of deployment**.
 
-![CaptainDuckDuck: "Build your own PaaS in a few minutes!"](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/3608d27d-7620-414a-840d-516bea33cf3a.png)
+![CaptainDuckDuck: "Build your own PaaS in a few minutes!"](/static/img/captainduckduck-logo.png)
 
 Here's what we'll cover:
 
@@ -70,7 +70,7 @@ $ npm install -g captainduckduck
 
 Yep — that `npm` is the Node.js package manager! CaptainDuckDuck is actually primarily written in server-side Javascript (a.k.a. Node.js), as shown on CaptainDuckDuck's [GitHub repo](https://github.com/githubsaturn/captainduckduck).
 
-![CaptainDuckDuck is 80% Javascript! (And the rest is the docs' HTML.)](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/a8149675-d146-491b-860e-339845839867.png)
+![CaptainDuckDuck is 80% Javascript! (And the rest is the docs' HTML.)](/static/img/captainduckduck-languages.png)
 
 Now that the CLI is installed, we can finish up the setup using the properly called `serversetup` command. Let's see what it looks like:
 
@@ -100,7 +100,7 @@ Just so you get the gist, it just took me **15mins to install CaptainDuckDuck** 
 
 You can now access any subdomain to verify that CaptainDuckDuck is running. For example, I visited `helloworld.florimondmanca.com` and was greeted with:
 
-![We just installed CaptainDuckDuck! However, it needs some apps.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/98ccb7b3-ca8f-4c3a-8f24-df676abb573c.png)
+![We just installed CaptainDuckDuck! However, it needs some apps.](/static/img/captainduckduck-blank.png)
 
 Pretty cool!
 
@@ -114,7 +114,7 @@ You can now go to your Captain root (in my case, `captain.florimondmanca.com`) a
 - **Monitoring** allows you to start a NetData **metrics collector** that will show you live information about your server (incoming requests, CPU and memory usage, etc). It can even send alerts! 🚨 I've configured it to send alerts to a Telegram bot; that's pretty neat!
 - **Settings** is just what you would expect (password reset, etc…) plus the base Nginx configuration and a handy widget to cleanup unused Docker images.
 
-![Sections of the CaptainDuckDuck web UI.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/ffeac8f9-f763-42dd-868e-55e5b5f5b906.png)
+![Sections of the CaptainDuckDuck web UI.](/static/img/captainduckduck-ui-sections.png)
 
 Let's focus on the "Apps" section; this is where most of the CaptainDuckDuck magic takes place.
 
@@ -124,7 +124,7 @@ The "Apps" section of the UI allows you to manage your apps — much like you wo
 
 If you open this section, the following form allows you to create a new app.
 
-![Creating new apps is easy with CaptainDuckDuck.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/55a3c575-78ec-4192-8085-3f7b4cc95795.png)
+![Creating new apps is easy with CaptainDuckDuck.](/static/img/captainduckduck-create-app.png)
 
 You just need to provide two things:
 
@@ -143,19 +143,19 @@ And, oh my — do you remember the old days of creating, registering and configu
 
 You can just as easily redirect all the HTTP traffic to HTTPS. It's just that simple.
 
-![That "Enable HTTPS" button is crying for a click, right?](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/a405516b-7fb5-4c95-bad5-9993039fcf1d.png)
+![That "Enable HTTPS" button is crying for a click, right?](/static/img/captainduckduck-https.png)
 
 ### **Edit Nginx config right in your browser**
 
 I told you — CaptainDuckDuck relies on the tools we all use and cherish. Docker and Nginx are two of them.
 
-![The Docker and Nginx logos. Already know 'em? That's the point!](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/5fe7a8fa-fb57-408c-a560-06f848d0f3cb.png)
+![The Docker and Nginx logos. Already know 'em? That's the point!](/static/img/captainduckduck-nginx-docker.png)
 
 Let's focus on Nginx here. Each app on CaptainDuckDuck benefits from **its own Nginx configuration file**. And you can edit it _directly in the browser_.
 
 On an app's management page, simply click "Edit default Nginx configuration" and it will display the Nginx configuration CaptainDuckDuck already uses for your app. It contains stuff such as SSL and HTTP/HTTPS redirection.
 
-![In-browser Nginx config. It's rather bare-bones, but it works!](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/76d9c755-ca11-40c7-8cf3-1f76a40d0fa7.png)
+![In-browser Nginx config. It's rather bare-bones, but it works!](/static/img/captainduckduck-nginx-config.png)
 
 You can [add your own configuration pieces](https://captainduckduck.com/docs/nginx-customization.html) right there. **Just make sure that your Nginx configuration is syntactically correct!** Otherwise, CaptainDuckDuck will crash and you'll have to SSH on your instance and debug on the command line… True story.
 

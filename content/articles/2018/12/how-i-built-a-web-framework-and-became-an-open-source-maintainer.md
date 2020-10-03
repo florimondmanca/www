@@ -158,7 +158,7 @@ At that point, I hadn't disclosed anything about Bocadillo yet, not even to frie
 
 Because Bocadillo's initial code design and implementation took heavy inspiration from [Responder], Kenneth Reitz's own async framework, [I decided to give a shoutout](https://twitter.com/kennethreitz/status/1059942147342942209).
 
-![The first announcement about Bocadillo on Twitter, and Kenneth Reitz's answer. ❣️](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/22e7446d-09a0-4508-b5a1-3c2c5a629a53.png)
+![The first announcement about Bocadillo on Twitter, and Kenneth Reitz's answer. ❣️](/static/img/bocadillo-reitz.png)
 
 Kenneth's answer and the forthcoming reactions after he retweeted the announcement made me think that **Bocadillo actually had potential**.
 
@@ -178,7 +178,7 @@ So, right from the start, I wrote an informative *README*, curated a *CHANGELOG*
 
 Quickly though, this became impractical. The README was growing in size and it became hard to navigate, even with a table of contents.
 
-![The table of contents for the repo on November 17th. See that "Usage" section growing to an astronomical size?](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/f8afa87e-0fd0-432c-b11b-1ef77a12e2bb.png)
+![The table of contents for the repo on November 17th. See that "Usage" section growing to an astronomical size?](/static/img/bocadillo-toc.png)
 
 That's when I realized **I needed proper documentation**.
 
@@ -188,7 +188,7 @@ Then, it hit me — a lot of large-scale open source tools, libraries or framewo
 
 This is what led me to release v0.5 on November 18th with a major addition: a brand new [docs site][docs], which I built with [VuePress] and hosted on [GitHub Pages].
 
-![Bocadillo's documentation site home page (end of November, 2018).](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/140491ee-272e-43a7-86a9-c18721022f9f.png)
+![Bocadillo's documentation site home page (end of November, 2018).](/static/img/bocadillo-docs.png)
 
 On the necessity of good documentation — Joe Mancuso, creator of the [Masonite] framework, once shared with me this great piece of advice:
 
@@ -240,7 +240,7 @@ Alin helped me fix a few things about the feature which I was initially unsure a
 
 Later, on November 23rd, Alin got his first PR merged. Bocadillo had officially gained its first contributor! 🎉
 
-![Screenshot of PR #18.](https://florimondmanca-personal-website.s3.amazonaws.com/media/markdownx/e338cd3d-ca39-4e06-b176-d5ab87a2fa22.png)
+![Screenshot of PR #18.](/static/img/bocadillo-contributor.png)
 
 As emotional as I can be, I was moved.
 
