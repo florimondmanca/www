@@ -20,7 +20,7 @@ flake8-bugbear==20.1.4
 flake8-comprehensions==3.2.3
 flake8-pie==0.6.1
 httpx==0.15.4
-isort==5.5.3
+isort==5.5.4
 mypy==0.782
 pytest==6.1.1
 pytest-asyncio==0.14.0
