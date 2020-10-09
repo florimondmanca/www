@@ -17,7 +17,7 @@ Today, we'll take a look at the lesser known **ChainMap** and go through practic
 
 ## What is ChainMap?
 
-**ChainMap** is a data structure provided by the Python standard library that allows you to treat multiple dictionnaries as one.
+**ChainMap** is a data structure provided by the Python standard library that allows you to treat multiple dictionaries as one.
 
 The [official documentation](https://docs.python.org/3/library/collections.html#collections.ChainMap) on ChainMap reads:
 
@@ -29,9 +29,9 @@ Since you've probably never heard of ChainMap before, you may think that the use
 
 However, the use cases I know of include:
 
-- Searching through multiple dictionnaries
+- Searching through multiple dictionaries
 - Providing a chain of default values
-- Performance-critical applications that frequently compute subsets of a dictionnary
+- Performance-critical applications that frequently compute subsets of a dictionary
 
 We'll go through two examples to illustrate.
 
@@ -54,14 +54,14 @@ We can now use ChainMap to build a single view over these disparate collections:
 >>> inventory = ChainMap(toys, computers, clothing)
 ```
 
-This allows us to query the inventory **as if it was a single dictionnary**:
+This allows us to query the inventory **as if it was a single dictionary**:
 
 ```python
 >>> inventory['Monopoly']
 20
 ```
 
-As the official docs state, ChainMap supports all the usual dictionnary methods. We can use `.get()` to search for items that may not be present, or remove items using `.pop()`.
+As the official docs state, ChainMap supports all the usual dictionary methods. We can use `.get()` to search for items that may not be present, or remove items using `.pop()`.
 
 ```python
 >>> inventory.get('Mario Bros.')
@@ -71,7 +71,7 @@ None
 >>> inventory['Blocks']  # KeyError: 'Blocks'
 ```
 
-If we now add a toy to the `toys` dictionnary, it will also be made available in the inventory. This is the **updatable** aspect of a ChainMap.
+If we now add a toy to the `toys` dictionary, it will also be made available in the inventory. This is the **updatable** aspect of a ChainMap.
 
 ```python
 >>> toys['Nintendo'] = 200
@@ -86,9 +86,9 @@ Oh and ChainMap has a pretty string representation as well:
 ChainMap({'Monopoly': 20, 'Nintendo': 200}, {'iMac': 1000, 'Chromebook': 800, 'PC': 400}, {'Jeans': 40, 'T-Shirt': 10})
 ```
 
-A nice feature is that while in our example `toys`, `computers` and `clothing` are all in the same context (the interpreter), they could come from totally different modules or packages. This is because ChainMap stores the underlying dictionnaries **by reference**.
+A nice feature is that while in our example `toys`, `computers` and `clothing` are all in the same context (the interpreter), they could come from totally different modules or packages. This is because ChainMap stores the underlying dictionaries **by reference**.
 
-This first example was about using ChainMap to search through multiple dictionnaries at once.
+This first example was about using ChainMap to search through multiple dictionaries at once.
 
 In fact, when building a ChainMap, what we do is effectively building a _chain of dictionnaries_. When looking up an item in the inventory, toys are looked up first, then computers and finally clothing.
 
@@ -96,25 +96,25 @@ In fact, when building a ChainMap, what we do is effectively building a _chain o
 
 Actually, another task where ChainMap shines is at **maintaining a chain of defaults**.
 
-We'll take the example of a command line application to illustrate what this means.
+We'll take the example of a command-line application to illustrate what this means.
 
 ## Example: CLI configuration
 
-Let's face it, managing configuration of command lines applications can be difficult.
+Let's face it, managing the configuration of command lines applications can be difficult.
 
-Configuration is drawn from multiple sources: command line arguments, environment variables, local files, etc.
+The configuration is drawn from multiple sources: command-line arguments, environment variables, local files, etc.
 
 We generally implement a notion of **priority**: if `A` and `B` both define parameter `P`, `A`'s value for `P` will be used because it has priority over `B`.
 
-For example, we may want to use command line arguments over environment variables if the former were passed.
+For example, we may want to use command-line arguments over environment variables if the former were passed.
 
-How can we easily manage priority of configuration sources?
+How can we easily manage the priority of configuration sources?
 
 One answer would be to store all configuration sources in a ChainMap.
 
 Because **a lookup in a ChainMap is performed on each underlying mapping successively** (in the order they were passed to the constructor), we can easily achieve the prioritization we were looking for.
 
-Below is a simple command line application. There, a `debug` parameter is drawn from either command line arguments, environment variables or hard-coded defaults:
+Below is a simple command-line application. There, a `debug` parameter is drawn from either command-line arguments, environment variables or hard-coded defaults:
 
 ```python
 # cli.py
@@ -154,15 +154,15 @@ Neat, right?
 
 To be honest, ChainMap is one of those Python features that you can probably afford to ignore.
 
-There are also alternatives to using ChainMap. For example, using an update-loop — i.e. creating a dict and `.update()`-ing it with your dictionnaries — may do the trick. But this only works if you don't need to keep track of the origin of the items, as was the case in our multi-source CLI configuration example.
+There are also alternatives to using ChainMap. For example, using an update-loop — i.e. creating a dict and `.update()`-ing it with your dictionaries — may do the trick. But this only works if you don't need to keep track of the origin of the items, as was the case in our multi-source CLI configuration example.
 
 **However, ChainMap can make your life much easier and your code much more elegant when you know it exists.**
 
 In fact, the very first time I used ChainMap was just a week ago. Why not before? I simply never had the use.
 
-I used it because I needed to frequently compute a subset of a dictionnary (based on an attribute of the value), which was costly. I instead needed to achieve **constant-time lookups** to meet performance requirements.
+I used it because I needed to frequently compute a subset of a dictionary (based on an attribute of the value), which was costly. I instead needed to achieve **constant-time lookups** to meet performance requirements.
 
-I decided to split the dictionnary into two distinct dicts and perform the branching at insert time. I then used ChainMap to group these two dicts together. This way, I could keep the initial view on the single dictionnary — but also lookup each separate dictionnary in constant time!
+I decided to split the dictionary into two distinct dicts and perform the branching at insert time. I then used ChainMap to group these two dicts together. This way, I could keep the initial view on the single dictionary — but also lookup each separate dictionary in constant time!
 
 ---
 
