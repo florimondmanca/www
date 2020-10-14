@@ -33,6 +33,52 @@ hr {
   @apply bg-muted-700;
 }
 
+/* Blockquotes */
+
+blockquote {
+  @apply py-2;
+  @apply pl-6;
+  @apply border-l-4;
+  @apply border-muted-700;
+  position: relative;
+  font-size: 1.1em;
+}
+
+/* White rectangle for quotation mark to sit on */
+
+blockquote:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  height: 2em;
+  width: 5px;
+  margin-top: -1em;
+  @apply bg-background;
+}
+
+/* Quotation mark */
+
+blockquote:after {
+  content: "\201C";
+  position: absolute;
+  top: 50%;
+  left: -0.5em;
+  line-height: 1em;
+  text-align: center;
+  text-indent: -2px;
+  width: 1em;
+  margin-top: -0.4em;
+  @apply text-muted;
+  @apply text-xl;
+}
+
+/* Cite */
+
+blockquote > cite {
+  @apply italic;
+}
+
 /* Code */
 
 code {
