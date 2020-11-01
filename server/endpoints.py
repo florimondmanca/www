@@ -6,11 +6,15 @@ from starlette.responses import RedirectResponse, Response
 from . import resources, settings
 
 
-async def home(request: Request) -> Response:
-    context = {
-        "request": request,
+def _common_context() -> dict:
+    return {
         "get_articles": resources.index.articles_by_date,
+        "get_category_pages": resources.index.get_category_pages,
     }
+
+
+async def home(request: Request) -> Response:
+    context = {"request": request, **_common_context()}
     return resources.templates.TemplateResponse("views/home.jinja", context=context)
 
 
@@ -28,24 +32,22 @@ class RenderPage(HTTPEndpoint):
         else:
             raise HTTPException(404)
 
-        context = {
-            "request": request,
-            "page": page,
-            "get_articles": resources.index.articles_by_date,
-        }
+        context = {"request": request, "page": page, **_common_context()}
 
         return resources.templates.TemplateResponse("views/page.jinja", context=context)
 
 
 async def not_found(request: Request, exc: Exception) -> Response:
+    context = {"request": request, **_common_context()}
     return resources.templates.TemplateResponse(
-        "views/404.jinja", context={"request": request}, status_code=404
+        "views/404.jinja", context=context, status_code=404
     )
 
 
 async def internal_server_error(request: Request, exc: Exception) -> Response:
+    context = {"request": request, **_common_context()}
     return resources.templates.TemplateResponse(
-        "views/500.jinja", context={"request": request}, status_code=500
+        "views/500.jinja", context=context, status_code=500
     )
 
 

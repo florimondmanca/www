@@ -1,6 +1,7 @@
 {% extends "base.jinja" %}
 
 {% from "components/pages/tag_page.jinja" import TagPage with context %}
+{% from "components/pages/category_page.jinja" import CategoryPage with context %}
 {% from "components/pages/article_page.jinja" import ArticlePage with context %}
 
 {% block head %}
@@ -22,6 +23,8 @@
     <div class="p-page-content code-container">
       {{ ArticlePage(page) }}
     </div>
+  {%- elif page.is_category -%}
+    {{ CategoryPage(page.frontmatter.category, get_articles(category=page.frontmatter.category)) }}
   {%- else -%}
     {{ raise("Unknown page type") }}
   {%- endif -%}

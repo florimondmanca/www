@@ -3,10 +3,10 @@ published: true
 title: "Utterances: GitHub-powered Comments Section for Personal Sites"
 description: "A short 'TIL' memo about using Utterances to add a comments section to your website, powered by GitHub issues."
 date: "2020-07-22"
+category: retrospectives
 tags:
   - meta
-  - devtips
-  - tutorial
+  - webdev
 image:
   unsplash: "photo-1526324553550-133d260e7d60"
 image_caption: "Golden Gate City Night lights crystal prism ball. @sanfrancisco, unsplash.com."

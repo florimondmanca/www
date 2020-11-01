@@ -4,10 +4,10 @@ title: "Introducing tartiflette-starlette"
 description: "A new library for building GraphQL APIs and serving them over HTTP via ASGI, powered by the Tartiflette Python asynchronous GraphQL engine."
 date: "2019-07-13"
 legacy_url: "/introducing-tartiflette-starlette"
+category: retrospectives
 tags:
   - python
   - webdev
-  - announcements
   - asgi
 image: "/static/img/articles/tartiflette-starlette.jpg"
 image_caption: "Logo of tartiflette-starlette."

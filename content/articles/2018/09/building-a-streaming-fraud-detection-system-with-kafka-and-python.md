@@ -4,10 +4,10 @@ title: "Building A Streaming Fraud Detection System With Kafka And Python"
 description: "A thorough tutorial to build your first real-world Kafka app in Docker Compose. Welcome to the land of stream processing!"
 date: "2018-09-20"
 legacy_url: "/building-a-streaming-fraud-detection-system-with-kafka-and-python"
+category: tutorials
 tags:
   - kafka
   - python
-  - tutorial
 image:
   unsplash: "photo-1529978755210-7f13333beb13"
 image_caption: "Orange and multicolored LEGO toy set. @lh1me via unsplash.com"

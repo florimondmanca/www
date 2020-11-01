@@ -4,6 +4,7 @@ title: "How I Built A Python Web Framework And Became An Open Source Maintainer"
 description: "Inspirational thoughts and tips on starting and managing an open source project, based on my experience building Bocadillo, an asynchronous Python web framework."
 date: "2018-12-22"
 legacy_url: "/how-i-built-a-web-framework-and-became-an-open-source-maintainer"
+category: retrospectives
 tags:
   - python
   - opensource

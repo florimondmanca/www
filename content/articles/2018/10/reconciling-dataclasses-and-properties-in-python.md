@@ -4,9 +4,9 @@ title: "Reconciling Dataclasses And Properties In Python"
 description: "I love Python dataclasses, but combining them with properties is not obvious. This is a problem solving report — and a practical introduction to dataclasses!"
 date: "2018-10-10"
 legacy_url: "/reconciling-dataclasses-and-properties-in-python"
+category: tutorials
 tags:
   - python
-  - devtips
 image:
     unsplash: "photo-1504618223053-559bdef9dd5a"
 image_caption: "Two black-and-white birds. @wwwynand, unsplash.com"

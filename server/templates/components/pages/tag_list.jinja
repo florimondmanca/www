@@ -1,10 +1,12 @@
 {% macro TagList(tags) %}
-<span>
-  🔖
-</span>
-{% for tag in tags %}
-<a class="c-tag-list-item" href="{{ url_for('page', permalink='tag/' + tag) }}">
-  {{ tag }}
-</a>
-{% endfor %}
+<div class="whitespace-no-wrap">
+  <span>
+    🔖
+  </span>
+  {% for tag in tags %}
+  <a class="c-tag-list-item" href="{{ url_for('page', permalink='tag/' + tag) }}">
+    {{ tag }}
+  </a>
+  {% endfor %}
+</div>
 {% endmacro %}

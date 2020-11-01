@@ -4,9 +4,9 @@ title: "How To Upgrade Your VuePress Site To v1.0"
 description: "VuePress v1.0 is out of beta! Upgrade your documentation site by following this 10-step tutorial."
 date: "2019-06-15"
 legacy_url: "/vuepress-upgrade-1-0"
+category: tutorials
 tags:
   - webdev
-  - tutorial
   - vue
 image: "/static/img/articles/vuepress-upgrade-1-0.jpg"
 ---

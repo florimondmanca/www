@@ -12,6 +12,7 @@ class ContentItem:
 class Frontmatter:
     title: str
     description: typing.Optional[str] = None
+    category: typing.Optional[str] = None
     date: typing.Optional[str] = None
     image: typing.Optional[str] = None
     image_thumbnail: typing.Optional[str] = None
@@ -32,6 +33,10 @@ class Page:
     def is_article(self) -> bool:
         return self.permalink.startswith("/articles/")
 
+    @property
+    def is_category(self) -> bool:
+        return self.permalink.startswith("/category/")
+
 
 class Index:
     """
@@ -41,7 +46,13 @@ class Index:
     def __init__(self) -> None:
         self.pages: typing.List[Page] = []
 
-    def articles_by_date(self, *, tag: str = None) -> typing.List[Page]:
+    def articles_by_date(
+        self,
+        *,
+        tag: str = None,
+        category: str = None,
+        limit: int = None,
+    ) -> typing.List[Page]:
         articles = []
 
         for page in self.pages:
@@ -49,11 +60,18 @@ class Index:
                 continue
             if tag is not None and tag not in page.frontmatter.tags:
                 continue
+            if category is not None and page.frontmatter.category != category:
+                continue
             articles.append(page)
 
-        return sorted(
+        articles = sorted(
             articles, key=lambda page: page.frontmatter.date or "", reverse=True
         )
+
+        return articles[:limit]
+
+    def get_category_pages(self) -> typing.List[Page]:
+        return [page for page in self.pages if page.is_category]
 
 
 class MetaTag:

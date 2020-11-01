@@ -22,11 +22,18 @@ def dateformat(value: str) -> str:
     return datevalue.strftime("%b %d, %Y")
 
 
+def category_label(value: str) -> str:
+    from .content import get_category_label  # Avoid circular import.
+
+    return get_category_label(value)
+
+
 templates.env.globals["now"] = dt.datetime.now
 templates.env.globals["raise"] = raise_server_error
 templates.env.globals["settings"] = settings
 templates.env.globals["hotreload"] = hotreload
 templates.env.filters["dateformat"] = dateformat
+templates.env.filters["category_label"] = category_label
 
 index = Index()
 markdown = md.Markdown(extensions=settings.MARKDOWN_EXTENSIONS)

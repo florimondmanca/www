@@ -3,11 +3,11 @@ published: true
 title: "Using Starlette to migrate my blog across domains"
 description: "How I moved my blog to a different domain and URL structure while retaining SEO and integrating seamlessly with a static website generator — a case study of using Starlette and ASGI to build and glue web application components together."
 date: "2019-11-16"
+category: retrospectives
 tags:
   - python
   - asgi
   - vuepress
-  - meta
 image:
     unsplash: "photo-1468276311594-df7cb65d8df6"
 image_caption: "Milky way above body of water. @krisroller, unsplash.com"
