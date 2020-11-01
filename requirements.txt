@@ -1,3 +1,5 @@
+--use-feature="2020-resolver"
+
 # Application dependencies.
 aiofiles==0.5.0
 arel==0.2.0
