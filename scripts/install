@@ -28,6 +28,10 @@ else
   export PREFIX=""
 fi
 
+# Prevent falling back to legacy 'setup.py install' for wheels.
+note "Upgrade package 'wheel'"
+${PREFIX}pip install -U wheel
+
 note "Install pip dependencies"
 ${PREFIX}pip install -r requirements.txt
 
