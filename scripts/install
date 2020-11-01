@@ -33,7 +33,7 @@ note "Upgrade package 'wheel'"
 ${PREFIX}pip install -U wheel
 
 note "Install pip dependencies"
-${PREFIX}pip install -r requirements.txt
+${PREFIX}pip install --use-feature="2020-resolver" -r requirements.txt
 
 if [ -z $CI ]; then
   note "Install yarn dependencies"
