@@ -4,7 +4,7 @@ resources:
       type: github
       endpoint: github
       name: florimondmanca/azure-pipelines-templates
-      ref: refs/tags/3.2
+      ref: refs/tags/3.3
 
 trigger:
   - master
@@ -21,7 +21,7 @@ variables:
 jobs:
   - template: job--python-check.yml@templates
     parameters:
-      pythonVersion: "3.8"
+      pythonVersion: "3.9"
 
   - job: Build
     steps:
@@ -34,14 +34,14 @@ jobs:
   - template: job--python-test.yml@templates
     parameters:
       jobs:
-        py38:
+        py39:
           coverage: true
 
   - job: Deploy
     dependsOn:
       - Check
       - Build
-      - py38
+      - py39
     condition: and(succeeded(), eq(variables.IS_MASTER_BRANCH, true))
     steps:
       - task: InstallSSHKey@0
