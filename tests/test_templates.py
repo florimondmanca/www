@@ -1,6 +1,6 @@
 import pytest
 
-from server.resources import dateformat, category_label
+from server.resources import category_label, dateformat
 
 
 def test_dateformat() -> None:
