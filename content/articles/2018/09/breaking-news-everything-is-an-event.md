@@ -4,9 +4,9 @@ title: "Breaking News: Everything Is An Event! (Streams, Kafka And You)"
 description: "It's about time you met streaming data! I'm sure you two and Apache Kafka will do great things together."
 date: "2018-09-14"
 legacy_url: "/breaking-news-everything-is-an-event"
+category: essays
 tags:
   - kafka
-  - discussion
 image:
   unsplash: "photo-1533228876829-65c94e7b5025"
 image_caption: "Man standing on sand while spreading arms beside calm body of water. @kalvisuals, unsplash.com"

@@ -3,6 +3,7 @@ published: true
 title: "Structuring Starlette Projects"
 description: "Starlette's modular design doesn't necessarily make it clear how Starlette projects should be structured. Here is a minimal yet flexible project structure that will prevent circular dependencies and help you write more readable Starlette application code."
 date: "2020-06-01"
+category: tutorials
 tags:
   - python
   - webdev

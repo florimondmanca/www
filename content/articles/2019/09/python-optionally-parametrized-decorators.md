@@ -4,10 +4,9 @@ title: "How to write optionally callable parametrized decorators in Python"
 description: "A memo on implementing parametrized decorators whose default behavior doesn't require empty parentheses."
 date: "2019-09-28"
 legacy_url: "/python-optionally-parametrized-decorators"
+category: tutorials
 tags:
   - python
-  - tutorial
-  - devtips
 image: "/static/img/articles/optionally-parametrized-decorators.jpg"
 image_caption: "A code snippet of what we're aiming to achieve."
 ---

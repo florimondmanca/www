@@ -4,9 +4,9 @@ title: "Streaming Applications with Apache Kafka: The Opening"
 description: "I'm starting a series on building streaming apps with Apache Kafka — here's why!"
 date: "2018-10-01"
 legacy_url: "/streaming-applications-with-apache-kafka-the-opening"
+category: essays
 tags:
   - kafka
-  - announcements
 image:
   unsplash: "photo-1533557603879-ebdd7a92e4e8"
 image_caption: "Man on mountain edge. @redhatfactory, unsplash.com"

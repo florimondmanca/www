@@ -4,9 +4,9 @@ title: "A practical usage of ChainMap in Python"
 description: "ChainMap in a nutshell: treat multiple dictionaries as one, unlock Python superpowers."
 date: "2018-07-25"
 legacy_url: "/a-practical-usage-of-chainmap-in-python"
+category: essays
 tags:
   - python
-  - devtips
 ---
 
 The collections module from Python's standard library contains many useful data structures designed for performance. Famous ones include `namedtuple` or `Counter`.

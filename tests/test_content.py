@@ -16,6 +16,7 @@ def test_build_pages() -> None:
     title = "Readability Counts"
     description = "How readability impacts software development."
     date = "2000-01-01"
+    category = "essays"
 
     items = [
         ContentItem(
@@ -26,6 +27,7 @@ def test_build_pages() -> None:
                 title: "{title}"
                 description: "{description}"
                 date: "{date}"
+                category: {category}
                 tags:
                 - python
                 ---
@@ -38,13 +40,14 @@ def test_build_pages() -> None:
 
     pages = build_pages(items)
 
-    assert len(pages) == 2
-    readability_counts, python = pages
+    assert len(pages) == 3
+    readability_counts, python, essays = pages
 
     assert readability_counts.permalink == "/posts/readability-counts"
     assert readability_counts.frontmatter.title == title
     assert readability_counts.frontmatter.description == description
     assert readability_counts.frontmatter.date == date
+    assert readability_counts.frontmatter.category == category
     assert readability_counts.frontmatter.tags == ["python"]
     assert not readability_counts.frontmatter.home
 
@@ -75,6 +78,23 @@ def test_build_pages() -> None:
     assert (
         f'<meta name="twitter:description" content="{python.frontmatter.description}">'
     ) in meta
+    assert f'<meta name="twitter:url" content="{url}">' in meta
+
+    assert essays.permalink == "/category/essays"
+    assert "Essays" in essays.frontmatter.title
+    assert essays.frontmatter.description
+    assert essays.frontmatter.date is None
+    assert essays.frontmatter.category == category
+    assert essays.frontmatter.tags == []
+
+    meta = [str(tag) for tag in essays.meta]
+    url = "https://florimond.dev/blog/category/essays"
+    assert '<meta name="twitter:card" content="summary_large_image">' in meta
+    assert f'<meta name="twitter:title" content="{essays.frontmatter.title}">' in meta
+    assert (
+        f'<meta name="twitter:description" content="{essays.frontmatter.description}">'
+        in meta
+    )
     assert f'<meta name="twitter:url" content="{url}">' in meta
 
 

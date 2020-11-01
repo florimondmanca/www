@@ -4,6 +4,11 @@
 <div class="c-article-meta">
   <div class="text-muted pr-3">
     {{ page.frontmatter.date | dateformat }}
+    |
+    in
+    <a href="{{ url_for('page', permalink='/category/' + page.frontmatter.category) }}">
+      {{ page.frontmatter.category | category_label }}
+    </a>
   </div>
 
   {{ TagList(page.frontmatter.tags) }}

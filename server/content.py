@@ -41,6 +41,16 @@ def build_pages(items: List[ContentItem]) -> List[Page]:
     for page in _generate_tag_pages(unique_tags):
         pages.append(page)
 
+    unique_categories = sorted(
+        {
+            page.frontmatter.category
+            for page in pages
+            if page.frontmatter.category is not None
+        },
+        key=list(_CATEGORY_LABELS).index,
+    )
+    pages.extend(_generate_category_pages(unique_categories))
+
     return pages
 
 
@@ -54,6 +64,7 @@ def _build_content_pages(items: List[ContentItem]) -> Iterator[Page]:
             home=post.get("home", False),
             title=post["title"],
             description=post.get("description"),
+            category=post.get("category"),
             date=post.get("date"),
             image=image,
             image_thumbnail=image_thumbnail,
@@ -104,6 +115,36 @@ def _generate_tag_pages(tags: Iterable[str]) -> Iterator[Page]:
             tag=tag,
         )
         permalink = f"/tag/{tag}"
+        meta = _build_meta(permalink, frontmatter)
+
+        yield Page(permalink=permalink, frontmatter=frontmatter, meta=meta)
+
+
+_CATEGORY_LABELS = {
+    "tutorials": "Tutorials",
+    "essays": "Essays",
+    "retrospectives": "Retrospectives",
+}
+
+
+def get_category_label(value: str) -> str:
+    try:
+        return _CATEGORY_LABELS[value]
+    except KeyError:
+        raise ValueError(
+            f"Unknown category value: {value!r} (available: {list(_CATEGORY_LABELS)})"
+        )
+
+
+def _generate_category_pages(categories: Iterable[str]) -> Iterator[Page]:
+    for category in categories:
+        label = get_category_label(category)
+        frontmatter = Frontmatter(
+            title=f"{label} - {settings.SITE_TITLE}",
+            description=label,
+            category=category,
+        )
+        permalink = f"/category/{category}"
         meta = _build_meta(permalink, frontmatter)
 
         yield Page(permalink=permalink, frontmatter=frontmatter, meta=meta)

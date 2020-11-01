@@ -4,9 +4,9 @@ title: "Python Mutable Defaults Are The Source of All Evil"
 description: "How to prevent a common Python mistake that can lead to horrible bugs and waste everyone's time."
 date: "2018-08-14"
 legacy_url: "/python-mutable-defaults-are-the-source-of-all-evil"
+category: tutorials
 tags:
   - python
-  - devtips
 image:
     unsplash: "photo-1525682691400-309fa6755eb5"
 image_caption: "Green python on brown tree. @tirzavandijk, unsplash.com"

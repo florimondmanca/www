@@ -3,6 +3,8 @@ import typing
 import httpx
 import pytest
 
+from server.resources import index
+
 from .utils import find_meta_tags, load_xml_from_string
 
 pytestmark = pytest.mark.asyncio
@@ -33,6 +35,23 @@ async def test_article_no_trailing_slash(client: httpx.AsyncClient) -> None:
 
 async def test_tag(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/blog/tag/python/"
+    resp = await client.get(url, allow_redirects=False)
+    assert resp.status_code == 200, resp.url
+    assert "text/html" in resp.headers["content-type"]
+
+
+KNOWN_CATEGORIES = ["tutorials", "essays", "retrospectives"]
+
+
+def test_known_categories() -> None:
+    pages = index.get_category_pages()
+    categories = [page.frontmatter.category for page in pages]
+    assert categories == KNOWN_CATEGORIES
+
+
+@pytest.mark.parametrize("category", KNOWN_CATEGORIES)
+async def test_category(client: httpx.AsyncClient, category: str) -> None:
+    url = f"http://florimond.dev/blog/category/{category}/"
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]

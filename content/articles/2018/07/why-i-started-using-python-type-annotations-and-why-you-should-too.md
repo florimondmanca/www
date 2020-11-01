@@ -4,9 +4,9 @@ title: "Why I started using Python type annotations – and why you should too"
 description: "Type hints add optional static typing to Python 3.5+, and I love them. I now use annotated variables throughout my projects."
 date: "2018-07-27"
 legacy_url: "/why-i-started-using-python-type-annotations-and-why-you-should-too"
+category: essays
 tags:
   - python
-  - discussion
 image: "/static/img/articles/python-type-annotations.jpg"
 image_caption: "Code snippet, carbon.now.sh"
 ---
