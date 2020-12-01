@@ -8,7 +8,7 @@ markdown==3.2.2
 pygments==2.7.1
 python-frontmatter==0.5.0
 starlette==0.13.8
-uvicorn[standard]==0.12.2
+uvicorn[standard]==0.12.3
 
 # Development, tools and testing dependencies.
 autoflake==1.4
