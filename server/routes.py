@@ -1,6 +1,6 @@
 from starlette.routing import Host, Mount, Route, WebSocketRoute
 
-from . import endpoints, legacy, middleware, resources, settings
+from . import legacy, middleware, resources, settings, views
 from .reload import hotreload
 from .sitemap import sitemap
 
@@ -20,10 +20,10 @@ routes = [
         app=legacy.DomainRedirect("florimond.dev", root_path="/blog"),
         name="legacy:blog_dot_dev",
     ),
-    Route("/", endpoints.home),
-    Route("/error/", endpoints.error),
-    Route("/blog/", endpoints.legacy_blog_home, name="legacy:blog_home"),
-    Route("/blog/{permalink:path}/", endpoints.RenderPage, name="page"),
+    Route("/", views.home),
+    Route("/error/", views.error),
+    Route("/blog/", views.legacy_blog_home, name="legacy:blog_home"),
+    Route("/blog/{permalink:path}/", views.RenderPage, name="page"),
     Mount(settings.STATIC_ROOT, resources.static, name="static"),
     # These files need to be exposed at the root, not '/static/'.
     Route("/favicon.ico", resources.static, name="favicon"),
