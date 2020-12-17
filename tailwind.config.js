@@ -23,7 +23,11 @@ module.exports = {
       },
     },
     fontFamily: {
-      body: ["Garamond", "serif"],
+      body: [
+        "Garamond", // Windows, Mac
+        "Georgia", // iOS, Linuw
+        "serif", // The rest (eg Droid Serif on Android)
+      ],
     },
     fontWeight: {
       normal: "normal",
