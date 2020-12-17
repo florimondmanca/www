@@ -23,7 +23,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      body: ["EB Garamond", "serif"],
+      body: ["Garamond", "serif"],
     },
     fontWeight: {
       normal: "normal",

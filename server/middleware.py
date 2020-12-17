@@ -6,7 +6,7 @@ from starlette.requests import Request
 from starlette.responses import Response
 from starlette.types import ASGIApp
 
-from . import caching, legacy, settings
+from . import legacy, settings
 
 middleware = [
     # NOTE: Middleware executes from top to bottom.
@@ -15,7 +15,6 @@ middleware = [
         url_mapping=settings.LEGACY_URL_MAPPING,
         root_path="/blog",
     ),
-    Middleware(caching.CacheMiddleware, patterns=["/static/fonts/*"], ttl=3600),
 ]
 
 
