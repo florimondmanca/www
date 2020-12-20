@@ -7,8 +7,7 @@ legacy_url: "/why-i-dont-write-on-medium"
 category: essays
 tags:
   - meta
-image:
-  unsplash: "photo-1504711434969-e33886168f5c"
+image: "/static/img/articles/why-not-medium.jpg"
 image_caption: "Business newspaper pages. @freegraphictoday, unsplash.com"
 ---
 

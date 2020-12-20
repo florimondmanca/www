@@ -172,7 +172,7 @@ layout: Post
 
 When I upgraded to 1.x, the layout was broken. I had various layout issues related to changes in the default CSS, but more specifically, the navbar wouldn't show up anymore!
 
-![Ugh! The layout is off, and… where is my navbar?](/static/img/vuepress-navbar.png)
+![Ugh! The layout is off, and… where is my navbar?](/static/img/vuepress-layout.png)
 
 This is because **the component given to `layout` now completely replaces the page** (including the base `Layout` component which contains the navbar, sidebar, etc.). Here, look at what [the docs](https://v1.vuepress.vuejs.org/theme/default-theme-config.html#custom-layout-for-specific-pages) say:
 

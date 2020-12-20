@@ -7,8 +7,7 @@ legacy_url : "/inbox-zero-how-to-keep-clean-email-inbox-and-mind"
 category: essays
 tags:
   - productivity
-image:
-  unsplash: "photo-1534567406103-997f6c5e7f93"
+image: "/static/img/articles/inbox-zero.jpg"
 image_caption: "Four assorted-color mailboxes on black surface. @nxn, unsplash.com"
 ---
 
@@ -46,7 +45,7 @@ After digging deeper, I also learnt something incredibly surprising: **some peop
 
 Yet, Inbox Zero is _all_ about the archive button.
 
-![It's as easy as that.](https://i.imgflip.com/2jal8p.jpg)
+![It's as easy as that.](/static/img/inbox-zero-archive-all-things.jpg)
 
 ## Email is just like regular mail
 
@@ -97,7 +96,7 @@ The first step should then be: **archive all emails presently in your inbox**. T
 
 And believe me, it's pretty relieving.
 
-![Gladly archive all your inbox. 👌 (Now.)](https://media.giphy.com/media/jxbEDj1Ef78CdcTmWG/giphy.gif)
+![Gladly archive all your inbox. 👌 (Now.)](/static/img/inbox-zero-example.gif)
 
 ### 2. Deal with irrelevant incoming emails
 

@@ -7,8 +7,7 @@ legacy_url: "/restful-api-design-13-best-practices-to-make-your-users-happy"
 category: tutorials
 tags:
   - webdev
-image:
-  unsplash: "photo-1503387762-592deb58ef4e"
+image: "/static/img/articles/rest-apis.jpg"
 image_caption: "Architect at work. Daniel McCullough, unsplash.com"
 ---
 
@@ -330,13 +329,13 @@ As a result, you have to take **extra steps** to implement best practices in you
 
 The solution is simple: **use the right tool for the job**.
 
-![Holy sayings from good lad Scotty.](https://edm00se.io/assets/images/post_images/right-tool-for-job-jekyll/scottySays.jpg)
+![Holy sayings from good lad Scotty.](/static/img/rest-apis-right-tool-for-job.jpg)
 
 New frameworks have emerged in various languages that are specifically made to build REST APIs. **They help you follow best practices hassle-free without sacrificing productivity.**
 
 In Python, one of the best API framework I’ve found is [Falcon](https://falconframework.org). It's just as simple to use as Flask, incredibly fast and perfect for building REST APIs in minutes.
 
-![Falcon: Unburdening APIs for over 0.0564 centuries.](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZl9VueEJaJP9Wea2r53lnQmp_DCJL4S3HNR-oi7lXG63QQMAw)
+![Falcon: Unburdening APIs for over 0.0564 centuries.](/static/img/logo-falcon.png)
 
 If you're more of a Django type of person, the go-to is the [Django REST Framework](http://www.django-rest-framework.org). It's not as intuitive, but incredibly powerful.
 

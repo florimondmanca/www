@@ -8,8 +8,7 @@ tags:
   - python
   - webdev
   - asgi
-image:
-    unsplash: "photo-1534777410147-084a460870fc"
+image: "/static/img/articles/starlette-structure.jpg"
 image_caption: "@jjying, unsplash.com"
 ---
 
