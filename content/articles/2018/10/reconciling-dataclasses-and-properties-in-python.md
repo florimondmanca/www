@@ -29,7 +29,7 @@ Of course, you'll find all the code supporting this post on [GitHub](https://git
 
 Dataclasses are, simply put, **classes made to hold data**. Their specification in [PEP-557](https://www.python.org/dev/peps/pep-0557) was motivated by the fact that a lot of classes we write are merely used as editable data containers. When that happens, we spend time writing boilerplate code which most often results in an ugly `__init__()` method with tons of arguments and just as many lines for storing them as attributes — not to speak about handling [default arguments](https://blog.florimondmanca.com/python-mutable-defaults-are-the-source-of-all-evil)…
 
-![Dataclasses, featuring Raymond Hettinger in a GIF.](/static/img/dataclasses-properties-hettinger.gif)
+![Dataclasses, featuring Raymond Hettinger.](/static/img/dataclasses-properties-hettinger.jpg)
 
 And there is! The answer is: **dataclasses**. 🎉
 
