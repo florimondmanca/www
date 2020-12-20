@@ -31,7 +31,7 @@ async def app() -> typing.AsyncIterator[ASGIApp]:
 
 @pytest.fixture(scope="session")
 async def client(app: ASGIApp) -> typing.AsyncIterator[httpx.AsyncClient]:
-    async with httpx.AsyncClient(app=app) as client:
+    async with httpx.AsyncClient(app=app, base_url="http://testserver") as client:
         yield client
 
 

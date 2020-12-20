@@ -159,7 +159,7 @@ There may also be **sponsor booths** in the hall. It can be a good idea to go an
 
 Lastly, be sure to attend the **conference opening** and **conference announcements**. They're definitely not as boring as they seem (bad jokes inside!), and organizers may announce fun special contests or events which you can participate in. For example, PyConWeb had a selfie contest going on, as well as an open brainstorming session for the name of The Cat, the conference's mascot (which was finally elected to be `CharField`!).
 
-![PyConWeb 2019 swag, featuring CharField himself. 🐈](https://pbs.twimg.com/media/D7lupfaXsAETYHe.jpg:large)
+![PyConWeb 2019 swag, featuring CharField himself. 🐈](/static/img/attending-tech-conferences-swag.jpg)
 
 ### Social media
 

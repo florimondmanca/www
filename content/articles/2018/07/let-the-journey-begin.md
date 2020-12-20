@@ -7,8 +7,7 @@ legacy_url: "/let-the-journey-begin"
 category: essays
 tags:
   - meta
-image:
-  unsplash: "photo-1518415917-ae14f59265b3"
+image: "/static/img/articles/journey-begin.jpg"
 image_caption: "Josh Withers, unsplash.com"
 ---
 

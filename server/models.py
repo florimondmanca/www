@@ -28,6 +28,7 @@ class Page:
     frontmatter: Frontmatter
     meta: typing.List["MetaTag"]
     html: str = ""
+    content: str = ""
 
     @property
     def is_article(self) -> bool:

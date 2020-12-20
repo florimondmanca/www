@@ -31,11 +31,6 @@ with open(HERE / "assets" / "legacy-blog-url-mapping.json") as f:
     LEGACY_URL_MAPPING = json.loads(f.read())
 MARKDOWN_EXTENSIONS = ["codehilite", "fenced_code", "tables", ImageFigcaptions()]
 
-UNSPLASH_IMAGE_WIDTH = 550
-UNSPLASH_IMAGE_QUALITY = 50
-UNSPLASH_IMAGE_THUMBNAIL_WIDTH = 320
-UNSPLASH_IMAGE_THUMBNAIL_QUALITY = 30
-
 SOCIAL_LINKS = [
     {
         "href": "https://github.com/florimondmanca",

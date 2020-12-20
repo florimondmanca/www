@@ -8,8 +8,7 @@ category: tutorials
 tags:
   - webdev
   - angular
-image:
-  unsplash: "photo-1501580121338-18e859f87400"
+image: "/static/img/articles/model-adapter.jpg"
 image_caption: "An angular shot of smooth white balconies on a building in Almería, Spain. Dmitri Popov, unsplash.com"
 ---
 

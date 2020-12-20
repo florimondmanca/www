@@ -7,8 +7,7 @@ legacy_url: "/python-mutable-defaults-are-the-source-of-all-evil"
 category: tutorials
 tags:
   - python
-image:
-    unsplash: "photo-1525682691400-309fa6755eb5"
+image: "/static/img/articles/python-mutable-defaults.jpg"
 image_caption: "Green python on brown tree. @tirzavandijk, unsplash.com"
 ---
 

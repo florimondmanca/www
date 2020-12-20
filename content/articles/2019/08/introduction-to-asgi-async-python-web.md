@@ -9,8 +9,7 @@ tags:
   - python
   - webdev
   - asgi
-image:
-    unsplash: "photo-1482642302383-7ba0f8012849"
+image: "/static/img/articles/asgi-intro.jpg"
 image_caption: '"Turtles on body of water", Ricard Baraham via unsplash.com'
 ---
 

@@ -8,8 +8,7 @@ category: tutorials
 tags:
   - webdev
   - captainduckduck
-image:
-  unsplash: "photo-1484600899469-230e8d1d59c0"
+image: "/static/img/articles/captainduckduck2.jpg"
 image_caption: "@timmossholder, unsplash.com"
 ---
 

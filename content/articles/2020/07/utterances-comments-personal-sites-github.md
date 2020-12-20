@@ -7,8 +7,7 @@ category: tutorials
 tags:
   - meta
   - webdev
-image:
-  unsplash: "photo-1526324553550-133d260e7d60"
+image: "/static/img/articles/utterances.jpg"
 image_caption: "Golden Gate City Night lights crystal prism ball. @sanfrancisco, unsplash.com."
 ---
 

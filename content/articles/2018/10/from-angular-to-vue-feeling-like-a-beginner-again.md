@@ -105,7 +105,7 @@ Now, what about **state management**? Angular has services and I've been lucky e
 
 Vue has no such concept of services, so what's left? A popular option seems to be [vuex](https://vuex.vuejs.org), a Flux-inspired state management Vue plugin. I heard about state management before (although mostly through Redux — see [Understanding Redux](https://medium.freecodecamp.org/understanding-redux-the-worlds-easiest-guide-to-beginning-redux-c695f45546f6)), so I'm interested to dig deeper and see how that turns out. I just hope it won't be too much of a burden.
 
-![The Vuex state management pattern. Looks sensible, but I hope it won't be too heavy. (Source: Vuex docs.)](https://vuex.vuejs.org/vuex.png)
+![The Vuex state management pattern. Looks sensible, but I hope it won't be too heavy. (Source: Vuex docs.)](/static/img/angular-vue-vuex.png)
 
 Lastly — RxJS and **event streaming**. That's probably the thing I like the most in Angular. Observables make working with streams of events so pleasant and maintainable.
 
