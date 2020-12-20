@@ -14,3 +14,5 @@ ${PREFIX}flake8 $SOURCE_FILES
 ${PREFIX}mypy $SOURCE_FILES
 ${PREFIX}isort --check --diff $SOURCE_FILES
 ${PREFIX}python -m server.tools.mdformat --check
+${PREFIX}python -m server.tools.imgoptimize --check
+${PREFIX}python -m server.tools.imgsize
