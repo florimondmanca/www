@@ -7,8 +7,7 @@ legacy_url: "/breaking-news-everything-is-an-event"
 category: essays
 tags:
   - kafka
-image:
-  unsplash: "photo-1533228876829-65c94e7b5025"
+image: "/static/img/articles/everything-event.jpg"
 image_caption: "Man standing on sand while spreading arms beside calm body of water. @kalvisuals, unsplash.com"
 ---
 
@@ -171,7 +170,7 @@ To give you an even better intuition of what streams are and what you can do wit
 
 Although streams have their own definition in computer science, in everyday language, a stream generally refers to a small river, or at least a flow of liquid.
 
-![Time-lapse photography of river. @the_bracketeer, unsplash.com](https://images.unsplash.com/photo-1527489377706-5bf97e608852?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=30e71ee8757d4448721e27ea96208156&auto=format&fit=crop&w=1127&q=80)
+![Time-lapse photography of river. @the_bracketeer, unsplash.com](/static/img/everything-event-river.jpg)
 
 Image you walk down the riverside. You stop somewhere and watch the water flow past you. There are a lot of observations you can make that have an event stream equivalent:
 
@@ -233,7 +232,7 @@ For example, frontend development is going crazy about event streams at the mome
 
 You can also reapply streaming data concepts outside of frontend development. For example, the [ReactiveX API](http://reactivex.io) and its implementations in various languages — [RxJS](https://github.com/ReactiveX/rxjs) for JavaScript, [RxPy](https://github.com/ReactiveX/RxPY) for Python, and [more](http://reactivex.io/languages.html) — bring **streams and events to many popular languages** in the form of "observable streams". Although Rx is mostly used in web development, you're free to use it for projects in other areas too.
 
-![The ReactiveX logo. What a cute… eel?](https://www.thedroidsonroids.com/wp-content/uploads/2018/06/Rx-java-750x253.png)
+![The ReactiveX logo. What a cute… eel?](/static/img/everything-event-rx.png)
 
 Anyway, put in a quotable form:
 

@@ -8,8 +8,7 @@ category: tutorials
 tags:
   - kafka
   - python
-image:
-  unsplash: "photo-1529978755210-7f13333beb13"
+image: "/static/img/articles/kafka-fraud.jpg"
 image_caption: "Orange and multicolored LEGO toy set. @lh1me via unsplash.com"
 ---
 

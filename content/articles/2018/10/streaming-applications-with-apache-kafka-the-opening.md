@@ -7,8 +7,7 @@ legacy_url: "/streaming-applications-with-apache-kafka-the-opening"
 category: essays
 tags:
   - kafka
-image:
-  unsplash: "photo-1533557603879-ebdd7a92e4e8"
+image: "/static/img/articles/kafka-opening.jpg"
 image_caption: "Man on mountain edge. @redhatfactory, unsplash.com"
 ---
 
@@ -44,7 +43,7 @@ So if it's not any of that, then what is it?
 
 ### How did I meet Kafka?
 
-![Apache Kafka's logo.](https://www.vectorlogo.zone/logos/apache_kafka/apache_kafka-card.png)
+![Apache Kafka's logo.](/static/img/logo-kafka.png)
 
 Five months ago, while I was working as a Software Engineer Intern at [ComplyAdvantage](https://complyadvantage.com), my team was tackling a challenging problem. We needed a **fast, reliable and scalable way to implement publish/subscribe**, i.e. publish messages (or _events_) somewhere and let other systems subscribe to those messages to do their own processing.
 

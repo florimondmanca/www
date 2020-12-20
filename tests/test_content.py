@@ -123,28 +123,3 @@ def test_image_auto_thumbnail(image: str, image_thumbnail: Optional[str]) -> Non
 
     (page,) = build_pages([item])
     assert page.frontmatter.image_thumbnail == image_thumbnail
-
-
-def test_image_unsplash() -> None:
-    item = ContentItem(
-        content=dedent(
-            """
-            ---
-            title: "Test"
-            description: "Test"
-            date: "2020-01-01"
-            image:
-                unsplash: "photo-1234"
-            ---
-            """
-        ),
-        location="posts/test.md",
-    )
-
-    (page,) = build_pages([item])
-    assert page.frontmatter.image == (
-        "https://images.unsplash.com/photo-1234?auto=format&fit=crop&w=550&q=50"
-    )
-    assert page.frontmatter.image_thumbnail == (
-        "https://images.unsplash.com/photo-1234?auto=format&fit=crop&w=320&q=30"
-    )

@@ -10,8 +10,7 @@ tags:
   - opensource
   - webdev
   - bocadillo
-image:
-  unsplash: "photo-1476786516785-c3ff2dac9bbf"
+image: "/static/img/articles/oss-maintainer.jpg"
 image_caption: "Mountain, building, rock formation and abbey. Monestir de Montserrat, Spain. @pichier_sebastian, unsplash.com"
 ---
 
@@ -37,7 +36,7 @@ First things first — let me introduce you to Bocadillo!
 
 ## Introducing Bocadillo
 
-![A modern Python web framework filled with asynchronous salsa.](https://github.com/bocadilloproject/bocadillo/blob/master/.github/banner.png?raw=true)
+![A modern Python web framework filled with asynchronous salsa.](/static/img/logo-bocadillo-banner.png)
 
 ### Elevator pitch
 
@@ -271,7 +270,7 @@ Put differently, **success should always be a by-product, not a goal**.
 
 You'll have noticed that Bocadillo's goal statement doesn't mention fame, nor a threshold number of users. It only states that I hope Bocadillo can help *some* people **solve problems**. If that is the case for at least one person, I'll consider it a win. If it becomes the case for a lot of people, I shall only consider it as a side effect.
 
-![Two person standing on gray tile paving. @goian, unsplash.com](https://images.unsplash.com/photo-1455849318743-b2233052fcff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+![Two person standing on gray tile paving. @goian, unsplash.com](/static/img/oss-maintainer-passion.jpg)
 
 This is it for the story behind building Bocadillo! As you may have noted from these discussions, I have been loving the experience so far, and I'm actually now convinced that I made the right decision when I decided to go past the fear of judgement and build my own web framework. Which leads me to the last section of this blog post.
 

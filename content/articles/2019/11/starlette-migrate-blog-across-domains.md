@@ -8,8 +8,7 @@ tags:
   - python
   - asgi
   - vuepress
-image:
-    unsplash: "photo-1468276311594-df7cb65d8df6"
+image: "/static/img/articles/starlette-migrate.jpg"
 image_caption: "Milky way above body of water. @krisroller, unsplash.com"
 ---
 
@@ -41,7 +40,7 @@ This idea of my blog being just a bunch of HTML/CSS/JS files served by Nginx or 
 
 So I set myself up for building the blog using [VuePress](https://vuepress.vuejs.org). I would write Markdown files, be able to add custom or more advanced features using embedded Vue components, and render all of it to plain static files.
 
-![The VuePress logo.](https://vuepress.vuejs.org/hero.png)
+![The VuePress logo.](/static/img/logo-vuepress.png)
 
 The main difficulty was building the custom theme. I don't use a generic website template — my blog design is hand-crafted with good ol' CSS — so I needed to port the design from Angular to a [VuePress theme](https://vuepress.vuejs.org/theme/writing-a-theme.html). Although all I theoretically had to do was copy-paste Angular components and convert them to use the Vue `template`/`script`/`style` single-file component syntax, this took quite a while.
 
@@ -77,7 +76,7 @@ If you follow my open source activity, you know I've been deep into the Python a
 
 So it shouldn't come as a surprise that I went for [Starlette](https://www.starlette.io).
 
-![The Starlette logo.](https://www.starlette.io/img/starlette.png)
+![The Starlette logo.](/static/img/logo-starlette.png)
 
 ## Application architecture
 

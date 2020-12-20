@@ -5,7 +5,7 @@ from typing import Any, AsyncIterator, Dict, Iterable, Iterator, List, Optional,
 import aiofiles
 import frontmatter as fm
 
-from . import resources, settings, unsplash
+from . import resources, settings
 from .models import ContentItem, Frontmatter, MetaTag, Page
 
 
@@ -57,7 +57,8 @@ def build_pages(items: List[ContentItem]) -> List[Page]:
 def _build_content_pages(items: List[ContentItem]) -> Iterator[Page]:
     for item in items:
         post = fm.loads(item.content)
-        html = resources.markdown.reset().convert(post.content)
+        content = post.content
+        html = resources.markdown.reset().convert(content)
         permalink = _build_permalink(item.location)
         image, image_thumbnail = _process_image(post)
         frontmatter = Frontmatter(
@@ -73,18 +74,18 @@ def _build_content_pages(items: List[ContentItem]) -> Iterator[Page]:
         )
         meta = _build_meta(permalink, frontmatter)
 
-        yield Page(html=html, permalink=permalink, frontmatter=frontmatter, meta=meta)
+        yield Page(
+            html=html,
+            content=content,
+            permalink=permalink,
+            frontmatter=frontmatter,
+            meta=meta,
+        )
 
 
 def _process_image(post: Dict[str, Any]) -> Tuple[Optional[str], Optional[str]]:
     image = post.get("image")
     image_thumbnail = post.get("image_thumbnail")
-
-    if isinstance(image, dict):
-        assert "unsplash" in image
-        photo_id = image["unsplash"]
-        image = unsplash.make_image(photo_id)
-        image_thumbnail = unsplash.make_image_thumbnail(photo_id)
 
     if (
         isinstance(image, str)

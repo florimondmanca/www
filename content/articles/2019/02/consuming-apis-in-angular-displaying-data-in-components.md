@@ -8,8 +8,7 @@ category: tutorials
 tags:
   - angular
   - webdev
-image:
-  unsplash: "photo-1544916205-866047f3ae8c"
+image: "/static/img/articles/angular-apis.jpg"
 image_caption: "Blue and white plastic toy. @sheldonnunes, unsplash.com"
 ---
 

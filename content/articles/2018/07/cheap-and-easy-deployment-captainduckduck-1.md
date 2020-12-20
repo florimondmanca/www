@@ -8,8 +8,7 @@ category: retrospectives
 tags:
   - webdev
   - captainduckduck
-image:
-  unsplash: "photo-1517976384346-3136801d605d"
+image: "/static/img/articles/captainduckduck1.jpg"
 image_caption: "@spacex, unsplash.com."
 ---
 
@@ -47,7 +46,7 @@ There I was, ready to face **the pains of deployment**. I was going to have to:
 
 Oh, boy.
 
-![Francisco Gonzalez, unsplash.com.](https://images.unsplash.com/photo-1520206319821-0496cfdeb31e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d0eb85db76e1f6019580e02beac106fe&auto=format&fit=crop&w=1050&q=80)
+![Francisco Gonzalez, unsplash.com.](/static/img/captainduckduck-uhh.jpg)
 
 To make things even more interesting, I did not have one but **two distincts apps to deploy**, because I chose to use a decoupled backend/frontend stack: a frontend app built with [Angular](https://angular.io) and a REST API backend built with Python and the [Django REST Framework](https://www.django-rest-framework.org), as depicted below.
 
