@@ -37,7 +37,7 @@ def _main_check() -> int:
             outim.save(path_out)
             size_expected = path_out.stat().st_size
 
-        if size_actual != size_expected:  # pragma: no cover
+        if size_actual != size_expected and size_actual > 10 * KB:  # pragma: no cover
             print(f"ERROR: image could be optimized: {path_in}")
             rv |= 1
 

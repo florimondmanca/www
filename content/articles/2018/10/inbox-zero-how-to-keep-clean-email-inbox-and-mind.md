@@ -96,8 +96,6 @@ The first step should then be: **archive all emails presently in your inbox**. T
 
 And believe me, it's pretty relieving.
 
-![Gladly archive all your inbox. 👌 (Now.)](/static/img/inbox-zero-example.gif)
-
 ### 2. Deal with irrelevant incoming emails
 
 Is your inbox filling up with tons of ads or content you don't even care about? You need to sort this out.

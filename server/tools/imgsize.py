@@ -1,7 +1,8 @@
-import sys
 import statistics
-from .utils import get_img_paths
+import sys
+
 from .. import settings
+from .utils import get_img_paths
 
 KB = 1024
 
