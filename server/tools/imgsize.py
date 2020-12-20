@@ -1,6 +1,7 @@
 import sys
 import statistics
 from .utils import get_img_paths
+from .. import settings
 
 KB = 1024
 
@@ -12,8 +13,11 @@ def main() -> int:
     for path in get_img_paths():
         size = path.stat().st_size
         sizes.append(size)
-        if size > 32 * KB:
-            print(f"ERROR: image is too big ({size / KB:.2f}kB > 32kB): {path}")
+        if size / KB > settings.IMAGE_ALLOWED_MAX_SIZE_KB:  # pragma: no cover
+            print(
+                f"ERROR: image is too big "
+                f"({size / KB:.2f}kB > {settings.IMAGE_ALLOWED_MAX_SIZE_KB}kB): {path}"
+            )
             rv |= 1
 
     if sizes:

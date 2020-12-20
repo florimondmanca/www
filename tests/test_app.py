@@ -4,6 +4,7 @@ import httpx
 import pytest
 
 from server.resources import index
+from server import settings
 
 from .utils import find_meta_tags, load_xml_from_string
 
@@ -38,6 +39,29 @@ async def test_tag(client: httpx.AsyncClient) -> None:
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
+
+
+async def test_images(client: httpx.AsyncClient) -> None:
+    # TODO: test URLs to images in Markdown content too.
+    for page in index.pages:
+        if page.frontmatter.image is None:
+            continue
+
+        if page.frontmatter.image.startswith("http"):
+            # Remote images should exist.
+            url = page.frontmatter.image
+            async with httpx.AsyncClient() as http:
+                response = await http.get(url)
+                assert response.status_code == 200, url
+                # TODO: test image sizes.
+        else:
+            # Local images should exist, and be of reasonable sizes.
+            url = f"http://testserver{page.frontmatter.image}"
+            response = await client.get(url)
+            assert response.status_code == 200, url
+            assert (
+                len(response.content) / 1024 < settings.IMAGE_ALLOWED_MAX_SIZE_KB
+            ), url
 
 
 KNOWN_CATEGORIES = ["tutorials", "essays", "retrospectives"]

@@ -9,7 +9,7 @@ tags:
   - webdev
   - angular
   - vue
-image: "/static/img/articles/angular-vue-beginner-again.jpg"
+image: "/static/img/articles/angular-vue-beginner-again.png"
 image_caption: "Angular, an arrow, and Vue.js."
 ---
 

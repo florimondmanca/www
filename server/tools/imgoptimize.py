@@ -17,7 +17,39 @@ from .utils import get_img_paths
 KB = 1024
 
 
-def main(check: bool) -> int:
+def _main_check() -> int:
+    rv = 0
+
+    for path_in in get_img_paths():
+        # Our conversion method requires using PNG.
+        path_out = path_in.with_name(f"{path_in.stem}.png")
+
+        im = Image.open(path_in)
+        size_actual = path_in.stat().st_size
+
+        if path_in.suffix != ".png":
+            # Ignore JPG -- they can't possibly come from this script.
+            continue
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            outim = im.convert("P", colors=32)
+            path_out = Path(tmpdir) / path_out.name
+            outim.save(path_out)
+            size_expected = path_out.stat().st_size
+
+        if size_actual != size_expected:  # pragma: no cover
+            print(f"ERROR: image could be optimized: {path_in}")
+            rv |= 1
+
+    if rv:  # pragma: no cover
+        print(
+            "Some images could be optimized. "
+            "Run `python -m server.tools.imgoptimize` to fix."
+        )
+    return rv
+
+
+def _main() -> int:  # pragma: no cover
     converted = 0
     skipped = 0
     size_reductions = []
@@ -31,23 +63,6 @@ def main(check: bool) -> int:
         im_initial = Image.open(path_in)
         size_initial = path_in.stat().st_size
         im = im_initial
-
-        if check:
-            if path_in.suffix != ".png":
-                # Ignore JPG -- they can't possibly come from this script.
-                continue
-
-            with tempfile.TemporaryDirectory() as tmpdir:
-                outim = im.convert("P", colors=32)
-                path_out = Path(tmpdir) / path_out.name
-                outim.save(path_out)
-                size_final = path_out.stat().st_size
-
-            if size_initial != size_final:
-                print(f"ERROR: image could be optimized: {path_in}")
-                rv |= 1
-
-            continue
 
         if path_in.suffix == ".jpg":
             # PNG is typically larger than JPG (especially for photo-realistic images),
@@ -83,14 +98,6 @@ def main(check: bool) -> int:
 
         converted += 1
 
-    if check:
-        if rv:
-            print(
-                "Some images could be optimized. "
-                "Run `python -m server.tools.imgoptimize` to fix."
-            )
-        return rv
-
     assert converted == len(size_reductions)
     print(f"{converted} images converted, {skipped} images skipped")
 
@@ -108,7 +115,14 @@ def main(check: bool) -> int:
     return rv
 
 
-if __name__ == "__main__":
+def main(check: bool) -> int:
+    if check:
+        return _main_check()
+    else:  # pragma: no cover
+        return _main()
+
+
+if __name__ == "__main__":  # pragma: no cover
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()

@@ -9,7 +9,7 @@ tags:
   - python
   - webdev
   - asgi
-image: "/static/img/articles/tartiflette-starlette.jpg"
+image: "/static/img/articles/tartiflette-starlette.png"
 image_caption: "Logo of tartiflette-starlette."
 ---
 

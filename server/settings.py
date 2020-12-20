@@ -26,6 +26,10 @@ STATIC_ROOT = "/static"
 STATIC_DIR = HERE / "static"
 TEMPLATES_DIR = HERE / "templates"
 
+# Images take too much room on the Web. Let's limit ourselves
+# to reasonable sizes only.
+IMAGE_ALLOWED_MAX_SIZE_KB = 32
+
 CONTENT_DIR = HERE.parent / "content"
 with open(HERE / "assets" / "legacy-blog-url-mapping.json") as f:
     LEGACY_URL_MAPPING = json.loads(f.read())
