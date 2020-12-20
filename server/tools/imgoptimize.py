@@ -78,7 +78,8 @@ def _main() -> int:  # pragma: no cover
 
         if size_final > size_initial:
             print(f"skipped: would increase filesize: {path_in}")
-            path_out.unlink()
+            if path_in != path_out:
+                path_out.unlink()
             sizes.append(size_initial)
             skipped += 1
             continue

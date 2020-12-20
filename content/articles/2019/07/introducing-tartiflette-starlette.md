@@ -78,13 +78,13 @@ If you save this as `graphql.py`, you get a production-ready GraphQL API with th
 
 [graphiql]: https://github.com/graphql/graphiql
 
-![](/static/img/tartiflette-starlette-graphiql-query.png)
+![](/static/img/tartiflette-starlette-graphiql-query.jpg)
 
 - **Support for [GraphQL subscriptions](https://graphql.org/blog/subscriptions-in-graphql-and-relay/) over WebSocket**, with compatibility for GraphiQL client, [Apollo GraphQL](https://www.apollographql.com/) and any other client that implements the [subscriptions-transport-ws] protocol.
 
 [subscriptions-transport-ws]: https://github.com/apollographql/subscriptions-transport-ws
 
-![](/static/img/tartiflette-starlette-graphiql-subscription.png)
+![](/static/img/tartiflette-starlette-graphiql-subscription.jpg)
 
 There are many more options to `TartifletteApp`, including passing a custom Tartiflette `Engine`, or customizing the `GraphiQL` configuration. You can learn about all the available features in the [documentation](https://github.com/tartiflette/tartiflette-starlette) on GitHub.
 
