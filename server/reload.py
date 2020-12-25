@@ -1,5 +1,7 @@
 import arel
 
+from . import settings
+
 
 async def on_reload() -> None:  # pragma: no cover
     from . import content  # Avoid circular imports.
@@ -10,6 +12,7 @@ async def on_reload() -> None:  # pragma: no cover
 hotreload = arel.HotReload(
     paths=[
         arel.Path("./content", on_reload=[on_reload]),
+        *(arel.Path(d, on_reload=[on_reload]) for d in settings.EXTRA_CONTENT_DIRS),
         arel.Path("./server/templates"),
         arel.Path("./server/static"),
     ]
