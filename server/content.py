@@ -14,19 +14,21 @@ async def load_content() -> None:
     resources.index.pages = build_pages(items)
 
 
-def iter_content_paths() -> Iterator[Path]:
-    pattern = str(settings.CONTENT_DIR / "**" / "*.md")
-    for path in glob.glob(pattern, recursive=True):
-        yield Path(path)
+def iter_content_paths() -> Iterator[Tuple[Path, Path]]:
+    content_dirs = [settings.CONTENT_DIR, *settings.EXTRA_CONTENT_DIRS]
+    for root in content_dirs:
+        pattern = str(root / "**" / "*.md")
+        for path in glob.glob(pattern, recursive=True):
+            yield root, Path(path)
 
 
 async def load_content_items() -> AsyncIterator[ContentItem]:
-    for path in iter_content_paths():
+    for root, path in iter_content_paths():
         async with aiofiles.open(path) as f:
             content = await f.read()
             yield ContentItem(
                 content=content,
-                location=str(path.relative_to(settings.CONTENT_DIR)),
+                location=str(path.relative_to(root)),
             )
 
 

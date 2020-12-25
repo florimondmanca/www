@@ -67,6 +67,7 @@ scripts/deploy
 | -------------------- | ------------------------------------------------------------------------ | ------- |
 | `DEBUG`              | Run in debug mode. Enables in-browser tracebacks and content hot reload. | `False` |
 | `TESTING`            | Run against mocked resources.                                            | `False` |
+| `EXTRA_CONTENT_DIRS` | Include content from extra directories.                                  | None    |
 
 ## License
 

@@ -9,6 +9,7 @@ from starlette.types import ASGIApp
 
 os.environ["TESTING"] = "True"
 os.environ["DEBUG"] = "False"
+os.environ["EXTRA_CONTENT_DIRS"] = "tests/drafts"
 
 
 @pytest.fixture(scope="session")

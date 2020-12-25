@@ -40,6 +40,13 @@ async def test_tag(client: httpx.AsyncClient) -> None:
     assert "text/html" in resp.headers["content-type"]
 
 
+async def test_extra_content_dirs(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/blog/articles/2020/01/test-draft/"
+    resp = await client.get(url, allow_redirects=False)
+    assert resp.status_code == 200, resp.url
+    assert "text/html" in resp.headers["content-type"]
+
+
 KNOWN_CATEGORIES = ["tutorials", "essays", "retrospectives"]
 
 
