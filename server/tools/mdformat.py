@@ -102,4 +102,4 @@ if __name__ == "__main__":  # pragma: no cover
         help="Fail if files would be reformatted.",
     )
     args = parser.parse_args()
-    sys.exit(main(iter_content_paths(), check=args.check))
+    sys.exit(main([path for _, path in iter_content_paths()], check=args.check))

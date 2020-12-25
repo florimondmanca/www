@@ -2,6 +2,7 @@ import json
 import pathlib
 
 from starlette.config import Config
+from starlette.datastructures import CommaSeparatedStrings
 
 from .markdown import ImageFigcaptions
 
@@ -25,6 +26,12 @@ KNOWN_DOMAINS = [
 STATIC_ROOT = "/static"
 STATIC_DIR = HERE / "static"
 TEMPLATES_DIR = HERE / "templates"
+
+EXTRA_CONTENT_DIRS = config(
+    "EXTRA_CONTENT_DIRS",
+    cast=lambda v: [pathlib.Path(item) for item in CommaSeparatedStrings(v)],
+    default="",
+)
 
 # Images take too much room on the Web. Let's limit ourselves
 # to reasonable sizes only.
