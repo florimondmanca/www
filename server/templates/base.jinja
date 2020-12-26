@@ -56,8 +56,6 @@
     }
     </script>
 
-    <script src="{{ url_for('static', path='/js/ga.js') }}"></script>
-
     {% if settings.DEBUG %}
       {{ hotreload.script(url_for('hot-reload')) | safe }}
     {% endif %}
