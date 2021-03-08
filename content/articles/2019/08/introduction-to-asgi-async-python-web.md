@@ -80,11 +80,11 @@ We'll get to this in a minute, but first…
 
 Now that we've seen how ASGI fits in the Python web ecosystem, let's take a closer look at what it looks like in code.
 
-ASGI relies on a simple mental model: when the client connects to the server, we instanciate an application. We then feed incoming bytes into the app and send back whatever bytes come out.
+ASGI relies on the following mental model: when the client connects to the server, we instanciate an application. We then feed incoming bytes into the app and send back whatever bytes come out.
 
 "Feed into the app" here really means _call the app_ as if it were a function, i.e. something that takes some input, and returns an output.
 
-And in fact, that's all an ASGI app is — a _callable_. The shape of this callable is, again, [defined by the ASGI spec](https://asgi.readthedocs.io/en/latest/specs/main.html#applications). Here's what it looks:
+And in fact, that's all an ASGI app is — a _callable_. The shape of this callable is, again, [defined by the ASGI spec](https://asgi.readthedocs.io/en/latest/specs/main.html#applications). Here's what it looks like:
 
 ```python
 async def app(scope, receive, send):
@@ -96,7 +96,7 @@ The signature of this function is what the "I" in ASGI stands for: an interface 
 Let's take a look at the 3 arguments:
 
 - `scope` is a dictionary that contains information about the incoming request. Its contents vary between [HTTP](https://asgi.readthedocs.io/en/latest/specs/www.html#connection-scope) and [WebSocket](https://asgi.readthedocs.io/en/latest/specs/www.html#id1) connections.
-- `receive` is an asynchronous function used to receive _ASGI event messages_.
+- `receive` is an asynchronous function used to receive ASGI event messages.
 - `send` is an asynchronous function used to send ASGI event messages.
 
 In essence, these arguments allow you to `receive()` and `send()` data over a communication channel maintained by the protocol server, as well as know in what context (or `scope`) this channel was created.
@@ -121,7 +121,7 @@ Luckily, there are higher-level options — and that's when I get to talk about 
 
 Starlette is truly a fantastic project, and IMO a foundational piece of the ASGI ecosystem.
 
-In a nutshell, it provides a toolbox of higher-level components such as requests and responses that you can use to abstract away some of the details of ASGI. Here, take a look at this Starlette hello world:
+In a nutshell, it provides a toolbox of higher-level components such as requests and responses that you can use to abstract away some of the details of ASGI. Here, take a look at this Starlette "Hello, World!" app:
 
 ```python
 # app.py
@@ -138,11 +138,10 @@ Starlette does have everything you'd expect from an actual web framework — rou
 
 ## Turtles all the way down
 
-The interesting and downright _game-changing_ bit about ASGI is the concept of "[Turtles all the way down](https://simonwillison.net/2019/Jun/23/datasette-asgi/)", an expression originally coined (I think?) by Andrew Godwin, the person behind Django migrations and now the [Django async revamp](https://www.youtube.com/watch?v=oMHrDy62kgE).
-
+The interesting and downright _game-changing_ bit about ASGI is the concept of "[Turtles all the way down](https://simonwillison.net/2019/Jun/23/datasette-asgi/)". (This expression was coined originally (I think?) by Andrew Godwin, the person behind Django migrations, the [Django async revamp](https://www.youtube.com/watch?v=oMHrDy62kgE), and a fair bit of the ASGI story.)
 But what does it mean, exactly?
 
-Well, because ASGI is an abstraction which allows to tell in which context we are and to receive and send data _at any time_, there's this idea that ASGI can be used not only between servers and apps, but really _at any point in the stack_.
+Well, because ASGI is an abstraction which allows telling the context we are in, and to receive and send data _at any time_, there's this idea that ASGI can be used not only between servers and apps, but really _at any point in the stack_.
 
 For example, the Starlette `Response` object _is_ an ASGI application itself. In fact, we can strip down the Starlette example app from earlier to _just this_:
 
@@ -177,7 +176,7 @@ class TimingMiddleware:
         print(f"Took {end_time - start_time:.2f} seconds")
 ```
 
-To use it, we simply wrap it around an app…
+To use it, we wrap it around an app…
 
 ```python
 # app.py
@@ -206,7 +205,7 @@ INFO: ('127.0.0.1', 62718) - "GET / HTTP/1.1" 200
 Took 1.00 seconds
 ```
 
-The amazing bit about this is that `TimingMiddleware` can wrap _any_ ASGI app. The inner app here is super simple, but it could be _a full-blown, real-life project_ (think hundreds of API and WebSocket endpoints) — it doesn't matter, as long as it's ASGI-compatible.
+The amazing bit about this is that `TimingMiddleware` can wrap _any_ ASGI app. The inner app here is very basic, but it could be _a full-blown, real-life project_ (think hundreds of API and WebSocket endpoints) — it doesn't matter, as long as it's ASGI-compatible.
 
 (There's a more production-ready version of such a timing middleware: [timing-asgi](https://github.com/steinnes/timing-asgi).)
 
