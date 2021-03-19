@@ -7,5 +7,5 @@ jinja2==2.11.3
 markdown==3.3.3
 pygments==2.8.1
 python-frontmatter==0.5.0
-starlette==0.13.8
+starlette==0.14.2
 uvicorn[standard]==0.13.3
