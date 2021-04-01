@@ -13,7 +13,7 @@ httpx==0.15.5
 isort==5.5.4
 mypy==0.782
 Pillow==8.1.1
-pytest==6.1.1
+pytest==6.2.2
 pytest-asyncio==0.14.0
 pytest-cov==2.10.1
 seed-isort-config==2.2.0
