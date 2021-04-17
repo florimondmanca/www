@@ -1,3 +1,5 @@
+import httpx
+
 from . import settings
 
 
@@ -14,3 +16,8 @@ def is_static_asset(path: str) -> bool:
         return True
 
     return False
+
+
+def to_production_url(url: str) -> str:
+    urlobj = httpx.URL(url)
+    return str(urlobj.copy_with(scheme="https", host="florimond.dev", port=None))

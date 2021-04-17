@@ -7,6 +7,7 @@ import frontmatter as fm
 
 from . import resources, settings
 from .models import ContentItem, Frontmatter, MetaTag, Page
+from .utils import to_production_url
 
 
 async def load_content() -> None:
@@ -166,18 +167,21 @@ def _build_permalink(location: str) -> str:
 def _build_meta(permalink: str, frontmatter: Frontmatter) -> List["MetaTag"]:
     url = f"https://florimond.dev/blog{permalink}"
 
+    image_url = frontmatter.image
+    if image_url:
+        image_url = to_production_url(image_url)
+
     meta = [
         # General
         MetaTag(name="description", content=frontmatter.description),
-        MetaTag(name="image", content=frontmatter.image),
+        MetaTag(name="image", content=image_url),
         MetaTag(itemprop="name", content=frontmatter.title),
         MetaTag(itemprop="description", content=frontmatter.description),
-        MetaTag(itemprop="image", content=frontmatter.image),
         # Twitter
         MetaTag(name="twitter:url", content=url),
         MetaTag(name="twitter:title", content=frontmatter.title),
         MetaTag(name="twitter:description", content=frontmatter.description),
-        MetaTag(name="twitter:image", content=frontmatter.image),
+        MetaTag(name="twitter:image", content=image_url),
         MetaTag(name="twitter:card", content="summary_large_image"),
         MetaTag(name="twitter:site", content="@florimondmanca"),
         # OpenGraph
@@ -185,7 +189,7 @@ def _build_meta(permalink: str, frontmatter: Frontmatter) -> List["MetaTag"]:
         MetaTag(property="og:type", content="article"),
         MetaTag(property="og:title", content=frontmatter.title),
         MetaTag(property="og:description", content=frontmatter.description),
-        MetaTag(property="og:image", content=frontmatter.image),
+        MetaTag(property="og:image", content=image_url),
         MetaTag(property="og:site_name", content=settings.SITE_TITLE),
         MetaTag(property="article:published_time", content=frontmatter.date),
     ]
