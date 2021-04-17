@@ -17,6 +17,7 @@ def test_build_pages() -> None:
     description = "How readability impacts software development."
     date = "2000-01-01"
     category = "essays"
+    image = "/static/img/articles/example.jpg"
 
     items = [
         ContentItem(
@@ -30,6 +31,7 @@ def test_build_pages() -> None:
                 category: {category}
                 tags:
                 - python
+                image: "{image}"
                 ---
                 You should *really* care about readability.
                 """
@@ -49,6 +51,7 @@ def test_build_pages() -> None:
     assert readability_counts.frontmatter.date == date
     assert readability_counts.frontmatter.category == category
     assert readability_counts.frontmatter.tags == ["python"]
+    assert readability_counts.frontmatter.image == image
     assert not readability_counts.frontmatter.home
 
     meta = [str(tag) for tag in readability_counts.meta]
@@ -57,6 +60,7 @@ def test_build_pages() -> None:
     assert f'<meta name="twitter:title" content="{title}">' in meta
     assert f'<meta name="twitter:description" content="{description}">' in meta
     assert f'<meta name="twitter:url" content="{url}">' in meta
+    assert f'<meta name="twitter:image" content="https://florimond.dev{image}">' in meta
     assert '<meta property="article:tag" content="python">' in meta
 
     assert readability_counts.html == (
