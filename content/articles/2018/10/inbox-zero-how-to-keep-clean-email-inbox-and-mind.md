@@ -1,9 +1,8 @@
 ---
-published: true
 title: "Inbox Zero: How To Keep A Clean Email Inbox (And Mind)"
 description: 'Wondering how best to manage email? Get to love the "Archive" button.'
 date: "2018-10-06"
-legacy_url : "/inbox-zero-how-to-keep-clean-email-inbox-and-mind"
+legacy_url: "/inbox-zero-how-to-keep-clean-email-inbox-and-mind"
 category: essays
 tags:
   - productivity

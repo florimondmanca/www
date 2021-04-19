@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Loose Thoughts on Google's FLoC"
 description: 'From cookie-based user data sharing to browser-computed label broadcasting: how Google plans to retain and expand its ads monopoly under the guise of promoting a more "private Web".'
 date: "2021-04-17"

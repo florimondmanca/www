@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Breaking News: Everything Is An Event! (Streams, Kafka And You)"
 description: "It's about time you met streaming data! I'm sure you two and Apache Kafka will do great things together."
 date: "2018-09-14"

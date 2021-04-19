@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Introduction to ASGI: Emergence of an Async Python Web Ecosystem"
 description: "If you were thinking Python had been getting locked into data science, think again! Python web development is back with an async spin, and it's exciting."
 date: "2019-08-11"

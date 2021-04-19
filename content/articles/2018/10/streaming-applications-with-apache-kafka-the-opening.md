@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Streaming Applications with Apache Kafka: The Opening"
 description: "I'm starting a series on building streaming apps with Apache Kafka — here's why!"
 date: "2018-10-01"

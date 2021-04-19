@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Attending Tech Conferences: A Beginner's Guide"
 description: "Tips for attending tech conferences based on my experience at PyConWeb 2019."
 date: "2019-05-27"

@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Introducing tartiflette-starlette"
 description: "A new library for building GraphQL APIs and serving them over HTTP via ASGI, powered by the Tartiflette Python asynchronous GraphQL engine."
 date: "2019-07-13"

@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Building A Streaming Fraud Detection System With Kafka And Python"
 description: "A thorough tutorial to build your first real-world Kafka app in Docker Compose. Welcome to the land of stream processing!"
 date: "2018-09-20"

@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Building A Real-time Chatbot Server In Python With WebSocket, ChatterBot And Bocadillo"
 description: "From setup to testing, walk through the steps of building a real-time chatbot with Bocadillo and ChatterBot!"
 date: "2019-03-17"
