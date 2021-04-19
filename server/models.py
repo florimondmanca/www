@@ -18,7 +18,6 @@ class Frontmatter:
     image_thumbnail: typing.Optional[str] = None
     image_caption: typing.Optional[str] = None
     tags: typing.List[str] = dataclasses.field(default_factory=list)
-    home: bool = False
     tag: typing.Optional[str] = None
 
 
