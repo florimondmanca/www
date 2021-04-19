@@ -52,7 +52,6 @@ def test_build_pages() -> None:
     assert readability_counts.frontmatter.category == category
     assert readability_counts.frontmatter.tags == ["python"]
     assert readability_counts.frontmatter.image == image
-    assert not readability_counts.frontmatter.home
 
     meta = [str(tag) for tag in readability_counts.meta]
     url = "https://florimond.dev/blog/posts/readability-counts"
@@ -73,7 +72,6 @@ def test_build_pages() -> None:
     assert python.frontmatter.date is None
     assert python.frontmatter.tags == []
     assert python.frontmatter.tag == "python"
-    assert not python.frontmatter.home
 
     meta = [str(tag) for tag in python.meta]
     url = "https://florimond.dev/blog/tag/python"

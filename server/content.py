@@ -65,7 +65,6 @@ def _build_content_pages(items: List[ContentItem]) -> Iterator[Page]:
         permalink = _build_permalink(item.location)
         image, image_thumbnail = _process_image(post)
         frontmatter = Frontmatter(
-            home=post.get("home", False),
             title=post["title"],
             description=post.get("description"),
             category=post.get("category"),
