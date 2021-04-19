@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Why I Don't Write On Medium"
 description: "Medium doesn't get you views or reputation — quality content does, regardless of the platform. So you'd better use your own!"
 date: "2019-05-27"

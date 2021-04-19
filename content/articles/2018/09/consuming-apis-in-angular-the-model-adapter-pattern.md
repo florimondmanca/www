@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Consuming APIs in Angular: The Model-Adapter Pattern"
 description: "A TypeScript-friendly pattern to improve how you integrate Angular apps and REST APIs."
 date: "2018-09-04"

@@ -1,5 +1,4 @@
 ---
-published: true
 title: "From Angular To Vue: Feeling Like A Beginner Again"
 description: "I became too safe in the world of Angular, so I started learning Vue.js. Do I feel like a noob? Yes. Is it worth it? Totally."
 date: "2018-10-24"

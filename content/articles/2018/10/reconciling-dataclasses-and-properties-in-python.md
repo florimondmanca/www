@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Reconciling Dataclasses And Properties In Python"
 description: "I love Python dataclasses, but combining them with properties is not obvious. This is a problem solving report — and a practical introduction to dataclasses!"
 date: "2018-10-10"

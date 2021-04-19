@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Consuming APIs in Angular: Displaying Data In Components"
 description: "Learn how to fetch a list of items from a REST API and display it in an Angular component."
 date: "2019-02-23"
@@ -58,7 +57,7 @@ import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "app-course-list",
   templateUrl: "./course-list.component.html",
-  styleUrls: ["./course-list.component.css"]
+  styleUrls: ["./course-list.component.css"],
 })
 export class CourseListComponent implements OnInit {
   constructor() {}
@@ -192,7 +191,7 @@ As a last integration step, we need to update the URL which the `CourseService` 
 // ...
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class CourseService {
   private apiUrl = "http://localhost:8000/courses";
@@ -223,7 +222,7 @@ import { CourseService } from "../core/course.service";
 @Component({
   selector: "app-course-list",
   templateUrl: "./course-list.component.html",
-  styleUrls: ["./course-list.component.css"]
+  styleUrls: ["./course-list.component.css"],
 })
 export class CourseListComponent implements OnInit {
   courses: Course[];

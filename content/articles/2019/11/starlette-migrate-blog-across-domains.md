@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Using Starlette to migrate my blog across domains"
 description: "How I moved my blog to a different domain and URL structure while retaining SEO and integrating seamlessly with a static website generator — a case study of using Starlette and ASGI to build and glue web application components together."
 date: "2019-11-16"
@@ -248,7 +247,6 @@ VuePress allows to define a [YAML frontmatter](https://vuepress.vuejs.org/guide/
 So here's what the frontmatter for one of the articles looks like:
 
 ```yaml
-published: true
 title: "Let the Journey begin"
 description: "Hi! My name is Florimond. I will be your captain for the length of this journey. 👨‍✈️"
 date: "2018-07-25"

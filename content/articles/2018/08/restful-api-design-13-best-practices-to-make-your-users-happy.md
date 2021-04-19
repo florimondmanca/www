@@ -1,5 +1,4 @@
 ---
-published: true
 title: "RESTful API Design: 13 Best Practices to Make Your Users Happy"
 description: "First step to the RESTful way: make sure errors don't come back as 200 OK."
 date: "2018-08-26"

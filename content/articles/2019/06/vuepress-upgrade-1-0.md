@@ -1,5 +1,4 @@
 ---
-published: true
 title: "How To Upgrade Your VuePress Site To v1.0"
 description: "VuePress v1.0 is out of beta! Upgrade your documentation site by following this 10-step tutorial."
 date: "2019-06-15"
@@ -195,7 +194,7 @@ So this is how `Post.vue` now looks like:
 import Layout from "@theme/layouts/Layout.vue";
 
 export default {
-  components: { Layout }
+  components: { Layout },
   // ...
 };
 </script>
@@ -213,7 +212,7 @@ In practice, this means we can build a custom theme that extends the default the
 
 ```js
 module.exports = {
-  extends: "@vuepress/default-theme"
+  extends: "@vuepress/default-theme",
 };
 ```
 

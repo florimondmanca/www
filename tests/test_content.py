@@ -24,7 +24,6 @@ def test_build_pages() -> None:
             content=dedent(
                 f"""
                 ---
-                published: false
                 title: "{title}"
                 description: "{description}"
                 date: "{date}"

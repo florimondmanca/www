@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Python Mutable Defaults Are The Source of All Evil"
 description: "How to prevent a common Python mistake that can lead to horrible bugs and waste everyone's time."
 date: "2018-08-14"

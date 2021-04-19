@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Let the Journey begin"
 description: "Hi! My name is Florimond. I will be your captain for the length of this journey. 👨‍✈️"
 date: "2018-07-25"

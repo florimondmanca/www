@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Cheap and easy deployment: CaptainDuckDuck (Part 1)"
 description: "Deploying web apps can be a pain. I chose CaptainDuckDuck to build my personal, Heroku-style PaaS, hassle-free."
 date: "2018-07-31"

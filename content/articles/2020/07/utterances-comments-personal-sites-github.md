@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Utterances: GitHub-powered Comments Section for Personal Sites"
 description: "A short 'TIL' memo about using Utterances to add a comments section to your website, powered by GitHub issues."
 date: "2020-07-22"

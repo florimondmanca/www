@@ -1,5 +1,4 @@
 ---
-published: true
 title: "Cheap and easy deployment: CaptainDuckDuck (Part 2)"
 description: "Welcome back! Let's deploy your own personal PaaS step by step with CaptainDuckDuck."
 date: "2018-08-02"

@@ -1,5 +1,4 @@
 ---
-published: true
 title: "How to write optionally callable parametrized decorators in Python"
 description: "A memo on implementing parametrized decorators whose default behavior doesn't require empty parentheses."
 date: "2019-09-28"

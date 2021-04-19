@@ -1,5 +1,4 @@
 ---
-published: true
 title: "How I Built A Python Web Framework And Became An Open Source Maintainer"
 description: "Inspirational thoughts and tips on starting and managing an open source project, based on my experience building Bocadillo, an asynchronous Python web framework."
 date: "2018-12-22"
@@ -72,17 +71,17 @@ My goal is that people embrace the **new possibilities of async Python** and tha
 
 There's still a lot of work ahead to get there, but the marathon has started!
 
-Speaking of *async* Python, let me address a question you may have already asked yourself…
+Speaking of _async_ Python, let me address a question you may have already asked yourself…
 
 ### What with async?
 
-Generally, a web app instance spends a lot (if not most) of its request processing time waiting for I/O to complete — API calls, database queries, filesystem operations. etc. Most of these operations are *blocking*, which typically limits performance if multiple clients are requesting the server.
+Generally, a web app instance spends a lot (if not most) of its request processing time waiting for I/O to complete — API calls, database queries, filesystem operations. etc. Most of these operations are _blocking_, which typically limits performance if multiple clients are requesting the server.
 
 The idea with async frameworks like Bocadillo is to build **apps that do not block on I/O operations**. To achieve this, we leverage **asynchronous programming** and recent additions to the Python language such as [asyncio] and [async/await] — available from Python 3.4+ and 3.6+ respectively. This allows us to consider processing a request as a task which is "scheduled" to run in a near future, i.e. when the CPU is avaiable.
 
-As a result, beyond making better use of the CPU, this architecture has a very interesting advantage — we can now __handle multiple requests *concurrently*__.
+As a result, beyond making better use of the CPU, this architecture has a very interesting advantage — we can now **handle multiple requests _concurrently_**.
 
-(Note: I didn't write *in parallel*, as async still uses a single thread. [Concurrency is not parallelism](https://www.youtube.com/watch?v=cN_DpYBzKso).)
+(Note: I didn't write _in parallel_, as async still uses a single thread. [Concurrency is not parallelism](https://www.youtube.com/watch?v=cN_DpYBzKso).)
 
 This property ultimately results in **more stable throughput and performance** as the number of concurrent clients increases. From my own (yet to be published) benchmarks, Bocadillo keeps a steady processing rate whether it talks to 10 or 10,000 clients. On the other hand, "sync" frameworks like Flask or Django show a significant drop in reqs/sec in high concurrency settings.
 
@@ -96,13 +95,13 @@ Eager for more on Python asynchronous programming? Here are a few talks I recomm
 
 Bocadillo is built on [Uvicorn], the lightning-fast ASGI web server, and [Starlette], a handy ASGI toolkit. Both were created by [Tom Christie], a core contributor to the Django REST Framework (among other things).
 
-**Note**: [ASGI] is the asynchronous equivalent to WSGI, i.e. a specification for how web servers should communicate with *asynchronous* Python web applications.
+**Note**: [ASGI] is the asynchronous equivalent to WSGI, i.e. a specification for how web servers should communicate with _asynchronous_ Python web applications.
 
 ### Features
 
 **What Bocadillo already has**: requests, responses, views (function-based and classed-based), routes and route parameters, media types, redirections, templates, static files, background tasks, CORS, HSTS, GZip, "recipes" (a.k.a. blueprints), middleware, hooks, and even a CLI. There are more in the release pipeline!
 
-One thing that Bocadillo does *not* have (yet), though, is a **database layer**. Most web apps or APIs I've built needed to persist data in some way, so I believe this (or at least an official recommendation for how to integrate an async database layer such as [Tortoise ORM]) should land into the framework at some point.
+One thing that Bocadillo does _not_ have (yet), though, is a **database layer**. Most web apps or APIs I've built needed to persist data in some way, so I believe this (or at least an official recommendation for how to integrate an async database layer such as [Tortoise ORM]) should land into the framework at some point.
 
 ### Hello, world!
 
@@ -132,7 +131,7 @@ How and why did it begin? What were some of the most meaningful events? Let's fi
 
 ### A learn-by-doing project
 
-Bocadillo started as **a way for me to learn more about the internals of a web framework**. I wanted to get behind the scenes after nearly 2 years of using various Python and JS web frameworks. I wanted to know how it *actually* all worked.
+Bocadillo started as **a way for me to learn more about the internals of a web framework**. I wanted to get behind the scenes after nearly 2 years of using various Python and JS web frameworks. I wanted to know how it _actually_ all worked.
 
 To be clear, Bocadillo didn't start with a very detailed plan. Heck, I didn't even think about whether there was a need for an(other) Python async web framework. I wanted to **learn** more than anything else.
 
@@ -164,17 +163,17 @@ Kenneth's answer and the forthcoming reactions after he retweeted the announceme
 
 In just a day, the repo got 20 stars (a personal record already!) and, although it may look trivial, I thought it was really cool.
 
-*Psst: if you want to help get Bocadillo known, you can [star it](https://github.com/bocadilloproject/bocadillo) too and spread the news!*
+_Psst: if you want to help get Bocadillo known, you can [star it](https://github.com/bocadilloproject/bocadillo) too and spread the news!_
 
 So, after v0.2 was released, I felt motivated to keep working on Bocadillo, and add more features.
 
 Up until I realized something…
 
-### Where are the docs? Like, *real* docs?
+### Where are the docs? Like, _real_ docs?
 
-It was clear for me: I wanted Bocadillo to be my first **open source project**. I wanted to take it *seriously* in order to learn as much as I can from the process.
+It was clear for me: I wanted Bocadillo to be my first **open source project**. I wanted to take it _seriously_ in order to learn as much as I can from the process.
 
-So, right from the start, I wrote an informative *README*, curated a *CHANGELOG* (with the help of [keep a changelog]) and added *CONTRIBUTING* guidelines. As more and more releases went out between November 6th and November 18th, I updated the changelog and documented new features in the repo's README.
+So, right from the start, I wrote an informative _README_, curated a _CHANGELOG_ (with the help of [keep a changelog]) and added _CONTRIBUTING_ guidelines. As more and more releases went out between November 6th and November 18th, I updated the changelog and documented new features in the repo's README.
 
 Quickly though, this became impractical. The README was growing in size and it became hard to navigate, even with a table of contents.
 
@@ -182,7 +181,7 @@ Quickly though, this became impractical. The README was growing in size and it b
 
 That's when I realized **I needed proper documentation**.
 
-If you think about it, **good documentation is a *sine qua non* condition to having people use what you've built**. And that lengthy README was not good documentation considering the size that Bocadillo was heading at.
+If you think about it, **good documentation is a _sine qua non_ condition to having people use what you've built**. And that lengthy README was not good documentation considering the size that Bocadillo was heading at.
 
 Then, it hit me — a lot of large-scale open source tools, libraries or frameworks I use and love have a **documentation site**.
 
@@ -194,9 +193,9 @@ On the necessity of good documentation — Joe Mancuso, creator of the [Masonite
 
 > If it's not documented, it doesn't exist.
 
-That's why I'm taking documentation very seriously and strive to make it as good as I can — and so should you with *every* project you're working on.
+That's why I'm taking documentation very seriously and strive to make it as good as I can — and so should you with _every_ project you're working on.
 
-Then, while building the docs site, I made what I now consider as a very important move for *any* open source project…
+Then, while building the docs site, I made what I now consider as a very important move for _any_ open source project…
 
 ### Letting Bocadillo stand on its own feet
 
@@ -218,7 +217,7 @@ Up to November 20th, the way I kept track of the backlog and progress was via a 
 
 This was very practical to me: I use Trello for a variety of things. But I realized that **people visiting the repo had no visibility** on what was coming next or possible ways they could contribute.
 
-In fact, from a visitor's perspective, I think the repo looked like just any other personal project — no issues, no PRs, just a ton of commits from a single person — and *not* a community-driven effort, i.e. what I'd like Bocadillo to become.
+In fact, from a visitor's perspective, I think the repo looked like just any other personal project — no issues, no PRs, just a ton of commits from a single person — and _not_ a community-driven effort, i.e. what I'd like Bocadillo to become.
 
 So, per the advice of a close friend of mine and inspired by [this article by Dhanraj Acharya](https://medium.freecodecamp.org/how-i-went-from-being-a-contributor-to-an-open-source-project-maintainer-acd8a6b316f5), I decided to **open up the development process**.
 
@@ -228,7 +227,7 @@ I've learnt from this that **open source is not only about opening the source co
 
 I now hoped that, with the repo filled with issues and public PRs, it would attract its first open source contributors.
 
-*Spoiler alert: it did!*
+_Spoiler alert: it did!_
 
 ### Yay! First contributors!
 
@@ -268,7 +267,7 @@ This stems from the fact that **maintaining an open source project is a marathon
 
 Put differently, **success should always be a by-product, not a goal**.
 
-You'll have noticed that Bocadillo's goal statement doesn't mention fame, nor a threshold number of users. It only states that I hope Bocadillo can help *some* people **solve problems**. If that is the case for at least one person, I'll consider it a win. If it becomes the case for a lot of people, I shall only consider it as a side effect.
+You'll have noticed that Bocadillo's goal statement doesn't mention fame, nor a threshold number of users. It only states that I hope Bocadillo can help _some_ people **solve problems**. If that is the case for at least one person, I'll consider it a win. If it becomes the case for a lot of people, I shall only consider it as a side effect.
 
 ![Two person standing on gray tile paving. @goian, unsplash.com](/static/img/oss-maintainer-passion.jpg)
 
@@ -310,7 +309,7 @@ For the rest, brace yourselves — categorized bullet points ahead!
 
 ### Community
 
-- Implement **open source best practices**: a proper *README*, contributing guidelines, a code of conduct, issue/PR templates, etc (use GitHub's checklist!). This will make the repo more welcoming to potential contributors, and show that you care about the community.
+- Implement **open source best practices**: a proper _README_, contributing guidelines, a code of conduct, issue/PR templates, etc (use GitHub's checklist!). This will make the repo more welcoming to potential contributors, and show that you care about the community.
 - **Be supportive and kind** to others. Thank them for their questions. Provide helpful resources.
 - It might be a good idea to create a place for informal discussions. I recently decided to experiment with a [Gitter] chat room.
 
@@ -366,32 +365,32 @@ Thanks for reading through this article! As always, feedback is much appreciated
 
 Best wishes for this holiday season to you all. ✌️
 
-[ASGI]: https://asgi.readthedocs.io
-[Starlette]: https://www.starlette.io
-[Uvicorn]: https://www.uvicorn.org
-[Responder]: https://python-responder.org
+[asgi]: https://asgi.readthedocs.io
+[starlette]: https://www.starlette.io
+[uvicorn]: https://www.uvicorn.org
+[responder]: https://python-responder.org
 [repo]: https://github.com/bocadilloproject
-[Tom Christie]: https://github.com/tomchristie
+[tom christie]: https://github.com/tomchristie
 [v0.1]: https://pypi.org/project/bocadillo/0.1.0/
 [docs]: https://bocadilloproject.github.io
-[VuePress]: https://vuepress.vuejs.org
-[GitHub Pages]: https://pages.github.com
+[vuepress]: https://vuepress.vuejs.org
+[github pages]: https://pages.github.com
 [keep a changelog]: https://keepachangelog.com
-[Masonite]: https://masoniteframework.gitbooks.io
+[masonite]: https://masoniteframework.gitbooks.io
 [quickstart guide]: https://bocadilloproject.github.io/getting-started/quickstart.html
-[Sane GitHub labels]: https://medium.com/@dave_lunny/sane-github-labels-c5d2e6004b63
-[PydocMd]: https://github.com/NiklasRosenstein/pydoc-markdown
-[SemVer]: https://semver.org
+[sane github labels]: https://medium.com/@dave_lunny/sane-github-labels-c5d2e6004b63
+[pydocmd]: https://github.com/NiklasRosenstein/pydoc-markdown
+[semver]: https://semver.org
 [bumpversion]: https://pypi.org/project/bumpversion/
-[TravisCI]: https://travis-ci.org
+[travisci]: https://travis-ci.org
 [pytest]: https://pytest.org
-[CodeCov]: https://codecov.io
-[Black]: https://github.com/ambv/black
+[codecov]: https://codecov.io
+[black]: https://github.com/ambv/black
 [pre-commit]: https://pre-commit.com
 [shields.io]: https://shields.io
-[Tortoise ORM]: https://tortoise-orm.readthedocs.io/en/latest/
+[tortoise orm]: https://tortoise-orm.readthedocs.io/en/latest/
 [asyncio]: https://docs.python.org/3/library/asyncio.html
 [async/await]: https://www.python.org/dev/peps/pep-0492/
-[Gitter]: https://gitter.im/bocadilloproject/bocadillo
+[gitter]: https://gitter.im/bocadilloproject/bocadillo
 [pytest-cov]: https://pypi.org/project/pytest-cov/
 [opensource.guide]: https://opensource.guide
