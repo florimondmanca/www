@@ -6,6 +6,7 @@ import aiofiles
 import frontmatter as fm
 
 from . import resources, settings
+from .i18n import gettext_lazy as _
 from .models import ContentItem, Frontmatter, MetaTag, Page
 from .utils import to_production_url
 
@@ -124,15 +125,15 @@ def _generate_tag_pages(tags: Iterable[str]) -> Iterator[Page]:
 
 
 _CATEGORY_LABELS = {
-    "tutorials": "Tutorials",
-    "essays": "Essays",
-    "retrospectives": "Retrospectives",
+    "tutorials": _("Tutorials"),
+    "essays": _("Essays"),
+    "retrospectives": _("Retrospectives"),
 }
 
 
 def get_category_label(value: str) -> str:
     try:
-        return _CATEGORY_LABELS[value]
+        return str(_CATEGORY_LABELS[value])
     except KeyError:
         raise ValueError(
             f"Unknown category value: {value!r} (available: {list(_CATEGORY_LABELS)})"

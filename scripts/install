@@ -22,6 +22,8 @@ fi
 ${PREFIX}pip install -U pip wheel
 ${PREFIX}pip install -r requirements-dev.txt
 
+scripts/compilemessages
+
 if [ -z $CI ]; then
   yarn install
 fi
