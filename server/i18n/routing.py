@@ -6,7 +6,7 @@ from starlette.routing import Match, Route
 
 class LocaleRoute(Route):
     def matches(self, scope: Scope) -> Tuple[Match, Scope]:
-        if scope["type"] != "http":
+        if scope["type"] != "http":  # pragma: no cover
             # Eg hot-reload WebSocket.
             return super().matches(scope)
 
