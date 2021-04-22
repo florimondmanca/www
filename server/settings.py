@@ -27,6 +27,12 @@ STATIC_ROOT = "/static"
 STATIC_DIR = HERE / "static"
 TEMPLATES_DIR = HERE / "templates"
 
+LOCALE_DIR = HERE.parent / "locale"
+LOCALE_DOMAIN = "messages"
+LOCALE_TRANSLATIONS = ["fr_FR"]
+LANGUAGES = ["en", "fr"]
+DEFAULT_LANGUAGE = "en"
+
 EXTRA_CONTENT_DIRS = config(
     "EXTRA_CONTENT_DIRS",
     cast=lambda v: [pathlib.Path(item) for item in CommaSeparatedStrings(v)],

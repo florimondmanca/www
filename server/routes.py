@@ -1,6 +1,7 @@
 from starlette.routing import Host, Mount, Route, WebSocketRoute
 
 from . import legacy, middleware, resources, settings, views
+from .i18n.routing import LocaleRoute
 from .reload import hotreload
 from .sitemap import sitemap
 
@@ -20,7 +21,7 @@ routes = [
         app=legacy.DomainRedirect("florimond.dev", root_path="/blog"),
         name="legacy:blog_dot_dev",
     ),
-    Route("/", views.home),
+    LocaleRoute("/", views.home),
     Route("/error/", views.error),
     Route("/blog/", views.legacy_blog_home, name="legacy:blog_home"),
     Route("/blog/{permalink:path}/", views.RenderPage, name="page"),
