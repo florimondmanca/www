@@ -5,8 +5,8 @@
   <div class="text-muted pr-3">
     {{ page.frontmatter.date | dateformat }}
     |
-    in
-    <a href="{{ url_for('page', permalink='/category/' + page.frontmatter.category) }}">
+    {{ _('in') }}
+    <a href="{{ url_for('page', permalink='category/' + page.frontmatter.category) }}">
       {{ page.frontmatter.category | category_label }}
     </a>
   </div>
@@ -21,7 +21,7 @@
   rel="no-referrer"
   target="_blank"
 >
-  📝&nbsp;Edit
+  📝&nbsp;{% trans %}Edit{% endtrans %}
 </a>
 {% endif %}
 {% endmacro %}

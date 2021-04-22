@@ -6,6 +6,7 @@ import aiofiles
 import frontmatter as fm
 
 from . import resources, settings
+from .i18n import gettext_lazy as _
 from .models import ContentItem, Frontmatter, MetaTag, Page
 from .utils import to_production_url
 
@@ -113,7 +114,7 @@ def _append_filename(filename: str, suffix: str) -> str:
 def _generate_tag_pages(tags: Iterable[str]) -> Iterator[Page]:
     for tag in tags:
         frontmatter = Frontmatter(
-            title=f"{tag.capitalize()} - {settings.SITE_TITLE}",
+            title=f"{tag.capitalize()} - Florimond Manca",
             description=f"Articles about #{tag}",
             tag=tag,
         )
@@ -124,15 +125,15 @@ def _generate_tag_pages(tags: Iterable[str]) -> Iterator[Page]:
 
 
 _CATEGORY_LABELS = {
-    "tutorials": "Tutorials",
-    "essays": "Essays",
-    "retrospectives": "Retrospectives",
+    "tutorials": _("Tutorials"),
+    "essays": _("Essays"),
+    "retrospectives": _("Retrospectives"),
 }
 
 
 def get_category_label(value: str) -> str:
     try:
-        return _CATEGORY_LABELS[value]
+        return str(_CATEGORY_LABELS[value])
     except KeyError:
         raise ValueError(
             f"Unknown category value: {value!r} (available: {list(_CATEGORY_LABELS)})"
@@ -143,7 +144,7 @@ def _generate_category_pages(categories: Iterable[str]) -> Iterator[Page]:
     for category in categories:
         label = get_category_label(category)
         frontmatter = Frontmatter(
-            title=f"{label} - {settings.SITE_TITLE}",
+            title=f"{label} - Florimond Manca",
             description=label,
             category=category,
         )
@@ -189,7 +190,7 @@ def _build_meta(permalink: str, frontmatter: Frontmatter) -> List["MetaTag"]:
         MetaTag(property="og:title", content=frontmatter.title),
         MetaTag(property="og:description", content=frontmatter.description),
         MetaTag(property="og:image", content=image_url),
-        MetaTag(property="og:site_name", content=settings.SITE_TITLE),
+        MetaTag(property="og:site_name", content="Florimond Manca"),
         MetaTag(property="article:published_time", content=frontmatter.date),
     ]
 

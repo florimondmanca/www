@@ -4,17 +4,27 @@
 <nav class="p-page-content">
   {% call ContentWrapper(class="text-center tablet:flex tablet:items-center") %}
     <a class="inline-block text-lg font-bold py-2 pr-3" href="{{ url_for('home') }}">
-      {{ settings.SITE_TITLE }}
+      Florimond Manca
     </a>
-    <ul class="flex justify-center">
-      {% for page in get_category_pages() %}
-      <li>
-        <a class="px-4" href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
-          {{ page.frontmatter.category | category_label }}
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
+    <div class="flex flex-grow justify-between">
+      <ul class="flex justify-center">
+        {% for page in get_category_pages() %}
+        <li>
+          <a class="px-4" href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
+            {{ page.frontmatter.category | category_label }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% if lang_switch %}
+      <div class="flex flex-end">
+        {% for (lang, url) in lang_switch %}
+          <a href="{{ url }}">{{ lang.upper() }}</a>
+          {% if not loop.last %}/{% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
   {% endcall %}
 </nav>
 {% endmacro %}

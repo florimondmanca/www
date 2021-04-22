@@ -10,10 +10,9 @@ config = Config(".env")
 
 HERE = pathlib.Path(__file__).parent
 
+
 DEBUG: bool = config("DEBUG", cast=bool, default=False)
 TESTING: bool = config("TESTING", cast=bool, default=False)
-
-SITE_TITLE = "Florimond Manca"
 
 KNOWN_DOMAINS = [
     "localhost",
@@ -26,6 +25,11 @@ KNOWN_DOMAINS = [
 STATIC_ROOT = "/static"
 STATIC_DIR = HERE / "static"
 TEMPLATES_DIR = HERE / "templates"
+
+LOCALES_DIR = HERE.parent / "locale"
+LOCALES_DOMAIN = "messages"
+LANGUAGES = ["en", "fr"]
+DEFAULT_LANGUAGE = "en"
 
 EXTRA_CONTENT_DIRS = config(
     "EXTRA_CONTENT_DIRS",

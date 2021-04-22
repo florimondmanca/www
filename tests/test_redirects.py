@@ -10,18 +10,28 @@ pytestmark = pytest.mark.asyncio
     "start_url, urls",
     [
         pytest.param(
-            "http://florimondmanca.com",
-            [("http://florimond.dev/", 301)],
+            "http://florimond.dev",
+            [
+                ("http://florimond.dev/en/", 307),
+            ],
             id="home",
+        ),
+        pytest.param(
+            "http://florimondmanca.com",
+            [
+                ("http://florimond.dev/", 301),
+                ("http://florimond.dev/en/", 307),
+            ],
+            id="legacy:home",
         ),
         pytest.param(
             "http://blog.florimondmanca.com",
             [
                 ("http://blog.florimond.dev/", 301),
                 ("http://florimond.dev/blog/", 301),
-                ("http://florimond.dev/", 307),
+                ("http://florimond.dev/en/", 307),
             ],
-            id="blog:home",
+            id="legacy:blog:home",
         ),
         pytest.param(
             "http://blog.florimondmanca.com/let-the-journey-begin",
@@ -36,12 +46,16 @@ pytestmark = pytest.mark.asyncio
                     "http://florimond.dev/blog/articles/2018/07/let-the-journey-begin/",
                     307,
                 ),
+                (
+                    "http://florimond.dev/en/blog/articles/2018/07/let-the-journey-begin/",  # noqa
+                    307,
+                ),
             ],
-            id="blog:article",
+            id="legacy:blog:article",
         ),
     ],
 )
-async def test_legacy_redirect_chains(
+async def test_redirect_chains(
     client: httpx.AsyncClient, start_url: str, urls: typing.List[str]
 ) -> None:
     resp = await client.get(start_url, allow_redirects=True)
@@ -160,7 +174,7 @@ async def test_legacy_redirect_chains(
         ),
     ],
 )
-async def test_legacy_redirect_articles(
+async def test_redirect_legacy_articles(
     client: httpx.AsyncClient,
     blog_dot_dev_path: str,
     dot_dev_path: str,
@@ -169,4 +183,4 @@ async def test_legacy_redirect_articles(
         f"https://blog.florimond.dev{blog_dot_dev_path}", allow_redirects=True
     )
     assert resp.status_code == 200
-    assert resp.url == f"https://florimond.dev/blog{dot_dev_path}"
+    assert resp.url == f"https://florimond.dev/en/blog{dot_dev_path}"

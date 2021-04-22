@@ -7,10 +7,10 @@
 {% block head %}
   <!-- Twitter card -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="{{ settings.SITE_TITLE }}" />
+  <meta name="twitter:title" content="Florimond Manca" />
   <meta
     name="twitter:description"
-    content="Open Source Developer & Idealist On A Journey"
+    content="{% trans %}Open Source Developer, Idealist On A Journey{% endtrans %}"
   />
   <meta name="twitter:site" content="@florimondmanca" />
   <meta name="twitter:creator" content="@florimondmanca" />
@@ -21,10 +21,10 @@
   />
 
   <!-- OpenGraph card -->
-  <meta property="og:title" content="{{ settings.SITE_TITLE }}" />
+  <meta property="og:title" content="Florimond Manca" />
   <meta
     property="og:description"
-    content="Open Source Developer & Idealist On A Journey"
+    content="{% trans %}Open Source Developer, Idealist On A Journey{% endtrans %}"
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ request.url }}" />

@@ -14,7 +14,10 @@ def _common_context() -> dict:
 
 
 async def home(request: Request) -> Response:
-    context = {"request": request, **_common_context()}
+    lang_switch = [
+        (lang, request.url_for("home", lang=lang)) for lang in settings.LANGUAGES
+    ]
+    context = {"request": request, "lang_switch": lang_switch, **_common_context()}
     return resources.templates.TemplateResponse("views/home.jinja", context=context)
 
 
@@ -32,7 +35,17 @@ class RenderPage(HTTPEndpoint):
         else:
             raise HTTPException(404)
 
-        context = {"request": request, "page": page, **_common_context()}
+        lang_switch = [
+            (lang, request.url_for("page", permalink=permalink.lstrip("/"), lang=lang))
+            for lang in settings.LANGUAGES
+        ]
+
+        context = {
+            "request": request,
+            "page": page,
+            "lang_switch": lang_switch,
+            **_common_context(),
+        }
 
         return resources.templates.TemplateResponse("views/page.jinja", context=context)
 

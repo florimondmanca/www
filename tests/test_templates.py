@@ -4,7 +4,7 @@ from server.resources import category_label, dateformat
 
 
 def test_dateformat() -> None:
-    assert dateformat("2020-07-23") == "Jul 23, 2020"
+    assert dateformat("2020-07-23") == "July 23, 2020"
 
 
 def test_category_label() -> None:

@@ -6,7 +6,7 @@ from starlette.requests import Request
 from starlette.responses import Response
 from starlette.types import ASGIApp
 
-from . import legacy, settings
+from . import i18n, legacy, settings
 
 middleware = [
     # NOTE: Middleware executes from top to bottom.
@@ -14,6 +14,11 @@ middleware = [
         legacy.LegacyRedirectMiddleware,
         url_mapping=settings.LEGACY_URL_MAPPING,
         root_path="/blog",
+    ),
+    Middleware(
+        i18n.LocaleMiddleware,
+        languages=settings.LANGUAGES,
+        default_language=settings.DEFAULT_LANGUAGE,
     ),
 ]
 

@@ -1,0 +1,66 @@
+# Translations template for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-04-22 13:50+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: server/content.py:128
+msgid "Tutorials"
+msgstr ""
+
+#: server/content.py:129
+msgid "Essays"
+msgstr ""
+
+#: server/content.py:130
+msgid "Retrospectives"
+msgstr ""
+
+#: server/templates/components/jumbotron.jinja:13
+#: server/templates/views/home.jinja:13 server/templates/views/home.jinja:27
+msgid "Open Source Developer, Idealist On A Journey"
+msgstr ""
+
+#: server/templates/components/jumbotron.jinja:16
+msgid ""
+"I maintain and contribute to libraries, packages, and tools. Mostly "
+"Python."
+msgstr ""
+
+#: server/templates/components/social_links.jinja:3
+msgid "Links"
+msgstr ""
+
+#: server/templates/components/pages/article_meta.jinja:8
+msgid "in"
+msgstr ""
+
+#: server/templates/components/pages/article_meta.jinja:24
+msgid "Edit"
+msgstr ""
+
+#: server/templates/components/pages/page_list.jinja:10
+msgid "No articles yet."
+msgstr ""
+
+#: server/templates/views/404.jinja:7
+msgid "Page not found."
+msgstr ""
+
+#: server/templates/views/500.jinja:7
+msgid "Internal server error."
+msgstr ""
+
