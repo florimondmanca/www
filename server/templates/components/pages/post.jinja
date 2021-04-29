@@ -1,12 +1,12 @@
 {% from "components/comments.jinja" import Comments with context %}
 {% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
-{% from "components/pages/article_meta.jinja" import ArticleMeta with context %}
+{% from "components/pages/post_meta.jinja" import PostMeta with context %}
 
-{% macro ArticlePage(page) %}
-{% call ContentWrapper(class="c-article-page") %}
+{% macro PostPage(page) %}
+{% call ContentWrapper(class="c-post-page") %}
   <header class="mb-6 border-b border-muted-700">
     <div class="flex justify-between">
-      {{ ArticleMeta(page, editable=true) }}
+      {{ PostMeta(page, editable=true) }}
     </div>
 
     <h1 class="text-3xl font-bold mt-2 mb-4 leading-sm">

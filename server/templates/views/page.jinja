@@ -2,7 +2,7 @@
 
 {% from "components/pages/tag_page.jinja" import TagPage with context %}
 {% from "components/pages/category_page.jinja" import CategoryPage with context %}
-{% from "components/pages/article_page.jinja" import ArticlePage with context %}
+{% from "components/pages/post.jinja" import PostPage with context %}
 
 {% block head %}
   {{ super() }}
@@ -21,7 +21,7 @@
     {{ TagPage(page.frontmatter.tag, get_articles(tag=page.frontmatter.tag)) }}
   {%- elif page.is_article -%}
     <div class="p-page-content code-container">
-      {{ ArticlePage(page) }}
+      {{ PostPage(page) }}
     </div>
   {%- elif page.is_category -%}
     {{ CategoryPage(page.frontmatter.category, get_articles(category=page.frontmatter.category)) }}

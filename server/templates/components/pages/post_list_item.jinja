@@ -1,6 +1,6 @@
-{% from "components/pages/article_meta.jinja" import ArticleMeta with context %}
+{% from "components/pages/post_meta.jinja" import PostMeta with context %}
 
-{% macro PageListItem(page) %}
+{% macro PostListItem(page) %}
 <li class="c-page-list-item">
   {% with image_src = page.frontmatter.image_thumbnail or page.frontmatter.image %}
     {% if image_src %}
@@ -27,7 +27,7 @@
   </p>
 
   <small>
-    {{ ArticleMeta(page) }}
+    {{ PostMeta(page) }}
   </small>
 </li>
 {% endmacro %}
