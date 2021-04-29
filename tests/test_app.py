@@ -39,6 +39,12 @@ async def test_tag(client: httpx.AsyncClient) -> None:
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
 
+    url = "http://florimond.dev/fr/tag/test/"
+    resp = await client.get(url, allow_redirects=False)
+    assert resp.status_code == 200, resp.url
+    assert "text/html" in resp.headers["content-type"]
+    assert "Tutoriels" in resp.text  # Navbar
+
 
 async def test_extra_content_dirs(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2020/01/test-draft/"
@@ -68,6 +74,14 @@ async def test_category(client: httpx.AsyncClient, category: str) -> None:
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
+
+
+async def test_category_i18n(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/fr/category/tutorials/"
+    resp = await client.get(url, allow_redirects=False)
+    assert resp.status_code == 200, resp.url
+    assert "text/html" in resp.headers["content-type"]
+    assert "Tutoriels" in resp.text  # Navbar
 
 
 async def test_not_found(client: httpx.AsyncClient) -> None:
