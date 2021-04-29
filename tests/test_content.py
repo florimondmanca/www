@@ -35,7 +35,7 @@ def test_build_pages() -> None:
                 You should *really* care about readability.
                 """
             ),
-            location="posts/readability-counts.md",
+            location="en/posts/readability-counts.md",
         )
     ]
 
@@ -44,7 +44,7 @@ def test_build_pages() -> None:
 
     readability_counts, python, essays = pages["en"]
 
-    assert readability_counts.permalink == "/posts/readability-counts"
+    assert readability_counts.permalink == "/en/posts/readability-counts"
     assert readability_counts.frontmatter.title == title
     assert readability_counts.frontmatter.description == description
     assert readability_counts.frontmatter.date == date
@@ -53,7 +53,7 @@ def test_build_pages() -> None:
     assert readability_counts.frontmatter.image == image
 
     meta = [str(tag) for tag in readability_counts.meta]
-    url = "https://florimond.dev/posts/readability-counts/"
+    url = "https://florimond.dev/en/posts/readability-counts/"
     assert '<meta name="twitter:card" content="summary_large_image">' in meta
     assert f'<meta name="twitter:title" content="{title}">' in meta
     assert f'<meta name="twitter:description" content="{description}">' in meta
@@ -119,7 +119,7 @@ def test_image_auto_thumbnail(image: str, image_thumbnail: Optional[str]) -> Non
             ---
             """
         ),
-        location="posts/test.md",
+        location="en/posts/test.md",
     )
 
     (page,) = build_pages([item])["en"]

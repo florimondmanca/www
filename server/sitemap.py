@@ -2,6 +2,7 @@ from typing import List
 
 import asgi_sitemaps
 
+from . import settings
 from .models import Page
 from .resources import index
 
@@ -23,10 +24,13 @@ class PagesSitemap(asgi_sitemaps.Sitemap):
     protocol = "https"
 
     def items(self) -> List[Page]:
-        return index.get_pages()
+        pages = []
+        for language in settings.LANGUAGES:
+            pages.extend(index.get_i18n_aware_pages(language))
+        return pages
 
     def location(self, page: Page) -> str:
-        return f"/blog{page.permalink}"
+        return page.permalink
 
     def changefreq(self, path: str) -> str:
         return "weekly"

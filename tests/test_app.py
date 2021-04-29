@@ -46,6 +46,12 @@ async def test_extra_content_dirs(client: httpx.AsyncClient) -> None:
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
 
+    url = "http://florimond.dev/fr/posts/2021/04/test-brouillon/"
+    resp = await client.get(url, allow_redirects=False)
+    assert resp.status_code == 200, resp.url
+    assert "text/html" in resp.headers["content-type"]
+    assert "Tutoriels" in resp.text  # Navbar
+
 
 KNOWN_CATEGORIES = ["tutorials", "essays", "retrospectives"]
 

@@ -6,7 +6,7 @@ import aiofiles
 import frontmatter as fm
 
 from . import resources, settings
-from .i18n import gettext_lazy as _
+from .i18n import gettext_lazy as _, using_locale
 from .models import ContentItem, Frontmatter, MetaTag, Page
 from .utils import to_production_url
 
@@ -39,7 +39,7 @@ def build_pages(items: List[ContentItem]) -> Dict[str, List[Page]]:
     pages: Dict[str, List[Page]] = {language: [] for language in settings.LANGUAGES}
 
     for page in _build_content_pages(items):
-        pages["en"].append(page)
+        pages[page.language].append(page)
 
     for language in pages:
         unique_tags = {tag for page in pages[language] for tag in page.frontmatter.tags}
@@ -146,17 +146,18 @@ def get_category_label(value: str) -> str:
 def _generate_category_pages(
     categories: Iterable[str], *, language: str
 ) -> Iterator[Page]:
-    for category in categories:
-        label = get_category_label(category)
-        frontmatter = Frontmatter(
-            title=f"{label} - {settings.SITE_TITLE}",
-            description=label,
-            category=category,
-        )
-        permalink = f"/{language}/category/{category}"
-        meta = _build_meta(permalink, frontmatter)
+    with using_locale(language):
+        for category in categories:
+            label = get_category_label(category)
+            frontmatter = Frontmatter(
+                title=f"{label} - {settings.SITE_TITLE}",
+                description=label,
+                category=category,
+            )
+            permalink = f"/{language}/category/{category}"
+            meta = _build_meta(permalink, frontmatter)
 
-        yield Page(permalink=permalink, frontmatter=frontmatter, meta=meta)
+            yield Page(permalink=permalink, frontmatter=frontmatter, meta=meta)
 
 
 def _build_permalink(location: str) -> str:
