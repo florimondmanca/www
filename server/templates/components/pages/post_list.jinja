@@ -1,0 +1,13 @@
+{% from "components/pages/post_list_item.jinja" import PostListItem with context %}
+
+{% macro PostList(pages) %}
+<ul class="c-page-list">
+  {% for page in pages -%}
+    {{ PostListItem(page) }}
+  {%- else -%}
+</ul>
+  <p>
+    No posts yet.
+  </p>
+{%- endfor %}
+{% endmacro %}

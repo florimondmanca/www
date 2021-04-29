@@ -1,7 +1,7 @@
 {% from "components/pages/tag_list.jinja" import TagList with context %}
 
-{% macro ArticleMeta(page, editable=false) %}
-<div class="c-article-meta">
+{% macro PostMeta(page, editable=false) %}
+<div class="c-post-meta">
   <div class="text-muted pr-3">
     {{ page.frontmatter.date | dateformat }}
     |
