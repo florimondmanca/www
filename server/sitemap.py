@@ -23,7 +23,7 @@ class PagesSitemap(asgi_sitemaps.Sitemap):
     protocol = "https"
 
     def items(self) -> List[Page]:
-        return index.pages
+        return index.get_pages()
 
     def location(self, page: Page) -> str:
         return f"/blog{page.permalink}"

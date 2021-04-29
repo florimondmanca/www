@@ -9,7 +9,7 @@ from server.models import ContentItem
 
 def test_build_pages_empty() -> None:
     pages = build_pages([])
-    assert pages == []
+    assert pages == {"en": [], "fr": []}
 
 
 def test_build_pages() -> None:
@@ -40,9 +40,9 @@ def test_build_pages() -> None:
     ]
 
     pages = build_pages(items)
+    assert set(pages) == {"en", "fr"}
 
-    assert len(pages) == 3
-    readability_counts, python, essays = pages
+    readability_counts, python, essays = pages["en"]
 
     assert readability_counts.permalink == "/posts/readability-counts"
     assert readability_counts.frontmatter.title == title
@@ -65,7 +65,7 @@ def test_build_pages() -> None:
         "<p>You should <em>really</em> care about readability.</p>"
     )
 
-    assert python.permalink == "/tag/python"
+    assert python.permalink == "/en/tag/python"
     assert python.frontmatter.title
     assert python.frontmatter.description
     assert python.frontmatter.date is None
@@ -73,7 +73,7 @@ def test_build_pages() -> None:
     assert python.frontmatter.tag == "python"
 
     meta = [str(tag) for tag in python.meta]
-    url = "https://florimond.dev/tag/python/"
+    url = "https://florimond.dev/en/tag/python/"
     assert '<meta name="twitter:card" content="summary_large_image">' in meta
     assert f'<meta name="twitter:title" content="{python.frontmatter.title}">' in meta
     assert (
@@ -81,7 +81,7 @@ def test_build_pages() -> None:
     ) in meta
     assert f'<meta name="twitter:url" content="{url}">' in meta
 
-    assert essays.permalink == "/category/essays"
+    assert essays.permalink == "/en/category/essays"
     assert "Essays" in essays.frontmatter.title
     assert essays.frontmatter.description
     assert essays.frontmatter.date is None
@@ -89,7 +89,7 @@ def test_build_pages() -> None:
     assert essays.frontmatter.tags == []
 
     meta = [str(tag) for tag in essays.meta]
-    url = "https://florimond.dev/category/essays/"
+    url = "https://florimond.dev/en/category/essays/"
     assert '<meta name="twitter:card" content="summary_large_image">' in meta
     assert f'<meta name="twitter:title" content="{essays.frontmatter.title}">' in meta
     assert (
@@ -122,5 +122,5 @@ def test_image_auto_thumbnail(image: str, image_thumbnail: Optional[str]) -> Non
         location="posts/test.md",
     )
 
-    (page,) = build_pages([item])
+    (page,) = build_pages([item])["en"]
     assert page.frontmatter.image_thumbnail == image_thumbnail

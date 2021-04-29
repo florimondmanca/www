@@ -5,7 +5,7 @@ from starlette.exceptions import HTTPException
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
-from . import settings
+from . import i18n, settings
 from .models import Index
 from .reload import hotreload
 
@@ -27,6 +27,8 @@ def category_label(value: str) -> str:
 
     return get_category_label(value)
 
+
+i18n.setup_jinja2(templates)
 
 templates.env.globals["now"] = dt.datetime.now
 templates.env.globals["raise"] = raise_server_error

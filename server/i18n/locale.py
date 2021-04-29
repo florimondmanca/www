@@ -24,13 +24,21 @@ class Locale:
     A convenience wrapper around a `gettext` translations object.
     """
 
-    def __init__(self, translations: Translations = None) -> None:
+    def __init__(self, language: str, translations: Translations = None) -> None:
+        self._language = language
         self._translations = (
             translations if translations is not None else NullTranslations()
         )
 
+    @property
+    def language(self) -> str:
+        return self._language
+
     def gettext(self, message: str) -> str:
         return self._translations.ugettext(message)
+
+    def __repr__(self) -> str:
+        return f"<Locale({self._language!r})>"
 
 
 def build_locale(code: str) -> Locale:
@@ -40,7 +48,7 @@ def build_locale(code: str) -> Locale:
     if locale is None:  # pragma: no cover
         raise RuntimeError(f"Unsupported locale: {code!r}")
 
-    return Locale(translations=_translations.get(str(locale)))
+    return Locale(language=locale.language, translations=_translations.get(str(locale)))
 
 
 _locale_context: ContextVar["Locale"] = ContextVar(

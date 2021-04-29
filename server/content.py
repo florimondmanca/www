@@ -13,7 +13,8 @@ from .utils import to_production_url
 
 async def load_content() -> None:
     items = [item async for item in load_content_items()]
-    resources.index.pages = build_pages(items)
+    pages = build_pages(items)
+    resources.index.set_pages(pages)
 
 
 def iter_content_paths() -> Iterator[Tuple[Path, Path]]:
@@ -34,26 +35,28 @@ async def load_content_items() -> AsyncIterator[ContentItem]:
             )
 
 
-def build_pages(items: List[ContentItem]) -> List[Page]:
-    pages = []
+def build_pages(items: List[ContentItem]) -> Dict[str, List[Page]]:
+    pages: Dict[str, List[Page]] = {language: [] for language in settings.LANGUAGES}
 
     for page in _build_content_pages(items):
-        pages.append(page)
+        pages["en"].append(page)
 
-    unique_tags = {tag for page in pages for tag in page.frontmatter.tags}
+    for language in pages:
+        unique_tags = {tag for page in pages[language] for tag in page.frontmatter.tags}
 
-    for page in _generate_tag_pages(unique_tags):
-        pages.append(page)
+        for page in _generate_tag_pages(unique_tags, language=language):
+            pages[language].append(page)
 
-    unique_categories = sorted(
-        {
-            page.frontmatter.category
-            for page in pages
-            if page.frontmatter.category is not None
-        },
-        key=list(_CATEGORY_LABELS).index,
-    )
-    pages.extend(_generate_category_pages(unique_categories))
+        unique_categories = sorted(
+            {
+                page.frontmatter.category
+                for page in pages[language]
+                if page.frontmatter.category is not None
+            },
+            key=list(_CATEGORY_LABELS).index,
+        )
+        category_pages = _generate_category_pages(unique_categories, language=language)
+        pages[language].extend(category_pages)
 
     return pages
 
@@ -111,14 +114,14 @@ def _append_filename(filename: str, suffix: str) -> str:
     return str(path.with_name(name))
 
 
-def _generate_tag_pages(tags: Iterable[str]) -> Iterator[Page]:
+def _generate_tag_pages(tags: Iterable[str], *, language: str) -> Iterator[Page]:
     for tag in tags:
         frontmatter = Frontmatter(
             title=f"{tag.capitalize()} - {settings.SITE_TITLE}",
             description=f"Posts about #{tag}",
             tag=tag,
         )
-        permalink = f"/tag/{tag}"
+        permalink = f"/{language}/tag/{tag}"
         meta = _build_meta(permalink, frontmatter)
 
         yield Page(permalink=permalink, frontmatter=frontmatter, meta=meta)
@@ -140,7 +143,9 @@ def get_category_label(value: str) -> str:
         )
 
 
-def _generate_category_pages(categories: Iterable[str]) -> Iterator[Page]:
+def _generate_category_pages(
+    categories: Iterable[str], *, language: str
+) -> Iterator[Page]:
     for category in categories:
         label = get_category_label(category)
         frontmatter = Frontmatter(
@@ -148,7 +153,7 @@ def _generate_category_pages(categories: Iterable[str]) -> Iterator[Page]:
             description=label,
             category=category,
         )
-        permalink = f"/category/{category}"
+        permalink = f"/{language}/category/{category}"
         meta = _build_meta(permalink, frontmatter)
 
         yield Page(permalink=permalink, frontmatter=frontmatter, meta=meta)
