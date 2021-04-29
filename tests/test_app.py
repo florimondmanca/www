@@ -120,14 +120,17 @@ async def test_meta(client: httpx.AsyncClient) -> None:
     def find_meta(typ: str, value: str) -> typing.Optional[dict]:
         for item in meta:
             if item.get(typ) == value:
-                return item
+                return item.get("content")
         return None
 
+    meta_url = "https://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
     assert find_meta("name", "description") is not None
     assert find_meta("name", "image") is not None
+    assert find_meta("name", "twitter:url") == meta_url
     assert find_meta("name", "twitter:title") is not None
     assert find_meta("name", "twitter:description") is not None
     assert find_meta("name", "twitter:image") is not None
+    assert find_meta("property", "og:url") == meta_url
     assert find_meta("property", "og:title") is not None
     assert find_meta("property", "og:description") is not None
     assert find_meta("property", "og:image") is not None

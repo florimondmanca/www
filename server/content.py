@@ -165,7 +165,8 @@ def _build_permalink(location: str) -> str:
 
 
 def _build_meta(permalink: str, frontmatter: Frontmatter) -> List["MetaTag"]:
-    url = f"https://florimond.dev/blog{permalink}"  # TODO
+    path = permalink + ("" if permalink.endswith("/") else "/")
+    url = f"https://florimond.dev{path}"
 
     image_url = frontmatter.image
     if image_url:
@@ -185,7 +186,7 @@ def _build_meta(permalink: str, frontmatter: Frontmatter) -> List["MetaTag"]:
         MetaTag(name="twitter:card", content="summary_large_image"),
         MetaTag(name="twitter:site", content="@florimondmanca"),
         # OpenGraph
-        MetaTag(name="og:url", content=url),
+        MetaTag(property="og:url", content=url),
         MetaTag(property="og:type", content="article"),
         MetaTag(property="og:title", content=frontmatter.title),
         MetaTag(property="og:description", content=frontmatter.description),
