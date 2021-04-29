@@ -35,7 +35,7 @@ class Page:
 
     @property
     def is_category(self) -> bool:
-        return self.permalink.startswith("/category/")
+        return self.permalink.startswith("/en/category/")
 
 
 class Index:
@@ -44,7 +44,13 @@ class Index:
     """
 
     def __init__(self) -> None:
-        self.pages: typing.List[Page] = []
+        self._pages: typing.Dict[str, typing.List[Page]] = {}
+
+    def set_pages(self, pages: typing.Dict[str, typing.List[Page]]) -> None:
+        self._pages = pages
+
+    def get_pages(self) -> typing.List[Page]:
+        return self._pages["en"]
 
     def get_post_pages(
         self,
@@ -55,7 +61,7 @@ class Index:
     ) -> typing.List[Page]:
         posts = []
 
-        for page in self.pages:
+        for page in self.get_pages():
             if not page.is_post:
                 continue
             if tag is not None and tag not in page.frontmatter.tags:
@@ -71,7 +77,7 @@ class Index:
         return posts[:limit]
 
     def get_category_pages(self) -> typing.List[Page]:
-        return [page for page in self.pages if page.is_category]
+        return [page for page in self.get_pages() if page.is_category]
 
 
 class MetaTag:
