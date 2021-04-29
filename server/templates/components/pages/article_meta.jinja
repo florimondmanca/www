@@ -6,7 +6,7 @@
     {{ page.frontmatter.date | dateformat }}
     |
     in
-    <a href="{{ url_for('page', permalink='/category/' + page.frontmatter.category) }}">
+    <a href="{{ url_for('page', permalink='category/' + page.frontmatter.category) }}">
       {{ page.frontmatter.category | category_label }}
     </a>
   </div>
