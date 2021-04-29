@@ -165,7 +165,7 @@ def _build_permalink(location: str) -> str:
 
 
 def _build_meta(permalink: str, frontmatter: Frontmatter) -> List["MetaTag"]:
-    url = f"https://florimond.dev/blog{permalink}"
+    url = f"https://florimond.dev/blog{permalink}"  # TODO
 
     image_url = frontmatter.image
     if image_url:

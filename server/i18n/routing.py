@@ -15,7 +15,7 @@ class LocaleRoute(Route):
         language = scope["language"]
 
         # Let route match regardless of language prefix.
-        # Example: a request to "/fr/blog" should match `LocaleRoute("/blog")`.
+        # Example: a request to "/fr/xyz" should match `LocaleRoute("/xyz")`.
 
         language_prefix = f"/{language}"
         if not path.startswith(language_prefix):

@@ -1,41 +1,44 @@
-import typing
+from typing import Callable, Dict
 
 from starlette import status
-from starlette.datastructures import URL
 from starlette.requests import Request
-from starlette.responses import RedirectResponse
+from starlette.responses import Response, RedirectResponse
 from starlette.types import ASGIApp, Receive, Scope, Send
+from starlette.middleware.base import BaseHTTPMiddleware
 
 
-class LegacyRedirectMiddleware:
+class LegacyRedirectMiddleware(BaseHTTPMiddleware):
     def __init__(
         self,
         app: ASGIApp,
         *,
-        url_mapping: typing.Dict[str, str],
+        url_mapping: Dict[str, str],
     ) -> None:
-        self.app = app
+        super().__init__(app)
         self.url_mapping = url_mapping
 
-    def get_responder(self, scope: Scope) -> ASGIApp:
-        if scope["type"] != "http":
-            return self.app
-
-        path = scope["path"]
+    async def dispatch(self, request: Request, call_next: Callable) -> Response:
+        path = request.url.path
 
         if path not in self.url_mapping:
-            return self.app
+            response = await call_next(request)
+
+            # User may have requested `/xyz/` when only `/xyz` is
+            # in the URL mapping, resulting in a 404 false-positive.
+            # Attempt mapping from `/xyz`.
+            if response.status_code != 404 or not path.endswith("/"):
+                return response
+
+            path = path.rstrip("/")
+            if path not in self.url_mapping:
+                return response
 
         redirect_path = self.url_mapping[path]
 
         return RedirectResponse(
-            URL(scope=scope).replace(path=redirect_path),
+            request.url.replace(path=redirect_path),
             status_code=status.HTTP_301_MOVED_PERMANENTLY,
         )
-
-    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
-        responder = self.get_responder(scope)
-        await responder(scope, receive, send)
 
 
 class DomainRedirect:
