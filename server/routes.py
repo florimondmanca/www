@@ -21,10 +21,8 @@ routes = [
         app=legacy.DomainRedirect("florimond.dev", root_path="/blog"),
         name="legacy:blog_dot_dev",
     ),
-    LocaleRoute("/", views.home),
     Route("/error/", views.error),
     Route("/blog/", views.legacy_blog_home, name="legacy:blog_home"),
-    Route("/blog/{permalink:path}/", views.RenderPage, name="page"),
     Mount(settings.STATIC_ROOT, resources.static, name="static"),
     # These files need to be exposed at the root, not '/static/'.
     Route("/favicon.ico", resources.static, name="favicon"),
@@ -39,6 +37,8 @@ routes = [
         ),
         name="feed-rss",
     ),
+    LocaleRoute("/", views.home),
+    Route("/{permalink:path}/", views.RenderPage, name="page"),
 ]
 
 if settings.DEBUG:  # pragma: no cover

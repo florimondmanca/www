@@ -31,7 +31,7 @@ class Page:
 
     @property
     def is_article(self) -> bool:
-        return self.permalink.startswith("/articles/")
+        return self.permalink.startswith("/en/posts/")
 
     @property
     def is_category(self) -> bool:
