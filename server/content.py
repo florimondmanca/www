@@ -6,7 +6,8 @@ import aiofiles
 import frontmatter as fm
 
 from . import resources, settings
-from .i18n import gettext_lazy as _, using_locale
+from .i18n import gettext_lazy as _
+from .i18n import using_locale
 from .models import ContentItem, Frontmatter, MetaTag, Page
 from .utils import to_production_url
 
