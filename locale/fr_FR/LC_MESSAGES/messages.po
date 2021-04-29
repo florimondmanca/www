@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-22 16:27+0200\n"
+"POT-Creation-Date: 2021-04-29 21:18+0200\n"
 "PO-Revision-Date: 2021-04-22 16:27+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr_FR\n"
@@ -18,15 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
 
-#: server/content.py:128
+#: server/content.py:131
 msgid "Tutorials"
 msgstr "Tutoriels"
 
-#: server/content.py:129
+#: server/content.py:132
 msgid "Essays"
 msgstr "Écrits"
 
-#: server/content.py:130
+#: server/content.py:133
 msgid "Retrospectives"
 msgstr "Rétrospectives"
+
+#: server/templates/components/pages/post_list.jinja:10
+msgid "No posts yet."
+msgstr "Pas encore de billets."
 
