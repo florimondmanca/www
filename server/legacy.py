@@ -1,10 +1,10 @@
 from typing import Callable, Dict
 
 from starlette import status
-from starlette.requests import Request
-from starlette.responses import Response, RedirectResponse
-from starlette.types import ASGIApp, Receive, Scope, Send
 from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request
+from starlette.responses import RedirectResponse, Response
+from starlette.types import ASGIApp, Receive, Scope, Send
 
 
 class LegacyRedirectMiddleware(BaseHTTPMiddleware):
