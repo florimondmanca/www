@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-22 16:27+0200\n"
+"POT-Creation-Date: 2021-04-29 22:31+0200\n"
 "PO-Revision-Date: 2021-04-22 16:27+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr_FR\n"
@@ -18,15 +18,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
 
-#: server/content.py:128
+#: server/content.py:132
 msgid "Tutorials"
 msgstr "Tutoriels"
 
-#: server/content.py:129
+#: server/content.py:133
 msgid "Essays"
 msgstr "Écrits"
 
-#: server/content.py:130
+#: server/content.py:134
 msgid "Retrospectives"
 msgstr "Rétrospectives"
+
+#: server/templates/components/footer.jinja:9
+msgid "Source code"
+msgstr "Code source"
+
+#: server/templates/components/jumbotron.jinja:13
+msgid "Open Source Developer, Idealist On A Journey"
+msgstr "Ingénieur logiciel, idéaliste dans l'âme"
+
+#: server/templates/components/jumbotron.jinja:16
+msgid ""
+"I maintain and contribute to libraries, packages, and tools. Mostly "
+"Python."
+msgstr "Je gère et participe à des projets logiciels (librairies, paquets, outils, …), principalement en Python."
+
+#: server/templates/components/social_links.jinja:3
+msgid "Links"
+msgstr "Liens utiles"
+
+#: server/templates/components/pages/post_list.jinja:10
+msgid "No posts yet."
+msgstr "Pas encore de billets."
 
