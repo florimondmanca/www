@@ -53,7 +53,7 @@ def test_build_pages() -> None:
     assert readability_counts.frontmatter.image == image
 
     meta = [str(tag) for tag in readability_counts.meta]
-    url = "https://florimond.dev/blog/posts/readability-counts"
+    url = "https://florimond.dev/posts/readability-counts/"
     assert '<meta name="twitter:card" content="summary_large_image">' in meta
     assert f'<meta name="twitter:title" content="{title}">' in meta
     assert f'<meta name="twitter:description" content="{description}">' in meta
@@ -73,7 +73,7 @@ def test_build_pages() -> None:
     assert python.frontmatter.tag == "python"
 
     meta = [str(tag) for tag in python.meta]
-    url = "https://florimond.dev/blog/tag/python"
+    url = "https://florimond.dev/tag/python/"
     assert '<meta name="twitter:card" content="summary_large_image">' in meta
     assert f'<meta name="twitter:title" content="{python.frontmatter.title}">' in meta
     assert (
@@ -89,7 +89,7 @@ def test_build_pages() -> None:
     assert essays.frontmatter.tags == []
 
     meta = [str(tag) for tag in essays.meta]
-    url = "https://florimond.dev/blog/category/essays"
+    url = "https://florimond.dev/category/essays/"
     assert '<meta name="twitter:card" content="summary_large_image">' in meta
     assert f'<meta name="twitter:title" content="{essays.frontmatter.title}">' in meta
     assert (
