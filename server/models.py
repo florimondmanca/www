@@ -30,7 +30,7 @@ class Page:
     content: str = ""
 
     @property
-    def is_article(self) -> bool:
+    def is_post(self) -> bool:
         return self.permalink.startswith("/en/posts/")
 
     @property
@@ -46,29 +46,29 @@ class Index:
     def __init__(self) -> None:
         self.pages: typing.List[Page] = []
 
-    def articles_by_date(
+    def get_post_pages(
         self,
         *,
         tag: str = None,
         category: str = None,
         limit: int = None,
     ) -> typing.List[Page]:
-        articles = []
+        posts = []
 
         for page in self.pages:
-            if not page.is_article:
+            if not page.is_post:
                 continue
             if tag is not None and tag not in page.frontmatter.tags:
                 continue
             if category is not None and page.frontmatter.category != category:
                 continue
-            articles.append(page)
+            posts.append(page)
 
-        articles = sorted(
-            articles, key=lambda page: page.frontmatter.date or "", reverse=True
+        posts = sorted(
+            posts, key=lambda page: page.frontmatter.date or "", reverse=True
         )
 
-        return articles[:limit]
+        return posts[:limit]
 
     def get_category_pages(self) -> typing.List[Page]:
         return [page for page in self.pages if page.is_category]

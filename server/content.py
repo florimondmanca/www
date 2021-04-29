@@ -115,7 +115,7 @@ def _generate_tag_pages(tags: Iterable[str]) -> Iterator[Page]:
     for tag in tags:
         frontmatter = Frontmatter(
             title=f"{tag.capitalize()} - {settings.SITE_TITLE}",
-            description=f"Articles about #{tag}",
+            description=f"Posts about #{tag}",
             tag=tag,
         )
         permalink = f"/tag/{tag}"
