@@ -8,7 +8,7 @@ from . import resources, settings
 
 def _common_context() -> dict:
     return {
-        "get_articles": resources.index.articles_by_date,
+        "get_post_pages": resources.index.get_post_pages,
         "get_category_pages": resources.index.get_category_pages,
     }
 

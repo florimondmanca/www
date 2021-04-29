@@ -18,13 +18,13 @@
 {% block content %}
 <main class="mt-6">
   {%- if page.frontmatter.tag -%}
-    {{ TagPage(page.frontmatter.tag, get_articles(tag=page.frontmatter.tag)) }}
-  {%- elif page.is_article -%}
+    {{ TagPage(page.frontmatter.tag, get_post_pages(tag=page.frontmatter.tag)) }}
+  {%- elif page.is_post -%}
     <div class="p-page-content code-container">
       {{ PostPage(page) }}
     </div>
   {%- elif page.is_category -%}
-    {{ CategoryPage(page.frontmatter.category, get_articles(category=page.frontmatter.category)) }}
+    {{ CategoryPage(page.frontmatter.category, get_post_pages(category=page.frontmatter.category)) }}
   {%- else -%}
     {{ raise("Unknown page type") }}
   {%- endif -%}
