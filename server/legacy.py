@@ -13,26 +13,20 @@ class LegacyRedirectMiddleware:
         app: ASGIApp,
         *,
         url_mapping: typing.Dict[str, str],
-        root_path: str,
     ) -> None:
         self.app = app
-        self.root_path = root_path
         self.url_mapping = url_mapping
 
     def get_responder(self, scope: Scope) -> ASGIApp:
         if scope["type"] != "http":
             return self.app
 
-        if not scope["path"].startswith(self.root_path):
-            return self.app
-
-        path = scope["path"][len(self.root_path) :]
+        path = scope["path"]
 
         if path not in self.url_mapping:
             return self.app
 
-        mapped_path = self.url_mapping[path]
-        redirect_path = self.root_path + mapped_path
+        redirect_path = self.url_mapping[path]
 
         return RedirectResponse(
             URL(scope=scope).replace(path=redirect_path),

@@ -14,7 +14,6 @@ middleware = [
     Middleware(
         legacy.LegacyRedirectMiddleware,
         url_mapping=settings.LEGACY_URL_MAPPING,
-        root_path="/blog",
     ),
     Middleware(
         LocaleMiddleware,
