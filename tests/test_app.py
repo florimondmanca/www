@@ -34,7 +34,7 @@ async def test_article_no_trailing_slash(client: httpx.AsyncClient) -> None:
 
 
 async def test_tag(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/tag/python/"
+    url = "http://florimond.dev/en/tag/python/"
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
@@ -58,7 +58,7 @@ def test_known_categories() -> None:
 
 @pytest.mark.parametrize("category", KNOWN_CATEGORIES)
 async def test_category(client: httpx.AsyncClient, category: str) -> None:
-    url = f"http://florimond.dev/category/{category}/"
+    url = f"http://florimond.dev/en/category/{category}/"
     resp = await client.get(url, allow_redirects=False)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]

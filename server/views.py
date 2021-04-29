@@ -26,7 +26,7 @@ class RenderPage(HTTPEndpoint):
     async def get(self, request: Request) -> Response:
         permalink = "/" + request.path_params["permalink"]
 
-        for page in resources.index.pages:
+        for page in resources.index.get_i18n_aware_pages():
             if page.permalink == permalink:
                 break
         else:

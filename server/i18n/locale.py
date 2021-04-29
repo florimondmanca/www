@@ -1,5 +1,7 @@
 import logging
+from contextlib import contextmanager
 from contextvars import ContextVar
+from typing import Iterator
 
 from babel.core import Locale as _Locale
 from babel.support import NullTranslations, Translations
@@ -24,13 +26,21 @@ class Locale:
     A convenience wrapper around a `gettext` translations object.
     """
 
-    def __init__(self, translations: Translations = None) -> None:
+    def __init__(self, language: str, translations: Translations = None) -> None:
+        self._language = language
         self._translations = (
             translations if translations is not None else NullTranslations()
         )
 
+    @property
+    def language(self) -> str:
+        return self._language
+
     def gettext(self, message: str) -> str:
         return self._translations.ugettext(message)
+
+    def __repr__(self) -> str:
+        return f"Locale({self._language!r})"
 
 
 def build_locale(code: str) -> Locale:
@@ -40,7 +50,7 @@ def build_locale(code: str) -> Locale:
     if locale is None:  # pragma: no cover
         raise RuntimeError(f"Unsupported locale: {code!r}")
 
-    return Locale(translations=_translations.get(str(locale)))
+    return Locale(language=locale.language, translations=_translations.get(str(locale)))
 
 
 _locale_context: ContextVar["Locale"] = ContextVar(
@@ -56,3 +66,13 @@ def set_locale(code: str) -> None:
 
 def get_locale() -> "Locale":
     return _locale_context.get()
+
+
+@contextmanager
+def using_locale(code: str) -> Iterator[None]:
+    initial = get_locale().language
+    set_locale(code)
+    try:
+        yield
+    finally:
+        set_locale(initial)

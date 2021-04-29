@@ -16,7 +16,7 @@ async def test_images(client: httpx.AsyncClient) -> None:
     All images linked in articles must exist and be local files.
     """
     remote_urls = []
-    for page in index.pages:
+    for page in index.get_i18n_aware_pages():
         url = page.frontmatter.image
         if url is not None and url.startswith("http"):
             remote_urls.append(url)

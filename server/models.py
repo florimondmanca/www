@@ -1,6 +1,8 @@
 import dataclasses
 import typing
 
+from .i18n import get_locale
+
 
 @dataclasses.dataclass(frozen=True)
 class ContentItem:
@@ -30,12 +32,18 @@ class Page:
     content: str = ""
 
     @property
+    def language(self) -> str:
+        # '/en/posts/...' -> 'en'
+        parts = self.permalink.split("/")
+        return parts[1]
+
+    @property
     def is_post(self) -> bool:
-        return self.permalink.startswith("/en/posts/")
+        return "/posts/" in self.permalink
 
     @property
     def is_category(self) -> bool:
-        return self.permalink.startswith("/category/")
+        return "/category/" in self.permalink
 
 
 class Index:
@@ -44,7 +52,15 @@ class Index:
     """
 
     def __init__(self) -> None:
-        self.pages: typing.List[Page] = []
+        self._pages: typing.Dict[str, typing.List[Page]] = {}
+
+    def get_i18n_aware_pages(self, language: str = None) -> typing.List[Page]:
+        if language is None:
+            language = get_locale().language
+        return self._pages[language]
+
+    def set_pages(self, pages: typing.Dict[str, typing.List[Page]]) -> None:
+        self._pages = pages
 
     def get_post_pages(
         self,
@@ -54,8 +70,9 @@ class Index:
         limit: int = None,
     ) -> typing.List[Page]:
         posts = []
+        pages = self.get_i18n_aware_pages()
 
-        for page in self.pages:
+        for page in pages:
             if not page.is_post:
                 continue
             if tag is not None and tag not in page.frontmatter.tags:
@@ -71,7 +88,8 @@ class Index:
         return posts[:limit]
 
     def get_category_pages(self) -> typing.List[Page]:
-        return [page for page in self.pages if page.is_category]
+        pages = self.get_i18n_aware_pages()
+        return [page for page in pages if page.is_category]
 
 
 class MetaTag:

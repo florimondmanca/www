@@ -6,6 +6,7 @@ from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 from . import settings
+from .i18n import get_locale
 from .models import Index
 from .reload import hotreload
 
@@ -28,10 +29,16 @@ def category_label(value: str) -> str:
     return get_category_label(value)
 
 
+def i18n_path(path: str) -> str:
+    language = get_locale().language
+    return f"/{language}{path}"
+
+
 templates.env.globals["now"] = dt.datetime.now
 templates.env.globals["raise"] = raise_server_error
 templates.env.globals["settings"] = settings
 templates.env.globals["hotreload"] = hotreload
+templates.env.globals["i18n_path"] = i18n_path
 templates.env.filters["dateformat"] = dateformat
 templates.env.filters["category_label"] = category_label
 
