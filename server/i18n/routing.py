@@ -16,10 +16,15 @@ class LocaleRoute(Route):
 
         # Let route match regardless of language prefix.
         # Example: a request to "/fr/blog" should match `LocaleRoute("/blog")`.
-        # NOTE: Unknown languages are passed through and result
-        # in a "no-match", as expected.
-        language_prefix = f"/{language}"
-        if path.startswith(language_prefix):
-            scope["path"] = path[len(language_prefix) :]
 
-        return super().matches(scope)
+        language_prefix = f"/{language}"
+        if not path.startswith(language_prefix):
+            # Unknown languages are passed through and result
+            # in a "no-match", as expected.
+            return super().matches(scope)
+
+        # Don't normalize in-place to avoid interferring with
+        # matching of other routes.
+        normalized_scope = {**scope, "path": path[len(language_prefix) :]}
+
+        return super().matches(normalized_scope)
