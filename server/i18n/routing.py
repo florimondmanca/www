@@ -32,11 +32,20 @@ class LocaleRoute(Route):
         return super().matches(normalized_scope)
 
     def url_path_for(self, name: str, **path_params: str) -> URLPath:
+        # Allow `url_for(..., language=...)`
+        language = path_params.pop("language", None)
+
         url_path = super().url_path_for(name, **path_params)
+
+        # Default to active language if not passed as path param.
+        if language is None:
+            locale = get_locale()
+            language = locale.language
+
         # Prepend language prefix
         # Eg given LocaleRoute("/", name="home") and language="fr",
         # url_for('home') would return "/fr/" (rather than "/").
-        locale = get_locale()
-        language_prefix = f"/{locale.language}"
+        language_prefix = f"/{language}"
         assert not url_path.startswith(language_prefix)
+
         return URLPath(f"{language_prefix}{url_path}")
