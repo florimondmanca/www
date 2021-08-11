@@ -19,7 +19,7 @@ pytestmark = pytest.mark.asyncio
             [
                 ("http://blog.florimond.dev/", 301),
                 ("http://florimond.dev/blog/", 301),
-                ("http://florimond.dev/", 307),
+                ("http://florimond.dev/en/", 307),
             ],
             id="blog:home",
         ),
