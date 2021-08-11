@@ -28,6 +28,10 @@ def category_label(value: str) -> str:
     return get_category_label(value)
 
 
+def language_label(value: str) -> str:
+    return settings.LANGUAGE_LABELS.get(value, value)
+
+
 i18n.setup_jinja2(templates)
 
 templates.env.globals["now"] = dt.datetime.now
@@ -36,6 +40,7 @@ templates.env.globals["settings"] = settings
 templates.env.globals["hotreload"] = hotreload
 templates.env.filters["dateformat"] = dateformat
 templates.env.filters["category_label"] = category_label
+templates.env.filters["language_label"] = language_label
 
 index = Index()
 markdown = md.Markdown(extensions=settings.MARKDOWN_EXTENSIONS)

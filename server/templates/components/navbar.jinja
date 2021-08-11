@@ -2,16 +2,28 @@
 
 {% macro NavBar() %}
 <nav class="p-page-content">
-  {% call ContentWrapper(class="text-center tablet:flex tablet:items-center") %}
-    <a class="inline-block text-lg font-bold py-2 pr-3" href="{{ url_for('home') }}">
-      {{ settings.SITE_TITLE }}
-    </a>
-    <ul class="flex justify-center">
-      {% for page in get_category_pages() %}
+  {% call ContentWrapper(class="text-center tablet:flex items-center justify-between") %}
+    <div class="tablet:flex tablet:items-center">
+      <a class="inline-block text-lg font-bold py-2 pr-3" href="{{ url_for('home') }}">
+        {{ settings.SITE_TITLE }}
+      </a>
+      <ul class="flex justify-center">
+        {% for page in get_category_pages() %}
+        <li>
+          <a class="px-4" href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
+            {{ page.frontmatter.category | category_label }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <ul class="flex justify-center ml-auto">
+      {% for language in settings.LANGUAGES %}
       <li>
-        <a class="px-4" href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
-          {{ page.frontmatter.category | category_label }}
+        <a href="{{ url_for('home', language=language) }}">
+          {{ language | language_label }}
         </a>
+        {% if not loop.last %}/&nbsp;{% endif %}
       </li>
       {% endfor %}
     </ul>

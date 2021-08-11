@@ -31,6 +31,10 @@ LOCALE_DIR = HERE.parent / "locale"
 LOCALE_DOMAIN = "messages"
 LOCALE_TRANSLATIONS = ["fr_FR"]
 LANGUAGES = ["en", "fr"]
+LANGUAGE_LABELS = {
+    "en": "EN",
+    "fr": "FR",
+}
 DEFAULT_LANGUAGE = "en"
 
 EXTRA_CONTENT_DIRS = config(

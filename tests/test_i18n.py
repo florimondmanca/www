@@ -12,6 +12,7 @@ async def test_i18n_home(client: httpx.AsyncClient) -> None:
     assert "text/html" in resp.headers["content-type"]
 
     assert f'href="{url}"' in resp.text  # Navbar home link is localized.
+    assert "EN" in resp.text and "FR" in resp.text  # Language switch is present.
     assert "Tutoriels" in resp.text  # Navbar categories are localized.
 
 
