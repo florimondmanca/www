@@ -3,16 +3,18 @@
 # Development, tools and testing dependencies.
 autoflake==1.4
 asgi-lifespan==1.0.1
-black==20.8b1
+black==21.7b0
 exdown==0.8.8
-flake8==3.8.4
+flake8==3.9.2
 flake8-bugbear==20.1.4
-flake8-comprehensions==3.3.0
+flake8-comprehensions==3.5.0
 flake8-pie==0.6.1
 isort==5.5.4
-mypy==0.812
-Pillow==8.2.0
-pytest==6.2.3
-pytest-asyncio==0.14.0
-pytest-cov==2.10.1
+mypy==0.910
+Pillow==8.3.1
+pytest==6.2.4
+pytest-asyncio==0.15.1
+pytest-cov==2.12.1
 seed-isort-config==2.2.0
+types-markdown==3.3.2
+types-aiofiles==0.1.9
