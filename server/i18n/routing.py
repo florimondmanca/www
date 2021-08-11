@@ -1,7 +1,9 @@
 from typing import Tuple
 
 from starlette.datastructures import Scope
-from starlette.routing import Match, Route
+from starlette.routing import Match, Route, URLPath
+
+from .locale import get_locale
 
 
 class LocaleRoute(Route):
@@ -28,3 +30,13 @@ class LocaleRoute(Route):
         normalized_scope = {**scope, "path": path[len(language_prefix) :]}
 
         return super().matches(normalized_scope)
+
+    def url_path_for(self, name: str, **path_params: str) -> URLPath:
+        url_path = super().url_path_for(name, **path_params)
+        # Prepend language prefix
+        # Eg given LocaleRoute("/", name="home") and language="fr",
+        # url_for('home') would return "/fr/" (rather than "/").
+        locale = get_locale()
+        language_prefix = f"/{locale.language}"
+        assert not url_path.startswith(language_prefix)
+        return URLPath(f"{language_prefix}{url_path}")

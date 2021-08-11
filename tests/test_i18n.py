@@ -11,7 +11,8 @@ async def test_i18n_home(client: httpx.AsyncClient) -> None:
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
 
-    assert "Tutoriels" in resp.text  # Navbar
+    assert f'href="{url}"' in resp.text  # Navbar home link is localized.
+    assert "Tutoriels" in resp.text  # Navbar categories are localized.
 
 
 @pytest.mark.asyncio
