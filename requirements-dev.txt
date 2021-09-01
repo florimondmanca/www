@@ -3,7 +3,7 @@
 # Development, tools and testing dependencies.
 autoflake==1.4
 asgi-lifespan==1.0.1
-black==21.7b0
+black==21.8b0
 exdown==0.8.8
 flake8==3.9.2
 flake8-bugbear==20.1.4
