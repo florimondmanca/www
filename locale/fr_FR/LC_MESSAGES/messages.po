@@ -24,7 +24,7 @@ msgstr "Tutoriels"
 
 #: server/content.py:133
 msgid "Essays"
-msgstr "Écrits"
+msgstr "Billets"
 
 #: server/content.py:134
 msgid "Retrospectives"
@@ -36,13 +36,13 @@ msgstr "Code source"
 
 #: server/templates/components/jumbotron.jinja:13
 msgid "Open Source Developer, Idealist On A Journey"
-msgstr "Ingénieur logiciel, idéaliste dans l'âme"
+msgstr "Ingénieur logiciel et environnement"
 
 #: server/templates/components/jumbotron.jinja:16
 msgid ""
 "I maintain and contribute to libraries, packages, and tools. Mostly "
 "Python."
-msgstr "Je gère et participe à des projets logiciels (librairies, paquets, outils, …), principalement en Python."
+msgstr "Je développe des logiciels libres et autres outils, principalement en Python. J'agis pour un numérique plus sobre et compatible +2°C."
 
 #: server/templates/components/social_links.jinja:3
 msgid "Links"
