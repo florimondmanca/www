@@ -4,7 +4,6 @@ import typing
 
 from . import i18n
 
-
 PRIVATE_RE = re.compile(r"prv-\d+$")
 
 
