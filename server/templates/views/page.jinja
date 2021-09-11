@@ -17,6 +17,10 @@
 
 {% block content %}
 <main class="mt-6">
+  {%- if page.is_private -%}
+  <p style="color: red; text-align: center;">Ce lien est privé : veuillez ne pas le partager !</p>
+  {%- endif -%}
+
   {%- if page.frontmatter.tag -%}
     {{ TagPage(page.frontmatter.tag, get_post_pages(tag=page.frontmatter.tag)) }}
   {%- elif page.is_post -%}

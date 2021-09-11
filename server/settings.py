@@ -50,7 +50,14 @@ IMAGE_ALLOWED_MAX_SIZE_KB = 32
 CONTENT_DIR = HERE.parent / "content"
 with open(HERE / "assets" / "legacy-blog-url-mapping.json") as f:
     LEGACY_URL_MAPPING = json.loads(f.read())
-MARKDOWN_EXTENSIONS: list = ["codehilite", "fenced_code", "tables", ImageFigcaptions()]
+MARKDOWN_EXTENSIONS: list = [
+    "codehilite",
+    "fenced_code",
+    "tables",
+    "footnotes",
+    "toc",
+    ImageFigcaptions(),
+]
 
 SOCIAL_LINKS = [
     {

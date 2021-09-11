@@ -1,7 +1,11 @@
 import dataclasses
+import re
 import typing
 
 from . import i18n
+
+
+PRIVATE_RE = re.compile(r"prv-\d+$")
 
 
 @dataclasses.dataclass(frozen=True)
@@ -45,6 +49,10 @@ class Page:
     def is_category(self) -> bool:
         return "/category/" in self.permalink
 
+    @property
+    def is_private(self) -> bool:
+        return PRIVATE_RE.search(self.permalink) is not None
+
 
 class Index:
     """
@@ -73,6 +81,8 @@ class Index:
 
         for page in self.get_i18n_aware_pages():
             if not page.is_post:
+                continue
+            if page.is_private:
                 continue
             if tag is not None and tag not in page.frontmatter.tags:
                 continue
