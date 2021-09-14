@@ -18,7 +18,7 @@
 {% block content %}
 <main class="mt-6">
   {%- if page.is_private -%}
-  <p style="color: red; text-align: center;">Ce lien est privé : veuillez ne pas le partager !</p>
+  <p style="color: red; text-align: center;">{{ _("This is a private link: please do not share!") }}</p>
   {%- endif -%}
 
   {%- if page.frontmatter.tag -%}

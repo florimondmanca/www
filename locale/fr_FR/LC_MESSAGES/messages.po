@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-29 22:31+0200\n"
+"POT-Creation-Date: 2021-09-14 23:16+0200\n"
 "PO-Revision-Date: 2021-04-22 16:27+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr_FR\n"
@@ -42,7 +42,9 @@ msgstr "Ingénieur logiciel et environnement"
 msgid ""
 "I maintain and contribute to libraries, packages, and tools. Mostly "
 "Python."
-msgstr "Je développe des logiciels libres et autres outils, principalement en Python. J'agis pour un numérique plus sobre et compatible +2°C."
+msgstr ""
+"Je développe des logiciels libres et autres outils, principalement en "
+"Python. J'agis pour un numérique plus sobre et compatible +2°C."
 
 #: server/templates/components/social_links.jinja:3
 msgid "Links"
@@ -51,4 +53,8 @@ msgstr "Liens utiles"
 #: server/templates/components/pages/post_list.jinja:10
 msgid "No posts yet."
 msgstr "Pas encore de billets."
+
+#: server/templates/views/page.jinja:21
+msgid "This is a private link: please do not share!"
+msgstr "Ce lien est privé : veuillez ne pas le partager !"
 

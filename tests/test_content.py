@@ -124,3 +124,33 @@ def test_image_auto_thumbnail(image: str, image_thumbnail: Optional[str]) -> Non
 
     (page,) = build_pages([item])["en"]
     assert page.frontmatter.image_thumbnail == image_thumbnail
+
+
+@pytest.mark.parametrize(
+    "location, is_private",
+    [
+        ("en/posts/test.md", False),
+        ("en/posts/test-prv.md", False),
+        ("en/posts/test-prv-1.md", True),
+        ("en/posts/test-prv-3535.md", True),
+    ],
+)
+def test_is_private(location: str, is_private: bool) -> None:
+    items = [
+        ContentItem(
+            content=dedent(
+                """
+                ---
+                title: "Test"
+                description: "Test"
+                date: "2020-01-01"
+                ---
+                """
+            ),
+            location=location,
+        ),
+    ]
+
+    (page,) = build_pages(items)["en"]
+
+    assert page.is_private is is_private
