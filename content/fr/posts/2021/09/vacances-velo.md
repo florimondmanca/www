@@ -2,8 +2,8 @@
 title: |
   La Garonne à vélo : récit engagé de vacances bas carbone
 description: |
-  Je retrace pour vous l'organisation d'une semaine de vacances en train + vélo très réussie, espérant puisse servir d'inspiration. Après une analyse économico-climatique, je termine sur des perspectives pour rendre ce modèle crédible et désirable aux yeux du plus grand nombre.
-date: "2021-09-11"
+  Je retrace pour vous l'organisation d'une semaine de vacances en train + vélo très réussie, espérant qu'elle puisse servir d'inspiration. On fera aussi le bilan économique et climatique, pour finir sur des perspectives pour rendre ce modèle crédible et désirable aux yeux du plus grand nombre.
+date: "2021-09-14"
 category: essays
 tags:
   - climat
@@ -52,13 +52,13 @@ Jusqu'ici, mes vacances d'été (en famille ou entre amis) se faisaient habituel
 
 [0]: https://bonpote.com/pourquoi-arreter-lavion-ne-devrait-plus-etre-un-debat/
 
-C'est là qu'entre en scène le duo **train + vélo** ! 🚆🚴‍♂️
+C'est là qu'entre en scène le duo **train + vélo** ! 🚆🚲
 
 En effet, d'un point de vue climat :
 
 * Voyager en **train** est **particulièrement intéressant en France**, grâce à un réseau ferré d'excellente qualité _[quoiqu'on en dise]_ et propulsé à l'électricité bas carbone. En ordre de grandeur, un trajet en TGV émet ainsi **100 fois moins** de GES qu'en voiture ou en avion à distance équivalente [^3].
 * Concernant le **vélo**, son impact carbone à l'usage va de virtuellement nul (pour un vélo classique) à aussi bien que le TGV dans le cas d'un VAE (vélo à assistance électrique) [^4]. D'une manière générale, [le vélo est un excellent moyen de décarboner la mobilité](https://bonpote.com/le-velo-est-le-meilleur-moyen-de-decarboner-nos-mobilites-4-5/), alors aucune raison de s'en priver pour les vacances !
-* Enfin, **train et vélo** se combinent très bien ! En France, la SNCF fait de plus en plus de **places vélo** dans les trains. La plupart des TER disposent désormais de 6 places à vélo. L'été, ça peut être peu et occasionner un peu de congestion… Les places en TGV et Intercités sont réservables, mais elles partent très vite : pensez donc à **réserver vos trains** le plus tôt possible.
+* Enfin, **train et vélo** se combinent très bien ! En France, la SNCF fait de plus en plus de **places vélo** dans les trains. La plupart des TER disposent désormais d'au moins 6 places vélo _[encore parfois trop peu pour éviter les congestions l'été…]_, et certains TGV et Intercités proposent des emplacements à la réservation _[et d'ailleurs elles partent vite : il faut s'y prendre à l'avance !]_.
 
 [^3]: Source : [Base carbone](https://www.bilans-ges.ademe.fr/) de l'ADEME.
 [^4]: _Ibid_. Plus précisément, l'impact à l'usage retenu par l'ADEME est de 0 gCO2e/km pour le vélo classique et 2 gCO2e/km pour le VAE. La différence provenant de l'usage d'électricité dans le cas du VAE. Pour le vélo classique, seul l'alimentation du cycliste intervient, mais le surplus dû à l'effort est négligeable lors d'une pratique de loisir. En analyse de cycle de vie (ACV), on trouve le chiffre de 5 gCO2e/km pour le vélo classique (Fédération cycliste européenne, 2011, étude dont je n'ai néanmoins trouvé que des citations sur le web) et 11 gCO2e/km pour le VAE (Base carbone).
@@ -81,27 +81,27 @@ Cette introduction étant faite, voyons maintenant les détails du voyage…
 
 ### Organisation générale
 
-Le concept général était de descendre le **canal latéral à la Garonne**, entre Toulouse et Bordeaux. Long d'environ 200km, il fait partie du [Canal des 2 Mers](https://fr.wikipedia.org/wiki/Canal_des_Deux-Mers), dont l'autre partie est le Canal du Midi, l'ensemble permettant aux navires de relier la Méditérannée à l'Atlantique par voie fluviale.
+Le concept général était de descendre le **canal latéral à la Garonne**, entre Toulouse et Bordeaux. Long d'environ 200 km, il fait partie du [Canal des 2 Mers](https://fr.wikipedia.org/wiki/Canal_des_Deux-Mers), dont l'autre partie est le Canal du Midi, l'ensemble permettant aux navires de relier la Méditérannée à l'Atlantique par voie fluviale.
 
 ![Carte approximative de l'itinéraire et des différentes étapes. Adapté d'une carte fluviale entre Toulouse et Bordeaux. Crédit : pnich.com, modifié avec Inkscape.](/static/img/vacances-velo-carte.svg)
 
-Côté logistique, comme nous étions 8 voyageuses et voyageurs venus de toute la France : il nous a donc fallu planifier un peu. Pour le détail, nous nous sommes retrouvés à Paris, pour descendre ensuite à Bordeaux en TGV grâce à la LGV inaugurée en 2017. De là, nous avons récupéré des vélos de location puis sommes remontés à Toulouse en TER pour entamer le voyage à proprement parler le long du canal (en sens inverse au TER, donc). Après avoir rendu les vélos à Bordeaux, nous avons pu rentrer à Paris en TGV, puis rentrer chez soi le lendemain.
+Côté logistique, nous étions 8 voyageuses et voyageurs venus de toute la France : il nous a donc fallu planifier un peu. Pour le détail, nous nous sommes retrouvés à Paris, pour descendre ensuite à Bordeaux en TGV grâce à la LGV inaugurée en 2017. De là, nous avons récupéré des vélos de location puis sommes remontés à Toulouse en TER pour entamer le voyage à proprement parler le long du canal (en sens inverse au TER, donc). Après avoir rendu les vélos à Bordeaux, nous avons pu rentrer à Paris en TGV, et rentrer au bercail le lendemain.
 
 ### Caractéristiques du parcours
 
 - Durée : 7 jours (du samedi matin au samedi soir).
-- Distance : 250 km environ (détours compris), pour ~ 17 h de vélo au total, à 15 km/h en moyenne (soit ~ 35 km et ~ 2h30 par jour en moyenne). Les distances hautes et basses étaient de 45km (Moissac-Agen) et 25km (Marmande-La Réole) respectivement.
-- Dénivelé : ~ 1000 m en positif (D+) au total et ~ 1100 m en négatif (D-), selon l'appli de GPS vélo, soit entre 50 m et 200 m de D+/D- par jour en moyenne. Seules quelques montées et descentes lors des passages de ponts ou pour rallier les villes et villages d'arrêt (au Mas d'Agenais ou à Aiguillon notamment) ponctuaient ce parcours qui était donc globalement très plat _[le long d'un canal, c'est logique !]_.
+- Distance : 250 km environ (détours compris), pour ~ 17 h de vélo au total, à 15 km/h en moyenne (soit ~ 2h30 et ~ 36 km par jour en moyenne). Les distances hautes et basses étaient de 45 km (Moissac-Agen) et 25 km (Marmande-La Réole) respectivement.
+- Dénivelé : ~ 1000 m en positif (D+) au total et ~ 1100 m en négatif (D-), selon l'appli de GPS vélo, soit entre 50 m et 200 m de D+/D- par jour en moyenne. Seules quelques montées et descentes lors des passages de ponts ou pour rallier les villes et villages d'arrêt (au Mas d'Agenais ou à Aiguillon notamment) : ce parcours était donc globalement très plat _[le long d'un canal, c'est logique !]_.
 
 ### Étapes
 
 | Jour | Trajet | Distance à vélo (durée approx.) | Activités | Nuit |
 |------|--------|--------------------------|-----------|------|
-| Samedi 21/08 | Paris > Bordeaux (TGV) > Toulouse (TER avec vélos) | / | Récupération des vélos à Bordeaux, visite et soirée à Toulouse | Toulouse |
+| Samedi 21/08 | Paris > Bordeaux (TGV) > Toulouse (TER avec vélos) | - | Récupération des vélos à Bordeaux, visite et soirée à Toulouse | Toulouse |
 | Dimanche 22/08 | Toulouse > Verdun-sur-Garonne | 36 km (2h) | Repas et balade nocturne à Verdun-sur-Garonne | Verdun-sur-Garonne |
 | Lundi 23/08 | Verdun-sur-Garonne > Montech > Montauban | 27 km (1h30) | Pic-nic à Montech, visite et soirée à Montauban (Place nationale, centre historique) | Montauban |
 | Mardi 24/08 | Montauban > Montech > Moissac | 32 km (1h45) | Pente d'eau de Montech, visite de Moissac (Pont canal, centre historique, abbaye) | Moissac |
-| Mercredi 25/08 | Moissac > Valence d'Agen > Agen | 44 km (2h30) | Visite de Valence d'Agen, aperçu de la centrale nucléaire de Golfech, visite d'Agen (Musée des Beaux Arts, centre historique) | Agen |
+| Mercredi 25/08 | Moissac > Valence d'Agen > Agen | 44 km (2h30) | Visite de Valence d'Agen, contournement de la centrale nucléaire de Golfech, visite d'Agen (Musée des Beaux Arts, centre historique) | Agen |
 | Jeudi 26/08 | Agen > Aiguillon | 37 km (2h) | Repos et balade nocturne à Aiguillon | Aiguillon |
 | Vendredi 27/08 | Aiguillon > Le Mas d'Agenais > Marmande | 31 km (1h45) | Visite du Mas d'Agenais, visite de Marmande | Marmande |
 | Samedi 28/08 | Marmande > La Réole > Bordeaux (TER avec vélos) > Paris (TGV) | 24 km (1h20) | Visite de La Réole, _[rupture de caténaire surprise dans le TER ;-)]_, rendu des vélos à Bordeaux | Paris |
@@ -116,10 +116,10 @@ Pour vous donner un ordre d'idée, voici à quoi a ressemblé la chronologie de 
 
 - Avril-mai : choix des dates et de l’itinéraire.
 - Juin : prospection et réservation des logements et des vélos.
-- Juin-juillet : réservation des trains, achat de matériel, un week-end de calibrage pour 4 d'entre nous.
+- Juin-juillet : réservation des trains, achat de matériel, et un week-end de calibrage pour 4 d'entre nous.
 - Août : derniers préparatifs.
 
-Pour un voyage fin août, nous nous y sommes ainsi pris dès avril _[soit 5 mois en avance]_ pour choisir l’itinéraire, les dates, et les principales étapes. Nous nous sommes ensuite réparti les tâches pour gérer les différents aspects : hébergements, location de vélos, activités sur place.
+Pour un voyage fin août, nous nous y sommes ainsi pris dès avril _[soit 5 mois en avance]_ pour choisir l’itinéraire, les dates, et les principales étapes. Nous nous sommes ensuite réparti les différentes tâches : hébergements, location de vélos, activités sur place.
 
 Évidemment, cela n'a pas demandé une attention quotidienne. Par contre, il y a des temps plutôt incompressibles : choix des dates, prospection de logements, réservation des transports.
 
@@ -164,17 +164,17 @@ _[D'ailleurs, s'ils et elles passent par ici, je remercie publiquement François
 
 ### Vélos et équipements
 
-En parallèle de l'hébergement, Léo et Stella se sont occupés de la **location de vélo**. Comparaison des loueurs et des tarifs, liste des besoins en équipement, plan logistique pour les correspondances en train…
+En parallèle de l'hébergement, Léo et Stella se sont occupés de la **location des vélos**. Comparaison des loueurs et des tarifs, liste des besoins en équipement, plan logistique pour les correspondances en train…
 
 Ici, petite contrainte supplémentaire pour nous : Éleonore et Nicolas se rendaient directement à Toulouse sans passer par Bordeaux. Nous avons donc dû trouver un loueur ayant une agence dans ces 2 villes pour faciliter la récupération des vélos _[et, sans que ça ne soit de la pub, nous avons choisi [Pierre Qui Roule](http://www.pierrequiroule.fr/)]_.
 
-Concernant les vélos, après le retour d'expérience de week-ends d'entraînemement pour certains d'entre nous, tout ce qui nous importait était qu'ils soient **confortables et de bonne qualité**. En l'occurrence ce fut le cas : de très bons vélos VTC. Même si l'assise était confortable, nous avons tous opté pour le **cuissard rembourré** — un vrai _must_ pour éviter les frottements et douleurs après de longues heures de vélo. _[Mention spéciale à la [recyclerie sportive de Massy](http://recyclerie-sportive.org/ma-recyclerie-sportive/ma-rs-la-plus-proche/massy-palaiseau/), où Stella a trouvé un magnifique cuissard pour — tenez-vous bien — 2 € !]_
+Concernant les vélos, après le retour d'expérience de week-ends de calibrage, tout ce qui nous importait était qu'ils soient **confortables et de bonne qualité**. En l'occurrence ce fut le cas : de très bons vélos VTC. Même si l'assise était confortable, nous avons tous opté pour le **cuissard rembourré** — un vrai _must_ pour éviter les frottements et douleurs après de longues heures de vélo. _[Mention spéciale à la [recyclerie sportive de Massy](http://recyclerie-sportive.org/ma-recyclerie-sportive/ma-rs-la-plus-proche/massy-palaiseau/), où Stella a trouvé un magnifique cuissard d'occasion pour quelques euros seulement.]_
 
 Enfin, qui dit voyage à vélo, dit aussi **sacoches de transport**, pour ranger vêtements, nécessaire de toilette, et autres objets indispensables. Après renseignements, nous avons opté pour **1 sacoche de 20 L par personne** : cela s'est avéré suffisant. Une sacoche commune contenait les objets partagés : savons solides, matelas gonflables de camping, etc.
 
 ![Aperçu de l'équipement aux abords du Pont Canal de Moissac : vélo, sacoche, casque, et vêtements appropriés !](/static/img/vacances-velo-equipement.jpg)
 
-À toute fin utile, voici la liste de ce que j'ai personnellement emporté :
+À toutes fins utiles, voici la liste de ce que j'ai personnellement emporté :
 
 - 1 sous-short cycliste rembourré
 - 2 shorts techniques avec poches
@@ -182,7 +182,7 @@ Enfin, qui dit voyage à vélo, dit aussi **sacoches de transport**, pour ranger
 - 2 t-shirts coton
 - 1 short chino
 - 8 jours de sous-vêtements
-- 2 gants de vélo
+- 1 paire de gants de vélo
 - 1 foulard de tête (*)
 - 1 K-way (*)
 - 1 serviette de bain microfibre
@@ -190,12 +190,12 @@ Enfin, qui dit voyage à vélo, dit aussi **sacoches de transport**, pour ranger
 - 1 gourde supplémentaire 250 mL (*)
 - 1 trousse de toilette (peigne, crème solaire IP50, lunettes de soleil, lentilles, masques, …)
 - 1 paire de chaussures à bonne semelle (chaussures de randonnée en l'occurrence)
-- 1 paire de tongs.
+- 1 paire de tongs
 - 1 nécessaire d'électronique : chargeur de téléphone, batterie portable 1000 mAh (*)
 
-J'aurais finalement pu me passer de items marqués (*) car il était prévisible pour ce voyage que je ne les utilise pas et ils prenaient un peu de place et de poids (or plus on roule léger, mieux c'est !). Le K-way reste tout de même un bon ami pour rouler en cas de pluie _[et d'expérience rassurez-vous, ça se fait quand même assez bien]_.
+J'aurais finalement pu me passer de items marqués (*) car il était prévisible pour ce voyage que je ne les utilise pas et ils prenaient un peu de place et de poids _[or plus on roule léger, mieux c'est !]_. Le K-way reste tout de même un bon ami pour rouler en cas de pluie _[et d'expérience rassurez-vous, ça se fait quand même assez bien]_.
 
-À noter qu'il semble courant que les hébergements ayant l'habitude d'accueillir des cyclistes (notamment labellisés "Accueil Vélo") proposent une machine à laver, ce qui nous a permis d'emporter un ensemble réduit de vêtements de sports.
+À noter qu'il semble courant que les hébergements ayant l'habitude d'accueillir des cyclistes (notamment ceux labellisés "Accueil Vélo") proposent une machine à laver, ce qui nous a permis d'emporter un ensemble réduit de vêtements de sport.
 
 ### Outils numériques
 
@@ -211,7 +211,7 @@ Celui-ci permettait à tout le monde d'avoir accès en lecture et en écriture �
 - **Tourisme** : quelques idées de lieux à visiter.
 - **_Checklist_** : liste de choses à ne surtout pas oublier (vêtements adaptés, crème solaire, …).
 
-À toutes fins utiles, voici les sites et logiciels qui nous ont été particulièrement utiles :
+Voici d'ailleurs les sites et logiciels qui nous ont été particulièrement utiles :
 
 - Telegram (messagerie instantanée, sondages rapides)
 - Google Documents (document de voyage partagé) _[autre option : [FramaPad](https://framapad.org/)]_
@@ -226,7 +226,7 @@ Celui-ci permettait à tout le monde d'avoir accès en lecture et en écriture �
 
 Je conviendrais que connaître, utiliser et combiner tous ces outils _[une bonne dizaine, tout de même !]_ est certainement loin d'être évident ou accessible à tous. Reconnaissons-le, en bonne bande de jeunes ingénieur(e)s et étudiant(e)s, nous sommes de ce point de vue particulièrement privilégiés…
 
-Mais même si vous n'êtes pas très à l'aise avec le numérique collaboratif, j'aime à penser qu'il reste possible d'organiser des vacances à vélo sans trop de soucis. Pour la navigation par exemple, la voie verte du Canal de la Garonne reste suffisamment balisée pour qu'on puisse se passer de GPS à temps complet et s'appuyer sur une bonne vieille carte papier ! Encore une fois, l'important est de prendre le temps de **préparer à l'avance**.
+Mais même si vous n'êtes pas très à l'aise avec le numérique collaboratif, j'aime à penser qu'il reste possible d'organiser des vacances à vélo sans trop de soucis. Pour la navigation par exemple, la voie verte du Canal de la Garonne reste suffisamment balisée pour qu'on puisse se passer de GPS à temps complet et s'appuyer sur une bonne vieille carte papier ! _[J'en avais d'ailleurs préparé une au cas où, qui sait, tous nos téléphones tombaient en rade…]_ Encore une fois, l'important est de prendre le temps de **préparer à l'avance**.
 
 ![Pause à l'ombre d'un saule pleureur bordant une écluse, entre Moissac et Agen.](/static/img/vacances-velo-pause-saule.jpg)
 
@@ -249,42 +249,41 @@ Voici le bilan détaillé pour la semaine complète, toutes dépenses incluses :
 | Poste | Dépenses par personne | Détails |
 |-------|-----------------------|---------|
 | Transport en train | 167 € | - Aller en TGV : 58 € (Valenciennes - Paris-Massy - Bordeaux) _[carte jeune]_ <br> - Bordeaux-Toulouse en TER avec les vélos : 19 € <br> - La Réole-Bordeaux en TER le dernier jour : 6 € <br> - Retour en TGV : 84 € (Bordeaux - Paris-Massy - Valenciennes) _[carte jeune]_ <br> <br> Distance totale parcourue : ~ 1 750 km (soit 9.5 ¢/km) |
-| Vélos | 64 € | Location de 7 jours (soit 9 € par jour), incluant : 1 vélo, 1 sacoche 20L, 1 antivol, 1 kit de réparation. <br> N.B. : 30 € d'achat de vêtements cyclistes en amont (non-inclus) _[et j'aurais pu trouver moins cher en ressourcerie]_ |
+| Vélos | 64 € | Location de 7 jours (soit 9 € par jour), incluant : 1 vélo, 1 sacoche 20L, 1 antivol, 1 kit de réparation. <br> _N.B._ : 30 € d'achat de vêtements cyclistes en amont (non-inclus) _[et j'aurais pu trouver moins cher en ressourcerie]_ |
 | Hébergement | ~ 120 € | 7 nuitées entre 15 et 22 € par personne et par nuit |
 | Alimentation | ~ 230 € | - 7 repas au restaurant (17 € en moyenne) <br> - 4 repas cuisinés maison (5 € en moyenne) <br> - 5 repas sandwiches (7 € en moyenne) <br> - 2 petit-déjeuners d'hôte (6 € en moyenne) <br> - 6 sorties bars (10 € en moyenne) <br> - Le reste en extras (petits déjeuners maison, fruits, fromages, collations, …) |
-| Tourisme et activités | ~ 20 € | Visites de sites historiques |
+| Tourisme et activités | ~ 20 € | Visites de musées et sites historiques |
 | **TOTAL** | **~ 600 €** | |
 
 ### Aurait-on pu faire mieux ?
 
-Clairement : oui. Nous n'avons pas été très regardants aux dépenses lors de notre voyage. Or, à y regarder de plus près, je me rends compte que l'on aurait pu dépenser bien moins d'argent sans rogner sur la qualité.
+Clairement : oui. Nous n'avons pas été très regardants aux dépenses lors de notre voyage. Or, en rassemblant le tableau ci-dessus, je me suis rendu compte que l'on aurait pu dépenser bien moins d'argent sans rogner sur la qualité.
 
 Par exemple, toutes choses égales par ailleurs :
 
 * **Alimentation** : donner la priorité aux repas fait maison (bons et moins cher) et y aller _molo_ sur les bars aurait permis, selon mes calculs, d'économiser environ 80 €.
-* **Transport en train** : tout d'abord, quelques surcoûts auraient pu être évités en réservant les trains plus en avance _[on avait d'ailleurs carrément oublié de réserver le Bordeaux-Toulouse…]_. Ensuite, à 10 ¢/km pour le train contre 4 ¢/km pour la voiture, partir 2 fois moins loin (Pays de la Loire ou Bretagne par exemple) aurait permis d'économiser au minimum 40 € de train en ordre de grandeur (contre seulement ~ 15 € de voiture).
-* **Vélos** : investir dans une sacoche personnelle aurait permis 10 € d'économies à la location.
+* **Transport en train** : tout d'abord, quelques surcoûts auraient pu être évités en réservant les trains plus en avance _[on avait d'ailleurs carrément oublié de réserver le Bordeaux-Toulouse…]_. Ensuite, à ~ 10 ¢/km pour le train contre ~ 4 ¢/km pour la voiture, partir 2 fois moins loin (Pays de la Loire ou Bretagne par exemple) aurait permis d'économiser en ordre de grandeur au minimum 40 € de train (contre seulement ~ 15 € de voiture).
+* **Vélos** : investir _[en occasion de préférence]_ dans une sacoche aurait permis 10 € d'économies à la location.
 
 Soit déjà environ 130 à 150 € d'économies, nous amenant sous la barre des 500 € la semaine.
 
-En poussant un cran plus loin, le poste **hébergement** aurait aussi pu être réduit en optant par exemple pour le **camping**. En investissant _[en occasion de préférence]_ dans du matériel de camping de qualité (matelas gonflables confortables, tentes pratiques, vaisselle compacte…), nous aurions pu passer de 15-22 €/nuit à ~ 3 €/nuit, soit une économie d'environ 110 € supplémentaires ! Et hop, on s'approche de 350 € la semaine…
+En poussant un cran plus loin, le poste **hébergement** aurait aussi pu être réduit en optant par exemple pour le **camping**. En investissant _[en occasion de préférence]_ dans du matériel de camping de qualité (matelas gonflables confortables, tentes pratiques, vaisselle compacte…), nous aurions pu passer de 15-22 €/nuit à ~ 3 €/nuit, soit environ 110 € d'économies supplémentaires. Et hop, on s'approche de 350 € la semaine…
 
 La fourchette basse de **400 € la semaine** semble donc envisageable sans trop rogner sur le confort et la qualité.
 
-Et non, l'option tour opérateur ne semble guère plus intéressante : un rapide tour d'horizon sur le web me donne entre 600 et 900 € par personne pour une semaine sur un trajet similaire au nôtre… Il est donc plus économique _[et amusant, non ?]_ d'organiser le voyage soi-même.
+Et pour l'exhaustivité, l'option tour opérateur ne semble guère plus intéressante : un rapide tour d'horizon sur le web me donne entre 600 et 900 € par personne pour une semaine sur un trajet similaire au nôtre… Il reste donc plus économique _[et amusant, non ?]_ d'organiser le voyage soi-même.
 
-Bon, mais après tout, que ce soit à 400 € ou 600 € la semaine par personne, est-ce un tarif raisonnable ?
+Au final, un tarif entre 400 et 600 € la semaine par personne semble d'autant plus raisonnable qu'il correspond à un peu moins de la **moyenne du budget des français** pour les vacances d'été, à en croire un baromètre de 2019 [^6].
 
-En tout cas, l'ordre de grandeur de 500 à 600 € par personne correspond peu ou prou à la **moyenne du budget des français** pour les vacances d'été, à en croire un baromètre de 2019 [^6].
+[^6]: Le budget moyen par foyer s'élevait ainsi en 2019 à environ 2200 €, soit 730 € ou 550 € par personne pour un foyer de 3 ou 4 personnes respectivement. Voir [Baromètre des vacances d'été 2019](https://www.europ-assistance.fr/fr/partenaires/media-room/publications/barometre-des-vacances-ete-europ-assistance-ipsos-2019), étude Ipsos menée pour Europ Assistance, juin 2019.
 
-[^6]: Le budget moyen par foyer s'élevait ainsi en 2019 à environ 2200 €. Voir [Baromètre des vacances d'été 2019](https://www.europ-assistance.fr/fr/partenaires/media-room/publications/barometre-des-vacances-ete-europ-assistance-ipsos-2019), étude Ipsos menée pour Europ Assistance, juin 2019.
-
-Voilà qui est encourageant… Mais livrons-nous à un dernier exercice : comparons à un scénario de vacances plus "classique" : le voiture + mobil-home.
+Voilà qui est encourageant ! Mais livrons-nous à un dernier exercice : comparons à un scénario de vacances plus "classique" : le voiture + mobil-home.
 
 ### Comparaison à un scénario voiture + mobil-home
 
 Pour essayer d'être réaliste, je vais calquer ce scénario sur ce que ma famille et moi ferions en pareille situation. Voici les changements principaux que je vais appliquer :
 
+- **Itinéraire** : location "statique" près de Bordeaux, déplacements dans les alentours au gré des activités.
 - **Transport** : voiture moyenne, hypothèse 4 passagers par voiture (permettant un partage des coûts).
 - **Vélos** : ce poste disparaît.
 - **Hébergement** : location en camping 4 ou 5 étoiles _[nos hébergements en Airbnb et auberges "top confort" valaient bien ça !]_. Un rapide coup d'œil sur le web me donne une estimation à 620 €/semaine environ pour un mobil-home type "cottage" pour 4-5 personnes (nous aurions donc dû en louer 2 pour 8 personnes).
@@ -297,9 +296,9 @@ Voici le résultat :
 
 | Poste | Dépenses par personne | Détails |
 |-------|-----------------------|---------|
-| Transport en voiture (4 passagers) | 71 € | _[Données Mappy]_ <br> - Aller (790 km) : 33,50 € (50/50 péage et carburant) <br> - Déplacements autour de Bordeaux en voiture (200 km) : 4 € (hypothèse carburant à 2 ¢/km) <br> - Retour (790 km) : 33,50 € <br> <br> Distance totale parcourue : ~ 1 780 km (soit 4 ¢/km) |
+| Transport en voiture (4 passagers) | 71 € | _[Données Mappy]_ <br> - Aller (790 km) : 33,50 €/pers (50/50 péage et carburant) <br> - Déplacements sur place en voiture (200 km) : 4 €/pers (hypothèse carburant à 2 ¢/km) <br> - Retour (790 km) : 33,50 €/pers <br> <br> Distance totale parcourue : ~ 1 780 km (soit 4 ¢/km) |
 | Camping | 155 € | 7 nuitées en mobil-home à 620 €/semaine, partagé entre 4 personnes |
-| Alimentation | ~ 190 € | - 8 repas cuisinés maison (5 € en moyenne) <br> - 4 repas au restaurant (15 € en moyenne) <br> - 4 repas sandwiches (7 € en moyenne) <br> - 6 sorties bars (10 € en moyenne) <br> - Le reste en extras (petits déjeuners maison, fruits, fromages, collations, …) |
+| Alimentation | ~ 190 € | - 8 repas cuisinés maison (5 € en moyenne) <br> - 4 repas au restaurant (15 € en moyenne) <br> - 4 repas sandwiches (7 € en moyenne) <br> - 6 sorties bars ou cafés (10 € en moyenne) |
 | Tourisme et activités | ~ 140 € | - 3 sites historiques : 40 € <br> - 1 parc d'attractions : 40 € <br> - 1 visite d'une grotte : 15 € <br> - 1 descente de fleuve en canöe-kayak : 30 € <br> - 1 dégustation de vin : 15 € |
 | **TOTAL** | **~ 560 €** | |
 
@@ -307,7 +306,7 @@ Résultat : on arriverait à ~ 560 € (contre ~ 600 € pour notre voyage train
 
 On peut donc dire que **ces vacances en train + vélo ne coûtent pas _sensiblement_ plus cher**. On l'a même vu : elles pourraient coûter **moins cher**, en partant moins loin (moins de 500 €) ou en optant pour l'aventure totale en camping (moins de 400 €). Les coûts cachés de la voiture (prêt, assurance, entretien, réparartions, …) pourraient encore davantage faire pencher la balance.
 
-Cela dit, je dois bien l'avouer qu'à ce tarif là, clamer que "le train + vélo, c'est _vraiment pas cher_" me paraîtrait déplacé. En effet, alors qu'un tiers de la population est toujours privée de vacances d'été [^7], au cours de la période 2014-2019 deux tiers des français déclaraient avoir été contraints de renoncer à partir en vacances d'été pour raisons financières [^8]. Pour autant, face à la montée en gamme des campings et locations, le tourisme à vélo, qui semble s'adapter aux budgets modérés, pourrait bien s'avérer intéressant pour une part croissante de la population. Voilà cependant qui mériterait analyse et argumentation plus approfondie…
+Cela dit, je dois bien l'avouer qu'à ce tarif là, clamer que "le train + vélo, c'est _pas cher_" me paraîtrait déplacé. En effet, alors qu'un tiers de la population _[22 millions de personnes !]_ est toujours privée de vacances d'été [^7], au cours de la période 2014-2019 deux tiers des français déclaraient avoir été contraints de renoncer à partir en vacances d'été pour raisons financières [^8]. Pour autant, face à la montée en gamme des campings et locations, le tourisme à vélo, qui semble s'adapter aux budgets modérés, pourrait bien s'avérer intéressant pour une part croissante de la population. Voilà cependant qui mériterait analyse et argumentation plus approfondie…
 
 [^7]: Voir à ce sujet [Vacances pour tous : une utopie qui s'éloigne](https://www.monde-diplomatique.fr/2021/07/CLASTRES/63298), _Le Monde Diplomatique_, juillet 2021 ; ou encore [Fais ta valise !](https://www.alternatives-economiques.fr/fais-valise/00089977), Alternatives Economiques, Hors-Série N°02 "Oblik", août 2019.
 [^8]: Voir [Les français et les vacances : quelles inégalités ?](https://www.jean-jaures.org/publication/les-francais-et-les-vacances-quelles-inegalites/), sondage IFOP pour l'UNAT et la Fondation Jean-Jaurès, juillet 2019.
@@ -316,17 +315,17 @@ Cela dit, je dois bien l'avouer qu'à ce tarif là, clamer que "le train + vélo
 
 J'indiquais en introduction qu'un des arguments "massue" en faveur des vacances à vélo était, selon moi, son caractère **bas carbone**. Mais après tout, vous êtes bien en droit de demander une vérification — et moi aussi ça m'intéresse !
 
-Alors, à quel point ces vacances à vélo ont-elles été **douces avec le climat** ? Sont-elles **bas carbone**, c'est-à-dire compatibles avec l'objectif de rester "bien en-dessous de +2°C en 2100", comme le prévoit l'Accord de Paris de 2015 ?
+Alors, à quel point ces vacances à vélo ont-elles été **douces avec le climat** ? Sont-elles réellement **bas carbone**, c'est-à-dire compatibles avec l'objectif de rester "bien en-dessous de +2°C en 2100", comme le prévoit l'Accord de Paris de 2015 ?
 
-Pour y répondre de façon convaincante, et n'ayant pas encore abordé la comptabilité carbone sur ce blog, je vais devoir me livrer à quelques calculs et explications. Rassurez-vous ! Rien d'insurmontable : seulement quelques règles de trois. _[Si vous êtes pressé(e)s, n'hésitez pas à sauter les détails.]_
+Pour y répondre de façon convaincante, et n'ayant pas encore abordé la **comptabilité carbone** sur ce blog, je vais devoir me livrer à quelques calculs et explications. Rassurez-vous ! Rien d'insurmontable : seulement quelques règles de trois. _[Mais n'hésitez pas à sauter les détails.]_
 
-Tout d'abord, je vous explique la méthode : une façon rapide d'estimer les **émissions de GES** (mesurée en **tCO2e**, pour tonnes de CO2-équivalent) associées à une activité est de : 1/ lister attentivement les principaux **postes d'émissions**, c'est-à-dire tout ce qui peut émettre des GES de façon significative (transport, alimentation, usage des bâtiments, etc) ; 2/ les multiplier par les **facteurs d'émissions** correspondants ; 3/ sommer le tout pour obtenir une estimation globale [^9]. Un exemple : si vous parcourez 1500 km en voiture (l'équivalent d'un aller-retour Paris-Marseille), sachant que 1 km d'un trajet longue distance en voiture à essence correspond en moyenne à environ 80 gCO2e par passager, on peut estimer les GES associés à environ 120 kgCO2e par passager. Dans ce calcul, "80 gCO2e/km.passager" est le facteur d'émissions. Rassurez-vous, je ne l'ai pas sorti de mon chapeau ;-) : en France, les facteurs d'émissions sont revus et centralisés dans la [Base Carbone](https://www.bilans-ges.ademe.fr) de l'ADEME (il faut créer un compte pour y accéder). Le résultat sera nécessairement **approximatif**, mais c'est amplement suffisant pour la plupart des usages.
+Tout d'abord, un petit point de méthode : une façon rapide d'estimer les **émissions de GES** (mesurée en **tCO2e**, pour tonnes de CO2-équivalent) associées à une activité est de : 1/ lister attentivement les principaux **postes d'émissions**, c'est-à-dire tout ce qui peut émettre des GES de façon significative (transport, alimentation, usage des bâtiments, etc) ; 2/ les multiplier par les **facteurs d'émissions** correspondants ; 3/ sommer le tout pour obtenir une estimation globale [^9]. Un exemple : si vous parcourez 1500 km en voiture (l'équivalent d'un aller-retour Paris-Marseille), sachant que 1 km d'un trajet longue distance en voiture à essence correspond en moyenne à environ 80 gCO2e par passager, on peut estimer les GES associés à environ 120 kgCO2e par passager. Dans ce calcul, "80 gCO2e/km.passager" est le facteur d'émissions. Rassurez-vous, je ne l'ai pas sorti de mon chapeau ;-) : en France, les facteurs d'émissions sont revus et centralisés dans la [Base Carbone](https://www.bilans-ges.ademe.fr) de l'ADEME (il faut créer un compte pour y accéder). Le résultat sera nécessairement **approximatif**, mais c'est amplement suffisant pour la plupart des usages.
 
 [^9]: Ces 3 étapes correspondent aux rudiments de la méthodologie Bilan Carbone®, qui est gérée en France par l'Association Bilan Carbone. L'utiliser officiellement dans un cadre professionnel requiert une certification, mais rien n'empêche tout un chacun de s'en approprier les grandes lignes, bien au contraire !
 
-Ces éléments de méthodologie étant posés, que signifie alors précisément des vacances "bas carbone" ?
+Maintenant, que signifierait précisément des vacances "bas carbone" ?
 
-Brièvement, sachez qu'en raisonnant à partir des émissions cumulées de GES à ne pas dépasser pour atteindre +1.5°C (resp. +2°C) de réchauffement global, on peut montrer que limiter celui-ci _[une priorité vitale pour les décennies à venir]_ nécessite de réduire les émissions de GES pour atteindre environ **2 tCO2e par personne et par an** d'ici 2050 (resp. 2070) environ, au lieu des quelque 11 tCO2e/pers/an actuellement _[il y a du boulot !]_ [^10].
+Brièvement, sachez qu'en raisonnant à partir des émissions cumulées de GES à ne pas dépasser pour rester sous +1.5°C (resp. +2°C) de réchauffement global _[une priorité vitale pour les décennies à venir]_, on peut montrer que cela revient à réduire les émissions de GES pour atteindre environ **2 tCO2e par personne et par an** d'ici 2050 (resp. 2070) environ, au lieu des quelque 11 tCO2e/pers/an actuellement _[il y a du boulot !]_ [^10].
 
 [^10]: L'échéance de cet objectif est quelque peu fluctuant, mais l'ordre de grandeur est le bon. En France, cet objectif est d'ailleurs inscrit dans la loi : voir p.53, [Stratégie Nationale Bas Carbone](https://www.ecologie.gouv.fr/strategie-nationale-bas-carbone-snbc), révisée en mars 2020, Ministère de la Transition Écologique. Pour en savoir plus sur cette histoire d'empreinte carbone, voir [Comment calculer son empreinte carbone ?](https://bonpote.com/comment-calculer-son-empreinte-carbone/), BonPote, septembre 2020.
 
@@ -334,9 +333,9 @@ Brièvement, sachez qu'en raisonnant à partir des émissions cumulées de GES �
 
 Ramenées à un budget quotidien, ces 2 tCO2e/an correspondent à une moyenne de 5.5 kgCO2e/jour.
 
-On peut donc considérer que des **vacances "bas carbone"** _[ou n'importe quel autre rythme de vie, après tout]_ ne doivent pas dépasser significativement la moyenne de **5 à 6 kgCO2e par jour**.
+On peut donc considérer que des **vacances "bas carbone"** _[et plus généralement n'importe quel mode de vie soutenable]_ ne doivent pas dépasser significativement la moyenne de **5 à 6 kgCO2e par jour**.
 
-Bien, tout ceci étant posé, voici mes petits calculs…
+Bien, voici maintennant mes petits calculs…
 
 <small>_N.B._ : J'ai construit le tableau ci-après comme suit. Pour chaque poste de dépenses vu plus haut, je transpose en listant les postes d'émissions principaux. Le calcul le moins évident est l'hébergement : je ne compte que les sources d'émissions spécifiques à notre présence sur les lieux : pas de chauffage (nous ne l'avons pas utilisé), mais des frais de ménage qu'il faut prendre en compte (car éventuellement associés à des déplacements en voiture et des produits chimiques, par exemple). Je prends à chaque fois des facteurs d'émission issus de la Base Carbone de l'ADEME, en me basant sur la valeur la plus pessimiste en cas d'hésitation.</small>
 
@@ -354,9 +353,9 @@ Bien, tout ceci étant posé, voici mes petits calculs…
 
 Les vacances ayant duré 7 jours, les émissions journalières furent donc de 31.2 / 7 = **~4.5 kgCO2e/jour**. Certains calculs peuvent être discutés, d'autres postes de moindre importance pourraient être ajoutés, mais cet ordre de grandeur semble solide, et il est dans les clous comparé à la limite de 5 à 6 kgCO2e/jour obtenue ci-dessus.
 
-Je conclus donc : **oui, les vacances "train + vélo" sont résolument bas carbone !** 🎉
+Je conclus donc : **oui**, dès aujourd'hui, **les vacances "train + vélo" sont résolument bas carbone !** 🎉
 
-Par ailleurs, un seul calcul suffit à montrer que des vacances similaires avec transport en voiture ne seraient PAS bas carbone. En effet, admettons que l'on parcourerait également 1 750 km en 2 voitures de 4 personnes. Émissions de GES associées par personne : 1 750 km x 180 gCO2e/km / 4 passagers = 79 kgCO2e, soit 11 kgCO2e/jour (à comparer à notre limite de 5 à 6 kgCO2e/jour), _rien que pour la voiture_ ! À l'inverse, pour émettre aussi peu que l'ont fait nos trajets en train (soit 3.5 kgCO2e), on ne pourrait parcourir en voiture que… 80 km environ. Pas de quoi aller bien loin ! ;-)
+À l'inverse, un seul calcul suffit à montrer que des vacances similaires avec transport en voiture ne seraient PAS bas carbone. En effet, admettons que l'on parcourerait également 1 750 km en 2 voitures de 4 personnes. Émissions de GES associées par personne : 1 750 km x 180 gCO2e/km / 4 passagers = 79 kgCO2e, soit 11 kgCO2e/jour (à comparer à notre limite de 5 à 6 kgCO2e/jour), _rien que pour la voiture_ ! À l'inverse, pour émettre aussi peu que l'ont fait nos trajets en train (soit 3.5 kgCO2e), on ne pourrait parcourir en voiture que… 80 km environ. Pas de quoi aller bien loin ! ;-)
 
 ## Conclusion : vers un modèle crédible et désirable ?
 
@@ -368,14 +367,14 @@ Voilà donc la chose démontrée : partir en vacances en **train + vélo** est *
 
 Mais par-delà ses vertus climatiques, peut-on envisager un monde où ce modèle se généraliserait — et soit donc vu comme à la fois **crédible** (accessible, faisable, etc) et **désirable** par la majorité ? Répondre à cette question précisément est évidemment difficile, mais tentons d'apporter quelques pistes.
 
-Il y a, très certainement, des **freins** à lever. D'une part, mon analyse économique _ad hoc_ suggère que l'accessibilité économique semble encore incertaine _[et pas vraiment le courage de creuser plus loin aujourd'hui]_. D'autre part, il existe de nombreux verrous socio-techniques en faveur de la voiture ou de l'avion (marketing, intérêts industriels, "système voiture"). Enfin, les vacances jouent un rôle social particulier [^12] qu'il convient d'analyser pour mieux convaincre. Par exemple, sachant qu'on y cherche, il est vrai, le "dépaysement" voire le "réenchantement" d'un quotidien affadi [^13], je signalerais que oui, **voyager à vélo peut être réellement dépaysant**, tant la France regorge de régions aux paysages d'une superbe diversité _[la vallée de la Garonne avait ainsi pour moi un air de Toscane italienne…]_.
+Il y a, très certainement, des **freins** à lever. D'une part, mon analyse économique _ad hoc_ suggère que l'accessibilité économique semble encore incertaine _[il faudrait cependant creuser le sujet]_. D'autre part, il existe de nombreux verrous socio-techniques en faveur de la voiture ou de l'avion (marketing, intérêts industriels, "système voiture"). Enfin, les vacances jouent un rôle social particulier [^12] qu'il convient d'analyser pour ne pas faire fausse route. Il est ainsi important de rappeler que oui, **voyager à vélo peut être réellement dépaysant** [^13], tant la France regorge de régions aux paysages d'une superbe diversité _[la vallée de la Garonne avait ainsi pour moi un air de Toscane italienne…]_.
 
 [^12]: Voir [Les fonctions sociales des vacances](https://www.alternatives-economiques.fr/fonctions-sociales-vacances/00099845), Alternatives Economiques, juillet 2021.
-[^13]: Voir [L'enchantement du monde touristique](https://www.cairn.info/revue-actes-de-la-recherche-en-sciences-sociales-2007-5-page-4.htm), Bertrand Réau et Franck Poupeau, 2007.
+[^13]: La recherche de "dépaysement" ou de "réenchantement du quotidien" reste en effet très importante dans la pratique des vacances d'été. Voir [L'enchantement du monde touristique](https://www.cairn.info/revue-actes-de-la-recherche-en-sciences-sociales-2007-5-page-4.htm), Bertrand Réau et Franck Poupeau, 2007.
 
 ![Aperçu de la vallée de la Garonne, du haut d'une colline près d'Aiguillon.](/static/img/vacances-garonne-paysage.jpg)
 
-Pourtant, des **pistes** subsistent : plus d'ambition sur la réglementation des vols avec alternative en train _[l'interdiction avec alternative sous 2h30 de la loi climat 2021 ne représentant que quelques lignes non-rentables [^14]]_, restructuration du système "chèques-vacances" en faveur de l'émancipation et de la sobriété, reprise en main d'un réseau ferroviaire petit à petit privatisé pour contrer une baisse prévisible du rapport qualité/prix [^15] alors que sa fréquentation stagne [^16], développement des infrastructures cyclables à portée touristique, lutte plus générale contre la publicité outrancière _[encore une occasion manquée de la loi climat]_, etc.
+Pour autant, des **pistes** existent : réglementation plus ambitieuse des vols avec alternative en train _[l'interdiction avec alternative sous 2h30 de la loi climat 2021 ne représente ainsi que quelques lignes non-rentables [^14]]_, restructuration du système "chèques-vacances" en faveur de l'émancipation et de la sobriété, reprise en main d'un réseau ferroviaire petit à petit privatisé pour contrer une baisse prévisible du rapport qualité/prix [^15] alors que sa fréquentation stagne [^16], développement des infrastructures cyclables et du "système vélo", lutte plus générale contre la publicité outrancière et le _greenwashing_ _[encore une occasion manquée de la loi climat]_, etc.
 
 [^14]: Voir [Décryptage de la loi climat : des promesses non tenues et une occasion manquée de faire émerger un texte historique](https://www.carbone4.com/decryptage-loi-climat), Carbone 4, mars 2021.
 [^15]: Pour un peu d'histoire sur les trains et les privatisations, voir ce [fil Twitter](https://twitter.com/BB27000/status/1425371498295009287?s=20) du compte "BB27000".
@@ -391,13 +390,13 @@ Bien sûr, continuer de **raconter** et **documenter** ces vacances, comme beauc
 
 ## Épilogue
 
-Je termine sur ces quelques mots d'ouverture, en espérant que ce petit guide-récit argumenté et ses "trucs et astuces" d'organisation serve à quelques unes et uns d'entre vous. En tout cas, nous garderons toutes et tous, je crois, un excellent souvenir de ces vacances à vélo. On se projette déjà dans d'autres voyages !
+Je termine sur ces quelques mots d'ouverture, en espérant que ce petit guide-récit argumenté et ses "trucs et astuces" d'organisation servent à quelques unes et uns d'entre vous. En tout cas, nous garderons toutes et tous, je crois, un excellent souvenir de ces vacances à vélo. On se projette déjà dans d'autres voyages !
 
-Pour finir, si vous avez envie de découvrir de véritables **carnets de voyage**, avec moult photos et anecdotes, en voici tout frais de cet été dans la blogosphère :
+Pour aller plus loin, si vous avez envie de découvrir de véritables **carnets de voyage**, avec moult photos et anecdotes, en voici tout frais de cet été dans la blogosphère :
 
 * Colin Leroy-Mira nous raconte son [tour de Creuse à vélo](https://www.colino.net/wordpress/archives/2021/07/17/le-tour-de-creuse-a-velo-jour-1/), effectué au mois de juillet 2021.
 * Tristan Nitot documente son [voyage en train + vélo en Bretagne](https://standblog.org/blog/post/2021/08/25/Vacances-a-velo-en-Bretagne) (Quimper-Paris) d'août 2021, bravant pluie et chemins de terre au retour d'une conférence sur le climat et le numérique.
 
 Et si vous en doutiez, les récits de voyage à vélo **en famille** (hé oui !) ne manquent pas non plus. Jetez un coup d'oeil à [cette page témoignages](https://www.francevelotourisme.com/ils-l-ont-fait/temoignages/recits-voyage-velo-famille) sur FranceVéloTourisme. Et pour plein d'autres histoires, rendez-vous sur le site communautaire [GlobalBiker](https://blog.globalbiker.org/voyages-a-velo/).
 
-Enfin, il est probable qu'un bilan GES plus détaillé des différentes options de vacances que j'ai pu expérimenter (dont le train + vélo, désormais !) arrive plus tard. À suivre… ;-)
+Enfin, il est probable qu'un bilan GES comparatif des différentes options de vacances que j'ai pu expérimenter arrive plus tard. À suivre… ;-)
