@@ -59,6 +59,15 @@ async def test_extra_content_dirs(client: httpx.AsyncClient) -> None:
     assert "Tutoriels" in resp.text  # Navbar
 
 
+async def test_private_link(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/en/posts/2020/01/test-draft-prv-1/"
+    resp = await client.get(url, allow_redirects=False)
+    assert resp.status_code == 200, resp.url
+    assert "text/html" in resp.headers["content-type"]
+    assert "private link" in resp.text.lower()
+    assert "do not share" in resp.text.lower()
+
+
 KNOWN_CATEGORIES = ["tutorials", "essays", "retrospectives"]
 
 

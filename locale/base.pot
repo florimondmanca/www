@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-29 22:31+0200\n"
+"POT-Creation-Date: 2021-09-14 23:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,5 +49,9 @@ msgstr ""
 
 #: server/templates/components/pages/post_list.jinja:10
 msgid "No posts yet."
+msgstr ""
+
+#: server/templates/views/page.jinja:21
+msgid "This is a private link: please do not share!"
 msgstr ""
 
