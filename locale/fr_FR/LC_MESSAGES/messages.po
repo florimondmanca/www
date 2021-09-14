@@ -42,9 +42,7 @@ msgstr "Ingénieur logiciel et environnement"
 msgid ""
 "I maintain and contribute to libraries, packages, and tools. Mostly "
 "Python."
-msgstr ""
-"Je développe des logiciels libres et autres outils, principalement en "
-"Python. J'agis pour un numérique plus sobre et compatible +2°C."
+msgstr "Je développe des outils, services, et logiciels libres, principalement en Python. Je mets mes compétences au service d'un numérique plus sobre, éco-conçu, et compatible avec les limites planétaires."
 
 #: server/templates/components/social_links.jinja:3
 msgid "Links"
