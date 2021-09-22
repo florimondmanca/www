@@ -18,6 +18,24 @@
   @apply px-4;
 }
 
+.p-nav {
+  @apply .p-page-content;
+}
+.p-nav-wrapper {
+  @apply text-center;
+}
+@media screen and (min-width: theme("screens.tablet")), print {
+  .p-nav-wrapper {
+    @apply items-center;
+    @apply flex;
+    @apply justify-between;
+  }
+  .p-nav-links {
+    @apply flex;
+    @apply items-center;
+  }
+}
+
 .p-link {
   @apply border-b;
   @apply border-primary;
@@ -26,7 +44,7 @@
 .c-jumbotron-card {
   @apply text-center;
 }
-@media (min-width: theme("screens.tablet")) {
+@media screen and (min-width: theme("screens.tablet")), print {
   .c-jumbotron-card {
     @apply text-left;
     @apply grid;
@@ -42,14 +60,20 @@
   @apply mt-8;
 }
 
-@media (max-width: theme("screens.tablet")) {
+@media print {
+  .c-page-list-container {
+    @apply mx-0;
+  }
+}
+
+@media screen and (max-width: theme("screens.tablet")) {
   .c-page-list {
     @apply max-w-md;
     @apply mx-auto;
   }
 }
 
-@media (min-width: theme("screens.tablet")) {
+@media screen and (min-width: theme("screens.tablet")) {
   .c-page-list-container {
     @apply max-w-2xl;
   }
@@ -60,7 +84,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .c-page-list-container {
     @apply max-w-4xl;
   }
@@ -69,8 +93,27 @@
   }
 }
 
-.c-page-list-item {
-  @apply mb-12;
+@media screen {
+  .c-page-list-item {
+    @apply mb-12;
+  }
+}
+
+@media print {
+  .c-page-list-item {
+    @apply mb-6;
+    @apply grid;
+    @apply items-center;
+    @apply gap-x-4;
+    grid-template-columns: 1fr 4fr;
+  }
+}
+
+@media print {
+  .c-post-page h1 {
+    @apply text-xl;
+    @apply mb-2;
+  }
 }
 
 .c-post-meta {
@@ -98,11 +141,28 @@
 .markdown h2,
 .markdown h3 {
   @apply font-bold;
-  @apply mt-10;
-  @apply mb-6;
 }
-.markdown p {
-  @apply my-4;
+@media screen {
+  .markdown h1,
+  .markdown h2,
+  .markdown h3 {
+    @apply mt-10;
+    @apply mb-6;
+  }
+  .markdown p {
+    @apply my-4;
+  }
+}
+@media print {
+  .markdown h1,
+  .markdown h2,
+  .markdown h3 {
+    @apply mt-4;
+    @apply mb-2;
+  }
+  .markdown p {
+    @apply my-1;
+  }
 }
 .markdown a {
   @apply p-link;
@@ -117,7 +177,7 @@
   @apply list-disc;
   @apply list-outside;
   @apply pl-8;
-  @apply my-5;
+  @apply my-2;
 }
 .markdown .p-image > img {
   max-height: 20em;
