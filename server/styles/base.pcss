@@ -23,6 +23,21 @@ h3 {
   @apply text-lg;
 }
 
+@media print {
+  body {
+    font-size: 10pt;
+  }
+  h1 {
+    @apply text-xl;
+  }
+  h2 {
+    @apply text-lg;
+  }
+  h3 {
+    @apply text-base;
+  }
+}
+
 a:hover {
   @apply text-primary;
 }
