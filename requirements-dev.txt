@@ -12,7 +12,7 @@ flake8-pie==0.6.1
 isort==5.5.4
 mypy==0.910
 Pillow==8.3.1
-pytest==6.2.3
+pytest==6.2.5
 pytest-asyncio==0.15.1
 pytest-cov==2.12.1
 seed-isort-config==2.2.0
