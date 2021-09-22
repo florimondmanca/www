@@ -1,7 +1,7 @@
 {% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
 
-{% macro NavBar() %}
-<nav class="p-nav">
+{% macro NavBar(class="") %}
+<nav class="p-nav {{ class }}">
   {% call ContentWrapper(class="p-nav-wrapper") %}
     <div class="p-nav-links">
       <a class="inline-block text-lg font-bold py-2 pr-3" href="{{ url_for('home') }}">
