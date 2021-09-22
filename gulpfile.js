@@ -10,6 +10,7 @@ exports.build = function build() {
         require("postcss-import"),
         require("tailwindcss"),
         require("autoprefixer"),
+        require("postcss-clean"),
       ])
     )
     .pipe(rename({ extname: ".css" }))
