@@ -16,18 +16,20 @@
     {% endif %}
   {% endwith %}
 
-  <h3 class="font-bold mt-1 mb-3">
-    <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
-      {{ page.frontmatter.title }}
-    </a>
-  </h3>
+  <div>
+    <h3 class="font-bold mt-1 mb-3">
+      <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
+        {{ page.frontmatter.title }}
+      </a>
+    </h3>
 
-  <p class="mb-2">
-    {{ page.frontmatter.description }}
-  </p>
+    <p class="mb-2">
+      {{ page.frontmatter.description }}
+    </p>
 
-  <small>
-    {{ PostMeta(page) }}
-  </small>
+    <small>
+      {{ PostMeta(page) }}
+    </small>
+  </div>
 </li>
 {% endmacro %}

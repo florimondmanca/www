@@ -22,6 +22,11 @@ module.exports = {
         background: "#424242",
       },
     },
+    extend: {
+      screens: {
+        print: { raw: "print" }, // Allow `class="print:..."` = `@media print { ... }`
+      },
+    },
     fontFamily: {
       body: [
         "Garamond", // Windows, Mac

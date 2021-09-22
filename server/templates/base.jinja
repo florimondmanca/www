@@ -38,11 +38,11 @@
   </head>
 
   <body>
-    {{ NavBar() }}
+    {{ NavBar(class="print:hidden") }}
 
     {% block content %}{% endblock %}
 
-    {{ Footer(class="mt-10") }}
+    {{ Footer(class="mt-10 print:hidden") }}
 
     <!-- Scripts placed at the end of the document so the pages load faster -->
 
@@ -59,6 +59,9 @@
     {% if settings.DEBUG %}
       {{ hotreload.script(url_for('hot-reload')) | safe }}
     {% endif %}
+
+    <!-- EcoIndex rating - https://github.com/simonvdfr/ecoindex-light-js -->
+    <script src="{{ url_for('static', path='/js/ecoindex.min.js') }}" defer></script>
 
     {% block tail %}{% endblock %}
   </body>
