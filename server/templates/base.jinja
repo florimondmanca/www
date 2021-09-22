@@ -60,6 +60,9 @@
       {{ hotreload.script(url_for('hot-reload')) | safe }}
     {% endif %}
 
+    <!-- EcoIndex rating - https://github.com/simonvdfr/ecoindex-light-js -->
+    <script src="{{ url_for('static', path='/js/ecoindex.min.js') }}" defer></script>
+
     {% block tail %}{% endblock %}
   </body>
 </html>
