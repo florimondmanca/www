@@ -1,24 +1,24 @@
 {% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
 
 {% macro Jumbotron() %}
-<div class="bg-surface p-10">
+<div class="bg-surface p-4">
   {% call ContentWrapper() %}
   <div class="c-jumbotron-card">
-    <img class="rounded-half w-32 h-32 mx-auto" src="{{ url_for('static', path='img/me.png') }}" alt="Picture of me" />
+    <img class="rounded-half w-32 h-32 mx-auto print:w-16 print:h-16" src="{{ url_for('static', path='img/me.png') }}" alt="Picture of me" />
     <div class="c-jumbotron-body">
-      <h1 class="font-bold text-3xl my-1">
+      <h1 class="font-bold text-3xl print:text-xl my-1">
         Florimond Manca
       </h1>
-      <h2 class="text-xl">
+      <h2 class="text-xl print:text-lg">
         {{ _('Open Source Developer, Idealist On A Journey') }}
       </h2>
-      <p class="text-muted mb-3">
+      <p class="text-muted">
         {{ _('I maintain and contribute to libraries, packages, and tools. Mostly Python.') }}
       </p>
     </div>
   </div>
 
-  <ul class="flex justify-center">
+  <ul class="flex justify-center mt-3 print:hidden">
     <li>
       <a class="inline-flex px-4 py-1" href="https://github.com/florimondmanca" target="_blank" rel="noopener">
         💻&nbsp;&nbsp;Code
