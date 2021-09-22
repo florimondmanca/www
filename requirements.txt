@@ -10,4 +10,4 @@ markdown==3.3.4
 pygments==2.9.0
 python-frontmatter==0.5.0
 starlette==0.14.2
-uvicorn[standard]==0.14.0
+uvicorn[standard]==0.15.0
