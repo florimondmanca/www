@@ -10,7 +10,7 @@ tags:
   - climat
 image: "/static/img/articles/basculement-ecologique-grandes-ecoles.jpg"
 image_caption: |
-  Couverture de l'ouvrage "La Révolte : enquête sur les jeunes élites face au défi écologique", Marine Miller, Seuil, 2021.
+  Aperçu du bâtiment Eiffel du campus de CentraleSupélec à Gif-sur-Yvette. Florimond Manca, 2021, CC BY-SA.
 ---
 
 Je tombe ce matin (14 octobre 2021) sur un article du _Monde Campus_ : ["La Révolte" : enquête sur cette "élite de la nation" qui veut travailler autrement](https://www.lemonde.fr/campus/article/2021/10/13/la-revolte-enquete-sur-cette-elite-de-la-nation-qui-veut-travailler-autrement_6098195_4401467.html).
