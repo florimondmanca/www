@@ -4,7 +4,7 @@ resources:
       type: github
       endpoint: github
       name: florimondmanca/azure-pipelines-templates
-      ref: refs/tags/4.0
+      ref: refs/heads/master
 
 trigger:
   - master
@@ -29,7 +29,7 @@ jobs:
         parameters:
           nodeVersion: "16.x"
       - script: yarn install
-      - bash: scripts/build
+      - script: make build
 
   - template: job--python-test.yml@templates
     parameters:
@@ -48,4 +48,4 @@ jobs:
         inputs:
           knownHostsEntry: florimond.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD7z+We1qSM6E/IJS1qEUT9liHdQdNL96pAqUSTElAjk+NZsMXViY/ThWG4HkuOQeTsIhlzXvg75xJ8JTWbgWVI=
           sshKeySecureFile: florimond-dev-deploy-id_rsa
-      - bash: scripts/deploy
+      - bash: make deploy
