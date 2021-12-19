@@ -33,7 +33,6 @@ install:
 
 lint:
 	${bin}autoflake --in-place --recursive ${pysources}
-	${bin}seed-isort-config --application-directories=server
 	${bin}isort ${pysources}
 	${bin}black ${pysources}
 	${python} -m server.tools.mdformat
