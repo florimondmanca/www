@@ -54,7 +54,7 @@ pytestmark = pytest.mark.asyncio
 async def test_legacy_redirect_chains(
     client: httpx.AsyncClient, start_url: str, urls: typing.List[str]
 ) -> None:
-    resp = await client.get(start_url, allow_redirects=True)
+    resp = await client.get(start_url, follow_redirects=True)
     assert resp.status_code == 200
     assert [(r.headers["Location"], r.status_code) for r in resp.history] == urls
 
@@ -168,13 +168,11 @@ async def test_legacy_redirect_articles(
 ) -> None:
     # blog.florimond.dev/xyz -> florimond.dev/en/posts/xyz
     resp = await client.get(
-        f"https://blog.florimond.dev{legacy_path}", allow_redirects=True
+        f"https://blog.florimond.dev{legacy_path}", follow_redirects=True
     )
     assert resp.status_code == 200
     assert resp.url == f"https://florimond.dev{path}"
 
     # No such redirection for florimond.dev/xyz/ (these URLs have never existed).
-    resp = await client.get(
-        f"https://florimond.dev{legacy_path}/", allow_redirects=False
-    )
+    resp = await client.get(f"https://florimond.dev{legacy_path}/")
     assert resp.status_code == 404

@@ -4,20 +4,20 @@
   "author": "Florimond Manca",
   "license": "GPL-3.0",
   "scripts": {
-    "build": "gulp build",
-    "watch": "gulp watch"
+    "build": "postcss ./server/styles/styles.pcss -o ./server/static/css/styles.css",
+    "watch": "onchange 'tailwind.config.js' './server/**/*.jinja' './server/styles/**/*.(p)?css' -- yarn build"
   },
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-cli": "^2.3.0",
-    "gulp-postcss": "^8.0.0",
-    "gulp-rename": "^2.0.0",
-    "postcss-clean": "^1.2.2",
-    "postcss-import": "^12.0.1",
-    "tailwindcss": "^1.9.6"
+    "autoprefixer": "^10.4.0",
+    "cssnano": "^5.0.13",
+    "onchange": "^7.1.0",
+    "postcss": "^8.4.5",
+    "postcss-cli": "^9.1.0",
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^3.0.7"
   },
   "engines": {
-    "node": "12.x",
+    "node": "16.x",
     "yarn": "1.x"
   }
 }
