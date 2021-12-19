@@ -27,7 +27,7 @@ jobs:
     steps:
       - template: step--yarn-provision.yml@templates
         parameters:
-          nodeVersion: "12.x"
+          nodeVersion: "16.x"
       - script: yarn install
       - script: make build
 

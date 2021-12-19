@@ -1,12 +1,7 @@
 module.exports = {
-  future: {
-    // See: https://tailwindcss.com/docs/upcoming-changes
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
-  purge: {
-    content: ["./server/templates/**/*.jinja"],
-  },
+  content: [
+    "./server/templates/**/*.jinja",
+  ],
   theme: {
     colors: {
       background: "#FFFFFF",
@@ -14,7 +9,7 @@ module.exports = {
       primary: "#478cc9",
       accent: "#ea3b53",
       muted: {
-        default: "#6b6b6b",
+        500: "#6b6b6b",
         700: "#d1d1d1",
       },
       warn: "#f1714f",
@@ -24,7 +19,9 @@ module.exports = {
     },
     extend: {
       screens: {
-        print: { raw: "print" }, // Allow `class="print:..."` = `@media print { ... }`
+        print: {
+          raw: "print" // Allow `class="print:..."` = `@media print { ... }`
+        },
       },
     },
     fontFamily: {

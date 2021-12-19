@@ -6,3 +6,36 @@
 
 @import "tailwindcss/utilities";
 @import "./utilities.pcss";
+
+@import "./dracula.css";
+
+/* Code
+
+Should not be in a TailwindCSS layer as this CSS
+is dynamically used by Codehilite (should not be purged).
+*/
+
+code {
+  font-size: 0.7rem;
+  color: #282a36;
+  background-color: #f8f8f2;
+  @apply px-1;
+  @apply rounded;
+}
+
+.codehilite>pre {
+  @apply text-sm;
+  @apply px-6;
+  @apply py-4;
+  @apply overflow-auto;
+}
+
+.codehilite code {
+  @apply px-0;
+  color: #f8f8f2;
+  background-color: transparent;
+}
+
+.codehilite+.codehilite {
+  @apply mt-4;
+}

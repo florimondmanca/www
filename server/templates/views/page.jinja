@@ -24,7 +24,7 @@
   {%- if page.frontmatter.tag -%}
     {{ TagPage(page.frontmatter.tag, get_post_pages(tag=page.frontmatter.tag)) }}
   {%- elif page.is_post -%}
-    <div class="p-page-content code-container">
+    <div class="px-4 code-container">
       {{ PostPage(page) }}
     </div>
   {%- elif page.is_category -%}
