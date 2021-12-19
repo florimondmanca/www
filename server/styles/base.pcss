@@ -1,141 +1,111 @@
-@import "./dracula.css";
-
-html,
-body {
-  font-size: 19px;
-}
-
-body {
-  @apply font-body;
-  @apply bg-background;
-  @apply text-on-background;
-}
-
-h1 {
-  @apply text-2xl;
-}
-
-h2 {
-  @apply text-xl;
-}
-
-h3 {
-  @apply text-lg;
-}
-
-@media print {
+@layer base {
+  html,
   body {
-    font-size: 10pt;
+    font-size: 19px;
+  }
+  body {
+    @apply font-body;
+    @apply bg-background;
+    @apply text-on-background;
   }
   h1 {
-    @apply text-xl;
+    @apply text-2xl;
   }
   h2 {
-    @apply text-lg;
+    @apply text-xl;
   }
   h3 {
-    @apply text-base;
+    @apply text-lg;
   }
-}
 
-a:hover {
-  @apply text-primary;
-}
+  @media print {
+    body {
+      font-size: 10pt;
+    }
+    h1 {
+      @apply text-xl;
+    }
+    h2 {
+      @apply text-lg;
+    }
+    h3 {
+      @apply text-base;
+    }
+  }
 
-hr {
-  height: 1px;
-  @apply bg-muted-700;
-}
+  a:hover {
+    @apply text-primary;
+  }
 
-/* Blockquotes */
+  hr {
+    height: 1px;
+    @apply bg-muted-700;
+  }
 
-blockquote {
-  @apply py-2;
-  @apply pl-6;
-  @apply border-l-4;
-  @apply border-muted-700;
-  position: relative;
-  font-size: 1.1em;
-}
+  /* Blockquotes */
 
-/* White rectangle for quotation mark to sit on */
+  blockquote {
+    @apply py-2;
+    @apply pl-6;
+    @apply border-l-4;
+    @apply border-muted-700;
+    position: relative;
+    font-size: 1.1em;
+  }
 
-blockquote:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -4px;
-  height: 2em;
-  width: 5px;
-  margin-top: -1em;
-  @apply bg-background;
-}
+  /* White rectangle for quotation mark to sit on */
 
-/* Quotation mark */
+  blockquote:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -4px;
+    height: 2em;
+    width: 5px;
+    margin-top: -1em;
+    @apply bg-background;
+  }
 
-blockquote:after {
-  content: "\201C";
-  position: absolute;
-  top: 50%;
-  left: -0.5em;
-  line-height: 1em;
-  text-align: center;
-  text-indent: -2px;
-  width: 1em;
-  margin-top: -0.4em;
-  @apply text-muted;
-  @apply text-xl;
-}
+  /* Quotation mark */
 
-/* Cite */
+  blockquote:after {
+    content: "\201C";
+    position: absolute;
+    top: 50%;
+    left: -0.5em;
+    line-height: 1em;
+    text-align: center;
+    text-indent: -2px;
+    width: 1em;
+    margin-top: -0.4em;
+    @apply text-muted-500;
+    @apply text-xl;
+  }
 
-blockquote > cite {
-  @apply italic;
-}
+  /* Cite */
 
-/* Code */
+  blockquote>cite {
+    @apply italic;
+  }
 
-code {
-  font-size: 0.7rem;
-  color: #282a36;
-  background-color: #f8f8f2;
-  @apply px-1;
-  @apply rounded;
-}
+  /* Tables */
+  /* Inspired by: https://github.com/vuejs/vuepress/blob/1a930dc22e4298b648dad37fa07e2442cdcb3c10/packages/%40vuepress/theme-default/styles/index.styl#L163-L177 */
 
-.codehilite > pre {
-  @apply text-sm;
-  @apply px-6;
-  @apply py-4;
-  @apply overflow-auto;
-}
-.codehilite code {
-  @apply px-0;
-  color: #f8f8f2;
-  background-color: transparent;
-}
-
-.codehilite + .codehilite {
-  @apply mt-4;
-}
-
-/* Tables */
-/* Inspired by: https://github.com/vuejs/vuepress/blob/1a930dc22e4298b648dad37fa07e2442cdcb3c10/packages/%40vuepress/theme-default/styles/index.styl#L163-L177 */
-
-table {
-  border-collapse: collapse;
-  display: block;
-  margin: 1rem 0;
-  overflow-x: auto;
-}
-tr {
-  border-top: 1px solid #dfe2e5;
-}
-tr:nth-child(2n) {
-  background-color: #f6f8fa;
-}
-th,
-td {
-  border: 1px solid #dfe2e5;
-  padding: 0.6em 1em;
+  table {
+    border-collapse: collapse;
+    display: block;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+  tr {
+    border-top: 1px solid #dfe2e5;
+  }
+  tr:nth-child(2n) {
+    background-color: #f6f8fa;
+  }
+  th,
+  td {
+    border: 1px solid #dfe2e5;
+    padding: 0.6em 1em;
+  }
 }

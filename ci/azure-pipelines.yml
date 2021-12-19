@@ -4,7 +4,7 @@ resources:
       type: github
       endpoint: github
       name: florimondmanca/azure-pipelines-templates
-      ref: refs/tags/3.3
+      ref: refs/tags/4.0
 
 trigger:
   - master
@@ -27,7 +27,7 @@ jobs:
     steps:
       - template: step--yarn-provision.yml@templates
         parameters:
-          nodeVersion: "12"
+          nodeVersion: "16.x"
       - script: yarn install
       - bash: scripts/build
 
