@@ -37,11 +37,10 @@ LANGUAGE_LABELS = {
 }
 DEFAULT_LANGUAGE = "en"
 
-EXTRA_CONTENT_DIRS = config(
-    "EXTRA_CONTENT_DIRS",
-    cast=lambda v: [pathlib.Path(item) for item in CommaSeparatedStrings(v)],
-    default="",
-)
+EXTRA_CONTENT_DIRS = [
+    pathlib.Path(item)
+    for item in config("EXTRA_CONTENT_DIRS", cast=CommaSeparatedStrings, default="")
+]
 
 # Images take too much room on the Web. Let's limit ourselves
 # to reasonable sizes only.

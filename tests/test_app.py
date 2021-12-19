@@ -12,21 +12,21 @@ pytestmark = pytest.mark.asyncio
 
 async def test_root(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
 
 
 async def test_article(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
 
 
 async def test_article_no_trailing_slash(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 307
     assert resp.headers["Location"] == (
         "http://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
@@ -35,12 +35,12 @@ async def test_article_no_trailing_slash(client: httpx.AsyncClient) -> None:
 
 async def test_tag(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/tag/python/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
 
     url = "http://florimond.dev/fr/tag/test/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
     assert "Tutoriels" in resp.text  # Navbar
@@ -48,12 +48,12 @@ async def test_tag(client: httpx.AsyncClient) -> None:
 
 async def test_extra_content_dirs(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2020/01/test-draft/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
 
     url = "http://florimond.dev/fr/posts/2021/04/test-brouillon/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
     assert "Tutoriels" in resp.text  # Navbar
@@ -61,7 +61,7 @@ async def test_extra_content_dirs(client: httpx.AsyncClient) -> None:
 
 async def test_private_link(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2020/01/test-draft-prv-1/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
     assert "private link" in resp.text.lower()
@@ -80,14 +80,14 @@ def test_known_categories() -> None:
 @pytest.mark.parametrize("category", KNOWN_CATEGORIES)
 async def test_category(client: httpx.AsyncClient, category: str) -> None:
     url = f"http://florimond.dev/en/category/{category}/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
 
 
 async def test_category_i18n(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/fr/category/tutorials/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
     assert "Tutoriels" in resp.text  # Navbar
@@ -95,14 +95,14 @@ async def test_category_i18n(client: httpx.AsyncClient) -> None:
 
 async def test_not_found(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/foo"
-    resp = await client.get(url)
+    resp = await client.get(url, follow_redirects=True)
     assert resp.status_code == 404
     assert "text/html" in resp.headers["content-type"]
 
 
 async def test_internal_server_error(silent_client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/error"
-    resp = await silent_client.get(url)
+    resp = await silent_client.get(url, follow_redirects=True)
     assert resp.status_code == 500
     assert "text/html" in resp.headers["content-type"]
 
@@ -140,7 +140,7 @@ async def test_rss_link(client: httpx.AsyncClient) -> None:
 
 async def test_meta(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
 
