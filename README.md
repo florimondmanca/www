@@ -9,7 +9,7 @@ Code for https://florimond.dev.
 
 Runtime:
 
-- Python 3.9+
+- Python 3.10+
 
 Development only:
 
