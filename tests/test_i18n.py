@@ -7,7 +7,7 @@ from server.i18n import get_locale, set_locale
 @pytest.mark.asyncio
 async def test_i18n_home(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/fr/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
 
@@ -19,7 +19,7 @@ async def test_i18n_home(client: httpx.AsyncClient) -> None:
 @pytest.mark.asyncio
 async def test_i18n_unknown_language(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/de/"
-    resp = await client.get(url, allow_redirects=False)
+    resp = await client.get(url)
     assert resp.status_code == 404
     assert "text/html" in resp.headers["content-type"]
 
