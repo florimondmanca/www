@@ -20,7 +20,7 @@ Development only:
 ## Install
 
 ```bash
-scripts/install [--update]
+make install
 ```
 
 ## Usage
@@ -28,7 +28,10 @@ scripts/install [--update]
 - Run the website locally:
 
 ```bash
-scripts/serve [UVICORN_OPTIONS]
+make serve
+
+# With options:
+make args=[UVICORN_OPTIONS] serve
 ```
 
 - Run the website as it would run in production:
@@ -41,13 +44,16 @@ heroku local
 - Run the test suite:
 
 ```bash
-scripts/test [PYTEST_OPTIONS]
+make test
+
+# With options:
+make args=[PYTEST_OPTIONS] test
 ```
 
 - Build assets:
 
 ```bash
-scripts/build
+make build
 ```
 
 ## Deployment
@@ -58,7 +64,7 @@ This website is deployed via [Dokku](http://dokku.viewdocs.io/dokku/).
 2. Run the deploy script:
 
 ```bash
-scripts/deploy
+make deploy
 ```
 
 ## Settings
