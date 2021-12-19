@@ -17,4 +17,4 @@ pytest-asyncio==0.15.1
 pytest-cov==2.12.1
 seed-isort-config==2.2.0
 types-markdown==3.3.2
-types-aiofiles==0.1.9
+types-aiofiles==0.7.0
