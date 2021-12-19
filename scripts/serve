@@ -1,9 +1,0 @@
-#!/bin/sh -x
-
-export PREFIX=""
-if [ -d 'venv' ] ; then
-    export PREFIX="venv/bin/"
-fi
-
-NODE_ENV=production yarn watch &
-${PREFIX}uvicorn server:app $@ || kill %1
