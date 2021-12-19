@@ -25,7 +25,7 @@ Qu'est-ce qu'on s'y retrouve… Alors, même si je suis plutôt de la fin des an
 
 Oui : de ce que j'en vois, les choses bougent _[timidement, mais distinctement]_ dans les "grandes écoles" françaises depuis quelques années, en particulier dans les écoles d'ingénieurs [^0a].
 
-[^0a]: Pour un aperçu sociologique, voir les travaux d'Antoine Bouzin, par exemple [Place des ingénieurs au sein des luttes écologiques : de la critique des sciences et techniques à l'engagement politique](https://ncloud.zaclys.com/index.php/s/KZ9wz4Mw3LRZAq3#pdfviewer#pdfviewer), 2019.
+[^0a]: Pour un aperçu sociologique, voir les travaux d'Antoine Bouzin, par exemple [Place des ingénieurs au sein des luttes écologiques : de la critique des sciences et techniques à l'engagement politique](https://ncloud.zaclys.com/index.php/s/KZ9wz4Mw3LRZAq3#pdfviewer#pdfviewer), 2019, ou encore [Ce que le militantisme "vert" fait aux ingénieurs : un corps au service de la cause écologiste ?](https://halshs.archives-ouvertes.fr/halshs-03280676), 2021.
 
 À CentraleSupélec, où j'ai étudié, les promotions actuelles parlent ouvertement écologie et changement climatique et, me dit-on, se partagent entre deux amphis des mèmes (dessins humoristiques) de "Janco", du nom de Jean-Marc Jancovici, cet ingénieur polytechnicien qui trouve dans les écoles d'ingénieurs un public très réceptif à une présentation sauce "débandade de graphiques et de chiffres" des enjeux énergie-climat (au risque d'angles morts dans le domaine des sciences humaines et sociales) [^0].
 
