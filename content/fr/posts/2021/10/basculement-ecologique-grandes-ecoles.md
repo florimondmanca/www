@@ -2,7 +2,7 @@
 title: |
   Basculement écologique et « grandes écoles »
 description: |
-  Depuis quelques années, le changement climatique sert de porte d'entrée à une mobilisation croissance d'étudiants et étudiantes ou alumnis des grandes écoles sur les enjeux écologiques et sociaux. Comment l'expliquer ?
+  Depuis quelques années, le changement climatique sert de porte d'entrée à une mobilisation croissante d'étudiants et étudiantes ou alumnis des grandes écoles sur les enjeux écologiques et sociaux. Comment l'expliquer ?
 date: "2021-10-14"
 category: essays
 tags:
