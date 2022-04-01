@@ -7,7 +7,7 @@ black==21.12b0
 exdown==0.8.9
 flake8==4.0.1
 isort==5.10.1
-mypy==0.920
+mypy==0.942
 Pillow==8.3.2
 pytest==6.2.5
 pytest-asyncio==0.16.0
