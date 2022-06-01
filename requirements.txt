@@ -4,7 +4,7 @@ arel==0.2.0
 asgi-sitemaps==0.3.2
 babel==2.9.1
 gunicorn==20.1.0
-httpx==0.21.1
+httpx==0.23.0
 jinja2==3.0.3
 markdown==3.3.6
 pygments==2.10.0
