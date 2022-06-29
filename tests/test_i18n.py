@@ -28,9 +28,7 @@ async def test_i18n_unknown_language(client: httpx.AsyncClient) -> None:
 async def test_i18n_locale() -> None:
     locale = get_locale()
     assert locale.language == "en"
-    assert repr(locale) == "<Locale('en')>"
 
     set_locale("fr")
     locale = get_locale()
     assert locale.language == "fr"
-    assert repr(locale) == "<Locale('fr')>"

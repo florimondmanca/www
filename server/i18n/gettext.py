@@ -1,16 +1,7 @@
+from asgi_babel import gettext, ngettext
 from babel.support import LazyProxy
 
-from .locale import get_locale
-
-
-def gettext(message: str) -> str:
-    locale = get_locale()
-    return locale.gettext(message)
-
-
-def ngettext(singular: str, plural: str, count: int) -> str:
-    # We don't need this yet.
-    raise NotImplementedError  # pragma: no cover
+__all__ = ["gettext", "ngettext", "gettext_lazy"]
 
 
 def gettext_lazy(string: str) -> LazyProxy:

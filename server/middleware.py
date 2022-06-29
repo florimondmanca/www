@@ -9,6 +9,7 @@ from starlette.types import ASGIApp
 
 from . import legacy, settings
 from .i18n.middleware import LocaleMiddleware
+from .i18n.routing import select_locale_by_request
 
 middleware = [
     # NOTE: Middleware executes from top to bottom.
@@ -19,8 +20,9 @@ middleware = [
     ),
     Middleware(
         LocaleMiddleware,
-        languages=settings.LANGUAGES,
-        default_language=settings.DEFAULT_LANGUAGE,
+        default_locale=settings.DEFAULT_LANGUAGE,
+        locales_dirs=["locale"],
+        locale_selector=select_locale_by_request,
     ),
 ]
 

@@ -1,9 +1,19 @@
-from typing import Tuple
+from typing import Optional, Tuple
 
+import asgi_tools
 from starlette.datastructures import Scope
 from starlette.routing import Match, Route, URLPath
 
+from .. import settings
 from .locale import get_locale
+
+
+async def select_locale_by_request(request: asgi_tools.Request) -> Optional[str]:
+    for language in settings.LANGUAGES:
+        if request.url.path.startswith(f"/{language}"):
+            return language
+
+    return None
 
 
 class LocaleRoute(Route):
@@ -13,8 +23,10 @@ class LocaleRoute(Route):
             return super().matches(scope)
 
         path = scope["path"]
-        assert "language" in scope, "LocaleMiddleware is not installed"
-        language = scope["language"]
+        # assert "language" in scope, "LocaleMiddleware is not installed"
+        # language = scope["language"]
+        loc = get_locale()
+        language = loc.language
 
         # Let route match regardless of language prefix.
         # Example: a request to "/fr/xyz" should match `LocaleRoute("/xyz")`.
