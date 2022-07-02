@@ -4,7 +4,7 @@ resources:
       type: github
       endpoint: github
       name: florimondmanca/azure-pipelines-templates
-      ref: refs/heads/master
+      ref: refs/tags/5.0
 
 trigger:
   - master
@@ -24,6 +24,8 @@ jobs:
       pythonVersion: "3.10"
 
   - job: Build
+    pool:
+      vmImage: "ubuntu-latest"
     steps:
       - template: step--yarn-provision.yml@templates
         parameters:
