@@ -40,6 +40,8 @@ jobs:
           coverage: true
 
   - job: Deploy
+    pool:
+      vmImage: "ubuntu-latest"
     dependsOn:
       - Check
       - Build
