@@ -110,7 +110,8 @@ This is actually a very common pattern in Python; I find myself writing `if some
 
 It's so common that there is a Python Enhancement Proposal (PEP) currently in the works ([PEP 505 - None-aware operators](https://www.python.org/dev/peps/pep-0505/#syntax-and-semantics)) that would, among other things, allow to simplify the above code and simply write:
 
-<!--exdown-skip-->
+<!--pytest.mark.skip-->
+
 ```python
 def append(element, seq=None):
     seq ??= []  # ✨

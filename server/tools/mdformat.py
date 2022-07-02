@@ -4,12 +4,14 @@ Format ```python``` code blocks in Markdown source files:
 * Apply `black`.
 """
 import argparse
+import io
 import sys
+import traceback
 from pathlib import Path
 from typing import Iterable, Tuple
 
 import black
-import exdown
+from pytest_codeblocks.main import extract_from_buffer
 
 from ..content import iter_content_paths
 
@@ -29,8 +31,14 @@ def _format_path(path: Path, *, check: bool) -> Tuple[str, bool, list]:
     offset = 0
     changed = False
 
-    for codeblock in exdown.extract(path):
+    with path.open() as f:
+        codeblocks = extract_from_buffer(f)
+
+    for codeblock in codeblocks:
         if codeblock.syntax != "python":
+            continue
+
+        if "pytest.mark.skip" in codeblock.marks:
             continue
 
         source = codeblock.code
@@ -42,11 +50,14 @@ def _format_path(path: Path, *, check: bool) -> Tuple[str, bool, list]:
                 source,
                 mode=black.FileMode(target_versions={black.TargetVersion.PY37}),
             ).splitlines()
-        except black.InvalidInput as exc:
+        except black.InvalidInput:
             if source.startswith(">>> "):
                 # Probably a Python shell snippet. Skip it since Black can't read those.
                 continue
-            errors.append(_danger(f"ERROR: at {path}:{lineno}: {exc}"))
+
+            s = io.StringIO()
+            traceback.print_exc(file=s)
+            errors.append(_danger(f"ERROR: at {path}:{lineno}:\n{s.getvalue()}"))
             continue
 
         if sourcelines == outputlines:
