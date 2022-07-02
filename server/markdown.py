@@ -1,7 +1,8 @@
+from xml.etree import ElementTree as etree
+
 from markdown import Markdown
 from markdown.extensions import Extension
 from markdown.treeprocessors import Treeprocessor
-from markdown.util import etree
 
 
 class ImageFigcaptions(Extension):
@@ -35,7 +36,7 @@ class ImageFigcaptions(Extension):
                 self.append_figcaption(container, image)
 
         def append_figcaption(
-            self, container: etree.ElementTree, image: etree.ElementTree
+            self, container: etree.Element, image: etree.Element
         ) -> None:
             alt = image.get("alt")
 

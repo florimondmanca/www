@@ -5,7 +5,7 @@
   "license": "GPL-3.0",
   "scripts": {
     "build": "postcss ./server/styles/styles.pcss -o ./server/static/css/styles.css",
-    "watch": "onchange 'tailwind.config.js' './server/**/*.jinja' './server/styles/**/*.(p)?css' -- yarn build"
+    "watch": "onchange -i 'tailwind.config.js' './server/**/*.jinja' './server/styles/**/*.(p)?css' -- yarn build"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",

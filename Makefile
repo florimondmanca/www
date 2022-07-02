@@ -25,7 +25,9 @@ install:
 	${pip} install -U pip wheel
 	${pip} install -r requirements-dev.txt
 	make messagesc
-	test ${CI} && yarn install || echo skip
+ifndef CI
+	yarn install
+endif
 	make .env
 
 .env:
@@ -49,11 +51,17 @@ locale/.init:
 messagesc:
 	${bin}pybabel compile --domain messages -d locale
 
-watch:
-	NODE_ENV=production yarn watch
-
 serve:
-	${bin}uvicorn server:app $(args)
+	make -j 2 serve-uvicorn serve-tailwind
+
+serve-uvicorn:
+	./tools/colorize_prefix.sh [server] 34 "${bin}uvicorn server:app --reload"
+
+serve-tailwind:
+	./tools/colorize_prefix.sh [tailwind] 33 "NODE_ENV=production yarn watch"
+
+imgoptimize:
+	${bin}python -m server.tools.imgoptimize
 
 test:
 	${bin}pytest $(args)

@@ -29,9 +29,6 @@ make install
 
 ```bash
 make serve
-
-# With options:
-make args=[UVICORN_OPTIONS] serve
 ```
 
 - Run the website as it would run in production:
