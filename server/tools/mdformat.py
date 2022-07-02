@@ -29,8 +29,14 @@ def _format_path(path: Path, *, check: bool) -> Tuple[str, bool, list]:
     offset = 0
     changed = False
 
-    for source, lineno in exdown.extract(path, syntax_filter="python"):
+    for codeblock in exdown.extract(path):
+        if codeblock.syntax != "python":
+            continue
+
+        source = codeblock.code
+        lineno = codeblock.lineno
         sourcelines = source.splitlines()
+
         try:
             outputlines = black.format_str(
                 source,
