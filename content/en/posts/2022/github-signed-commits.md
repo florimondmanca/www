@@ -1,5 +1,5 @@
 ---
-title: "Signed commits on GitHub"
+title: "Using signed commits on GitHub"
 description: |
     A quick tutorial on setting up signed commits for GitHub-hosted git repositories.
 date: "2022-07-02"
