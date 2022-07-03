@@ -8,8 +8,8 @@ from . import resources, settings
 
 def _common_context() -> dict:
     return {
-        "get_post_pages": resources.index.get_post_pages,
-        "get_category_pages": resources.index.get_category_pages,
+        "get_post_pages": resources.page_repository.find_all_post_pages,
+        "get_category_pages": resources.page_repository.find_all_category_pages,
     }
 
 
@@ -26,10 +26,9 @@ class RenderPage(HTTPEndpoint):
     async def get(self, request: Request) -> Response:
         permalink = "/" + request.path_params["permalink"]
 
-        for page in resources.index.get_i18n_aware_pages():
-            if page.permalink == permalink:
-                break
-        else:
+        page = resources.page_repository.find_by_permalink(permalink)
+
+        if page is None:
             raise HTTPException(404)
 
         context = {"request": request, "page": page, **_common_context()}

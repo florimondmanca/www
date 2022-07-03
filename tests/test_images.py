@@ -4,7 +4,7 @@ import httpx
 import pytest
 
 from server import settings
-from server.resources import index
+from server.resources import page_repository
 from server.tools import imgoptimize, imgsize
 
 IMAGE_RE = re.compile(r"\!\[[^\[\]]*\]\((?P<url>[^\[\]]*?)\)")
@@ -16,7 +16,7 @@ async def test_images(client: httpx.AsyncClient) -> None:
     All images linked in articles must exist and be local files.
     """
     remote_urls = []
-    for page in index.get_i18n_aware_pages():
+    for page in page_repository.find_all():
         url = page.frontmatter.image
         if url is not None and url.startswith("http"):
             remote_urls.append(url)

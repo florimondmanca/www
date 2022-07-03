@@ -6,16 +6,16 @@ import aiofiles
 import frontmatter as fm
 
 from . import resources, settings
+from .domain.entities import ContentItem, Frontmatter, Page
 from .i18n import gettext_lazy as _
 from .i18n import using_locale
-from .models import ContentItem, Frontmatter, MetaTag, Page
 from .utils import to_production_url
 
 
 async def load_content() -> None:
     items = [item async for item in load_content_items()]
     pages = build_pages(items)
-    resources.index.set_pages(pages)
+    resources.page_repository.save(pages)
 
 
 def iter_content_paths() -> Iterator[Tuple[Path, Path]]:
@@ -171,7 +171,7 @@ def _build_permalink(location: str) -> str:
     return "/" + "/".join(segments)
 
 
-def _build_meta(permalink: str, frontmatter: Frontmatter) -> List["MetaTag"]:
+def _build_meta(permalink: str, frontmatter: Frontmatter) -> List[dict]:
     path = permalink + ("" if permalink.endswith("/") else "/")
     url = f"https://florimond.dev{path}"
 
@@ -179,30 +179,30 @@ def _build_meta(permalink: str, frontmatter: Frontmatter) -> List["MetaTag"]:
     if image_url:
         image_url = to_production_url(image_url)
 
-    meta = [
+    meta: list[dict] = [
         # General
-        MetaTag(name="description", content=frontmatter.description),
-        MetaTag(name="image", content=image_url),
-        MetaTag(itemprop="name", content=frontmatter.title),
-        MetaTag(itemprop="description", content=frontmatter.description),
+        dict(name="description", content=frontmatter.description),
+        dict(name="image", content=image_url),
+        dict(itemprop="name", content=frontmatter.title),
+        dict(itemprop="description", content=frontmatter.description),
         # Twitter
-        MetaTag(name="twitter:url", content=url),
-        MetaTag(name="twitter:title", content=frontmatter.title),
-        MetaTag(name="twitter:description", content=frontmatter.description),
-        MetaTag(name="twitter:image", content=image_url),
-        MetaTag(name="twitter:card", content="summary_large_image"),
-        MetaTag(name="twitter:site", content="@florimondmanca"),
+        dict(name="twitter:url", content=url),
+        dict(name="twitter:title", content=frontmatter.title),
+        dict(name="twitter:description", content=frontmatter.description),
+        dict(name="twitter:image", content=image_url),
+        dict(name="twitter:card", content="summary_large_image"),
+        dict(name="twitter:site", content="@florimondmanca"),
         # OpenGraph
-        MetaTag(property="og:url", content=url),
-        MetaTag(property="og:type", content="article"),
-        MetaTag(property="og:title", content=frontmatter.title),
-        MetaTag(property="og:description", content=frontmatter.description),
-        MetaTag(property="og:image", content=image_url),
-        MetaTag(property="og:site_name", content=settings.SITE_TITLE),
-        MetaTag(property="article:published_time", content=frontmatter.date),
+        dict(property="og:url", content=url),
+        dict(property="og:type", content="article"),
+        dict(property="og:title", content=frontmatter.title),
+        dict(property="og:description", content=frontmatter.description),
+        dict(property="og:image", content=image_url),
+        dict(property="og:site_name", content=settings.SITE_TITLE),
+        dict(property="article:published_time", content=frontmatter.date),
     ]
 
     for tag in frontmatter.tags:
-        meta.append(MetaTag(property="article:tag", content=tag))
+        meta.append(dict(property="article:tag", content=tag))
 
     return meta

@@ -3,8 +3,8 @@ from typing import List
 import asgi_sitemaps
 
 from . import settings
-from .models import Page
-from .resources import index
+from .domain.entities import Page
+from .resources import page_repository
 
 
 class StaticSitemap(asgi_sitemaps.Sitemap):
@@ -26,7 +26,7 @@ class PagesSitemap(asgi_sitemaps.Sitemap):
     def items(self) -> List[Page]:
         pages = []
         for language in settings.LANGUAGES:
-            pages.extend(index.get_i18n_aware_pages(language))
+            pages.extend(page_repository.find_all(language))
         return pages
 
     def location(self, page: Page) -> str:
