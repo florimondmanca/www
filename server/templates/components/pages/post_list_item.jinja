@@ -6,11 +6,7 @@
     {% if image_src %}
     <div class="text-center">
       <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}" class="inline-block mb-3">
-        <!--
-        HACK: default to regular image URL if thumbnail was not found.
-        For example, a local image may not have a '_thumbnail' equivalent yet.
-        -->
-        <img src="{{ image_src }}" onerror="this.onerror = null; this.src = '{{ page.frontmatter.image}}'" />
+        <img src="{{ image_src }}" />
       </a>
     </div>
     {% endif %}

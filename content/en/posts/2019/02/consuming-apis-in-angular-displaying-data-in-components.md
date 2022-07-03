@@ -8,6 +8,7 @@ tags:
   - angular
   - webdev
 image: "/static/img/articles/angular-apis.jpg"
+image_thumbnail: __auto__
 image_caption: "Blue and white plastic toy. @sheldonnunes, unsplash.com"
 ---
 

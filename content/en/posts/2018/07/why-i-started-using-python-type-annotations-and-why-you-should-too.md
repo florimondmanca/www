@@ -7,6 +7,7 @@ category: essays
 tags:
   - python
 image: "/static/img/articles/python-type-annotations.jpg"
+image_thumbnail: __auto__
 image_caption: "Code snippet, carbon.now.sh"
 ---
 

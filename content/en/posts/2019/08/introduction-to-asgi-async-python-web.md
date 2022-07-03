@@ -9,6 +9,7 @@ tags:
   - webdev
   - asgi
 image: "/static/img/articles/asgi-intro.jpg"
+image_thumbnail: __auto__
 image_caption: '"Turtles on body of water", Ricard Baraham via unsplash.com'
 ---
 

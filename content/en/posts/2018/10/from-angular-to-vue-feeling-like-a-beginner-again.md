@@ -9,6 +9,7 @@ tags:
   - angular
   - vue
 image: "/static/img/articles/angular-vue-beginner-again.jpg"
+image_thumbnail: __auto__
 image_caption: "Angular, an arrow, and Vue.js."
 ---
 

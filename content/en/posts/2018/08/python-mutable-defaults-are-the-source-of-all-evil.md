@@ -7,6 +7,7 @@ category: tutorials
 tags:
   - python
 image: "/static/img/articles/python-mutable-defaults.jpg"
+image_thumbnail: __auto__
 image_caption: "Green python on brown tree. @tirzavandijk, unsplash.com"
 ---
 

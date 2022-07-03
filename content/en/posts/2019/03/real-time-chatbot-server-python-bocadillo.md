@@ -8,6 +8,7 @@ tags:
   - python
   - webdev
 image: "/static/img/articles/bocadillo-chatterbot.jpg"
+image_thumbnail: __auto__
 image_caption: "Bocadillo + ChatterBot = Awesome tutorial material."
 ---
 

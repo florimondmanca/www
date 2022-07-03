@@ -8,6 +8,7 @@ tags:
   - webdev
   - captainduckduck
 image: "/static/img/articles/captainduckduck2.jpg"
+image_thumbnail: __auto__
 image_caption: "@timmossholder, unsplash.com"
 ---
 

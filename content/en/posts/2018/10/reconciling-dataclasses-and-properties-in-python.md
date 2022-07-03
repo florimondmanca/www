@@ -7,6 +7,7 @@ category: tutorials
 tags:
   - python
 image: "/static/img/articles/dataclasses-properties.jpg"
+image_thumbnail: __auto__
 image_caption: "Two black-and-white birds. @wwwynand, unsplash.com"
 ---
 

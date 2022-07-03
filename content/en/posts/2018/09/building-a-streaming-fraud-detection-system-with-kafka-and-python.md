@@ -8,6 +8,7 @@ tags:
   - kafka
   - python
 image: "/static/img/articles/kafka-fraud.jpg"
+image_thumbnail: __auto__
 image_caption: "Orange and multicolored LEGO toy set. @lh1me via unsplash.com"
 ---
 

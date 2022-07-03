@@ -9,6 +9,7 @@ tags:
   - webdev
   - asgi
 image: "/static/img/articles/tartiflette-starlette.png"
+image_thumbnail: __auto__
 image_caption: "Logo of tartiflette-starlette."
 ---
 

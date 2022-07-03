@@ -7,6 +7,7 @@ category: tutorials
 tags:
   - python
 image: "/static/img/articles/optionally-parametrized-decorators.jpg"
+image_thumbnail: __auto__
 image_caption: "A code snippet of what we're aiming to achieve."
 ---
 

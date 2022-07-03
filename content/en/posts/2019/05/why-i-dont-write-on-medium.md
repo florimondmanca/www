@@ -7,6 +7,7 @@ category: essays
 tags:
   - meta
 image: "/static/img/articles/why-not-medium.jpg"
+image_thumbnail: __auto__
 image_caption: "Business newspaper pages. @freegraphictoday, unsplash.com"
 ---
 

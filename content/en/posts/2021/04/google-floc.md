@@ -6,6 +6,7 @@ category: essays
 tags:
   - web
 image: "/static/img/articles/google-floc.jpg"
+image_thumbnail: __auto__
 image_caption: "A painting on a wall warning visitors about video surveillance. @tobiastu, unsplash.com."
 ---
 

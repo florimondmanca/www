@@ -10,6 +10,7 @@ tags:
   - webdev
   - bocadillo
 image: "/static/img/articles/oss-maintainer.jpg"
+image_thumbnail: __auto__
 image_caption: "Mountain, building, rock formation and abbey. Monestir de Montserrat, Spain. @pichier_sebastian, unsplash.com"
 ---
 

@@ -8,6 +8,7 @@ tags:
   - webdev
   - vue
 image: "/static/img/articles/vuepress-upgrade-1-0.jpg"
+image_thumbnail: __auto__
 ---
 
 [VuePress] is a Vue-powered static site generator. It's great for writing technical documentation, and I've been using it in production for the [Bocadillo docs site](https://bocadilloproject.github.io) since December 2018.
