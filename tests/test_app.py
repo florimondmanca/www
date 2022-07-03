@@ -7,9 +7,8 @@ from server.resources import index
 
 from .utils import find_meta_tags, load_xml_from_string
 
-pytestmark = pytest.mark.asyncio
 
-
+@pytest.mark.asyncio
 async def test_root(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/"
     resp = await client.get(url)
@@ -17,6 +16,7 @@ async def test_root(client: httpx.AsyncClient) -> None:
     assert "text/html" in resp.headers["content-type"]
 
 
+@pytest.mark.asyncio
 async def test_article(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
     resp = await client.get(url)
@@ -24,6 +24,7 @@ async def test_article(client: httpx.AsyncClient) -> None:
     assert "text/html" in resp.headers["content-type"]
 
 
+@pytest.mark.asyncio
 async def test_article_no_trailing_slash(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin"
     resp = await client.get(url)
@@ -33,6 +34,7 @@ async def test_article_no_trailing_slash(client: httpx.AsyncClient) -> None:
     )
 
 
+@pytest.mark.asyncio
 async def test_tag(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/tag/python/"
     resp = await client.get(url)
@@ -46,6 +48,7 @@ async def test_tag(client: httpx.AsyncClient) -> None:
     assert "Tutoriels" in resp.text  # Navbar
 
 
+@pytest.mark.asyncio
 async def test_extra_content_dirs(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2020/01/test-draft/"
     resp = await client.get(url)
@@ -59,6 +62,7 @@ async def test_extra_content_dirs(client: httpx.AsyncClient) -> None:
     assert "Tutoriels" in resp.text  # Navbar
 
 
+@pytest.mark.asyncio
 async def test_private_link(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2020/01/test-draft-prv-1/"
     resp = await client.get(url)
@@ -77,6 +81,7 @@ def test_known_categories() -> None:
     assert categories == KNOWN_CATEGORIES
 
 
+@pytest.mark.asyncio
 @pytest.mark.parametrize("category", KNOWN_CATEGORIES)
 async def test_category(client: httpx.AsyncClient, category: str) -> None:
     url = f"http://florimond.dev/en/category/{category}/"
@@ -85,6 +90,7 @@ async def test_category(client: httpx.AsyncClient, category: str) -> None:
     assert "text/html" in resp.headers["content-type"]
 
 
+@pytest.mark.asyncio
 async def test_category_i18n(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/fr/category/tutorials/"
     resp = await client.get(url)
@@ -93,6 +99,7 @@ async def test_category_i18n(client: httpx.AsyncClient) -> None:
     assert "Tutoriels" in resp.text  # Navbar
 
 
+@pytest.mark.asyncio
 async def test_not_found(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/foo"
     resp = await client.get(url, follow_redirects=True)
@@ -100,6 +107,7 @@ async def test_not_found(client: httpx.AsyncClient) -> None:
     assert "text/html" in resp.headers["content-type"]
 
 
+@pytest.mark.asyncio
 async def test_internal_server_error(silent_client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/error"
     resp = await silent_client.get(url, follow_redirects=True)
@@ -107,6 +115,7 @@ async def test_internal_server_error(silent_client: httpx.AsyncClient) -> None:
     assert "text/html" in resp.headers["content-type"]
 
 
+@pytest.mark.asyncio
 @pytest.mark.parametrize("resource", ("/sitemap.xml", "/robots.txt"))
 async def test_seo_resources(client: httpx.AsyncClient, resource: str) -> None:
     url = f"http://florimond.dev{resource}"
@@ -114,6 +123,7 @@ async def test_seo_resources(client: httpx.AsyncClient, resource: str) -> None:
     assert resp.status_code == 200
 
 
+@pytest.mark.asyncio
 async def test_rss_feed(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/feed.rss"
     resp = await client.get(url)
@@ -122,6 +132,7 @@ async def test_rss_feed(client: httpx.AsyncClient) -> None:
     load_xml_from_string(resp.text)
 
 
+@pytest.mark.asyncio
 async def test_rss_link(client: httpx.AsyncClient) -> None:
     resp = await client.get("http://florimond.dev/")
     line = next(
@@ -138,6 +149,7 @@ async def test_rss_link(client: httpx.AsyncClient) -> None:
     assert 'href="https://florimond.dev/feed.rss"' in line
 
 
+@pytest.mark.asyncio
 async def test_meta(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
     resp = await client.get(url)
