@@ -2,7 +2,7 @@ venv = venv
 bin = ${venv}/bin/
 python = ${bin}python
 pip = ${bin}pip
-pysources = server/ tests/
+pysources = server/ tests/ tools/
 
 build:
 	NODE_ENV=production yarn build
@@ -55,10 +55,10 @@ serve:
 	make -j 2 serve-uvicorn serve-tailwind
 
 serve-uvicorn:
-	./tools/colorize_prefix.sh [server] 34 "${bin}uvicorn server:app --reload"
+	${bin}uvicorn server:app --reload --use-colors 2>&1 | ${bin}python -m tools.colorprefix blue [server]
 
 serve-tailwind:
-	./tools/colorize_prefix.sh [tailwind] 33 "NODE_ENV=production yarn watch"
+	NODE_ENV=production FORCE_COLOR=true yarn watch 2>&1 | ${bin}python -m tools.colorprefix yellow [tailwind]
 
 imgoptimize:
 	${bin}python -m server.tools.imgoptimize
