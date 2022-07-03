@@ -7,17 +7,23 @@ import frontmatter as fm
 from typing_extensions import TypeGuard
 
 from . import settings
+from .application.markdown import MarkdownRenderer
+from .di import resolve
 from .domain.entities import ContentItem, Frontmatter, Page
+from .domain.repositories import PageRepository
 from .i18n import gettext_lazy as _
 from .i18n import using_locale
-from .resources import markdown, page_repository
 from .utils import to_production_url
 
 
 async def load_content() -> None:
-    items = [item async for item in load_content_items()]
-    pages = build_pages(items)
-    page_repository.save(pages)
+    page_repository = resolve(PageRepository)
+
+    items = [item async for item in _load_content_items()]
+
+    for language in settings.LANGUAGES:
+        for page in build_pages(items, language=language):
+            page_repository.save(page)
 
 
 def iter_content_paths() -> Iterator[Tuple[Path, Path]]:
@@ -28,7 +34,7 @@ def iter_content_paths() -> Iterator[Tuple[Path, Path]]:
             yield root, Path(path)
 
 
-async def load_content_items() -> AsyncIterator[ContentItem]:
+async def _load_content_items() -> AsyncIterator[ContentItem]:
     for root, path in iter_content_paths():
         async with aiofiles.open(path) as f:
             content = await f.read()
@@ -38,37 +44,34 @@ async def load_content_items() -> AsyncIterator[ContentItem]:
             )
 
 
-def build_pages(items: List[ContentItem]) -> Dict[str, List[Page]]:
-    pages: Dict[str, List[Page]] = {language: [] for language in settings.LANGUAGES}
+def build_pages(items: List[ContentItem], *, language: str) -> List[Page]:
+    pages: List[Page] = []
 
-    for page in _build_content_pages(items):
-        pages[page.language].append(page)
+    pages.extend(_build_content_pages(items))
 
-    for language in pages:
-        unique_tags = {tag for page in pages[language] for tag in page.frontmatter.tags}
+    unique_tags = {tag for page in pages for tag in page.frontmatter.tags}
+    pages.extend(_generate_tag_pages(unique_tags, language=language))
 
-        for page in _generate_tag_pages(unique_tags, language=language):
-            pages[language].append(page)
-
-        unique_categories = sorted(
-            {
-                page.frontmatter.category
-                for page in pages[language]
-                if page.frontmatter.category is not None
-            },
-            key=list(_CATEGORY_LABELS).index,
-        )
-        category_pages = _generate_category_pages(unique_categories, language=language)
-        pages[language].extend(category_pages)
+    unique_categories = sorted(
+        {
+            page.frontmatter.category
+            for page in pages
+            if page.frontmatter.category is not None
+        },
+        key=list(_CATEGORY_LABELS).index,
+    )
+    pages.extend(_generate_category_pages(unique_categories, language=language))
 
     return pages
 
 
 def _build_content_pages(items: List[ContentItem]) -> Iterator[Page]:
+    markdown = resolve(MarkdownRenderer)
+
     for item in items:
         post = fm.loads(item.content)
         content = post.content
-        html = markdown.reset().convert(content)
+        html = markdown.render(content)
         permalink = _build_permalink(item.location)
         image, image_thumbnail = _process_image(post)
         frontmatter = Frontmatter(

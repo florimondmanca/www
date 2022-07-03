@@ -4,11 +4,14 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 
 from .. import settings
-from ..resources import page_repository
+from ..di import resolve
+from ..domain.repositories import PageRepository
 from .resources import templates
 
 
 def _common_context() -> dict:
+    page_repository = resolve(PageRepository)
+
     return {
         "get_post_pages": page_repository.find_all_post_pages,
         "get_category_pages": page_repository.find_all_category_pages,
@@ -26,8 +29,8 @@ async def legacy_blog_home(request: Request) -> Response:
 
 class RenderPage(HTTPEndpoint):
     async def get(self, request: Request) -> Response:
+        page_repository = resolve(PageRepository)
         permalink = "/" + request.path_params["permalink"]
-
         page = page_repository.find_by_permalink(permalink)
 
         if page is None:

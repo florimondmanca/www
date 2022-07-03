@@ -3,8 +3,9 @@ from typing import List
 import asgi_sitemaps
 
 from .. import settings
+from ..di import resolve
 from ..domain.entities import Page
-from ..resources import page_repository
+from ..domain.repositories import PageRepository
 
 
 class StaticSitemap(asgi_sitemaps.Sitemap):
@@ -24,6 +25,7 @@ class PagesSitemap(asgi_sitemaps.Sitemap):
     protocol = "https"
 
     def items(self) -> List[Page]:
+        page_repository = resolve(PageRepository)
         pages = []
         for language in settings.LANGUAGES:
             pages.extend(page_repository.find_all(language))
