@@ -25,10 +25,10 @@ def event_loop() -> typing.Iterator[asyncio.AbstractEventLoop]:
 
 @pytest_asyncio.fixture(scope="session")
 async def app() -> typing.AsyncIterator[ASGIApp]:
-    import server
+    from server.main import app
 
-    async with LifespanManager(server.app):
-        yield server.app
+    async with LifespanManager(app):
+        yield app
 
 
 @pytest_asyncio.fixture(scope="session")
