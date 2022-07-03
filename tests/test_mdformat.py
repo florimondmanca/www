@@ -14,6 +14,16 @@ def test_mdformat(tmpdir: Path) -> None:
                "world",]
         ```
 
+        <!--pytest.mark.skip-->
+
+        ```python
+        !invalid+?python
+        ```
+
+        ```js
+        const isPython = false;
+        ```
+
         After
         """
     )
@@ -36,6 +46,16 @@ def test_mdformat(tmpdir: Path) -> None:
             "hello",
             "world",
         ]
+        ```
+
+        <!--pytest.mark.skip-->
+
+        ```python
+        !invalid+?python
+        ```
+
+        ```js
+        const isPython = false;
         ```
 
         After
