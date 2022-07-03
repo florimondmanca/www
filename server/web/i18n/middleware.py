@@ -5,7 +5,7 @@ from starlette.requests import Request
 from starlette.responses import Response
 from starlette.types import ASGIApp
 
-from .locale import set_locale
+from server.i18n import set_locale
 
 
 class LocaleMiddleware(BaseHTTPMiddleware):

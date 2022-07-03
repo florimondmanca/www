@@ -2,9 +2,9 @@ from typing import List
 
 import asgi_sitemaps
 
-from . import settings
-from .domain.entities import Page
-from .resources import page_repository
+from .. import settings
+from ..domain.entities import Page
+from ..resources import page_repository
 
 
 class StaticSitemap(asgi_sitemaps.Sitemap):

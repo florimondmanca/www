@@ -1,8 +1,10 @@
 from starlette.routing import Host, Mount, Route, WebSocketRoute
 
-from . import legacy, middleware, resources, settings, views
+from .. import settings
+from . import legacy, middleware, views
 from .i18n.routing import LocaleRoute
 from .reload import hotreload
+from .resources import static
 from .sitemap import sitemap
 
 routes = [
@@ -23,17 +25,17 @@ routes = [
     ),
     Route("/error/", views.error),
     Route("/blog/", views.legacy_blog_home, name="legacy:blog_home"),
-    Mount(settings.STATIC_ROOT, resources.static, name="static"),
+    Mount(settings.STATIC_ROOT, static, name="static"),
     # These files need to be exposed at the root, not '/static/'.
-    Route("/favicon.ico", resources.static, name="favicon"),
-    Route("/robots.txt", resources.static, name="robots"),
+    Route("/favicon.ico", static, name="favicon"),
+    Route("/robots.txt", static, name="robots"),
     Route("/sitemap.xml", sitemap, name="sitemap"),
     Route(
         "/feed.rss",
         # Make sure clients always receive the correct MIME type for the RSS feed,
         # as the content type Starlette guesses may vary across operating systems.
         middleware.PatchHeadersMiddleware(
-            resources.static, headers={"content-type": "application/rss+xml"}
+            static, headers={"content-type": "application/rss+xml"}
         ),
         name="feed-rss",
     ),

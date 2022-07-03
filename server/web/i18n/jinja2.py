@@ -1,7 +1,6 @@
 from starlette.templating import Jinja2Templates
 
-from .gettext import gettext, ngettext
-from .locale import get_locale
+from server.i18n import get_locale, gettext, ngettext
 
 
 def i18n_path(path: str) -> str:

@@ -1,6 +1,6 @@
 from babel.support import LazyProxy
 
-from .locale import get_locale
+from ._locale import get_locale
 
 
 def gettext(message: str) -> str:
