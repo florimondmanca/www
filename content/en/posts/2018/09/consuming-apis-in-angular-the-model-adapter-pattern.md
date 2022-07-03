@@ -8,6 +8,7 @@ tags:
   - webdev
   - angular
 image: "/static/img/articles/model-adapter.jpg"
+image_thumbnail: __auto__
 image_caption: "An angular shot of smooth white balconies on a building in Almería, Spain. Dmitri Popov, unsplash.com"
 ---
 

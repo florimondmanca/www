@@ -8,6 +8,7 @@ tags:
   - asgi
   - vuepress
 image: "/static/img/articles/starlette-migrate.jpg"
+image_thumbnail: __auto__
 image_caption: "Milky way above body of water. @krisroller, unsplash.com"
 ---
 

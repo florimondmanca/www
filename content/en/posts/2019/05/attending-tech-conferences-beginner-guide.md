@@ -7,6 +7,7 @@ category: retrospectives
 tags:
   - conferences
 image: "/static/img/articles/attending-tech-conferences-beginner-guide.jpg"
+image_thumbnail: __auto__
 image_caption: "PyConWeb 2019 at Microsoft HQ, Munich, Germany."
 ---
 

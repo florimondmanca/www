@@ -7,6 +7,7 @@ category: essays
 tags:
   - kafka
 image: "/static/img/articles/everything-event.jpg"
+image_thumbnail: __auto__
 image_caption: "Man standing on sand while spreading arms beside calm body of water. @kalvisuals, unsplash.com"
 ---
 

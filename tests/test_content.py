@@ -101,14 +101,49 @@ def test_build_pages() -> None:
 
 
 @pytest.mark.parametrize(
-    "image, image_thumbnail",
+    "image, image_thumbnail_line, expected_image_thumbnail",
     [
-        pytest.param("/static/img.jpg", "/static/img_thumbnail.jpg", id="static-file"),
-        pytest.param("/elsewhere/img.jpg", None, id="non-static-file"),
-        pytest.param("https://example.org/img.jpg", None, id="remote-url"),
+        pytest.param(
+            "/static/img.jpg",
+            "",
+            "/static/img.jpg",
+            id="default:static-file",
+        ),
+        pytest.param(
+            "/elsewhere/img.jpg",
+            "",
+            None,
+            id="default:non-static-file",
+        ),
+        pytest.param(
+            "https://example.org/img.jpg",
+            "",
+            None,
+            id="default:remote-url",
+        ),
+        pytest.param(
+            "/static/img.jpg",
+            "image_thumbnail: __auto__",
+            "/static/img_thumbnail.jpg",
+            id="auto:static-file",
+        ),
+        pytest.param(
+            "/elsewhere/img.jpg",
+            "image_thumbnail: __auto__",
+            None,
+            id="auto:non-static-file",
+        ),
+        pytest.param(
+            "https://example.org/img.jpg",
+            "image_thumbnail: __auto__",
+            None,
+            id="auto:remote-url",
+        ),
     ],
 )
-def test_image_auto_thumbnail(image: str, image_thumbnail: Optional[str]) -> None:
+def test_image_thumbnail(
+    image: str, image_thumbnail_line: str, expected_image_thumbnail: Optional[str]
+) -> None:
     item = ContentItem(
         content=dedent(
             f"""
@@ -117,6 +152,7 @@ def test_image_auto_thumbnail(image: str, image_thumbnail: Optional[str]) -> Non
             description: "Test"
             date: "2020-01-01"
             image: "{image}"
+            {image_thumbnail_line}
             ---
             """
         ),
@@ -124,7 +160,7 @@ def test_image_auto_thumbnail(image: str, image_thumbnail: Optional[str]) -> Non
     )
 
     (page,) = build_pages([item])["en"]
-    assert page.frontmatter.image_thumbnail == image_thumbnail
+    assert page.frontmatter.image_thumbnail == expected_image_thumbnail
 
 
 @pytest.mark.parametrize(

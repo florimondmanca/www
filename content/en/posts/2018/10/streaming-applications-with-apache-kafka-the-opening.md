@@ -7,6 +7,7 @@ category: essays
 tags:
   - kafka
 image: "/static/img/articles/kafka-opening.jpg"
+image_thumbnail: __auto__
 image_caption: "Man on mountain edge. @redhatfactory, unsplash.com"
 ---
 

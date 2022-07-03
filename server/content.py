@@ -4,6 +4,7 @@ from typing import Any, AsyncIterator, Dict, Iterable, Iterator, List, Optional,
 
 import aiofiles
 import frontmatter as fm
+from typing_extensions import TypeGuard
 
 from . import resources, settings
 from .domain.entities import ContentItem, Frontmatter, Page
@@ -90,18 +91,23 @@ def _build_content_pages(items: List[ContentItem]) -> Iterator[Page]:
         )
 
 
+def _is_self_hosted(image: Optional[str]) -> TypeGuard[str]:
+    return isinstance(image, str) and image.startswith(settings.STATIC_ROOT)
+
+
 def _process_image(post: Dict[str, Any]) -> Tuple[Optional[str], Optional[str]]:
     image = post.get("image")
     image_thumbnail = post.get("image_thumbnail")
 
-    if (
-        isinstance(image, str)
-        and image.startswith(settings.STATIC_ROOT)
-        and image_thumbnail is None
-    ):
+    if image_thumbnail is None and _is_self_hosted(image):
+        # By default, use the same image
+        image_thumbnail = image
+
+    if image_thumbnail == "__auto__":
         # Convention: '/static/example.jpg' -> '/static/example_thumbnail.jpg'
-        # May not exist, but we'll handle this error case in HTML.
-        image_thumbnail = _append_filename(image, "_thumbnail")
+        image_thumbnail = (
+            _append_filename(image, "_thumbnail") if _is_self_hosted(image) else None
+        )
 
     assert image is None or isinstance(image, str)
     assert image_thumbnail is None or isinstance(image_thumbnail, str)

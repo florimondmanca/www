@@ -7,6 +7,7 @@ category: essays
 tags:
   - productivity
 image: "/static/img/articles/inbox-zero.jpg"
+image_thumbnail: __auto__
 image_caption: "Four assorted-color mailboxes on black surface. @nxn, unsplash.com"
 ---
 

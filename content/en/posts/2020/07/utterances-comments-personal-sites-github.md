@@ -7,6 +7,7 @@ tags:
   - meta
   - webdev
 image: "/static/img/articles/utterances.jpg"
+image_thumbnail: __auto__
 image_caption: "Golden Gate City Night lights crystal prism ball. @sanfrancisco, unsplash.com."
 ---
 

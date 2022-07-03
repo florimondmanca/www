@@ -8,6 +8,7 @@ tags:
   - webdev
   - asgi
 image: "/static/img/articles/starlette-structure.jpg"
+image_thumbnail: __auto__
 image_caption: "@jjying, unsplash.com"
 ---
 

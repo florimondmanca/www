@@ -7,6 +7,7 @@ category: essays
 tags:
   - meta
 image: "/static/img/articles/journey-begin.jpg"
+image_thumbnail: __auto__
 image_caption: "Josh Withers, unsplash.com"
 ---
 

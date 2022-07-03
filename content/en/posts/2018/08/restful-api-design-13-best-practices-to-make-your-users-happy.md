@@ -7,6 +7,7 @@ category: tutorials
 tags:
   - webdev
 image: "/static/img/articles/rest-apis.jpg"
+image_thumbnail: __auto__
 image_caption: "Architect at work. Daniel McCullough, unsplash.com"
 ---
 
