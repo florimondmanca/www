@@ -7,12 +7,12 @@ import frontmatter as fm
 from typing_extensions import TypeGuard
 
 from . import settings
+from .application.markdown import MarkdownRenderer
 from .di import resolve
 from .domain.entities import ContentItem, Frontmatter, Page
 from .domain.repositories import PageRepository
 from .i18n import gettext_lazy as _
 from .i18n import using_locale
-from .resources import markdown
 from .utils import to_production_url
 
 
@@ -44,9 +44,7 @@ async def _load_content_items() -> AsyncIterator[ContentItem]:
             )
 
 
-def build_pages(
-    items: List[ContentItem], *, language: str = settings.DEFAULT_LANGUAGE
-) -> List[Page]:
+def build_pages(items: List[ContentItem], *, language: str) -> List[Page]:
     pages: List[Page] = []
 
     pages.extend(_build_content_pages(items))
@@ -68,10 +66,12 @@ def build_pages(
 
 
 def _build_content_pages(items: List[ContentItem]) -> Iterator[Page]:
+    markdown = resolve(MarkdownRenderer)
+
     for item in items:
         post = fm.loads(item.content)
         content = post.content
-        html = markdown.reset().convert(content)
+        html = markdown.render(content)
         permalink = _build_permalink(item.location)
         image, image_thumbnail = _process_image(post)
         frontmatter = Frontmatter(

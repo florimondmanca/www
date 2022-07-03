@@ -8,7 +8,7 @@ from server.domain.entities import ContentItem
 
 
 def test_build_pages_empty() -> None:
-    pages = build_pages([])
+    pages = build_pages([], language="en")
     assert pages == []
 
 
