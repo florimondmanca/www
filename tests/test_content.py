@@ -9,7 +9,7 @@ from server.domain.entities import ContentItem
 
 def test_build_pages_empty() -> None:
     pages = build_pages([])
-    assert pages == {"en": [], "fr": []}
+    assert pages == []
 
 
 def test_build_pages() -> None:
@@ -39,10 +39,9 @@ def test_build_pages() -> None:
         )
     ]
 
-    pages = build_pages(items)
-    assert set(pages) == {"en", "fr"}
+    pages = build_pages(items, language="en")
 
-    readability_counts, python, essays = pages["en"]
+    readability_counts, python, essays = pages
 
     assert readability_counts.permalink == "/en/posts/readability-counts"
     assert readability_counts.frontmatter.title == title
@@ -159,7 +158,7 @@ def test_image_thumbnail(
         location="en/posts/test.md",
     )
 
-    (page,) = build_pages([item])["en"]
+    (page,) = build_pages([item], language="en")
     assert page.frontmatter.image_thumbnail == expected_image_thumbnail
 
 
@@ -188,6 +187,6 @@ def test_is_private(location: str, is_private: bool) -> None:
         ),
     ]
 
-    (page,) = build_pages(items)["en"]
+    (page,) = build_pages(items, language="en")
 
     assert page.is_private is is_private

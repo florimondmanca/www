@@ -1,6 +1,9 @@
 import uvicorn
 
+from .di import bootstrap
 from .web.app import create_app
+
+bootstrap()
 
 app = create_app()
 

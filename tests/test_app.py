@@ -3,7 +3,8 @@ import typing
 import httpx
 import pytest
 
-from server.resources import page_repository
+from server.di import resolve
+from server.domain.repositories import PageRepository
 
 from .utils import find_meta_tags, load_xml_from_string
 
@@ -76,6 +77,7 @@ KNOWN_CATEGORIES = ["tutorials", "essays", "retrospectives"]
 
 
 def test_known_categories() -> None:
+    page_repository = resolve(PageRepository)
     pages = page_repository.find_all_category_pages()
     categories = [page.frontmatter.category for page in pages]
     assert categories == KNOWN_CATEGORIES
