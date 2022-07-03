@@ -33,7 +33,7 @@ endif
 .env:
 	cp .env.example .env
 
-lint:
+format:
 	${bin}autoflake --in-place --recursive ${pysources}
 	${bin}isort ${pysources}
 	${bin}black ${pysources}
