@@ -3,7 +3,7 @@ from typing import Tuple
 from starlette.datastructures import Scope
 from starlette.routing import Match, Route, URLPath
 
-from .locale import get_locale
+from server.i18n import get_locale
 
 
 class LocaleRoute(Route):

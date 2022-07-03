@@ -1,7 +1,8 @@
 from starlette.applications import Starlette
 from starlette.types import ASGIApp
 
-from . import event_handlers, settings, views
+from .. import settings
+from . import event_handlers, views
 from .middleware import middleware
 from .routes import routes
 

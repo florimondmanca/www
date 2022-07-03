@@ -7,7 +7,8 @@ from starlette.requests import Request
 from starlette.responses import Response
 from starlette.types import ASGIApp
 
-from . import legacy, settings
+from .. import settings
+from . import legacy
 from .i18n.middleware import LocaleMiddleware
 
 middleware = [

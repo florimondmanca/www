@@ -1,4 +1,4 @@
-from . import content, settings
+from .. import content, settings
 from .reload import hotreload
 
 on_startup = [content.load_content]

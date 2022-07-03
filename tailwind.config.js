@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    "./server/templates/**/*.jinja",
+    "./server/web/templates/**/*.jinja",
   ],
   theme: {
     colors: {

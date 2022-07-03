@@ -6,17 +6,18 @@ import aiofiles
 import frontmatter as fm
 from typing_extensions import TypeGuard
 
-from . import resources, settings
+from . import settings
 from .domain.entities import ContentItem, Frontmatter, Page
 from .i18n import gettext_lazy as _
 from .i18n import using_locale
+from .resources import markdown, page_repository
 from .utils import to_production_url
 
 
 async def load_content() -> None:
     items = [item async for item in load_content_items()]
     pages = build_pages(items)
-    resources.page_repository.save(pages)
+    page_repository.save(pages)
 
 
 def iter_content_paths() -> Iterator[Tuple[Path, Path]]:
@@ -67,7 +68,7 @@ def _build_content_pages(items: List[ContentItem]) -> Iterator[Page]:
     for item in items:
         post = fm.loads(item.content)
         content = post.content
-        html = resources.markdown.reset().convert(content)
+        html = markdown.reset().convert(content)
         permalink = _build_permalink(item.location)
         image, image_thumbnail = _process_image(post)
         frontmatter = Frontmatter(

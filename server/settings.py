@@ -24,8 +24,8 @@ KNOWN_DOMAINS = [
 ]
 
 STATIC_ROOT = "/static"
-STATIC_DIR = HERE / "static"
-TEMPLATES_DIR = HERE / "templates"
+STATIC_DIR = HERE / "web" / "static"
+TEMPLATES_DIR = HERE / "web" / "templates"
 
 LOCALE_DIR = HERE.parent / "locale"
 LOCALE_DOMAIN = "messages"
@@ -47,7 +47,7 @@ EXTRA_CONTENT_DIRS = [
 IMAGE_ALLOWED_MAX_SIZE_KB = 32
 
 CONTENT_DIR = HERE.parent / "content"
-with open(HERE / "assets" / "legacy-blog-url-mapping.json") as f:
+with open(HERE / "web" / "assets" / "legacy-blog-url-mapping.json") as f:
     LEGACY_URL_MAPPING = json.loads(f.read())
 MARKDOWN_EXTENSIONS: list = [
     "codehilite",
