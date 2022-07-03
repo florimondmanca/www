@@ -1,0 +1,3 @@
+{% macro MetaTag(attributes) %}
+<meta {% for key, value in attributes.items() %}{% if value %}{{ key }}="{{ value }}"{% endif %}{% endfor %} />
+{% endmacro %}

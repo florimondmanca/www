@@ -4,7 +4,7 @@ from typing import Optional
 import pytest
 
 from server.content import build_pages
-from server.models import ContentItem
+from server.domain.entities import ContentItem
 
 
 def test_build_pages_empty() -> None:
@@ -52,14 +52,14 @@ def test_build_pages() -> None:
     assert readability_counts.frontmatter.tags == ["python"]
     assert readability_counts.frontmatter.image == image
 
-    meta = [str(tag) for tag in readability_counts.meta]
+    meta = readability_counts.meta
     url = "https://florimond.dev/en/posts/readability-counts/"
-    assert '<meta name="twitter:card" content="summary_large_image">' in meta
-    assert f'<meta name="twitter:title" content="{title}">' in meta
-    assert f'<meta name="twitter:description" content="{description}">' in meta
-    assert f'<meta name="twitter:url" content="{url}">' in meta
-    assert f'<meta name="twitter:image" content="https://florimond.dev{image}">' in meta
-    assert '<meta property="article:tag" content="python">' in meta
+    assert {"name": "twitter:card", "content": "summary_large_image"} in meta
+    assert {"name": "twitter:title", "content": title} in meta
+    assert {"name": "twitter:description", "content": description} in meta
+    assert {"name": "twitter:url", "content": url} in meta
+    assert {"name": "twitter:image", "content": f"https://florimond.dev{image}"} in meta
+    assert {"property": "article:tag", "content": "python"} in meta
 
     assert readability_counts.html == (
         "<p>You should <em>really</em> care about readability.</p>"
@@ -72,14 +72,15 @@ def test_build_pages() -> None:
     assert python.frontmatter.tags == []
     assert python.frontmatter.tag == "python"
 
-    meta = [str(tag) for tag in python.meta]
+    meta = python.meta
     url = "https://florimond.dev/en/tag/python/"
-    assert '<meta name="twitter:card" content="summary_large_image">' in meta
-    assert f'<meta name="twitter:title" content="{python.frontmatter.title}">' in meta
-    assert (
-        f'<meta name="twitter:description" content="{python.frontmatter.description}">'
-    ) in meta
-    assert f'<meta name="twitter:url" content="{url}">' in meta
+    assert {"name": "twitter:card", "content": "summary_large_image"} in meta
+    assert {"name": "twitter:title", "content": python.frontmatter.title} in meta
+    assert {
+        "name": "twitter:description",
+        "content": python.frontmatter.description,
+    } in meta
+    assert {"name": "twitter:url", "content": url} in meta
 
     assert essays.permalink == "/en/category/essays"
     assert "Essays" in essays.frontmatter.title
@@ -88,15 +89,15 @@ def test_build_pages() -> None:
     assert essays.frontmatter.category == category
     assert essays.frontmatter.tags == []
 
-    meta = [str(tag) for tag in essays.meta]
+    meta = essays.meta
     url = "https://florimond.dev/en/category/essays/"
-    assert '<meta name="twitter:card" content="summary_large_image">' in meta
-    assert f'<meta name="twitter:title" content="{essays.frontmatter.title}">' in meta
-    assert (
-        f'<meta name="twitter:description" content="{essays.frontmatter.description}">'
-        in meta
-    )
-    assert f'<meta name="twitter:url" content="{url}">' in meta
+    assert {"name": "twitter:card", "content": "summary_large_image"} in meta
+    assert {"name": "twitter:title", "content": essays.frontmatter.title} in meta
+    assert {
+        "name": "twitter:description",
+        "content": essays.frontmatter.description,
+    } in meta
+    assert {"name": "twitter:url", "content": url} in meta
 
 
 @pytest.mark.parametrize(

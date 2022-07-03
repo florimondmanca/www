@@ -6,7 +6,7 @@ from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 from . import i18n, settings
-from .models import Index
+from .domain.repositories import PageRepository
 from .reload import hotreload
 
 templates = Jinja2Templates(directory=str(settings.TEMPLATES_DIR))
@@ -42,5 +42,6 @@ templates.env.filters["dateformat"] = dateformat
 templates.env.filters["category_label"] = category_label
 templates.env.filters["language_label"] = language_label
 
-index = Index()
+page_repository = PageRepository()
+
 markdown = md.Markdown(extensions=settings.MARKDOWN_EXTENSIONS)
