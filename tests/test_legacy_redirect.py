@@ -3,9 +3,8 @@ import typing
 import httpx
 import pytest
 
-pytestmark = pytest.mark.asyncio
 
-
+@pytest.mark.asyncio
 @pytest.mark.parametrize(
     "start_url, urls",
     [
@@ -59,6 +58,7 @@ async def test_legacy_redirect_chains(
     assert [(r.headers["Location"], r.status_code) for r in resp.history] == urls
 
 
+@pytest.mark.asyncio
 @pytest.mark.parametrize(
     "legacy_path, path",
     [
