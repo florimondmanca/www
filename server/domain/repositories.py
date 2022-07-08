@@ -21,6 +21,3 @@ class PageRepository:
 
     def find_all_category_pages(self) -> typing.List[Page]:
         raise NotImplementedError  # pragma: no cover
-
-    def save(self, page: Page) -> None:
-        raise NotImplementedError  # pragma: no cover

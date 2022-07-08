@@ -1,14 +1,15 @@
+from pathlib import Path
 from textwrap import dedent
 from typing import Optional
 
 import pytest
 
-from server.content import build_pages
-from server.domain.entities import ContentItem
+from server.infrastructure.filesystem import ContentItem
+from server.infrastructure.pages import build_pages
 
 
 def test_build_pages_empty() -> None:
-    pages = build_pages([], language="en")
+    pages = build_pages([])
     assert pages == []
 
 
@@ -35,11 +36,11 @@ def test_build_pages() -> None:
                 You should *really* care about readability.
                 """
             ),
-            location="en/posts/readability-counts.md",
+            location=Path("en/posts/readability-counts.md"),
         )
     ]
 
-    pages = build_pages(items, language="en")
+    pages = build_pages(items)
 
     readability_counts, python, essays = pages
 
@@ -155,10 +156,10 @@ def test_image_thumbnail(
             ---
             """
         ),
-        location="en/posts/test.md",
+        location=Path("en/posts/test.md"),
     )
 
-    (page,) = build_pages([item], language="en")
+    (page,) = build_pages([item])
     assert page.frontmatter.image_thumbnail == expected_image_thumbnail
 
 
@@ -183,10 +184,10 @@ def test_is_private(location: str, is_private: bool) -> None:
                 ---
                 """
             ),
-            location=location,
+            location=Path(location),
         ),
     ]
 
-    (page,) = build_pages(items, language="en")
+    (page,) = build_pages(items)
 
     assert page.is_private is is_private

@@ -6,12 +6,6 @@ PRIVATE_RE = re.compile(r"prv-\d+$")
 
 
 @dataclasses.dataclass(frozen=True)
-class ContentItem:
-    content: str
-    location: str
-
-
-@dataclasses.dataclass(frozen=True)
 class Frontmatter:
     title: str
     description: Optional[str] = None

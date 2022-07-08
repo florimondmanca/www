@@ -1,10 +1,7 @@
-from server.application.markdown import MarkdownRenderer
-from server.di import resolve
+from server.infrastructure.adapters import markdown
 
 
 def test_image_figcaption() -> None:
-    markdown = resolve(MarkdownRenderer)
-
     content = markdown.render(
         "![A beautiful mind](https://example.com/a-beautiful-mind)"
     )

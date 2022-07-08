@@ -1,20 +1,21 @@
 from .. import i18n
 from ..domain.entities import Page
 from ..domain.repositories import PageRepository
+from .database import PageDatabase
 
 
 class InMemoryPageRepository(PageRepository):
-    def __init__(self) -> None:
-        self._store: dict[str, dict[str, Page]] = {}
+    def __init__(self, db: PageDatabase) -> None:
+        self._db = db
 
     def find_by_permalink(self, permalink: str) -> Page | None:
         language = i18n.get_locale().language
-        return self._store.get(language, {}).get(permalink)
+        return self._db.find_one(language, permalink)
 
     def find_all(self, language: str = None) -> list[Page]:
         if language is None:
             language = i18n.get_locale().language
-        return list(self._store.get(language, {}).values())
+        return self._db.find_all(language)
 
     def find_all_post_pages(
         self,
@@ -44,7 +45,3 @@ class InMemoryPageRepository(PageRepository):
 
     def find_all_category_pages(self) -> list[Page]:
         return [page for page in self.find_all() if page.is_category]
-
-    def save(self, page: Page) -> None:
-        pages = self._store.setdefault(page.language, {})
-        pages[page.permalink] = page
