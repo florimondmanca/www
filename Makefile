@@ -55,7 +55,7 @@ serve:
 	make -j 2 serve-uvicorn serve-tailwind
 
 serve-uvicorn:
-	${bin}python -m server.main 2>&1 | ${bin}python -m tools.colorprefix blue [server]
+	PYTHONUNBUFFERED=1 ${bin}python -m server.main 2>&1 | ${bin}python -m tools.colorprefix blue [server]
 
 serve-tailwind:
 	NODE_ENV=production FORCE_COLOR=true yarn watch 2>&1 | ${bin}python -m tools.colorprefix yellow [tailwind]

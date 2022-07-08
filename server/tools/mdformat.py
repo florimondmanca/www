@@ -8,12 +8,11 @@ import io
 import sys
 import traceback
 from pathlib import Path
-from typing import Iterable, Tuple
 
 import black
 from pytest_codeblocks.main import extract_from_buffer
 
-from ..content import iter_content_paths
+from server.infrastructure.filesystem import iter_content_paths
 
 
 def _warn(text: str) -> str:
@@ -24,7 +23,7 @@ def _danger(text: str) -> str:
     return f"\033[91m{text}\033[0m"
 
 
-def _format_path(path: Path, *, check: bool) -> Tuple[str, bool, list]:
+def _format_path(path: Path, *, check: bool) -> tuple[str, bool, list]:
     content = path.read_text("utf-8")
     lines = content.splitlines()
     errors = []
@@ -103,9 +102,9 @@ def _format_file(path: Path, *, check: bool) -> int:
     return 0
 
 
-def main(paths: Iterable[Path], check: bool = False) -> int:
+def main(check: bool = False) -> int:
     rv = 0
-    for path in paths:
+    for _, path in iter_content_paths():
         rv |= _format_file(path, check=check)
     return rv
 
@@ -119,4 +118,4 @@ if __name__ == "__main__":  # pragma: no cover
         help="Fail if files would be reformatted.",
     )
     args = parser.parse_args()
-    sys.exit(main([path for _, path in iter_content_paths()], check=args.check))
+    sys.exit(main(check=args.check))

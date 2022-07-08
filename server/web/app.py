@@ -2,17 +2,32 @@ from starlette.applications import Starlette
 from starlette.types import ASGIApp
 
 from .. import settings
-from . import event_handlers, views
+from ..di import resolve
+from ..infrastructure.database import PageDatabase
+from . import views
 from .middleware import middleware
-from .routes import routes
+from .reload import HotReload
+from .routes import get_routes
 
 
 def create_app() -> ASGIApp:
+    page_db = resolve(PageDatabase)
+    hotreload = resolve(HotReload)
+
+    routes = get_routes()
+
+    on_startup = [page_db.connect]
+    on_shutdown = []
+
+    if settings.DEBUG:  # pragma: no cover
+        on_startup += [hotreload.startup]
+        on_shutdown += [hotreload.shutdown]
+
     return Starlette(
         debug=settings.DEBUG,
         routes=routes,
         middleware=middleware,
         exception_handlers={404: views.not_found, 500: views.internal_server_error},
-        on_startup=event_handlers.on_startup,
-        on_shutdown=event_handlers.on_shutdown,
+        on_startup=on_startup,
+        on_shutdown=on_shutdown,
     )

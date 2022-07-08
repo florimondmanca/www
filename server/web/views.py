@@ -6,7 +6,7 @@ from starlette.responses import RedirectResponse, Response
 from .. import settings
 from ..di import resolve
 from ..domain.repositories import PageRepository
-from .resources import templates
+from .templating import Templates
 
 
 def _common_context() -> dict:
@@ -19,6 +19,7 @@ def _common_context() -> dict:
 
 
 async def home(request: Request) -> Response:
+    templates = resolve(Templates)
     context = {"request": request, **_common_context()}
     return templates.TemplateResponse("views/home.jinja", context=context)
 
@@ -29,6 +30,8 @@ async def legacy_blog_home(request: Request) -> Response:
 
 class RenderPage(HTTPEndpoint):
     async def get(self, request: Request) -> Response:
+        templates = resolve(Templates)
+
         page_repository = resolve(PageRepository)
         permalink = "/" + request.path_params["permalink"]
         page = page_repository.find_by_permalink(permalink)
@@ -42,6 +45,7 @@ class RenderPage(HTTPEndpoint):
 
 
 async def not_found(request: Request, exc: Exception) -> Response:
+    templates = resolve(Templates)
     context = {"request": request, **_common_context()}
     return templates.TemplateResponse(
         "views/404.jinja", context=context, status_code=404
@@ -49,6 +53,7 @@ async def not_found(request: Request, exc: Exception) -> Response:
 
 
 async def internal_server_error(request: Request, exc: Exception) -> Response:
+    templates = resolve(Templates)
     context = {"request": request, **_common_context()}
     return templates.TemplateResponse(
         "views/500.jinja", context=context, status_code=500

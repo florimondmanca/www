@@ -1,30 +1,32 @@
-from typing import Type, TypeVar
+from typing import TypeVar
 
-import punq
-
-from .application.markdown import MarkdownRenderer
 from .domain.repositories import PageRepository
-from .infrastructure.adapters.markdown import MarkdownRendererAdapter
+from .infrastructure.database import PageDatabase
+from .infrastructure.di import Container
 from .infrastructure.repositories import InMemoryPageRepository
+from .web.reload import HotReload
+from .web.templating import Templates
 
 T = TypeVar("T")
 
 
-def _configure(container: punq.Container) -> None:
-    container.register(PageRepository, instance=InMemoryPageRepository())
-    container.register(MarkdownRenderer, instance=MarkdownRendererAdapter())
+def _configure(container: Container) -> None:
+    page_db = PageDatabase()
+    container.register(PageDatabase, instance=page_db)
+
+    container.register(PageRepository, instance=InMemoryPageRepository(page_db))
+
+    hotreload = HotReload(page_db)
+    container.register(HotReload, instance=hotreload)
+
+    container.register(Templates, instance=Templates(hotreload))
 
 
-_container = punq.Container()
-_bootstrapped = False
+def create_container() -> Container:
+    return Container(_configure)
 
 
-def bootstrap() -> None:
-    global _bootstrapped
-    _configure(_container)
-    _bootstrapped = True
+_container = create_container()
 
-
-def resolve(type_: Type[T]) -> T:
-    assert _bootstrapped, "DI not initialized: call bootstrap()"
-    return _container.resolve(type_)
+bootstrap = _container.bootstrap
+resolve = _container.resolve
