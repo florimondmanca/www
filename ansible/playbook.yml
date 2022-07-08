@@ -1,0 +1,68 @@
+---
+- hosts: web
+  roles:
+    - role: dokku_bot.ansible_dokku
+      become: true
+    - role: geerlingguy.swap
+      become: true
+  vars:
+    # Add some swap to ensure we don't run out of RAM during deploys.
+    swap_file_size_mb: 2048
+
+    dokku_packages_state: present
+    dokku_hostname: infomaniak.florimond.dev
+    dokku_users:
+      - name: Florimond Manca
+        username: florimondmanca
+        ssh_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+      - name: Azure Pipelines
+        username: azure-pipelines
+        ssh_key: "{{ lookup('file', 'ansible/data/azp-id_rsa.pub') }}"
+    dokku_plugins:
+      - name: letsencrypt
+        url: https://github.com/dokku/dokku-letsencrypt.git
+
+    app: www
+
+  tasks:
+    - name: Ensure a locale exists
+      locale_gen:
+        name: en_GB.UTF-8
+        state: present
+      become: true
+
+    - name: create app
+      dokku_app:
+        app: "{{ app }}"
+
+    - name: configure dokku
+      dokku_config:
+        app: "{{ app }}"
+        config:
+          # Specify PORT so that `dokku domains` can setup the initial port mapping.
+          PORT: "5000"
+          DOKKU_LETSENCRYPT_EMAIL: florimond.manca@protonmail.com
+
+    - name: configure letsencrypt
+      dokku_letsencrypt:
+        app: "{{ app }}"
+
+    - name: configure app ports
+      dokku_ports:
+        app: "{{ app }}"
+        mappings:
+          - http:80:5000
+          - https:443:5000
+
+    - name: ensure default dokku.me domain is absent
+      dokku_domains:
+        app: "{{ app }}"
+        domains:
+          - www.dokku.me
+        state: absent
+
+    - name: ensure app domain is set
+      dokku_domains:
+        app: "{{ app }}"
+        domains:
+          - infomaniak.florimond.dev
