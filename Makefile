@@ -14,9 +14,6 @@ check:
 	${bin}isort --check --diff ${pysources}
 	${python} -m server.tools.mdformat --check
 
-deploy:
-	scripts/deploy $(args)
-
 ${venv}:
 	python3 -m venv ${venv}
 
@@ -65,3 +62,20 @@ imgoptimize:
 
 test:
 	${bin}pytest $(args)
+
+install-infra: # Install infrastructure management dependencies
+	${bin}pip install -r requirements-infra.txt
+	${bin}ansible-galaxy install -r ansible/requirements.yml
+
+infra: # Setup infrastructure
+	ANSIBLE_CONFIG=ansible/ansible.cfg ${bin}ansible-playbook -i ansible/hosts.ini ansible/playbook.yml
+
+infra-ci-deploy-keys: # Generate CI deploy SSH keys
+	ssh-keygen -t rsa -b 4096 -f ansible/data/azp-id_rsa
+	ssh-keyscan -f ansible/data/azp-id_rsa.pub -t ecdsa infomaniak.florimond.dev > ansible/data/azp-known_hosts_entry
+
+deploy:
+	scripts/deploy $(args)
+
+deploy-infomaniak:
+	scripts/deploy-infomaniak $(args)
