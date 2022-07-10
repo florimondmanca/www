@@ -1,0 +1,3 @@
+app: www
+# app_repository: git@github.com:florimondmanca/www.git
+app_repository: https://github.com/florimondmanca/www.git

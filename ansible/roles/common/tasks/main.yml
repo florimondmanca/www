@@ -1,0 +1,37 @@
+- name: Common setup
+  tags: [common]
+  block:
+    - name: Ensure a locale is set
+      locale_gen:
+        name: en_GB.UTF-8
+        state: present
+      become: true
+
+    - name: Ensure apt is up to date
+      apt: update_cache=true
+      become: true
+
+    - name: Ensure common packages are installed
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - software-properties-common
+        - git
+        - htop
+        - gnupg2
+      become: true
+
+    - name: Ensure system has swap
+      import_role:
+        name: geerlingguy.swap
+      become: true
+
+    # - name: Ensure SSH keys are set up
+    #   # Required to be able to git clone via SSH.
+    #   openssh_keypair:
+    #     path: ~/.ssh/id_rsa
+
+    # - name: Ensure github.com is a known host
+    #   # Required to be able to git clone via SSH.
+    #   shell: ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
