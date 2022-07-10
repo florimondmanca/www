@@ -1,4 +1,3 @@
-import typing
 from html.parser import HTMLParser
 from xml.dom import minidom
 
@@ -11,11 +10,9 @@ class HeadMetaHTMLParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.in_head = False
-        self.meta: typing.List[dict] = []
+        self.meta: list[dict] = []
 
-    def handle_starttag(
-        self, tag: str, attrs: typing.List[typing.Tuple[str, typing.Optional[str]]]
-    ) -> None:
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if tag == "head":
             self.in_head = True
         elif self.in_head and tag == "meta":

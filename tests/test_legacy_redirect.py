@@ -1,5 +1,3 @@
-import typing
-
 import httpx
 import pytest
 
@@ -51,7 +49,7 @@ import pytest
     ],
 )
 async def test_legacy_redirect_chains(
-    client: httpx.AsyncClient, start_url: str, urls: typing.List[str]
+    client: httpx.AsyncClient, start_url: str, urls: list[str]
 ) -> None:
     resp = await client.get(start_url, follow_redirects=True)
     assert resp.status_code == 200

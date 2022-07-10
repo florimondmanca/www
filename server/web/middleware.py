@@ -1,4 +1,4 @@
-import typing
+from typing import Callable
 
 from starlette.middleware import Middleware
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -31,7 +31,7 @@ class PatchHeadersMiddleware(BaseHTTPMiddleware):
         super().__init__(app)
         self.headers = headers
 
-    async def dispatch(self, request: Request, call_next: typing.Callable) -> Response:
+    async def dispatch(self, request: Request, call_next: Callable) -> Response:
         response = await call_next(request)
         response.headers.update(self.headers)
         return response
