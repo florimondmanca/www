@@ -12,14 +12,15 @@
           PORT: "5000"
           DOKKU_LETSENCRYPT_EMAIL: florimond.manca@protonmail.com
 
-    - name: Ensure default domains are dropped
+    - name: Ensure unintended domains are dropped
       dokku_domains:
         app: "{{ app }}"
         domains:
           - www.dokku.me
+          - infomaniak.florimond.dev
         state: absent
 
-    - name: Ensure app has domains
+    - name: Ensure app has expected domains
       dokku_domains:
         app: "{{ app }}"
         domains:
