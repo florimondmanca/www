@@ -4,6 +4,7 @@ Format ```python``` code blocks in Markdown source files:
 * Apply `black`.
 """
 import argparse
+import asyncio
 import io
 import sys
 import traceback
@@ -12,7 +13,7 @@ from pathlib import Path
 import black
 from pytest_codeblocks.main import extract_from_buffer
 
-from server.infrastructure.filesystem import iter_content_paths
+from server.infrastructure.filesystem import aiter_content_paths
 
 
 def _warn(text: str) -> str:
@@ -102,9 +103,9 @@ def _format_file(path: Path, *, check: bool) -> int:
     return 0
 
 
-def main(check: bool = False) -> int:
+async def main(check: bool = False) -> int:
     rv = 0
-    for _, path in iter_content_paths():
+    async for _, path in aiter_content_paths():
         rv |= _format_file(path, check=check)
     return rv
 
@@ -118,4 +119,4 @@ if __name__ == "__main__":  # pragma: no cover
         help="Fail if files would be reformatted.",
     )
     args = parser.parse_args()
-    sys.exit(main(check=args.check))
+    sys.exit(asyncio.run(main(check=args.check)))

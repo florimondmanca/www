@@ -5,17 +5,27 @@ from typing import Optional
 import pytest
 
 from server.domain.entities import Tag
-from server.infrastructure.filesystem import ContentItem
+from server.infrastructure.filesystem import ContentItem, ContentSource
 from server.infrastructure.html import build_meta_tags
 from server.infrastructure.pages import build_pages
 
 
-def test_build_pages_empty() -> None:
-    pages = build_pages([])
+class StringSource(ContentSource):
+    def __init__(self, content: str) -> None:
+        self._content = content
+
+    async def get(self) -> str:
+        return self._content
+
+
+@pytest.mark.asyncio
+async def test_build_pages_empty() -> None:
+    pages = await build_pages([])
     assert pages == []
 
 
-def test_build_pages() -> None:
+@pytest.mark.asyncio
+async def test_build_pages() -> None:
     title = "Readability Counts"
     description = "How readability impacts software development."
     date = "2000-01-01"
@@ -24,8 +34,9 @@ def test_build_pages() -> None:
 
     items = [
         ContentItem(
-            content=dedent(
-                f"""
+            source=StringSource(
+                dedent(
+                    f"""
                 ---
                 title: "{title}"
                 description: "{description}"
@@ -37,12 +48,13 @@ def test_build_pages() -> None:
                 ---
                 You should *really* care about readability.
                 """
+                )
             ),
             location=Path("en/posts/readability-counts.md"),
         )
     ]
 
-    pages = build_pages(items)
+    pages = await build_pages(items)
 
     readability_counts, python, essays = pages
 
@@ -102,6 +114,7 @@ def test_build_pages() -> None:
     assert {"name": "twitter:url", "content": url} in meta
 
 
+@pytest.mark.asyncio
 @pytest.mark.parametrize(
     "image, image_thumbnail_line, expected_image_thumbnail",
     [
@@ -143,12 +156,13 @@ def test_build_pages() -> None:
         ),
     ],
 )
-def test_image_thumbnail(
+async def test_image_thumbnail(
     image: str, image_thumbnail_line: str, expected_image_thumbnail: Optional[str]
 ) -> None:
     item = ContentItem(
-        content=dedent(
-            f"""
+        source=StringSource(
+            dedent(
+                f"""
             ---
             title: "Test"
             description: "Test"
@@ -157,14 +171,16 @@ def test_image_thumbnail(
             {image_thumbnail_line}
             ---
             """
+            )
         ),
         location=Path("en/posts/test.md"),
     )
 
-    (page,) = build_pages([item])
+    (page,) = await build_pages([item])
     assert page.metadata.image_thumbnail == expected_image_thumbnail
 
 
+@pytest.mark.asyncio
 @pytest.mark.parametrize(
     "location, is_private",
     [
@@ -174,22 +190,24 @@ def test_image_thumbnail(
         ("en/posts/test-prv-3535.md", True),
     ],
 )
-def test_is_private(location: str, is_private: bool) -> None:
+async def test_is_private(location: str, is_private: bool) -> None:
     items = [
         ContentItem(
-            content=dedent(
-                """
+            source=StringSource(
+                dedent(
+                    """
                 ---
                 title: "Test"
                 description: "Test"
                 date: "2020-01-01"
                 ---
                 """
+                )
             ),
             location=Path(location),
         ),
     ]
 
-    (page,) = build_pages(items)
+    (page,) = await build_pages(items)
 
     assert page.is_private is is_private

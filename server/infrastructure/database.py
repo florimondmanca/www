@@ -23,7 +23,7 @@ class PageDatabase:
             items, key=lambda item: item.location.parts[0]
         ):
             with using_locale(language):
-                pages = build_pages(list(language_items))
+                pages = await build_pages(list(language_items))
                 for page in pages:
                     assert page.language == language
                     self._store[page.language][page.permalink] = page
