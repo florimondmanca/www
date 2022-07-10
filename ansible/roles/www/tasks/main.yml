@@ -1,0 +1,38 @@
+- name: Setup app
+  tags: [app]
+  block:
+    - name: Ensure app exists
+      dokku_app:
+        app: "{{ app }}"
+
+    - name: Ensure app is configured
+      dokku_config:
+        app: "{{ app }}"
+        config:
+          PORT: "5000"
+          DOKKU_LETSENCRYPT_EMAIL: florimond.manca@protonmail.com
+
+    - name: Ensure default domains are dropped
+      dokku_domains:
+        app: "{{ app }}"
+        domains:
+          - www.dokku.me
+        state: absent
+
+    - name: Ensure app has domains
+      dokku_domains:
+        app: "{{ app }}"
+        domains:
+          - infomaniak.florimond.dev
+
+    - name: Clone app repository and deploy app
+      dokku_clone:
+        app: "{{ app }}"
+        repository: "{{ app_repository }}"
+        build: true
+      async: 200
+      poll: 10
+
+    - name: Ensure app has letsencrypt
+      dokku_letsencrypt:
+        app: "{{ app }}"

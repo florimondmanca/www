@@ -1,0 +1,14 @@
+dokku_packages_state: present
+dokku_hostname: infomaniak.florimond.dev
+
+dokku_users:
+  - name: Florimond Manca
+    username: florimondmanca
+    ssh_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  - name: Azure Pipelines
+    username: azure-pipelines
+    ssh_key: "{{ lookup('file', './data/azp-id_rsa.pub') }}"
+
+dokku_plugins:
+  - name: letsencrypt
+    url: https://github.com/dokku/dokku-letsencrypt.git

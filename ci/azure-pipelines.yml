@@ -68,6 +68,6 @@ jobs:
     steps:
       - task: InstallSSHKey@0
         inputs:
-          knownHostsEntry: infomaniak.florimond.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGfckqHkKFhdpUdYcU3HSvTUhxJSJnOJhmowhQKyifTxPxP3zjOpl/Re4QmnhJ/ejINkiwgOPiP5199vromdqlQ=
+          knownHostsEntry: infomaniak.florimond.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMtteEyA1sNjiVr/zDyOHKw9mlWEbHjs3mTUJb7JPP+4XNoYJ+MH/aTW/o6R+2aQLxvN9DE2xpciY91pm0+k6es=
           sshKeySecureFile: infomaniak-florimond-dev-deploy-id_rsa
-      - bash: make deploy
+      - bash: make deploy-infomaniak

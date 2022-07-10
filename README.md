@@ -71,11 +71,9 @@ make deploy-infomaniak
 
 ### Infrastructure
 
-The Dokku instance is managed using [Ansible](https://docs.ansible.com/ansible/latest/index.html) and the [ansible-dokku](https://github.com/dokku/ansible-dokku) role.
+The Dokku instance is managed using [Ansible](https://docs.ansible.com/ansible/latest/index.html).
 
-First, get a Cloud VM with SSH access.
-
-Requirements:
+Cloud VM requirements:
 
 * Linux: Debian 11 "bullseye"
 * RAM: at least 1 GB
@@ -93,7 +91,7 @@ Review `ansible/hosts.ini`, then:
 make infra
 ```
 
-This should configure the Linux box to be ready for deploying.
+This should configure the Linux box and deploy the app. For subsequent deploys, see [Deployment](#deployment).
 
 ### CI
 
