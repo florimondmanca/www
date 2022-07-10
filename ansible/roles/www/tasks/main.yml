@@ -23,7 +23,11 @@
       dokku_domains:
         app: "{{ app }}"
         domains:
-          - infomaniak.florimond.dev
+          - florimond.dev
+          - www.florimond.dev
+          - blog.florimond.dev
+          - florimondmanca.com
+          - blog.florimondmanca.com
 
     - name: Clone app repository and deploy app
       dokku_clone:

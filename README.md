@@ -66,7 +66,7 @@ make build
 Once the [Infrastructure](#infrastructure) is set up, deploy to the [Dokku](http://dokku.viewdocs.io/dokku/) instance using:
 
 ```bash
-make deploy-infomaniak
+make deploy
 ```
 
 ### Infrastructure
@@ -95,7 +95,7 @@ This should configure the Linux box and deploy the app. For subsequent deploys, 
 
 ### CI
 
-Azure Pipelines is configured to deploy on pushes to the `infomaniak` branch.
+Azure Pipelines is configured to deploy on pushes to the `master` branch.
 
 This requires setting up SSH keys. Initially, it can be created using:
 
@@ -107,7 +107,7 @@ This creates 3 files:
 
 * `ansible/data/azp-id_rsa` - Private key, ignored by git.
   * Use this to [add an `SSH` service connection](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/install-ssh-key?view=azure-devops) in Azure Pipelines. Set the host, username (`dokku`), service connection name, and upload the private key.
-  * Upload the private SSH key as a secure file, named `infomaniak-florimond-dev-deploy-id_rsa`.
+  * Upload the private SSH key as a secure file, named `florimond-dev-deploy-id_rsa`.
 * `ansible/data/azp-id_rsa.pub` - Public key, used to add the AZP SSH key to the Dokku instance ([dokku_users](https://github.com/dokku/ansible-dokku#dokku_users)).
   * This is referenced in the Ansible playbook.
 * `ansible/data/azp-known_hosts_entry` - Known hosts entry, used by AZP.

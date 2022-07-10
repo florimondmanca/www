@@ -1,5 +1,5 @@
 dokku_packages_state: present
-dokku_hostname: infomaniak.florimond.dev
+dokku_hostname: florimond.dev
 
 dokku_users:
   - name: Florimond Manca
