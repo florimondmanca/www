@@ -16,7 +16,8 @@ def tmp_content_dir(tmpdir: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     return tmpdir
 
 
-def test_mdformat(tmp_content_dir: Path) -> None:
+@pytest.mark.asyncio
+async def test_mdformat(tmp_content_dir: Path) -> None:
     content_initial = dedent(
         """
         Before
@@ -43,11 +44,11 @@ def test_mdformat(tmp_content_dir: Path) -> None:
     testfile = tmp_content_dir / "test.md"
     testfile.write_text(content_initial, "utf-8")
 
-    rv = main(check=True)
+    rv = await main(check=True)
     assert rv == 1
     assert testfile.read_text("utf-8") == content_initial
 
-    rv = main()
+    rv = await main()
     assert rv == 0
     assert testfile.read_text("utf-8") == dedent(
         """
@@ -74,23 +75,25 @@ def test_mdformat(tmp_content_dir: Path) -> None:
         """
     )
 
-    rv = main(check=True)
+    rv = await main(check=True)
     assert rv == 0
 
 
-def test_mdformat_newlines(tmp_content_dir: Path) -> None:
+@pytest.mark.asyncio
+async def test_mdformat_newlines(tmp_content_dir: Path) -> None:
     content = "Final newline will be added."
     assert not content.endswith("\n")
 
     testfile = tmp_content_dir / "test.md"
     testfile.write_text(content, "utf-8")
 
-    rv = main()
+    rv = await main()
     assert rv == 0
     assert testfile.read_text("utf-8").endswith("\n")
 
 
-def test_mdformat_errors(tmp_content_dir: Path) -> None:
+@pytest.mark.asyncio
+async def test_mdformat_errors(tmp_content_dir: Path) -> None:
     invalid_python = dedent(
         """
     ```python
@@ -106,9 +109,9 @@ def test_mdformat_errors(tmp_content_dir: Path) -> None:
     testfile = tmp_content_dir / "test.md"
     testfile.write_text(invalid_python, "utf-8")
 
-    rv = main()
+    rv = await main()
     assert rv == 1
     assert testfile.read_text("utf-8") == invalid_python
 
-    rv = main(check=True)
+    rv = await main(check=True)
     assert rv == 1

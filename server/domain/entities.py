@@ -16,7 +16,7 @@ class Tag:
 
 @dataclasses.dataclass(frozen=True)
 class Metadata:
-    title: str
+    title: str = ""
     description: Optional[str] = None
     category: Optional[str] = None
     date: Optional[str] = None

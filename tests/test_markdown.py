@@ -1,8 +1,8 @@
-from server.infrastructure.adapters import markdown
+from server.infrastructure.parsers import MarkdownParser
 
 
 def test_image_figcaption() -> None:
-    content = markdown.render(
+    content, _ = MarkdownParser().parse(
         "![A beautiful mind](https://example.com/a-beautiful-mind)"
     )
 
