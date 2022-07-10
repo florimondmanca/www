@@ -1,6 +1,6 @@
 import asyncio
 import os
-import typing
+from typing import AsyncIterator, Iterator
 
 import httpx
 import pytest
@@ -14,7 +14,7 @@ os.environ["EXTRA_CONTENT_DIRS"] = "tests/drafts"
 
 
 @pytest.fixture(scope="session")
-def event_loop() -> typing.Iterator[asyncio.AbstractEventLoop]:
+def event_loop() -> Iterator[asyncio.AbstractEventLoop]:
     """
     Redefine from pytest-asyncio, as the default fixture is function-scoped.
     """
@@ -24,7 +24,7 @@ def event_loop() -> typing.Iterator[asyncio.AbstractEventLoop]:
 
 
 @pytest_asyncio.fixture(scope="session")
-async def app() -> typing.AsyncIterator[ASGIApp]:
+async def app() -> AsyncIterator[ASGIApp]:
     from server.main import app
 
     async with LifespanManager(app):
@@ -32,13 +32,13 @@ async def app() -> typing.AsyncIterator[ASGIApp]:
 
 
 @pytest_asyncio.fixture(scope="session")
-async def client(app: ASGIApp) -> typing.AsyncIterator[httpx.AsyncClient]:
+async def client(app: ASGIApp) -> AsyncIterator[httpx.AsyncClient]:
     async with httpx.AsyncClient(app=app, base_url="http://testserver") as client:
         yield client
 
 
 @pytest_asyncio.fixture(scope="session")
-async def silent_client(app: ASGIApp) -> typing.AsyncIterator[httpx.AsyncClient]:
+async def silent_client(app: ASGIApp) -> AsyncIterator[httpx.AsyncClient]:
     transport = httpx.ASGITransport(app, raise_app_exceptions=False)
     async with httpx.AsyncClient(transport=transport) as client:
         yield client

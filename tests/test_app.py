@@ -1,5 +1,3 @@
-import typing
-
 import httpx
 import pytest
 
@@ -160,7 +158,7 @@ async def test_meta(client: httpx.AsyncClient) -> None:
 
     meta = find_meta_tags(resp.text)
 
-    def find_meta(typ: str, value: str) -> typing.Optional[dict]:
+    def find_meta(typ: str, value: str) -> dict | None:
         for item in meta:
             if item.get(typ) == value:
                 return item.get("content")
