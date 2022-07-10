@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from .. import settings
-from ..domain.entities import Frontmatter, Page
+from ..domain.entities import Frontmatter, Page, Tag
 from ..i18n import get_locale
 from ..i18n import gettext_lazy as _
 from .adapters import frontmatter as fm
@@ -46,7 +46,7 @@ def _build_content_pages(items: list[ContentItem]) -> list[Page]:
             image=image,
             image_thumbnail=image_thumbnail,
             image_caption=attrs.get("image_caption"),
-            tags=attrs.get("tags", []),
+            tags=[Tag(slug) for slug in attrs.get("tags", [])],
         )
         meta = _build_meta(permalink, frontmatter)
 
@@ -63,13 +63,13 @@ def _build_content_pages(items: list[ContentItem]) -> list[Page]:
     return pages
 
 
-def _build_tag_pages(tags: Iterable[str]) -> list[Page]:
+def _build_tag_pages(tags: Iterable[Tag]) -> list[Page]:
     language = get_locale().language
     tag_pages = []
 
     for tag in tags:
         frontmatter = Frontmatter(
-            title=f"{tag.capitalize()} - {settings.SITE_TITLE}",
+            title=f"{tag.slug} - {settings.SITE_TITLE}",
             description=f"Posts about #{tag}",
             tag=tag,
         )
@@ -148,7 +148,7 @@ def _build_meta(permalink: str, frontmatter: Frontmatter) -> list[dict]:
     if image_url:
         image_url = to_production_url(image_url)
 
-    meta: list[dict] = [
+    meta: list[dict[str, str | None]] = [
         # General
         dict(name="description", content=frontmatter.description),
         dict(name="image", content=image_url),
@@ -172,7 +172,7 @@ def _build_meta(permalink: str, frontmatter: Frontmatter) -> list[dict]:
     ]
 
     for tag in frontmatter.tags:
-        meta.append(dict(property="article:tag", content=tag))
+        meta.append(dict(property="article:tag", content=tag.slug))
 
     return meta
 

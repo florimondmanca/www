@@ -4,6 +4,7 @@ from typing import Optional
 
 import pytest
 
+from server.domain.entities import Tag
 from server.infrastructure.filesystem import ContentItem
 from server.infrastructure.pages import build_pages
 
@@ -49,7 +50,7 @@ def test_build_pages() -> None:
     assert readability_counts.frontmatter.description == description
     assert readability_counts.frontmatter.date == date
     assert readability_counts.frontmatter.category == category
-    assert readability_counts.frontmatter.tags == ["python"]
+    assert readability_counts.frontmatter.tags == [Tag("python")]
     assert readability_counts.frontmatter.image == image
 
     meta = readability_counts.meta
@@ -70,7 +71,7 @@ def test_build_pages() -> None:
     assert python.frontmatter.description
     assert python.frontmatter.date is None
     assert python.frontmatter.tags == []
-    assert python.frontmatter.tag == "python"
+    assert python.frontmatter.tag == Tag("python")
 
     meta = python.meta
     url = "https://florimond.dev/en/tag/python/"
