@@ -24,4 +24,4 @@ install:
 
 ci-deploy-keys: # Generate CI deploy SSH keys
 	ssh-keygen -t rsa -b 4096 -f data/azp-id_rsa
-	ssh-keyscan -f data/azp-id_rsa.pub -t ecdsa infomaniak.florimond.dev > data/azp-known_hosts_entry
+	ssh-keyscan -f data/azp-id_rsa.pub -t ecdsa florimond.dev > data/azp-known_hosts_entry

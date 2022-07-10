@@ -71,6 +71,3 @@ infra: # Setup infrastructure
 
 deploy:
 	scripts/deploy $(args)
-
-deploy-infomaniak:
-	scripts/deploy-infomaniak $(args)

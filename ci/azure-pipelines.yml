@@ -8,18 +8,15 @@ resources:
 
 trigger:
   - master
-  - infomaniak
 
 pr:
   - master
-  - infomaniak
 
 variables:
   CI: true
   PIP_CACHE_DIR: $(Pipeline.Workspace)/.cache/pip
   YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
   IS_MASTER_BRANCH: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
-  IS_INFOMANIAK_BRANCH: $[eq(variables['Build.SourceBranch'], 'refs/heads/infomaniak')]
 
 jobs:
   - template: job--python-check.yml@templates
@@ -53,21 +50,6 @@ jobs:
     steps:
       - task: InstallSSHKey@0
         inputs:
-          knownHostsEntry: florimond.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD7z+We1qSM6E/IJS1qEUT9liHdQdNL96pAqUSTElAjk+NZsMXViY/ThWG4HkuOQeTsIhlzXvg75xJ8JTWbgWVI=
+          knownHostsEntry: florimond.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMtteEyA1sNjiVr/zDyOHKw9mlWEbHjs3mTUJb7JPP+4XNoYJ+MH/aTW/o6R+2aQLxvN9DE2xpciY91pm0+k6es=
           sshKeySecureFile: florimond-dev-deploy-id_rsa
       - bash: make deploy
-
-  - job: DeployInfomaniak
-    pool:
-      vmImage: "ubuntu-latest"
-    dependsOn:
-      - Check
-      - Build
-      - py310
-    condition: and(succeeded(), eq(variables.IS_INFOMANIAK_BRANCH, true))
-    steps:
-      - task: InstallSSHKey@0
-        inputs:
-          knownHostsEntry: infomaniak.florimond.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMtteEyA1sNjiVr/zDyOHKw9mlWEbHjs3mTUJb7JPP+4XNoYJ+MH/aTW/o6R+2aQLxvN9DE2xpciY91pm0+k6es=
-          sshKeySecureFile: infomaniak-florimond-dev-deploy-id_rsa
-      - bash: make deploy-infomaniak
