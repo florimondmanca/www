@@ -4,7 +4,7 @@
     🔖
   </span>
   {% for tag in tags %}
-  <a class="c-tag-list-item" href="{{ url_for('page', permalink=i18n_path('/tag/' + tag).lstrip('/')) }}">
+  <a class="c-tag-list-item" href="{{ url_for('page', permalink=i18n_path('/tag/' + tag.slug).lstrip('/')) }}">
     {{ tag }}
   </a>
   {% endfor %}

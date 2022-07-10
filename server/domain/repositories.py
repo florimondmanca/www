@@ -9,7 +9,7 @@ class PageRepository:
         raise NotImplementedError  # pragma: no cover
 
     def find_all_post_pages(
-        self, *, tag: str = None, category: str = None, limit: int = None
+        self, *, tag__slug: str = None, category: str = None, limit: int = None
     ) -> list[Page]:
         raise NotImplementedError  # pragma: no cover
 

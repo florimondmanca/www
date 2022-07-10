@@ -23,7 +23,7 @@
   {%- endif -%}
 
   {%- if page.frontmatter.tag -%}
-    {{ TagPage(page.frontmatter.tag, get_post_pages(tag=page.frontmatter.tag)) }}
+    {{ TagPage(page.frontmatter.tag, get_post_pages(tag__slug=page.frontmatter.tag.slug)) }}
   {%- elif page.is_post -%}
     <div class="px-4 code-container">
       {{ PostPage(page) }}

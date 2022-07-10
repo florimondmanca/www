@@ -20,7 +20,7 @@ class InMemoryPageRepository(PageRepository):
     def find_all_post_pages(
         self,
         *,
-        tag: str = None,
+        tag__slug: str = None,
         category: str = None,
         limit: int = None,
     ) -> list[Page]:
@@ -31,8 +31,9 @@ class InMemoryPageRepository(PageRepository):
                 continue
             if page.is_private:
                 continue
-            if tag is not None and tag not in page.frontmatter.tags:
-                continue
+            if tag__slug is not None:
+                if any(tag.slug == tag__slug for tag in page.frontmatter.tags):
+                    continue
             if category is not None and page.frontmatter.category != category:
                 continue
             posts.append(page)

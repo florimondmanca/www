@@ -1,8 +1,17 @@
 import dataclasses
 import re
+from dataclasses import dataclass
 from typing import List, Optional
 
 PRIVATE_RE = re.compile(r"prv-\d+$")
+
+
+@dataclass(frozen=True)
+class Tag:
+    slug: str
+
+    def __str__(self) -> str:
+        return self.slug
 
 
 @dataclasses.dataclass(frozen=True)
@@ -14,8 +23,8 @@ class Frontmatter:
     image: Optional[str] = None
     image_thumbnail: Optional[str] = None
     image_caption: Optional[str] = None
-    tags: List[str] = dataclasses.field(default_factory=list)
-    tag: Optional[str] = None
+    tags: List[Tag] = dataclasses.field(default_factory=list)
+    tag: Optional[Tag] = None
 
 
 @dataclasses.dataclass(frozen=True)
