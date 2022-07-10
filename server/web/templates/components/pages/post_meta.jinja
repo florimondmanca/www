@@ -3,15 +3,15 @@
 {% macro PostMeta(page, editable=false) %}
 <div class="c-post-meta">
   <div class="text-muted-500 pr-3">
-    {{ page.frontmatter.date | dateformat }}
+    {{ page.metadata.date | dateformat }}
     |
     in
-    <a href="{{ url_for('page', permalink=i18n_path('/category/' + page.frontmatter.category).lstrip('/')) }}">
-      {{ page.frontmatter.category | category_label }}
+    <a href="{{ url_for('page', permalink=i18n_path('/category/' + page.metadata.category).lstrip('/')) }}">
+      {{ page.metadata.category | category_label }}
     </a>
   </div>
 
-  {{ TagList(page.frontmatter.tags) }}
+  {{ TagList(page.metadata.tags) }}
 </div>
 
 {% if editable %}

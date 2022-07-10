@@ -24,7 +24,7 @@ class InMemoryPageRepository(PageRepository):
         category: str = None,
         limit: int = None,
     ) -> list[Page]:
-        posts = []
+        posts: list[Page] = []
 
         for page in self.find_all():
             if not page.is_post:
@@ -32,15 +32,13 @@ class InMemoryPageRepository(PageRepository):
             if page.is_private:
                 continue
             if tag__slug is not None:
-                if any(tag.slug == tag__slug for tag in page.frontmatter.tags):
+                if any(tag.slug == tag__slug for tag in page.metadata.tags):
                     continue
-            if category is not None and page.frontmatter.category != category:
+            if category is not None and page.metadata.category != category:
                 continue
             posts.append(page)
 
-        posts = sorted(
-            posts, key=lambda page: page.frontmatter.date or "", reverse=True
-        )
+        posts = sorted(posts, key=lambda page: page.metadata.date or "", reverse=True)
 
         return posts[:limit]
 
