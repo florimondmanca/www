@@ -13,7 +13,7 @@ from pathlib import Path
 import black
 from pytest_codeblocks.main import extract_from_buffer
 
-from server.infrastructure.filesystem import aiter_content_paths
+from server.infrastructure.sources import aiter_content_paths
 
 
 def _warn(text: str) -> str:

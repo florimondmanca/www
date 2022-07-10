@@ -1,10 +1,12 @@
 import collections
 import itertools
 
+from ..application.queries import GetPages
+from ..di import resolve
 from ..domain.entities import Page
 from ..i18n import using_locale
-from .filesystem import load_content_items
-from .pages import build_pages
+from ..seedwork.domain.cqrs import MessageBus
+from .sources import find_content_items
 
 
 class PageDatabase:
@@ -18,12 +20,15 @@ class PageDatabase:
         await self._load()  # pragma: no cover
 
     async def _load(self) -> None:
-        items = await load_content_items()
+        bus = resolve(MessageBus)
+
+        items = await find_content_items()
+
         for language, language_items in itertools.groupby(
             items, key=lambda item: item.location.parts[0]
         ):
             with using_locale(language):
-                pages = await build_pages(list(language_items))
+                pages = await bus.execute(GetPages(items=list(language_items)))
                 for page in pages:
                     assert page.language == language
                     self._store[page.language][page.permalink] = page

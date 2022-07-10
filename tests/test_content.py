@@ -4,10 +4,12 @@ from typing import Optional
 
 import pytest
 
+from server.application.queries import GetPages
+from server.di import resolve
 from server.domain.entities import Tag
-from server.infrastructure.filesystem import ContentItem, ContentSource
 from server.infrastructure.html import build_meta_tags
-from server.infrastructure.pages import build_pages
+from server.infrastructure.sources import ContentItem, ContentSource
+from server.seedwork.domain.cqrs import MessageBus
 
 
 class StringSource(ContentSource):
@@ -19,13 +21,14 @@ class StringSource(ContentSource):
 
 
 @pytest.mark.asyncio
-async def test_build_pages_empty() -> None:
-    pages = await build_pages([])
+async def test_get_pages_empty() -> None:
+    bus = resolve(MessageBus)
+    pages = await bus.execute(GetPages(items=[]))
     assert pages == []
 
 
 @pytest.mark.asyncio
-async def test_build_pages() -> None:
+async def test_get_pages() -> None:
     title = "Readability Counts"
     description = "How readability impacts software development."
     date = "2000-01-01"
@@ -54,7 +57,8 @@ async def test_build_pages() -> None:
         )
     ]
 
-    pages = await build_pages(items)
+    bus = resolve(MessageBus)
+    pages = await bus.execute(GetPages(items))
 
     readability_counts, python, essays = pages
 
@@ -176,7 +180,9 @@ async def test_image_thumbnail(
         location=Path("en/posts/test.md"),
     )
 
-    (page,) = await build_pages([item])
+    bus = resolve(MessageBus)
+    (page,) = await bus.execute(GetPages([item]))
+
     assert page.metadata.image_thumbnail == expected_image_thumbnail
 
 
@@ -191,23 +197,22 @@ async def test_image_thumbnail(
     ],
 )
 async def test_is_private(location: str, is_private: bool) -> None:
-    items = [
-        ContentItem(
-            source=StringSource(
-                dedent(
-                    """
+    item = ContentItem(
+        source=StringSource(
+            dedent(
+                """
                 ---
                 title: "Test"
                 description: "Test"
                 date: "2020-01-01"
                 ---
                 """
-                )
-            ),
-            location=Path(location),
+            )
         ),
-    ]
+        location=Path(location),
+    )
 
-    (page,) = await build_pages(items)
+    bus = resolve(MessageBus)
+    (page,) = await bus.execute(GetPages([item]))
 
     assert page.is_private is is_private

@@ -1,16 +1,27 @@
 from typing import TypeVar
 
+from .application.parsers import Parser
 from .domain.repositories import PageRepository
-from .infrastructure.database import PageDatabase
 from .infrastructure.di import Container
-from .infrastructure.repositories import InMemoryPageRepository
-from .web.reload import HotReload
-from .web.templating import Templates
+from .seedwork.domain.cqrs import MessageBus
+from .seedwork.infrastructure.cqrs import AsyncBus
 
 T = TypeVar("T")
 
 
 def _configure(container: Container) -> None:
+    from .infrastructure import module
+    from .infrastructure.database import PageDatabase
+    from .infrastructure.parsers import MarkdownParser
+    from .infrastructure.repositories import InMemoryPageRepository
+    from .web.reload import HotReload
+    from .web.templating import Templates
+
+    bus = AsyncBus(query_handlers=module.query_handlers)
+    container.register(MessageBus, instance=bus)
+
+    container.register(Parser, instance=MarkdownParser())
+
     page_db = PageDatabase()
     container.register(PageDatabase, instance=page_db)
 

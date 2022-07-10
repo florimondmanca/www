@@ -2,15 +2,17 @@ from pathlib import Path
 from typing import Iterable
 
 from .. import settings
+from ..di import resolve
 from ..domain.entities import Metadata, Page, Tag
 from ..i18n import get_locale
 from ..i18n import gettext_lazy as _
-from .filesystem import ContentItem
-from .parsers import MarkdownParser
+from .parsers import Parser
+from .queries import GetPages
+from .sources import ContentItem
 
 
-async def build_pages(items: list[ContentItem]) -> list[Page]:
-    pages = await _build_content_pages(items)
+async def get_pages(query: GetPages) -> list[Page]:
+    pages = await _build_content_pages(query.items)
 
     tags = {tag for page in pages for tag in page.metadata.tags}
     pages.extend(_build_tag_pages(tags))
@@ -29,9 +31,9 @@ async def build_pages(items: list[ContentItem]) -> list[Page]:
 
 
 async def _build_content_pages(items: list[ContentItem]) -> list[Page]:
-    pages = []
+    parser = resolve(Parser)
 
-    parser = MarkdownParser()
+    pages = []
 
     for item in items:
         content = await item.source.get()
@@ -90,6 +92,8 @@ def _build_permalink(location: Path) -> str:
     assert segments
     return "/" + "/".join(segments)
 
+
+# TODO: make this use a proper Category entity or something.
 
 _CATEGORY_LABELS = {
     "tutorials": _("Tutorials"),
