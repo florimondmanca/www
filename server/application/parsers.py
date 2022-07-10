@@ -1,4 +1,4 @@
-from .entities import Metadata
+from ..domain.entities import Metadata
 
 
 class Parser:

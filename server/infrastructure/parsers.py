@@ -5,8 +5,8 @@ import frontmatter
 import markdown as md
 
 from .. import settings
+from ..application.parsers import Parser
 from ..domain.entities import Metadata, Tag
-from ..domain.parsers import Parser
 
 
 class MarkdownParser(Parser):
@@ -15,7 +15,7 @@ class MarkdownParser(Parser):
 
     def parse(self, raw: str) -> tuple[str, Metadata]:
         post = frontmatter.loads(raw)
-        content = self._impl.convert(post.content)
+        content = self._impl.reset().convert(post.content)
         attrs = dict(post)
         image, image_thumbnail = _process_image(attrs)
 

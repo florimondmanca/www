@@ -1,5 +1,4 @@
 import glob
-from dataclasses import dataclass
 from pathlib import Path
 from typing import AsyncIterator
 
@@ -7,17 +6,7 @@ import aiofiles
 from starlette.concurrency import run_in_threadpool
 
 from .. import settings
-
-
-@dataclass
-class ContentItem:
-    source: "ContentSource"
-    location: Path
-
-
-class ContentSource:
-    async def get(self) -> str:
-        raise NotImplementedError  # pragma: no cover
+from ..application.sources import ContentItem, ContentSource
 
 
 class FileContentSource(ContentSource):
@@ -29,7 +18,7 @@ class FileContentSource(ContentSource):
             return await f.read()
 
 
-async def load_content_items() -> list[ContentItem]:
+async def find_content_items() -> list[ContentItem]:
     items = []
 
     async for root, path in aiter_content_paths():
