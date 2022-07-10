@@ -20,11 +20,11 @@ async def test_images(client: httpx.AsyncClient) -> None:
 
     remote_urls = []
     for page in page_repository.find_all():
-        url = page.frontmatter.image
+        url = page.metadata.image
         if url is not None and url.startswith("http"):
             remote_urls.append(url)
 
-        url = page.frontmatter.image_thumbnail
+        url = page.metadata.image_thumbnail
         if url is not None and url.startswith("http"):
             remote_urls.append(url)
 

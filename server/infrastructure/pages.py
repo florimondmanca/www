@@ -1,27 +1,27 @@
 from pathlib import Path
 from typing import Any, Iterable
 
+import frontmatter
+
 from .. import settings
-from ..domain.entities import Frontmatter, Page, Tag
+from ..domain.entities import Metadata, Page, Tag
 from ..i18n import get_locale
 from ..i18n import gettext_lazy as _
-from .adapters import frontmatter as fm
 from .adapters import markdown
 from .filesystem import ContentItem
-from .urls import to_production_url
 
 
 def build_pages(items: list[ContentItem]) -> list[Page]:
     pages = _build_content_pages(items)
 
-    tags = {tag for page in pages for tag in page.frontmatter.tags}
+    tags = {tag for page in pages for tag in page.metadata.tags}
     pages.extend(_build_tag_pages(tags))
 
     categories = sorted(
         {
-            page.frontmatter.category
+            page.metadata.category
             for page in pages
-            if page.frontmatter.category is not None
+            if page.metadata.category is not None
         },
         key=list(_CATEGORY_LABELS).index,
     )
@@ -34,11 +34,15 @@ def _build_content_pages(items: list[ContentItem]) -> list[Page]:
     pages = []
 
     for item in items:
-        content, attrs = fm.decode(item.content)
+        post = frontmatter.loads(item.content)
+        content = post.content
+        attrs = dict(post)
+
         html = markdown.render(content)
         permalink = _build_permalink(item.location)
         image, image_thumbnail = _process_image(attrs)
-        frontmatter = Frontmatter(
+
+        metadata = Metadata(
             title=attrs["title"],
             description=attrs.get("description"),
             category=attrs.get("category"),
@@ -48,14 +52,12 @@ def _build_content_pages(items: list[ContentItem]) -> list[Page]:
             image_caption=attrs.get("image_caption"),
             tags=[Tag(slug) for slug in attrs.get("tags", [])],
         )
-        meta = _build_meta(permalink, frontmatter)
 
         page = Page(
             html=html,
             content=content,
             permalink=permalink,
-            frontmatter=frontmatter,
-            meta=meta,
+            metadata=metadata,
         )
 
         pages.append(page)
@@ -68,14 +70,13 @@ def _build_tag_pages(tags: Iterable[Tag]) -> list[Page]:
     tag_pages = []
 
     for tag in tags:
-        frontmatter = Frontmatter(
+        metadata = Metadata(
             title=f"{tag.slug} - {settings.SITE_TITLE}",
             description=f"Posts about #{tag}",
             tag=tag,
         )
         permalink = f"/{language}/tag/{tag}"
-        meta = _build_meta(permalink, frontmatter)
-        page = Page(permalink=permalink, frontmatter=frontmatter, meta=meta)
+        page = Page(permalink=permalink, metadata=metadata)
         tag_pages.append(page)
 
     return tag_pages
@@ -87,14 +88,13 @@ def _build_category_pages(categories: Iterable[str]) -> list[Page]:
 
     for category in categories:
         label = get_category_label(category)
-        frontmatter = Frontmatter(
+        metadata = Metadata(
             title=f"{label} - {settings.SITE_TITLE}",
             description=label,
             category=category,
         )
         permalink = f"/{language}/category/{category}"
-        meta = _build_meta(permalink, frontmatter)
-        page = Page(permalink=permalink, frontmatter=frontmatter, meta=meta)
+        page = Page(permalink=permalink, metadata=metadata)
         pages.append(page)
 
     return pages
@@ -138,43 +138,6 @@ def _append_filename(filename: str, suffix: str) -> str:
     path = Path(filename)
     name = f"{path.stem}{suffix}{path.suffix}"
     return str(path.with_name(name))
-
-
-def _build_meta(permalink: str, frontmatter: Frontmatter) -> list[dict]:
-    path = permalink + ("" if permalink.endswith("/") else "/")
-    url = to_production_url(path)
-
-    image_url = frontmatter.image
-    if image_url:
-        image_url = to_production_url(image_url)
-
-    meta: list[dict[str, str | None]] = [
-        # General
-        dict(name="description", content=frontmatter.description),
-        dict(name="image", content=image_url),
-        dict(itemprop="name", content=frontmatter.title),
-        dict(itemprop="description", content=frontmatter.description),
-        # Twitter
-        dict(name="twitter:url", content=url),
-        dict(name="twitter:title", content=frontmatter.title),
-        dict(name="twitter:description", content=frontmatter.description),
-        dict(name="twitter:image", content=image_url),
-        dict(name="twitter:card", content="summary_large_image"),
-        dict(name="twitter:site", content="@florimondmanca"),
-        # OpenGraph
-        dict(property="og:url", content=url),
-        dict(property="og:type", content="article"),
-        dict(property="og:title", content=frontmatter.title),
-        dict(property="og:description", content=frontmatter.description),
-        dict(property="og:image", content=image_url),
-        dict(property="og:site_name", content=settings.SITE_TITLE),
-        dict(property="article:published_time", content=frontmatter.date),
-    ]
-
-    for tag in frontmatter.tags:
-        meta.append(dict(property="article:tag", content=tag.slug))
-
-    return meta
 
 
 _CATEGORY_LABELS = {

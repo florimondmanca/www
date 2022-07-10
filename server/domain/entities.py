@@ -15,7 +15,7 @@ class Tag:
 
 
 @dataclasses.dataclass(frozen=True)
-class Frontmatter:
+class Metadata:
     title: str
     description: Optional[str] = None
     category: Optional[str] = None
@@ -30,8 +30,7 @@ class Frontmatter:
 @dataclasses.dataclass(frozen=True)
 class Page:
     permalink: str
-    frontmatter: Frontmatter
-    meta: List[dict]
+    metadata: Metadata
     html: str = ""
     content: str = ""
 

@@ -6,6 +6,7 @@ import pytest
 
 from server.domain.entities import Tag
 from server.infrastructure.filesystem import ContentItem
+from server.infrastructure.html import build_meta_tags
 from server.infrastructure.pages import build_pages
 
 
@@ -46,14 +47,14 @@ def test_build_pages() -> None:
     readability_counts, python, essays = pages
 
     assert readability_counts.permalink == "/en/posts/readability-counts"
-    assert readability_counts.frontmatter.title == title
-    assert readability_counts.frontmatter.description == description
-    assert readability_counts.frontmatter.date == date
-    assert readability_counts.frontmatter.category == category
-    assert readability_counts.frontmatter.tags == [Tag("python")]
-    assert readability_counts.frontmatter.image == image
+    assert readability_counts.metadata.title == title
+    assert readability_counts.metadata.description == description
+    assert readability_counts.metadata.date == date
+    assert readability_counts.metadata.category == category
+    assert readability_counts.metadata.tags == [Tag("python")]
+    assert readability_counts.metadata.image == image
 
-    meta = readability_counts.meta
+    meta = build_meta_tags(readability_counts)
     url = "https://florimond.dev/en/posts/readability-counts/"
     assert {"name": "twitter:card", "content": "summary_large_image"} in meta
     assert {"name": "twitter:title", "content": title} in meta
@@ -67,36 +68,36 @@ def test_build_pages() -> None:
     )
 
     assert python.permalink == "/en/tag/python"
-    assert python.frontmatter.title
-    assert python.frontmatter.description
-    assert python.frontmatter.date is None
-    assert python.frontmatter.tags == []
-    assert python.frontmatter.tag == Tag("python")
+    assert python.metadata.title
+    assert python.metadata.description
+    assert python.metadata.date is None
+    assert python.metadata.tags == []
+    assert python.metadata.tag == Tag("python")
 
-    meta = python.meta
+    meta = build_meta_tags(python)
     url = "https://florimond.dev/en/tag/python/"
     assert {"name": "twitter:card", "content": "summary_large_image"} in meta
-    assert {"name": "twitter:title", "content": python.frontmatter.title} in meta
+    assert {"name": "twitter:title", "content": python.metadata.title} in meta
     assert {
         "name": "twitter:description",
-        "content": python.frontmatter.description,
+        "content": python.metadata.description,
     } in meta
     assert {"name": "twitter:url", "content": url} in meta
 
     assert essays.permalink == "/en/category/essays"
-    assert "Essays" in essays.frontmatter.title
-    assert essays.frontmatter.description
-    assert essays.frontmatter.date is None
-    assert essays.frontmatter.category == category
-    assert essays.frontmatter.tags == []
+    assert "Essays" in essays.metadata.title
+    assert essays.metadata.description
+    assert essays.metadata.date is None
+    assert essays.metadata.category == category
+    assert essays.metadata.tags == []
 
-    meta = essays.meta
+    meta = build_meta_tags(essays)
     url = "https://florimond.dev/en/category/essays/"
     assert {"name": "twitter:card", "content": "summary_large_image"} in meta
-    assert {"name": "twitter:title", "content": essays.frontmatter.title} in meta
+    assert {"name": "twitter:title", "content": essays.metadata.title} in meta
     assert {
         "name": "twitter:description",
-        "content": essays.frontmatter.description,
+        "content": essays.metadata.description,
     } in meta
     assert {"name": "twitter:url", "content": url} in meta
 
@@ -161,7 +162,7 @@ def test_image_thumbnail(
     )
 
     (page,) = build_pages([item])
-    assert page.frontmatter.image_thumbnail == expected_image_thumbnail
+    assert page.metadata.image_thumbnail == expected_image_thumbnail
 
 
 @pytest.mark.parametrize(

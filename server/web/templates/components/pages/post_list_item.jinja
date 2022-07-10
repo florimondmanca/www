@@ -2,7 +2,7 @@
 
 {% macro PostListItem(page) %}
 <li class="c-page-list-item">
-  {% with image_src = page.frontmatter.image_thumbnail or page.frontmatter.image %}
+  {% with image_src = page.metadata.image_thumbnail or page.metadata.image %}
     {% if image_src %}
     <div class="text-center">
       <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}" class="inline-block mb-3">
@@ -15,12 +15,12 @@
   <div>
     <h3 class="font-bold mt-1 mb-3">
       <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
-        {{ page.frontmatter.title }}
+        {{ page.metadata.title }}
       </a>
     </h3>
 
     <p class="mb-2">
-      {{ page.frontmatter.description }}
+      {{ page.metadata.description }}
     </p>
 
     <small>

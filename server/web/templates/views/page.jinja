@@ -1,19 +1,17 @@
 {% extends "base.jinja" %}
 
-{% from "components/meta.jinja" import MetaTag with context %}
+{% from "components/meta.jinja" import MetaTags with context %}
 {% from "components/pages/tag_page.jinja" import TagPage with context %}
 {% from "components/pages/category_page.jinja" import CategoryPage with context %}
 {% from "components/pages/post.jinja" import PostPage with context %}
 
 {% block head %}
   {{ super() }}
-  {% for attributes in page.meta -%}
-    {{ MetaTag(attributes) }}
-  {%- endfor %}
+  {{ MetaTags(page) }}
 {% endblock head %}
 
 {% block title %}
-  {{ page.frontmatter.title or settings.SITE_TITLE }}
+  {{ page.metadata.title or settings.SITE_TITLE }}
 {% endblock title %}
 
 {% block content %}
@@ -22,14 +20,14 @@
   <p style="color: red; text-align: center;">{{ _("This is a private link: please do not share!") }}</p>
   {%- endif -%}
 
-  {%- if page.frontmatter.tag -%}
-    {{ TagPage(page.frontmatter.tag, get_post_pages(tag__slug=page.frontmatter.tag.slug)) }}
+  {%- if page.metadata.tag -%}
+    {{ TagPage(page.metadata.tag, get_post_pages(tag__slug=page.metadata.tag.slug)) }}
   {%- elif page.is_post -%}
     <div class="px-4 code-container">
       {{ PostPage(page) }}
     </div>
   {%- elif page.is_category -%}
-    {{ CategoryPage(page.frontmatter.category, get_post_pages(category=page.frontmatter.category)) }}
+    {{ CategoryPage(page.metadata.category, get_post_pages(category=page.metadata.category)) }}
   {%- else -%}
     {{ raise("Unknown page type") }}
   {%- endif -%}

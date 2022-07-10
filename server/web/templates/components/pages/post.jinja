@@ -10,24 +10,24 @@
     </div>
 
     <h1 class="text-3xl font-bold mt-2 mb-4 leading-sm">
-      {{ page.frontmatter.title }}
+      {{ page.metadata.title }}
     </h1>
 
-    {% if page.frontmatter.description -%}
+    {% if page.metadata.description -%}
       <p class="text-muted-500 mb-6">
-        {{ page.frontmatter.description }}
+        {{ page.metadata.description }}
       </p>
     {%- endif %}
 
-    {% if page.frontmatter.image -%}
+    {% if page.metadata.image -%}
       <div class="p-image">
         <img
-          src="{{ page.frontmatter.image }}"
-          alt="{{ page.frontmatter.image_caption or '' }}"
+          src="{{ page.metadata.image }}"
+          alt="{{ page.metadata.image_caption or '' }}"
         />
-        {% if page.frontmatter.image_caption -%}
+        {% if page.metadata.image_caption -%}
           <figcaption>
-            {{ page.frontmatter.image_caption }}
+            {{ page.metadata.image_caption }}
           </figcaption>
         {%- endif %}
       </div>
