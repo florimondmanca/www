@@ -1,4 +1,6 @@
-from .entities import Page
+from typing import Container
+
+from .entities import Category, Page
 
 
 class PageRepository:
@@ -14,4 +16,12 @@ class PageRepository:
         raise NotImplementedError  # pragma: no cover
 
     def find_all_category_pages(self) -> list[Page]:
+        raise NotImplementedError  # pragma: no cover
+
+
+class CategoryRepository:
+    def find_by_name(self, name: str) -> Category | None:
+        raise NotImplementedError  # pragma: no cover
+
+    def find_all_by_names(self, names: Container[str]) -> list[Category]:
         raise NotImplementedError  # pragma: no cover

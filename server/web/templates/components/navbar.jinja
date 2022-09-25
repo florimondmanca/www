@@ -11,7 +11,7 @@
         {% for page in get_category_pages() %}
         <li>
           <a class="px-4" href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
-            {{ page.metadata.category | category_label }}
+            {{ page.metadata.category.label }}
           </a>
         </li>
         {% endfor %}

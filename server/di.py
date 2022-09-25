@@ -1,7 +1,7 @@
 from typing import TypeVar
 
 from .application.parsers import Parser
-from .domain.repositories import PageRepository
+from .domain.repositories import CategoryRepository, PageRepository
 from .infrastructure.di import Container
 from .seedwork.domain.cqrs import MessageBus
 from .seedwork.infrastructure.cqrs import AsyncBus
@@ -13,7 +13,10 @@ def _configure(container: Container) -> None:
     from .infrastructure import module
     from .infrastructure.database import PageDatabase
     from .infrastructure.parsers import MarkdownParser
-    from .infrastructure.repositories import InMemoryPageRepository
+    from .infrastructure.repositories import (
+        FixedCategoryRepository,
+        InMemoryPageRepository,
+    )
     from .web.reload import HotReload
     from .web.templating import Templates
 
@@ -26,6 +29,7 @@ def _configure(container: Container) -> None:
     container.register(PageDatabase, instance=page_db)
 
     container.register(PageRepository, instance=InMemoryPageRepository(page_db))
+    container.register(CategoryRepository, instance=FixedCategoryRepository())
 
     hotreload = HotReload(page_db)
     container.register(HotReload, instance=hotreload)

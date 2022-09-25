@@ -3,27 +3,24 @@ from typing import Iterable
 
 from .. import settings
 from ..di import resolve
-from ..domain.entities import Metadata, Page, Tag
+from ..domain.entities import Category, Metadata, Page, Tag
+from ..domain.repositories import CategoryRepository
 from ..i18n import get_locale
-from ..i18n import gettext_lazy as _
 from .parsers import Parser
 from .queries import GetPages
 from .sources import ContentItem
 
 
 async def get_pages(query: GetPages) -> list[Page]:
+    category_repository = resolve(CategoryRepository)
+
     pages = await _build_content_pages(query.items)
 
     tags = {tag for page in pages for tag in page.metadata.tags}
     pages.extend(_build_tag_pages(tags))
 
-    categories = sorted(
-        {
-            page.metadata.category
-            for page in pages
-            if page.metadata.category is not None
-        },
-        key=list(_CATEGORY_LABELS).index,
+    categories = category_repository.find_all_by_names(
+        {c.name for page in pages if (c := page.metadata.category) is not None}
     )
     pages.extend(_build_category_pages(categories))
 
@@ -67,18 +64,17 @@ def _build_tag_pages(tags: Iterable[Tag]) -> list[Page]:
     return tag_pages
 
 
-def _build_category_pages(categories: Iterable[str]) -> list[Page]:
+def _build_category_pages(categories: Iterable[Category]) -> list[Page]:
     language = get_locale().language
     pages = []
 
     for category in categories:
-        label = get_category_label(category)
         metadata = Metadata(
-            title=f"{label} - {settings.SITE_TITLE}",
-            description=label,
+            title=f"{category.label} - {settings.SITE_TITLE}",
+            description=category.label,
             category=category,
         )
-        permalink = f"/{language}/category/{category}"
+        permalink = f"/{language}/category/{category.name}"
         page = Page(permalink=permalink, metadata=metadata)
         pages.append(page)
 
@@ -91,21 +87,3 @@ def _build_permalink(location: Path) -> str:
     segments = location.with_suffix("").parts
     assert segments
     return "/" + "/".join(segments)
-
-
-# TODO: make this use a proper Category entity or something.
-
-_CATEGORY_LABELS = {
-    "tutorials": _("Tutorials"),
-    "essays": _("Essays"),
-    "retrospectives": _("Retrospectives"),
-}
-
-
-def get_category_label(value: str) -> str:
-    try:
-        return str(_CATEGORY_LABELS[value])
-    except KeyError:
-        raise ValueError(
-            f"Unknown category value: {value!r} (available: {list(_CATEGORY_LABELS)})"
-        )

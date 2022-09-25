@@ -5,7 +5,6 @@ from starlette.exceptions import HTTPException
 from starlette.templating import Jinja2Templates
 
 from .. import settings
-from ..application.handlers import get_category_label
 from ..infrastructure.html import build_meta_tags
 from . import i18n
 from .reload import HotReload
@@ -22,7 +21,6 @@ class Templates(Jinja2Templates):
         self.env.globals["settings"] = settings
         self.env.globals["hotreload"] = hotreload
         self.env.filters["dateformat"] = _dateformat
-        self.env.filters["category_label"] = get_category_label
         self.env.filters["language_label"] = _language_label
         self.env.filters["meta_tags"] = build_meta_tags
 

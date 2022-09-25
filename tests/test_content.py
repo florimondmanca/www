@@ -66,7 +66,8 @@ async def test_get_pages() -> None:
     assert readability_counts.metadata.title == title
     assert readability_counts.metadata.description == description
     assert readability_counts.metadata.date == date
-    assert readability_counts.metadata.category == category
+    assert readability_counts.metadata.category is not None
+    assert readability_counts.metadata.category.name == category
     assert readability_counts.metadata.tags == [Tag("python")]
     assert readability_counts.metadata.image == image
 
@@ -104,7 +105,8 @@ async def test_get_pages() -> None:
     assert "Essays" in essays.metadata.title
     assert essays.metadata.description
     assert essays.metadata.date is None
-    assert essays.metadata.category == category
+    assert essays.metadata.category is not None
+    assert essays.metadata.category.name == category
     assert essays.metadata.tags == []
 
     meta = build_meta_tags(essays)
