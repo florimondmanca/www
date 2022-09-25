@@ -78,7 +78,7 @@ def test_known_categories() -> None:
     page_repository = resolve(PageRepository)
     pages = page_repository.find_all_category_pages()
     categories = [page.metadata.category for page in pages]
-    assert categories == KNOWN_CATEGORIES
+    assert [c.name for c in categories if c is not None] == KNOWN_CATEGORIES
 
 
 @pytest.mark.asyncio

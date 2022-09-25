@@ -6,7 +6,9 @@ import markdown as md
 
 from .. import settings
 from ..application.parsers import Parser
+from ..di import resolve
 from ..domain.entities import Metadata, Tag
+from ..domain.repositories import CategoryRepository
 
 
 class MarkdownParser(Parser):
@@ -14,15 +16,22 @@ class MarkdownParser(Parser):
         self._impl = md.Markdown(extensions=settings.MARKDOWN_EXTENSIONS)
 
     def parse(self, raw: str) -> tuple[str, Metadata]:
+        category_repository = resolve(CategoryRepository)
+
         post = frontmatter.loads(raw)
         content = self._impl.reset().convert(post.content)
         attrs = dict(post)
         image, image_thumbnail = _process_image(attrs)
+        category = (
+            category_repository.find_by_name(category_name)
+            if (category_name := attrs.get("category")) is not None
+            else None
+        )
 
         metadata = Metadata(
             title=attrs.get("title", ""),
             description=attrs.get("description"),
-            category=attrs.get("category"),
+            category=category,
             date=attrs.get("date"),
             image=image,
             image_thumbnail=image_thumbnail,

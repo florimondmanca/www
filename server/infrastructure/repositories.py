@@ -1,6 +1,9 @@
+from typing import Container
+
 from .. import i18n
-from ..domain.entities import Page
-from ..domain.repositories import PageRepository
+from ..domain.entities import Category, Page
+from ..domain.repositories import CategoryRepository, PageRepository
+from ..i18n import gettext_lazy as _
 from .database import PageDatabase
 
 
@@ -34,7 +37,11 @@ class InMemoryPageRepository(PageRepository):
             if tag__slug is not None:
                 if any(tag.slug == tag__slug for tag in page.metadata.tags):
                     continue
-            if category is not None and page.metadata.category != category:
+            if (
+                category is not None
+                and (page_category := page.metadata.category) is not None
+                and page_category.name != category
+            ):
                 continue
             posts.append(page)
 
@@ -44,3 +51,19 @@ class InMemoryPageRepository(PageRepository):
 
     def find_all_category_pages(self) -> list[Page]:
         return [page for page in self.find_all() if page.is_category]
+
+
+class FixedCategoryRepository(CategoryRepository):
+    _CATEGORIES = (
+        Category("tutorials", label=_("Tutorials")),
+        Category("essays", label=_("Essays")),
+        Category("retrospectives", label=_("Retrospectives")),
+    )
+
+    def find_by_name(self, name: str) -> Category | None:
+        return next(
+            (category for category in self._CATEGORIES if category.name == name), None
+        )
+
+    def find_all_by_names(self, names: Container[str]) -> list[Category]:
+        return [category for category in self._CATEGORIES if category.name in names]

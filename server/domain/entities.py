@@ -15,10 +15,16 @@ class Tag:
 
 
 @dataclasses.dataclass(frozen=True)
+class Category:
+    name: str
+    label: str
+
+
+@dataclasses.dataclass(frozen=True)
 class Metadata:
     title: str = ""
     description: Optional[str] = None
-    category: Optional[str] = None
+    category: Optional[Category] = None
     date: Optional[str] = None
     image: Optional[str] = None
     image_thumbnail: Optional[str] = None

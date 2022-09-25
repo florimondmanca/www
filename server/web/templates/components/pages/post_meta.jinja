@@ -6,8 +6,8 @@
     {{ page.metadata.date | dateformat }}
     |
     in
-    <a href="{{ url_for('page', permalink=i18n_path('/category/' + page.metadata.category).lstrip('/')) }}">
-      {{ page.metadata.category | category_label }}
+    <a href="{{ url_for('page', permalink=i18n_path('/category/' + page.metadata.category.name).lstrip('/')) }}">
+      {{ page.metadata.category.name }}
     </a>
   </div>
 
