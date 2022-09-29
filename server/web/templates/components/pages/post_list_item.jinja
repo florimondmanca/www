@@ -5,8 +5,8 @@
   {% with image_src = page.metadata.image_thumbnail or page.metadata.image %}
     {% if image_src %}
     <div class="text-center">
-      <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}" class="inline-block mb-3">
-        <img src="{{ image_src }}" />
+      <a href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}" class="inline-block mb-3" title="{{ _('Read') }} '{{ page.metadata.title }}'">
+        <img width="320" height="180" src="{{ image_src }}" alt="{{ _('Image for') }} '{{ page.metadata.title }}'" />
       </a>
     </div>
     {% endif %}
