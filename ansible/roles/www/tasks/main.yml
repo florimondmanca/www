@@ -41,3 +41,7 @@
     - name: Ensure app has letsencrypt
       dokku_letsencrypt:
         app: "{{ app }}"
+    
+    - name: Ensure LetsEncrypt auto-renew is enabled in Dokku
+      shell: dokku letsencrypt:cron-job --add
+      become: true
