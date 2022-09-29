@@ -1,5 +1,4 @@
 from starlette.routing import BaseRoute, Host, Mount, Route, WebSocketRoute
-from starlette.staticfiles import StaticFiles
 
 from .. import settings
 from ..di import resolve
@@ -7,10 +6,14 @@ from . import legacy, middleware, views
 from .i18n.routing import LocaleRoute
 from .reload import HotReload
 from .sitemap import sitemap
+from .statics import CachedStaticFiles
 
 
 def get_routes() -> list[BaseRoute]:
-    static = StaticFiles(directory=str(settings.STATIC_DIR))
+    static = CachedStaticFiles(
+        directory=str(settings.STATIC_DIR),
+        max_age=7 * 86400,  # 7 days
+    )
 
     hotreload = resolve(HotReload)
 
