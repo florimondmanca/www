@@ -50,6 +50,7 @@ def get_routes() -> list[BaseRoute]:
             name="feed-rss",
         ),
         LocaleRoute("/", views.home),
+        LocaleRoute("/posts/", views.posts),
         Route("/{permalink:path}/", views.RenderPage, name="page"),
     ]
 

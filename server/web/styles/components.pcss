@@ -33,11 +33,6 @@
     }
   }
 
-  .p-link {
-    @apply border-b;
-    @apply border-primary;
-  }
-
   .c-jumbotron-card {
     @apply text-center;
   }
@@ -63,11 +58,13 @@
     }
   }
 
-  @media screen and (max-width: theme("screens.tablet")) {
-    .c-page-list {
-      @apply max-w-md;
-      @apply mx-auto;
-    }
+  .c-page-list {
+    @apply max-w-md;
+    @apply mx-auto;
+    @apply grid;
+    @apply grid-cols-1;
+    @apply gap-x-6;
+    @apply gap-y-12;
   }
 
   @media screen and (min-width: theme("screens.tablet")) {
@@ -75,9 +72,8 @@
       @apply max-w-2xl;
     }
     .c-page-list {
-      @apply grid;
+      @apply max-w-none;
       @apply grid-cols-2;
-      @apply gap-6;
     }
   }
 
@@ -87,12 +83,6 @@
     }
     .c-page-list {
       @apply grid-cols-3;
-    }
-  }
-
-  @media screen {
-    .c-page-list-item {
-      @apply mb-12;
     }
   }
 
@@ -111,6 +101,22 @@
       @apply text-xl;
       @apply mb-2;
     }
+  }
+
+  .c-btn {
+    @apply rounded;
+    @apply px-3;
+    @apply py-1;
+  }
+
+  .c-btn-primary {
+    @apply bg-primary;
+    @apply text-on-primary;
+  }
+
+  .c-btn-primary:hover {
+    @apply bg-primary-600;
+    @apply text-on-primary;
   }
 
   .c-post-meta {
@@ -162,7 +168,8 @@
     }
   }
   .markdown a {
-    @apply p-link;
+    @apply border-b;
+    @apply border-link;
   }
   .markdown ol {
     @apply list-decimal;

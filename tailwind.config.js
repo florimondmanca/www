@@ -6,7 +6,11 @@ module.exports = {
     colors: {
       background: "#FFFFFF",
       surface: "#edeff0",
-      primary: "#478cc9",
+      link: "#478cc9",
+      primary: {
+        DEFAULT: "#3eab9b",
+        600: "#47bdaa",
+      },
       accent: "#ea3b53",
       muted: {
         500: "#6b6b6b",
@@ -14,6 +18,7 @@ module.exports = {
       },
       warn: "#f1714f",
       on: {
+        primary: "#000000",
         background: "#424242",
       },
     },
