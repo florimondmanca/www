@@ -24,7 +24,7 @@ class InMemoryPageRepository(PageRepository):
         self,
         *,
         tag__slug: str = None,
-        category: str = None,
+        category: Category = None,
         limit: int = None,
     ) -> list[Page]:
         posts: list[Page] = []
@@ -37,11 +37,7 @@ class InMemoryPageRepository(PageRepository):
             if tag__slug is not None:
                 if any(tag.slug == tag__slug for tag in page.metadata.tags):
                     continue
-            if (
-                category is not None
-                and (page_category := page.metadata.category) is not None
-                and page_category.name != category
-            ):
+            if category is not None and page.metadata.category != category:
                 continue
             posts.append(page)
 
