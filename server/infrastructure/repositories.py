@@ -45,9 +45,6 @@ class InMemoryPageRepository(PageRepository):
 
         return posts[:limit]
 
-    def get_num_posts(self) -> int:
-        return sum(1 for page in self.find_all() if page.is_post)
-
     def find_all_category_pages(self) -> list[Page]:
         return [page for page in self.find_all() if page.is_category]
 

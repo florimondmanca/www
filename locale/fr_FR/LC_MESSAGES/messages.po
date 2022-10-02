@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-29 22:38+0200\n"
+"POT-Creation-Date: 2022-10-02 20:10+0200\n"
 "PO-Revision-Date: 2021-04-22 16:27+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr_FR\n"
@@ -24,7 +24,7 @@ msgstr "Tutoriels"
 
 #: server/infrastructure/repositories.py:55
 msgid "Essays"
-msgstr "Billets"
+msgstr "Réflexions"
 
 #: server/infrastructure/repositories.py:56
 msgid "Retrospectives"
@@ -51,7 +51,7 @@ msgstr ""
 msgid "Links"
 msgstr "Liens utiles"
 
-#: server/web/templates/components/pages/post_list.jinja:10
+#: server/web/templates/components/pages/post_list.jinja:12
 msgid "No posts yet."
 msgstr "Pas encore de billets."
 
@@ -63,7 +63,18 @@ msgstr "Lire"
 msgid "Image for"
 msgstr "Image pour"
 
+#: server/web/templates/views/home.jinja:41
+msgid "Recent posts"
+msgstr "Derniers articles"
+
+#: server/web/templates/views/home.jinja:50
+msgid "See all posts"
+msgstr "Voir tous les articles"
+
 #: server/web/templates/views/page.jinja:20
 msgid "This is a private link: please do not share!"
 msgstr "Ce lien est privé : veuillez ne pas le partager !"
 
+#: server/web/templates/views/posts.jinja:40
+msgid "All posts"
+msgstr "Tous les articles"

@@ -5,9 +5,8 @@
   <div class="text-muted-500 pr-3">
     {{ page.metadata.date | dateformat }}
     |
-    in
     <a href="{{ url_for('page', permalink=i18n_path('/category/' + page.metadata.category.name).lstrip('/')) }}">
-      {{ page.metadata.category.name }}
+      {{ _(page.metadata.category.name | capitalize) }}
     </a>
   </div>
 

@@ -15,9 +15,6 @@ class PageRepository:
     ) -> list[Page]:
         raise NotImplementedError  # pragma: no cover
 
-    def get_num_posts(self) -> int:
-        raise NotImplementedError  # pragma: no cover
-
     def find_all_category_pages(self) -> list[Page]:
         raise NotImplementedError  # pragma: no cover
 

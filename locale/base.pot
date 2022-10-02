@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-29 22:38+0200\n"
+"POT-Creation-Date: 2022-10-02 20:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-#: server/web/templates/components/pages/post_list.jinja:10
+#: server/web/templates/components/pages/post_list.jinja:12
 msgid "No posts yet."
 msgstr ""
 
@@ -59,7 +59,19 @@ msgstr ""
 msgid "Image for"
 msgstr ""
 
+#: server/web/templates/views/home.jinja:41
+msgid "Recent posts"
+msgstr ""
+
+#: server/web/templates/views/home.jinja:50
+msgid "See all posts"
+msgstr ""
+
 #: server/web/templates/views/page.jinja:20
 msgid "This is a private link: please do not share!"
+msgstr ""
+
+#: server/web/templates/views/posts.jinja:40
+msgid "All posts"
 msgstr ""
 

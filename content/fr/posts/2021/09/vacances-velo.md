@@ -4,7 +4,7 @@ title: |
 description: |
   Je retrace pour vous l'organisation d'une semaine de vacances en train + vélo très réussie, espérant qu'elle puisse servir d'inspiration. On fera aussi le bilan économique et climatique, pour finir sur des perspectives pour rendre ce modèle crédible et désirable aux yeux du plus grand nombre.
 date: "2021-09-14"
-category: essays
+category: retrospectives
 tags:
   - climat
   - velo

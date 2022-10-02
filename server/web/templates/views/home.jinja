@@ -45,12 +45,10 @@
 
   {{ PostList(get_post_pages(limit=num_posts)) }}
 
-  {%- if get_num_posts() > num_posts -%}
   <div class="mt-8 flex justify-center">
     <a href="{{ url_for('posts') }}" class="c-btn c-btn-primary">
       {{ _("See all posts") }}
     </a>
   </div>
-  {%- endif -%}
 </div>
 {% endblock %}

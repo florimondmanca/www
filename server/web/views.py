@@ -14,7 +14,6 @@ def _common_context() -> dict:
 
     return {
         "get_post_pages": page_repository.find_all_post_pages,
-        "get_num_posts": page_repository.get_num_posts,
         "get_category_pages": page_repository.find_all_category_pages,
     }
 
