@@ -2,7 +2,7 @@ import httpx
 import pytest
 
 from server.di import resolve
-from server.domain.repositories import PageRepository
+from server.domain.repositories import CategoryRepository
 
 from .utils import find_meta_tags, load_xml_from_string
 
@@ -71,14 +71,14 @@ async def test_private_link(client: httpx.AsyncClient) -> None:
     assert "do not share" in resp.text.lower()
 
 
-KNOWN_CATEGORIES = ["tutorials", "essays", "retrospectives"]
+KNOWN_CATEGORIES = ["essays", "retrospectives", "tutorials"]
 
 
-def test_known_categories() -> None:
-    page_repository = resolve(PageRepository)
-    pages = page_repository.find_all_category_pages()
-    categories = [page.metadata.category for page in pages]
-    assert [c.name for c in categories if c is not None] == KNOWN_CATEGORIES
+@pytest.mark.asyncio
+async def test_known_categories() -> None:
+    category_repository = resolve(CategoryRepository)
+    categories = await category_repository.find_all()
+    assert [c.slug for c in categories] == KNOWN_CATEGORIES
 
 
 @pytest.mark.asyncio
@@ -103,6 +103,30 @@ async def test_category_i18n(client: httpx.AsyncClient) -> None:
 async def test_not_found(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/foo"
     resp = await client.get(url, follow_redirects=True)
+    assert resp.status_code == 404
+    assert "text/html" in resp.headers["content-type"]
+
+
+@pytest.mark.asyncio
+async def test_not_found_article(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/en/posts/2022/06/whatever/"
+    resp = await client.get(url)
+    assert resp.status_code == 404
+    assert "text/html" in resp.headers["content-type"]
+
+
+@pytest.mark.asyncio
+async def test_not_found_category(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/en/category/whatever/"
+    resp = await client.get(url)
+    assert resp.status_code == 404
+    assert "text/html" in resp.headers["content-type"]
+
+
+@pytest.mark.asyncio
+async def test_not_found_keyword(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/en/tag/whatever/"
+    resp = await client.get(url)
     assert resp.status_code == 404
     assert "text/html" in resp.headers["content-type"]
 

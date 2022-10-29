@@ -1,7 +1,5 @@
 import logging
-from contextlib import contextmanager
 from contextvars import ContextVar
-from typing import Iterator
 
 from babel.core import Locale as _Locale
 from babel.support import NullTranslations, Translations
@@ -66,13 +64,3 @@ def set_locale(code: str) -> None:
 
 def get_locale() -> "Locale":
     return _locale_context.get()
-
-
-@contextmanager
-def using_locale(code: str) -> Iterator[None]:
-    initial = get_locale().language
-    set_locale(code)
-    try:
-        yield
-    finally:
-        set_locale(initial)

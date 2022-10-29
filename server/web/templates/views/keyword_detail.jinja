@@ -1,0 +1,25 @@
+{% extends "base.jinja" %}
+
+{% from "components/meta_tags.jinja" import MetaTags with context %}
+{% from "components/blog_posting_list.jinja" import BlogPostingList with context %}
+
+{% block head %}
+{{ super() }}
+{{ MetaTags(keyword) }}
+{% endblock head %}
+
+{% block title %}
+{{ keyword.meta_title }}
+{% endblock title %}
+
+{% block content %}
+<main class="mt-6">
+  <div class="c-page-list-container">
+    <h1 class="font-bold mb-4">
+      Tag: #{{ keyword.name }}
+    </h1>
+
+    {{ BlogPostingList(blog_postings) }}
+  </div>
+</main>
+{% endblock content %}

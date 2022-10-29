@@ -8,10 +8,10 @@
         {{ settings.SITE_TITLE }}
       </a>
       <ul class="flex justify-center">
-        {% for page in get_category_pages() %}
+        {% for category in categories %}
         <li>
-          <a class="px-4" href="{{ url_for('page', permalink=page.permalink.lstrip('/')) }}">
-            {{ page.metadata.category.label }}
+          <a class="px-4" href="{{ category | absolute_url }}">
+            {{ category.name }}
           </a>
         </li>
         {% endfor %}

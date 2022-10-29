@@ -49,8 +49,14 @@ def get_routes() -> list[BaseRoute]:
             ),
             name="feed-rss",
         ),
-        LocaleRoute("/", views.home),
-        Route("/{permalink:path}/", views.RenderPage, name="page"),
+        LocaleRoute("/", views.Home, name="home"),
+        LocaleRoute(
+            "/posts/{year:int}/{month:int}/{slug:str}/",
+            views.BlogPostingDetail,
+            name="blog_posting:detail",
+        ),
+        LocaleRoute("/category/{slug}/", views.CategoryDetail, name="category:detail"),
+        LocaleRoute("/tag/{name}/", views.KeywordDetail, name="keyword:detail"),
     ]
 
     if settings.DEBUG:  # pragma: no cover
