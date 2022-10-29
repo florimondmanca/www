@@ -1,0 +1,31 @@
+{% from "components/blog_posting_meta.jinja" import BlogPostingMeta with context %}
+
+{% macro BlogPostingListItem(blog_posting) %}
+<li class="c-page-list-item">
+  {% with thumbnail_url = blog_posting.thumbnail_url %}
+    {% if thumbnail_url %}
+    <div class="text-center">
+      <a href="{{ blog_posting | absolute_url }}" class="inline-block mb-3" title="{{ _('Read') }} '{{ blog_posting.name }}'">
+        <img width="320" height="180" src="{{ thumbnail_url }}" alt="{{ _('Image for') }} '{{ blog_posting.name }}'" />
+      </a>
+    </div>
+    {% endif %}
+  {% endwith %}
+
+  <div>
+    <h3 class="font-bold mt-1 mb-3">
+      <a href="{{ blog_posting | absolute_url }}">
+        {{ blog_posting.name }}
+      </a>
+    </h3>
+
+    <p class="mb-2">
+      {{ blog_posting.abstract }}
+    </p>
+
+    <small>
+      {{ BlogPostingMeta(blog_posting) }}
+    </small>
+  </div>
+</li>
+{% endmacro %}

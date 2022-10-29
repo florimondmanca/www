@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-29 22:38+0200\n"
+"POT-Creation-Date: 2022-10-29 16:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: server/infrastructure/repositories.py:54
-msgid "Tutorials"
+#: server/domain/entities.py:47
+#, python-format
+msgid "Posts in category '%s'"
 msgstr ""
 
-#: server/infrastructure/repositories.py:55
+#: server/domain/entities.py:66
+#, python-format
+msgid "Posts with tag '%s'"
+msgstr ""
+
+#: server/infrastructure/repositories.py:49
 msgid "Essays"
 msgstr ""
 
-#: server/infrastructure/repositories.py:56
+#: server/infrastructure/repositories.py:53
 msgid "Retrospectives"
 msgstr ""
 
-#: server/web/templates/components/footer.jinja:9
+#: server/infrastructure/repositories.py:57
+msgid "Tutorials"
+msgstr ""
+
+#: server/web/templates/components/blog_posting_list.jinja:10
+msgid "No blog posts yet."
+msgstr ""
+
+#: server/web/templates/components/blog_posting_list_item.jinja:8
+msgid "Read"
+msgstr ""
+
+#: server/web/templates/components/blog_posting_list_item.jinja:9
+msgid "Image for"
+msgstr ""
+
+#: server/web/templates/components/footer.jinja:11
 msgid "Source code"
 msgstr ""
 
@@ -47,19 +69,15 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-#: server/web/templates/components/pages/post_list.jinja:10
-msgid "No posts yet."
+#: server/web/templates/views/404.jinja:7
+msgid "Page not found."
 msgstr ""
 
-#: server/web/templates/components/pages/post_list_item.jinja:8
-msgid "Read"
+#: server/web/templates/views/500.jinja:7
+msgid "Internal server error."
 msgstr ""
 
-#: server/web/templates/components/pages/post_list_item.jinja:9
-msgid "Image for"
-msgstr ""
-
-#: server/web/templates/views/page.jinja:20
+#: server/web/templates/views/blog_posting_detail.jinja:21
 msgid "This is a private link: please do not share!"
 msgstr ""
 

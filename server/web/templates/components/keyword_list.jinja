@@ -1,0 +1,12 @@
+{% macro KeywordList(keywords) %}
+<div class="whitespace-no-wrap">
+  <span>
+    🔖
+  </span>
+  {% for keyword in keywords %}
+  <a class="c-tag-list-item" href="{{ keyword | absolute_url }}">
+    {{ keyword.name }}
+  </a>
+  {% endfor %}
+</div>
+{% endmacro %}

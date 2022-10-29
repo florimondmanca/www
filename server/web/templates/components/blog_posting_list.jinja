@@ -1,0 +1,13 @@
+{% from "components/blog_posting_list_item.jinja" import BlogPostingListItem with context %}
+
+{% macro BlogPostingList(blog_postings) %}
+<ul class="c-page-list">
+  {% for blog_posting in blog_postings -%}
+    {{ BlogPostingListItem(blog_posting) }}
+  {%- else -%}
+</ul>
+  <p class="text-center">
+    {{ _('No blog posts yet.') }}
+  </p>
+{%- endfor %}
+{% endmacro %}

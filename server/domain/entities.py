@@ -1,59 +1,115 @@
 import dataclasses
+import datetime as dt
 import re
 from dataclasses import dataclass
-from typing import List, Optional
+
+from .. import settings
+from ..i18n import gettext_lazy as _
 
 PRIVATE_RE = re.compile(r"prv-\d+$")
 
 
-@dataclass(frozen=True)
-class Tag:
-    slug: str
+class ObjWithMeta:
+    @property
+    def meta_title(self) -> str:
+        raise NotImplementedError  # pragma: no cover
 
-    def __str__(self) -> str:
-        return self.slug
+    @property
+    def meta_description(self) -> str:
+        raise NotImplementedError  # pragma: no cover
+
+    @property
+    def meta_date_published(self) -> dt.date | None:
+        return None
+
+    @property
+    def meta_image_url(self) -> str | None:
+        return None
+
+    @property
+    def meta_keywords(self) -> list[str]:
+        return []
 
 
 @dataclasses.dataclass(frozen=True)
-class Category:
+class Category(ObjWithMeta):
+    # https://schema.org/Thing
     name: str
-    label: str
+    slug: str
+    in_language: str
+
+    @property
+    def meta_title(self) -> str:
+        return f"{self.name} - {settings.SITE_TITLE}"
+
+    @property
+    def meta_description(self) -> str:
+        return _("Posts in category '%s'") % self.name
+
+
+@dataclass(frozen=True)
+class Keyword(ObjWithMeta):
+    # https://schema.org/Thing
+    name: str
+    in_language: str
+
+    @property
+    def slug(self) -> str:
+        return self.name
+
+    @property
+    def meta_title(self) -> str:
+        return f"{self.name} - {settings.SITE_TITLE}"
+
+    @property
+    def meta_description(self) -> str:
+        return _("Posts with tag '%s'") % self.name
 
 
 @dataclasses.dataclass(frozen=True)
-class Metadata:
-    title: str = ""
-    description: Optional[str] = None
-    category: Optional[Category] = None
-    date: Optional[str] = None
-    image: Optional[str] = None
-    image_thumbnail: Optional[str] = None
-    image_caption: Optional[str] = None
-    tags: List[Tag] = dataclasses.field(default_factory=list)
-    tag: Optional[Tag] = None
+class ImageObject:
+    # https://schema.org/ImageObject
+    content_url: str
+    caption: str | None = None
 
 
 @dataclasses.dataclass(frozen=True)
-class Page:
-    permalink: str
-    metadata: Metadata
-    html: str = ""
-    content: str = ""
-
-    @property
-    def language(self) -> str:
-        # '/en/posts/...' -> 'en'
-        parts = self.permalink.split("/")
-        return parts[1]
-
-    @property
-    def is_post(self) -> bool:
-        return "/posts/" in self.permalink
-
-    @property
-    def is_category(self) -> bool:
-        return "/category/" in self.permalink
+class BlogPosting(ObjWithMeta):
+    # https://schema.org/BlogPosting
+    name: str
+    abstract: str
+    text: str
+    slug: str
+    edit_url: str
+    date_published: dt.date
+    category: Category
+    in_language: str
+    image: ImageObject | None = None
+    thumbnail_url: str | None = None
+    keywords: list[Keyword] = dataclasses.field(default_factory=list)
 
     @property
     def is_private(self) -> bool:
-        return PRIVATE_RE.search(self.permalink) is not None
+        return PRIVATE_RE.search(self.slug) is not None
+
+    @property
+    def meta_title(self) -> str:
+        return f"{self.name} - {settings.SITE_TITLE}"
+
+    @property
+    def meta_description(self) -> str:
+        return self.abstract
+
+    @property
+    def meta_date_published(self) -> dt.date:
+        return self.date_published
+
+    @property
+    def meta_image_url(self) -> str | None:
+        if self.image is None:
+            return None
+        return self.image.content_url
+
+    @property
+    def meta_keywords(self) -> list[str]:
+        return [keyword.name for keyword in self.keywords]

@@ -42,3 +42,15 @@ async def silent_client(app: ASGIApp) -> AsyncIterator[httpx.AsyncClient]:
     transport = httpx.ASGITransport(app, raise_app_exceptions=False)
     async with httpx.AsyncClient(transport=transport) as client:
         yield client
+
+
+@pytest.fixture
+@pytest.mark.usefixtures("app")
+def isolated_db() -> Iterator[None]:
+    from server.di import resolve
+    from server.infrastructure.database import InMemoryDatabase
+
+    db = resolve(InMemoryDatabase)
+
+    with db.isolated():
+        yield
