@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
-    "cssnano": "^5.0.13",
+    "cssnano": "^5.1.14",
     "onchange": "^7.1.0",
     "postcss": "^8.4.16",
     "postcss-cli": "^10.0.0",
