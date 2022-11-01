@@ -1,7 +1,7 @@
 -r requirements.txt
 
 # Development, tools and testing dependencies.
-autoflake==1.6.1
+autoflake==1.7.7
 asgi-lifespan==1.0.1
 black==22.8.0
 flake8==5.0.4
