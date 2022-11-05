@@ -29,7 +29,7 @@ jobs:
     steps:
       - template: step--node-install.yml@templates
         parameters:
-          nodeVersion: "16.x"
+          nodeVersion: "18.x"
       - script: make build
 
   - template: job--python-test.yml@templates
