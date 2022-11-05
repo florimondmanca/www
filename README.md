@@ -7,14 +7,8 @@ Code for https://florimond.dev.
 
 ## Prerequisites
 
-Runtime:
-
-- Python 3.10+
-
-Development only:
-
-- Node.js 16.x
-- Heroku CLI - _(optional)_
+- Python 3.11+
+- Node.js 18.x
 
 ## Install
 
@@ -28,13 +22,6 @@ make install
 
 ```bash
 make serve
-```
-
-- Run the website as it would run in production:
-
-```bash
-. venv/bin/activate
-heroku local
 ```
 
 - Run the test suite:
@@ -99,7 +86,7 @@ Azure Pipelines is configured to deploy on pushes to the `master` branch.
 This requires setting up SSH keys. Initially, it can be created using:
 
 ```
-make infra-ci-deploy-keys
+cd ansible && make ci-deploy-keys
 ```
 
 This creates 3 files:

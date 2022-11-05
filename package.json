@@ -2,7 +2,7 @@
   "name": "blog",
   "version": "1.0.0",
   "author": "Florimond Manca",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "scripts": {
     "build": "postcss ./server/web/styles/styles.pcss -o ./server/web/static/css/styles.css",
     "watch": "onchange -i 'tailwind.config.js' './server/**/*.jinja' './server/web/styles/**/*.(p)?css' -- npm run build"
