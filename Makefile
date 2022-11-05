@@ -5,7 +5,7 @@ pip = ${bin}pip
 pysources = server/ tests/ tools/
 
 build:
-	NODE_ENV=production yarn build
+	NODE_ENV=production npm run build
 
 check:
 	${bin}black --check --diff ${pysources}
@@ -17,15 +17,16 @@ check:
 ${venv}:
 	python3 -m venv ${venv}
 
-install:
+install: install-python install-node .env
+
+install-python:
 	make ${venv}
 	${pip} install -U pip wheel
 	${pip} install -r requirements-dev.txt
 	make messagesc
-ifndef CI
-	yarn install
-endif
-	make .env
+
+install-node:
+	npm ci
 
 .env:
 	cp .env.example .env
@@ -55,7 +56,7 @@ serve-uvicorn:
 	PYTHONUNBUFFERED=1 ${bin}python -m server.main 2>&1 | ${bin}python -m tools.colorprefix blue [server]
 
 serve-tailwind:
-	NODE_ENV=production FORCE_COLOR=true yarn watch 2>&1 | ${bin}python -m tools.colorprefix yellow [tailwind]
+	NODE_ENV=production FORCE_COLOR=true npm run watch 2>&1 | ${bin}python -m tools.colorprefix yellow [tailwind]
 
 imgoptimize:
 	${bin}python -m server.tools.imgoptimize

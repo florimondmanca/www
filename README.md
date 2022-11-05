@@ -14,7 +14,6 @@ Runtime:
 Development only:
 
 - Node.js 16.x
-- Yarn
 - Heroku CLI - _(optional)_
 
 ## Install
