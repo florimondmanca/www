@@ -4,7 +4,7 @@ resources:
       type: github
       endpoint: github
       name: florimondmanca/azure-pipelines-templates
-      ref: refs/tags/5.1
+      ref: refs/heads/master
 
 trigger:
   - master
@@ -15,7 +15,7 @@ pr:
 variables:
   CI: true
   PIP_CACHE_DIR: $(Pipeline.Workspace)/.cache/pip
-  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+  NODE_CACHE_FOLDER: $(Build.SourcesDirectory)/node_modules
   IS_MASTER_BRANCH: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
 
 jobs:
@@ -27,10 +27,9 @@ jobs:
     pool:
       vmImage: "ubuntu-latest"
     steps:
-      - template: step--yarn-provision.yml@templates
+      - template: step--node-install.yml@templates
         parameters:
           nodeVersion: "16.x"
-      - script: yarn install
       - script: make build
 
   - template: job--python-test.yml@templates
