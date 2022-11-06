@@ -3,7 +3,7 @@
   {{ _('Links') }}
 </p>
 
-<ul class="flex flex-row justify-center items-center">
+<ul class="flex flex-row flex-wrap justify-center items-center">
   {% for link in settings.SOCIAL_LINKS %}
   <li class="m-2">
     <a href="{{ link['href'] }}" title="{{ link['title'] }}" target="_blank" rel="noreferrer">
