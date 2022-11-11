@@ -52,7 +52,7 @@ jobs:
     steps:
       - task: InstallSSHKey@0
         inputs:
-          knownHostsEntry: florimond.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMtteEyA1sNjiVr/zDyOHKw9mlWEbHjs3mTUJb7JPP+4XNoYJ+MH/aTW/o6R+2aQLxvN9DE2xpciY91pm0+k6es=
+          knownHostsEntry: florimond.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEaDbgQYJRwnfps9hKiN/DBwD1iFLEf7ipuQ8hozeJYshsQ0qXiM3LcXp8kJ7hpWHDP5QQPfeJsV4s2F2Xf61FA=
           sshKeySecureFile: florimond-dev-deploy-id_rsa
       - template: step--python-install.yml@templates
         parameters:
