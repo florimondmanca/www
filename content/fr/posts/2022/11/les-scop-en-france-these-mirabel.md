@@ -2,7 +2,7 @@
 title: |
   À quoi ressemblent les Scop aujourd'hui en France ?
 description: |
-  Un nouveau regard sur les Scop grâce à la thèse en sciences économiques de Thibault Mirabel.
+  Un nouveau regard sur les sociétés coopératives grâce à la thèse en sciences économiques de Thibault Mirabel.
 date: "2022-11-11"
 category: essays
 tags:
