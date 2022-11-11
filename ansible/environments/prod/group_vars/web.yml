@@ -1,0 +1,8 @@
+domains:
+  - florimond.dev
+  - www.florimond.dev
+  - blog.florimond.dev
+  - florimondmanca.com
+  - blog.florimondmanca.com
+
+letsencrypt_enabled: true

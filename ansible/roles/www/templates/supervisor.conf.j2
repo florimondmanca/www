@@ -1,0 +1,7 @@
+[program:www]
+directory={{ workdir }}
+command={{ workdir }}/venv/bin/python -m server.main
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/www.err.log
+stdout_logfile=/var/log/www.out.log

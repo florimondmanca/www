@@ -1,0 +1,26 @@
+- name: Ensure snapd is installed
+  package: name=snapd state=present
+  become: true
+  register: snapd_install
+
+- name: Ensure snapd is running
+  systemd: name=snapd.socket enabled=true state=started
+  become: true
+
+- name: Ensure snapd is up to date
+  shell: snap install core; snap refresh core
+  changed_when: true
+  failed_when: false
+  when: snapd_install is changed
+  become: true
+
+- name: Ensure Certbot is installed
+  snap: name=certbot classic=yes state=present
+  become: true
+
+- name: Ensure Certbot symblinks exist
+  file:
+    src: /snap/bin/certbot
+    dest: /usr/bin/certbot
+    state: link
+  become: true
