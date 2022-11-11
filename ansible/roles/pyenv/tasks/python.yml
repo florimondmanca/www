@@ -1,0 +1,8 @@
+- name: Install Python interpreter
+  shell: >-
+    {{ pyenv_bin_path }} install {{ pyenv_python_version }}
+  args:
+    creates: "{{ pyenv_root }}/versions/{{ pyenv_python_version }}/bin/python"
+
+- name: Set global version
+  import_tasks: global_version.yml

@@ -1,0 +1,7 @@
+git_repo: https://github.com/florimondmanca/www.git
+git_version: master
+
+letsencrypt_enabled: false
+
+domains:
+  - "{{ inventory_hostname }}"

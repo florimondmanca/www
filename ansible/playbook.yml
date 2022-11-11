@@ -2,5 +2,4 @@
 - hosts: web
   roles:
     - common
-    - dokku
     - www

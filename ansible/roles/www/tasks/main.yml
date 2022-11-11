@@ -1,47 +1,20 @@
-- name: Setup app
-  tags: [app]
+- name: Deploy
+  tags: deploy
   block:
-    - name: Ensure app exists
-      dokku_app:
-        app: "{{ app }}"
+  - name: Sync nginx
+    import_tasks: nginx.yml
 
-    - name: Ensure app is configured
-      dokku_config:
-        app: "{{ app }}"
-        config:
-          PORT: "5000"
-          DOKKU_LETSENCRYPT_EMAIL: florimond.manca@protonmail.com
+  - name: Sync git
+    import_tasks: git.yml
 
-    - name: Ensure unintended domains are dropped
-      dokku_domains:
-        app: "{{ app }}"
-        domains:
-          - www.dokku.me
-          - infomaniak.florimond.dev
-        state: absent
+  - name: Sync dotenv
+    import_tasks: dotenv.yml
 
-    - name: Ensure app has expected domains
-      dokku_domains:
-        app: "{{ app }}"
-        domains:
-          - florimond.dev
-          - www.florimond.dev
-          - blog.florimond.dev
-          - florimondmanca.com
-          - blog.florimondmanca.com
+  - name: Sync install
+    import_tasks: install.yml
 
-    - name: Clone app repository and deploy app
-      dokku_clone:
-        app: "{{ app }}"
-        repository: "{{ app_repository }}"
-        build: true
-      async: 200
-      poll: 10
+  - name: Sync build
+    import_tasks: build.yml
 
-    - name: Ensure app has letsencrypt
-      dokku_letsencrypt:
-        app: "{{ app }}"
-    
-    - name: Ensure LetsEncrypt auto-renew is enabled in Dokku
-      shell: dokku letsencrypt:cron-job --add
-      become: true
+  - name: Sync supervisor
+    import_tasks: supervisor.yml

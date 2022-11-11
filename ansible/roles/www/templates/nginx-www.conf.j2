@@ -1,0 +1,33 @@
+add_header X-Frame-Options "DENY";
+add_header X-Content-Type-Options "nosniff";
+add_header X-XSS-Protection "1; mode=block";
+
+upstream www {
+    server 127.0.0.1:{{ www_port }};
+}
+
+server {
+    {% if letsencrypt_enabled %}
+    listen [::]:443 ssl http2;
+    listen 443 ssl http2;
+
+    server_name {{ domains|join(" ") }};
+    access_log /var/log/nginx/www-access.log;
+    error_log /var/log/nginx/www-error.log;
+
+    ssl_certificate /etc/letsencrypt/live/{{ domains[0] }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ domains[0] }}/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+    {% else %}
+    listen [::]:80;
+    listen 80;
+    server_name {{ domains|join(" ") }};
+    {% endif %}
+
+    location / {
+        include proxy_params;
+        proxy_pass http://www;
+        http2_push_preload on;
+    }
+}

@@ -1,6 +1,0 @@
----
-- name: Install Dokku
-  import_role:
-    name: dokku_bot.ansible_dokku
-  become: true
-  tags: [dokku]

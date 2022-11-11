@@ -10,8 +10,11 @@ config = Config(".env")
 
 HERE = pathlib.Path(__file__).parent
 
-DEBUG: bool = config("DEBUG", cast=bool, default=False)
-TESTING: bool = config("TESTING", cast=bool, default=False)
+HOST: str = config("WWW_HOST", cast=str, default="localhost")
+PORT: int = config("WWW_PORT", cast=int, default=8000)
+
+DEBUG: bool = config("WWW_DEBUG", cast=bool, default=False)
+TESTING: bool = config("WWW_TESTING", cast=bool, default=False)
 
 SITE_TITLE = "Florimond Manca"
 
@@ -39,7 +42,7 @@ DEFAULT_LANGUAGE = "en"
 
 EXTRA_CONTENT_DIRS = [
     pathlib.Path(item)
-    for item in config("EXTRA_CONTENT_DIRS", cast=CommaSeparatedStrings, default="")
+    for item in config("WWW_EXTRA_CONTENT_DIRS", cast=CommaSeparatedStrings, default="")
 ]
 
 # Images take too much room on the Web. Let's limit ourselves

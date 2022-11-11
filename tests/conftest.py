@@ -8,9 +8,9 @@ import pytest_asyncio
 from asgi_lifespan import LifespanManager
 from starlette.types import ASGIApp
 
-os.environ["TESTING"] = "True"
-os.environ["DEBUG"] = "False"
-os.environ["EXTRA_CONTENT_DIRS"] = "tests/drafts"
+os.environ["WWW_TESTING"] = "True"
+os.environ["WWW_DEBUG"] = "False"
+os.environ["WWW_EXTRA_CONTENT_DIRS"] = "tests/drafts"
 
 
 @pytest.fixture(scope="session")

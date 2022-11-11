@@ -1,0 +1,4 @@
+- name: build:Build
+  shell:
+    cmd: make build
+    chdir: "{{ workdir }}"

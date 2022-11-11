@@ -1,3 +1,5 @@
-app: www
-# app_repository: git@github.com:florimondmanca/www.git
-app_repository: https://github.com/florimondmanca/www.git
+workdir: "{{ ansible_env.HOME }}/www"
+
+letsencrypt_email: florimond.manca@protonmail.com
+
+www_port: 5000

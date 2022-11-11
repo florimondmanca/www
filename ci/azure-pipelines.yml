@@ -27,6 +27,9 @@ jobs:
     pool:
       vmImage: "ubuntu-latest"
     steps:
+      - template: step--python-install.yml@templates
+        parameters:
+          pythonVersion: "3.11"
       - template: step--node-install.yml@templates
         parameters:
           nodeVersion: "18.x"
@@ -51,4 +54,5 @@ jobs:
         inputs:
           knownHostsEntry: florimond.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMtteEyA1sNjiVr/zDyOHKw9mlWEbHjs3mTUJb7JPP+4XNoYJ+MH/aTW/o6R+2aQLxvN9DE2xpciY91pm0+k6es=
           sshKeySecureFile: florimond-dev-deploy-id_rsa
-      - bash: make deploy
+      - bash: make install-deploy
+      - bash: make deploy env=prod

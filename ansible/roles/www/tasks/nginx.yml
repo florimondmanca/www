@@ -1,0 +1,88 @@
+- name: nginx:Ensure default site is disabled
+  file:
+    name: /etc/nginx/{{ item }}/default
+    state: absent
+  with_items:
+    - sites-enabled
+    - sites-available
+  become: true
+
+- name: nginx:Ensure sites directories exist
+  file:
+    name: /etc/nginx/{{ item }}
+    state: directory
+  with_items:
+    - sites-enabled
+    - sites-available
+  become: true
+
+- name: nginx:Ensure configuration is up to date
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  notify: reload nginx
+
+- name: nginx:Configure LetsEncrypt
+  when: letsencrypt_enabled
+  block:
+  - name: nginx:Ensure LetsEncrypt webroot exists
+    file:
+      name: /var/www/letsencrypt
+      state: directory
+    become: true
+
+  - name: nginx:Ensure Nginx app site is inactive
+    file:
+      name: /etc/nginx/sites-enabled/www.conf
+      state: absent
+    become: true
+
+  - name: nginx:Ensure LetsEncrypt site is enabled
+    template:
+      src: nginx-letsencrypt.conf.j2
+      dest: /etc/nginx/sites-enabled/letsencrypt.conf
+      owner: root
+      group: root
+      mode: 0644
+    become: true
+    register: letsencrypt_site
+
+  - name: nginx:Ensure LetsEncrypt site is active
+    service: name=nginx state=reloaded
+    when: letsencrypt_site is changed
+
+  - name: nginx:Create certificates
+    shell: certbot certonly  -n --webroot -w /var/www/letsencrypt --agree-tos -m "{{ letsencrypt_email }}" {% for domain in domains %}-d {{ domain }} {% endfor %}
+    args:
+      creates: "/etc/letsencrypt/live/{{ domains[0] }}"
+    become: true
+    notify: reload nginx
+
+  - name: nginx:Ensure certs get renewed
+    cron:
+      name: certs_renewal
+      special_time: weekly
+      job: "certbot renew -q"
+      state: present
+
+- name: nginx:Ensure LetsEncrypt is disabled
+  when: not letsencrypt_enabled
+  file:
+    name: /etc/nginx/sites-enabled/letsencrypt.conf
+    state: absent
+  become: true
+  notify: reload nginx
+
+- name: nginx:Ensure app site is configured and up to date
+  template:
+    src: nginx-www.conf.j2
+    dest: /etc/nginx/sites-enabled/www.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  notify: reload nginx

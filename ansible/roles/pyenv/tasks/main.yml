@@ -1,0 +1,11 @@
+- name: Install pyenv
+  import_tasks: install.yml
+
+- name: Setup pyenv
+  import_tasks: setup.yml
+
+- name: Setup bashrc
+  import_tasks: bashrc.yml
+
+- name: Install Python
+  import_tasks: python.yml
