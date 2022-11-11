@@ -7,7 +7,7 @@ date: "2022-11-11"
 category: essays
 tags:
   - til
-  - scop
+  - coopératives
 image: "/static/img/articles/les-scop-these-mirabel.jpg"
 image_caption: |
   Photo d'une usine de fermentation prise au bord du canal de Roubaix, lors d'une sortie à vélo alors que je roulais sur la rive opposée. De ce que j'en sais, il ne s'agit pas d'une Scop. Florimond Manca, 2022, CC BY-SA.
