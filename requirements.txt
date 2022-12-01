@@ -11,7 +11,7 @@ pygments==2.13.0
 python-frontmatter==1.0.0
 starlette==0.21.0
 typing_extensions
-uvicorn[standard]==0.19.0
+uvicorn[standard]==0.20.0
 
 # Development, tools and testing dependencies.
 autoflake==1.7.7
