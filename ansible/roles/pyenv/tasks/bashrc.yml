@@ -1,0 +1,13 @@
+- name: Collect path to .bashrc
+  set_fact:
+    pyenv_bashrc_path: "{{ pyenv_home }}/.bashrc"
+  when: pyenv_bashrc_path is undefined
+
+- name: Load pyenv in .bashrc
+  blockinfile:
+    dest: "{{ pyenv_bashrc_path }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: pyenv"
+    block: |
+      if [ -e "$HOME/.pyenv/.pyenvrc" ]; then
+        source $HOME/.pyenv/.pyenvrc;
+      fi

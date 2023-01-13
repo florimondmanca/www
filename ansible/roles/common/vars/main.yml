@@ -1,2 +1,0 @@
-# Add some swap to ensure we don't run out of RAM during deploys.
-swap_file_size_mb: 512

@@ -5,7 +5,7 @@ import pytest
 
 from server import settings
 from server.di import resolve
-from server.domain.repositories import PageRepository
+from server.domain.repositories import BlogPostingRepository
 from server.tools import imgoptimize, imgsize
 
 IMAGE_RE = re.compile(r"\!\[[^\[\]]*\]\((?P<url>[^\[\]]*?)\)")
@@ -16,19 +16,20 @@ async def test_images(client: httpx.AsyncClient) -> None:
     """
     All images linked in articles must exist and be local files.
     """
-    page_repository = resolve(PageRepository)
+    blog_posting_repository = resolve(BlogPostingRepository)
 
     remote_urls = []
-    for page in page_repository.find_all():
-        url = page.metadata.image
+    for blog_posting in await blog_posting_repository.find_all():
+        url = image.content_url if (image := blog_posting.image) is not None else None
+
         if url is not None and url.startswith("http"):
             remote_urls.append(url)
 
-        url = page.metadata.image_thumbnail
+        url = blog_posting.thumbnail_url
         if url is not None and url.startswith("http"):
             remote_urls.append(url)
 
-        urls = IMAGE_RE.findall(page.content)
+        urls = IMAGE_RE.findall(blog_posting.text)
         for url in urls:
             assert url is not None
             response = await client.get(url)

@@ -31,8 +31,7 @@ module.exports = {
     },
     fontFamily: {
       body: [
-        "Garamond", // Windows, Mac
-        "Georgia", // iOS, Linuw
+        "Georgia", // Linux, Mac, iOS, Windows 
         "serif", // The rest (eg Droid Serif on Android)
       ],
     },

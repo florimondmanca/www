@@ -1,0 +1,22 @@
+{% from "components/keyword_list.jinja" import KeywordList with context %}
+
+{% macro BlogPostingMeta(blog_posting, editable=false) %}
+<div class="c-post-meta">
+  <div class="text-muted-500 pr-3">
+    {{ blog_posting.date_published | dateformat }}
+    |
+    in
+    <a href="{{ blog_posting.category | absolute_url }}">
+      {{ blog_posting.category.name }}
+    </a>
+  </div>
+
+  {{ KeywordList(blog_posting.keywords) }}
+</div>
+
+{% if editable %}
+<a class="block" href="{{ blog_posting.edit_url }}" target="_blank" rel="no-referrer">
+  📝&nbsp;Edit
+</a>
+{% endif %}
+{% endmacro %}

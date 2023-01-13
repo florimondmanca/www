@@ -2,22 +2,21 @@
   "name": "blog",
   "version": "1.0.0",
   "author": "Florimond Manca",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "scripts": {
     "build": "postcss ./server/web/styles/styles.pcss -o ./server/web/static/css/styles.css",
-    "watch": "onchange -i 'tailwind.config.js' './server/**/*.jinja' './server/web/styles/**/*.(p)?css' -- yarn build"
+    "watch": "onchange -i 'tailwind.config.js' './server/**/*.jinja' './server/web/styles/**/*.(p)?css' -- npm run build"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.8",
-    "cssnano": "^5.0.13",
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.14",
     "onchange": "^7.1.0",
-    "postcss": "^8.4.16",
+    "postcss": "^8.4.18",
     "postcss-cli": "^10.0.0",
     "postcss-import": "^15.0.0",
-    "tailwindcss": "^3.1.8"
+    "tailwindcss": "^3.2.2"
   },
   "engines": {
-    "node": "16.x",
-    "yarn": "1.x"
+    "node": "18.x"
   }
 }

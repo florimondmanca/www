@@ -1,5 +1,5 @@
-- name: Common setup
-  tags: [common]
+- name: Provision-time setup
+  tags: provision
   block:
     - name: Ensure a locale is set
       locale_gen:
@@ -17,21 +17,41 @@
         state: present
       with_items:
         - software-properties-common
+        - curl
         - git
+        - make
         - htop
         - gnupg2
+        - gettext
       become: true
 
-    - name: Ensure system has swap
+    - name: Ensure pyenv is configured
       import_role:
-        name: geerlingguy.swap
+        name: pyenv
+
+    - name: Ensure nvm is configured
+      import_role:
+        name: nvm
+
+    - name: Ensure Nginx is installed
+      apt: name=nginx state=latest
       become: true
 
-    # - name: Ensure SSH keys are set up
-    #   # Required to be able to git clone via SSH.
-    #   openssh_keypair:
-    #     path: ~/.ssh/id_rsa
+    - name: Ensure Certbot is configured
+      import_role:
+        name: certbot
 
-    # - name: Ensure github.com is a known host
-    #   # Required to be able to git clone via SSH.
-    #   shell: ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+    - name: Ensure supervisor is installed
+      apt: name=supervisor state=latest
+      become: true
+
+- name: Deploy-time setup
+  tags: deploy
+  block:
+  - name: Ensure nginx is running
+    service: name=nginx state=started
+    become: true
+
+  - name: Ensure supervisor is running
+    service: name=supervisor state=started enabled=yes
+    become: true

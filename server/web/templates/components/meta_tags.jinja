@@ -1,0 +1,5 @@
+{% macro MetaTags(obj) %}
+{% for attributes in obj | meta_tags %}
+<meta {% for key, value in attributes.items() %}{{ key }}="{{ value }}"{% endfor %}>
+{% endfor %}
+{% endmacro %}

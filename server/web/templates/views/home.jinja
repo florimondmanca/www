@@ -1,7 +1,7 @@
 {% extends "base.jinja" %}
 
 {% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
-{% from "components/pages/post_list.jinja" import PostList with context %}
+{% from "components/blog_posting_list.jinja" import BlogPostingList with context %}
 {% from "components/jumbotron.jinja" import Jumbotron with context %}
 
 {% block head %}
@@ -36,19 +36,8 @@
 
 {% block content %}
 {{ Jumbotron() }}
+
 <div class="c-page-list-container">
-  <h2 class="mb-6">
-    {{ _("Recent posts") }}
-  </h2>
-
-  {%- set num_posts = 3 -%}
-
-  {{ PostList(get_post_pages(limit=num_posts)) }}
-
-  <div class="mt-8 flex justify-center">
-    <a href="{{ url_for('posts') }}" class="c-btn c-btn-primary">
-      {{ _("See all posts") }}
-    </a>
-  </div>
+  {{ BlogPostingList(blog_postings) }}
 </div>
 {% endblock %}

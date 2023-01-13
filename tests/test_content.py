@@ -1,128 +1,116 @@
+import datetime as dt
 from pathlib import Path
 from textwrap import dedent
 from typing import Optional
 
 import pytest
 
-from server.application.queries import GetPages
 from server.di import resolve
-from server.domain.entities import Tag
+from server.domain.entities import ImageObject, Keyword
+from server.domain.repositories import CategoryRepository, KeywordRepository
+from server.infrastructure.content import build_blog_posting
 from server.infrastructure.html import build_meta_tags
-from server.infrastructure.sources import ContentItem, ContentSource
-from server.seedwork.domain.cqrs import MessageBus
-
-
-class StringSource(ContentSource):
-    def __init__(self, content: str) -> None:
-        self._content = content
-
-    async def get(self) -> str:
-        return self._content
 
 
 @pytest.mark.asyncio
-async def test_get_pages_empty() -> None:
-    bus = resolve(MessageBus)
-    pages = await bus.execute(GetPages(items=[]))
-    assert pages == []
+@pytest.mark.usefixtures("isolated_db")
+async def test_build_blog_posting() -> None:
+    category_repository = resolve(CategoryRepository)
+    keyword_repository = resolve(KeywordRepository)
 
+    essays = await category_repository.find_by_slug("essays")
+    assert essays is None
 
-@pytest.mark.asyncio
-async def test_get_pages() -> None:
+    python = await keyword_repository.find_by_name("python")
+    assert python is None
+
     title = "Readability Counts"
     description = "How readability impacts software development."
-    date = "2000-01-01"
+    date = "2020-01-01"
     category = "essays"
     image = "/static/img/articles/example.jpg"
 
-    items = [
-        ContentItem(
-            source=StringSource(
-                dedent(
-                    f"""
-                ---
-                title: "{title}"
-                description: "{description}"
-                date: "{date}"
-                category: {category}
-                tags:
-                - python
-                image: "{image}"
-                ---
-                You should *really* care about readability.
-                """
-                )
-            ),
-            location=Path("en/posts/readability-counts.md"),
-        )
-    ]
+    root = Path("content")
+    path = Path("content/en/posts/2020/01/readability-counts.md")
+    raw = dedent(
+        f"""
+        ---
+        title: "{title}"
+        description: "{description}"
+        date: "{date}"
+        category: {category}
+        tags:
+          - python
+        image: "{image}"
+        ---
+        You should *really* care about readability.
+        """
+    )
 
-    bus = resolve(MessageBus)
-    pages = await bus.execute(GetPages(items))
+    blog_posting = await build_blog_posting(root, path, raw)
 
-    readability_counts, python, essays = pages
+    essays = await category_repository.find_by_slug("essays")
+    assert essays is not None
 
-    assert readability_counts.permalink == "/en/posts/readability-counts"
-    assert readability_counts.metadata.title == title
-    assert readability_counts.metadata.description == description
-    assert readability_counts.metadata.date == date
-    assert readability_counts.metadata.category is not None
-    assert readability_counts.metadata.category.name == category
-    assert readability_counts.metadata.tags == [Tag("python")]
-    assert readability_counts.metadata.image == image
+    python = await keyword_repository.find_by_name("python")
+    assert python is not None
 
-    meta = build_meta_tags(readability_counts)
-    url = "https://florimond.dev/en/posts/readability-counts/"
+    assert blog_posting.name == title
+    assert blog_posting.abstract == description
+    assert blog_posting.text == (
+        "<p>You should <em>really</em> care about readability.</p>"
+    )
+    assert blog_posting.slug == "readability-counts"
+    assert blog_posting.edit_url == (
+        "https://github.com/florimondmanca/www/blob/master/content/en/posts/2020/01/readability-counts.md"  # noqa: E501
+    )
+    assert blog_posting.date_published == dt.date(2020, 1, 1)
+    assert blog_posting.category == essays
+    assert blog_posting.in_language == "en"
+    assert blog_posting.image == ImageObject(content_url=image, caption=None)
+    assert blog_posting.thumbnail_url == image
+    assert blog_posting.keywords == [Keyword(name="python", in_language="en")]
+
+    meta = build_meta_tags(blog_posting)
+    url = "https://florimond.dev/en/posts/2020/01/readability-counts/"
     assert {"name": "twitter:card", "content": "summary_large_image"} in meta
-    assert {"name": "twitter:title", "content": title} in meta
+    assert {"name": "twitter:title", "content": f"{title} - Florimond Manca"} in meta
     assert {"name": "twitter:description", "content": description} in meta
     assert {"name": "twitter:url", "content": url} in meta
     assert {"name": "twitter:image", "content": f"https://florimond.dev{image}"} in meta
     assert {"property": "article:tag", "content": "python"} in meta
 
-    assert readability_counts.html == (
-        "<p>You should <em>really</em> care about readability.</p>"
-    )
-
-    assert python.permalink == "/en/tag/python"
-    assert python.metadata.title
-    assert python.metadata.description
-    assert python.metadata.date is None
-    assert python.metadata.tags == []
-    assert python.metadata.tag == Tag("python")
+    assert python.name == "python"
+    assert python.in_language == "en"
+    assert python.meta_title == "python - Florimond Manca"
+    assert python.meta_description == "Posts with tag 'python'"
 
     meta = build_meta_tags(python)
     url = "https://florimond.dev/en/tag/python/"
     assert {"name": "twitter:card", "content": "summary_large_image"} in meta
-    assert {"name": "twitter:title", "content": python.metadata.title} in meta
-    assert {
-        "name": "twitter:description",
-        "content": python.metadata.description,
-    } in meta
+    assert {"name": "twitter:title", "content": "python - Florimond Manca"} in meta
+    assert {"name": "twitter:description", "content": "Posts with tag 'python'"} in meta
     assert {"name": "twitter:url", "content": url} in meta
 
-    assert essays.permalink == "/en/category/essays"
-    assert "Essays" in essays.metadata.title
-    assert essays.metadata.description
-    assert essays.metadata.date is None
-    assert essays.metadata.category is not None
-    assert essays.metadata.category.name == category
-    assert essays.metadata.tags == []
+    assert essays.name == "Essays"
+    assert essays.slug == "essays"
+    assert essays.in_language == "en"
 
     meta = build_meta_tags(essays)
     url = "https://florimond.dev/en/category/essays/"
     assert {"name": "twitter:card", "content": "summary_large_image"} in meta
-    assert {"name": "twitter:title", "content": essays.metadata.title} in meta
+    assert {"name": "twitter:title", "content": "Essays - Florimond Manca"} in meta
     assert {
         "name": "twitter:description",
-        "content": essays.metadata.description,
+        "content": "Posts in category 'Essays'",
     } in meta
     assert {"name": "twitter:url", "content": url} in meta
 
 
 @pytest.mark.asyncio
+@pytest.mark.usefixtures("isolated_db")
 @pytest.mark.parametrize(
-    "image, image_thumbnail_line, expected_image_thumbnail",
+    "image, image_thumbnail_line, expected_thumbnail_url",
     [
         pytest.param(
             "/static/img.jpg",
@@ -163,32 +151,28 @@ async def test_get_pages() -> None:
     ],
 )
 async def test_image_thumbnail(
-    image: str, image_thumbnail_line: str, expected_image_thumbnail: Optional[str]
+    image: str, image_thumbnail_line: str, expected_thumbnail_url: Optional[str]
 ) -> None:
-    item = ContentItem(
-        source=StringSource(
-            dedent(
-                f"""
-            ---
-            title: "Test"
-            description: "Test"
-            date: "2020-01-01"
-            image: "{image}"
-            {image_thumbnail_line}
-            ---
-            """
-            )
-        ),
-        location=Path("en/posts/test.md"),
+    root = Path("content")
+    path = Path("content/en/posts/2020/01/test.md")
+    raw = dedent(
+        f"""
+        ---
+        title: "Test"
+        description: "Test"
+        date: "2020-01-01"
+        category: essays
+        image: "{image}"
+        {image_thumbnail_line}
+        ---
+        """
     )
-
-    bus = resolve(MessageBus)
-    (page,) = await bus.execute(GetPages([item]))
-
-    assert page.metadata.image_thumbnail == expected_image_thumbnail
+    blog_posting = await build_blog_posting(root, path, raw)
+    assert blog_posting.thumbnail_url == expected_thumbnail_url
 
 
 @pytest.mark.asyncio
+@pytest.mark.usefixtures("isolated_db")
 @pytest.mark.parametrize(
     "location, is_private",
     [
@@ -199,22 +183,17 @@ async def test_image_thumbnail(
     ],
 )
 async def test_is_private(location: str, is_private: bool) -> None:
-    item = ContentItem(
-        source=StringSource(
-            dedent(
-                """
-                ---
-                title: "Test"
-                description: "Test"
-                date: "2020-01-01"
-                ---
-                """
-            )
-        ),
-        location=Path(location),
+    root = Path("content")
+    path = Path("content", location)
+    raw = dedent(
+        """
+        ---
+        title: "Test"
+        description: "Test"
+        date: "2020-01-01"
+        category: essays
+        ---
+        """
     )
-
-    bus = resolve(MessageBus)
-    (page,) = await bus.execute(GetPages([item]))
-
-    assert page.is_private is is_private
+    blog_posting = await build_blog_posting(root, path, raw)
+    assert blog_posting.is_private is is_private

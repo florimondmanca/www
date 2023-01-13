@@ -6,7 +6,10 @@
   {% call ContentWrapper(class="text-center") %}
     {{ SocialLinks() }}
     <p class="my-2">
-      © {{ now().year }} Florimond Manca &middot; <a href="https://github.com/florimondmanca/www" rel="noreferrer">{{ _('Source code') }}</a>
+      © {{ now().year }} Florimond Manca&nbsp;&middot;&nbsp;
+      <a href="https://github.com/florimondmanca/www" target="_blank" rel="noreferrer">
+        {{ _('Source code') }}
+      </a>
     </p>
   {% endcall %}
 </footer>

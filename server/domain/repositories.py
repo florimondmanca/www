@@ -1,27 +1,44 @@
-from typing import Container
-
-from .entities import Category, Page
+from .entities import BlogPosting, Category, Keyword
 
 
-class PageRepository:
-    def find_by_permalink(self, permalink: str) -> Page | None:
+class BlogPostingRepository:
+    async def find_all(self, language: str | None = None) -> list[BlogPosting]:
         raise NotImplementedError  # pragma: no cover
 
-    def find_all(self, language: str = None) -> list[Page]:
+    async def find_all_by_category(self, category: Category) -> list[BlogPosting]:
         raise NotImplementedError  # pragma: no cover
 
-    def find_all_post_pages(
-        self, *, tag__slug: str = None, category: Category = None, limit: int = None
-    ) -> list[Page]:
+    async def find_all_by_keyword(self, keyword: Keyword) -> list[BlogPosting]:
         raise NotImplementedError  # pragma: no cover
 
-    def find_all_category_pages(self) -> list[Page]:
+    async def find_by_slug(self, slug: str) -> BlogPosting | None:
         raise NotImplementedError  # pragma: no cover
 
 
 class CategoryRepository:
-    def find_by_name(self, name: str) -> Category | None:
+    def make_name(self, slug: str, language: str) -> str:
         raise NotImplementedError  # pragma: no cover
 
-    def find_all_by_names(self, names: Container[str]) -> list[Category]:
+    async def find_all(self, language: str | None = None) -> list[Category]:
+        raise NotImplementedError  # pragma: no cover
+
+    async def find_by_slug(
+        self, slug: str, language: str | None = None
+    ) -> Category | None:
+        raise NotImplementedError  # pragma: no cover
+
+    async def save(self, category: Category) -> None:
+        raise NotImplementedError  # pragma: no cover
+
+
+class KeywordRepository:
+    async def find_all(self, language: str) -> list[Keyword]:
+        raise NotImplementedError  # pragma: no cover
+
+    async def find_by_name(
+        self, name: str, language: str | None = None
+    ) -> Keyword | None:
+        raise NotImplementedError  # pragma: no cover
+
+    async def save(self, keyword: Keyword) -> None:
         raise NotImplementedError  # pragma: no cover

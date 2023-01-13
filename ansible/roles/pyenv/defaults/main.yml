@@ -1,0 +1,35 @@
+---
+# Installation paths
+pyenv_home: "{{ ansible_env.HOME }}"
+pyenv_root: "{{ ansible_env.HOME }}/.pyenv"
+
+# Pyenv version to install
+pyenv_version: "v2.3.6"
+
+# Python version to install
+pyenv_python_version: "3.11.0"
+
+# Global Python versions to set
+pyenv_global: "{{ pyenv_python_version }} system"
+
+# Build requirements for pyenv on Debian
+# See: https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+pyenv_build_requirements:
+  - make
+  - build-essential
+  - libssl-dev
+  - zlib1g-dev
+  - libbz2-dev
+  - libreadline-dev
+  - libsqlite3-dev
+  - wget
+  - curl
+  - llvm
+  - libncurses5-dev
+  - libncursesw5-dev
+  - xz-utils
+  - tk-dev
+  - libffi-dev
+  - liblzma-dev
+  - python3-openssl
+  - git

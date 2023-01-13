@@ -3,7 +3,7 @@ from starlette.types import ASGIApp
 
 from .. import settings
 from ..di import resolve
-from ..infrastructure.database import PageDatabase
+from ..infrastructure.database import InMemoryDatabase
 from . import views
 from .middleware import middleware
 from .reload import HotReload
@@ -11,12 +11,12 @@ from .routes import get_routes
 
 
 def create_app() -> ASGIApp:
-    page_db = resolve(PageDatabase)
+    db = resolve(InMemoryDatabase)
     hotreload = resolve(HotReload)
 
     routes = get_routes()
 
-    on_startup = [page_db.connect]
+    on_startup = [db.connect]
     on_shutdown = []
 
     if settings.DEBUG:  # pragma: no cover

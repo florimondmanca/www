@@ -1,0 +1,16 @@
+# Python is installed via pyenv, which sets the `python` executable accordingly to
+# the installed Python version via the bash profile.
+# But Ansible does not run commands as a user by default, so we must get
+# the actual path to the binary using this pattern.
+# See: https://stackoverflow.com/a/58744872
+- name: install:Get Python binary path
+  shell: bash -ilc 'which python'
+  register: which_python
+- name: install:Set python_bin_path fact
+  set_fact:
+    python_bin_path: "{{ which_python.stdout | trim() }}"
+
+- name: install:Install
+  shell:
+    cmd: make python_bin={{ python_bin_path }} install
+    chdir: "{{ workdir }}"
