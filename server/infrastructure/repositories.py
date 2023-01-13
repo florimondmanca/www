@@ -13,7 +13,7 @@ class InMemoryBlogPostingRepository(BlogPostingRepository):
     def __init__(self, db: InMemoryDatabase) -> None:
         self._db = db
 
-    async def find_all(self, language: str = None) -> list[BlogPosting]:
+    async def find_all(self, language: str | None = None) -> list[BlogPosting]:
         if language is None:
             language = i18n.get_locale().language
 
@@ -64,12 +64,14 @@ class InMemoryCategoryRepository(CategoryRepository):
     def make_name(self, slug: str, language: str) -> str:
         return self._NAMES[slug][language]
 
-    async def find_all(self, language: str = None) -> list[Category]:
+    async def find_all(self, language: str | None = None) -> list[Category]:
         if language is None:
             language = i18n.get_locale().language
         return self._db.find_all_categories(language)
 
-    async def find_by_slug(self, slug: str, language: str = None) -> Category | None:
+    async def find_by_slug(
+        self, slug: str, language: str | None = None
+    ) -> Category | None:
         if language is None:
             language = i18n.get_locale().language
         return self._db.find_one_category(language, slug)
@@ -85,7 +87,9 @@ class InMemoryKeywordRepository(KeywordRepository):
     async def find_all(self, language: str) -> list[Keyword]:
         return self._db.find_all_keywords(language)
 
-    async def find_by_name(self, name: str, language: str = None) -> Keyword | None:
+    async def find_by_name(
+        self, name: str, language: str | None = None
+    ) -> Keyword | None:
         if language is None:
             language = i18n.get_locale().language
         return self._db.find_one_keyword(language, name)

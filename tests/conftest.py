@@ -1,12 +1,11 @@
 import asyncio
 import os
-from typing import AsyncIterator, Iterator
+from typing import AsyncIterator, Callable, Iterator
 
 import httpx
 import pytest
 import pytest_asyncio
 from asgi_lifespan import LifespanManager
-from starlette.types import ASGIApp
 
 os.environ["WWW_TESTING"] = "True"
 os.environ["WWW_DEBUG"] = "False"
@@ -24,7 +23,7 @@ def event_loop() -> Iterator[asyncio.AbstractEventLoop]:
 
 
 @pytest_asyncio.fixture(scope="session")
-async def app() -> AsyncIterator[ASGIApp]:
+async def app() -> AsyncIterator[Callable]:
     from server.main import app
 
     async with LifespanManager(app):
@@ -32,13 +31,13 @@ async def app() -> AsyncIterator[ASGIApp]:
 
 
 @pytest_asyncio.fixture(scope="session")
-async def client(app: ASGIApp) -> AsyncIterator[httpx.AsyncClient]:
+async def client(app: Callable) -> AsyncIterator[httpx.AsyncClient]:
     async with httpx.AsyncClient(app=app, base_url="http://testserver") as client:
         yield client
 
 
 @pytest_asyncio.fixture(scope="session")
-async def silent_client(app: ASGIApp) -> AsyncIterator[httpx.AsyncClient]:
+async def silent_client(app: Callable) -> AsyncIterator[httpx.AsyncClient]:
     transport = httpx.ASGITransport(app, raise_app_exceptions=False)
     async with httpx.AsyncClient(transport=transport) as client:
         yield client
