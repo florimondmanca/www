@@ -46,7 +46,7 @@ class DomainRedirect:
         self,
         domain: str,
         status_code: int = status.HTTP_301_MOVED_PERMANENTLY,
-        root_path: str = None,
+        root_path: str | None = None,
     ) -> None:
         self.domain = domain
         self.status_code = status_code
