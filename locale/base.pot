@@ -1,45 +1,45 @@
 # Translations template for PROJECT.
-# Copyright (C) 2022 ORGANIZATION
+# Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-29 16:39+0200\n"
+"POT-Creation-Date: 2023-01-15 01:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.11.0\n"
 
-#: server/domain/entities.py:47
+#: server/domain/entities.py:50
 #, python-format
 msgid "Posts in category '%s'"
 msgstr ""
 
-#: server/domain/entities.py:66
+#: server/domain/entities.py:69
 #, python-format
 msgid "Posts with tag '%s'"
 msgstr ""
 
-#: server/infrastructure/repositories.py:49
+#: server/infrastructure/repositories.py:34
 msgid "Essays"
 msgstr ""
 
-#: server/infrastructure/repositories.py:53
+#: server/infrastructure/repositories.py:38
 msgid "Retrospectives"
 msgstr ""
 
-#: server/infrastructure/repositories.py:57
+#: server/infrastructure/repositories.py:42
 msgid "Tutorials"
 msgstr ""
 
-#: server/web/templates/components/blog_posting_list.jinja:10
+#: server/web/templates/components/blog_posting_list.jinja:17
 msgid "No blog posts yet."
 msgstr ""
 
@@ -63,6 +63,10 @@ msgstr ""
 msgid ""
 "I maintain and contribute to libraries, packages, and tools. Mostly "
 "Python."
+msgstr ""
+
+#: server/web/templates/components/pagination.jinja:3
+msgid "Page"
 msgstr ""
 
 #: server/web/templates/components/social_links.jinja:3

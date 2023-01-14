@@ -1,6 +1,7 @@
 from .. import i18n
-from ..domain.entities import BlogPosting, Category, Keyword
+from ..domain.entities import BlogPosting, Category, Keyword, Pagination
 from ..domain.repositories import (
+    BlogPostingFilterSet,
     BlogPostingRepository,
     CategoryRepository,
     KeywordRepository,
@@ -13,29 +14,13 @@ class InMemoryBlogPostingRepository(BlogPostingRepository):
     def __init__(self, db: InMemoryDatabase) -> None:
         self._db = db
 
-    async def find_all(self, language: str | None = None) -> list[BlogPosting]:
-        if language is None:
-            language = i18n.get_locale().language
+    async def find_all(
+        self, filterset: BlogPostingFilterSet | None = None
+    ) -> Pagination[BlogPosting]:
+        if filterset is None:
+            filterset = BlogPostingFilterSet()
 
-        return [
-            blog_posting
-            for blog_posting in self._db.find_all_blog_postings(language)
-            if not blog_posting.is_private
-        ]
-
-    async def find_all_by_category(self, category: Category) -> list[BlogPosting]:
-        return [
-            blog_posting
-            for blog_posting in await self.find_all()
-            if blog_posting.category == category
-        ]
-
-    async def find_all_by_keyword(self, keyword: Keyword) -> list[BlogPosting]:
-        return [
-            blog_posting
-            for blog_posting in await self.find_all()
-            if keyword in blog_posting.keywords
-        ]
+        return self._db.find_all_blog_postings(filterset)
 
     async def find_by_slug(self, slug: str) -> BlogPosting | None:
         language = i18n.get_locale().language

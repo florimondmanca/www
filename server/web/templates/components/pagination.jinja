@@ -1,0 +1,12 @@
+{% macro Pagination(pagination) %}
+<form hx-get="./" hx-trigger="change" hx-target="#blog-posting-list" hx-push-url="true" data-controller="pagination-form">
+    <label for="page">{{ _('Page') }}</label>
+    <select name="page" data-pagination-form-target="select">
+        {% for number in range(1, pagination.total_pages + 1) -%}
+        <option value="{{ number }}" {% if number == pagination.page_number %}selected{% endif %}>
+            {{ number }} / {{ pagination.total_pages }}
+        </option>
+        {%- endfor %}
+    </select>
+</form>
+{% endmacro %}

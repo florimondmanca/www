@@ -63,6 +63,12 @@
     <!-- EcoIndex rating - https://github.com/simonvdfr/ecoindex-light-js -->
     <script src="{{ url_for('static', path='/js/ecoindex.js') }}" defer></script>
 
+    <!-- htmx -->
+    <script src="{{ url_for('static', path='/js/htmx.org@1.8.4/htmx.min.js') }}"></script>
+
+    <!-- Custom bits of JavaScript -->
+    <script src="{{ url_for('static', path='/js/main.js') }}"></script>
+
     {% block tail %}{% endblock %}
   </body>
 </html>

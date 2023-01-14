@@ -19,7 +19,7 @@ async def test_images(client: httpx.AsyncClient) -> None:
     blog_posting_repository = resolve(BlogPostingRepository)
 
     remote_urls = []
-    for blog_posting in await blog_posting_repository.find_all():
+    for blog_posting in (await blog_posting_repository.find_all()).items:
         url = image.content_url if (image := blog_posting.image) is not None else None
 
         if url is not None and url.startswith("http"):

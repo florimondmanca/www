@@ -1,14 +1,21 @@
-from .entities import BlogPosting, Category, Keyword
+from dataclasses import dataclass, field
+
+from .. import i18n
+from .entities import BlogPosting, Category, Keyword, Page, Pagination
+
+
+@dataclass
+class BlogPostingFilterSet:
+    page: Page | None = field(default_factory=Page)
+    language: str = field(default_factory=lambda: i18n.get_locale().language)
+    category: Category | None = None
+    keyword: Keyword | None = None
 
 
 class BlogPostingRepository:
-    async def find_all(self, language: str | None = None) -> list[BlogPosting]:
-        raise NotImplementedError  # pragma: no cover
-
-    async def find_all_by_category(self, category: Category) -> list[BlogPosting]:
-        raise NotImplementedError  # pragma: no cover
-
-    async def find_all_by_keyword(self, keyword: Keyword) -> list[BlogPosting]:
+    async def find_all(
+        self, filterset: BlogPostingFilterSet | None = None
+    ) -> Pagination[BlogPosting]:
         raise NotImplementedError  # pragma: no cover
 
     async def find_by_slug(self, slug: str) -> BlogPosting | None:

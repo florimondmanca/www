@@ -6,6 +6,7 @@ from .. import settings
 from ..di import resolve
 from ..domain.entities import BlogPosting, Category, Keyword
 from ..domain.repositories import (
+    BlogPostingFilterSet,
     BlogPostingRepository,
     CategoryRepository,
     KeywordRepository,
@@ -34,7 +35,11 @@ class BlogPostingSitemap(asgi_sitemaps.Sitemap):
         return [
             obj
             for language in settings.LANGUAGES
-            for obj in await repository.find_all(language)
+            for obj in (
+                await repository.find_all(
+                    BlogPostingFilterSet(page=None, language=language)
+                )
+            ).items
         ]
 
     def location(self, blog_posting: BlogPosting) -> str:
