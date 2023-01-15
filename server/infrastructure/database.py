@@ -1,9 +1,12 @@
+import math
 from contextlib import contextmanager
 from typing import Iterator
 
 import aiofiles
 
-from ..domain.entities import BlogPosting, Category, Keyword
+from server.domain.repositories import BlogPostingFilterSet
+
+from ..domain.entities import BlogPosting, Category, Keyword, Pagination
 from .content import aiter_blog_posting_paths, build_blog_posting
 
 
@@ -47,11 +50,52 @@ class InMemoryDatabase:
                 blog_posting.slug
             ] = blog_posting
 
-    def find_all_blog_postings(self, language: str) -> list[BlogPosting]:
-        return sorted(
-            self._data.blog_postings.get(language, {}).values(),
+    def find_all_blog_postings(
+        self, filterset: BlogPostingFilterSet
+    ) -> Pagination[BlogPosting]:
+        language = filterset.language
+
+        items_it = (
+            item
+            for item in self._data.blog_postings.get(language, {}).values()
+            if not item.is_private
+        )
+
+        if filterset.category is not None:
+            items_it = (
+                item for item in items_it if item.category == filterset.category
+            )
+
+        if filterset.keyword is not None:
+            items_it = (item for item in items_it if filterset.keyword in item.keywords)
+
+        items = list(items_it)
+        total_items = len(items)
+
+        items = sorted(
+            items,
             key=lambda blog_posting: blog_posting.date_published,
             reverse=True,
+        )
+
+        if filterset.page is not None:
+            page_number = filterset.page.number
+            page_size = filterset.page.size
+            limit = page_size
+            offset = page_size * (page_number - 1)
+            items = items[offset : offset + limit]
+            total_pages = math.ceil(total_items / page_size)
+        else:
+            page_number = 1
+            total_pages = 1
+            page_size = total_items
+
+        return Pagination(
+            items=items,
+            total_items=total_items,
+            page_number=page_number,
+            page_size=page_size,
+            total_pages=total_pages,
         )
 
     def find_one_blog_posting(self, language: str, slug: str) -> BlogPosting | None:

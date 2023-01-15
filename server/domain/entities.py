@@ -2,9 +2,12 @@ import dataclasses
 import datetime as dt
 import re
 from dataclasses import dataclass
+from typing import Generic, TypeVar
 
 from .. import settings
 from ..i18n import gettext_lazy as _
+
+T = TypeVar("T")
 
 PRIVATE_RE = re.compile(r"prv-\d+$")
 
@@ -113,3 +116,18 @@ class BlogPosting(ObjWithMeta):
     @property
     def meta_keywords(self) -> list[str]:
         return [keyword.name for keyword in self.keywords]
+
+
+@dataclasses.dataclass(frozen=True)
+class Page:
+    number: int = 1
+    size: int = 10
+
+
+@dataclasses.dataclass(frozen=True)
+class Pagination(Generic[T]):
+    items: list[T]
+    total_items: int
+    page_number: int
+    page_size: int
+    total_pages: int

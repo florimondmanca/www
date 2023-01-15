@@ -16,6 +16,15 @@ async def test_root(client: httpx.AsyncClient) -> None:
 
 
 @pytest.mark.asyncio
+async def test_root_pagination(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/?page=2"
+    resp = await client.get(url, headers={"HX-Request": "true"})
+    assert resp.status_code == 200
+    assert "text/html" in resp.headers["content-type"]
+    assert '<option value="2" selected>' in resp.text
+
+
+@pytest.mark.asyncio
 async def test_article(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
     resp = await client.get(url)

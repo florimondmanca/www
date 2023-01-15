@@ -1,7 +1,6 @@
 {% extends "base.jinja" %}
 
 {% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
-{% from "components/blog_posting_list.jinja" import BlogPostingList with context %}
 {% from "components/jumbotron.jinja" import Jumbotron with context %}
 
 {% block head %}
@@ -37,7 +36,7 @@
 {% block content %}
 {{ Jumbotron() }}
 
-<div class="c-page-list-container">
-  {{ BlogPostingList(blog_postings) }}
+<div id="blog-posting-list" class="c-page-list-container">
+  {% include "partials/blog_posting_list.jinja" with context %}
 </div>
 {% endblock %}

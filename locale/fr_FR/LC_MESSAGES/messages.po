@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-29 16:39+0200\n"
+"POT-Creation-Date: 2023-01-15 01:04+0100\n"
 "PO-Revision-Date: 2021-04-22 16:27+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr_FR\n"
@@ -16,31 +16,31 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.11.0\n"
 
-#: server/domain/entities.py:47
+#: server/domain/entities.py:50
 #, python-format
 msgid "Posts in category '%s'"
 msgstr "Billets dans la catégorie '%s'"
 
-#: server/domain/entities.py:66
+#: server/domain/entities.py:69
 #, python-format
 msgid "Posts with tag '%s'"
 msgstr "Billets avec le tag '%s'"
 
-#: server/infrastructure/repositories.py:49
+#: server/infrastructure/repositories.py:34
 msgid "Essays"
 msgstr "Billets"
 
-#: server/infrastructure/repositories.py:53
+#: server/infrastructure/repositories.py:38
 msgid "Retrospectives"
 msgstr "Rétrospectives"
 
-#: server/infrastructure/repositories.py:57
+#: server/infrastructure/repositories.py:42
 msgid "Tutorials"
 msgstr "Tutoriels"
 
-#: server/web/templates/components/blog_posting_list.jinja:10
+#: server/web/templates/components/blog_posting_list.jinja:17
 msgid "No blog posts yet."
 msgstr "Pas encore de billets."
 
@@ -68,6 +68,10 @@ msgstr ""
 "Je développe des outils, services, et logiciels libres, principalement en"
 " Python. Je mets mes compétences au service d'un numérique plus sobre, "
 "éco-conçu, et compatible avec les limites planétaires."
+
+#: server/web/templates/components/pagination.jinja:3
+msgid "Page"
+msgstr "Page"
 
 #: server/web/templates/components/social_links.jinja:3
 msgid "Links"

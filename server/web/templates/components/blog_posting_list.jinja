@@ -1,13 +1,24 @@
 {% from "components/blog_posting_list_item.jinja" import BlogPostingListItem with context %}
+{% from "components/pagination.jinja" import Pagination with context %}
 
-{% macro BlogPostingList(blog_postings) %}
-<ul class="c-page-list">
-  {% for blog_posting in blog_postings -%}
+{% macro BlogPostingList(pagination) %}
+<div class="mb-4">
+  {{ Pagination(pagination) }}
+</div>
+
+{% if pagination.items|length > 0 -%}
+  <ul class="c-page-list" id="blog-posting-list">
+    {% for blog_posting in pagination.items -%}
     {{ BlogPostingListItem(blog_posting) }}
-  {%- else -%}
-</ul>
+    {%- endfor %}
+  </ul>
+{%- else -%}
   <p class="text-center">
     {{ _('No blog posts yet.') }}
   </p>
-{%- endfor %}
+{%- endif %}
+
+<div class="mt-4">
+  {{ Pagination(pagination) }}
+</div>
 {% endmacro %}

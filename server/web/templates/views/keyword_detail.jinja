@@ -1,7 +1,6 @@
 {% extends "base.jinja" %}
 
 {% from "components/meta_tags.jinja" import MetaTags with context %}
-{% from "components/blog_posting_list.jinja" import BlogPostingList with context %}
 
 {% block head %}
 {{ super() }}
@@ -19,7 +18,9 @@
       Tag: #{{ keyword.name }}
     </h1>
 
-    {{ BlogPostingList(blog_postings) }}
+    <div id="blog-posting-list">
+      {% include "partials/blog_posting_list.jinja" with context%}
+    </div>
   </div>
 </main>
 {% endblock content %}
