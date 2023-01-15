@@ -36,6 +36,7 @@ venv:
 install-python: venv
 	${bin}pip install -U pip wheel
 	${bin}pip install -r requirements.txt
+	${bin}python -m playwright install firefox
 	make messagesc
 
 install-node:
