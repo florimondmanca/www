@@ -4,7 +4,7 @@ resources:
       type: github
       endpoint: github
       name: florimondmanca/azure-pipelines-templates
-      ref: refs/tags/6.0
+      ref: refs/heads/master
 
 trigger:
   - master
@@ -16,6 +16,8 @@ variables:
   CI: true
   PIP_CACHE_DIR: $(Pipeline.Workspace)/.cache/pip
   NODE_CACHE_FOLDER: $(Build.SourcesDirectory)/node_modules
+  PLAYWRIGHT_CACHE_DIR: $(Pipeline.Workspace)/.cache/ms-playwright
+  PLAYWRIGHT_BROWSERS_PATH: $(Pipeline.Workspace)/.cache/ms-playwright
   IS_MASTER_BRANCH: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
 
 jobs:
@@ -27,6 +29,7 @@ jobs:
     pool:
       vmImage: "ubuntu-latest"
     steps:
+      - template: step--playwright-cache.yml@templates
       - template: step--python-install.yml@templates
         parameters:
           pythonVersion: "3.11"
@@ -37,6 +40,8 @@ jobs:
 
   - template: job--python-test.yml@templates
     parameters:
+      steps_before:
+        - template: step--playwright-cache.yml@templates
       jobs:
         py311:
           coverage: true
@@ -54,6 +59,7 @@ jobs:
         inputs:
           knownHostsEntry: florimond.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEaDbgQYJRwnfps9hKiN/DBwD1iFLEf7ipuQ8hozeJYshsQ0qXiM3LcXp8kJ7hpWHDP5QQPfeJsV4s2F2Xf61FA=
           sshKeySecureFile: florimond-dev-deploy-id_rsa
+      - template: step--playwright-cache.yml@templates
       - template: step--python-install.yml@templates
         parameters:
           pythonVersion: "3.11"

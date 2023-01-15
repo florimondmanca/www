@@ -1,4 +1,5 @@
 import uvicorn
+import uvicorn.supervisors
 
 from . import settings
 from .di import bootstrap
@@ -8,14 +9,26 @@ bootstrap()
 
 app = create_app()
 
-if __name__ == "__main__":  # pragma: no cover
+
+def get_config() -> uvicorn.Config:
     config: dict = dict(
         host=settings.HOST,
         port=settings.PORT,
         use_colors=True,
+        reload=settings.DEBUG,
     )
 
-    if settings.DEBUG:
-        config["reload"] = True
+    return uvicorn.Config("server.main:app", **config)
 
-    uvicorn.run("server.main:app", **config)
+
+if __name__ == "__main__":  # pragma: no cover
+    config = get_config()
+    server = uvicorn.Server(config)
+
+    if config.should_reload:
+        sock = config.bind_socket()
+        uvicorn.supervisors.ChangeReload(
+            config, target=server.run, sockets=[sock]
+        ).run()
+    else:
+        server.run()
