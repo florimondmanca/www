@@ -30,7 +30,7 @@ msgstr "Billets avec le tag '%s'"
 
 #: server/infrastructure/repositories.py:34
 msgid "Essays"
-msgstr "Billets"
+msgstr "Idées"
 
 #: server/infrastructure/repositories.py:38
 msgid "Retrospectives"

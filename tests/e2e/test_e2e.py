@@ -56,8 +56,12 @@ def test_e2e_fr_nav(server: Server, page: Page) -> None:
     expect(link).to_have_attribute("href", f"{server.url}/fr/")
 
     link = next(links)
-    expect(link).to_have_text("Billets")
+    expect(link).to_have_text("Idées")
     expect(link).to_have_attribute("href", "/fr/category/essays/")
+
+    link = next(links)
+    expect(link).to_have_text("Rétrospectives")
+    expect(link).to_have_attribute("href", "/fr/category/retrospectives/")
 
     # Present due to test drafts
     link = next(links)
