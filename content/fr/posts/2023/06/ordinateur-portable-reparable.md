@@ -9,6 +9,7 @@ tags:
   - numerique-responsable
   - logiciels-libres
 image: "/static/img/articles/ordinateur-portable-reparable.jpg"
+image_thumbnail: "/static/img/articles/ordinateur-portable-reparable_thumbnail.png"
 image_caption: |
   Mon MacBook Pro posé sur une table blanche, l'écran ouvert et montrant l'édition de ce billet sous VS Code.
 ---
