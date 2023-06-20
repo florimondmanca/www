@@ -69,7 +69,7 @@ make vagrant-halt
 
 ### CI deploys
 
-Azure Pipelines is configured to deploy on pushes to the `master` branch.
+Azure Pipelines is configured to deploy on pushes to the `main` branch.
 
 This requires setting up SSH keys. Initially, it can be created using:
 

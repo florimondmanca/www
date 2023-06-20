@@ -7,10 +7,10 @@ resources:
       ref: refs/tags/6.1
 
 trigger:
-  - master
+  - main
 
 pr:
-  - master
+  - main
 
 variables:
   CI: true
@@ -18,7 +18,7 @@ variables:
   NODE_CACHE_FOLDER: $(Build.SourcesDirectory)/node_modules
   PLAYWRIGHT_CACHE_DIR: $(Pipeline.Workspace)/.cache/ms-playwright
   PLAYWRIGHT_BROWSERS_PATH: $(Pipeline.Workspace)/.cache/ms-playwright
-  IS_MASTER_BRANCH: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
+  IS_MAIN_BRANCH: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
 
 jobs:
   - template: job--python-check.yml@templates
@@ -53,7 +53,7 @@ jobs:
       - Check
       - Build
       - py311
-    condition: and(succeeded(), eq(variables.IS_MASTER_BRANCH, true))
+    condition: and(succeeded(), eq(variables.IS_MAIN_BRANCH, true))
     steps:
       - task: InstallSSHKey@0
         inputs:

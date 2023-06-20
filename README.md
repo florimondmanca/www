@@ -1,7 +1,7 @@
 # www
 
-[![Build Status](https://dev.azure.com/florimondmanca/public/_apis/build/status/florimondmanca.www?branchName=master)](https://dev.azure.com/florimondmanca/public/_build/latest?definitionId=1&branchName=master)
-[![Coverage](https://codecov.io/gh/florimondmanca/www/branch/master/graph/badge.svg?token=IT5DBiSTHK)](https://codecov.io/gh/florimondmanca/www)
+[![Build Status](https://dev.azure.com/florimondmanca/public/_apis/build/status/florimondmanca.www?branchName=main)](https://dev.azure.com/florimondmanca/public/_build/latest?definitionId=1&branchName=main)
+[![Coverage](https://codecov.io/gh/florimondmanca/www/branch/main/graph/badge.svg?token=IT5DBiSTHK)](https://codecov.io/gh/florimondmanca/www)
 
 Code for https://florimond.dev.
 
