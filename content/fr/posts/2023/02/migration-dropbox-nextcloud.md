@@ -8,7 +8,7 @@ category: retrospectives
 tags:
   - til
   - logiciels-libres
-image: "/static/img/articles/migration-dropbox-nextcloud.jpg"
+image: "/static/img/articles/migration-dropbox-nextcloud.png"
 image_caption: |
   Logo de Nextcloud.
 ---
