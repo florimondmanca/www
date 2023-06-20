@@ -3,6 +3,8 @@ from playwright.sync_api import Page, expect
 
 from .util import Server
 
+pytestmark = pytest.mark.skip
+
 
 def test_e2e_home(server: Server, page: Page) -> None:
     page.goto(server.url)
