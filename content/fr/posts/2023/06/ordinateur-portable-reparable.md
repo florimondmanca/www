@@ -87,7 +87,7 @@ Sous macOS, Mainstage me permet, pour la modique somme de 30€ payés une bonne
 
 Je savais que je n'allais pas retrouver une telle facilité d'utilisation sous Linux. Mais je ne pensais pas pour autant que tout un **écosystème de la MAO sous Linux** pouvait exister.
 
-En effet, en me renseignant, je suis tombé assez vite sur le site [linuxmao.org](http://linuxmao.org). Une véritable mine d'or.
+En effet, en me renseignant, je suis tombé assez vite sur le site [linuxmao.org](https://linuxmao.org). Une véritable mine d'or.
 
 Idéalement, avant de faire la transition, mieux vaut expérimenter un peu. Ne dites rien aux collègues, mais j'avais la chance d'avoir une machine tournant sous Ubuntu à disposition : l'ordinateur du boulot… qui est chez moi puisque je pratique le télétravail. [En septembre 2022](https://twitter.com/florimondmanca/status/1569785355359887361), j'ai donc pu expérimenter un peu ce que donnait l'écosystème MAO de Linux.
 
