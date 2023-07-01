@@ -14,7 +14,7 @@ typing_extensions
 uvicorn[standard]==0.20.0
 
 # Development, tools and testing dependencies.
-autoflake==2.0.0
+autoflake==2.2.0
 asgi-lifespan==2.0.0
 black==22.12.0
 flake8==6.0.0
