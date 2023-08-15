@@ -66,7 +66,7 @@
     cron:
       name: certs_renewal
       special_time: weekly
-      job: "certbot renew -q"
+      job: "sudo certbot renew -q"
       state: present
 
 - name: nginx:Ensure LetsEncrypt is disabled
