@@ -8,7 +8,7 @@
     "watch": "onchange -i 'tailwind.config.js' './server/**/*.jinja' './server/web/styles/**/*.(p)?css' -- npm run build"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^10.4.15",
     "cssnano": "^5.1.14",
     "onchange": "^7.1.0",
     "postcss": "^8.4.18",
