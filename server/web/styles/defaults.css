@@ -1,5 +1,5 @@
 body {
-  font-family: 'Georgia', sans-serif;
+  font-family: var(--font-family);
   font-size: var(--font-size-default);
   background-color: var(--background-default);
   color: var(--text-on-background-default);

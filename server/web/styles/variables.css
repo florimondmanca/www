@@ -10,8 +10,8 @@
   --background-default: white;
   --text-on-background-default: #424242;
 
-  /* Font sizes */
-  --font-factor: 0.8;
+  /* Fonts */
+  --font-family: Georgia, serif;
   --font-size-default: 1.2rem;
   --font-size-sm: 1rem;
   --font-size-lg: 1.5rem;
