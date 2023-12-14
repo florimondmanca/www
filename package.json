@@ -4,17 +4,12 @@
   "author": "Florimond Manca",
   "license": "MIT",
   "scripts": {
-    "build": "postcss ./server/web/styles/styles.pcss -o ./server/web/static/css/styles.css",
-    "watch": "onchange -i 'tailwind.config.js' './server/**/*.jinja' './server/web/styles/**/*.(p)?css' -- npm run build"
+    "_esbuild": "esbuild ./server/web/styles/styles.css --bundle --outdir=./server/web/static/css --format=esm",
+    "build": "npm run _esbuild -- --minify",
+    "watch": "npm run _esbuild -- --watch=forever"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "cssnano": "^5.1.14",
-    "onchange": "^7.1.0",
-    "postcss": "^8.4.18",
-    "postcss-cli": "^10.0.0",
-    "postcss-import": "^15.0.0",
-    "tailwindcss": "^3.2.2"
+    "esbuild": "^0.19.9"
   },
   "engines": {
     "node": "18.x"

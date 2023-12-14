@@ -1,0 +1,122 @@
+body {
+  font-family: 'Georgia', sans-serif;
+  font-size: var(--font-size-default);
+  background-color: var(--background-default);
+  color: var(--text-on-background-default);
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: var(--w);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: var(--w);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: var(--w);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--w);
+}
+
+ul {
+  list-style-type: disc;
+}
+
+.f-raw-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+hr {
+  background-color: var(--muted);
+}
+
+blockquote {
+  margin-left: var(--w);
+  padding-block: var(--w);
+  padding-left: calc(3 * var(--w));
+  border-left: 1px solid var(--muted);
+  position: relative;
+}
+
+blockquote:before {
+  /* White rectangle for quotation mark to sit on */
+  content: "";
+  background-color: var(--background-default);
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  height: 2rem;
+  width: 5px;
+  margin-top: -1rem;
+}
+
+blockquote:after {
+  /* Quotation mark */
+  content: "\201C";
+  position: absolute;
+  top: 50%;
+  left: -0.5em;
+  line-height: 1em;
+  text-align: center;
+  text-indent: -2px;
+  width: 1em;
+  margin-top: -0.4em;
+  color: var(--muted);
+  font-size: var(--font-size-blockquote-mark);
+}
+
+blockquote > cite {
+  font-style: italic;
+}
+
+/* Tables */
+/* Inspired by: https://github.com/vuejs/vuepress/blob/1a930dc22e4298b648dad37fa07e2442cdcb3c10/packages/%40vuepress/theme-default/styles/index.styl#L163-L177 */
+
+table {
+  border-collapse: collapse;
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+tr {
+  border-top: 1px solid #dfe2e5;
+}
+tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+th,
+td {
+  border: 1px solid #dfe2e5;
+  padding: 0.6em 1em;
+}

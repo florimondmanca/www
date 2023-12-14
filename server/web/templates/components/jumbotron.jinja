@@ -1,35 +1,36 @@
-{% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
-
 {% macro Jumbotron() %}
-<div class="bg-surface p-4">
-  {% call ContentWrapper() %}
-  <div class="c-jumbotron-card">
-    <img class="rounded-half w-32 h-32 mx-auto print:w-16 print:h-16" src="{{ url_for('static', path='img/me.png') }}" alt="Picture of me" />
-    <div class="c-jumbotron-body">
-      <h1 class="font-bold text-3xl print:text-xl my-1">
-        Florimond Manca
-      </h1>
-      <h2 class="text-xl print:text-lg">
-        {{ _('Open Source Developer, Idealist On A Journey') }}
-      </h2>
-      <p class="text-muted-500">
-        {{ _('I maintain and contribute to libraries, packages, and tools. Mostly Python.') }}
-      </p>
+  <div class="f-background-surface f-box f-stack" style="--box-padding: calc(4 * var(--w)); --stack-gap: calc(2 * var(--w))">
+    <div class="f-container f-stack" style="--container-width: calc(100 * var(--w)); --container-padding: 0">
+      <div class="f-cluster" style="--cluster-justify: center; --cluster-align: center; --cluster-gap: calc(4 * var(--w))">
+        <div class="f-cluster f-jumbotron-picture">
+          <img src="{{ url_for('static', path='img/me.png') }}" alt="" />
+        </div>
+
+        <div class="f-stack f-jumbotron-content" style="--stack-gap: var(--w)">
+          <h1>Florimond Manca</h1>
+
+          <h2>
+            {{ _('Open Source Developer, Idealist On A Journey') }}
+          </h2>
+
+          <p class="f-text-muted">
+            {{ _('I maintain and contribute to libraries, packages, and tools. Mostly Python.') }}
+          </p>
+        </div>
+      </div>
+
+      <ul class="f-cluster f-raw-list f-print-hidden" role="list" style="--cluster-justify: center; --cluster-gap: calc(3 * var(--w))">
+        <li>
+          <a href="https://github.com/florimondmanca" target="_blank" rel="noopener">
+            Code&nbsp;&nbsp;💻
+          </a>
+        </li>
+        <li>
+          <a href="https://fosstodon.org/@florimond" target="_blank" rel="noopener">
+            Toots&nbsp;&nbsp;🐘
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
-
-  <ul class="flex justify-center mt-3 print:hidden">
-    <li>
-      <a class="inline-flex px-4 py-1" href="https://github.com/florimondmanca" target="_blank" rel="noopener">
-        Code&nbsp;&nbsp;💻
-      </a>
-    </li>
-    <li>
-      <a class="inline-flex px-4 py-1" href="https://fosstodon.org/@florimond" target="_blank" rel="noopener">
-        Toots&nbsp;&nbsp;🐘
-      </a>
-    </li>
-  </ul>
-  {% endcall %}
-</div>
 {% endmacro %}

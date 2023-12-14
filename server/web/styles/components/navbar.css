@@ -1,0 +1,9 @@
+.f-navbar {
+    --cluster-justify: center;
+}
+
+@media screen and (min-width: 900px) {
+    .f-navbar {
+        --cluster-justify: space-between;
+    }
+}

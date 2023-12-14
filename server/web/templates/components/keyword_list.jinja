@@ -1,12 +1,17 @@
 {% macro KeywordList(keywords) %}
-<div class="whitespace-no-wrap">
-  <span>
+<div class="f-cluster" style="--cluster-gap: var(--w)">
+  <span aria-hidden="true">
     🔖
   </span>
-  {% for keyword in keywords %}
-  <a class="c-tag-list-item" href="{{ keyword | absolute_url }}">
-    {{ keyword.name }}
-  </a>
-  {% endfor %}
+
+  <ul class="f-cluster f-raw-list" role="list">
+    {% for keyword in keywords %}
+    <li>
+      <a class="f-tag" href="{{ keyword | absolute_url }}">
+        {{ keyword.name }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
 </div>
 {% endmacro %}
