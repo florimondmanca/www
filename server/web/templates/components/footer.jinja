@@ -1,16 +1,15 @@
 {% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
 {% from "components/social_links.jinja" import SocialLinks with context %}
 
-{% macro Footer(class="") %}
-<footer class="{{ class }}">
-  {% call ContentWrapper(class="text-center") %}
-    {{ SocialLinks() }}
-    <p class="my-2">
-      © {{ now().year }} Florimond Manca&nbsp;&middot;&nbsp;
-      <a href="https://github.com/florimondmanca/www" target="_blank" rel="noreferrer">
-        {{ _('Source code') }}
-      </a>
-    </p>
-  {% endcall %}
+{% macro Footer() %}
+<footer class="f-print-hidden f-container f-box f-text-center f-stack" style="--box-padding: calc(6 * var(--w)) 0; --stack-gap: calc(2 * var(--w))">
+  {{ SocialLinks() }}
+
+  <p>
+    © {{ now().year }} Florimond Manca&nbsp;&middot;&nbsp;
+    <a href="https://github.com/florimondmanca/www" target="_blank" rel="noreferrer">
+      {{ _('Source code') }}
+    </a>
+  </p>
 </footer>
 {% endmacro %}

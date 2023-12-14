@@ -51,13 +51,13 @@ class ImageFigcaptions(Extension):
             # it is actually *below* the paragraph (yup, hacky) -- and remove the
             # original image.
 
-            div = etree.Element("div")
-            div.set("class", "p-image")
-            div.append(image)
-            caption = etree.SubElement(div, "figcaption")
+            figure = etree.Element("figure")
+            figure.set("class", "f-image")
+            figure.append(image)
+            caption = etree.SubElement(figure, "figcaption")
             caption.text = alt
 
-            container.append(div)
+            container.append(figure)
             container.remove(image)
 
     def extendMarkdown(self, md: Markdown) -> None:

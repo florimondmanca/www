@@ -1,31 +1,27 @@
 {% from "components/blog_posting_meta.jinja" import BlogPostingMeta with context %}
 
 {% macro BlogPostingListItem(blog_posting) %}
-<li class="c-page-list-item">
+<li class="f-stack" style="--stack-gap: calc(3 * var(--w))">
   {% with thumbnail_url = blog_posting.thumbnail_url %}
     {% if thumbnail_url %}
-    <div class="text-center">
-      <a href="{{ blog_posting | absolute_url }}" class="inline-block mb-3" title="{{ _('Read') }} '{{ blog_posting.name }}'">
-        <img width="320" height="180" src="{{ thumbnail_url }}" alt="{{ _('Image for') }} '{{ blog_posting.name }}'" />
-      </a>
-    </div>
+      <div class="f-text-center" aria-hidden="true">
+        <a href="{{ blog_posting | absolute_url }}" class="f-frame" style="--frame-ratio: 16 / 9">
+          <img class="f-posts-item-image" src="{{ thumbnail_url }}" />
+        </a>
+      </div>
     {% endif %}
   {% endwith %}
 
-  <div>
-    <h3 class="font-bold mt-1 mb-3">
-      <a href="{{ blog_posting | absolute_url }}">
-        {{ blog_posting.name }}
-      </a>
-    </h3>
+  <h3>
+    <a href="{{ blog_posting | absolute_url }}">
+      {{ blog_posting.name }}
+    </a>
+  </h3>
 
-    <p class="mb-2">
-      {{ blog_posting.abstract }}
-    </p>
+  <p>
+    {{ blog_posting.abstract }}
+  </p>
 
-    <small>
-      {{ BlogPostingMeta(blog_posting) }}
-    </small>
-  </div>
+  {{ BlogPostingMeta(blog_posting) }}
 </li>
 {% endmacro %}

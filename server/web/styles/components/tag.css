@@ -1,0 +1,6 @@
+.f-tag {
+  display: inline-block;
+  background-color: var(--surface);
+  border-radius: var(--radius-sm);
+  padding-inline: var(--v);
+}

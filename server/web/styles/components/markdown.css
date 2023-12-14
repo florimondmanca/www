@@ -1,0 +1,37 @@
+.f-markdown h1,
+.f-markdown h2,
+.f-markdown h3 {
+    font-weight: bold;
+    margin-top: calc(10 * var(--v));
+    margin-bottom: calc(6 * var(--v));
+}
+
+.f-markdown :where(p, ul, ol) {
+  margin-block: calc(4 * var(--v));
+}
+
+.f-markdown .f-image > img {
+  max-height: 20em;
+}
+
+.f-image {
+  margin-block: calc(4 * var(--w));
+}
+
+.f-image > img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+}
+
+.f-image > figcaption {
+  padding-top: calc(2 * var(--w));
+  font-style: italic;
+  font-size: var(--font-size-sm);
+  text-align: center;
+  color: var(--muted);
+}
+
+.f-markdown a {
+  text-decoration: underline;
+}

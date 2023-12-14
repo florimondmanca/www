@@ -1,0 +1,15 @@
+.f-frame {
+  aspect-ratio: var(--frame-ratio);
+  max-width: var(--frame-width, 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.f-frame > img {
+  /* Cover entire frame, image will be scaled if necessary */
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}

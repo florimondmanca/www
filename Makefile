@@ -60,13 +60,13 @@ messagesc: # Compile translations
 	${bin}pybabel compile --domain messages -d locale
 
 serve: # Run servers
-	make -j 2 serve-uvicorn serve-tailwind
+	make -j 2 serve-uvicorn serve-assets
 
 serve-uvicorn:
 	PYTHONUNBUFFERED=1 ${bin}python -m server.main 2>&1 | ${bin}python -m tools.colorprefix blue [server]
 
-serve-tailwind:
-	NODE_ENV=production FORCE_COLOR=true npm run watch 2>&1 | ${bin}python -m tools.colorprefix yellow [tailwind]
+serve-assets:
+	NODE_ENV=production FORCE_COLOR=true npm run watch 2>&1 | ${bin}python -m tools.colorprefix yellow [assets]
 
 imgoptimize: # Optimize images
 	${bin}python -m server.tools.imgoptimize

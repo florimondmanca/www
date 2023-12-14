@@ -1,0 +1,14 @@
+.f-container {
+  max-width: var(--container-width, calc(121 * var(--w)));
+  margin-inline: auto;
+  padding-inline: var(--container-padding, calc(2 * var(--w)));
+}
+
+@media screen and (min-width: 900px) {
+  .f-container {
+    padding-inline: var(
+      --container-padding-desktop,
+      var(--container-padding, calc(3 * var(--w)))
+    );
+  }
+}

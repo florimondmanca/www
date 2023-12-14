@@ -1,0 +1,5 @@
+{%- macro attributes(attr) -%}
+    {%- for key, value in attr.items() %}
+        {{ key }}="{{ value }}"
+    {%- endfor -%}
+{%- endmacro -%}

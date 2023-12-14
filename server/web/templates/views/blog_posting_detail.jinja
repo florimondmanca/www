@@ -2,7 +2,6 @@
 
 {% from "components/meta_tags.jinja" import MetaTags with context %}
 {% from "components/comments.jinja" import Comments with context %}
-{% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
 {% from "components/blog_posting_meta.jinja" import BlogPostingMeta with context %}
 
 {% block head %}
@@ -15,56 +14,49 @@
 {% endblock title %}
 
 {% block content %}
-<main class="mt-6">
+<main class="f-box" style="--box-padding: calc(4 * var(--w)) 0">
   {%- if blog_posting.is_private -%}
-  <p style="color: red; text-align: center;">
-    {{ _("This is a private link: please do not share!") }}
-  </p>
+    <p class="f-text-danger f-center f-box" style="--box-padding: var(--w)">
+      {{ _("This is a private link: please do not share!") }}
+    </p>
   {%- endif -%}
 
-  <div class="px-4 code-container">
-    {% call ContentWrapper(class="c-post-page") %}
-    <header class="mb-6 border-b border-muted-700">
-      <div class="flex justify-between">
-        {{ BlogPostingMeta(blog_posting, editable=true) }}
-      </div>
+  <div class="f-container f-stack" style="--stack-gap: calc(2 * var(--w))">
+    <div class="f-stack">
+      {{ BlogPostingMeta(blog_posting, editable=true) }}
 
-      <h1 class="text-3xl font-bold mt-2 mb-4 leading-sm">
+      <h1>
         {{ blog_posting.name }}
       </h1>
 
       {% if blog_posting.abstract -%}
-      <p class="text-muted-500 mb-6">
-        {{ blog_posting.abstract }}
-      </p>
+        <p class="fr-text-muted">
+          {{ blog_posting.abstract }}
+        </p>
       {%- endif %}
 
       {% if blog_posting.image -%}
-      <div class="p-image">
-        <img src="{{ blog_posting.image.content_url }}"
-          alt="{{ blog_posting.image.caption or '' }}" />
-        {% if blog_posting.image.caption -%}
-        <figcaption>
-          {{ blog_posting.image.caption }}
-        </figcaption>
-        {%- endif %}
-      </div>
+        <div class="f-image">
+          <img src="{{ blog_posting.image.content_url }}" alt="{{ blog_posting.image.caption or '' }}" />
+
+          {% if blog_posting.image.caption -%}
+            <figcaption>
+              {{ blog_posting.image.caption }}
+            </figcaption>
+          {%- endif %}
+        </div>
       {%- endif %}
-    </header>
+    </div>
 
-    <article>
-      <div class="markdown">
-        {{ blog_posting.text | safe }}
-      </div>
+    <hr>
 
-      <section class="mt-6 print:hidden">
-        {{ Comments() }}
-      </section>
-    </article>
+    <div class="f-container f-markdown" style="--container-width: calc(100 * var(--w))">
+      {{ blog_posting.text | safe }}
+    </div>
 
-    {# TODO: previous/next navigation #}
-
-    {% endcall %}
+    <div class="f-print-hidden">
+      {{ Comments() }}
+    </div>
   </div>
 </main>
 {% endblock content %}

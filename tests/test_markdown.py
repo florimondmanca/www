@@ -7,10 +7,10 @@ def test_image_figcaption() -> None:
     )
 
     assert text == (
-        '<p><div class="p-image">'
+        '<p><figure class="f-image">'
         '<img alt="A beautiful mind" src="https://example.com/a-beautiful-mind" />'
         "<figcaption>A beautiful mind</figcaption>"
-        "</div></p>"
+        "</figure></p>"
     )
 
     assert not attrs

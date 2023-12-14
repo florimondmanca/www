@@ -1,32 +1,30 @@
 {% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
 
-{% macro NavBar(class="") %}
-<nav class="p-nav {{ class }}">
-  {% call ContentWrapper(class="p-nav-wrapper") %}
-    <div class="p-nav-links">
-      <a class="inline-block text-lg font-bold py-2 pr-3" href="{{ url_for('home') }}">
-        {{ settings.SITE_TITLE }}
-      </a>
-      <ul class="flex justify-center">
-        {% for category in categories %}
+{% macro NavBar() %}
+  <nav class="f-navbar f-container f-cluster f-box f-print-hidden" style="--cluster-align: center; --cluster-gap: var(--w); --box-padding: var(--w)">
+    <a class="f-brand f-box" style="--box-padding: 0 calc(2 * var(--w))" href="{{ url_for('home') }}">
+      {{ settings.SITE_TITLE }}
+    </a>
+
+    <ul class="f-cluster f-raw-list" role="list" style="--cluster-justify: center; --cluster-gap: 0">
+      {% for category in categories %}
         <li>
-          <a class="px-4" href="{{ category | absolute_url }}">
+          <a class="f-box" style="--box-padding: 0  calc(3 * var(--v))" href="{{ category | absolute_url }}">
             {{ category.name }}
           </a>
         </li>
-        {% endfor %}
-      </ul>
-    </div>
-    <ul class="flex justify-center ml-auto">
-      {% for language in settings.LANGUAGES %}
-      <li>
-        <a href="{{ url_for('home', language=language) }}">
-          {{ language | language_label }}
-        </a>
-        {% if not loop.last %}/&nbsp;{% endif %}
-      </li>
       {% endfor %}
     </ul>
-  {% endcall %}
-</nav>
+
+    <ul class="f-cluster f-raw-list" role="list" style="--cluster-justify: center; --cluster-gap: 0">
+      {% for language in settings.LANGUAGES %}
+        <li>
+          <a href="{{ url_for('home', language=language) }}">
+            {{ language | language_label }}
+          </a>
+          {% if not loop.last %}/&nbsp;{% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
 {% endmacro %}

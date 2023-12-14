@@ -1,5 +1,13 @@
-{% macro ContentWrapper(class="") -%}
-  <div class="mx-auto max-w-2xl overflow-x-hidden {{ class }}">
+{% from "common/attributes.jinja" import attributes %}
+
+{% macro ContentWrapper(attr={}) -%}
+  {% set attr = dict(
+    attr,
+    class=(attr.get('class', '') + ' f-container').strip(),
+    style='--container-width: calc(100 * var(--w));' + attr.get('style', ''),
+  ) %}
+
+  <div {{ attributes(attr) }}>
     {{ caller() }}
   </div>
 {%- endmacro %}

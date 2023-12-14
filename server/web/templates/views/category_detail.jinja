@@ -5,24 +5,22 @@
 {% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
 
 {% block head %}
-{{ super() }}
-{{ MetaTags(category) }}
+  {{ super() }}
+  {{ MetaTags(category) }}
 {% endblock head %}
 
 {% block title %}
-{{ category.meta_title }}
+  {{ category.meta_title }}
 {% endblock title %}
 
 {% block content %}
-<main class="mt-6">
-  <div class="c-page-list-container">
-    <h1 class="font-bold mb-4">
+  <main class="f-container f-box" style="--box-padding: calc(4 * var(--w)) 0">
+    <h1>
       {{ category.name }}
     </h1>
 
     <div id="blog-posting-list">
       {% include "partials/blog_posting_list.jinja" with context %}
     </div>
-  </div>
-</main>
+  </main>
 {% endblock content %}

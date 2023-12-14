@@ -1,0 +1,15 @@
+.f-text-center {
+  text-align: center;
+}
+
+.f-text-muted {
+  color: var(--muted);
+}
+
+.f-text-danger {
+  color: var(--danger);
+}
+
+.f-text-sm {
+  font-size: var(--font-size-sm);
+}

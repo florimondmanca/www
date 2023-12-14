@@ -38,11 +38,11 @@
   </head>
 
   <body>
-    {{ NavBar(class="print:hidden") }}
+    {{ NavBar() }}
 
     {% block content %}{% endblock %}
 
-    {{ Footer(class="mt-10 print:hidden") }}
+    {{ Footer() }}
 
     <!-- Scripts placed at the end of the document so the pages load faster -->
 

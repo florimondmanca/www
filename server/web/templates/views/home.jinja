@@ -21,7 +21,7 @@
 {% block content %}
 {{ Jumbotron() }}
 
-<div id="blog-posting-list" class="c-page-list-container">
+<div id="blog-posting-list" class="f-container f-box" style="--box-padding: calc(4 * var(--v))">
   {% include "partials/blog_posting_list.jinja" with context %}
 </div>
 {% endblock %}

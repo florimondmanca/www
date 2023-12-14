@@ -1,15 +1,17 @@
 {% macro SocialLinks() %}
-<p class="font-bold">
-  {{ _('Links') }}
-</p>
+  <p>
+    <strong>
+      {{ _('Links') }}
+    </strong>
+  </p>
 
-<ul class="flex flex-row flex-wrap justify-center items-center">
-  {% for link in settings.SOCIAL_LINKS %}
-  <li class="m-2">
-    <a href="{{ link['href'] }}" title="{{ link['title'] }}" target="_blank" rel="noreferrer">
-      {{ link['name'] }}
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+  <ul class="f-cluster f-raw-list" role="list" style="--cluster-justify: center; --cluster-align: center; --cluster-gap: calc(2 * var(--w))">
+    {% for link in settings.SOCIAL_LINKS %}
+      <li>
+        <a href="{{ link['href'] }}" title="{{ link['title'] }}" target="_blank" rel="noreferrer">
+          {{ link['name'] }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 {% endmacro %}

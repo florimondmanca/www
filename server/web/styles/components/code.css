@@ -1,0 +1,26 @@
+@import "../lib/dracula.css";
+
+code {
+  font-family: monospace;
+  font-size: var(--font-size-sm);
+  color: #282a36;
+  background-color: #f8f8f2;
+  padding-inline: var(--v);
+  border-radius: var(--radius-sm);
+}
+
+.codehilite > pre {
+  padding-inline: calc(6 * var(--v));
+  padding-block: calc(4 * var(--v));
+  overflow: auto;
+}
+
+.codehilite code {
+  padding-inline: 0;
+  color: #f8f8f2;
+  background-color: transparent;
+}
+
+.codehilite + .codehilite {
+  margin-top: calc(2 * var(--w));
+}
