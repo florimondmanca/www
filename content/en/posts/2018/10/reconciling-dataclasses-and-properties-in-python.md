@@ -159,7 +159,6 @@ from dataclasses import dataclass, InitVar
 
 @dataclass
 class Vehicle:
-
     wheels: InitVar[int]
     _wheels: int = None  # default given => not required in __init__()
 
@@ -191,7 +190,6 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Vehicle:
-
     wheels: InitVar[int]
     _wheels: int = field(default=None, repr=False)
 
@@ -223,7 +221,6 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Vehicle:
-
     wheels: int  # Now a regular dataclass field
 
     # The rest just as before:
@@ -304,7 +301,6 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Vehicle:
-
     wheels: int
     _wheels: int = field(init=False, repr=False)
 

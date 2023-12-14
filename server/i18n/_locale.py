@@ -24,7 +24,9 @@ class Locale:
     A convenience wrapper around a `gettext` translations object.
     """
 
-    def __init__(self, language: str, translations: Translations = None) -> None:
+    def __init__(
+        self, language: str, translations: NullTranslations | None = None
+    ) -> None:
         self._language = language
         self._translations = (
             translations if translations is not None else NullTranslations()

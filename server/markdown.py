@@ -23,10 +23,11 @@ class ImageFigcaptions(Extension):
     """
 
     class ImageFigCaptionTreeprocessor(Treeprocessor):
-        def run(self, root: etree.ElementTree) -> None:
+        def run(self, root: etree.Element) -> etree.Element | None:
             self.add_img_alt_as_figcaption(root)
+            return None
 
-        def add_img_alt_as_figcaption(self, element: etree.ElementTree) -> None:
+        def add_img_alt_as_figcaption(self, element: etree.Element) -> None:
             for container in element.iterfind("p"):
                 assert container.tag == "p"
                 image = container.find("img")

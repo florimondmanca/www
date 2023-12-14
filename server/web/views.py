@@ -15,23 +15,24 @@ from ..domain.repositories import (
 from .templating import Templates
 
 
-async def _get_base_context(request: Request) -> dict:
+async def _get_base_context() -> dict:
     category_repository = resolve(CategoryRepository)
-    context: dict = {"request": request}
-    context["categories"] = await category_repository.find_all()
-    return context
+
+    return {
+        "categories": await category_repository.find_all(),
+    }
 
 
 class _ContextMixin:
-    async def get_context(self, request: Request) -> dict:
-        return await _get_base_context(request)
+    async def get_context(self, _: Request) -> dict:
+        return await _get_base_context()
 
 
 class TemplateView(_ContextMixin):
     template_name: str
     status_code: int = 200
 
-    def get_template_name(self, request: Request) -> str:
+    def get_template_name(self, _: Request) -> str:
         return self.template_name
 
     async def get(self, request: Request) -> Response:
@@ -39,7 +40,7 @@ class TemplateView(_ContextMixin):
         context = await self.get_context(request)
         template_name = self.get_template_name(request)
         return templates.TemplateResponse(
-            template_name, context, status_code=self.status_code
+            request, template_name, context, status_code=self.status_code
         )
 
 
@@ -144,14 +145,18 @@ class KeywordDetail(BlogPostingPageView, HTTPEndpoint):
 
 async def not_found(request: Request, exc: Exception) -> Response:
     templates = resolve(Templates)
-    context = await _get_base_context(request)
-    return templates.TemplateResponse("views/404.jinja", context, status_code=404)
+    context = await _get_base_context()
+    return templates.TemplateResponse(
+        request, "views/404.jinja", context, status_code=404
+    )
 
 
 async def internal_server_error(request: Request, exc: Exception) -> Response:
     templates = resolve(Templates)
-    context = await _get_base_context(request)
-    return templates.TemplateResponse("views/500.jinja", context, status_code=500)
+    context = await _get_base_context()
+    return templates.TemplateResponse(
+        request, "views/500.jinja", context, status_code=500
+    )
 
 
 async def error(request: Request) -> Response:
