@@ -70,12 +70,7 @@ SOCIAL_LINKS = [
     {
         "href": "https://fosstodon.org/@florimond",
         "name": "Mastodon",
-        "title": "Mastodon (florimond@fosstodon.org)",
-    },
-    {
-        "href": "https://twitter.com/florimondmanca",
-        "name": "Twitter",
-        "title": "Twitter (@florimondmanca)",
+        "title": "Mastodon (@florimond@fosstodon.org)",
     },
     {
         "href": "https://www.linkedin.com/in/florimondmanca",

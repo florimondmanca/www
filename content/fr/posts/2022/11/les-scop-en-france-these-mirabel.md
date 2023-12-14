@@ -13,7 +13,7 @@ image_caption: |
   Photo d'une usine de fermentation prise au bord du canal de Roubaix, lors d'une sortie à vélo alors que je roulais sur la rive opposée. De ce que j'en sais, il ne s'agit pas d'une Scop. Florimond Manca, 2022, CC BY-SA.
 ---
 
-_Adapté d'un [fil](https://twitter.com/florimondmanca/status/1589311780245090306) publié sur Twitter le 6 novembre 2022._
+_Adapté d'un [fil](https://nitter.net/florimondmanca/status/1589311780245090306) publié sur Twitter le 6 novembre 2022._
 
 À quoi ressemblent les Scop (sociétés coopératives) aujourd'hui en France ?
 

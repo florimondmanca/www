@@ -20,7 +20,7 @@ Since then, I kept working on [Bocadillo](https://github.com/bocadilloproject/bo
 
 Another great news is that **Bocadillo v0.13 has just been released**:
 
-[![](/static/img/chatbot-bocadillo.png)](https://twitter.com/bocadillopy/status/1107029038923743232)
+[![](/static/img/chatbot-bocadillo.png)](https://nitter.net/bocadillopy/status/1107029038923743232)
 
 With all these good vibes in the air, I finally decided to go ahead and publish a thorough tutorial.
 
@@ -548,4 +548,4 @@ Want to challenge yourself? Here are a few ideas:
 [templates]: https://bocadilloproject.github.io/guides/agnostic/templates.html
 [static files]: https://bocadilloproject.github.io/guides/http/static-files.html
 
-I hope you enjoyed this tutorial! If you'd like to support the project, be sure to [star the repo](https://github.com/bocadilloproject/bocadillo). If you don't want to miss on new releases and announcements, feel free to follow [@bocadillopy](https://twitter.com/bocadillopy) on Twitter!
+I hope you enjoyed this tutorial! If you'd like to support the project, be sure to [star the repo](https://github.com/bocadilloproject/bocadillo). If you don't want to miss on new releases and announcements, feel free to follow [@bocadillopy](https://nitter.net/bocadillopy) on Twitter!

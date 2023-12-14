@@ -89,7 +89,7 @@ Je savais que je n'allais pas retrouver une telle facilité d'utilisation sous L
 
 En effet, en me renseignant, je suis tombé assez vite sur le site [linuxmao.org](https://linuxmao.org). Une véritable mine d'or.
 
-Idéalement, avant de faire la transition, mieux vaut expérimenter un peu. Ne dites rien aux collègues, mais j'avais la chance d'avoir une machine tournant sous Ubuntu à disposition : l'ordinateur du boulot… qui est chez moi puisque je pratique le télétravail. [En septembre 2022](https://twitter.com/florimondmanca/status/1569785355359887361), j'ai donc pu expérimenter un peu ce que donnait l'écosystème MAO de Linux.
+Idéalement, avant de faire la transition, mieux vaut expérimenter un peu. Ne dites rien aux collègues, mais j'avais la chance d'avoir une machine tournant sous Ubuntu à disposition : l'ordinateur du boulot… qui est chez moi puisque je pratique le télétravail. [En septembre 2022](https://nitter.net/florimondmanca/status/1569785355359887361), j'ai donc pu expérimenter un peu ce que donnait l'écosystème MAO de Linux.
 
 C'est ainsi que j'ai découvert :
 

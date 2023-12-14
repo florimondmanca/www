@@ -73,11 +73,10 @@ async def test_build_blog_posting() -> None:
 
     meta = build_meta_tags(blog_posting)
     url = "https://florimond.dev/en/posts/2020/01/readability-counts/"
-    assert {"name": "twitter:card", "content": "summary_large_image"} in meta
-    assert {"name": "twitter:title", "content": f"{title} - Florimond Manca"} in meta
-    assert {"name": "twitter:description", "content": description} in meta
-    assert {"name": "twitter:url", "content": url} in meta
-    assert {"name": "twitter:image", "content": f"https://florimond.dev{image}"} in meta
+    assert {"property": "og:title", "content": f"{title} - Florimond Manca"} in meta
+    assert {"property": "og:description", "content": description} in meta
+    assert {"property": "og:url", "content": url} in meta
+    assert {"property": "og:image", "content": f"https://florimond.dev{image}"} in meta
     assert {"property": "article:tag", "content": "python"} in meta
 
     assert python.name == "python"
@@ -87,10 +86,9 @@ async def test_build_blog_posting() -> None:
 
     meta = build_meta_tags(python)
     url = "https://florimond.dev/en/tag/python/"
-    assert {"name": "twitter:card", "content": "summary_large_image"} in meta
-    assert {"name": "twitter:title", "content": "python - Florimond Manca"} in meta
-    assert {"name": "twitter:description", "content": "Posts with tag 'python'"} in meta
-    assert {"name": "twitter:url", "content": url} in meta
+    assert {"property": "og:title", "content": "python - Florimond Manca"} in meta
+    assert {"property": "og:description", "content": "Posts with tag 'python'"} in meta
+    assert {"property": "og:url", "content": url} in meta
 
     assert essays.name == "Essays"
     assert essays.slug == "essays"
@@ -98,13 +96,12 @@ async def test_build_blog_posting() -> None:
 
     meta = build_meta_tags(essays)
     url = "https://florimond.dev/en/category/essays/"
-    assert {"name": "twitter:card", "content": "summary_large_image"} in meta
-    assert {"name": "twitter:title", "content": "Essays - Florimond Manca"} in meta
+    assert {"property": "og:title", "content": "Essays - Florimond Manca"} in meta
     assert {
-        "name": "twitter:description",
+        "property": "og:description",
         "content": "Posts in category 'Essays'",
     } in meta
-    assert {"name": "twitter:url", "content": url} in meta
+    assert {"property": "og:url", "content": url} in meta
 
 
 @pytest.mark.asyncio

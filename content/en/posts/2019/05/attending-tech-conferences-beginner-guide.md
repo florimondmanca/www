@@ -233,7 +233,7 @@ Outside of extended networking, there are things you can do on your own.
 
 For example, try to **apply one or two things you've learnt during the conference** to a practical project. If you do, remember to share it with the speaker!
 
-For example, I created [fetch-metadata-asgi](https://github.com/florimondmanca/fetch-metadata-asgi), a PoC ASGI middleware for the upcoming Fetch Metadata specification. This was a [follow up](https://twitter.com/florimondmanca/status/1132565224450592768?s=12) on the talk given by Lukas Weichselbaum about new web security features.
+For example, I created [fetch-metadata-asgi](https://github.com/florimondmanca/fetch-metadata-asgi), a PoC ASGI middleware for the upcoming Fetch Metadata specification. This was a [follow up](https://nitter.net/florimondmanca/status/1132565224450592768?s=12) on the talk given by Lukas Weichselbaum about new web security features.
 
 Lastly, it's definitely a good idea to take the time to **reflect on your experience**. If you have a blog, you can write a blog post and share it with attendees and organizers. Examples from PyConWeb 2019:
 
@@ -245,6 +245,6 @@ Lastly, it's definitely a good idea to take the time to **reflect on your experi
 
 PyConWeb 2019 was full of first times for me: first time in Germany and in Munich, first time attending a tech conference, and first time giving a talk at a conference!
 
-I genuinely enjoyed it. It made me consider getting more into public speaking, and attending more conferences — from the Python community in particular. I just learnt that [PyConFR 2019 was confirmed](https://twitter.com/pyconfr/status/1133004539018268672) for October, so that might be my next stop!
+I genuinely enjoyed it. It made me consider getting more into public speaking, and attending more conferences — from the Python community in particular. I just learnt that [PyConFR 2019 was confirmed](https://nitter.net/pyconfr/status/1133004539018268672) for October, so that might be my next stop!
 
 I will be writing up my experience of speaking at PyConWeb in an upcoming blog post, in a similar format: _"Speaking at Tech Conferences: A Beginner's Guide"_. Stay tuned, and in the meantime you can view the slides for my talk [on GitHub][slides].

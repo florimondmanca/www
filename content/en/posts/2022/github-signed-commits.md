@@ -12,7 +12,7 @@ image_caption: "The looks of signed commits on GitHub (2018)."
 
 Recently I set up personal repositories on a work laptop, using a [separate git config](https://www.freecodecamp.org/news/how-to-handle-multiple-git-configurations-in-one-machine/). As I was configuring the "personal" git config, I couldn't remember how to enable signed commits for committing to GitHub-hosted repositories.
 
-I do have an [old Tweet](https://twitter.com/florimondmanca/status/1041419801346887681) about this, but I figured I might as well turn this into a quick blog post.
+I do have an [old Tweet](https://nitter.net/florimondmanca/status/1041419801346887681) about this, but I figured I might as well turn this into a quick blog post.
 
 Note: this is specific to GitHub, which has signed commits docs spread across multiple pages of their documentation. For reference, Gitlab has an [single-page guide](https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/), which looks much easier to follow.
 
