@@ -24,7 +24,7 @@ Last year in July, [I built my personal blog](/blog/articles/2018/07/let-the-jou
 
 At the time I already knew it was a ridiculous and over-engineered choice for a blog. But well, you know, I'm a geek, and I wanted to learn about building and deploying websites, so there I was.
 
-But, [as I tweeted some time ago](https://twitter.com/florimondmanca/status/1111203979357241344?s=20), this architecture was soon starting to feel like a burden, like a legacy code base you don't want to touch in fear of breaking things. As I gained more experience building large-scale frontend/backend applications, I now realize a lot of the code there was _bad_ — especially in the frontend. Unclear architecture, insufficient separation of concerns, leaky abstractions, you name it.
+But, [as I tweeted some time ago](https://nitter.net/florimondmanca/status/1111203979357241344?s=20), this architecture was soon starting to feel like a burden, like a legacy code base you don't want to touch in fear of breaking things. As I gained more experience building large-scale frontend/backend applications, I now realize a lot of the code there was _bad_ — especially in the frontend. Unclear architecture, insufficient separation of concerns, leaky abstractions, you name it.
 
 On top of that, it was a lot of code, in two separate repositories, with two separate build and deployment pipelines.
 
@@ -488,7 +488,7 @@ If we dig into the detail across languages on the new Starlette + VuePress setup
 
 All of this is about application code, but there were benefits on the infrastructure side too.
 
-The main key result here is that the infrastructure got a lot more lightweight. [I still use Dokku](https://twitter.com/florimondmanca/status/1102155774841769985?s=20) to deploy and manage application containers running on my VM, but there's now only one container. It's a Gunicorn server that serves the Starlette app (which in turn serves the VuePress-built static assets). Compare this with the 3-container setup I had previously (backend API, frontend app, Postgres database), which was definitely more heavy-weight and resource-intensive.
+The main key result here is that the infrastructure got a lot more lightweight. [I still use Dokku](https://nitter.net/florimondmanca/status/1102155774841769985?s=20) to deploy and manage application containers running on my VM, but there's now only one container. It's a Gunicorn server that serves the Starlette app (which in turn serves the VuePress-built static assets). Compare this with the 3-container setup I had previously (backend API, frontend app, Postgres database), which was definitely more heavy-weight and resource-intensive.
 
 The only downside is that I had to _temporarily_ upgrade the VM to 2GB RAM. (1GB was just not enough to allow VuePress to build the site at deploy time, which is the most convenient solution.) This means I the hosting price tag doubled. But I plan to update the deploy script so that it builds assets locally (on my computer), then `scp`s them to the VM somewhere Dokku can pick them up when deploying the app. This will allow me to downgrade back to 1GB RAM — more than enough for day-to-day operation of the app.
 

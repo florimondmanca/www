@@ -20,13 +20,6 @@ def build_meta_tags(obj: ObjWithMeta) -> list[dict]:
         dict(name="image", content=image_url),
         dict(itemprop="name", content=title),
         dict(itemprop="description", content=description),
-        # Twitter
-        dict(name="twitter:url", content=url),
-        dict(name="twitter:title", content=title),
-        dict(name="twitter:description", content=description),
-        dict(name="twitter:image", content=image_url),
-        dict(name="twitter:card", content="summary_large_image"),
-        dict(name="twitter:site", content="@florimondmanca"),
         # OpenGraph
         dict(property="og:url", content=url),
         dict(property="og:type", content="article"),

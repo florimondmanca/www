@@ -114,7 +114,7 @@ In a way, Google profiteering from its size and influence to govern the Web isn'
 
 Google has [110k+ engineers](https://www.cnbc.com/2020/01/02/google-employee-growth-2001-through-2019.html). I suppose a lot of them work on internal Google products, and a substantial portion of them works on things related to the broader Web ecosystem — like developing Web standards. I assume most of these people do so in good faith.
 
-But [like I said about QUIC and HTTP/3](https://twitter.com/florimondmanca/status/1315637400085893121), Google's influence leads to a series of events that invariably seems to repeat itself:
+But [like I said about QUIC and HTTP/3](https://nitter.net/florimondmanca/status/1315637400085893121), Google's influence leads to a series of events that invariably seems to repeat itself:
 
 1. Google has a need (that derives from its massive scale, business position, or something else).
 2. Google proposes a Web standard.
@@ -127,7 +127,7 @@ Google certainly isn't the only Tech enterprise pushing for the Web standards th
 
 There's a somewhat "bleeding edge" vibe to Google Chrome. After all, being Google's browser, it naturally serves as a sandbox and early-stage deployment platform for experimental Web features. When using Chrome, developers get to try the latest features, hidden under layers of feature flags, and develop websites that use the most recent features, sometimes at the expense of users\*. As Chrome has been winning the [browser wars](https://en.wikipedia.org/wiki/Browser_wars), making up over 70% of market share, it has enabled Google to look into needs they may not have been able to investigate before, resulting in them coming up with things like FLoC.
 
-(\* From my limited experience in the web development scene, it seems certain developers tend to treat Chrome as a privileged platform to develop against. This encourages their users to prefer Chrome, either because other browsers suffer from more visual or UX bugs because of lesser QA and testing, or for more explicit reasons. For example, see [how Reddit considers Chrome](https://twitter.com/joelnet/status/1372788732953124868) as a synonym for "Web browser" on their mobile site. In B2B sectors, SaaS startups who can choose which browser their users must use semi-rationally decide to go with "Chrome-only" as the simpler and cheaper option — ignoring that this behavior reinforces Chrome's dominance.)
+(\* From my limited experience in the web development scene, it seems certain developers tend to treat Chrome as a privileged platform to develop against. This encourages their users to prefer Chrome, either because other browsers suffer from more visual or UX bugs because of lesser QA and testing, or for more explicit reasons. For example, see [how Reddit considers Chrome](https://nitter.net/joelnet/status/1372788732953124868) as a synonym for "Web browser" on their mobile site. In B2B sectors, SaaS startups who can choose which browser their users must use semi-rationally decide to go with "Chrome-only" as the simpler and cheaper option — ignoring that this behavior reinforces Chrome's dominance.)
 
 Some think [Chrome is the new Internet Explorer](https://erik.itland.no/chrome-is-the-new-internet-explorer-4-stages). I think that is [not true](https://news.ycombinator.com/item?id=24314251), although not for the same reasons Googlers seem to do. Perhaps it's even way worse than that.
 

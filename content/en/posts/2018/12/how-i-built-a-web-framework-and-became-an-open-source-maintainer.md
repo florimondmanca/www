@@ -58,7 +58,7 @@ If you want to support Bocadillo, you can:
 
 - [Star the repo](https://github.com/bocadilloproject/bocadillo)
 - [Become a contributor](https://github.com/bocadilloproject/bocadillo/blob/master/CONTRIBUTING.md)
-- [Follow Bocadillo on Twitter](https://twitter.com/bocadillopy)
+- [Follow Bocadillo on Twitter](https://nitter.net/bocadillopy)
 
 ### Philosophy
 
@@ -140,7 +140,7 @@ To be clear, Bocadillo didn't start with a very detailed plan. Heck, I didn't ev
 
 So there I was, on the 3rd of November, implementing features so common it felt like **reinventing the wheel**. These were features like requests, responses, views, routes or the application server. "Hundreds of web frameworks out there already solved these problems before", I thought…
 
-But I didn't really care. As @FunkyBob kindly [twitted to me](https://twitter.com/BunkyFob/status/1059960013689516032):
+But I didn't really care. As @FunkyBob kindly [twitted to me](https://nitter.net/BunkyFob/status/1059960013689516032):
 
 > Reinventing the wheel is an awesome way to learn… and sometimes what you learn is just how much your existing frameworks are doing for you.
 
@@ -156,7 +156,7 @@ On November 6th, v0.2.1 was out. That's when I began to realize that Bocadillo w
 
 At that point, I hadn't disclosed anything about Bocadillo yet, not even to friends, so I wanted to make a first announcement. I chose to do it on Twitter.
 
-Because Bocadillo's initial code design and implementation took heavy inspiration from [Responder], Kenneth Reitz's own async framework, [I decided to give a shoutout](https://twitter.com/kennethreitz/status/1059942147342942209).
+Because Bocadillo's initial code design and implementation took heavy inspiration from [Responder], Kenneth Reitz's own async framework, [I decided to give a shoutout](https://nitter.net/kennethreitz/status/1059942147342942209).
 
 ![The first announcement about Bocadillo on Twitter, and Kenneth Reitz's answer. ❣️](/static/img/bocadillo-reitz.png)
 
