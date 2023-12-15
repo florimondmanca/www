@@ -1,24 +1,24 @@
 from dataclasses import dataclass, field
 
 from .. import i18n
-from .entities import BlogPosting, Category, Keyword, Page, Pagination
+from .entities import Category, Keyword, Page, Pagination, Post
 
 
 @dataclass
-class BlogPostingFilterSet:
+class PostFilterSet:
     page: Page | None = field(default_factory=Page)
     language: str = field(default_factory=lambda: i18n.get_locale().language)
     category: Category | None = None
     keyword: Keyword | None = None
 
 
-class BlogPostingRepository:
+class PostRepository:
     async def find_all(
-        self, filterset: BlogPostingFilterSet | None = None
-    ) -> Pagination[BlogPosting]:
+        self, filterset: PostFilterSet | None = None
+    ) -> Pagination[Post]:
         raise NotImplementedError  # pragma: no cover
 
-    async def find_by_slug(self, slug: str) -> BlogPosting | None:
+    async def find_by_slug(self, slug: str) -> Post | None:
         raise NotImplementedError  # pragma: no cover
 
 

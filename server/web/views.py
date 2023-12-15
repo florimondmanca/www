@@ -3,108 +3,69 @@ from starlette.exceptions import HTTPException
 from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 
+from server.web.params import get_page_param
+
 from .. import settings
 from ..di import resolve
-from ..domain.entities import Page
 from ..domain.repositories import (
-    BlogPostingFilterSet,
-    BlogPostingRepository,
     CategoryRepository,
     KeywordRepository,
+    PostFilterSet,
+    PostRepository,
 )
+from .context import get_navbar_context
 from .templating import Templates
 
 
-async def _get_base_context() -> dict:
-    category_repository = resolve(CategoryRepository)
-
-    return {
-        "categories": await category_repository.find_all(),
-    }
-
-
-class _ContextMixin:
-    async def get_context(self, _: Request) -> dict:
-        return await _get_base_context()
-
-
-class TemplateView(_ContextMixin):
-    template_name: str
-    status_code: int = 200
-
-    def get_template_name(self, _: Request) -> str:
-        return self.template_name
+class Home(HTTPEndpoint):
+    template_name = "views/index.jinja"
 
     async def get(self, request: Request) -> Response:
         templates = resolve(Templates)
-        context = await self.get_context(request)
-        template_name = self.get_template_name(request)
-        return templates.TemplateResponse(
-            request, template_name, context, status_code=self.status_code
-        )
+        post_repository = resolve(PostRepository)
 
+        page = get_page_param(request)
+        pagination = await post_repository.find_all(PostFilterSet(page=page))
 
-class BlogPostingPageView(TemplateView):
-    def get_template_name(self, request: Request) -> str:
+        context = await get_navbar_context()
+        context["pagination"] = pagination
+
         if request.headers.get("HX-Request"):
-            return "partials/blog_posting_list.jinja"
-        return super().get_template_name(request)
+            template_name = "partials/post_list.jinja"
+        else:
+            template_name = "views/index.jinja"
 
-    def get_page(self, request: Request) -> Page:
-        try:
-            page_number = int(request.query_params["page"])
-        except (ValueError, TypeError, KeyError):
-            page_number = 1
-
-        return Page(number=page_number, size=9)
-
-
-class Home(BlogPostingPageView, HTTPEndpoint):
-    template_name = "views/home.jinja"
-
-    async def get_context(self, request: Request) -> dict:
-        blog_posting_repository = resolve(BlogPostingRepository)
-
-        context = await super().get_context(request)
-
-        context["pagination"] = await blog_posting_repository.find_all(
-            BlogPostingFilterSet(page=self.get_page(request))
-        )
-
-        return context
+        return templates.TemplateResponse(request, template_name, context)
 
 
 async def legacy_blog_home(request: Request) -> Response:
     return RedirectResponse(request.url_for("home"))
 
 
-class BlogPostingDetail(TemplateView, HTTPEndpoint):
-    template_name = "views/blog_posting_detail.jinja"
-
-    async def get_context(self, request: Request) -> dict:
-        blog_posting_repository = resolve(BlogPostingRepository)
-
-        context = await super().get_context(request)
+class PostDetail(HTTPEndpoint):
+    async def get(self, request: Request) -> Response:
+        templates = resolve(Templates)
+        post_repository = resolve(PostRepository)
 
         slug = request.path_params["slug"]
-        blog_posting = await blog_posting_repository.find_by_slug(slug)
+        post = await post_repository.find_by_slug(slug)
 
-        if blog_posting is None:
+        if post is None:
             raise HTTPException(404)
 
-        context["blog_posting"] = blog_posting
+        context = await get_navbar_context()
+        context["post"] = post
 
-        return context
+        template_name = "views/post/detail.jinja"
+
+        return templates.TemplateResponse(request, template_name, context)
 
 
-class CategoryDetail(BlogPostingPageView, HTTPEndpoint):
-    template_name = "views/category_detail.jinja"
-
-    async def get_context(self, request: Request) -> dict:
+class CategoryDetail(HTTPEndpoint):
+    async def get(self, request: Request) -> Response:
+        templates = resolve(Templates)
         category_repository = resolve(CategoryRepository)
-        blog_posting_repository = resolve(BlogPostingRepository)
-
-        context = await super().get_context(request)
+        post_repository = resolve(PostRepository)
 
         slug = request.path_params["slug"]
         category = await category_repository.find_by_slug(slug)
@@ -112,22 +73,27 @@ class CategoryDetail(BlogPostingPageView, HTTPEndpoint):
         if category is None:
             raise HTTPException(404)
 
+        page = get_page_param(request)
+
+        context = await get_navbar_context()
         context["category"] = category
-        context["pagination"] = await blog_posting_repository.find_all(
-            BlogPostingFilterSet(page=self.get_page(request), category=category)
+        context["pagination"] = await post_repository.find_all(
+            PostFilterSet(page=page, category=category)
         )
 
-        return context
+        if request.headers.get("HX-Request"):
+            template_name = "partials/post_list.jinja"
+        else:
+            template_name = "views/category/detail.jinja"
+
+        return templates.TemplateResponse(request, template_name, context)
 
 
-class KeywordDetail(BlogPostingPageView, HTTPEndpoint):
-    template_name = "views/keyword_detail.jinja"
-
-    async def get_context(self, request: Request) -> dict:
+class KeywordDetail(HTTPEndpoint):
+    async def get(self, request: Request) -> Response:
+        templates = resolve(Templates)
         keyword_repository = resolve(KeywordRepository)
-        blog_posting_repository = resolve(BlogPostingRepository)
-
-        context = await super().get_context(request)
+        post_repository = resolve(PostRepository)
 
         name = request.path_params["name"]
         keyword = await keyword_repository.find_by_name(name)
@@ -135,31 +101,38 @@ class KeywordDetail(BlogPostingPageView, HTTPEndpoint):
         if keyword is None:
             raise HTTPException(404)
 
+        context = await get_navbar_context()
         context["keyword"] = keyword
-        context["pagination"] = await blog_posting_repository.find_all(
-            BlogPostingFilterSet(page=self.get_page(request), keyword=keyword)
+        context["pagination"] = await post_repository.find_all(
+            PostFilterSet(page=get_page_param(request), keyword=keyword)
         )
 
-        return context
+        if request.headers.get("HX-Request"):
+            template_name = "partials/post_list.jinja"
+        else:
+            template_name = "views/tag/detail.jinja"
+
+        return templates.TemplateResponse(request, template_name, context)
 
 
-async def not_found(request: Request, exc: Exception) -> Response:
+async def not_found(request: Request, _: Exception) -> Response:
     templates = resolve(Templates)
-    context = await _get_base_context()
+    context = await get_navbar_context()
     return templates.TemplateResponse(
         request, "views/404.jinja", context, status_code=404
     )
 
 
-async def internal_server_error(request: Request, exc: Exception) -> Response:
+async def internal_server_error(request: Request, _: Exception) -> Response:
     templates = resolve(Templates)
-    context = await _get_base_context()
+    context = await get_navbar_context()
     return templates.TemplateResponse(
         request, "views/500.jinja", context, status_code=500
     )
 
 
-async def error(request: Request) -> Response:
+async def error(_: Request) -> Response:
     if settings.TESTING:
         raise RuntimeError("Example server error")
+
     return RedirectResponse("/")  # pragma: no cover

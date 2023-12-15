@@ -1,15 +1,26 @@
-{% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
-{% from "components/social_links.jinja" import SocialLinks with context %}
-
 {% macro Footer() %}
-<footer class="f-print-hidden f-container f-box f-text-center f-stack" style="--box-padding: calc(6 * var(--w)) 0; --stack-gap: calc(2 * var(--w))">
-  {{ SocialLinks() }}
+  <footer class="f-print-hidden f-container f-box f-text-center f-stack" style="--box-padding: calc(6 * var(--w)) 0; --stack-gap: calc(2 * var(--w))">
+    <p>
+      <strong>
+        {{ _('Links') }}
+      </strong>
+    </p>
 
-  <p>
-    © {{ now().year }} Florimond Manca&nbsp;&middot;&nbsp;
-    <a href="https://github.com/florimondmanca/www" target="_blank" rel="noreferrer">
-      {{ _('Source code') }}
-    </a>
-  </p>
-</footer>
+    <ul class="f-cluster f-raw-list" role="list" style="--cluster-justify: center; --cluster-align: center; --cluster-gap: calc(2 * var(--w))">
+      {% for link in settings.SOCIAL_LINKS %}
+        <li>
+          <a href="{{ link['href'] }}" title="{{ link['title'] }}" target="_blank" rel="noreferrer">
+            {{ link['name'] }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <p>
+      © {{ now().year }} Florimond Manca&nbsp;&middot;&nbsp;
+      <a href="https://github.com/florimondmanca/www" target="_blank" rel="noreferrer">
+        {{ _('Source code') }}
+      </a>
+    </p>
+  </footer>
 {% endmacro %}

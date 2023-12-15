@@ -1,32 +1,32 @@
 from typing import cast
 
 from .. import i18n
-from ..domain.entities import BlogPosting, Category, Keyword, Pagination
+from ..domain.entities import Category, Keyword, Pagination, Post
 from ..domain.repositories import (
-    BlogPostingFilterSet,
-    BlogPostingRepository,
     CategoryRepository,
     KeywordRepository,
+    PostFilterSet,
+    PostRepository,
 )
 from ..i18n import gettext_lazy as _
 from .database import InMemoryDatabase
 
 
-class InMemoryBlogPostingRepository(BlogPostingRepository):
+class InMemoryPostRepository(PostRepository):
     def __init__(self, db: InMemoryDatabase) -> None:
         self._db = db
 
     async def find_all(
-        self, filterset: BlogPostingFilterSet | None = None
-    ) -> Pagination[BlogPosting]:
+        self, filterset: PostFilterSet | None = None
+    ) -> Pagination[Post]:
         if filterset is None:
-            filterset = BlogPostingFilterSet()
+            filterset = PostFilterSet()
 
-        return self._db.find_all_blog_postings(filterset)
+        return self._db.find_all_posts(filterset)
 
-    async def find_by_slug(self, slug: str) -> BlogPosting | None:
+    async def find_by_slug(self, slug: str) -> Post | None:
         language = i18n.get_locale().language
-        return self._db.find_one_blog_posting(language, slug)
+        return self._db.find_one_post(language, slug)
 
 
 class InMemoryCategoryRepository(CategoryRepository):

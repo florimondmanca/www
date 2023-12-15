@@ -8,7 +8,7 @@
 {% endblock head %}
 
 {% block title %}
-{{ keyword.meta_title }}
+  {{ keyword.meta_title }}
 {% endblock title %}
 
 {% block content %}
@@ -17,8 +17,8 @@
       Tag: #{{ keyword.name }}
     </h1>
 
-    <div id="blog-posting-list">
-      {% include "partials/blog_posting_list.jinja" with context%}
+    <div id="frame-post-list">
+      {% include "partials/post_list.jinja" with context%}
     </div>
   </main>
 {% endblock content %}

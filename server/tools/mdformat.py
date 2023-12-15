@@ -13,7 +13,7 @@ from pathlib import Path
 import black
 from pytest_codeblocks.main import extract_from_buffer
 
-from server.infrastructure.content import aiter_blog_posting_paths
+from server.infrastructure.content import aiter_post_paths
 
 
 def _warn(text: str) -> str:
@@ -105,7 +105,7 @@ def _format_file(path: Path, *, check: bool) -> int:
 
 async def main(check: bool = False) -> int:
     rv = 0
-    async for _, path in aiter_blog_posting_paths():
+    async for _, path in aiter_post_paths():
         rv |= _format_file(path, check=check)
     return rv
 

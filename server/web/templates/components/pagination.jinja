@@ -1,5 +1,5 @@
 {% macro Pagination(pagination) %}
-    <form hx-get="{{ request.url }}" hx-trigger="change" hx-target="#blog-posting-list" hx-push-url="true" data-controller="pagination-form">
+    <form hx-get="{{ request.url }}" hx-trigger="change" hx-target="#frame-post-list" hx-push-url="true" data-controller="pagination-form">
         <label for="page">{{ _('Page') }}</label>
         <select id="page" name="page" data-pagination-form-target="select">
             {% for number in range(1, pagination.total_pages + 1) -%}

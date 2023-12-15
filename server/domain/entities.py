@@ -77,7 +77,7 @@ class ImageObject:
 
 
 @dataclasses.dataclass(frozen=True)
-class BlogPosting(ObjWithMeta):
+class Post(ObjWithMeta):
     # https://schema.org/BlogPosting
     name: str
     abstract: str

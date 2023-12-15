@@ -4,7 +4,7 @@ import pytest
 from server.di import resolve
 from server.domain.repositories import CategoryRepository
 
-from .utils import find_meta_tags, load_xml_from_string
+from .utils import find_meta_tags, get_start_tag, load_xml_from_string
 
 
 @pytest.mark.asyncio
@@ -18,10 +18,20 @@ async def test_root(client: httpx.AsyncClient) -> None:
 @pytest.mark.asyncio
 async def test_root_pagination(client: httpx.AsyncClient) -> None:
     url = "http://florimond.dev/?page=2"
-    resp = await client.get(url, headers={"HX-Request": "true"})
+    resp = await client.get(url)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
     assert '<option value="2" selected>' in resp.text
+
+
+@pytest.mark.asyncio
+async def test_root_hx(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev"
+    resp = await client.get(url, headers={"HX-Request": "true"})
+    assert resp.status_code == 200
+    assert "text/html" in resp.headers["content-type"]
+    _, attrs = get_start_tag(resp.text)
+    assert attrs["data-testid"] == "post-list"
 
 
 @pytest.mark.asyncio
@@ -54,6 +64,16 @@ async def test_tag(client: httpx.AsyncClient) -> None:
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
     assert "Tutoriels" in resp.text  # Navbar
+
+
+@pytest.mark.asyncio
+async def test_tag_hx(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/en/tag/python"
+    resp = await client.get(url, headers={"HX-Request": "true"})
+    assert resp.status_code == 200
+    assert "text/html" in resp.headers["content-type"]
+    _, attrs = get_start_tag(resp.text)
+    assert attrs["data-testid"] == "post-list"
 
 
 @pytest.mark.asyncio
@@ -106,6 +126,16 @@ async def test_category_i18n(client: httpx.AsyncClient) -> None:
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
     assert "Tutoriels" in resp.text  # Navbar
+
+
+@pytest.mark.asyncio
+async def test_category_hx(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/en/category/tutorials"
+    resp = await client.get(url, headers={"HX-Request": "true"})
+    assert resp.status_code == 200
+    assert "text/html" in resp.headers["content-type"]
+    _, attrs = get_start_tag(resp.text)
+    assert attrs["data-testid"] == "post-list"
 
 
 @pytest.mark.asyncio

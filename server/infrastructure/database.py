@@ -4,15 +4,15 @@ from typing import Iterator
 
 import aiofiles
 
-from server.domain.repositories import BlogPostingFilterSet
+from server.domain.repositories import PostFilterSet
 
-from ..domain.entities import BlogPosting, Category, Keyword, Pagination
-from .content import aiter_blog_posting_paths, build_blog_posting
+from ..domain.entities import Category, Keyword, Pagination, Post
+from .content import aiter_post_paths, build_post
 
 
 class _Data:
     def __init__(self) -> None:
-        self.blog_postings: dict[str, dict[str, BlogPosting]] = {}
+        self.posts: dict[str, dict[str, Post]] = {}
         self.categories: dict[str, dict[str, Category]] = {}
         self.keywords: dict[str, dict[str, Keyword]] = {}
 
@@ -39,25 +39,21 @@ class InMemoryDatabase:
     async def _load(self) -> None:
         self._data = _Data()
 
-        async for root, path in aiter_blog_posting_paths():
+        async for root, path in aiter_post_paths():
             async with aiofiles.open(path) as f:
                 raw = await f.read()
 
-            blog_posting = await build_blog_posting(root, path, raw)
+            post = await build_post(root, path, raw)
 
-            self._data.blog_postings.setdefault(blog_posting.in_language, {})
-            self._data.blog_postings[blog_posting.in_language][
-                blog_posting.slug
-            ] = blog_posting
+            self._data.posts.setdefault(post.in_language, {})
+            self._data.posts[post.in_language][post.slug] = post
 
-    def find_all_blog_postings(
-        self, filterset: BlogPostingFilterSet
-    ) -> Pagination[BlogPosting]:
+    def find_all_posts(self, filterset: PostFilterSet) -> Pagination[Post]:
         language = filterset.language
 
         items_it = (
             item
-            for item in self._data.blog_postings.get(language, {}).values()
+            for item in self._data.posts.get(language, {}).values()
             if not item.is_private
         )
 
@@ -74,7 +70,7 @@ class InMemoryDatabase:
 
         items = sorted(
             items,
-            key=lambda blog_posting: blog_posting.date_published,
+            key=lambda post: post.date_published,
             reverse=True,
         )
 
@@ -98,8 +94,8 @@ class InMemoryDatabase:
             total_pages=total_pages,
         )
 
-    def find_one_blog_posting(self, language: str, slug: str) -> BlogPosting | None:
-        return self._data.blog_postings.get(language, {}).get(slug)
+    def find_one_post(self, language: str, slug: str) -> Post | None:
+        return self._data.posts.get(language, {}).get(slug)
 
     def find_all_categories(self, language: str) -> list[Category]:
         return sorted(

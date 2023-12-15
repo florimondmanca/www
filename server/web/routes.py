@@ -52,8 +52,8 @@ def get_routes() -> list[BaseRoute]:
         LocaleRoute("/", views.Home, name="home"),
         LocaleRoute(
             "/posts/{year:int}/{month:int}/{slug:str}",
-            views.BlogPostingDetail,
-            name="blog_posting:detail",
+            views.PostDetail,
+            name="post:detail",
         ),
         LocaleRoute("/category/{slug}", views.CategoryDetail, name="category:detail"),
         LocaleRoute("/tag/{name}", views.KeywordDetail, name="keyword:detail"),
