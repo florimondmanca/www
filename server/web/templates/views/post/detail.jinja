@@ -14,15 +14,15 @@
 {% endblock title %}
 
 {% block content %}
-<main class="f-box" style="--box-padding: calc(4 * var(--w)) 0">
+<main class="f-container f-box" style="--container-width: calc(100 * var(--w)); --box-padding: calc(4 * var(--w)) 0">
   {%- if post.is_private -%}
     <p class="f-text-danger f-center f-box" style="--box-padding: var(--w)">
       {{ _("This is a private link: please do not share!") }}
     </p>
   {%- endif -%}
 
-  <div class="f-container f-stack" style="--stack-gap: calc(2 * var(--w))">
-    <div class="f-stack">
+  <div class="f-stack" style="--stack-gap: calc(6 * var(--w))">
+    <div class="f-stack" style="--stack-gap: calc(2 * var(--w))">
       {{ PostMeta(post, editable=true) }}
 
       <h1>
@@ -30,27 +30,19 @@
       </h1>
 
       {% if post.abstract -%}
-        <p class="fr-text-muted">
+        <p class="fr-text-muted f-text-bold">
           {{ post.abstract }}
         </p>
       {%- endif %}
 
-      {% if post.image -%}
-        <div class="f-image">
-          <img src="{{ post.image.content_url }}" alt="{{ post.image.caption or '' }}" />
-
-          {% if post.image.caption -%}
-            <figcaption>
-              {{ post.image.caption }}
-            </figcaption>
-          {%- endif %}
-        </div>
-      {%- endif %}
+      <p>
+        <time datetime="{{ post.date_published }}">
+          {{ post.date_published | dateformat }}
+        </time>
+      </p>
     </div>
 
-    <hr>
-
-    <div class="f-container f-markdown" style="--container-width: calc(100 * var(--w))">
+    <div class="f-markdown">
       {{ post.text | safe }}
     </div>
 

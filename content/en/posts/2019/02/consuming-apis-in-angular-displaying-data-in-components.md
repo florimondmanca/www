@@ -7,9 +7,6 @@ category: tutorials
 tags:
   - angular
   - webdev
-image: "/static/img/articles/angular-apis.jpg"
-image_thumbnail: __auto__
-image_caption: "Blue and white plastic toy. @sheldonnunes, unsplash.com"
 ---
 
 Welcome back! This article is a follow up to a previous article, [Consuming APIs in Angular: The Model-Adapter Pattern](https://blog.florimondmanca.com/consuming-apis-in-angular-the-model-adapter-pattern). If you haven't read it yet — go check it out! This post will be referencing it quite often.

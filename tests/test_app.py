@@ -229,8 +229,6 @@ async def test_meta(client: httpx.AsyncClient) -> None:
 
     meta_url = "https://florimond.dev/en/posts/2018/07/let-the-journey-begin"
     assert find_meta("name", "description") is not None
-    assert find_meta("name", "image") is not None
     assert find_meta("property", "og:url") == meta_url
     assert find_meta("property", "og:title") is not None
     assert find_meta("property", "og:description") is not None
-    assert find_meta("property", "og:image") is not None

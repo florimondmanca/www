@@ -6,9 +6,6 @@ legacy_url: "/python-mutable-defaults-are-the-source-of-all-evil"
 category: tutorials
 tags:
   - python
-image: "/static/img/articles/python-mutable-defaults.jpg"
-image_thumbnail: __auto__
-image_caption: "Green python on brown tree. @tirzavandijk, unsplash.com"
 ---
 
 Today, I wanted to share a quick **life-saving advice** about a common mistake Python developers still tend to make.

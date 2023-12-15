@@ -6,11 +6,16 @@ date: "2022-07-02"
 category: tutorials
 tags:
   - til
-image: "/static/img/articles/github-signed-commits.jpeg"
-image_caption: "The looks of signed commits on GitHub (2018)."
 ---
 
+You can sign git commits with a GPG key to guarantee that they were made by you.
+
+On GitHub, they show up like this:
+
+![The looks of signed commits on GitHub (2018).](/static/img/github-signed-commits.jpeg)
+
 Recently I set up personal repositories on a work laptop, using a [separate git config](https://www.freecodecamp.org/news/how-to-handle-multiple-git-configurations-in-one-machine/). As I was configuring the "personal" git config, I couldn't remember how to enable signed commits for committing to GitHub-hosted repositories.
+
 
 I do have an [old Tweet](https://nitter.net/florimondmanca/status/1041419801346887681) about this, but I figured I might as well turn this into a quick blog post.
 

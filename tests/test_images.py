@@ -19,16 +19,8 @@ async def test_images(client: httpx.AsyncClient) -> None:
     post_repository = resolve(PostRepository)
 
     remote_urls = []
+
     for post in (await post_repository.find_all()).items:
-        url = image.content_url if (image := post.image) is not None else None
-
-        if url is not None and url.startswith("http"):
-            remote_urls.append(url)
-
-        url = post.thumbnail_url
-        if url is not None and url.startswith("http"):
-            remote_urls.append(url)
-
         urls = IMAGE_RE.findall(post.text)
         for url in urls:
             assert url is not None

@@ -1,17 +1,7 @@
 {% from "components/post_meta.jinja" import PostMeta with context %}
 
 {% macro PostListItem(post) %}
-<li class="f-stack" style="--stack-gap: calc(3 * var(--w))">
-  {% with thumbnail_url = post.thumbnail_url %}
-    {% if thumbnail_url %}
-      <div class="f-text-center">
-        <a href="{{ post | absolute_url }}" class="f-frame" style="--frame-ratio: 16 / 9">
-          <img class="f-posts-item-image" src="{{ thumbnail_url }}" loading="lazy" alt="{{ _('Read') }} {{ post.name }}" />
-        </a>
-      </div>
-    {% endif %}
-  {% endwith %}
-
+<li>
   <h3>
     <a href="{{ post | absolute_url }}">
       {{ post.name }}

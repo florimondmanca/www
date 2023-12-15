@@ -13,6 +13,7 @@ h1 {
   font-weight: bold;
   margin-top: 0;
   margin-bottom: var(--w);
+  line-height: 1.25;
 }
 
 h2 {

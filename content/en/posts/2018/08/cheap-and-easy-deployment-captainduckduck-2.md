@@ -7,9 +7,6 @@ category: tutorials
 tags:
   - webdev
   - captainduckduck
-image: "/static/img/articles/captainduckduck2.jpg"
-image_thumbnail: __auto__
-image_caption: "@timmossholder, unsplash.com"
 ---
 
 Welcome back to this two-part article about **CaptainDuckDuck**! In this second and last part, I will take you through the process of **how I deployed my own PaaS using CaptainDuckDuck** to host this personal website and blog. Sounds hard? Actually, not so much!

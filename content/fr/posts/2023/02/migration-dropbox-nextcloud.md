@@ -8,14 +8,13 @@ category: retrospectives
 tags:
   - til
   - logiciels-libres
-image: "/static/img/articles/migration-dropbox-nextcloud.png"
-image_caption: |
-  Logo de Nextcloud.
 ---
 
 Aujourd'hui, le **stockage de fichiers dans le _cloud_** fait partie d'une sorte de fondamental des outils numériques. Les solutions privatrices sont hégémoniques : Google Drive, iCloud, Microsoft OneDrive…
 
 De mon côté, je stocke mes archives personnelles dans Dropbox depuis 2013 environ. Mais à l'heure où j'écris ces lignes, je viens de réussir la **migration vers Nextcloud**. Voyons ensemble comment ça s'est passé ! En bonus, je finirai par un court **guide de migration**.
+
+![Logo de Nextcloud.](/static/img/nextcloud.png)
 
 ## La petite histoire
 

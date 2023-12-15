@@ -6,9 +6,6 @@ legacy_url: "/breaking-news-everything-is-an-event"
 category: essays
 tags:
   - kafka
-image: "/static/img/articles/everything-event.jpg"
-image_thumbnail: __auto__
-image_caption: "Man standing on sand while spreading arms beside calm body of water. @kalvisuals, unsplash.com"
 ---
 
 Welcome back! Here's the third article in my series on building streaming apps with **Apache Kafka**.

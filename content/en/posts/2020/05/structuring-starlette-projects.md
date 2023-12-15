@@ -7,9 +7,6 @@ tags:
   - python
   - webdev
   - asgi
-image: "/static/img/articles/starlette-structure.jpg"
-image_thumbnail: __auto__
-image_caption: "@jjying, unsplash.com"
 ---
 
 I think [Starlette](https://www.starlette.io/) is a wonderful little [ASGI](/blog/articles/2019/08/introduction-to-asgi-async-python-web/) framework. Its modular design is a true blessing for understanding individual components and how they all fit together.

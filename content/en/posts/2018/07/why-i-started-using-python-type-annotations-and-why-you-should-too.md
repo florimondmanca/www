@@ -6,9 +6,6 @@ legacy_url: "/why-i-started-using-python-type-annotations-and-why-you-should-too
 category: essays
 tags:
   - python
-image: "/static/img/articles/python-type-annotations.jpg"
-image_thumbnail: __auto__
-image_caption: "Code snippet, carbon.now.sh"
 ---
 
 When Python 3.6 was released back in december 2016, I was excited at some of the new features it provided. Among them, [f-strings](https://www.python.org/dev/peps/pep-0498/?) were quite a highlight for me (if you don't use them yet, start today!).

@@ -6,9 +6,6 @@ legacy_url: "/restful-api-design-13-best-practices-to-make-your-users-happy"
 category: tutorials
 tags:
   - webdev
-image: "/static/img/articles/rest-apis.jpg"
-image_thumbnail: __auto__
-image_caption: "Architect at work. Daniel McCullough, unsplash.com"
 ---
 
 Web services have been around for as long as the HTTP protocol has existed. But especially since the advent of cloud computing, they have become a very common way of letting clients interact with our data.

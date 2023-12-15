@@ -8,9 +8,6 @@ category: retrospectives
 tags:
   - climat
   - velo
-image: "/static/img/articles/vacances-velo.jpg"
-image_caption: |
-  Canal de la Garonne, entre Montech et Castel-Sarrasin. Crédit photo : adapté de Tourisme Tarn et Garonne, 2010, CC-NY.
 ---
 
 **Voyager a vélo** : voilà une pratique en plein boom [^0], et quelque que je n'avais encore jamais tenté… Hé bien, c'est désormais chose faite !
@@ -28,6 +25,8 @@ Cette expérience **assez peu chère** et décidément **bas carbone** _[je vous
 _N.B._ : cet article prend davantage la forme d'un guide pratique argumenté qu'un carnet de voyage. Mais restez jusqu'à la fin : d'autres personnes ont tenté l'aventure cet été et nous ont ramené plein de belles images !
 
 _[Merci à Maël, Éléonore, et surtout Stella pour leurs relectures.]_
+
+![Canal de la Garonne, entre Montech et Castel-Sarrasin. Crédit photo : adapté de Tourisme Tarn et Garonne, 2010, CC-NY.](/static/img/vacances-velo.jpg)
 
 **Sommaire**
 

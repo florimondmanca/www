@@ -5,16 +5,11 @@ date: "2021-04-17"
 category: essays
 tags:
   - web
-image: "/static/img/articles/google-floc.jpg"
-image_thumbnail: __auto__
-image_caption: "A painting on a wall warning visitors about video surveillance. @tobiastu, unsplash.com."
 ---
 
-This is an adapted and enhanced repost of an opinionated commentary I left on a discussion server about Google's FLoC (Federated Learning of Cohorts) initiative.
-
-Spoiler: I don't like the "Google once again abusing its hegemonic position to dictate the future of the Web" vibe to it. I wish we banned targeted advertising and destroyed surveillance capitalism altogether instead. But this wouldn't be in Google's interest, would it? 😬
-
----
+> This is an adapted and enhanced repost of an opinionated commentary I left on a discussion server about Google's FLoC (Federated Learning of Cohorts) initiative.
+>
+> Spoiler: I don't like the "Google once again abusing its hegemonic position to dictate the future of the Web" vibe to it. I wish we banned targeted advertising and destroyed surveillance capitalism altogether instead. But this wouldn't be in Google's interest, would it? 😬
 
 My awareness that there was some new hot thing called "FLoC" out there (is that pronounced "flock"?) slowly built up by bumping into recent articles such as one [instructing how a website could "opt out" of "Google's FLoC Network"](https://paramdeo.com/blog/opting-your-website-out-of-googles-floc-network). Last week, there was an HN discussion thread titled "[Brave disables Chromium FLoC features](https://news.ycombinator.com/item?id=26765084)". Anecdotically, most of the thoughts I share here actually come from answering someone who asked what FLoC was, which was itself motivated by seeing a [similar opt-out PR](https://github.com/api-platform/api-platform/pull/1879).
 

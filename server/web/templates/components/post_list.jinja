@@ -6,7 +6,7 @@
   {{ Pagination(pagination) }}
 
   {% if pagination.items|length > 0 -%}
-    <ul class="f-grid f-raw-list" role="list" style="--grid-item-min: calc(35 * var(--w)); --grid-item-max: 320px; --grid-justify-items: center">
+    <ul class="f-raw-list f-stack" role="list" style="--stack-gap: calc(6 * var(--w))">
       {% for post in pagination.items -%}
       {{ PostListItem(post) }}
       {%- endfor %}

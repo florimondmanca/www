@@ -1,12 +1,11 @@
 import datetime as dt
 from pathlib import Path
 from textwrap import dedent
-from typing import Optional
 
 import pytest
 
 from server.di import resolve
-from server.domain.entities import ImageObject, Keyword
+from server.domain.entities import Keyword
 from server.domain.repositories import CategoryRepository, KeywordRepository
 from server.infrastructure.content import build_post
 from server.infrastructure.html import build_meta_tags
@@ -28,7 +27,6 @@ async def test_build_post() -> None:
     description = "How readability impacts software development."
     date = "2020-01-01"
     category = "essays"
-    image = "/static/img/articles/example.jpg"
 
     root = Path("content")
     path = Path("content/en/posts/2020/01/readability-counts.md")
@@ -41,7 +39,6 @@ async def test_build_post() -> None:
         category: {category}
         tags:
           - python
-        image: "{image}"
         ---
         You should *really* care about readability.
         """
@@ -65,8 +62,6 @@ async def test_build_post() -> None:
     assert post.date_published == dt.date(2020, 1, 1)
     assert post.category == essays
     assert post.in_language == "en"
-    assert post.image == ImageObject(content_url=image, caption=None)
-    assert post.thumbnail_url == image
     assert post.keywords == [Keyword(name="python", in_language="en")]
 
     meta = build_meta_tags(post)
@@ -74,7 +69,6 @@ async def test_build_post() -> None:
     assert {"property": "og:title", "content": f"{title} - Florimond Manca"} in meta
     assert {"property": "og:description", "content": description} in meta
     assert {"property": "og:url", "content": url} in meta
-    assert {"property": "og:image", "content": f"https://florimond.dev{image}"} in meta
     assert {"property": "article:tag", "content": "python"} in meta
 
     assert python.name == "python"
@@ -100,70 +94,6 @@ async def test_build_post() -> None:
         "content": "Posts in category 'Essays'",
     } in meta
     assert {"property": "og:url", "content": url} in meta
-
-
-@pytest.mark.asyncio
-@pytest.mark.usefixtures("isolated_db")
-@pytest.mark.parametrize(
-    "image, image_thumbnail_line, expected_thumbnail_url",
-    [
-        pytest.param(
-            "/static/img.jpg",
-            "",
-            "/static/img.jpg",
-            id="default:static-file",
-        ),
-        pytest.param(
-            "/elsewhere/img.jpg",
-            "",
-            None,
-            id="default:non-static-file",
-        ),
-        pytest.param(
-            "https://example.org/img.jpg",
-            "",
-            None,
-            id="default:remote-url",
-        ),
-        pytest.param(
-            "/static/img.jpg",
-            "image_thumbnail: __auto__",
-            "/static/img_thumbnail.jpg",
-            id="auto:static-file",
-        ),
-        pytest.param(
-            "/elsewhere/img.jpg",
-            "image_thumbnail: __auto__",
-            None,
-            id="auto:non-static-file",
-        ),
-        pytest.param(
-            "https://example.org/img.jpg",
-            "image_thumbnail: __auto__",
-            None,
-            id="auto:remote-url",
-        ),
-    ],
-)
-async def test_image_thumbnail(
-    image: str, image_thumbnail_line: str, expected_thumbnail_url: Optional[str]
-) -> None:
-    root = Path("content")
-    path = Path("content/en/posts/2020/01/test.md")
-    raw = dedent(
-        f"""
-        ---
-        title: "Test"
-        description: "Test"
-        date: "2020-01-01"
-        category: essays
-        image: "{image}"
-        {image_thumbnail_line}
-        ---
-        """
-    )
-    post = await build_post(root, path, raw)
-    assert post.thumbnail_url == expected_thumbnail_url
 
 
 @pytest.mark.asyncio

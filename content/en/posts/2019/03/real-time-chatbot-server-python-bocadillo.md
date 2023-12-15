@@ -7,9 +7,6 @@ category: tutorials
 tags:
   - python
   - webdev
-image: "/static/img/articles/bocadillo-chatterbot.jpg"
-image_thumbnail: __auto__
-image_caption: "Bocadillo + ChatterBot = Awesome tutorial material."
 ---
 
 _This post is an adaptation of the [official Bocadillo tutorial](https://bocadilloproject.github.io/getting-started/tutorial.html)._

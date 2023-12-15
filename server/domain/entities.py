@@ -26,10 +26,6 @@ class ObjWithMeta:
         return None
 
     @property
-    def meta_image_url(self) -> str | None:
-        return None
-
-    @property
     def meta_keywords(self) -> list[str]:
         return []
 
@@ -70,13 +66,6 @@ class Keyword(ObjWithMeta):
 
 
 @dataclasses.dataclass(frozen=True)
-class ImageObject:
-    # https://schema.org/ImageObject
-    content_url: str
-    caption: str | None = None
-
-
-@dataclasses.dataclass(frozen=True)
 class Post(ObjWithMeta):
     # https://schema.org/BlogPosting
     name: str
@@ -87,8 +76,6 @@ class Post(ObjWithMeta):
     date_published: dt.date
     category: Category
     in_language: str
-    image: ImageObject | None = None
-    thumbnail_url: str | None = None
     keywords: list[Keyword] = dataclasses.field(default_factory=list)
 
     @property
@@ -106,12 +93,6 @@ class Post(ObjWithMeta):
     @property
     def meta_date_published(self) -> dt.date:
         return self.date_published
-
-    @property
-    def meta_image_url(self) -> str | None:
-        if self.image is None:
-            return None
-        return self.image.content_url
 
     @property
     def meta_keywords(self) -> list[str]:

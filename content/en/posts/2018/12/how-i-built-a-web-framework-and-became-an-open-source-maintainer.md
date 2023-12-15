@@ -9,9 +9,6 @@ tags:
   - opensource
   - webdev
   - bocadillo
-image: "/static/img/articles/oss-maintainer.jpg"
-image_thumbnail: __auto__
-image_caption: "Mountain, building, rock formation and abbey. Monestir de Montserrat, Spain. @pichier_sebastian, unsplash.com"
 ---
 
 It's been a while since I've written a blog post. Nearly two months, actually. So, where have I been?

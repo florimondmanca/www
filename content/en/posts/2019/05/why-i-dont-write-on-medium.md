@@ -6,9 +6,6 @@ legacy_url: "/why-i-dont-write-on-medium"
 category: essays
 tags:
   - meta
-image: "/static/img/articles/why-not-medium.jpg"
-image_thumbnail: __auto__
-image_caption: "Business newspaper pages. @freegraphictoday, unsplash.com"
 ---
 
 I get asked from time to time, either by friends, colleagues or readers, why I don't publish any of my articles to Medium.
