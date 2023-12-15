@@ -1,14 +1,14 @@
-{% from "components/blog_posting_list_item.jinja" import BlogPostingListItem with context %}
+{% from "components/post_list_item.jinja" import PostListItem with context %}
 {% from "components/pagination.jinja" import Pagination with context %}
 
-{% macro BlogPostingList(pagination) %}
+{% macro PostList(pagination) %}
 <div class="f-stack" style="--stack-gap: calc(4 * var(--w))">
   {{ Pagination(pagination) }}
 
   {% if pagination.items|length > 0 -%}
     <ul class="f-grid f-raw-list" role="list" style="--grid-item-min: calc(35 * var(--w)); --grid-item-max: 320px; --grid-justify-items: center">
-      {% for blog_posting in pagination.items -%}
-      {{ BlogPostingListItem(blog_posting) }}
+      {% for post in pagination.items -%}
+      {{ PostListItem(post) }}
       {%- endfor %}
     </ul>
   {%- else -%}

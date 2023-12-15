@@ -1,22 +1,22 @@
 {% from "components/keyword_list.jinja" import KeywordList with context %}
 
-{% macro BlogPostingMeta(blog_posting, editable=false) %}
+{% macro PostMeta(post, editable=false) %}
   <div class="f-cluster" style="--cluster-justify: space-between">
     <div class="f-cluster f-text-sm" style="--cluster-gap: calc(3 * var(--v))">
       <div class="f-text-muted">
-        {{ blog_posting.date_published | dateformat }}
+        {{ post.date_published | dateformat }}
         |
         in
-        <a href="{{ blog_posting.category | absolute_url }}">
-          {{ blog_posting.category.name }}
+        <a href="{{ post.category | absolute_url }}">
+          {{ post.category.name }}
         </a>
       </div>
 
-      {{ KeywordList(blog_posting.keywords) }}
+      {{ KeywordList(post.keywords) }}
     </div>
 
     {% if editable %}
-      <a href="{{ blog_posting.edit_url }}" target="_blank" rel="no-referrer">
+      <a href="{{ post.edit_url }}" target="_blank" rel="no-referrer">
         📝&nbsp;Edit
       </a>
     {% endif %}

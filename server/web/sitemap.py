@@ -4,10 +4,10 @@ import asgi_sitemaps
 
 from .. import settings
 from ..di import resolve
-from ..domain.entities import BlogPosting, Category, Keyword
+from ..domain.entities import Post, Category, Keyword
 from ..domain.repositories import (
-    BlogPostingFilterSet,
-    BlogPostingRepository,
+    PostFilterSet,
+    PostRepository,
     CategoryRepository,
     KeywordRepository,
 )
@@ -27,23 +27,23 @@ class StaticSitemap(asgi_sitemaps.Sitemap):
         return "weekly"
 
 
-class BlogPostingSitemap(asgi_sitemaps.Sitemap):
+class PostSitemap(asgi_sitemaps.Sitemap):
     protocol = "https"
 
-    async def items(self) -> List[BlogPosting]:
-        repository = resolve(BlogPostingRepository)
+    async def items(self) -> List[Post]:
+        repository = resolve(PostRepository)
         return [
             obj
             for language in settings.LANGUAGES
             for obj in (
                 await repository.find_all(
-                    BlogPostingFilterSet(page=None, language=language)
+                    PostFilterSet(page=None, language=language)
                 )
             ).items
         ]
 
-    def location(self, blog_posting: BlogPosting) -> str:
-        return get_absolute_url(blog_posting)
+    def location(self, post: Post) -> str:
+        return get_absolute_url(post)
 
     def changefreq(self, path: str) -> str:
         return "weekly"
@@ -86,6 +86,6 @@ class KeywordSitemap(asgi_sitemaps.Sitemap):
 
 
 sitemap = asgi_sitemaps.SitemapApp(
-    [StaticSitemap(), BlogPostingSitemap(), CategorySitemap(), KeywordSitemap()],
+    [StaticSitemap(), PostSitemap(), CategorySitemap(), KeywordSitemap()],
     domain="florimond.dev",
 )

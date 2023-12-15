@@ -7,8 +7,8 @@ from .. import settings
 from ..di import resolve
 from ..domain.entities import Page
 from ..domain.repositories import (
-    BlogPostingFilterSet,
-    BlogPostingRepository,
+    PostFilterSet,
+    PostRepository,
     CategoryRepository,
     KeywordRepository,
 )
@@ -44,10 +44,10 @@ class TemplateView(_ContextMixin):
         )
 
 
-class BlogPostingPageView(TemplateView):
+class PostPageView(TemplateView):
     def get_template_name(self, request: Request) -> str:
         if request.headers.get("HX-Request"):
-            return "partials/blog_posting_list.jinja"
+            return "partials/post_list.jinja"
         return super().get_template_name(request)
 
     def get_page(self, request: Request) -> Page:
@@ -59,16 +59,16 @@ class BlogPostingPageView(TemplateView):
         return Page(number=page_number, size=9)
 
 
-class Home(BlogPostingPageView, HTTPEndpoint):
+class Home(PostPageView, HTTPEndpoint):
     template_name = "views/home.jinja"
 
     async def get_context(self, request: Request) -> dict:
-        blog_posting_repository = resolve(BlogPostingRepository)
+        post_repository = resolve(PostRepository)
 
         context = await super().get_context(request)
 
-        context["pagination"] = await blog_posting_repository.find_all(
-            BlogPostingFilterSet(page=self.get_page(request))
+        context["pagination"] = await post_repository.find_all(
+            PostFilterSet(page=self.get_page(request))
         )
 
         return context
@@ -78,31 +78,31 @@ async def legacy_blog_home(request: Request) -> Response:
     return RedirectResponse(request.url_for("home"))
 
 
-class BlogPostingDetail(TemplateView, HTTPEndpoint):
-    template_name = "views/blog_posting_detail.jinja"
+class PostDetail(TemplateView, HTTPEndpoint):
+    template_name = "views/post/detail.jinja"
 
     async def get_context(self, request: Request) -> dict:
-        blog_posting_repository = resolve(BlogPostingRepository)
+        post_repository = resolve(PostRepository)
 
         context = await super().get_context(request)
 
         slug = request.path_params["slug"]
-        blog_posting = await blog_posting_repository.find_by_slug(slug)
+        post = await post_repository.find_by_slug(slug)
 
-        if blog_posting is None:
+        if post is None:
             raise HTTPException(404)
 
-        context["blog_posting"] = blog_posting
+        context["post"] = post
 
         return context
 
 
-class CategoryDetail(BlogPostingPageView, HTTPEndpoint):
-    template_name = "views/category_detail.jinja"
+class CategoryDetail(PostPageView, HTTPEndpoint):
+    template_name = "views/category/detail.jinja"
 
     async def get_context(self, request: Request) -> dict:
         category_repository = resolve(CategoryRepository)
-        blog_posting_repository = resolve(BlogPostingRepository)
+        post_repository = resolve(PostRepository)
 
         context = await super().get_context(request)
 
@@ -113,19 +113,19 @@ class CategoryDetail(BlogPostingPageView, HTTPEndpoint):
             raise HTTPException(404)
 
         context["category"] = category
-        context["pagination"] = await blog_posting_repository.find_all(
-            BlogPostingFilterSet(page=self.get_page(request), category=category)
+        context["pagination"] = await post_repository.find_all(
+            PostFilterSet(page=self.get_page(request), category=category)
         )
 
         return context
 
 
-class KeywordDetail(BlogPostingPageView, HTTPEndpoint):
-    template_name = "views/keyword_detail.jinja"
+class KeywordDetail(PostPageView, HTTPEndpoint):
+    template_name = "views/tag/detail.jinja"
 
     async def get_context(self, request: Request) -> dict:
         keyword_repository = resolve(KeywordRepository)
-        blog_posting_repository = resolve(BlogPostingRepository)
+        post_repository = resolve(PostRepository)
 
         context = await super().get_context(request)
 
@@ -136,14 +136,14 @@ class KeywordDetail(BlogPostingPageView, HTTPEndpoint):
             raise HTTPException(404)
 
         context["keyword"] = keyword
-        context["pagination"] = await blog_posting_repository.find_all(
-            BlogPostingFilterSet(page=self.get_page(request), keyword=keyword)
+        context["pagination"] = await post_repository.find_all(
+            PostFilterSet(page=self.get_page(request), keyword=keyword)
         )
 
         return context
 
 
-async def not_found(request: Request, exc: Exception) -> Response:
+async def not_found(request: Request, _: Exception) -> Response:
     templates = resolve(Templates)
     context = await _get_base_context()
     return templates.TemplateResponse(
@@ -151,7 +151,7 @@ async def not_found(request: Request, exc: Exception) -> Response:
     )
 
 
-async def internal_server_error(request: Request, exc: Exception) -> Response:
+async def internal_server_error(request: Request, _: Exception) -> Response:
     templates = resolve(Templates)
     context = await _get_base_context()
     return templates.TemplateResponse(
@@ -159,7 +159,8 @@ async def internal_server_error(request: Request, exc: Exception) -> Response:
     )
 
 
-async def error(request: Request) -> Response:
+async def error(_: Request) -> Response:
     if settings.TESTING:
         raise RuntimeError("Example server error")
+
     return RedirectResponse("/")  # pragma: no cover

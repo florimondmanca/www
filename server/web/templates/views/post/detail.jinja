@@ -1,21 +1,21 @@
 {% extends "base.jinja" %}
 
 {% from "components/meta_tags.jinja" import MetaTags with context %}
-{% from "components/comments.jinja" import Comments with context %}
-{% from "components/blog_posting_meta.jinja" import BlogPostingMeta with context %}
+{% from "components/utterances.jinja" import UtterancesComments with context %}
+{% from "components/post_meta.jinja" import PostMeta with context %}
 
 {% block head %}
-{{ super() }}
-{{ MetaTags(blog_posting) }}
+  {{ super() }}
+  {{ MetaTags(post) }}
 {% endblock head %}
 
 {% block title %}
-{{ blog_posting.meta_title }}
+  {{ post.meta_title }}
 {% endblock title %}
 
 {% block content %}
 <main class="f-box" style="--box-padding: calc(4 * var(--w)) 0">
-  {%- if blog_posting.is_private -%}
+  {%- if post.is_private -%}
     <p class="f-text-danger f-center f-box" style="--box-padding: var(--w)">
       {{ _("This is a private link: please do not share!") }}
     </p>
@@ -23,25 +23,25 @@
 
   <div class="f-container f-stack" style="--stack-gap: calc(2 * var(--w))">
     <div class="f-stack">
-      {{ BlogPostingMeta(blog_posting, editable=true) }}
+      {{ PostMeta(post, editable=true) }}
 
       <h1>
-        {{ blog_posting.name }}
+        {{ post.name }}
       </h1>
 
-      {% if blog_posting.abstract -%}
+      {% if post.abstract -%}
         <p class="fr-text-muted">
-          {{ blog_posting.abstract }}
+          {{ post.abstract }}
         </p>
       {%- endif %}
 
-      {% if blog_posting.image -%}
+      {% if post.image -%}
         <div class="f-image">
-          <img src="{{ blog_posting.image.content_url }}" alt="{{ blog_posting.image.caption or '' }}" />
+          <img src="{{ post.image.content_url }}" alt="{{ post.image.caption or '' }}" />
 
-          {% if blog_posting.image.caption -%}
+          {% if post.image.caption -%}
             <figcaption>
-              {{ blog_posting.image.caption }}
+              {{ post.image.caption }}
             </figcaption>
           {%- endif %}
         </div>
@@ -51,11 +51,11 @@
     <hr>
 
     <div class="f-container f-markdown" style="--container-width: calc(100 * var(--w))">
-      {{ blog_posting.text | safe }}
+      {{ post.text | safe }}
     </div>
 
     <div class="f-print-hidden">
-      {{ Comments() }}
+      {{ UtterancesComments() }}
     </div>
   </div>
 </main>

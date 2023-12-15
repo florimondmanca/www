@@ -1,8 +1,6 @@
 {% extends "base.jinja" %}
 
 {% from "components/meta_tags.jinja" import MetaTags with context %}
-{% from "components/comments.jinja" import Comments with context %}
-{% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
 
 {% block head %}
   {{ super() }}
@@ -19,8 +17,8 @@
       {{ category.name }}
     </h1>
 
-    <div id="blog-posting-list">
-      {% include "partials/blog_posting_list.jinja" with context %}
+    <div id="frame-post-list">
+      {% include "partials/post_list.jinja" with context %}
     </div>
   </main>
 {% endblock content %}

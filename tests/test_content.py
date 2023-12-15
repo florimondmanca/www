@@ -8,13 +8,13 @@ import pytest
 from server.di import resolve
 from server.domain.entities import ImageObject, Keyword
 from server.domain.repositories import CategoryRepository, KeywordRepository
-from server.infrastructure.content import build_blog_posting
+from server.infrastructure.content import build_post
 from server.infrastructure.html import build_meta_tags
 
 
 @pytest.mark.asyncio
 @pytest.mark.usefixtures("isolated_db")
-async def test_build_blog_posting() -> None:
+async def test_build_post() -> None:
     category_repository = resolve(CategoryRepository)
     keyword_repository = resolve(KeywordRepository)
 
@@ -47,7 +47,7 @@ async def test_build_blog_posting() -> None:
         """
     )
 
-    blog_posting = await build_blog_posting(root, path, raw)
+    post = await build_post(root, path, raw)
 
     essays = await category_repository.find_by_slug("essays")
     assert essays is not None
@@ -55,23 +55,23 @@ async def test_build_blog_posting() -> None:
     python = await keyword_repository.find_by_name("python")
     assert python is not None
 
-    assert blog_posting.name == title
-    assert blog_posting.abstract == description
-    assert blog_posting.text == (
+    assert post.name == title
+    assert post.abstract == description
+    assert post.text == (
         "<p>You should <em>really</em> care about readability.</p>"
     )
-    assert blog_posting.slug == "readability-counts"
-    assert blog_posting.edit_url == (
+    assert post.slug == "readability-counts"
+    assert post.edit_url == (
         "https://github.com/florimondmanca/www/blob/master/content/en/posts/2020/01/readability-counts.md"  # noqa: E501
     )
-    assert blog_posting.date_published == dt.date(2020, 1, 1)
-    assert blog_posting.category == essays
-    assert blog_posting.in_language == "en"
-    assert blog_posting.image == ImageObject(content_url=image, caption=None)
-    assert blog_posting.thumbnail_url == image
-    assert blog_posting.keywords == [Keyword(name="python", in_language="en")]
+    assert post.date_published == dt.date(2020, 1, 1)
+    assert post.category == essays
+    assert post.in_language == "en"
+    assert post.image == ImageObject(content_url=image, caption=None)
+    assert post.thumbnail_url == image
+    assert post.keywords == [Keyword(name="python", in_language="en")]
 
-    meta = build_meta_tags(blog_posting)
+    meta = build_meta_tags(post)
     url = "https://florimond.dev/en/posts/2020/01/readability-counts"
     assert {"property": "og:title", "content": f"{title} - Florimond Manca"} in meta
     assert {"property": "og:description", "content": description} in meta
@@ -164,8 +164,8 @@ async def test_image_thumbnail(
         ---
         """
     )
-    blog_posting = await build_blog_posting(root, path, raw)
-    assert blog_posting.thumbnail_url == expected_thumbnail_url
+    post = await build_post(root, path, raw)
+    assert post.thumbnail_url == expected_thumbnail_url
 
 
 @pytest.mark.asyncio
@@ -192,5 +192,5 @@ async def test_is_private(location: str, is_private: bool) -> None:
         ---
         """
     )
-    blog_posting = await build_blog_posting(root, path, raw)
-    assert blog_posting.is_private is is_private
+    post = await build_post(root, path, raw)
+    assert post.is_private is is_private

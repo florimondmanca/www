@@ -2,7 +2,7 @@ from typing import Any
 
 import httpx
 
-from ..domain.entities import BlogPosting, Category, Keyword
+from ..domain.entities import Post, Category, Keyword
 
 
 def to_production_url(url: str) -> str:
@@ -11,7 +11,7 @@ def to_production_url(url: str) -> str:
 
 
 def get_absolute_url(obj: Any) -> str:
-    if isinstance(obj, BlogPosting):
+    if isinstance(obj, Post):
         return (
             f"/{obj.in_language}"
             "/posts"

@@ -1,5 +1,3 @@
-{% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
-
 {% macro NavBar() %}
   <nav class="f-navbar f-container f-cluster f-box f-print-hidden" style="--cluster-align: center; --cluster-gap: var(--w); --box-padding: var(--w)">
     <a class="f-brand f-box" style="--box-padding: 0 calc(2 * var(--w))" href="{{ url_for('home') }}">

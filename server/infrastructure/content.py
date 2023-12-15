@@ -7,12 +7,12 @@ from starlette.concurrency import run_in_threadpool
 
 from .. import settings
 from ..di import resolve
-from ..domain.entities import BlogPosting, Category, ImageObject, Keyword
+from ..domain.entities import Post, Category, ImageObject, Keyword
 from ..domain.repositories import CategoryRepository, KeywordRepository
 from .markdown import MarkdownParser
 
 
-async def aiter_blog_posting_paths() -> AsyncIterator[tuple[Path, Path]]:
+async def aiter_post_paths() -> AsyncIterator[tuple[Path, Path]]:
     content_dirs = [settings.CONTENT_DIR, *settings.EXTRA_CONTENT_DIRS]
 
     for root in content_dirs:
@@ -23,7 +23,7 @@ async def aiter_blog_posting_paths() -> AsyncIterator[tuple[Path, Path]]:
             yield root, path
 
 
-async def build_blog_posting(root: Path, path: Path, raw: str) -> BlogPosting:
+async def build_post(root: Path, path: Path, raw: str) -> Post:
     markdown_parser = resolve(MarkdownParser)
     category_repository = resolve(CategoryRepository)
     keyword_repository = resolve(KeywordRepository)
@@ -65,7 +65,7 @@ async def build_blog_posting(root: Path, path: Path, raw: str) -> BlogPosting:
             await keyword_repository.save(keyword)
         keywords.append(keyword)
 
-    return BlogPosting(
+    return Post(
         name=name,
         abstract=abstract,
         text=text,

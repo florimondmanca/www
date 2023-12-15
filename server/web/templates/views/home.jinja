@@ -1,6 +1,5 @@
 {% extends "base.jinja" %}
 
-{% from "components/utils/content_wrapper.jinja" import ContentWrapper with context %}
 {% from "components/jumbotron.jinja" import Jumbotron with context %}
 
 {% block head %}
@@ -21,7 +20,7 @@
 {% block content %}
 {{ Jumbotron() }}
 
-<div id="blog-posting-list" class="f-container f-box" style="--box-padding: calc(4 * var(--v))">
-  {% include "partials/blog_posting_list.jinja" with context %}
+<div id="frame-post-list" class="f-container f-box" style="--box-padding: calc(4 * var(--v))">
+  {% include "partials/post_list.jinja" with context %}
 </div>
 {% endblock %}

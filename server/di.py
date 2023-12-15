@@ -1,7 +1,7 @@
 from typing import TypeVar
 
 from .domain.repositories import (
-    BlogPostingRepository,
+    PostRepository,
     CategoryRepository,
     KeywordRepository,
 )
@@ -14,7 +14,7 @@ T = TypeVar("T")
 def _configure(container: Container) -> None:
     from .infrastructure.database import InMemoryDatabase
     from .infrastructure.repositories import (
-        InMemoryBlogPostingRepository,
+        InMemoryPostRepository,
         InMemoryCategoryRepository,
         InMemoryKeywordRepository,
     )
@@ -27,7 +27,7 @@ def _configure(container: Container) -> None:
     container.register(InMemoryDatabase, instance=db)
 
     container.register(
-        BlogPostingRepository, instance=InMemoryBlogPostingRepository(db)
+        PostRepository, instance=InMemoryPostRepository(db)
     )
     container.register(CategoryRepository, instance=InMemoryCategoryRepository(db))
     container.register(KeywordRepository, instance=InMemoryKeywordRepository(db))
