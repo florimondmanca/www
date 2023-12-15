@@ -154,5 +154,5 @@ window.addEventListener("load", function (event) {
         window.performance.getEntriesByType("navigation")[0].transferSize,
     });
     showEcoIndex(dom, resources);
-  }, 1000);
+  }, 50);
 });

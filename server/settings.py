@@ -4,7 +4,7 @@ import pathlib
 from starlette.config import Config
 from starlette.datastructures import CommaSeparatedStrings
 
-from .markdown import ImageFigcaptions
+from .markdown import ImageExtension
 
 config = Config(".env")
 
@@ -50,15 +50,17 @@ EXTRA_CONTENT_DIRS = [
 IMAGE_ALLOWED_MAX_SIZE_KB = 32
 
 CONTENT_DIR = HERE.parent / "content"
+
 with open(HERE / "web" / "assets" / "legacy-blog-url-mapping.json") as f:
     LEGACY_URL_MAPPING = json.loads(f.read())
+
 MARKDOWN_EXTENSIONS: list = [
     "codehilite",
     "fenced_code",
     "tables",
     "footnotes",
     "toc",
-    ImageFigcaptions(),
+    ImageExtension(),
 ]
 
 SOCIAL_LINKS = [

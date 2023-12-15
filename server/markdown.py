@@ -5,9 +5,9 @@ from markdown.extensions import Extension
 from markdown.treeprocessors import Treeprocessor
 
 
-class ImageFigcaptions(Extension):
+class ImageExtension(Extension):
     """
-    A Python-Markdown extension that renders the caption provided to images.
+    A Python-Markdown extension that improves the rendering of images.
 
     Example
     -------
@@ -17,28 +17,30 @@ class ImageFigcaptions(Extension):
 
     Output:
         <div class="p-markdown-image">
-            <img src="/path/to/mage.png" alt="Some caption"/>
+            <img src="/path/to/mage.png" alt="Some caption" loading="lazy"/>
             <figcaption>Some caption</figcaption>
         </div>
     """
 
-    class ImageFigCaptionTreeprocessor(Treeprocessor):
+    class ImageTreeprocessor(Treeprocessor):
         def run(self, root: etree.Element) -> etree.Element | None:
-            self.add_img_alt_as_figcaption(root)
+            self._process_images(root)
             return None
 
-        def add_img_alt_as_figcaption(self, element: etree.Element) -> None:
+        def _process_images(self, element: etree.Element) -> None:
             for container in element.iterfind("p"):
                 assert container.tag == "p"
                 image = container.find("img")
                 if image is None:
                     continue
                 assert image.tag == "img"
-                self.append_figcaption(container, image)
+                self._process_image(container, image)
 
-        def append_figcaption(
+        def _process_image(
             self, container: etree.Element, image: etree.Element
         ) -> None:
+            image.set("loading", "lazy")
+
             alt = image.get("alt")
 
             if not alt:
@@ -62,6 +64,4 @@ class ImageFigcaptions(Extension):
             container.remove(image)
 
     def extendMarkdown(self, md: Markdown) -> None:
-        md.treeprocessors.register(
-            self.ImageFigCaptionTreeprocessor(md), "img_figcaption", 5
-        )
+        md.treeprocessors.register(self.ImageTreeprocessor(md), "www_image", 5)

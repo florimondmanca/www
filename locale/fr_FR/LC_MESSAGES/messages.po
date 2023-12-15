@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-15 01:04+0100\n"
+"POT-Creation-Date: 2023-12-15 01:41+0100\n"
 "PO-Revision-Date: 2021-04-22 16:27+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr_FR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.11.0\n"
+"Generated-By: Babel 2.14.0\n"
 
 #: server/domain/entities.py:50
 #, python-format
@@ -28,29 +28,25 @@ msgstr "Billets dans la catégorie '%s'"
 msgid "Posts with tag '%s'"
 msgstr "Billets avec le tag '%s'"
 
-#: server/infrastructure/repositories.py:34
+#: server/infrastructure/repositories.py:36
 msgid "Essays"
 msgstr "Idées"
 
-#: server/infrastructure/repositories.py:38
+#: server/infrastructure/repositories.py:40
 msgid "Retrospectives"
 msgstr "Rétrospectives"
 
-#: server/infrastructure/repositories.py:42
+#: server/infrastructure/repositories.py:44
 msgid "Tutorials"
 msgstr "Tutoriels"
 
-#: server/web/templates/components/blog_posting_list.jinja:17
+#: server/web/templates/components/blog_posting_list.jinja:16
 msgid "No blog posts yet."
 msgstr "Pas encore de billets."
 
 #: server/web/templates/components/blog_posting_list_item.jinja:8
 msgid "Read"
 msgstr "Lire"
-
-#: server/web/templates/components/blog_posting_list_item.jinja:9
-msgid "Image for"
-msgstr "Image pour"
 
 #: server/web/templates/components/footer.jinja:11
 msgid "Source code"
@@ -60,7 +56,7 @@ msgstr "Code source"
 msgid "Open Source Developer, Idealist On A Journey"
 msgstr "Ingénieur logiciel et environnement"
 
-#: server/web/templates/components/jumbotron.jinja:16
+#: server/web/templates/components/jumbotron.jinja:17
 msgid ""
 "I maintain and contribute to libraries, packages, and tools. Mostly "
 "Python."
@@ -73,7 +69,7 @@ msgstr ""
 msgid "Page"
 msgstr "Page"
 
-#: server/web/templates/components/social_links.jinja:3
+#: server/web/templates/components/social_links.jinja:4
 msgid "Links"
 msgstr "Liens utiles"
 
@@ -85,7 +81,6 @@ msgstr "Page introuvable."
 msgid "Internal server error."
 msgstr "Erreur interne."
 
-#: server/web/templates/views/blog_posting_detail.jinja:21
+#: server/web/templates/views/blog_posting_detail.jinja:20
 msgid "This is a private link: please do not share!"
 msgstr "Ce lien est privé : veuillez ne pas le partager !"
-
