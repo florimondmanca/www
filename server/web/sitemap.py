@@ -4,12 +4,12 @@ import asgi_sitemaps
 
 from .. import settings
 from ..di import resolve
-from ..domain.entities import Post, Category, Keyword
+from ..domain.entities import Category, Keyword, Post
 from ..domain.repositories import (
-    PostFilterSet,
-    PostRepository,
     CategoryRepository,
     KeywordRepository,
+    PostFilterSet,
+    PostRepository,
 )
 from ..infrastructure.urls import get_absolute_url
 
@@ -36,9 +36,7 @@ class PostSitemap(asgi_sitemaps.Sitemap):
             obj
             for language in settings.LANGUAGES
             for obj in (
-                await repository.find_all(
-                    PostFilterSet(page=None, language=language)
-                )
+                await repository.find_all(PostFilterSet(page=None, language=language))
             ).items
         ]
 

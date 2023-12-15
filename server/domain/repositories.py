@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 
 from .. import i18n
-from .entities import Post, Category, Keyword, Page, Pagination
+from .entities import Category, Keyword, Page, Pagination, Post
 
 
 @dataclass

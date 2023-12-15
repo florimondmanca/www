@@ -2,7 +2,7 @@ from typing import Any
 
 import httpx
 
-from ..domain.entities import Post, Category, Keyword
+from ..domain.entities import Category, Keyword, Post
 
 
 def to_production_url(url: str) -> str:

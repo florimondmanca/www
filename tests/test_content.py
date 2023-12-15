@@ -57,9 +57,7 @@ async def test_build_post() -> None:
 
     assert post.name == title
     assert post.abstract == description
-    assert post.text == (
-        "<p>You should <em>really</em> care about readability.</p>"
-    )
+    assert post.text == ("<p>You should <em>really</em> care about readability.</p>")
     assert post.slug == "readability-counts"
     assert post.edit_url == (
         "https://github.com/florimondmanca/www/blob/master/content/en/posts/2020/01/readability-counts.md"  # noqa: E501

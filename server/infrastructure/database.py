@@ -6,7 +6,7 @@ import aiofiles
 
 from server.domain.repositories import PostFilterSet
 
-from ..domain.entities import Post, Category, Keyword, Pagination
+from ..domain.entities import Category, Keyword, Pagination, Post
 from .content import aiter_post_paths, build_post
 
 
@@ -46,13 +46,9 @@ class InMemoryDatabase:
             post = await build_post(root, path, raw)
 
             self._data.posts.setdefault(post.in_language, {})
-            self._data.posts[post.in_language][
-                post.slug
-            ] = post
+            self._data.posts[post.in_language][post.slug] = post
 
-    def find_all_posts(
-        self, filterset: PostFilterSet
-    ) -> Pagination[Post]:
+    def find_all_posts(self, filterset: PostFilterSet) -> Pagination[Post]:
         language = filterset.language
 
         items_it = (

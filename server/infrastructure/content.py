@@ -7,7 +7,7 @@ from starlette.concurrency import run_in_threadpool
 
 from .. import settings
 from ..di import resolve
-from ..domain.entities import Post, Category, ImageObject, Keyword
+from ..domain.entities import Category, ImageObject, Keyword, Post
 from ..domain.repositories import CategoryRepository, KeywordRepository
 from .markdown import MarkdownParser
 

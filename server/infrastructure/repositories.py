@@ -1,12 +1,12 @@
 from typing import cast
 
 from .. import i18n
-from ..domain.entities import Post, Category, Keyword, Pagination
+from ..domain.entities import Category, Keyword, Pagination, Post
 from ..domain.repositories import (
-    PostFilterSet,
-    PostRepository,
     CategoryRepository,
     KeywordRepository,
+    PostFilterSet,
+    PostRepository,
 )
 from ..i18n import gettext_lazy as _
 from .database import InMemoryDatabase
