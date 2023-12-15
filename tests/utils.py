@@ -27,3 +27,20 @@ def find_meta_tags(html: str) -> list:
     parser = HeadMetaHTMLParser()
     parser.feed(html)
     return parser.meta
+
+
+class StartTagParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.start_tag: tuple[str, dict] | None = None
+
+    def handle_starttag(self, tag: str, attrs: list) -> None:
+        if self.start_tag is None:
+            self.start_tag = (tag, dict(attrs))
+
+
+def get_start_tag(html: str) -> tuple[str, dict]:
+    parser = StartTagParser()
+    parser.feed(html)
+    assert parser.start_tag is not None
+    return parser.start_tag

@@ -2,7 +2,7 @@
 {% from "components/pagination.jinja" import Pagination with context %}
 
 {% macro PostList(pagination) %}
-<div class="f-stack" style="--stack-gap: calc(4 * var(--w))">
+<div class="f-stack" style="--stack-gap: calc(4 * var(--w))" data-testid="post-list">
   {{ Pagination(pagination) }}
 
   {% if pagination.items|length > 0 -%}
