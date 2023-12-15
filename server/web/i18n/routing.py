@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Any, Tuple
 
 from starlette.datastructures import Scope
 from starlette.routing import Match, Route, URLPath
@@ -27,11 +27,11 @@ class LocaleRoute(Route):
 
         # Don't normalize in-place to avoid interferring with
         # matching of other routes.
-        normalized_scope = {**scope, "path": path[len(language_prefix) :]}
+        normalized_scope = {**scope, "route_path": path[len(language_prefix) :]}
 
         return super().matches(normalized_scope)
 
-    def url_path_for(self, name: str, **path_params: str) -> URLPath:
+    def url_path_for(self, name: str, /, **path_params: Any) -> URLPath:
         # Allow `url_for(..., language=...)`
         language = path_params.pop("language", None)
 

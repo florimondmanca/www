@@ -33,7 +33,7 @@ class LegacyRedirectMiddleware(BaseHTTPMiddleware):
             if path not in self.url_mapping:
                 return response
 
-        redirect_path = self.url_mapping[path]
+        redirect_path = self.url_mapping[path].rstrip("/")
 
         return RedirectResponse(
             request.url.replace(path=redirect_path),

@@ -1,3 +1,5 @@
+from typing import cast
+
 from .. import i18n
 from ..domain.entities import BlogPosting, Category, Keyword, Pagination
 from ..domain.repositories import (
@@ -47,7 +49,7 @@ class InMemoryCategoryRepository(CategoryRepository):
         self._db = db
 
     def make_name(self, slug: str, language: str) -> str:
-        return self._NAMES[slug][language]
+        return cast(str, self._NAMES[slug][language])
 
     async def find_all(self, language: str | None = None) -> list[Category]:
         if language is None:

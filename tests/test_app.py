@@ -9,7 +9,7 @@ from .utils import find_meta_tags, load_xml_from_string
 
 @pytest.mark.asyncio
 async def test_root(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/"
+    url = "http://florimond.dev"
     resp = await client.get(url)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
@@ -26,30 +26,30 @@ async def test_root_pagination(client: httpx.AsyncClient) -> None:
 
 @pytest.mark.asyncio
 async def test_article(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
+    url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin"
     resp = await client.get(url)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
 
 
 @pytest.mark.asyncio
-async def test_article_no_trailing_slash(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin"
+async def test_article_with_trailing_slash(client: httpx.AsyncClient) -> None:
+    url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
     resp = await client.get(url)
     assert resp.status_code == 307
     assert resp.headers["Location"] == (
-        "http://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
+        "http://florimond.dev/en/posts/2018/07/let-the-journey-begin"
     )
 
 
 @pytest.mark.asyncio
 async def test_tag(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/en/tag/python/"
+    url = "http://florimond.dev/en/tag/python"
     resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
 
-    url = "http://florimond.dev/fr/tag/test/"
+    url = "http://florimond.dev/fr/tag/test"
     resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
@@ -58,12 +58,12 @@ async def test_tag(client: httpx.AsyncClient) -> None:
 
 @pytest.mark.asyncio
 async def test_extra_content_dirs(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/en/posts/2020/01/test-draft/"
+    url = "http://florimond.dev/en/posts/2020/01/test-draft"
     resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
 
-    url = "http://florimond.dev/fr/posts/2021/04/test-brouillon/"
+    url = "http://florimond.dev/fr/posts/2021/04/test-brouillon"
     resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
@@ -72,7 +72,7 @@ async def test_extra_content_dirs(client: httpx.AsyncClient) -> None:
 
 @pytest.mark.asyncio
 async def test_private_link(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/en/posts/2020/01/test-draft-prv-1/"
+    url = "http://florimond.dev/en/posts/2020/01/test-draft-prv-1"
     resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
@@ -93,7 +93,7 @@ async def test_known_categories() -> None:
 @pytest.mark.asyncio
 @pytest.mark.parametrize("category", KNOWN_CATEGORIES)
 async def test_category(client: httpx.AsyncClient, category: str) -> None:
-    url = f"http://florimond.dev/en/category/{category}/"
+    url = f"http://florimond.dev/en/category/{category}"
     resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
@@ -101,7 +101,7 @@ async def test_category(client: httpx.AsyncClient, category: str) -> None:
 
 @pytest.mark.asyncio
 async def test_category_i18n(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/fr/category/tutorials/"
+    url = "http://florimond.dev/fr/category/tutorials"
     resp = await client.get(url)
     assert resp.status_code == 200, resp.url
     assert "text/html" in resp.headers["content-type"]
@@ -118,7 +118,7 @@ async def test_not_found(client: httpx.AsyncClient) -> None:
 
 @pytest.mark.asyncio
 async def test_not_found_article(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/en/posts/2022/06/whatever/"
+    url = "http://florimond.dev/en/posts/2022/06/whatever"
     resp = await client.get(url)
     assert resp.status_code == 404
     assert "text/html" in resp.headers["content-type"]
@@ -126,7 +126,7 @@ async def test_not_found_article(client: httpx.AsyncClient) -> None:
 
 @pytest.mark.asyncio
 async def test_not_found_category(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/en/category/whatever/"
+    url = "http://florimond.dev/en/category/whatever"
     resp = await client.get(url)
     assert resp.status_code == 404
     assert "text/html" in resp.headers["content-type"]
@@ -134,7 +134,7 @@ async def test_not_found_category(client: httpx.AsyncClient) -> None:
 
 @pytest.mark.asyncio
 async def test_not_found_keyword(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/en/tag/whatever/"
+    url = "http://florimond.dev/en/tag/whatever"
     resp = await client.get(url)
     assert resp.status_code == 404
     assert "text/html" in resp.headers["content-type"]
@@ -184,7 +184,7 @@ async def test_rss_link(client: httpx.AsyncClient) -> None:
 
 @pytest.mark.asyncio
 async def test_meta(client: httpx.AsyncClient) -> None:
-    url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
+    url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin"
     resp = await client.get(url)
     assert resp.status_code == 200
     assert "text/html" in resp.headers["content-type"]
@@ -197,7 +197,7 @@ async def test_meta(client: httpx.AsyncClient) -> None:
                 return item.get("content")
         return None
 
-    meta_url = "https://florimond.dev/en/posts/2018/07/let-the-journey-begin/"
+    meta_url = "https://florimond.dev/en/posts/2018/07/let-the-journey-begin"
     assert find_meta("name", "description") is not None
     assert find_meta("name", "image") is not None
     assert find_meta("property", "og:url") == meta_url

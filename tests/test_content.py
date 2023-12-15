@@ -72,7 +72,7 @@ async def test_build_blog_posting() -> None:
     assert blog_posting.keywords == [Keyword(name="python", in_language="en")]
 
     meta = build_meta_tags(blog_posting)
-    url = "https://florimond.dev/en/posts/2020/01/readability-counts/"
+    url = "https://florimond.dev/en/posts/2020/01/readability-counts"
     assert {"property": "og:title", "content": f"{title} - Florimond Manca"} in meta
     assert {"property": "og:description", "content": description} in meta
     assert {"property": "og:url", "content": url} in meta
@@ -85,7 +85,7 @@ async def test_build_blog_posting() -> None:
     assert python.meta_description == "Posts with tag 'python'"
 
     meta = build_meta_tags(python)
-    url = "https://florimond.dev/en/tag/python/"
+    url = "https://florimond.dev/en/tag/python"
     assert {"property": "og:title", "content": "python - Florimond Manca"} in meta
     assert {"property": "og:description", "content": "Posts with tag 'python'"} in meta
     assert {"property": "og:url", "content": url} in meta
@@ -95,7 +95,7 @@ async def test_build_blog_posting() -> None:
     assert essays.in_language == "en"
 
     meta = build_meta_tags(essays)
-    url = "https://florimond.dev/en/category/essays/"
+    url = "https://florimond.dev/en/category/essays"
     assert {"property": "og:title", "content": "Essays - Florimond Manca"} in meta
     assert {
         "property": "og:description",

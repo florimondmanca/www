@@ -1,3 +1,6 @@
+from contextlib import asynccontextmanager
+from typing import AsyncIterator
+
 from starlette.applications import Starlette
 from starlette.types import ASGIApp
 
@@ -16,18 +19,22 @@ def create_app() -> ASGIApp:
 
     routes = get_routes()
 
-    on_startup = [db.connect]
-    on_shutdown = []
+    @asynccontextmanager
+    async def lifespan(app: Starlette) -> AsyncIterator[None]:
+        await db.connect()
 
-    if settings.DEBUG:  # pragma: no cover
-        on_startup += [hotreload.startup]
-        on_shutdown += [hotreload.shutdown]
+        if settings.DEBUG:  # pragma: no cover
+            await hotreload.startup()
+
+        yield
+
+        if settings.DEBUG:  # pragma: no cover
+            await hotreload.shutdown()
 
     return Starlette(
         debug=settings.DEBUG,
         routes=routes,
         middleware=middleware,
         exception_handlers={404: views.not_found, 500: views.internal_server_error},
-        on_startup=on_startup,
-        on_shutdown=on_shutdown,
+        lifespan=lifespan,
     )
