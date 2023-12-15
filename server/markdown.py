@@ -1,8 +1,12 @@
+import pathlib
+import re
+from typing import Any
 from xml.etree import ElementTree as etree
 
 from markdown import Markdown
 from markdown.extensions import Extension
 from markdown.treeprocessors import Treeprocessor
+from markdown.preprocessors import Preprocessor
 
 
 class ImageExtension(Extension):
@@ -65,3 +69,48 @@ class ImageExtension(Extension):
 
     def extendMarkdown(self, md: Markdown) -> None:
         md.treeprocessors.register(self.ImageTreeprocessor(md), "www_image", 5)
+
+
+class DemosExtension(Extension):
+    def __init__(self, **kwargs: Any) -> None:
+        self.config = {
+            "directory": ["", "Directory of demo files"],
+        }
+        super().__init__(**kwargs)
+
+    class DemoPreprocessor(Preprocessor):
+        def __init__(self, md: Markdown, directory: pathlib.Path) -> None:
+            super().__init__(md)
+            self._directory = directory
+
+        RE = re.compile(r"^:::demo (?P<filename>[^\n]+)")
+
+        def run(self, lines: list[str]) -> list[str]:
+            new_lines = []
+
+            for line in lines:
+                m = self.RE.search(line)
+
+                if m is None:
+                    new_lines.append(line)
+                    continue
+
+                filename = m.group("filename")
+                path = self._directory / filename
+
+                new_lines.append('<f-demo>')
+                new_lines.append('```html')
+                for line in path.read_text().splitlines():
+                    new_lines.append(line)
+                new_lines.append('```')
+                new_lines.append('</f-demo>')
+
+
+            return new_lines
+
+    def extendMarkdown(self, md: Markdown) -> None:
+        md.registerExtension(self)
+
+        md.preprocessors.register(
+            self.DemoPreprocessor(md, self.getConfig("directory")), "www_demos", 30
+        )

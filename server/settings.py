@@ -4,7 +4,7 @@ import pathlib
 from starlette.config import Config
 from starlette.datastructures import CommaSeparatedStrings
 
-from .markdown import ImageExtension
+from .markdown import ImageExtension, DemosExtension
 
 config = Config(".env")
 
@@ -61,6 +61,7 @@ MARKDOWN_EXTENSIONS: list = [
     "footnotes",
     "toc",
     ImageExtension(),
+    DemosExtension(directory=CONTENT_DIR / "demos"),
 ]
 
 SOCIAL_LINKS = [

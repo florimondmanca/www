@@ -1,0 +1,30 @@
+<form id="delete-form" method="POST" action="#">
+  <button id="dialog-trigger">Delete my account</button>
+</form>
+
+<dialog id="dialog">
+  <form method="dialog">
+    <h2>Delete your account?</h2>
+    <button value="close">Close</button>
+    <p>All your data will be deleted. This action cannot be undone.</p>
+    <button value="cancel">No, keep my account</button>
+    <button value="confirm">Yes, delete my account</button>
+  </form>
+</dialog>
+
+<script type="text/javascript">
+  const form = document.querySelector('#delete-form');
+  const deleteBtn = document.querySelector('#dialog-trigger');
+  const dialog = document.querySelector('#dialog');
+
+  deleteBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    dialog.showModal();
+  });
+
+  dialog.addEventListener('close', () => {
+    if (dialog.returnValue === 'confirm') {
+      form.requestSubmit();
+    }
+  });
+</script>

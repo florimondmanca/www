@@ -13,3 +13,9 @@ document.addEventListener("load", function () {
     
     registerPaginationFormController();
 });
+
+customElements.define('f-demo', class extends HTMLElement {
+    connectedCallback() {
+        console.log('hello');
+    }
+})
