@@ -6,9 +6,6 @@ legacy_url: "/let-the-journey-begin"
 category: essays
 tags:
   - meta
-image: "/static/img/articles/journey-begin.jpg"
-image_thumbnail: __auto__
-image_caption: "Josh Withers, unsplash.com"
 ---
 
 **Welcome to CodeSail!** My name is Florimond. I will be your captain for this **journey through web development and software engineering.** 👨‍✈️

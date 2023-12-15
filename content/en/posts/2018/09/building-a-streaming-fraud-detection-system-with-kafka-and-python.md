@@ -7,9 +7,6 @@ category: tutorials
 tags:
   - kafka
   - python
-image: "/static/img/articles/kafka-fraud.jpg"
-image_thumbnail: __auto__
-image_caption: "Orange and multicolored LEGO toy set. @lh1me via unsplash.com"
 ---
 
 This is the second article of my series on **building streaming applications with Apache Kafka**. If you missed it, you may read [the opening](https://blog.florimondmanca.com/streaming-applications-with-apache-kafka-the-opening) to know why this series even exists and what to expect.

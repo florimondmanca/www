@@ -7,9 +7,6 @@ category: retrospectives
 tags:
   - webdev
   - captainduckduck
-image: "/static/img/articles/captainduckduck1.jpg"
-image_thumbnail: __auto__
-image_caption: "@spacex, unsplash.com."
 ---
 
 While working on this website, I was looking for a way to relieve the pains of deployment while keeping enough **control over the infrastructure and my budget**.

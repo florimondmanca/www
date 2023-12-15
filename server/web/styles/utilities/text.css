@@ -13,3 +13,7 @@
 .f-text-sm {
   font-size: var(--font-size-sm);
 }
+
+.f-text-bold {
+  font-weight: bold;
+}

@@ -6,9 +6,6 @@ legacy_url: "/python-optionally-parametrized-decorators"
 category: tutorials
 tags:
   - python
-image: "/static/img/articles/optionally-parametrized-decorators.jpg"
-image_thumbnail: __auto__
-image_caption: "A code snippet of what we're aiming to achieve."
 ---
 
 This blog post is a memo to myself, and to anyone who wants to know (or keeps forgetting like I do 😬) how to implement Python parametrized decorators without needing to call them in the no-arguments use case.

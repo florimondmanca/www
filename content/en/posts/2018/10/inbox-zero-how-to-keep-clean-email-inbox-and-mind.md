@@ -6,9 +6,6 @@ legacy_url: "/inbox-zero-how-to-keep-clean-email-inbox-and-mind"
 category: essays
 tags:
   - productivity
-image: "/static/img/articles/inbox-zero.jpg"
-image_thumbnail: __auto__
-image_caption: "Four assorted-color mailboxes on black surface. @nxn, unsplash.com"
 ---
 
 I am a final year student in systems and software engineering at [CentraleSupélec](http://www.centralesupelec.fr/en). My school has an extremely active campus life. The main channel for communication here is **email**. Like, _mass email_. I mean, _30 emails per day, every day_. I'm not even joking. So when I arrived in first year back in 2015, I quickly had to learn **how to manage my inbox efficiently**.

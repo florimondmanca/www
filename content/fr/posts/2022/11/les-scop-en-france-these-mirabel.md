@@ -8,12 +8,11 @@ category: essays
 tags:
   - til
   - coopératives
-image: "/static/img/articles/les-scop-these-mirabel.jpg"
-image_caption: |
-  Photo d'une usine de fermentation prise au bord du canal de Roubaix, lors d'une sortie à vélo alors que je roulais sur la rive opposée. De ce que j'en sais, il ne s'agit pas d'une Scop. Florimond Manca, 2022, CC BY-SA.
 ---
 
 _Adapté d'un [fil](https://nitter.net/florimondmanca/status/1589311780245090306) publié sur Twitter le 6 novembre 2022._
+
+![Photo d'une usine de fermentation prise au bord du canal de Roubaix, lors d'une sortie à vélo alors que je roulais sur la rive opposée. De ce que j'en sais, il ne s'agit pas d'une Scop. Florimond Manca, 2022, CC BY-SA.](/static/img/les-scop-these-mirabel.jpg)
 
 À quoi ressemblent les Scop (sociétés coopératives) aujourd'hui en France ?
 

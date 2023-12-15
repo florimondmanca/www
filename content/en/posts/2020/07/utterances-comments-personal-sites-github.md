@@ -6,9 +6,6 @@ category: tutorials
 tags:
   - meta
   - webdev
-image: "/static/img/articles/utterances.jpg"
-image_thumbnail: __auto__
-image_caption: "Golden Gate City Night lights crystal prism ball. @sanfrancisco, unsplash.com."
 ---
 
 There are times in software when you're facing a problem, you find an off-the-shelf solution, and 20 lines of code later it _just works_.
@@ -25,7 +22,7 @@ There I found a lovely little comment section at the bottom of the page. The sty
 
 And so I learned that the comment section was powered by [Utterances](https://utteranc.es/).
 
-![Preview of the comments section on `rednafi.github.io`.](/static/img/articles/utterances-rednafi.png)
+![Preview of the comments section on `rednafi.github.io`.](/static/img/utterances-rednafi.png)
 
 I had come across Utterances before but for some reason I had not realized how beautiful and elegant this piece of software is. So here I am, dedicating an entire blog entry to what I'd consider as a prime example of brilliant open source software.
 

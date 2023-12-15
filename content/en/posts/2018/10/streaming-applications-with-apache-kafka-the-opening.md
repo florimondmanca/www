@@ -6,9 +6,6 @@ legacy_url: "/streaming-applications-with-apache-kafka-the-opening"
 category: essays
 tags:
   - kafka
-image: "/static/img/articles/kafka-opening.jpg"
-image_thumbnail: __auto__
-image_caption: "Man on mountain edge. @redhatfactory, unsplash.com"
 ---
 
 _**Update on 15 December, 2018**: This series ended up consisting in only two (but thorough) articles. Although I promised a lot in this opening post, I didn't have the time to dive much further. I still think the contents of this series will help you navigate the wonders of Kafka, so I hope you'll enjoy your read!_

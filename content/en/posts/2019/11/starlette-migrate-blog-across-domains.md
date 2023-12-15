@@ -7,9 +7,6 @@ tags:
   - python
   - asgi
   - vuepress
-image: "/static/img/articles/starlette-migrate.jpg"
-image_thumbnail: __auto__
-image_caption: "Milky way above body of water. @krisroller, unsplash.com"
 ---
 
 I recently rebuilt my personal blog. The design has changed a bit, but that was not the main goal of the migration. Behind this change lies a complete revamp in architecture and technology stack. By migrating from Django + Angular to Starlette + VuePress, I managed to cut down the total lines of code 3x, and to migrate my blog to a different domain while retaining SEO and ensuring old URLs are still valid.

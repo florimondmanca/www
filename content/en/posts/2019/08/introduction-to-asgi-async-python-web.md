@@ -8,9 +8,6 @@ tags:
   - python
   - webdev
   - asgi
-image: "/static/img/articles/asgi-intro.jpg"
-image_thumbnail: __auto__
-image_caption: '"Turtles on body of water", Ricard Baraham via unsplash.com'
 ---
 
 There's a lot of exciting stuff happening in the Python web development ecosystem right now — one of the main drivers of this endeavour is [ASGI], the Asynchronous Server Gateway Interface.

@@ -6,9 +6,6 @@ legacy_url: "/reconciling-dataclasses-and-properties-in-python"
 category: tutorials
 tags:
   - python
-image: "/static/img/articles/dataclasses-properties.jpg"
-image_thumbnail: __auto__
-image_caption: "Two black-and-white birds. @wwwynand, unsplash.com"
 ---
 
 _If you can't wait for the TL;DR, jump to "Lessons Learned" at the end of this article._

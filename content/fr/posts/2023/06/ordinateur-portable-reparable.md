@@ -8,10 +8,6 @@ category: retrospectives
 tags:
   - numerique-responsable
   - logiciels-libres
-image: "/static/img/articles/ordinateur-portable-reparable.jpg"
-image_thumbnail: "/static/img/articles/ordinateur-portable-reparable_thumbnail.png"
-image_caption: |
-  Mon MacBook Pro posé sur une table blanche, l'écran ouvert et montrant l'édition de ce billet sous VS Code.
 ---
 
 _**Disclaimer**. Ceci n'est pas un publipostage. Je n'ai été contacté par aucune société citée dans ce billet ni pour l'écrire ni le faire relire. Il s'agit d'un billet à mon initiative propre et écrit en toute indépendance, qui relate mes réflexions au moment où j'ai souhaité changé d'ordinateur portable en me focalisant sur la réparabilité._

@@ -7,16 +7,9 @@ category: tutorials
 tags:
   - webdev
   - angular
-image: "/static/img/articles/model-adapter.jpg"
-image_thumbnail: __auto__
-image_caption: "An angular shot of smooth white balconies on a building in Almería, Spain. Dmitri Popov, unsplash.com"
 ---
 
 _Update (Feb. 2019): if you're interested in how to use what is built here in components, I wrote a follow-up article: [Displaying Data In Components](/blog/articles/2019/02/consuming-apis-in-angular-displaying-data-in-components)._
-
-<br>
-<hr>
-<br>
 
 In a previous post, I wrote about [best practices in REST API design](https://blog.florimondmanca.com/restful-api-design-13-best-practices-to-make-your-users-happy-ag6). These were mostly applicable on the server side.
 
