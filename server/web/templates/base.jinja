@@ -46,28 +46,18 @@
 
     <!-- Scripts placed at the end of the document so the pages load faster -->
 
-    <script>
-    // NOTE: Service worker was removed and unregistration code was added on 2020-04-03.
-    // TODO: remove unregistration code after on 2020-20-03.
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.getRegistrations().then((registrations) => {
-        Promise.all(registrations.map(registration => registration.unregister()));
-      });
-    }
-    </script>
-
     {% if settings.DEBUG %}
       {{ hotreload.script(url_for('hot-reload')) | safe }}
     {% endif %}
 
     <!-- EcoIndex rating - https://github.com/simonvdfr/ecoindex-light-js -->
-    <script src="{{ url_for('static', path='/js/ecoindex.js') }}" defer></script>
+    <script src="{{ url_for('static', path='/js/ecoindex.js') }}" async defer></script>
 
     <!-- htmx -->
-    <script src="{{ url_for('static', path='/js/htmx.org@1.8.4/htmx.min.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/htmx.org@1.8.4/htmx.min.js') }}" async defer></script>
 
     <!-- Custom bits of JavaScript -->
-    <script src="{{ url_for('static', path='/js/main.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/main.js') }}" async defer></script>
 
     {% block tail %}{% endblock %}
   </body>

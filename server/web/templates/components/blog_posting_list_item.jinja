@@ -4,9 +4,9 @@
 <li class="f-stack" style="--stack-gap: calc(3 * var(--w))">
   {% with thumbnail_url = blog_posting.thumbnail_url %}
     {% if thumbnail_url %}
-      <div class="f-text-center" aria-hidden="true">
+      <div class="f-text-center">
         <a href="{{ blog_posting | absolute_url }}" class="f-frame" style="--frame-ratio: 16 / 9">
-          <img class="f-posts-item-image" src="{{ thumbnail_url }}" />
+          <img class="f-posts-item-image" src="{{ thumbnail_url }}" loading="lazy" alt="{{ _('Read') }} {{ blog_posting.name }}" />
         </a>
       </div>
     {% endif %}

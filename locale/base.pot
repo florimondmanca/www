@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-15 01:04+0100\n"
+"POT-Creation-Date: 2023-12-15 01:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.11.0\n"
+"Generated-By: Babel 2.14.0\n"
 
 #: server/domain/entities.py:50
 #, python-format
@@ -27,28 +27,24 @@ msgstr ""
 msgid "Posts with tag '%s'"
 msgstr ""
 
-#: server/infrastructure/repositories.py:34
+#: server/infrastructure/repositories.py:36
 msgid "Essays"
 msgstr ""
 
-#: server/infrastructure/repositories.py:38
+#: server/infrastructure/repositories.py:40
 msgid "Retrospectives"
 msgstr ""
 
-#: server/infrastructure/repositories.py:42
+#: server/infrastructure/repositories.py:44
 msgid "Tutorials"
 msgstr ""
 
-#: server/web/templates/components/blog_posting_list.jinja:17
+#: server/web/templates/components/blog_posting_list.jinja:16
 msgid "No blog posts yet."
 msgstr ""
 
 #: server/web/templates/components/blog_posting_list_item.jinja:8
 msgid "Read"
-msgstr ""
-
-#: server/web/templates/components/blog_posting_list_item.jinja:9
-msgid "Image for"
 msgstr ""
 
 #: server/web/templates/components/footer.jinja:11
@@ -59,7 +55,7 @@ msgstr ""
 msgid "Open Source Developer, Idealist On A Journey"
 msgstr ""
 
-#: server/web/templates/components/jumbotron.jinja:16
+#: server/web/templates/components/jumbotron.jinja:17
 msgid ""
 "I maintain and contribute to libraries, packages, and tools. Mostly "
 "Python."
@@ -69,7 +65,7 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#: server/web/templates/components/social_links.jinja:3
+#: server/web/templates/components/social_links.jinja:4
 msgid "Links"
 msgstr ""
 
@@ -81,7 +77,7 @@ msgstr ""
 msgid "Internal server error."
 msgstr ""
 
-#: server/web/templates/views/blog_posting_detail.jinja:21
+#: server/web/templates/views/blog_posting_detail.jinja:20
 msgid "This is a private link: please do not share!"
 msgstr ""
 
