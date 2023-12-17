@@ -29,10 +29,6 @@
       import_role:
         name: pyenv
 
-    - name: Ensure nvm is configured
-      import_role:
-        name: nvm
-
     - name: Ensure Nginx is installed
       apt: name=nginx state=latest
       become: true
