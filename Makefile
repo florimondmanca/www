@@ -14,7 +14,7 @@ python_bin = python3
 bin = ${venv}/bin/
 pysources = server/ tests/ tools/
 
-install: .env install-python install-node # Install
+install: .env install-python # Install
 
 .env:
 	cp -n .env.example .env
@@ -27,9 +27,6 @@ install-python: venv
 	${bin}pip install -r requirements.txt
 	make messagesc
 
-install-node:
-	npm ci
-
 ##
 ## ----------------
 ## Building
@@ -38,7 +35,6 @@ install-node:
 
 build: # Build assets
 	make pybuild
-# NODE_ENV=production npm run build
 	make messagesc
 
 pybuild:
