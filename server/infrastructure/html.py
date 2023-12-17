@@ -1,10 +1,10 @@
 from .. import settings
 from ..domain.entities import ObjWithMeta
-from .urls import get_absolute_url, to_production_url
+from .urls import get_absolute_path, to_production_url
 
 
 def build_meta_tags(obj: ObjWithMeta) -> list[dict]:
-    url = to_production_url(get_absolute_url(obj))
+    url = to_production_url(get_absolute_path(obj))
     title = obj.meta_title
     description = obj.meta_description
     date_published = obj.meta_date_published

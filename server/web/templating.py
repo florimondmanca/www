@@ -6,7 +6,7 @@ from starlette.templating import Jinja2Templates
 
 from .. import settings
 from ..infrastructure.html import build_meta_tags
-from ..infrastructure.urls import get_absolute_url
+from ..infrastructure.urls import get_absolute_path, to_production_url
 from . import i18n
 from .reload import HotReload
 
@@ -21,7 +21,9 @@ class Templates(Jinja2Templates):
         self.env.globals["raise"] = _raise_server_error
         self.env.globals["settings"] = settings
         self.env.globals["hotreload"] = hotreload
-        self.env.filters["absolute_url"] = get_absolute_url
+        self.env.filters["absolute_url"] = lambda obj: (
+            to_production_url(get_absolute_path(obj))
+        )
         self.env.filters["dateformat"] = _dateformat
         self.env.filters["language_label"] = _language_label
         self.env.filters["meta_tags"] = build_meta_tags

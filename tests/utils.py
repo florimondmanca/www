@@ -81,6 +81,7 @@ class HCardParser(HTMLParser):
         super().__init__()
         self.hcard: dict = {}
         self._in_hcard = False
+        self._field = ""
 
     def handle_starttag(self, tag: str, attrs: list) -> None:
         attr = dict(attrs)
@@ -94,11 +95,22 @@ class HCardParser(HTMLParser):
             if tag == "img" and "u-photo" in classattr:
                 self.hcard["u-photo"] = attr["src"]
 
-            if tag == "a" and "p-name" in classattr:
-                self.hcard["p-name"] = attr["href"]
+            if tag == "a" and "u-uid" in classattr:
+                self.hcard["u-uid"] = attr["href"]
 
             if tag == "a" and "u-url" in classattr:
                 self.hcard["u-url"] = attr["href"]
+
+            if "p-note" in classattr:
+                self._field = "p-note"
+
+    def handle_data(self, data: str) -> None:
+        if self._field:
+            self.hcard[self._field] = data
+
+    def handle_endtag(self, _: str) -> None:
+        if self._field:
+            self._field = ""
 
 
 def parse_hcard(html: str) -> dict:
@@ -136,6 +148,12 @@ class HEntryParser(HTMLParser):
 
             if tag == "a" and "h-card" in classattr:
                 self.hentry["h-card"] = attr["href"]
+
+            if tag == "a" and "u-url" in classattr:
+                self.hentry["u-url"] = attr["href"]
+
+            if tag == "a" and "p-category" in classattr:
+                self.hentry.setdefault("p-category", []).append(attr["href"])
 
             if tag == "time" and "dt-published" in classattr:
                 self.hentry["dt-published"] = attr["datetime"]

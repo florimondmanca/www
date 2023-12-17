@@ -209,7 +209,7 @@ async def test_rss_link(client: httpx.AsyncClient) -> None:
         None,
     )
     assert line is not None
-    assert 'href="https://florimond.dev/feed.rss"' in line
+    assert 'href="http://florimond.dev/feed.rss"' in line
 
 
 @pytest.mark.asyncio
@@ -227,7 +227,7 @@ async def test_meta(client: httpx.AsyncClient) -> None:
                 return item.get("content")
         return None
 
-    meta_url = "https://florimond.dev/en/posts/2018/07/let-the-journey-begin"
+    meta_url = "http://florimond.dev/en/posts/2018/07/let-the-journey-begin"
     assert find_meta("name", "description") is not None
     assert find_meta("property", "og:url") == meta_url
     assert find_meta("property", "og:title") is not None

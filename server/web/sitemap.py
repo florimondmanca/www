@@ -11,7 +11,7 @@ from ..domain.repositories import (
     PostFilterSet,
     PostRepository,
 )
-from ..infrastructure.urls import get_absolute_url
+from ..infrastructure.urls import get_absolute_path
 
 
 class StaticSitemap(asgi_sitemaps.Sitemap):
@@ -41,7 +41,7 @@ class PostSitemap(asgi_sitemaps.Sitemap):
         ]
 
     def location(self, post: Post) -> str:
-        return get_absolute_url(post)
+        return get_absolute_path(post)
 
     def changefreq(self, path: str) -> str:
         return "weekly"
@@ -59,7 +59,7 @@ class CategorySitemap(asgi_sitemaps.Sitemap):
         ]
 
     def location(self, obj: Category) -> str:
-        return get_absolute_url(obj)
+        return get_absolute_path(obj)
 
     def changefreq(self, path: str) -> str:
         return "weekly"
@@ -77,7 +77,7 @@ class KeywordSitemap(asgi_sitemaps.Sitemap):
         ]
 
     def location(self, obj: Keyword) -> str:
-        return get_absolute_url(obj)
+        return get_absolute_path(obj)
 
     def changefreq(self, path: str) -> str:
         return "weekly"
