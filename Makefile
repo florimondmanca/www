@@ -14,17 +14,6 @@ python_bin = python3
 bin = ${venv}/bin/
 pysources = server/ tests/ tools/
 
-build: # Build assets
-	NODE_ENV=production npm run build
-	make messagesc
-
-check: # Run code checks
-	${bin}black --check --diff ${pysources}
-	${bin}flake8 ${pysources}
-	${bin}mypy ${pysources}
-	${bin}isort --check --diff ${pysources}
-	${bin}python -m server.tools.mdformat --check
-
 install: .env install-python install-node # Install
 
 .env:
@@ -36,17 +25,67 @@ venv:
 install-python: venv
 	${bin}pip install -U pip wheel
 	${bin}pip install -r requirements.txt
-	${bin}python -m playwright install firefox
 	make messagesc
 
 install-node:
 	npm ci
+
+##
+## ----------------
+## Building
+## ----------------
+##
+
+build: # Build assets
+	make pybuild
+# NODE_ENV=production npm run build
+	make messagesc
+
+pybuild:
+	${bin}python -m tools.pybuild ./server/web/styles/styles.css --outdir ./server/web/static/css ${ARGS}
+
+##
+## ----------------
+## Serving
+## ----------------
+##
+
+serve: # Run servers
+	make -j 2 serve-uvicorn serve-assets
+
+serve-uvicorn:
+	PYTHONUNBUFFERED=1 ${bin}python -m server.main 2>&1 | ${bin}python -m tools.colorprefix blue [server]
+
+serve-assets:
+	PYTHONUNBUFFERED=1 make pybuild ARGS="--watch" 2>&1 | ${bin}python -m tools.colorprefix yellow [assets]
+
+##
+## ----------------
+## Code quality
+## ----------------
+##
+
+test: # Run the test suite
+	${bin}pytest
+
+check: # Run code checks
+	${bin}black --check --diff ${pysources}
+	${bin}flake8 ${pysources}
+	${bin}mypy ${pysources}
+	${bin}isort --check --diff ${pysources}
+	${bin}python -m server.tools.mdformat --check
 
 format: # Run automatic code formatting
 	${bin}autoflake --in-place --recursive ${pysources}
 	${bin}isort ${pysources}
 	${bin}black ${pysources}
 	${bin}python -m server.tools.mdformat
+
+##
+## ----------------
+## Translations
+## ----------------
+##
 
 locale/.init:
 		${bin}pybabel init -l fr_FR -i locale/base.pot -d locale
@@ -59,20 +98,14 @@ messages: locale/.init # Update translations
 messagesc: # Compile translations
 	${bin}pybabel compile --domain messages -d locale
 
-serve: # Run servers
-	make -j 2 serve-uvicorn serve-assets
-
-serve-uvicorn:
-	PYTHONUNBUFFERED=1 ${bin}python -m server.main 2>&1 | ${bin}python -m tools.colorprefix blue [server]
-
-serve-assets:
-	NODE_ENV=production FORCE_COLOR=true npm run watch 2>&1 | ${bin}python -m tools.colorprefix yellow [assets]
+##
+## ----------------
+## Tools
+## ----------------
+##
 
 imgoptimize: # Optimize images
 	${bin}python -m server.tools.imgoptimize
-
-test: # Run the test suite
-	${bin}pytest
 
 ##
 ## ----------------

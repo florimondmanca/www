@@ -25,6 +25,6 @@ pytest==7.4.3
 pytest-asyncio<0.23 # Issue with asgi-lifespan background
 pytest-codeblocks==0.17.0
 pytest-cov==4.1.0
-pytest-playwright==0.4.3
 types-aiofiles==23.2.0.0
 types-markdown==3.5.0.3
+watchfiles==0.21.0
