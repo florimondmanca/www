@@ -56,7 +56,7 @@
     when: letsencrypt_site is changed
 
   - name: nginx:Create certificates
-    shell: certbot certonly  -n --webroot -w /var/www/letsencrypt --agree-tos -m "{{ letsencrypt_email }}" {% for domain in domains %}-d {{ domain }} {% endfor %}
+    shell: certbot certonly -n --webroot -w /var/www/letsencrypt --agree-tos -m "{{ letsencrypt_email }}" {% for domain in domains %}-d {{ domain }} {% endfor %}
     args:
       creates: "/etc/letsencrypt/live/{{ domains[0] }}"
     become: true
@@ -64,10 +64,14 @@
 
   - name: nginx:Ensure certs get renewed
     cron:
-      name: certs_renewal
-      special_time: weekly
+      name: certbot_renew
+      weekday: "1"
+      minute: "0"
+      hour: "3"
       job: "sudo certbot renew -q"
+      user: root
       state: present
+    become: true
 
 - name: nginx:Ensure LetsEncrypt is disabled
   when: not letsencrypt_enabled
