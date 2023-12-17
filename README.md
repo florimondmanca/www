@@ -8,7 +8,6 @@ Code for https://florimond.dev.
 ## Prerequisites
 
 - Python 3.11+
-- Node.js 18.x
 
 ## Install
 
