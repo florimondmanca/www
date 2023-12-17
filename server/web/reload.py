@@ -1,4 +1,5 @@
 import arel
+from starlette.routing import WebSocketRoute
 
 from .. import settings
 from ..infrastructure.database import InMemoryDatabase
@@ -17,3 +18,9 @@ class HotReload(arel.HotReload):
                 arel.Path("./server/web/static"),
             ]
         )
+
+    def routes(self) -> list:
+        if settings.DEBUG:
+            return [WebSocketRoute("/hot-reload", self, name="hot-reload")]
+
+        return []

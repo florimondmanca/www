@@ -29,6 +29,7 @@ KNOWN_DOMAINS = [
 STATIC_ROOT = "/static"
 STATIC_DIR = HERE / "web" / "static"
 TEMPLATES_DIR = HERE / "web" / "templates"
+SITES_DIR = HERE / "web" / "templates" / "sites"
 
 LOCALE_DIR = HERE.parent / "locale"
 LOCALE_DOMAIN = "messages"

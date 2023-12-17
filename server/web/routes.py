@@ -6,6 +6,7 @@ from . import legacy, middleware, views
 from .i18n.routing import LocaleRoute
 from .reload import HotReload
 from .sitemap import sitemap
+from .sites import make_site_app
 from .statics import CachedStaticFiles
 
 
@@ -32,6 +33,11 @@ def get_routes() -> list[BaseRoute]:
             "blog.florimond.dev",
             app=legacy.DomainRedirect("florimond.dev", root_path="/blog"),
             name="legacy:blog_dot_dev",
+        ),
+        Host(
+            "diypedals.localhost",
+            app=make_site_app("diypedals", static),
+            name="sites:diypedals",
         ),
         Route("/error/", views.error),
         Route("/blog/", views.legacy_blog_home, name="legacy:blog_home"),
@@ -60,6 +66,6 @@ def get_routes() -> list[BaseRoute]:
     ]
 
     if settings.DEBUG:  # pragma: no cover
-        routes += [WebSocketRoute("/hot-reload", hotreload, name="hot-reload")]
+        routes += hotreload.routes()
 
     return routes
