@@ -1,13 +1,17 @@
 {% macro Jumbotron() %}
-  <div class="f-background-surface f-box f-stack" style="--box-padding: calc(4 * var(--w)); --stack-gap: calc(2 * var(--w))">
+  <div class="f-background-surface f-box f-stack h-card" style="--box-padding: calc(4 * var(--w)); --stack-gap: calc(2 * var(--w))">
     <div class="f-container f-stack" style="--container-padding: 0">
       <div class="f-cluster" style="--cluster-justify: center; --cluster-align: center; --cluster-gap: calc(4 * var(--w))">
         <div class="f-cluster f-jumbotron-picture">
-          <img src="{{ url_for('static', path='img/me.png') }}" alt="" />
+          <img class="u-photo" src="{{ url_for('static', path='img/me.png') }}" alt="" />
         </div>
 
         <div class="f-stack f-jumbotron-content" style="--stack-gap: var(--w)">
-          <h1>Florimond Manca</h1>
+          <h1>
+            <a href="{{ url_for('home') }}" class="p-name u-url">
+              Florimond Manca
+            </a>
+          </h1>
 
           <h2>
             {{ _('Open Source Developer, Idealist On A Journey') }}
