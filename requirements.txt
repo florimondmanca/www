@@ -7,7 +7,7 @@ httpx==0.25.2
 jinja2==3.1.2
 markdown==3.5.1
 punq==0.7.0
-pygments==2.14.0
+pygments==2.17.2
 python-frontmatter==1.0.1
 starlette==0.33.0
 typing_extensions
