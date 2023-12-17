@@ -21,34 +21,35 @@
     </p>
   {%- endif -%}
 
-  <div class="f-stack" style="--stack-gap: calc(6 * var(--w))">
+  <article class="f-stack h-entry" style="--stack-gap: calc(6 * var(--w))">
     <div class="f-stack" style="--stack-gap: calc(2 * var(--w))">
       {{ PostMeta(post, editable=true) }}
 
-      <h1>
+      <h1 class="p-name">
         {{ post.name }}
       </h1>
 
       {% if post.abstract -%}
-        <p class="fr-text-muted f-text-bold">
+        <p class="fr-text-muted f-text-bold p-summary">
           {{ post.abstract }}
         </p>
       {%- endif %}
 
       <p>
-        <time datetime="{{ post.date_published }}">
+        <a class="p-author h-card" href="{{ url_for('home') }}">Florimond Manca</a>,
+        <time class="dt-published" datetime="{{ post.date_published }}">
           {{ post.date_published | dateformat }}
         </time>
       </p>
     </div>
 
-    <div class="f-markdown">
+    <div class="f-markdown e-content">
       {{ post.text | safe }}
     </div>
 
     <div class="f-print-hidden">
       {{ UtterancesComments() }}
     </div>
-  </div>
+  </article>
 </main>
 {% endblock content %}

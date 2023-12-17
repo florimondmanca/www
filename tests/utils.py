@@ -74,3 +74,86 @@ def find_rel_me_links(html: str) -> list[str]:
     parser.feed(html)
 
     return [href for tag, rel, href in parser.rels if tag == "a" and rel == "me"]
+
+
+class HCardParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.hcard: dict = {}
+        self._in_hcard = False
+
+    def handle_starttag(self, tag: str, attrs: list) -> None:
+        attr = dict(attrs)
+
+        classattr = attr.get("class", "")
+
+        if "h-card" in classattr:
+            self._in_hcard = True
+
+        if self._in_hcard:
+            if tag == "img" and "u-photo" in classattr:
+                self.hcard["u-photo"] = attr["src"]
+
+            if tag == "a" and "p-name" in classattr:
+                self.hcard["p-name"] = attr["href"]
+
+            if tag == "a" and "u-url" in classattr:
+                self.hcard["u-url"] = attr["href"]
+
+
+def parse_hcard(html: str) -> dict:
+    parser = HCardParser()
+    parser.feed(html)
+    return parser.hcard
+
+
+class HEntryParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.hentry: dict = {}
+        self._in_hentry = False
+        self._field = ""
+
+    def handle_starttag(self, tag: str, attrs: list) -> None:
+        attr = dict(attrs)
+
+        classattr = attr.get("class", "")
+
+        if tag == "article" and "h-entry" in classattr:
+            self._in_hentry = True
+
+        if self._in_hentry:
+            if tag == "h1" and "p-name" in classattr:
+                assert not self._field
+                self._field = "p-name"
+
+            if "p-summary" in classattr:
+                assert not self._field
+                self._field = "p-summary"
+
+            if tag == "a" and "p-author" in classattr:
+                self.hentry["p-author"] = attr["href"]
+
+            if tag == "a" and "h-card" in classattr:
+                self.hentry["h-card"] = attr["href"]
+
+            if tag == "time" and "dt-published" in classattr:
+                self.hentry["dt-published"] = attr["datetime"]
+
+            if "e-content" in classattr:
+                assert not self._field
+                self._field = "e-content"
+
+    def handle_data(self, data: str) -> None:
+        if self._field:
+            self.hentry[self._field] = data
+
+    def handle_endtag(self, _: str) -> None:
+        if self._field:
+            self._field = ""
+
+
+def parse_hentry(html: str) -> dict:
+    parser = HEntryParser()
+    parser.feed(html)
+    return parser.hentry
