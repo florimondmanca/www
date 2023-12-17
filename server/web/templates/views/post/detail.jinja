@@ -14,7 +14,7 @@
 {% endblock title %}
 
 {% block content %}
-<main class="f-container f-box" style="--container-width: calc(100 * var(--w)); --box-padding: calc(4 * var(--w)) 0">
+<main class="f-container f-box" style="--box-padding: calc(4 * var(--w)) 0">
   {%- if post.is_private -%}
     <p class="f-text-danger f-center f-box" style="--box-padding: var(--w)">
       {{ _("This is a private link: please do not share!") }}
