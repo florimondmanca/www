@@ -9,7 +9,7 @@
     <ul class="f-cluster f-raw-list" role="list" style="--cluster-justify: center; --cluster-align: center; --cluster-gap: calc(2 * var(--w))">
       {% for link in settings.SOCIAL_LINKS %}
         <li>
-          <a href="{{ link['href'] }}" title="{{ link['title'] }}" target="_blank" rel="noreferrer">
+          <a href="{{ link['href'] }}" title="{{ link['title'] }}" rel="me">
             {{ link['name'] }}
           </a>
         </li>
