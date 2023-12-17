@@ -1,6 +1,11 @@
 from typing import TypeVar
 
-from .domain.repositories import CategoryRepository, KeywordRepository, PostRepository
+from .domain.repositories import (
+    CategoryRepository,
+    KeywordRepository,
+    PostRepository,
+    WebmentionRepository,
+)
 from .infrastructure.di import Container
 from .infrastructure.markdown import MarkdownParser
 
@@ -13,7 +18,9 @@ def _configure(container: Container) -> None:
         InMemoryCategoryRepository,
         InMemoryKeywordRepository,
         InMemoryPostRepository,
+        WebmentionIOWebmentionRepository,
     )
+    from .infrastructure.webmention import get_webmention_io_client
     from .web.reload import HotReload
     from .web.templating import Templates
 
@@ -30,6 +37,11 @@ def _configure(container: Container) -> None:
     container.register(HotReload, instance=hotreload)
 
     container.register(Templates, instance=Templates(hotreload))
+
+    container.register(
+        WebmentionRepository,
+        instance=WebmentionIOWebmentionRepository(client=get_webmention_io_client()),
+    )
 
 
 def create_container() -> Container:

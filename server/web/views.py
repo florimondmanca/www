@@ -12,6 +12,7 @@ from ..domain.repositories import (
     KeywordRepository,
     PostFilterSet,
     PostRepository,
+    WebmentionRepository,
 )
 from .context import get_navbar_context
 from .templating import Templates
@@ -46,6 +47,7 @@ class PostDetail(HTTPEndpoint):
     async def get(self, request: Request) -> Response:
         templates = resolve(Templates)
         post_repository = resolve(PostRepository)
+        webmention_repository = resolve(WebmentionRepository)
 
         slug = request.path_params["slug"]
         post = await post_repository.find_by_slug(slug)
@@ -53,8 +55,11 @@ class PostDetail(HTTPEndpoint):
         if post is None:
             raise HTTPException(404)
 
+        webmentions = await webmention_repository.find_for_post(post)
+
         context = await get_navbar_context()
         context["post"] = post
+        context["webmentions"] = webmentions
 
         template_name = "views/post/detail.jinja"
 

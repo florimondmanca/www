@@ -51,11 +51,6 @@ ul {
 
 a {
   color: inherit;
-  text-decoration: none;
-}
-
-a:visited {
-  color: inherit;
 }
 
 a:hover {
@@ -63,6 +58,8 @@ a:hover {
 }
 
 hr {
+  border: none;
+  height: 1px;
   background-color: var(--muted);
 }
 
