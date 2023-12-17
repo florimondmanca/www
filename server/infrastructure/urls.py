@@ -2,15 +2,23 @@ from typing import Any
 
 import httpx
 
+from .. import settings
 from ..domain.entities import Category, Keyword, Post
 
 
 def to_production_url(url: str) -> str:
     urlobj = httpx.URL(url)
-    return str(urlobj.copy_with(scheme="https", host="florimond.dev", port=None))
+
+    scheme, host, port = (
+        ("http", "localhost", settings.PORT)
+        if settings.DEBUG
+        else ("http" if settings.TESTING else "https", "florimond.dev", None)
+    )
+
+    return str(urlobj.copy_with(scheme=scheme, host=host, port=port))
 
 
-def get_absolute_url(obj: Any) -> str:
+def get_absolute_path(obj: Any) -> str:
     if isinstance(obj, Post):
         return (
             f"/{obj.in_language}"

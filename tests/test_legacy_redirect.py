@@ -172,5 +172,5 @@ async def test_legacy_redirect_articles(
     assert resp.url == f"https://florimond.dev{path}"
 
     # No such redirection for florimond.dev/xyz/ (these URLs have never existed).
-    resp = await client.get(f"https://florimond.dev{legacy_path}/")
+    resp = await client.get(f"http://florimond.dev{legacy_path}/")
     assert resp.status_code == 404

@@ -37,9 +37,11 @@
 
       <p>
         <a class="p-author h-card" href="{{ url_for('home') }}">Florimond Manca</a>,
-        <time class="dt-published" datetime="{{ post.date_published }}">
-          {{ post.date_published | dateformat }}
-        </time>
+        <a href="{{ post | absolute_url }}" class="u-url">
+          <time class="dt-published" datetime="{{ post.date_published }}">
+            {{ post.date_published | dateformat }}
+          </time>
+        </a>
       </p>
     </div>
 

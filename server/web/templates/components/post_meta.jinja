@@ -3,7 +3,7 @@
 {% macro PostMeta(post, editable=false) %}
   <div class="f-cluster" style="--cluster-justify: space-between">
     <div class="f-cluster f-text-sm" style="--cluster-gap: calc(3 * var(--v))">
-      <a href="{{ post.category | absolute_url }}" class="f-text-muted">
+      <a href="{{ post.category | absolute_url }}" class="f-text-muted p-category">
         {{ post.category.name }}
       </a>
 
