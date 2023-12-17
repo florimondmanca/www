@@ -6,3 +6,4 @@ domains:
   - blog.florimondmanca.com
 
 letsencrypt_enabled: true
+webmentions_url: https://webmention.io/florimond.dev/webmention

@@ -2,6 +2,7 @@ git_repo: https://github.com/florimondmanca/www.git
 git_version: main
 
 letsencrypt_enabled: false
+webmentions_url: ""
 
 domains:
   - "{{ inventory_hostname }}"

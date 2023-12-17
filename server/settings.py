@@ -26,6 +26,8 @@ KNOWN_DOMAINS = [
     "blog.florimond.dev",
 ]
 
+WEBMENTIONS_URL = config("WWW_WEBMENTIONS_URL", default=None)
+
 STATIC_ROOT = "/static"
 STATIC_DIR = HERE / "web" / "static"
 TEMPLATES_DIR = HERE / "web" / "templates"
