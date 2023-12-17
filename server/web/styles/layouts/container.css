@@ -1,5 +1,5 @@
 .f-container {
-  max-width: var(--container-width, calc(121 * var(--w)));
+  max-width: var(--container-width, 65ch);
   margin-inline: auto;
   padding-inline: var(--container-padding, calc(2 * var(--w)));
 }

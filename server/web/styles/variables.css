@@ -1,6 +1,6 @@
 :root {
-  --v: 0.25rem;
-  --w: 0.5rem;
+  --v: 4px;
+  --w: 8px;
 
   /* Colors */
   --surface: #edeff0;
@@ -12,13 +12,14 @@
 
   /* Fonts */
   --font-family: Georgia, serif;
-  --font-size-default: 1.2rem;
-  --font-size-sm: 1rem;
-  --font-size-lg: 1.5rem;
-  --font-size-h1: 2.3rem;
-  --font-size-h2: 1.8rem;
-  --font-size-h3: 1.4rem;
-  --font-size-blockquote-mark: 2rem;
+  --font-base: 16px;
+  --font-size-default: 1rem;
+  --font-size-sm: 0.83rem;
+  --font-size-lg: 1.25rem;
+  --font-size-h1: 1.9rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.16rem;
+  --font-size-blockquote-mark: 1.6rem;
 
   /* Borders */
   --radius-sm: 5px;

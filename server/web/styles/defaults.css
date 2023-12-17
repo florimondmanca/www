@@ -1,3 +1,7 @@
+html {
+  font-size: var(--font-base);
+}
+
 body {
   font-family: var(--font-family);
   font-size: var(--font-size-default);
