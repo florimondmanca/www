@@ -68,6 +68,9 @@ serve-uvicorn:
 serve-assets:
 	NODE_ENV=production FORCE_COLOR=true npm run watch 2>&1 | ${bin}python -m tools.colorprefix yellow [assets]
 
+serve-clever:
+	WWW_PORT=9000 python3 -m server.main
+
 imgoptimize: # Optimize images
 	${bin}python -m server.tools.imgoptimize
 
@@ -91,6 +94,10 @@ provision: # Provision infrastructure (args: env)
 
 deploy: # Deploy (args: env)
 	cd ansible && make deploy env=${env}
+
+deploy-clever: # Deploy to Clever Cloud
+	# git remote add clever git+ssh://git@push-n3-par-clevercloud-customers.services.clever-cloud.com/app_c3c0a997-3a1f-4836-930e-0ea53440354a.git
+	git push clever feat/clever:master
 
 vagrant = cd ansible/environments/vagrant && vagrant
 
