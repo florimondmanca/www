@@ -34,8 +34,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
 
-    <!-- Webmention (https://webmention.io) -->
     {% if settings.WEBMENTIONS_URL %}
+      <!-- Webmention (https://webmention.io) -->
       <link rel="webmention" href="{{ settings.WEBMENTIONS_URL }}" />
     {% endif %}
 

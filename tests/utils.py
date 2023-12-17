@@ -44,3 +44,33 @@ def get_start_tag(html: str) -> tuple[str, dict]:
     parser.feed(html)
     assert parser.start_tag is not None
     return parser.start_tag
+
+
+class RelParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.rels: list[tuple[str, str, str]] = []
+
+    def handle_starttag(self, tag: str, attrs: list) -> None:
+        attr = dict(attrs)
+
+        if "rel" in attr:
+            self.rels.append((tag, attr["rel"], attr["href"]))
+
+
+def find_webmention_url(html: str) -> str | None:
+    parser = RelParser()
+    parser.feed(html)
+
+    for tag, rel, href in parser.rels:
+        if tag == "link" and rel == "webmention":
+            return href
+
+    return None
+
+
+def find_rel_me_links(html: str) -> list[str]:
+    parser = RelParser()
+    parser.feed(html)
+
+    return [href for tag, rel, href in parser.rels if tag == "a" and rel == "me"]

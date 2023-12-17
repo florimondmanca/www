@@ -10,6 +10,7 @@ from asgi_lifespan import LifespanManager
 os.environ["WWW_TESTING"] = "True"
 os.environ["WWW_DEBUG"] = "False"
 os.environ["WWW_EXTRA_CONTENT_DIRS"] = "tests/drafts"
+os.environ["WWW_WEBMENTIONS_URL"] = "https://webmention.io/testserver/webmention"
 
 
 @pytest.fixture(scope="session")
