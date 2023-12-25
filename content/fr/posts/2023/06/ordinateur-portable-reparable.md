@@ -10,6 +10,8 @@ tags:
   - logiciels-libres
 ---
 
+Mise à jour le 25 décembre 2023 : [j'ai écrit une suite](/fr/posts/2023/12/ordinateur-reparable-framework).
+
 _**Disclaimer**. Ceci n'est pas un publipostage. Je n'ai été contacté par aucune société citée dans ce billet ni pour l'écrire ni le faire relire. Il s'agit d'un billet à mon initiative propre et écrit en toute indépendance, qui relate mes réflexions au moment où j'ai souhaité changé d'ordinateur portable en me focalisant sur la réparabilité._
 
 ## Hommage au MacBook Pro mi-2012
@@ -145,3 +147,5 @@ Voilà pour ces quelques réflexions dont j'ai tenu à garder une trace écrite.
 Au global, je pencherais pour l'instant pour le [L140PU](https://whyopencomputing.com/fr/laptops-why/1336-178522-portable-why-l140pu-i7-14.html). En tout cas, **why! me semble être un fabricant honnête et à envisager sérieusement**, d'autant que j'ai un bon retour d'expérience suite à mon usage professionnel.
 
 Je publierai peut-être un nouveau billet quand la migration aura été effectuée, avec un petit retour d'expérience sur la nouvelle machine et la MAO sous Linux. À plus !
+
+Mise à jour le 25 décembre 2023 : [j'ai écrit une suite](/fr/posts/2023/12/ordinateur-reparable-framework).
