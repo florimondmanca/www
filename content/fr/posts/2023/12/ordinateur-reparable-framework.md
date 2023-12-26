@@ -139,31 +139,33 @@ Le tout pour : **1178 € TTC**.
 
 Franchement, si les promesses qualitatives sont tenues, **je trouve ce prix très honnête**.
 
-Il faut comparer par exemple au Dell XPS 13, référence en matière de portable haut de gamme. Il est vendu pour 2500 € en configuration similaire mais avec un CPU moins puissant ([comparaison UserBenchmark](https://cpu.userbenchmark.com/Compare/Intel-Core-i5-1340P-vs-Intel-Core-i7-10510U/m2033578vsm891469)). Il est aussi moins réparable (indice iFixit de 7 sur 10).
+Il faut comparer par exemple au Dell XPS 13, référence en matière d'ultraportable haut de gamme. Il est vendu à 2500 € en configuration similaire mais avec un CPU moins puissant ([comparaison UserBenchmark](https://cpu.userbenchmark.com/Compare/Intel-Core-i5-1340P-vs-Intel-Core-i7-10510U/m2033578vsm891469)). Il est aussi moins réparable ([indice iFixit de 7 sur 10](https://fr.ifixit.com/Device/Dell_XPS_13), ce qui reste honnête).
 
-Ce tarif plus intéressant que la concurrence sur une gamme de performance similaire est un gros argument, je trouve.
+S'il faut absolument comparer aux **machines Apple**, un MacBook Pro dernier cri est affiché à 2000 €, et 1650 € pour le MacBook Air M2. Les ordinateurs Apple sont donc **plus onéreux**. Certes, [leur performance semble un cran au-dessus](https://nanoreview.net/en/laptop-compare/framework-laptop-vs-apple-macbook-pro-14-2023) du Framework. On pourrait aussi évoquer l'ergonomie exemplaire des machines Apple (en version sans touchbar) que je ne nierais pas. Mais **côté réparabilité, ça n'a rien à voir**. iFixit n'a pas encore publié d'analyse de ces derniers modèles, mais ceux de 2019 avaient un [score de réparabilité iFixit](https://fr.ifixit.com/reparabilite/indices-ordinateur-portable) désastreux entre 1 et 3 sur 10 (inférieur d'ailleurs à l'indice de réparabilité français que la marque affichait[^3]).
 
-Il reste qu'à ce prix, on ne peut pas non plus dire que le Framework soit un équipement accessible tout public. On reste sur du haut de gamme, _plutôt élitiste_. (Enfin, en apparence, je dirais ! Car 1200 € pour les 10 années et plus à venir, comparé à 500 € d'ordinateurs basse-moyenne gamme irréparables tous les 3 ou 4 ans, on s'y retrouve !)
+[^3]: Hé oui, si l'on regarde l'indice de réparabilité français auto-déclaré par Apple, qui se retrouve affiché sur les étiquettes des distributeurs, on était plutôt à l'époque autour de 4 ou 5, et non 1 à 3 ! Aujourd'hui, les derniers modèles s'affichent autour de 6,5 sur 10. Où est l'arnaque ? iFixit l'a analysé en 2021 dans [un article dédié aux calculs de réparabilité d'Apple](https://fr.ifixit.com/News/69724/comment-apple-a-pu-calculer-ses-indices-de-reparabilite-francais). En clair, [les méthodologies d'iFixit et de l'indice français diffèrent](https://fr.ifixit.com/News/68847/pourquoi-lindice-ifixit-differe-de-lindice-de-reparabilite-francais) : sans surprise, l'indice français, passé par le filtre du processus législatif, est hélas plus laxiste. Sa conception permet à Apple d'obtenir de bons scores malgré de grosses lacunes. L'association Halte à l'Obsolescence Programmée (HOP) l'avait aussi fait remarquer en 2022 dans [un article se demandant si l'indice de réparabilité tenait ses promesses](https://www.halteobsolescence.org/lindice-de-reparabilite-tient-il-ses-promesses/) : il n'y a pas de mécanismes de seuils, il est donc possible d'avoir un zéro pointé sur un critère important, comme la démontabilité, et pourtant obtenir un bon score global. À l'inverse, être exemplaire sur les critères essentiels mais ne pas pouvoir tenir des critères secondaires, comme la capacité à livrer des pièces détachées rapidement (3 jours pour obtenir un 10 sur 10 au critère "Délai de livraison des pièces"), peut plomber votre score. C'est le cas du Fairphone 3 qui a [un indice de réparabilité français de seulement 8,7 sur 10](https://www.indicereparabilite.fr/produit/smartphone-fairphone-fp3/), ce qui ne reflète pas la réalité (il a [un score iFixit de 10 sur 10](https://fr.ifixit.com/Device/Fairphone_3) !).
+
+Si on chérit la **réparabilité** et qu'on accepte de se passer d'une puissance superflue (en faisant des **économies** au passage), selon moi **le Framework bat la concurrence à plat de coûture**.
+
+Il reste qu'à ce prix, on ne peut pas non plus dire que le Framework soit un équipement accessible à tout public. On reste sur du haut de gamme, _plutôt élitiste_. (Mais en apparence, je dirais ! Car 1200 € pour les 10 années et plus à venir, comparé à 500 € d'ordinateurs basse-moyenne gamme irréparables tous les 3 ou 4 ans, on s'y retrouve !)
 
 Ne serait-il pas intéressant de proposer un modèle tout aussi réparable et bien conçu, mais moins puissant en se limitant à un usage plus bureautique, qui le rendrait donc _a priori_ moins cher ?
 
-Hélas, comme je l'écrivais en bas de page [^1], Framework ne semble pas se diriger sur ce segment, certes extrêmement concurrentiel...
+Hélas, comme je l'écrivais en bas de page [^1], Framework ne semble pas se diriger sur ce segment, certes extrêmement concurrentiel... Qui pourrait peut-être aussi être déjà bien couvert par why!, Terra, et autres fabricants basés sur Clevo. Passons le mot à nos proches, en leur faisant aussi des recommendations de machines d'occasion, reconditionnées ou (au pire) neuves avec les meilleurs [scores iFixit](https://fr.ifixit.com/reparabilite/indices-ordinateur-portable).
 
 ## Et niveau environnemental ?
 
 J'ai rentré les caractéristiques les plus proches de ce Framework, de l'usage que j'en aurai et de la durée de vie que j'en attends dans [Datavizta](https://dataviz.boavizta.org).
 
-Les résultats du simulateur indiquent 488 kg de CO2-équivalent, dont 181 à la fabrication. (Je m'avoue encore peu en capacité de faire sens des indicateurs autres que les émissions de gaz à effet de serre.)
+Les résultats du simulateur indiquent 488 kg de CO2-équivalent sur tout son cycle de vie, dont 181 à la fabrication. (Je m'avoue encore peu en capacité d'interpréter les indicateurs autres que les émissions de <dfn><abbr title="Gaz à effet de serre">GES</abbr></dfn>.)
 
-Sur 10 ans, cela représente [deux pavés de bœuf](https://ourworldindata.org/grapher/food-emissions-supply-chain) par an. Honnête. (Enfin, ça rappelle surtout qu'il faut réduire sa consommation de viande.)
+Sur 10 ans, cela représente [deux pavés de bœuf par an](https://ourworldindata.org/grapher/food-emissions-supply-chain). Honnête. (Enfin, ça rappelle surtout qu'il faut réduire sa consommation de viande.)
 
-Ou encore 0.13 kg, soit 2.6% du budget "soutenable" d'environ 5 kg de CO2-équivalent que j'avais estimé dans mon [billet sur les vacances à vélo](/fr/posts/2021/09/vacances-velo#bas-carbone-verifions). Soit un peu moins que la place du numérique dans les émissions mondiales aujourd'hui (entre 3 et 4 %).
+Ou encore 0.13 kg de CO2-équivalent par jour, soit 2 à 3% du budget "soutenable" d'environ 5 kg de CO2-équivalent que j'avais estimé dans mon [billet sur les vacances à vélo](/fr/posts/2021/09/vacances-velo#bas-carbone-verifions). C'est un peu moins que la place du numérique dans les émissions mondiales aujourd'hui (entre 3 et 4 %), donc ça semble cohérent.
 
-À comparer aux émissions de la fabrication d'un MacBook Pro 2020, que d'après les [données Boavizta](https://github.com/Boavizta/environmental-footprint-data/blob/main/boavizta-data-fr.csv) est de l'ordre de 200 à 250 kg CO2-équivalent. Etalés sur 10 ans, ils seraient aussi "dans les clous" d'un budget bas carbone. À voir pour d'autres critères, bien sûr…
+C'est à comparer aux émissions de la fabrication d'un MacBook Pro 2020, que d'après les [données Boavizta](https://github.com/Boavizta/environmental-footprint-data/blob/main/boavizta-data-fr.csv) est de l'ordre de 200 à 250 kg CO2-équivalent en cycle de vie. Etalés sur 10 ans, ils seraient aussi "dans les clous" d'un budget bas carbone. Il faudrait peser les autres critères, bien sûr…
 
-Bref, comme quoi, l'essentiel en matière d'équipement informatique est bien de **faire durer**…
-
-
+Tout ceci nous rappelle surtout que l'essentiel en matière d'équipement informatique est bien de **faire durer**.
 
 ## Et après ?
 
