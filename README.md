@@ -7,7 +7,7 @@ Code for https://florimond.dev.
 
 ## Prerequisites
 
-- Python 3.11+
+- Python 3.12+
 
 ## Install
 

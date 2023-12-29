@@ -4,10 +4,10 @@ pyenv_home: "{{ ansible_env.HOME }}"
 pyenv_root: "{{ ansible_env.HOME }}/.pyenv"
 
 # Pyenv version to install
-pyenv_version: "v2.3.6"
+pyenv_version: "v2.3.35"
 
 # Python version to install
-pyenv_python_version: "3.11.0"
+pyenv_python_version: "3.12.1"
 
 # Global Python versions to set
 pyenv_global: "{{ pyenv_python_version }} system"
