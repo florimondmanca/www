@@ -4,7 +4,7 @@ resources:
       type: github
       endpoint: github
       name: florimondmanca/azure-pipelines-templates
-      ref: refs/tags/6.1
+      ref: refs/tags/6.2
 
 trigger:
   - main
@@ -20,7 +20,7 @@ variables:
 jobs:
   - template: job--python-check.yml@templates
     parameters:
-      pythonVersion: "3.11"
+      pythonVersion: "3.12"
 
   - job: Build
     pool:
@@ -28,7 +28,7 @@ jobs:
     steps:
       - template: step--python-install.yml@templates
         parameters:
-          pythonVersion: "3.11"
+          pythonVersion: "3.12"
       - script: make build
 
   - template: job--python-test.yml@templates
@@ -52,6 +52,6 @@ jobs:
           sshKeySecureFile: florimond-dev-deploy-id_rsa
       - template: step--python-install.yml@templates
         parameters:
-          pythonVersion: "3.11"
+          pythonVersion: "3.12"
       - bash: make install-deploy
       - bash: make deploy env=prod
