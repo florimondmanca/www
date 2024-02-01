@@ -21,7 +21,7 @@ flake8==6.1.0
 isort==5.13.2
 mypy==1.7.1
 pillow==10.1.0
-pytest==7.4.3
+pytest==8.0.0
 pytest-asyncio<0.23 # Issue with asgi-lifespan background
 pytest-codeblocks==0.17.0
 pytest-cov==4.1.0
