@@ -1,3 +1,15 @@
+- name: Check if target Python version is new
+  shell: >-
+    {{ pyenv_bin_path }} versions
+  register: pyenv_versions
+  changed_when: false
+
+- name: Delete venv if target Python version is new
+  file:
+    path: venv
+    state: absent
+  when: "{{ pyenv_python_version }} not in pyenv_versions.stdout"
+
 - name: Install Python interpreter
   shell: >-
     {{ pyenv_bin_path }} install {{ pyenv_python_version }}
