@@ -9,7 +9,7 @@ markdown==3.5.1
 punq==0.7.0
 pygments==2.14.0
 python-frontmatter==1.0.1
-starlette==0.33.0
+starlette==0.37.1
 typing_extensions
 uvicorn[standard]==0.24.0
 
