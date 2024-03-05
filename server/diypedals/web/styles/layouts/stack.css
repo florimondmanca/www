@@ -1,0 +1,7 @@
+.f-stack > * {
+  margin-bottom: 0;
+}
+
+.f-stack > * + * {
+  margin-top: var(--stack-gap, calc(2 * var(--w)));
+}

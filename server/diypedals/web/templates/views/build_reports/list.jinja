@@ -1,0 +1,63 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+    <main class="f-container">
+        <h1>Build reports</h1>
+
+        <h2>Latest build reports</h2>
+
+        {# Pour chaque pédale : la date, le type, le kit utilisé, les mods effectués, des photos intérieur / extérieur #}
+
+        <ul class="f-raw-list f-grid" style="--grid-min: 250px">
+            {% for build_report in build_reports %}
+                <li class="f-box f-stack" style="--box-padding: var(--2w); --stack-gap: var(--1w)">
+                    <div class="f-frame" style="--frame-ratio: 3/2">
+                        <img src="{{ build_report.photos[0].src }}">
+                    </div>
+                    <p>
+                        <a href="{{ build_report|absolute_url }}" class="f-h3">
+                            {{ build_report.title }}
+                        </a>
+                    </p>
+                    <p>
+                        {{ build_report.description }}
+                    </p>
+                    <div class="f-cluster" style="--cluster-justify: space-between">
+                        <span class="f-cluster" style="--cluster-gap: var(--1w)">
+                            <span aria-hidden="true">🔖</span>
+                            <ul class="f-raw-list f-cluster" style="--cluster-gap: var(--1w)">
+                                {% for category in build_report.categories %}
+                                    <li>{{ category|capitalize }}</li>
+                                    <span aria-hidden="true">{% if loop.revindex0 > 0 %}/{% endif %}</span>
+                                {% endfor %}
+                            </ul>
+                        </span>
+                        <span class="f-cluster" style="--cluster-gap: var(--1w)">
+                            <span aria-hidden="true">📅</span>
+                            <time datetime="{{ build_report.build_date|isoformat }}">{{ build_report.build_date|dateformat }}</time>
+                        </span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Upcoming builds</h2>
+
+        <ul>
+            <li>
+                Elevator Drive (Maestro MPF-1 / StoneDeaf PDF-2 clone)
+            </li>
+        </ul>
+
+        <h2>Tips and tutorials</h2>
+
+        <ul>
+            <li>Getting started with DIY pedal building</li>
+            <li>Finding components, kits and enclosures in the EU</li>
+            <li>Drilling guitar pedal enclosures without a drill press</li>
+            <li>Planning pedal builds using Inkscape</li>
+            <li>Easy wiring of 9mm potentiometers</li>
+            <li>An introduction to guitar pedal modding</li>
+        </ul>
+    </main>
+{% endblock content %}

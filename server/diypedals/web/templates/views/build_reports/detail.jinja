@@ -1,0 +1,36 @@
+{% extends 'base.jinja' %}
+
+{% block title %}
+    {{ build_report.title }} - Guitar pedals - {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <main class="f-container">
+        <h1>{{ build_report.title }}</h1>
+
+        <p>{{ build_report.description }}</p>
+
+        <h2>Overview</h2>
+
+        <p>Built: {{ build_report.build_date|dateformat }}</p>
+
+        {% if build_report.kit %}
+            <p>Kit: <a href="{{ build_report.kit.url }}" target="_blank" rel="noreferrer">{{ build_report.kit.name }} ({{ build_report.kit.seller }})</a></p>
+        {% endif %}
+
+        {% if build_report.pcb %}
+            <p>PCB: <a href="{{ build_report.pcb.url }}" target="_blank" rel="noreferrer">{{ build_report.pcb.name }} ({{ build_report.pcb.seller }})</a></p>
+        {% endif %}
+
+        <h2>Photos</h2>
+
+        {% if photos_html %}
+            {{ photos_html|safe }}
+        {% else %}
+            <form method="GET" action="">
+                <input type="hidden" name="photos" value="true" />
+                <button type="submit">Download and show photos</button>
+            </form>
+        {% endif %}
+    </main>
+{% endblock content %}

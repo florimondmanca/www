@@ -39,6 +39,7 @@ build: # Build assets
 
 pybuild:
 	${bin}python -m tools.pybuild ./server/web/styles/styles.css --outdir ./server/web/static/css ${ARGS}
+	${bin}python -m tools.pybuild ./server/diypedals/web/styles/styles.css --outdir ./server/diypedals/web/static/css ${ARGS}
 
 ##
 ## ----------------

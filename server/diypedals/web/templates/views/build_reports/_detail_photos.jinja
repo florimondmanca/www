@@ -1,0 +1,7 @@
+ <ul class="f-cluster f-raw-list" style="--cluster-gap: var(--2w)">
+    {% for photo in build_report.photos %}
+        <li>
+            <img src="{{ photo.src }}" alt="{{ photo.alt }}">
+        </li>
+    {% endfor %}
+</ul>

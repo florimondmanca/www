@@ -1,0 +1,37 @@
+:root {
+  --v: 4px;
+  --w: 8px;
+  --1w: 8px;
+  --2w: 16px;
+  --4w: 32px;
+
+  /* Colors */
+  --surface: #edeff0;
+  --muted: #6b6b6b;
+  --danger: #ff0000;
+  --primary: #1866ac;
+  --background-default: white;
+  --text-on-background-default: #424242;
+
+  /* Fonts */
+  --font-family: monospace;
+  --font-base: 16px;
+  --font-size-default: 1rem;
+  --font-size-sm: 0.83rem;
+  --font-size-lg: 1.25rem;
+  --font-size-h1: 1.9rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.16rem;
+  --font-size-blockquote-mark: 1.6rem;
+
+  /* Borders */
+  --radius-sm: 5px;
+}
+
+@media screen and (min-width: 900px) {
+  :root {
+    --font-size-h1: 2.9rem;
+    --font-size-h2: 2.1rem;
+    --font-size-h3: 1.5rem;
+  }
+}

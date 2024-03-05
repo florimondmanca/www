@@ -6,6 +6,7 @@ from starlette.types import ASGIApp
 
 from .. import settings
 from ..di import resolve
+from ..diypedals.web.app import create_app as create_diypedals
 from ..infrastructure.database import InMemoryDatabase
 from . import views
 from .middleware import middleware
@@ -17,7 +18,9 @@ def create_app() -> ASGIApp:
     db = resolve(InMemoryDatabase)
     hotreload = resolve(HotReload)
 
-    routes = get_routes()
+    diypedals = create_diypedals()
+
+    routes = get_routes(diypedals.routes)
 
     @asynccontextmanager
     async def lifespan(app: Starlette) -> AsyncIterator[None]:
@@ -26,7 +29,8 @@ def create_app() -> ASGIApp:
         if settings.DEBUG:  # pragma: no cover
             await hotreload.startup()
 
-        yield
+        async with diypedals.lifespan():
+            yield
 
         if settings.DEBUG:  # pragma: no cover
             await hotreload.shutdown()

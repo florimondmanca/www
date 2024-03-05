@@ -1,0 +1,9 @@
+.f-box {
+  padding: var(--box-padding, 0);
+}
+
+@media screen and (min-width: 900px) {
+  .f-box {
+    padding: var(--box-padding-desktop, var(--box-padding, 0));
+  }
+}
