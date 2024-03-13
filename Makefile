@@ -47,7 +47,7 @@ pybuild:
 ##
 
 serve: # Run servers
-	make -j 2 serve-uvicorn serve-assets
+	make -j serve-uvicorn serve-assets
 
 serve-uvicorn:
 	PYTHONUNBUFFERED=1 ${bin}python -m server.main 2>&1 | ${bin}python -m tools.colorprefix blue [server]
