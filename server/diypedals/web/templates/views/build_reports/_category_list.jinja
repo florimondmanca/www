@@ -1,0 +1,15 @@
+{% macro CategoryList(build_report) %}
+<span class="f-cluster" style="--cluster-gap: var(--1w)">
+    <span aria-hidden="true">🔖</span>
+    <ul class="f-raw-list f-cluster" style="--cluster-gap: var(--1w)" aria-label="Categories of {{ build_report.title }}">
+        {% for category in build_report.categories %}
+        <li>
+            <a href="{{ url_for('diypedals:build_reports:categories:detail', category=category ) }}">
+                {{ category|capitalize }}
+            </a>
+        </li>
+        {% if loop.revindex0 > 0 %}<span aria-hidden="true">/</span>{% endif %}
+        {% endfor %}
+    </ul>
+</span>
+{% endmacro %}

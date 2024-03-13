@@ -34,11 +34,15 @@ install-python: venv
 ##
 
 build: # Build assets
-	make pybuild
+	make pybuild-www
+	make pybuild-diypedals
 	make messagesc
 
-pybuild:
+pybuild-www:
 	${bin}python -m tools.pybuild ./server/web/styles/styles.css --outdir ./server/web/static/css ${ARGS}
+
+pybuild-diypedals:
+	${bin}python -m tools.pybuild ./server/diypedals/web/styles/styles.css --outdir ./server/diypedals/web/static/css ${ARGS}
 
 ##
 ## ----------------
@@ -47,13 +51,16 @@ pybuild:
 ##
 
 serve: # Run servers
-	make -j serve-uvicorn serve-assets
+	make -j serve-uvicorn serve-assets-www serve-assets-diypedals
 
 serve-uvicorn:
 	PYTHONUNBUFFERED=1 ${bin}python -m server.main 2>&1 | ${bin}python -m tools.colorprefix blue [server]
 
-serve-assets:
-	PYTHONUNBUFFERED=1 make pybuild ARGS="--watch" 2>&1 | ${bin}python -m tools.colorprefix yellow [assets]
+serve-assets-www:
+	PYTHONUNBUFFERED=1 make pybuild-www ARGS="--watch" 2>&1 | ${bin}python -m tools.colorprefix yellow [assets-www]
+
+serve-assets-diypedals:
+	PYTHONUNBUFFERED=1 make pybuild-diypedals ARGS="--watch" 2>&1 | ${bin}python -m tools.colorprefix red [assets-diypedals]
 
 ##
 ## ----------------

@@ -3,9 +3,11 @@ import uvicorn.supervisors
 
 from . import settings
 from .di import bootstrap
+from .diypedals.di import bootstrap as diypedals_bootstrap
 from .web.app import create_app
 
 bootstrap()
+diypedals_bootstrap()
 
 app = create_app()
 

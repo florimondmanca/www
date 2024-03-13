@@ -1,0 +1,42 @@
+{% extends 'base.jinja' %}
+{% from 'views/build_reports/_category_sidebar.jinja' import CategorySidebar with context %}
+{% from 'views/build_reports/_list_view.jinja' import ListView with context %}
+
+{% block title %}
+    Build reports - {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <main class="f-container">
+        <h1>Build reports</h1>
+
+        <div class="f-with-sidebar-right" style="--sidebar-gap: var(--2w); --sidebar-content-min: 60%">
+            <div>
+                <h2>Latest build reports</h2>
+
+               {{ ListView(build_reports) }}
+            </div>
+
+            {{ CategorySidebar() }}
+        </div>
+
+        <h2>Upcoming builds</h2>
+
+        <ul>
+            <li>
+                Elevator Drive (Maestro MPF-1 / StoneDeaf PDF-2 clone)
+            </li>
+        </ul>
+
+        <h2>Tips and tutorials</h2>
+
+        <ul>
+            <li>Getting started with DIY pedal building</li>
+            <li>Finding components, kits and enclosures in the EU</li>
+            <li>Drilling guitar pedal enclosures without a drill press</li>
+            <li>Planning pedal builds using Inkscape</li>
+            <li>Easy wiring of 9mm potentiometers</li>
+            <li>An introduction to guitar pedal modding</li>
+        </ul>
+    </main>
+{% endblock content %}

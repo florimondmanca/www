@@ -49,7 +49,7 @@ def _replace_imports(path: Path) -> str:
 
     lines = path.read_text().splitlines(keepends=True)
 
-    for lineno, line, full_path in imports:
+    for lineno, _, full_path in imports:
         content = _replace_imports(full_path)
         lines[lineno] = content
 
@@ -77,12 +77,14 @@ def main(input_files: list[Path], outdir: Path, watch: bool = False) -> None:
 
     if watch:
         watched_files = set(input_files)
+        files_to_analyze = set(input_files)
 
-        for path in input_files:
+        while files_to_analyze:
+            path = files_to_analyze.pop()
             for _, _, full_path in _get_imports(path):
                 watched_files.add(full_path)
+                files_to_analyze.add(full_path)
 
-        print("Watching for changes...")
         for changes in watchfiles.watch(*watched_files, raise_interrupt=False):
             changed_files = [changed_path for _, changed_path in changes]
             print(f"--> Change detected in {', '.join(changed_files)}")

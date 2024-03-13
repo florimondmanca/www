@@ -1,4 +1,5 @@
-from starlette.routing import BaseRoute, Host, Mount, Route, WebSocketRoute
+from starlette.routing import BaseRoute, Host, Mount, Route, Router, WebSocketRoute
+from starlette.types import ASGIApp
 
 from .. import settings
 from ..di import resolve
@@ -9,7 +10,7 @@ from .sitemap import sitemap
 from .statics import CachedStaticFiles
 
 
-def get_routes() -> list[BaseRoute]:
+def get_routes(diypedals_routes: list[BaseRoute]) -> list[BaseRoute]:
     static = CachedStaticFiles(
         directory=str(settings.STATIC_DIR),
         max_age=7 * 86400,  # 7 days
@@ -33,6 +34,7 @@ def get_routes() -> list[BaseRoute]:
             app=legacy.DomainRedirect("florimond.dev", root_path="/blog"),
             name="legacy:blog_dot_dev",
         ),
+        Mount("/diypedals", routes=diypedals_routes, name="diypedals"),
         Route("/error/", views.error),
         Route("/blog/", views.legacy_blog_home, name="legacy:blog_home"),
         Mount(settings.STATIC_ROOT, static, name="static"),

@@ -1,0 +1,14 @@
+{% macro CategorySidebar() %}
+    <aside>
+        <h3>Categories</h3>
+        <ul>
+            {% for category in categories %}
+                <li {% if category == current_category %}aria-current="page"{% endif %}>
+                    <a href="{{ url_for('diypedals:build_reports:categories:detail', category=category) }}">
+                        {{ category }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </aside>
+{% endmacro %}

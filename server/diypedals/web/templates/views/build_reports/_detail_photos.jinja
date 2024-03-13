@@ -1,0 +1,7 @@
+<ul class="f-grid f-raw-list" style="--grid-min: 40ch">
+    {% for photo in build_report.photos %}
+        <li class="f-frame" style="--frame-ratio: 3/2">
+            <img src="{{ photo.src }}" alt="{{ photo.alt }}">
+        </li>
+    {% endfor %}
+</ul>
