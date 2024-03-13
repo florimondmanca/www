@@ -1,16 +1,19 @@
 {% extends 'base.jinja' %}
+{% from 'views/build_reports/_category_list.jinja' import CategoryList with context %}
 
 {% block title %}
-    {{ build_report.title }} - Guitar pedals - {{ super() }}
+    {{ build_report.title }} - Build reports - {{ super() }}
 {% endblock %}
 
 {% block content %}
     <main class="f-container">
         <h1>{{ build_report.title }}</h1>
 
-        <p>{{ build_report.description }}</p>
+        {{ CategoryList(build_report) }}
 
         <h2>Overview</h2>
+
+        <p>Description: {{ build_report.description }}</p>
 
         <p>Built: {{ build_report.build_date|dateformat }}</p>
 
@@ -24,13 +27,32 @@
 
         <h2>Photos</h2>
 
-        {% if photos_html %}
-            {{ photos_html|safe }}
-        {% else %}
-            <form method="GET" action="">
-                <input type="hidden" name="photos" value="true" />
-                <button type="submit">Download and show photos</button>
-            </form>
-        {% endif %}
+        <div class="f-stack" style="--stack-gap: var(--2w); --grid-gap: var(--2w)">
+            {% if show_photos %}
+                <form method="GET">
+                    <button type="submit">Hide pictures</button>
+                </form>
+
+                <ul class="f-grid f-raw-list" style="--grid-min: 30ch">
+                    {% for photo in build_report.photos %}
+                        <li class="f-frame" style="--frame-ratio: 3/2">
+                            <img src="{{ photo.src }}" alt="{{ photo.alt }}">
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <form method="GET">
+                    <input type="hidden" name="photos" value="true" />
+                    <button type="submit">Download all pictures ({{ build_report.photos|length }})</button>
+                </form>
+
+                {% set photo = build_report.photos|first %}
+                <div class="f-grid" style="--grid-min: 30ch; --grid-max: 50%">
+                    <div class="f-frame" style="--frame-ratio: 3/2">
+                        <img src="{{ photo.src }}" alt="{{ photo.alt }}">
+                    </div>
+                </div>
+            {% endif %}
+        </div>
     </main>
 {% endblock content %}

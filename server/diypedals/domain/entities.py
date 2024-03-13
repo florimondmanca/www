@@ -27,7 +27,7 @@ class BuildReport:
     title: str
     slug: str
     description: str
-    categories: list
+    categories: list[str]
     build_date: dt.date
     status: str
     photos: list[Photo] = field(default_factory=list)

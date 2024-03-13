@@ -11,7 +11,7 @@ class HotReload(arel.HotReload):
     def __init__(self) -> None:
         super().__init__(
             paths=[
-                arel.Path(settings.TEMPLATES_DIR),
-                arel.Path(settings.STATIC_DIR),
+                arel.Path(str(settings.TEMPLATES_DIR)),
+                arel.Path(str(settings.STATIC_DIR)),
             ]
         )

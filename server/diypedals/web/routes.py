@@ -31,6 +31,11 @@ def get_routes() -> list[BaseRoute]:
             views.BuildReportDetail,
             name="build_reports:detail",
         ),
+        Route(
+            "/build-reports/categories/{category:str}",
+            views.BuildReportCategoryDetail,
+            name="build_reports:categories:detail",
+        ),
     ]
 
     if settings.DEBUG:  # pragma: no cover

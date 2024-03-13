@@ -1,8 +1,6 @@
 import json
 from pathlib import Path
-from typing import Callable
-
-from .. import settings
+from typing import Any, Callable
 
 
 class DiskCache:
@@ -19,7 +17,7 @@ class DiskCache:
     def _write_cache(self, cache: dict) -> None:
         self._file.write_text(json.dumps(cache))
 
-    async def get(self, key: str, fetch_func: Callable):
+    async def get(self, key: str, fetch_func: Callable) -> Any:
         cache = self._get_cache()
 
         try:

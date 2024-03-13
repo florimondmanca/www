@@ -1,0 +1,15 @@
+.f-with-sidebar-left, .f-with-sidebar-right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sidebar-gap, 0);
+}
+
+.f-with-sidebar-left > :first-child, .f-with-sidebar-right > :last-child {
+    flex-grow: 1;
+}
+
+.f-with-sidebar-left > :last-child, .f-with-sidebar-right > :first-child {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-inline-size: var(--sidebar-content-min, 50%);
+}

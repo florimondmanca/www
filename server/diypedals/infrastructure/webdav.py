@@ -39,13 +39,13 @@ class BuildReportClient:
         xml = ET.fromstring(r.text)
         ns = {"d": "DAV:"}
 
-        build_reports = []
-
         for item in itertools.islice(xml, 1, None):  # First is the folder itself
             if item.find(".//d:resourcetype/d:collection", ns) is None:
                 continue
 
             href = item.find(".//d:href", ns)
+            assert href is not None and href.text is not None
+
             photos_url = webdav_url.copy_with(path=href.text + "entry.json")
             r = await self._http.request("GET", photos_url)
             r.raise_for_status()
@@ -80,20 +80,20 @@ class BuildReportClient:
                     ):
                         continue
 
-                    if not photo_item.find(".//d:getcontenttype", ns).text.startswith(
-                        "image/"
-                    ):
+                    content_type = photo_item.find(".//d:getcontenttype", ns)
+                    assert content_type is not None and content_type.text is not None
+
+                    if not content_type.text.startswith("image/"):
                         continue
 
-                    async def _fetch_photo():
+                    async def _fetch_photo() -> dict:
                         # Browser won't be able to download the image as it is behind authentication.
                         # Need to download the image and serve it as base64.
                         # See: https://stackoverflow.com/a/62305417
-                        photo_url = webdav_url.copy_with(
-                            path=photo_item.find(".//d:href", ns).text
-                        )
+                        href = photo_item.find(".//d:href", ns)
+                        assert href is not None and href.text is not None
+                        photo_url = webdav_url.copy_with(path=href.text)
                         photo_response = await self._http.request("GET", photo_url)
-                        photo_content = photo_response.text
 
                         photo_src = "data:%s;base64,%s" % (
                             photo_response.headers["content-type"],
@@ -102,8 +102,11 @@ class BuildReportClient:
 
                         return {"src": photo_src, "alt": "Photo"}
 
-                    photo_etag = photo_item.find(".//d:getetag", ns).text
-                    photo = Photo(**(await self._cache.get(photo_etag, _fetch_photo)))
+                    photo_etag = photo_item.find(".//d:getetag", ns)
+                    assert photo_etag is not None and photo_etag.text is not None
+                    photo = Photo(
+                        **(await self._cache.get(photo_etag.text, _fetch_photo))
+                    )
                     photos.append(photo)
 
             yield BuildReport(

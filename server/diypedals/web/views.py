@@ -21,9 +21,11 @@ class BuildReportList(HTTPEndpoint):
         build_report_repository = resolve(BuildReportRepository)
 
         build_reports = await build_report_repository.find_all()
+        categories = sorted(await build_report_repository.get_unique_categories())
 
         context = {
             "build_reports": build_reports,
+            "categories": categories,
         }
 
         return templates.TemplateResponse(
@@ -40,15 +42,33 @@ class BuildReportDetail(HTTPEndpoint):
 
         build_report = await build_report_repository.find_one(slug=slug)
 
-        context = {
+        context: dict = {
             "build_report": build_report,
+            "show_photos": request.query_params.get("photos") == "true",
         }
-
-        if request.query_params.get("photos") == "true":
-            context["photos_html"] = templates.env.get_template(
-                "views/build_reports/_detail_photos.jinja"
-            ).render(context)
 
         return templates.TemplateResponse(
             request, "views/build_reports/detail.jinja", context
+        )
+
+
+class BuildReportCategoryDetail(HTTPEndpoint):
+    async def get(self, request: Request) -> Response:
+        templates = resolve(Templates)
+        build_report_repository = resolve(BuildReportRepository)
+
+        category = request.path_params["category"]
+
+        build_reports = await build_report_repository.find_all(category=category)
+        categories = sorted(await build_report_repository.get_unique_categories())
+
+        context = {
+            "category": category,
+            "build_reports": build_reports,
+            "categories": categories,
+            "current_category": category,
+        }
+
+        return templates.TemplateResponse(
+            request, "views/build_reports/categories/detail.jinja", context
         )

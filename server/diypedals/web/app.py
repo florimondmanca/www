@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
+from typing import AsyncIterator
 
 from starlette.routing import BaseRoute
-from starlette.types import ASGIApp
 
 from .. import settings
 from ..di import resolve
@@ -15,7 +15,7 @@ class DiyPedals:
         self._routes = get_routes()
 
     @asynccontextmanager
-    async def lifespan(self):
+    async def lifespan(self) -> AsyncIterator[None]:
         db = resolve(InMemoryDatabase)
         hotreload = resolve(HotReload)
 

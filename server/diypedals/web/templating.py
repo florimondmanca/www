@@ -1,7 +1,7 @@
 import datetime as dt
+from typing import Any
 
 import jinja2
-from starlette.exceptions import HTTPException
 from starlette.templating import Jinja2Templates
 
 from .. import settings
@@ -13,7 +13,7 @@ class Templates(Jinja2Templates):
     def __init__(self, hotreload: HotReload) -> None:
         super().__init__(directory=str(settings.TEMPLATES_DIR))
 
-        def _absolute_url(obj):
+        def _absolute_url(obj: Any) -> str:
             return to_production_url(get_absolute_path(obj))
 
         self.env.globals["now"] = dt.datetime.now

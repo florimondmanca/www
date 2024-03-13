@@ -1,0 +1,25 @@
+{% extends 'base.jinja' %}
+{% from 'views/build_reports/_list_view.jinja' import ListView with context %}
+{% from 'views/build_reports/_category_sidebar.jinja' import CategorySidebar with context %}
+
+{% set title = category|capitalize + ' pedals' %}
+
+{% block title %}
+    {{ title }} - Categories - Build reports - {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <main class="f-container">
+        <h1>{{ title }}</h1>
+
+        <div class="f-with-sidebar-right" style="--sidebar-gap: var(--2w); --sidebar-content-min: 60%">
+            <div>
+                <p>Build reports in the category "{{ category }}".</p>
+
+               {{ ListView(build_reports) }}
+            </div>
+
+            {{ CategorySidebar() }}
+        </div>
+    </main>
+{% endblock content %}
