@@ -5,7 +5,7 @@ from starlette.exceptions import HTTPException
 from starlette.templating import Jinja2Templates
 
 from .. import settings
-from ..infrastructure.html import build_meta_tags
+from ..infrastructure.html import build_meta_tags, escape_webmention_content
 from ..infrastructure.urls import get_absolute_path, to_production_url
 from . import i18n
 from .reload import HotReload
@@ -27,6 +27,7 @@ class Templates(Jinja2Templates):
         self.env.filters["dateformat"] = _dateformat
         self.env.filters["language_label"] = _language_label
         self.env.filters["meta_tags"] = build_meta_tags
+        self.env.filters["webmention_escape"] = escape_webmention_content
 
     def from_string(self, source: str) -> jinja2.Template:
         return self.env.from_string(source)
@@ -38,7 +39,8 @@ def _raise_server_error(message: str) -> None:  # pragma: no cover
 
 def _dateformat(value: dt.date | str) -> str:
     if isinstance(value, str):
-        value = dt.date.fromisoformat(value)
+        value = dt.datetime.fromisoformat(value)
+
     return value.strftime("%b %d, %Y")
 
 

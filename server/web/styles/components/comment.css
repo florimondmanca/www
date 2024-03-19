@@ -1,0 +1,12 @@
+.f-comment {
+  display: grid;
+  grid-template: 1fr / var(--comment-photo-size) 1fr;
+  gap: var(--w);
+  padding: var(--w);
+  /* Last paragraph already adds spacing */
+  padding-bottom: 0;
+}
+
+.f-comment + .f-comment {
+  border-top: 1px solid var(--muted);
+}

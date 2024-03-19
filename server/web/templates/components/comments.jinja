@@ -1,0 +1,38 @@
+{% macro WebmentionComments(webmentions) %}
+  <h2>{{ _('Comments') }}</h2>
+
+  {% if webmentions|length > 0 %}
+    <ul class="f-raw-list f-stack" role="list" style="--stack-gap: calc(var(--w))">
+      {% for webmention in webmentions %}
+        <li class="f-comment" style="--comment-photo-size: 48px">
+          <a href="{{ webmention.data['author']['url'] }}" target="_blank" rel="noreferrer">
+            <img class="f-circle" width="48" height="48" src="{{ webmention.data['author']['photo'] }}" loading="lazy">
+          </a>
+
+          <div class="f-overflow">
+            <div class="f-cluster" style="--cluster-wrap: wrap; --cluster-justify: space-between">
+              <a href="{{ webmention.data['author']['url'] }}" target="_blank" rel="noreferrer">
+                {{ webmention.data['author']['name'] }}
+              </a>
+              <a class="f-text-muted" href="{{ webmention.data['url'] }}" target="_blank" rel="noreferrer">
+                <time datetime="{{ webmention.data['published'] }}">
+                  {{ webmention.data['published'] | dateformat }}
+                </time>
+              </a>
+            </div>
+
+            <p>
+              {{ webmention.data['content']['html']|webmention_escape|safe }}
+            </p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="f-text-muted">
+      {{ _('No comments yet.') }}
+    </p>
+  {% endif %}
+
+  <p></p>
+{% endmacro %}

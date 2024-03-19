@@ -1,0 +1,11 @@
+.f-w-full {
+  width: 100%;
+}
+
+.f-circle {
+  border-radius: 50%;
+}
+
+.f-overflow {
+  overflow-x: auto;
+}

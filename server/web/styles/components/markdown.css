@@ -31,7 +31,3 @@
   text-align: center;
   color: var(--muted);
 }
-
-.f-markdown a {
-  text-decoration: underline;
-}

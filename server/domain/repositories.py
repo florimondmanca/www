@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 
 from .. import i18n
-from .entities import Category, Keyword, Page, Pagination, Post
+from .entities import Category, Keyword, Page, Pagination, Post, Webmention
 
 
 @dataclass
@@ -48,4 +48,9 @@ class KeywordRepository:
         raise NotImplementedError  # pragma: no cover
 
     async def save(self, keyword: Keyword) -> None:
+        raise NotImplementedError  # pragma: no cover
+
+
+class WebmentionRepository:
+    async def find_for_post(self, post: Post) -> list[Webmention]:
         raise NotImplementedError  # pragma: no cover

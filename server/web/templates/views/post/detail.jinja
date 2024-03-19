@@ -1,7 +1,7 @@
 {% extends "base.jinja" %}
 
 {% from "components/meta_tags.jinja" import MetaTags with context %}
-{% from "components/utterances.jinja" import UtterancesComments with context %}
+{% from "components/comments.jinja" import WebmentionComments with context %}
 {% from "components/post_meta.jinja" import PostMeta with context %}
 
 {% block head %}
@@ -49,8 +49,8 @@
       {{ post.text | safe }}
     </div>
 
-    <div class="f-print-hidden">
-      {{ UtterancesComments() }}
+    <div>
+      {{ WebmentionComments(webmentions) }}
     </div>
   </article>
 </main>
