@@ -11,10 +11,14 @@
   --danger: #ff0000;
   --primary: #1866ac;
   --background-default: white;
+  --background-alt-grey: #eee;
+  --background-alt-yellow: #fff0c9;
+  --background-alt-yellow-darker: #f5e6bf;
   --text-on-background-default: #424242;
 
   /* Fonts */
-  --font-family: monospace;
+  --font-family: sans-serif;
+  --font-heading: var(--font-family);
   --font-base: 16px;
   --font-size-default: 1rem;
   --font-size-sm: 0.83rem;
@@ -23,6 +27,9 @@
   --font-size-h2: 1.5rem;
   --font-size-h3: 1.16rem;
   --font-size-blockquote-mark: 1.6rem;
+
+  /* Shadows */
+  --shadow-default: 0px 0px 20px 0px #49495a26;
 
   /* Borders */
   --radius-sm: 5px;

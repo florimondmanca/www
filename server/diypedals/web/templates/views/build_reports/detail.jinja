@@ -1,58 +1,56 @@
-{% extends 'base.jinja' %}
+{% extends 'layouts/default.jinja' %}
 {% from 'views/build_reports/_category_list.jinja' import CategoryList with context %}
 
 {% block title %}
     {{ build_report.title }} - Build reports - {{ super() }}
 {% endblock %}
 
-{% block content %}
-    <main class="f-container">
-        <h1>{{ build_report.title }}</h1>
+{% block main %}
+    <h1>{{ build_report.title }}</h1>
 
-        {{ CategoryList(build_report) }}
+    {{ CategoryList(build_report) }}
 
-        <h2>Overview</h2>
+    <h2>Overview</h2>
 
-        <p>Description: {{ build_report.description }}</p>
+    <p>Description: {{ build_report.description }}</p>
 
-        <p>Built: {{ build_report.build_date|dateformat }}</p>
+    <p>Built: {{ build_report.build_date|dateformat }}</p>
 
-        {% if build_report.kit %}
-            <p>Kit: <a href="{{ build_report.kit.url }}" target="_blank" rel="noreferrer">{{ build_report.kit.name }} ({{ build_report.kit.seller }})</a></p>
-        {% endif %}
+    {% if build_report.kit %}
+        <p>Kit: <a href="{{ build_report.kit.url }}" target="_blank" rel="noreferrer">{{ build_report.kit.name }} ({{ build_report.kit.seller }})</a></p>
+    {% endif %}
 
-        {% if build_report.pcb %}
-            <p>PCB: <a href="{{ build_report.pcb.url }}" target="_blank" rel="noreferrer">{{ build_report.pcb.name }} ({{ build_report.pcb.seller }})</a></p>
-        {% endif %}
+    {% if build_report.pcb %}
+        <p>PCB: <a href="{{ build_report.pcb.url }}" target="_blank" rel="noreferrer">{{ build_report.pcb.name }} ({{ build_report.pcb.seller }})</a></p>
+    {% endif %}
 
-        <h2>Photos</h2>
+    <h2>Photos</h2>
 
-        <div class="f-stack" style="--stack-gap: var(--2w); --grid-gap: var(--2w)">
-            {% if show_photos %}
-                <form method="GET">
-                    <button type="submit">Hide pictures</button>
-                </form>
+    <div class="f-stack" style="--stack-gap: var(--2w); --grid-gap: var(--2w)">
+        {% if show_photos %}
+            <form method="GET">
+                <button type="submit">Hide pictures</button>
+            </form>
 
-                <ul class="f-grid f-raw-list" style="--grid-min: 30ch">
-                    {% for photo in build_report.photos %}
-                        <li class="f-frame" style="--frame-ratio: 3/2">
-                            <img src="{{ photo.src }}" alt="{{ photo.alt }}">
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <form method="GET">
-                    <input type="hidden" name="photos" value="true" />
-                    <button type="submit">Download all pictures ({{ build_report.photos|length }})</button>
-                </form>
-
-                {% set photo = build_report.photos|first %}
-                <div class="f-grid" style="--grid-min: 30ch; --grid-max: 50%">
-                    <div class="f-frame" style="--frame-ratio: 3/2">
+            <ul class="f-grid f-raw-list" style="--grid-min: 30ch">
+                {% for photo in build_report.photos %}
+                    <li class="f-frame" style="--frame-ratio: 3/2">
                         <img src="{{ photo.src }}" alt="{{ photo.alt }}">
-                    </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <form method="GET">
+                <input type="hidden" name="photos" value="true" />
+                <button type="submit">Download all pictures ({{ build_report.photos|length }})</button>
+            </form>
+
+            {% set photo = build_report.photos|first %}
+            <div class="f-grid" style="--grid-min: 30ch; --grid-max: 50%">
+                <div class="f-frame" style="--frame-ratio: 3/2">
+                    <img src="{{ photo.src }}" alt="{{ photo.alt }}">
                 </div>
-            {% endif %}
-        </div>
-    </main>
-{% endblock content %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.jinja'%}
+
+{% set _body_class = "f-background-wavy-yellow" %}
+
+{% block body %}
+<div class="f-container f-shadow f-w-full" style="--container-width: 110ch; --container-padding: 0">
+    <nav class="f-box f-background-alt-grey" style="--box-padding: var(--2w)">
+        <ul class="f-cluster f-raw-list" style="--box-padding: var(--2w)">
+            <li>
+                <a href="{{ url_for('diypedals:home') }}" class="f-box">
+                    <strong>diypedals.fm</strong>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('diypedals:build_reports') }}" class="f-box">
+                    Build reports
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="f-background-default f-box" style="--box-padding: var(--4w)">
+        {% block main %}{% endblock %}
+    </main>
+</div>
+{% endblock body %}

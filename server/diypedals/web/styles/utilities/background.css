@@ -1,0 +1,30 @@
+.f-background-default {
+    background-color: var(--background-default);
+}
+
+.f-background-alt-grey {
+    background-color: var(--background-alt-grey);
+}
+
+.f-background-alt-yellow {
+    background-color: var(--background-alt-yellow);
+}
+
+.f-background-wavy-yellow {
+    position: relative;
+}
+
+.f-background-wavy-yellow::before {
+    --color1: var(--background-alt-yellow);
+    --color2: var(--background-alt-yellow-darker);
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: #fff0c9;
+    background-image:  linear-gradient(135deg, var(--color2) 25%, transparent 25%), linear-gradient(225deg, var(--color2) 25%, transparent 25%), linear-gradient(45deg, var(--color2) 25%, transparent 25%), linear-gradient(315deg, var(--color2) 25%, var(--color1) 25%);
+    background-position: 20px 0, 20px 0, 0 0, 0 0;
+    background-size: 60px 60px;
+    background-repeat: repeat;
+}

@@ -10,9 +10,14 @@ body {
   line-height: 1.5;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  align-self: stretch;
 }
 
 h1 {
+  font-family: var(--font-heading);
   font-size: var(--font-size-h1);
   font-weight: bold;
   margin-top: 0;
@@ -21,6 +26,7 @@ h1 {
 }
 
 h2 {
+  font-family: var(--font-heading);
   font-size: var(--font-size-h2);
   font-weight: normal;
   margin-top: 0;
@@ -28,6 +34,7 @@ h2 {
 }
 
 h3, .f-h3 {
+  font-family: var(--font-heading);
   font-size: var(--font-size-h3);
   font-weight: bold;
   margin-top: 0;

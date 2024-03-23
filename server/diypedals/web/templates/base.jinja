@@ -36,23 +36,8 @@
     {% block head %}{% endblock head %}
   </head>
 
-  <body style="--container-width: 100ch">
-    <nav class="f-container f-box" style="--box-padding: var(--2w)">
-      <ul class="f-cluster f-raw-list" style="--box-padding: var(--2w)">
-        <li>
-          <a href="{{ url_for('diypedals:home') }}" class="f-box">
-            <strong>diypedals.fm</strong>
-          </a>
-        </li>
-        <li>
-          <a href="{{ url_for('diypedals:build_reports') }}" class="f-box">
-            Build reports
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    {% block content %}{% endblock %}
+  <body class="{{ _body_class }}">
+    {% block body %}{% endblock %}
 
     <!-- Scripts placed at the end of the document so the pages load faster -->
 
